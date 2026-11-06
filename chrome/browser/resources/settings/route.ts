@@ -146,6 +146,9 @@ function createRoutes(): SettingsRoutes {
   r.ABOUT = r.BASIC.createSection(
       '/help', 'about', loadTimeData.getString('aboutPageTitle'));
 
+  r.KERNEL_DEBUG = r.BASIC.createSection(
+      '/kernelDebug', 'kernelDebug', '内核调试');
+
   // Search page.
   r.SEARCH = r.BASIC.createSection(
       '/search', 'search', loadTimeData.getString('searchPageTitle'));

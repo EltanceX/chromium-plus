@@ -145,6 +145,12 @@ ${this.showResetProfileBanner_ ? html`
     </div>
   ` : '')}
 
+  <div slot="view" id="kernelDebug">
+    ${cache(this.renderPlugin_(this.routes_.KERNEL_DEBUG) ? html`
+      <settings-kernel-debug-page></settings-kernel-debug-page>
+    ` : '')}
+  </div>
+
   <div slot="view" id="about">
     ${cache(this.renderPlugin_(this.routes_.ABOUT) ? html`
       <settings-about-page role="main" class="cr-centered-card-container">

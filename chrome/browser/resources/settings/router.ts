@@ -41,6 +41,7 @@ export interface SettingsRoutes {
   HISTORY_SEARCH: Route;
   IDENTITY_DOCS: Route;
   INLINE_CUE_MENU: Route;
+  KERNEL_DEBUG: Route;
   LANGUAGES: Route;
   MANAGE_PROFILE: Route;
   OFFER_WRITING_HELP: Route;

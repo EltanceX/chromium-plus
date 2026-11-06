@@ -102,6 +102,12 @@
           <cr-ripple></cr-ripple>
         </a>
 </if>
+        <a role="menuitem" id="kernelDebug" href="/kernelDebug"
+            class="cr-nav-menu-item">
+          <cr-icon icon="settings:build"></cr-icon>
+          <span class="menu-label">内核调试</span>
+          <cr-ripple></cr-ripple>
+        </a>
         <a role="menuitem" id="reset" href="/reset"
             ?hidden="${this.shouldHideMenuItem_(this.pageVisibility_?.reset)}"
             class="cr-nav-menu-item">

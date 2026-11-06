@@ -44,6 +44,7 @@ export type {OpenWindowProxy} from 'chrome://resources/js/open_window_proxy.js';
 export {PluralStringProxyImpl} from 'chrome://resources/js/plural_string_proxy.js';
 export {getTrustedHTML} from 'chrome://resources/js/static_types.js';
 export {SettingsAboutPageElement} from './about_page/about_page.js';
+export {SettingsKernelDebugPageElement} from './kernel_debug_page/kernel_debug_page.js';
 export {ControlledRadioButtonElement} from './controls/controlled_radio_button.js';
 export {DEFAULT_CHECKED_VALUE, DEFAULT_UNCHECKED_VALUE} from './controls/settings_boolean_control_mixin.js';
 export {SettingsDropdownMenuElement} from './controls/settings_dropdown_menu.js';

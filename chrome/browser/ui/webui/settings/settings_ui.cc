@@ -73,6 +73,7 @@
 #include "chrome/browser/ui/webui/settings/glic_handler.h"
 #include "chrome/browser/ui/webui/settings/hats_handler.h"
 #include "chrome/browser/ui/webui/settings/import_data_handler.h"
+#include "chrome/browser/ui/webui/settings/kernel_debug_handler.h"
 #include "chrome/browser/ui/webui/settings/metrics_reporting_handler.h"
 #include "chrome/browser/ui/webui/settings/omnibox_everywhere_settings_handler.h"
 #include "chrome/browser/ui/webui/settings/on_startup_handler.h"
@@ -292,6 +293,7 @@ SettingsUI::SettingsUI(content::WebUI* web_ui)
   AddSettingsPageUIHandler(std::make_unique<ExtensionControlHandler>());
   AddSettingsPageUIHandler(std::make_unique<FontHandler>(profile));
   AddSettingsPageUIHandler(std::make_unique<ImportDataHandler>());
+  AddSettingsPageUIHandler(std::make_unique<KernelDebugHandler>());
   AddSettingsPageUIHandler(std::make_unique<HatsHandler>());
 
 #if BUILDFLAG(IS_WIN)
