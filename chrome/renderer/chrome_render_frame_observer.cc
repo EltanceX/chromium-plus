@@ -35,6 +35,7 @@
 #include "chrome/renderer/actor/tool_executor.h"
 #include "chrome/renderer/benchmarking_bindings.h"
 #include "chrome/renderer/chrome_content_settings_agent_delegate.h"
+#include "chrome/renderer/chromium_plus_bindings.h"
 #include "chrome/renderer/loadtimes_bindings.h"
 #include "chrome/renderer/media/media_feeds.h"
 #include "chrome/renderer/process_state.h"
@@ -56,6 +57,7 @@
 #include "content/public/common/buildflags.h"
 #include "content/public/common/content_features.h"
 #include "content/public/common/content_switches.h"
+#include "content/public/common/isolated_world_ids.h"
 #include "content/public/renderer/render_frame.h"
 #include "content/public/renderer/render_frame_visitor.h"
 #include "content/public/renderer/render_thread.h"
@@ -415,6 +417,10 @@ void ChromeRenderFrameObserver::DidCreateScriptContext(
     int32_t world_id) {
   BenchmarkingBindings::InstallConditionally(context);
   LoadTimesBindings::Install(context);
+
+  if (world_id == content::ISOLATED_WORLD_ID_GLOBAL) {
+    chromium_plus::InstallBindings(context);
+  }
 }
 
 void ChromeRenderFrameObserver::DidMeaningfulLayout(

@@ -76,6 +76,8 @@ static_library("renderer") {
     "chrome_render_frame_observer.h",
     "chrome_render_thread_observer.cc",
     "chrome_render_thread_observer.h",
+    "chromium_plus_bindings.cc",
+    "chromium_plus_bindings.h",
     "custom_menu_commands.h",
     "google_accounts_private_api_extension.cc",
     "google_accounts_private_api_extension.h",

@@ -57,6 +57,7 @@
 #include "chrome/renderer/chrome_content_settings_agent_delegate.h"
 #include "chrome/renderer/chrome_render_frame_observer.h"
 #include "chrome/renderer/chrome_render_thread_observer.h"
+#include "chrome/renderer/chromium_plus_bindings.h"
 #include "chrome/renderer/controlled_frame/controlled_frame_extensions_renderer_api_provider.h"
 #include "chrome/renderer/google_accounts_private_api_extension.h"
 #include "chrome/renderer/loadtimes_bindings.h"
@@ -1571,6 +1572,10 @@ void ChromeContentRendererClient::
   }
 }
 
+void ChromeContentRendererClient::DidInitializeWorkerContextOnWorkerThread(
+    v8::Local<v8::Context> context) {
+  chromium_plus::InstallBindings(context);
+}
 
 void ChromeContentRendererClient::
     WillInitializeServiceWorkerContextOnWorkerThread() {
