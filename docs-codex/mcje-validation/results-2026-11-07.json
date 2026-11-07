@@ -1,0 +1,179 @@
+{
+  "recorded_on": "2026-11-07",
+  "platform": "Windows x64 Debug component build",
+  "public_values_are_observations_not_test_fixtures": true,
+  "checks": {
+    "mcje_unit": {
+      "passed": 92,
+      "total": 92,
+      "source": "out/Debug/mcje-phase5-unit-results.json"
+    },
+    "mcbe_unit": {
+      "passed": 11,
+      "total": 11,
+      "source": "out/Debug/mcbe-mcje-phase5-unit-results.json"
+    },
+    "mcje_default": {
+      "passed": 34,
+      "total": 34,
+      "local_checks": 33,
+      "live_checks": 1,
+      "local_tcp_connections": 29,
+      "source": "out/Debug/mcje-phase5-default.json"
+    },
+    "mcje_in-process": {
+      "passed": 34,
+      "total": 34,
+      "local_checks": 33,
+      "live_checks": 1,
+      "local_tcp_connections": 29,
+      "source": "out/Debug/mcje-phase5-in-process.json"
+    },
+    "mcbe_browser": {
+      "passed": 17,
+      "total": 17,
+      "source": "out/Debug/mcbe-mcje-phase5-regression.json"
+    },
+    "chromium_plus": {
+      "passed": 15,
+      "total": 15,
+      "source": "out/Debug/chromium-plus-mcje-phase5-regression.json"
+    }
+  },
+  "public_observations": {
+    "default": {
+      "host": "mc.hypixel.net",
+      "observedAt": "2026-11-07T09:12:20.670Z",
+      "dns": [
+        {
+          "type": "SRV",
+          "name": "_minecraft._tcp.mc.hypixel.net",
+          "error": "ENOTFOUND"
+        },
+        {
+          "type": "A",
+          "name": "mc.hypixel.net",
+          "records": [
+            "198.18.1.220"
+          ]
+        },
+        {
+          "type": "AAAA",
+          "name": "mc.hypixel.net",
+          "error": "ENODATA"
+        }
+      ],
+      "status": "success",
+      "page": {
+        "url": "mcje://mc.hypixel.net/",
+        "origin": "null",
+        "ready": "complete",
+        "state": "地址已识别",
+        "host": "mc.hypixel.net",
+        "port": "25565",
+        "portSource": "默认端口",
+        "query": "查询成功",
+        "motd": "                 Hypixel Network [1.8/26.3]\n              SKYBLOCK GHOST VISITORS",
+        "rtt": "568.0 ms",
+        "endpoint": "198.18.1.220:25565",
+        "srvTarget": "未使用",
+        "discovery": "SRV 无可用结果，使用逻辑主机与默认端口：net::ERR_NAME_NOT_RESOLVED",
+        "attempts": "1",
+        "version": "Requires MC 1.8 / 1.21",
+        "protocol": "47",
+        "playersOnline": "17209",
+        "playersMax": "200000",
+        "latencyDiagnostic": "未提供",
+        "summary": "{\"description\":\"§f                 §aHypixel Network §c[1.8/26.3]\\n§f              §6§lSKYBLOCK §e§lGHOST VISITORS\",\"favicon\":\"[favicon attachment omitted]\",\"players\":{\"max\":200000,\"online\":17209,\"sample\":[]},\"version\":{\"name\":\"Requires MC 1.8 / 1.21\",\"protocol\":47}}",
+        "images": 1,
+        "placeholder": false,
+        "iconState": "64×64 PNG",
+        "completedAt": "2026-11-07 09:12:21 UTC",
+        "injected": false,
+        "scripts": 0,
+        "secure": false
+      },
+      "icon": {
+        "complete": true,
+        "width": 64,
+        "height": 64,
+        "mime": "image/png",
+        "png_bytes": 10409,
+        "sha256": "abf95f9f09f1d75507f67ffc88ac1add103a8794340487c65b6eebf794baadd4"
+      },
+      "chrome_args": []
+    },
+    "in-process": {
+      "host": "mc.hypixel.net",
+      "observedAt": "2026-11-07T09:11:12.680Z",
+      "dns": [
+        {
+          "type": "SRV",
+          "name": "_minecraft._tcp.mc.hypixel.net",
+          "error": "ENODATA"
+        },
+        {
+          "type": "A",
+          "name": "mc.hypixel.net",
+          "records": [
+            "198.18.1.220"
+          ]
+        },
+        {
+          "type": "AAAA",
+          "name": "mc.hypixel.net",
+          "error": "ENODATA"
+        }
+      ],
+      "status": "success",
+      "page": {
+        "url": "mcje://mc.hypixel.net/",
+        "origin": "null",
+        "ready": "complete",
+        "state": "地址已识别",
+        "host": "mc.hypixel.net",
+        "port": "25565",
+        "portSource": "默认端口",
+        "query": "查询成功",
+        "motd": "                 Hypixel Network [1.8/26.3]\n              SKYBLOCK GHOST VISITORS",
+        "rtt": "803.0 ms",
+        "endpoint": "198.18.1.220:25565",
+        "srvTarget": "未使用",
+        "discovery": "SRV 无可用结果，使用逻辑主机与默认端口：net::ERR_NAME_NOT_RESOLVED",
+        "attempts": "1",
+        "version": "Requires MC 1.8 / 1.21",
+        "protocol": "47",
+        "playersOnline": "17217",
+        "playersMax": "200000",
+        "latencyDiagnostic": "未提供",
+        "summary": "{\"description\":\"§f                 §aHypixel Network §c[1.8/26.3]\\n§f              §6§lSKYBLOCK §e§lGHOST VISITORS\",\"favicon\":\"[favicon attachment omitted]\",\"players\":{\"max\":200000,\"online\":17217,\"sample\":[]},\"version\":{\"name\":\"Requires MC 1.8 / 1.21\",\"protocol\":47}}",
+        "images": 1,
+        "placeholder": false,
+        "iconState": "64×64 PNG",
+        "completedAt": "2026-11-07 09:11:13 UTC",
+        "injected": false,
+        "scripts": 0,
+        "secure": false
+      },
+      "icon": {
+        "complete": true,
+        "width": 64,
+        "height": 64,
+        "mime": "image/png",
+        "png_bytes": 10409,
+        "sha256": "abf95f9f09f1d75507f67ffc88ac1add103a8794340487c65b6eebf794baadd4"
+      },
+      "chrome_args": [
+        "--enable-features=NetworkServiceInProcess2"
+      ]
+    }
+  },
+  "initial_default_run": {
+    "source": "out/Debug/mcje-phase5-default-initial.json",
+    "status": "failed",
+    "observation": "Valid local SLP status succeeded, but the expected PNG was absent on the first run. The icon diagnostic was not captured, so the cause is unconfirmed. The subsequent default run passed without changing product timeouts or decoder settings."
+  },
+  "screenshots": {
+    "default": "hypixel-2026-11-07.png"
+  }
+}

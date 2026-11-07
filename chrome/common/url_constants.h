@@ -31,6 +31,9 @@ namespace chrome {
 // Native Minecraft Bedrock server status navigation.
 inline constexpr char kMcbeScheme[] = "mcbe";
 
+// Native Minecraft Java server status navigation.
+inline constexpr char kMcjeScheme[] = "mcje";
+
 // "Learn more" URL linked in the dialog to cast using a code.
 inline constexpr char kAccessCodeCastLearnMoreURL[] =
     "https://support.google.com/chrome/a/?p=cast_to_class_teacher";

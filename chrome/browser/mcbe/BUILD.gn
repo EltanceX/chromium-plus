@@ -35,6 +35,7 @@ source_set("mcbe") {
   ]
   deps = [
     ":protocol",
+    "//chrome/browser/minecraft:response",
     "//chrome/common:constants",
     "//mojo/public/cpp/system",
     "//net",

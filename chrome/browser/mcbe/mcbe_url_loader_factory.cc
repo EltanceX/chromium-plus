@@ -7,11 +7,11 @@
 #include <memory>
 #include <utility>
 
-#include "base/byte_size.h"
 #include "base/functional/bind.h"
 #include "base/memory/self_deleting.h"
 #include "chrome/browser/mcbe/bedrock_status_query.h"
 #include "chrome/browser/mcbe/mcbe_result_page.h"
+#include "chrome/browser/minecraft/server_status_response.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/storage_partition.h"
@@ -19,14 +19,11 @@
 #include "content/public/browser/web_contents_observer.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "mojo/public/cpp/bindings/remote.h"
-#include "mojo/public/cpp/system/data_pipe.h"
 #include "net/base/net_errors.h"
-#include "net/http/http_response_headers.h"
 #include "services/network/public/cpp/resource_request.h"
 #include "services/network/public/cpp/self_deleting_url_loader_factory.h"
 #include "services/network/public/cpp/url_loader_completion_status.h"
 #include "services/network/public/mojom/url_loader.mojom.h"
-#include "services/network/public/mojom/url_response_head.mojom.h"
 
 namespace mcbe {
 namespace {
@@ -97,42 +94,8 @@ class McbeURLLoader final : public network::mojom::URLLoader,
   void OnResult(QueryResult result) {
     query_.reset();
     const std::string html = RenderResultPage(url_, result);
-    mojo::ScopedDataPipeProducerHandle producer;
-    mojo::ScopedDataPipeConsumerHandle consumer;
-    // All inputs are bounded. A pipe sized for the whole page avoids retaining
-    // the loader in a separate asynchronous body producer after completion.
-    if (html.size() > 512 * 1024 ||
-        mojo::CreateDataPipe(html.size(), producer, consumer) !=
-            MOJO_RESULT_OK ||
-        producer->WriteAllData(base::as_byte_span(html)) != MOJO_RESULT_OK) {
-      client_->OnComplete(
-          network::URLLoaderCompletionStatus(net::ERR_INSUFFICIENT_RESOURCES));
-      client_.reset();
-      return;
-    }
-    producer.reset();
-    auto head = network::mojom::URLResponseHead::New();
-    head->mime_type = "text/html";
-    head->charset = "utf-8";
-    head->content_length = html.size();
-    head->headers =
-        net::HttpResponseHeaders::Builder(net::HttpVersion(1, 1), "200 OK")
-            .AddHeader("Content-Type", "text/html; charset=utf-8")
-            .AddHeader("Cache-Control", "no-store")
-            .AddHeader(
-                "Content-Security-Policy",
-                "default-src 'none'; style-src 'unsafe-inline'; "
-                "base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
-            .AddHeader("X-Content-Type-Options", "nosniff")
-            .AddHeader("Referrer-Policy", "no-referrer")
-            .Build();
-    client_->OnReceiveResponse(std::move(head), std::move(consumer),
-                               std::nullopt);
-    network::URLLoaderCompletionStatus status(net::OK);
-    status.encoded_data_length = base::ByteSize(html.size());
-    status.encoded_body_length = base::ByteSize(html.size());
-    status.decoded_body_length = base::ByteSize(html.size());
-    client_->OnComplete(status);
+    minecraft::SendResultPage(client_.get(), html,
+                              minecraft::ResultPageImages::kNone);
     client_.reset();
   }
 

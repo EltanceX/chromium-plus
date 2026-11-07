@@ -213,6 +213,10 @@ void ChromeContentClient::AddAdditionalSchemes(Schemes* schemes) {
   // SchemeHostPort serialization omits ports for schemes without a built-in
   // default port, so do not expose an ambiguous MCBE tuple origin.
   schemes->no_access_schemes.push_back(chrome::kMcbeScheme);
+  // Java status URLs have the same host/port and opaque-origin requirements.
+  url::AddStandardScheme(chrome::kMcjeScheme,
+                         url::SCHEME_WITH_HOST_PORT_AND_USER_INFORMATION);
+  schemes->no_access_schemes.push_back(chrome::kMcjeScheme);
   for (auto* standard_scheme : kChromeStandardURLSchemes)
     schemes->standard_schemes.push_back(standard_scheme);
 

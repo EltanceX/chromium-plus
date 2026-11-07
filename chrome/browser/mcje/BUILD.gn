@@ -1,0 +1,109 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//testing/test.gni")
+
+source_set("protocol") {
+  sources = [
+    "java_status_json.cc",
+    "java_status_json.h",
+    "java_status_protocol.cc",
+    "java_status_protocol.h",
+    "mcje_url.cc",
+    "mcje_url.h",
+  ]
+  deps = [ "//chrome/common" ]
+  public_deps = [
+    "//base",
+    "//url",
+  ]
+}
+
+source_set("query") {
+  sources = [
+    "java_status_query.cc",
+    "java_status_query.h",
+    "java_status_resolver.cc",
+    "java_status_resolver.h",
+  ]
+  public_deps = [
+    ":protocol",
+    "//base",
+    "//mojo/public/cpp/bindings",
+    "//mojo/public/cpp/system",
+    "//net",
+    "//services/network/public/cpp",
+    "//services/network/public/mojom",
+  ]
+}
+
+source_set("page") {
+  sources = [
+    "java_server_icon.cc",
+    "java_server_icon.h",
+    "mcje_result_page.cc",
+    "mcje_result_page.h",
+  ]
+  public_deps = [
+    ":protocol",
+    ":query",
+    "//services/data_decoder/public/mojom",
+  ]
+  deps = [
+    "//services/data_decoder/public/cpp",
+    "//skia",
+    "//ui/gfx/codec",
+    "//ui/gfx/geometry",
+  ]
+}
+
+source_set("mcje") {
+  sources = [
+    "mcje_url_loader_factory.cc",
+    "mcje_url_loader_factory.h",
+  ]
+  public_deps = [
+    "//content/public/browser",
+    "//mojo/public/cpp/bindings",
+    "//services/network/public/mojom",
+  ]
+  deps = [
+    ":page",
+    ":protocol",
+    ":query",
+    "//base",
+    "//chrome/browser/minecraft:response",
+    "//chrome/browser/profiles:profile",
+    "//mojo/public/cpp/system",
+    "//net",
+    "//services/network/public/cpp",
+    "//third_party/blink/public/common",
+  ]
+}
+
+test("mcje_unittests") {
+  sources = [
+    "java_server_icon_unittest.cc",
+    "java_status_json_unittest.cc",
+    "java_status_protocol_unittest.cc",
+    "java_status_query_unittest.cc",
+    "mcje_result_page_unittest.cc",
+    "mcje_url_unittest.cc",
+    "run_all_unittests.cc",
+  ]
+  deps = [
+    ":page",
+    ":protocol",
+    ":query",
+    "//base/test:test_support",
+    "//chrome/browser/minecraft:response",
+    "//mojo/core/embedder",
+    "//services/data_decoder/public/cpp",
+    "//services/network:test_support",
+    "//skia",
+    "//testing/gtest",
+    "//ui/gfx/codec",
+    "//ui/gfx/geometry",
+  ]
+}
