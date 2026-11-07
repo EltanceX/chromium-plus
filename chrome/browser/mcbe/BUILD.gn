@@ -1,0 +1,57 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//testing/test.gni")
+
+source_set("protocol") {
+  sources = [
+    "bedrock_status_parser.cc",
+    "bedrock_status_parser.h",
+    "mcbe_url.cc",
+    "mcbe_url.h",
+  ]
+  deps = [ "//chrome/common" ]
+  public_deps = [
+    "//base",
+    "//url",
+  ]
+}
+
+source_set("mcbe") {
+  sources = [
+    "bedrock_status_query.cc",
+    "bedrock_status_query.h",
+    "mcbe_result_page.cc",
+    "mcbe_result_page.h",
+    "mcbe_url_loader_factory.cc",
+    "mcbe_url_loader_factory.h",
+  ]
+  public_deps = [
+    "//base",
+    "//content/public/browser",
+    "//mojo/public/cpp/bindings",
+    "//services/network/public/mojom",
+  ]
+  deps = [
+    ":protocol",
+    "//chrome/common:constants",
+    "//mojo/public/cpp/system",
+    "//net",
+    "//services/network/public/cpp",
+    "//third_party/blink/public/common",
+  ]
+}
+
+test("mcbe_unittests") {
+  sources = [
+    "bedrock_status_parser_unittest.cc",
+    "mcbe_url_unittest.cc",
+    "run_all_unittests.cc",
+  ]
+  deps = [
+    ":protocol",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+}

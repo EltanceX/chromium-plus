@@ -59,6 +59,7 @@
 #include "ui/base/resource/resource_bundle.h"
 #include "ui/base/resource/resource_scale_factor.h"
 #include "url/url_constants.h"
+#include "url/url_util.h"
 
 #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
     BUILDFLAG(IS_CHROMEOS)
@@ -203,6 +204,15 @@ static const char* const kChromeStandardURLSchemes[] = {
 };
 
 void ChromeContentClient::AddAdditionalSchemes(Schemes* schemes) {
+  // MCBE URLs carry a UDP port; the generic standard_schemes list uses
+  // SCHEME_WITH_HOST, which would discard that port.
+  // Preserve user info until the MCBE loader can explicitly reject it.
+  url::AddStandardScheme(chrome::kMcbeScheme,
+                         url::SCHEME_WITH_HOST_PORT_AND_USER_INFORMATION);
+  // Status documents do not need shared origins or storage. In particular,
+  // SchemeHostPort serialization omits ports for schemes without a built-in
+  // default port, so do not expose an ambiguous MCBE tuple origin.
+  schemes->no_access_schemes.push_back(chrome::kMcbeScheme);
   for (auto* standard_scheme : kChromeStandardURLSchemes)
     schemes->standard_schemes.push_back(standard_scheme);
 

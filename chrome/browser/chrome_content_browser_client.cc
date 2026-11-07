@@ -115,6 +115,7 @@
 #include "chrome/browser/language_detection/language_detection_model_service_factory.h"
 #include "chrome/browser/lifetime/browser_shutdown.h"
 #include "chrome/browser/loader/keep_alive_request_tracker.h"
+#include "chrome/browser/mcbe/mcbe_url_loader_factory.h"
 #include "chrome/browser/media/audio_service_util.h"
 #include "chrome/browser/media/autoplay_policy_status_observer.h"
 #include "chrome/browser/media/media_engagement_service.h"
@@ -6388,6 +6389,9 @@ mojo::PendingRemote<network::mojom::URLLoaderFactory>
 ChromeContentBrowserClient::CreateNonNetworkNavigationURLLoaderFactory(
     const std::string& scheme,
     content::FrameTreeNodeId frame_tree_node_id) {
+  if (scheme == chrome::kMcbeScheme) {
+    return mcbe::CreateNavigationFactory(frame_tree_node_id);
+  }
 #if BUILDFLAG(ENABLE_EXTENSIONS_CORE) || BUILDFLAG(IS_CHROMEOS) || \
     !BUILDFLAG(IS_ANDROID)
   content::WebContents* web_contents =

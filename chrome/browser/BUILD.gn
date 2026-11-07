@@ -1144,6 +1144,7 @@ source_set("core") {
     "//chrome/browser/local_network_access",
     "//chrome/browser/login_detection",
     "//chrome/browser/lookalikes",
+    "//chrome/browser/mcbe",
     "//chrome/browser/media",
     "//chrome/browser/media:audio_process_ml_model_forwarder",
     "//chrome/browser/media/prefs",
