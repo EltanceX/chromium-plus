@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <utility>
 
+#include "base/auto_reset.h"
 #include "base/check.h"
 #include "base/memory/raw_ptr_exclusion.h"
 #include "base/no_destructor.h"
@@ -16,6 +17,7 @@
 #include "base/strings/string_util.h"
 #include "base/threading/platform_thread.h"
 #include "base/time/time.h"
+#include "components/python_runtime/python_dom_module.h"
 
 namespace native_python {
 
@@ -190,6 +192,10 @@ class Runtime {
         PyImport_AppendInittab("_chromium_python", InitHostModule) != 0) {
       status = PyStatus_Error("failed to register native output module");
     }
+    if (!PyStatus_Exception(status) &&
+        PyImport_AppendInittab("dom", InitDomModule) != 0) {
+      status = PyStatus_Error("failed to register native DOM module");
+    }
     if (!PyStatus_Exception(status)) {
       PyConfig config;
       PyConfig_InitIsolatedConfig(&config);
@@ -235,6 +241,7 @@ class Runtime {
   // finalized.
   RAW_PTR_EXCLUSION PyThreadState* main = nullptr;
   double initialization_ms = 0;
+  bool executing = false;
 
  private:
   friend class base::NoDestructor<Runtime>;
@@ -251,6 +258,7 @@ struct PythonContext::Impl {
   // GIL.
   RAW_PTR_EXCLUSION PyThreadState* thread = nullptr;
   RAW_PTR_EXCLUSION PyObject* globals = nullptr;
+  RAW_PTR_EXCLUSION PyObject* dom_module = nullptr;
   Capture capture;
 };
 
@@ -260,6 +268,11 @@ PythonContext::PythonContext(std::unique_ptr<Impl> impl)
 std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
   CHECK(error);
   auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  if (runtime.executing) {
+    *error = "Nested Python entry is not supported";
+    return nullptr;
+  }
   if (!runtime.Initialize(error)) {
     return nullptr;
   }
@@ -276,7 +289,8 @@ std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
   bool setup_ok = false;
   {
     PyRef host(PyImport_ImportModule("_chromium_python"));
-    if (host) {
+    impl->dom_module = PyImport_ImportModule("dom");
+    if (host && impl->dom_module) {
       static_cast<HostState*>(PyModule_GetState(host.get()))->capture =
           &impl->capture;
       PyRef setup_globals(PyDict_New());
@@ -302,6 +316,7 @@ std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
   if (!setup_ok) {
     impl->capture.active = false;
     Py_XDECREF(impl->globals);
+    Py_XDECREF(impl->dom_module);
     Py_EndInterpreter(impl->thread);
     return nullptr;
   }
@@ -313,13 +328,22 @@ PythonContext::~PythonContext() {
   Runtime::Get().CheckThread();
   PyEval_RestoreThread(impl_->thread);
   impl_->capture.active = false;
+  SetDomHost(impl_->dom_module, nullptr);
   Py_DECREF(impl_->globals);
+  Py_DECREF(impl_->dom_module);
   Py_EndInterpreter(impl_->thread);
 }
 
 ExecutionResult PythonContext::Execute(std::string_view source,
-                                       std::string_view filename) {
-  Runtime::Get().CheckThread();
+                                       std::string_view filename,
+                                       DomHost* dom_host) {
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  if (runtime.executing) {
+    ExecutionResult result;
+    result.error = "Nested Python entry is not supported";
+    return result;
+  }
   if (source.size() > kSourceLimit || source.contains('\0') ||
       filename.contains('\0') || filename.size() > 2048 ||
       !base::IsStringUTF8(source) || !base::IsStringUTF8(filename)) {
@@ -328,13 +352,18 @@ ExecutionResult PythonContext::Execute(std::string_view source,
     return result;
   }
   PyEval_RestoreThread(impl_->thread);
+  base::AutoReset<bool> executing(&runtime.executing, true);
   impl_->capture.result = {};
   {
     const std::string input(source), name(filename);
     PyRef code(Py_CompileString(input.c_str(), name.c_str(), Py_file_input));
+    SetDomHost(impl_->dom_module, dom_host);
     PyRef result(
         code ? PyEval_EvalCode(code.get(), impl_->globals, impl_->globals)
              : nullptr);
+    // Error formatting and decrefs may execute Python special methods. They
+    // are diagnostic/cleanup work and must not inherit the document capability.
+    SetDomHost(impl_->dom_module, nullptr);
     impl_->capture.result.success = result != nullptr;
     if (!result) {
       impl_->capture.result.error = TakeError();

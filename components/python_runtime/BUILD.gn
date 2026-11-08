@@ -8,6 +8,8 @@ assert(is_win && current_cpu == "x64")
 
 shared_library("python_runtime") {
   sources = [
+    "python_dom_module.cc",
+    "python_dom_module.h",
     "python_runtime.cc",
     "python_runtime.h",
   ]

@@ -1,0 +1,43 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 13.12s S Regenerating ninja files
+[0/2] 1m32.56s F Regenerating ninja files
+rebuild manifest finished
+1m32.33s Regenerating ninja files
+
+
+
+loading build.ninja... done 13.4963627s
+load siso config done 2.4918838s
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:4)
+build start: Ready 471 Pending 5288
+[0/6] 2m09.35s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/6] 2m09.35s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/6] 2m09.35s S CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[0/6] 2m13.16s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[1/6] 2m13.17s F CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[2/6] 2m13.17s S LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[2/6] 2m13.54s F LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[3/6] 2m13.68s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[4/6] 2m13.68s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[4/5] 2m14.07s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+build finished
+
+	
+noexec:0 local:5 remote:0 cache:0 skip:5754
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 753(err:4) / r:68(err:0) 151.46MiB / w:2(err:0) 12.56KiB
+
+
+
+2m15.00s Build Succeeded: 5 steps - 0.04/s
+shutdown cloud logging/monitoring done 0s

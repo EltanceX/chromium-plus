@@ -5,6 +5,8 @@
 #ifndef COMPONENTS_PYTHON_RUNTIME_PYTHON_RUNTIME_H_
 #define COMPONENTS_PYTHON_RUNTIME_PYTHON_RUNTIME_H_
 
+#include <stdint.h>
+
 #include <memory>
 #include <string>
 #include <string_view>
@@ -20,6 +22,30 @@
 #endif
 
 namespace native_python {
+
+struct DomHandle {
+  uint64_t document;
+  uint64_t generation;
+  uint64_t id;
+};
+
+enum class DomError { kNone, kReference, kNotAllowed, kLimit, kState };
+
+struct PYTHON_RUNTIME_EXPORT DomResult {
+  DomHandle handle{};
+  DomError error = DomError::kNone;
+  std::string message;
+};
+
+// Borrowed only for the synchronous Execute call. No Python object contains a
+// node pointer or retains this host between calls or during finalization.
+class PYTHON_RUNTIME_EXPORT DomHost {
+ public:
+  virtual ~DomHost() = default;
+  virtual bool IsActive() const = 0;
+  virtual DomResult GetElementById(std::string_view id) = 0;
+  virtual DomResult SetText(DomHandle, std::string_view text) = 0;
+};
 
 PYTHON_RUNTIME_EXPORT
 BASE_DECLARE_FEATURE(kNativePythonRuntimeSelfTest);
@@ -42,7 +68,8 @@ class PYTHON_RUNTIME_EXPORT PythonContext {
   PythonContext(const PythonContext&) = delete;
   PythonContext& operator=(const PythonContext&) = delete;
   ExecutionResult Execute(std::string_view source,
-                          std::string_view filename = "<native-python>");
+                          std::string_view filename = "<native-python>",
+                          DomHost* dom_host = nullptr);
 
  private:
   struct Impl;

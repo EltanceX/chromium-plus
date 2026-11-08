@@ -4,10 +4,199 @@
 
 #include "components/python_runtime/python_runtime.h"
 
+#include <functional>
+
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace native_python {
 namespace {
+
+class TestDomHost final : public DomHost {
+ public:
+  bool IsActive() const override { return active; }
+  DomResult GetElementById(std::string_view id) override {
+    ++gets;
+    if (on_get) {
+      on_get();
+    }
+    return id == "missing" ? DomResult{} : DomResult{{7, 1, 3}};
+  }
+  DomResult SetText(DomHandle handle, std::string_view text) override {
+    ++sets;
+    if (handle.document != 7 || handle.generation != 1 || handle.id != 3) {
+      return {{}, DomError::kReference, "Stale handle"};
+    }
+    if (failure != DomError::kNone) {
+      return {{}, failure, "Rejected DOM target"};
+    }
+    value = text;
+    return {};
+  }
+  bool active = true;
+  int gets = 0;
+  int sets = 0;
+  DomError failure = DomError::kNone;
+  std::string value;
+  std::function<void()> on_get;
+};
+
+TEST(PythonRuntimeTest, DomModuleUsesOpaqueHandlesAndStrictStrings) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import dom
+assert dom.get_element_by_id('missing') is None
+handle = dom.get_element_by_id('result')
+assert type(handle) is dom.ElementHandle
+dom.set_text(handle, '世界 <img src=x> &amp;')
+for make in (lambda: dom.ElementHandle(),
+             lambda: object.__new__(dom.ElementHandle),
+             lambda: dom.set_text(3, 'forged'),
+             lambda: dom.set_text(None, 'forged'),
+             lambda: dom.set_text(handle, 42),
+             lambda: dom.get_element_by_id(42)):
+    try:
+        make()
+    except TypeError:
+        pass
+    else:
+        raise AssertionError('implicit conversion or handle fabrication')
+)PY",
+                                 "dom.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ("世界 <img src=x> &amp;", host.value);
+  EXPECT_EQ(1, host.sets);
+}
+
+TEST(PythonRuntimeTest, DomHandlesPersistAndModulesAreInterpreterLocal) {
+  std::string error;
+  auto first = PythonContext::Create(&error);
+  auto second = PythonContext::Create(&error);
+  ASSERT_TRUE(first && second) << error;
+  TestDomHost host;
+  EXPECT_TRUE(first
+                  ->Execute("import dom\nh=dom.get_element_by_id('result')\n"
+                            "dom.marker=42",
+                            "first", &host)
+                  .success);
+  auto result =
+      first->Execute("dom.set_text(h, 'second block')", "first", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ("second block", host.value);
+  result = second->Execute(
+      "import dom\nassert not hasattr(dom, 'marker')\n"
+      "assert 'h' not in globals()",
+      "second", &host);
+  EXPECT_TRUE(result.success) << result.error;
+}
+
+TEST(PythonRuntimeTest, DomRejectsInactiveHostsAndConvertsHostErrors) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute("import dom\ndom.get_element_by_id('x')");
+  EXPECT_FALSE(result.success);
+  EXPECT_NE(std::string::npos, result.error.find("ReferenceError"));
+  host.active = false;
+  result = context->Execute("dom.get_element_by_id('x')", "inactive", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(0, host.gets);
+  host.active = true;
+  for (auto [failure, name] :
+       {std::pair{DomError::kReference, "ReferenceError"},
+        std::pair{DomError::kNotAllowed, "PermissionError"},
+        std::pair{DomError::kLimit, "ValueError"},
+        std::pair{DomError::kState, "RuntimeError"}}) {
+    host.failure = failure;
+    result = context->Execute("dom.set_text(dom.get_element_by_id('x'),'text')",
+                              "host-error", &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_NE(std::string::npos, result.error.find(name));
+  }
+}
+
+TEST(PythonRuntimeTest, DomUtf8BoundsAndSurrogatesDoNotReachHost) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import dom
+h = dom.get_element_by_id('x')
+for text in ('x' * 16385, '界' * 5462):
+    for call in (lambda: dom.set_text(h, text),
+                 lambda: dom.get_element_by_id(text)):
+        try:
+            call()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('unbounded string')
+try:
+    dom.set_text(h, '\ud800')
+except UnicodeEncodeError:
+    pass
+else:
+    raise AssertionError('invalid Unicode')
+dom.set_text(h, '界' * 5461 + 'x')
+)PY",
+                                 "limits", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(1, host.gets);
+  EXPECT_EQ(1, host.sets);
+  EXPECT_EQ(16384u, host.value.size());
+}
+
+TEST(PythonRuntimeTest, DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers) {
+  std::string error;
+  TestDomHost host;
+  {
+    auto context = PythonContext::Create(&error);
+    ASSERT_TRUE(context) << error;
+    auto result = context->Execute(R"PY(
+import dom, atexit
+class Finalizer:
+    def __del__(self):
+        try:
+            dom.get_element_by_id('finalizer')
+        except ReferenceError:
+            pass
+value = Finalizer()
+value.cycle = value
+atexit.register(lambda: dom.get_element_by_id('atexit'))
+class Failure(Exception):
+    def __str__(self):
+        try:
+            dom.get_element_by_id('diagnostic')
+        except ReferenceError:
+            return 'capability revoked'
+        return 'unexpected access'
+raise Failure()
+)PY",
+                                   "cleanup", &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_NE(std::string::npos, result.error.find("capability revoked"));
+  }
+  EXPECT_EQ(0, host.gets);
+}
+
+TEST(PythonRuntimeTest, NestedEntryFromDomHostIsRejectedWithoutGilDeadlock) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  host.on_get = [&] {
+    EXPECT_FALSE(context->Execute("print('nested')").success);
+    EXPECT_FALSE(PythonContext::Create(&error));
+  };
+  auto result = context->Execute("import dom\ndom.get_element_by_id('x')",
+                                 "nested", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_TRUE(context->Execute("assert 6 * 7 == 42").success);
+}
 
 TEST(PythonRuntimeTest, CalculationUnicodeAndPersistentGlobals) {
   std::string error;
