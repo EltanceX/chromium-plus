@@ -33,5 +33,9 @@ embedded_entropy.cc to base::RandBytes, whose Windows ProcessPrng path works in
 the renderer sandbox. Hash seeds remain random; no sandbox policy is relaxed.
 
 The nt/winreg/_io and other bootstrap builtins contain OS capabilities. This
-runtime is NOT a language security sandbox. Phase one exposes only a fixed,
-opt-in renderer self-test; no page Python execution, DOM bridge or import sandbox.
+runtime is NOT a language security sandbox. The embedder's private PythonScript
+experiment is disabled by default and additionally requires an exact configured
+loopback origin, an eligible top-level document and existing script/CSP checks.
+Its dom module exposes only opaque element handles and restricted text writes.
+Execution/cleanup budgets are cooperative; there is no import security sandbox
+or hard time/memory limit.

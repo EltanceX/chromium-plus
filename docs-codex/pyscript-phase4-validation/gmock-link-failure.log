@@ -1,0 +1,63 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.5446907s
+load siso config done 11.6977ms
+schedule pending:1+ready:0 (node:441013 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441013 edge:6)
+schedule pending:66928+ready:0 (node:441013 edge:66938)
+ 1.47s schedule pending:97058+ready:10468 (node:441013 edge:107526)
+
+build start: Ready 10468 Pending 97058
+[0/21869] 38.92s S CXX obj/third_party/blink/renderer/core/core/scroll_target_group_scope.obj
+[0/19771] 39.06s S CXX obj/third_party/blink/renderer/core/core/paint_worklet_deferred_image.obj
+[0/17790] 39.14s S CXX obj/third_party/blink/renderer/core/core/text.obj
+[0/16666] 39.20s S CXX obj/third_party/blink/renderer/core/core/font_style_resolver.obj
+[0/16664] 39.20s S CXX obj/third_party/blink/renderer/core/core/font_builder.obj
+[0/2330] 45.02s F CXX obj/third_party/blink/renderer/core/core/paint_worklet_deferred_image.obj
+[1/2330] 1m01.65s F CXX obj/third_party/blink/renderer/core/core/font_builder.obj
+[2/2330] 1m02.57s F CXX obj/third_party/blink/renderer/core/core/scroll_target_group_scope.obj
+[3/2330] 1m02.71s F CXX obj/third_party/blink/renderer/core/core/font_style_resolver.obj
+[4/2330] 1m03.82s F CXX obj/third_party/blink/renderer/core/core/text.obj
+[5/2330] 1m03.84s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[5/2324] 1m25.54s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[6/2168] 1m25.56s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[6/63] 1m29.16s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[7/59] 1m29.16s S LIB obj/chrome/renderer/renderer.lib
+[7/21] 1m29.18s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[7/21] 1m29.39s F LIB obj/chrome/renderer/renderer.lib
+[8/21] 1m29.49s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[8/21] 1m44.79s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 6e8274dc-793a-406d-b75a-844681465768 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: obj/third_party/googletest/gmock/gmock-matchers.obj: L��IZ��� should not refer to non-existent section 9689
+
+
+[9/21] 1m45.56s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:9 remote:0 cache:0 skip:107505
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1070(err:9) / r:785(err:0) 1.84GiB / w:3(err:0) 1.35MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m47.71s Build Failure: 9 done, 1 failed, 12 remaining - 0.08/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-024155.5852
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

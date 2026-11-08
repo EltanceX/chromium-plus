@@ -49,6 +49,9 @@ class ChromeDomHost final : public native_python::DomHost {
       case blink::WebPythonDomError::kState:
         error = native_python::DomError::kState;
         break;
+      case blink::WebPythonDomError::kStopped:
+        error = native_python::DomError::kStopped;
+        break;
     }
     return {
         {result.handle.document, result.handle.generation, result.handle.id},
@@ -65,23 +68,32 @@ class ChromePythonDocumentContext final : public blink::WebPythonScriptContext {
 
   std::vector<blink::WebPythonScriptResult> Run(
       const std::vector<blink::WebPythonScriptSource>& sources,
-      blink::WebPythonDomHost& host) override {
+      blink::WebPythonDomHost& host,
+      ReportResult report_result) override {
     ChromeDomHost bridge(host);
     std::vector<blink::WebPythonScriptResult> results;
     for (const auto& source : sources) {
       native_python::ExecutionResult result;
       if (!host.IsActive()) {
         result.error = "The Python document context is inactive";
+        result.stop_reason = native_python::StopReason::kInactive;
       } else if (context_) {
         result = context_->Execute(source.source.Utf8(), source.filename.Utf8(),
                                    &bridge);
       } else {
         result.error = error_;
+        result.stop_reason = native_python::StopReason::kInactive;
       }
+      const bool stopped =
+          result.stop_reason != native_python::StopReason::kNone;
       results.push_back({result.success, result.output_truncated,
                          blink::WebString::FromUtf8(result.stdout_text),
                          blink::WebString::FromUtf8(result.stderr_text),
-                         blink::WebString::FromUtf8(result.error)});
+                         blink::WebString::FromUtf8(result.error), stopped});
+      const bool keep_going = report_result(results.back());
+      if (stopped || !keep_going) {
+        break;
+      }
     }
     return results;
   }

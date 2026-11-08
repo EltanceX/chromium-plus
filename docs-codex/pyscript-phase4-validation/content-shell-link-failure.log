@@ -1,0 +1,65 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.501984s
+load siso config done 14.1372ms
+schedule pending:1+ready:0 (node:441013 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441013 edge:6)
+schedule pending:75256+ready:0 (node:441013 edge:75269)
+ 1.39s schedule pending:97058+ready:10468 (node:441013 edge:107526)
+
+build start: Ready 10468 Pending 97058
+[0/56063] 34.35s S CXX obj/third_party/googletest/gmock/gmock-matchers.obj
+[0/156] 36.69s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[0/156] 37.62s F CXX obj/third_party/googletest/gmock/gmock-matchers.obj
+[1/132] 37.63s S LINK(DLL) media_session_test_support_cpp.dll media_session_test_support_cpp.dll.lib media_session_test_support_cpp.dll.pdb
+[1/132] 37.63s S LINK(DLL) third_party_perfetto_perfetto_test_support.dll third_party_perfetto_perfetto_test_support.dll.lib third_party_perfetto_perfetto_test_support.dll.pdb
+[1/132] 38.08s F LINK(DLL) media_session_test_support_cpp.dll media_session_test_support_cpp.dll.lib media_session_test_support_cpp.dll.pdb
+[2/132] 39.21s F LINK(DLL) third_party_perfetto_perfetto_test_support.dll third_party_perfetto_perfetto_test_support.dll.lib third_party_perfetto_perfetto_test_support.dll.pdb
+[3/94] 39.21s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[3/92] 39.21s S LINK wtf_unittests.exe wtf_unittests.exe.pdb
+[3/33] 39.22s S LINK blink_common_unittests.exe blink_common_unittests.exe.pdb
+[3/33] 39.22s S LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[3/32] 39.23s S LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[3/30] 39.24s S LINK content_shell.exe content_shell.exe.pdb
+[3/30] 39.25s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/29] 39.87s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[4/29] 40.52s F LINK wtf_unittests.exe wtf_unittests.exe.pdb
+[5/29] 44.78s E LINK content_shell.exe content_shell.exe.pdb
+FAILED: 0655433d-14f2-4a2f-8498-b3f66e827a25 "./content_shell.exe" LINK content_shell.exe content_shell.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./content_shell.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./content_shell.exe.pdb" "@./content_shell.exe.rsp"
+build step: link "./content_shell.exe"
+stderr:
+lld-link: error: getSectionName failed: #622: invalid section name
+
+
+[6/29] 44.79s - LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[6/29] 44.79s - LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[6/29] 44.80s - LINK blink_common_unittests.exe blink_common_unittests.exe.pdb
+[6/29] 44.81s - LINK blink_unittests.exe blink_unittests.exe.pdb
+[6/29] 45.46s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:6 remote:0 cache:0 skip:107497
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1081(err:11) / r:786(err:0) 258.68MiB / w:9(err:0) 1.72MiB
+
+
+
+shutdown cloud logging/monitoring done 0s
+46.41s Build Failure: 6 done, 1 failed, 23 remaining - 0.13/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-024630.5876
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

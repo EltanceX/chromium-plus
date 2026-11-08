@@ -1,0 +1,20 @@
+{
+  "response": "blink_unittests.exe.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 194,
+  "directObjects": 4665,
+  "archiveMembers": 2819,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/testing/mock_clipboard_host.obj",
+      "errors": [
+        "Section 613: relocation 0 has invalid symbol 2173161321 or type 46333",
+        "Section 614: relocation 0 has invalid symbol 2440586314 or type 19612",
+        "Section 615: relocation 0 has invalid symbol 3645468472 or type 56541",
+        "Section 617: relocation 0 has invalid symbol 3913784145 or type 37567",
+        "Section 618: relocation 0 has invalid symbol 239466792 or type 51496"
+      ]
+    }
+  ],
+  "elapsed_seconds": 189.44
+}

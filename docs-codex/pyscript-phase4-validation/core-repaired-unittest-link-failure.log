@@ -1,0 +1,71 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.4892928s
+load siso config done 14.8833ms
+schedule pending:1+ready:0 (node:441013 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441013 edge:6)
+schedule pending:58012+ready:0 (node:441013 edge:58028)
+ 1.51s schedule pending:97058+ready:10468 (node:441013 edge:107526)
+
+build start: Ready 10468 Pending 97058
+[0/22705] 35.24s S CXX obj/third_party/blink/renderer/core/core/performance_container_timing.obj
+[0/21991] 35.37s S CXX obj/third_party/blink/renderer/core/core/v8_initializer.obj
+[0/21702] 35.40s S CXX obj/third_party/blink/renderer/core/core/fetch_response_data.obj
+[0/19972] 35.53s S CXX obj/third_party/blink/renderer/core/core/visible_selection.obj
+[0/17737] 35.70s S CXX obj/third_party/blink/renderer/core/core/style_engine.obj
+[0/17507] 35.73s S CXX obj/third_party/blink/renderer/core/core/slot_assignment.obj
+[0/17125] 35.76s S CXX obj/third_party/blink/renderer/core/core/scroll_marker_group_pseudo_element.obj
+[0/16984] 35.77s S CXX obj/third_party/blink/renderer/core/core/matched_properties_cache.obj
+[0/16306] 35.83s S CXX obj/third_party/blink/renderer/core/core/css_numeric_value_type.obj
+[0/2334] 41.87s F CXX obj/third_party/blink/renderer/core/core/css_numeric_value_type.obj
+[1/2334] 52.69s F CXX obj/third_party/blink/renderer/core/core/visible_selection.obj
+[2/2334] 53.37s F CXX obj/third_party/blink/renderer/core/core/performance_container_timing.obj
+[3/2334] 53.77s F CXX obj/third_party/blink/renderer/core/core/fetch_response_data.obj
+[4/2334] 1m05.52s F CXX obj/third_party/blink/renderer/core/core/scroll_marker_group_pseudo_element.obj
+[5/2334] 1m07.32s F CXX obj/third_party/blink/renderer/core/core/v8_initializer.obj
+[6/2334] 1m09.70s F CXX obj/third_party/blink/renderer/core/core/slot_assignment.obj
+[7/2334] 1m12.33s F CXX obj/third_party/blink/renderer/core/core/matched_properties_cache.obj
+[8/2334] 1m30.55s F CXX obj/third_party/blink/renderer/core/core/style_engine.obj
+[9/2334] 1m30.57s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[9/2269] 1m59.88s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[10/2172] 1m59.91s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[10/67] 2m04.80s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[11/64] 2m04.80s S LIB obj/chrome/renderer/renderer.lib
+[11/25] 2m04.83s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[11/25] 2m05.24s F LIB obj/chrome/renderer/renderer.lib
+[12/25] 2m05.33s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[12/25] 2m19.63s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 6b5227d1-5059-4558-9ccc-0f44c0d17a41 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: getSectionName failed: #698: invalid section name
+
+
+[13/25] 2m19.90s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:13 remote:0 cache:0 skip:107501
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1102(err:13) / r:789(err:0) 1.88GiB / w:3(err:0) 1.35MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+2m22.42s Build Failure: 13 done, 1 failed, 12 remaining - 0.09/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-022316.17412
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

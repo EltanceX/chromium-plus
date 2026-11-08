@@ -1,0 +1,15 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "passed": false,
+  "failedCase": [
+    {
+      "name": "Console truncation stops execution before the next block",
+      "passed": false,
+      "elapsedMs": 311,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'forbidden'\n- 'before'\n\n    at file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:335:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:225:20)\n    at async file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:332:3"
+    }
+  ],
+  "rawResultSha256": "77804b9a02f6d4604527d21371d4fe56c3763e8c765093474d6349baacae4199"
+}

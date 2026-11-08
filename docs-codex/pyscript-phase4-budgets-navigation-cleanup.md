@@ -4,7 +4,7 @@
 
 ## 1. 当前状态
 
-运行时预算实现完成，`python_runtime_unittests` 22 / 22 实际执行通过，包括新增的七项预算与清理用例。Blink / Chrome 适配及浏览器回归用例已写入，完整 `chrome python_runtime_unittests blink_unittests blink_tests` 构建正在进行，尚不能据此宣布集成验收完成。
+阶段四实现与验证已完成。完整 `chrome python_runtime_unittests blink_unittests blink_tests` 标准构建通过；运行时 22 / 22、Blink 28 / 28、真实 Chrome DOM 浏览器测试 17 / 17 通过，启用 / 关闭两组 WPT 均为 PASS。全项目验收与既有功能回归在阶段五另行记录。
 
 ## 2. 预算与停止语义
 
@@ -20,6 +20,8 @@
 | 清理 | 独立的 50 ms 协作式 tracing 预算，用于受控 Python finalizer 示例 |
 
 `ExecutionBudget` 属于每个解释器的原生上下文。时间、累计输出、DOM 次数和文档失活会锁存停止原因；Python 捕获异常或清除 tracing 后，原生停止状态仍不能复位。停止后的 `Execute()` 拒绝执行，Chrome 返回截至停止块的结果前缀，不调用后续代码块。普通 SyntaxError / ValueError 等不锁存停止，后续合格块仍可运行。
+
+Chrome 每完成一块就在同步回调中交给 Blink 记录结果，只有回调允许继续才执行下一块。控制台前缀和解析诊断同样可以耗尽 Blink 的消息额度，因此不能把整批执行和日志检查分为前后两个阶段。回调返回停止时，控制器仍保有解释器直到 Run 返回，再投递销毁。
 
 时间检查通过 C `PyEval_SetTrace` 接入，在函数入口设置 opcode tracing，每 64 个 trace 事件以及函数调用 / 返回检查；编译边界、输出和 DOM 调用前后也复核状态。DOM 调用返回停止结果时，原生预算优先锁存 DOM 调用超限原因。
 
@@ -60,4 +62,34 @@ out/Debug/python_runtime_unittests.exe --test-launcher-jobs=1 --test-launcher-ti
 
 集成定向编译中 Chrome 适配和 Blink 控制器通过，新增 Blink 测试最初误用了 `String::Contains`；改为该类型实际提供的 `contains`，再进入完整构建。运行时、Chrome 适配、Blink HTML 的 checkdeps 均通过；Blink 检查有既有 DEPS 转义 SyntaxWarning。
 
-运行时证据见[实际测试摘要](pyscript-phase4-validation/runtime-unittests.json)与[日志](pyscript-phase4-validation/runtime-unittests.log)。集成验证结果将在实际执行后追加，历史阶段三结果不计入本阶段通过数量。
+运行时证据见[实际测试摘要](pyscript-phase4-validation/runtime-unittests.json)与[日志](pyscript-phase4-validation/runtime-unittests.log)。最终集成证据见[验收摘要](pyscript-phase4-validation/final-results-2026-11-09.json)，历史阶段三结果不计入本阶段通过数量。
+
+## 6. 完整构建中的生成对象恢复
+
+第一次完整构建完成 9 项后，`blink_core.dll` 标准链接报告既有 `css_numeric_value_type.obj` 引用不存在的 COFF section 33399。检查该链接的全部 5,040 个直接对象和 59 个静态库的 560 个成员，确认 9 份直接对象存在 COFF 重定位、字符串表或 CodeView 异常；静态库成员未检出结构错误。名单为 `v8_initializer`、`css_numeric_value_type`、`matched_properties_cache`、`style_engine`、`scroll_marker_group_pseudo_element`、`slot_assignment`、`visible_selection`、`fetch_response_data`、`performance_container_timing`。
+
+已保存全部原件、SHA-256、长度、时间与结构诊断后，仅使确认异常的这 9 份生成对象失效并重新构建。备份在忽略目录 `out/Debug/pyscript-phase4-corrupt-objects/`。未修改它们对应的产品源码、调试信息配置或链接诊断。异常产生原因仍未确定；结构扫描用于定位，不能替代完整链接与运行验证。
+
+这 9 份重建对象的哈希全部改变，COFF、字符串表和 CodeView 复查通过，Blink Core 标准链接通过。随后单测链接报告另一处 section 名称异常；检查单测目标的 4,665 个直接对象、194 个静态库的 2,819 个成员，初次扫描指向 `mock_clipboard_host.obj`。保留原件后重建，但重建哈希与原件相同，后续复查和链接通过；不能据此声称该对象已保存字节的损坏被稳定复现。
+
+后续回调修复重建再次遇到旧输入异常。第二次 Core 扫描定位到 `paint_worklet_deferred_image`、`font_builder`、`font_style_resolver`、`scroll_target_group_scope`、`text`，普通读取与内存映射读取均复现相同错误；`gmock-matchers` 的 COFF / CodeView 异常也以两种读取方式确认。content_shell 的 3,817 个直接对象、336 个静态库的 4,267 个成员扫描初次指向 `udp_socket_test_util`，其重复读取却未复现错误；仍明确记录这一差异并保留原件后仅重建该输入。
+
+最后单测链接报告 `v8_external_memory_accounter_test` 的函数 ID 错误。该文件本地 ID 检查正常，针对其函数哈希的 4,665 个直接对象比较未发现种类冲突，却定位到 `media_query_evaluator_test` 的无效类型记录。完整输入扫描和普通 / 内存映射重复读取均复现该记录异常；保留原件后重建，标准单测链接随即通过。
+
+本阶段共保留并重建 18 份旧对象，全部重建对象的 COFF、字符串表与 CodeView 结构复查通过。最终标准构建耗时 1m36.77s。扫描与重复读取结果存在差异的两例单独记录，原因仍未确定，不推断为产品源码或硬件问题。实际哈希变化、原件位置和诊断见[恢复清单](pyscript-phase4-validation/object-recovery.json)；[最终对象复查](pyscript-phase4-validation/all-rebuilt-object-check.json)不能替代已完成的标准链接和运行验证。
+
+## 7. 控制台停止边界的回归修复
+
+首轮真实浏览器测试中，原来在单块发起 1,023 次 DOM 调用的用例先命中了 100 ms 时间限制。改为八块各执行 128 次调用，再验证第 1,025 次失败；时间预算和 1,024 次的断言均未放宽，随后该用例通过。
+
+新增用例先输出 16,330 个 ASCII 字节，低于原生输出硬上限，但高于 Blink 为截断通知预留空间后的消息额度，再在下一块修改 DOM。修复前浏览器确实观察到 `forbidden`，预期的 `before` 断言失败，见[复现结果](pyscript-phase4-validation/console-stop-reproduction.json)与[日志](pyscript-phase4-validation/console-stop-reproduction.log)。修复把结果上报移入逐块同步回调，确保控制台停止发生在下一块之前。
+
+修复前的整体验证已有运行时 22 / 22、Blink 25 / 25、启用 / 关闭 WPT 两文件和阶段二 Chrome 回归 26 / 26 通过。它们不能替代修复后重新构建和验证的最终结果。
+
+## 8. 最终验证范围
+
+最终 Blink 28 项包含四轮 GC / 导航的创建销毁计数相等、frame 关闭的延迟销毁，以及清理任务在禁止脚本时重新投递。测试执行器析构同时断言不处于 ScriptForbiddenScope、sweeping 或 GC 原子暂停。新增 URL 用例保留原本合格的 HTTPS origin / parser，仅修改 Document URL，验证 WebUI、扩展、MCBE、MCJE 和 file scheme 均不能创建解释器。
+
+真实 Chrome 的 17 项测试包含 Python 独立样例和九项 DOM testharness 断言、错误恢复、跨块 1024 次 DOM 上限、纯循环超时、累计 UTF-8 输出、异常格式化预算、巨大异常、解析诊断上限、逐块控制台停止、三轮循环 finalizer 超时导航、`document.open()`、前进 / 后退、刷新、20 轮普通循环 finalizer 导航及 `Browser.close` 正常退出。BFCache 测试同时检查旧 JS 标记消失、Python 结果重新生成和 CDP 的未恢复原因。
+
+所有真实 Chrome 测试保留 Renderer 沙箱，未附加网络服务诊断参数。WPT 使用 content_shell，没有 CPython 嵌入执行器；它验证解析和关闭行为，Python 实际执行由 Chrome 测试证明。WPT 保留本机既有 `--disable-system-font-check` 与 `--enable-features=NetworkServiceInProcess2` 诊断配置，未把结果描述为默认配置通过，也未修改 expectations。

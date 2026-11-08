@@ -120,6 +120,7 @@ for (const [name, policy] of Object.entries({
   nonce: "script-src 'nonce-allowed'",
   hash: `script-src 'sha256-${sourceHash}'`,
   sandbox: "sandbox allow-same-origin; script-src 'unsafe-inline'",
+  opaque: "sandbox allow-scripts; script-src 'unsafe-inline'",
 })) {
   pages.set(`/csp-${name}`, {body: name === 'nonce' ?
     '<pyscript nonce="wrong">print("FORBIDDEN_NONCE")</pyscript>' +
@@ -220,6 +221,7 @@ async function launch(name, extraArgs) {
       assert.ok(!navigation.errorText, navigation.errorText);
       await waitFor(() => events.some(event => event.method === 'Page.loadEventFired'));
       const state = await evaluate(`({url:location.href, ready:document.readyState,
+        origin:globalThis.origin,
         chromiumPlus:globalThis.chromiumPlus, count:document.querySelectorAll('pyscript').length,
         element:document.querySelector('pyscript')?.constructor.name,
         display:document.querySelector('pyscript') && getComputedStyle(document.querySelector('pyscript')).display,
@@ -312,10 +314,11 @@ try {
     assert.match(text(page), /output was truncated at 16 KiB/);
     return {logs: page.logs.map(entry => ({...entry, text: entry.text.slice(0, 200)}))};
   });
-  for (const policy of ['none', 'elem', 'fallback', 'sandbox']) {
+  for (const policy of ['none', 'elem', 'fallback', 'sandbox', 'opaque']) {
     await check(`CSP ${policy} blocks Python`, async () => {
       const page = await browser.navigate(`/csp-${policy}`);
       assertNoPython(page);
+      if (policy === 'opaque') assert.equal(page.state.origin, 'null');
       return page;
     });
   }

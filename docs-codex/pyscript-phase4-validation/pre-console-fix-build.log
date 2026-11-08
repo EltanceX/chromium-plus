@@ -1,0 +1,39 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 12.3545938s
+load siso config done 36.0176ms
+schedule pending:1+ready:0 (node:441013 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441013 edge:6)
+schedule pending:74940+ready:0 (node:441013 edge:74954)
+ 1.41s schedule pending:97058+ready:10468 (node:441013 edge:107526)
+
+build start: Ready 10468 Pending 97058
+[0/14314] 42.63s S CXX obj/third_party/blink/renderer/core/testing/mock_clipboard_host.obj
+[0/52] 48.05s F CXX obj/third_party/blink/renderer/core/testing/mock_clipboard_host.obj
+[1/17] 48.06s S LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[1/17] 48.07s S LINK content_shell.exe content_shell.exe.pdb
+[1/17] 48.08s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[1/17] 1m12.91s F LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[2/8] 1m22.64s F LINK content_shell.exe content_shell.exe.pdb
+[3/4] 1m34.11s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:4 remote:0 cache:0 skip:107522
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1043(err:4) / r:782(err:0) 4.95GiB / w:2(err:0) 508.29KiB
+
+
+
+1m35.01s Build Succeeded: 4 steps - 0.04/s
+shutdown cloud logging/monitoring done 0s

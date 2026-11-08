@@ -1,0 +1,21 @@
+{
+  "response": "content_shell.exe.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 336,
+  "directObjects": 3817,
+  "archiveMembers": 4267,
+  "problems": [
+    {
+      "object": "obj/services/network/test_support/udp_socket_test_util.obj",
+      "errors": [
+        "Section 410: invalid raw data extent",
+        "Section 410: invalid relocation extent",
+        "Section 411: invalid raw data extent",
+        "Section 411: invalid relocation extent",
+        "Section 412: invalid raw data extent",
+        "Section 412: invalid relocation extent"
+      ]
+    }
+  ],
+  "elapsed_seconds": 125.05
+}

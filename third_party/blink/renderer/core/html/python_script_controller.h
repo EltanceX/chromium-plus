@@ -6,6 +6,7 @@
 #define THIRD_PARTY_BLINK_RENDERER_CORE_HTML_PYTHON_SCRIPT_CONTROLLER_H_
 
 #include "base/task/single_thread_task_runner.h"
+#include "third_party/blink/public/mojom/devtools/console_message.mojom-blink-forward.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/core_export.h"
 #include "third_party/blink/renderer/core/execution_context/execution_context_lifecycle_observer.h"
@@ -42,6 +43,10 @@ class PythonScriptController final
   WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) override;
 
  private:
+  static PythonScriptController& GetOrCreate(Document&);
+  void AppendConsole(const HTMLPyScriptElement&,
+                     const String&,
+                     mojom::blink::ConsoleMessageLevel);
   void Dispose();
   void ReleaseContext();
   WebPythonDomResult CheckDomCall();
@@ -52,6 +57,9 @@ class PythonScriptController final
   const uint64_t document_id_;
   uint64_t generation_ = 1;
   unsigned dom_calls_ = 0;
+  size_t console_bytes_ = 0;
+  bool console_truncated_ = false;
+  bool dom_budget_exhausted_ = false;
   bool running_ = false;
   bool stopped_ = false;
   bool consumed_ = false;

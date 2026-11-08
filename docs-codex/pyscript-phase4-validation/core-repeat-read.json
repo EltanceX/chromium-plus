@@ -1,0 +1,93 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/paint_worklet_deferred_image.obj",
+    "sha256": "03b61bd7a172fc7532fd2e7d72b3aaae9dd77a4a92f21fee236cfad35787c81f",
+    "mappedSha256": "03b61bd7a172fc7532fd2e7d72b3aaae9dd77a4a92f21fee236cfad35787c81f",
+    "readErrors": [
+      "Invalid CodeView record at 0xd600b (length 63934, kind 0x5ff6)"
+    ],
+    "mappedErrors": [
+      "Invalid CodeView record at 0xd600b (length 63934, kind 0x5ff6)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/font_builder.obj",
+    "sha256": "f431952976dd0e887ee3ecddaa7cb3462f38fb2d85b8d58d866a87cd761584be",
+    "mappedSha256": "f431952976dd0e887ee3ecddaa7cb3462f38fb2d85b8d58d866a87cd761584be",
+    "readErrors": [
+      "Section 8297: relocation 0 has invalid symbol 2510607384 or type 36394",
+      "Section 8298: relocation 0 has invalid symbol 740447909 or type 2288",
+      "Section 8299: relocation 0 has invalid symbol 3859306801 or type 62547",
+      "Section 8300: relocation 0 has invalid symbol 2367151677 or type 4485",
+      "Section 8301: relocation 0 has invalid symbol 2624674545 or type 24938",
+      "Invalid debug subsection at 0x251ff9",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedErrors": [
+      "Section 8297: relocation 0 has invalid symbol 2510607384 or type 36394",
+      "Section 8298: relocation 0 has invalid symbol 740447909 or type 2288",
+      "Section 8299: relocation 0 has invalid symbol 3859306801 or type 62547",
+      "Section 8300: relocation 0 has invalid symbol 2367151677 or type 4485",
+      "Section 8301: relocation 0 has invalid symbol 2624674545 or type 24938",
+      "Invalid debug subsection at 0x251ff9",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/font_style_resolver.obj",
+    "sha256": "dc9a62da785e6292a11b2463985c9da4e35ecbb75b0ef416c01b6775bad90b65",
+    "mappedSha256": "dc9a62da785e6292a11b2463985c9da4e35ecbb75b0ef416c01b6775bad90b65",
+    "readErrors": [
+      "Section 6195: relocation 0 has invalid symbol 2337767723 or type 14324",
+      "Section 6196: relocation 0 has invalid symbol 3073074705 or type 48775",
+      "Section 6197: relocation 0 has invalid symbol 4168591705 or type 30744",
+      "Section 6198: relocation 0 has invalid symbol 4179649057 or type 16658",
+      "Section 6199: relocation 0 has invalid symbol 2462921923 or type 14376",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedErrors": [
+      "Section 6195: relocation 0 has invalid symbol 2337767723 or type 14324",
+      "Section 6196: relocation 0 has invalid symbol 3073074705 or type 48775",
+      "Section 6197: relocation 0 has invalid symbol 4168591705 or type 30744",
+      "Section 6198: relocation 0 has invalid symbol 4179649057 or type 16658",
+      "Section 6199: relocation 0 has invalid symbol 2462921923 or type 14376",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/scroll_target_group_scope.obj",
+    "sha256": "853cfaae2ab6621f6edc0f748a5a7fe44245101b48a32776928b1a811f04a6cb",
+    "mappedSha256": "853cfaae2ab6621f6edc0f748a5a7fe44245101b48a32776928b1a811f04a6cb",
+    "readErrors": [
+      "Invalid CodeView record at 0x400109 (length 36535, kind 0xdaa8)"
+    ],
+    "mappedErrors": [
+      "Invalid CodeView record at 0x400109 (length 36535, kind 0xdaa8)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/text.obj",
+    "sha256": "996778da9ab006a497d12b8e4bcef9a0092547d81d903ba21ac41d26f567be0f",
+    "mappedSha256": "996778da9ab006a497d12b8e4bcef9a0092547d81d903ba21ac41d26f567be0f",
+    "readErrors": [
+      "Section 4: relocation 0 has invalid symbol 2035906167 or type 24752",
+      "Section 5: relocation 0 has invalid symbol 4125269222 or type 24336",
+      "Section 6: relocation 0 has invalid symbol 1020601319 or type 48898",
+      "Section 7: relocation 0 has invalid symbol 3777952280 or type 15533",
+      "Section 8: relocation 0 has invalid symbol 3877825454 or type 37467"
+    ],
+    "mappedErrors": [
+      "Section 4: relocation 0 has invalid symbol 2035906167 or type 24752",
+      "Section 5: relocation 0 has invalid symbol 4125269222 or type 24336",
+      "Section 6: relocation 0 has invalid symbol 1020601319 or type 48898",
+      "Section 7: relocation 0 has invalid symbol 3777952280 or type 15533",
+      "Section 8: relocation 0 has invalid symbol 3877825454 or type 37467"
+    ]
+  }
+]

@@ -4,6 +4,9 @@
 
 #include "third_party/blink/renderer/core/html/html_py_script_element.h"
 
+#include <optional>
+
+#include "base/check.h"
 #include "base/memory/raw_ref.h"
 #include "base/test/bind.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
@@ -14,9 +17,13 @@
 #include "third_party/blink/renderer/core/html/python_script_controller.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_request.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
+#include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
+#include "third_party/blink/renderer/platform/heap/thread_state.h"
 #include "third_party/blink/renderer/platform/scheduler/public/frame_scheduler.h"
 #include "third_party/blink/renderer/platform/testing/runtime_enabled_features_test_helpers.h"
 #include "third_party/blink/renderer/platform/testing/unit_test_helpers.h"
+#include "third_party/blink/renderer/platform/wtf/text/string_builder.h"
+#include "v8/include/cppgc/heap-state.h"
 
 namespace blink {
 namespace {
@@ -27,12 +34,26 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
    public:
     explicit Context(RecordingPythonRunner& runner)
         : runner_(runner), destructions_(runner.destructions) {}
-    ~Context() override { ++*destructions_; }
+    ~Context() override {
+      CHECK(!ScriptForbiddenScope::IsScriptForbidden());
+      CHECK(!ThreadState::Current()->IsSweepingOnOwningThread());
+      CHECK(!cppgc::subtle::HeapState::IsInAtomicPause(
+          ThreadState::Current()->heap_handle()));
+      ++*destructions_;
+    }
     std::vector<WebPythonScriptResult> Run(
         const std::vector<WebPythonScriptSource>& sources,
-        WebPythonDomHost& dom_host) override {
+        WebPythonDomHost& dom_host,
+        ReportResult report_result) override {
       runner_->host = &dom_host;
       auto results = runner_->Run(sources);
+      for (size_t i = 0; i < results.size(); ++i) {
+        const bool keep_going = report_result(results[i]);
+        if (!keep_going || results[i].stopped) {
+          results.resize(i + 1);
+          break;
+        }
+      }
       runner_->host = nullptr;
       return results;
     }
@@ -55,6 +76,9 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
     if (on_run) {
       on_run.Run();
     }
+    if (supplied_results) {
+      return *supplied_results;
+    }
     std::vector<WebPythonScriptResult> results(sources.size());
     for (auto& result : results) {
       result.success = true;
@@ -68,6 +92,7 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
   unsigned batches = 0;
   base::RepeatingClosure on_run;
   std::vector<WebPythonScriptSource> executed;
+  std::optional<std::vector<WebPythonScriptResult>> supplied_results;
 };
 
 class HTMLPyScriptElementTest : public SimTest {
@@ -169,6 +194,24 @@ TEST_F(HTMLPyScriptElementTest, RejectsOriginAndAbsentEmbedder) {
   WebPythonScriptRunner::SetForProcess(nullptr);
   Load("<pyscript>no embedder</pyscript>");
   EXPECT_EQ(0u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest, RejectsNonHttpDocumentURLs) {
+  for (const char* url :
+       {"chrome://version/", "chrome-extension://test/", "mcbe://example.test/",
+        "mcje://example.test/", "file:///test.html"}) {
+    SCOPED_TRACE(url);
+    SimRequest main("https://example.test/", "text/html");
+    LoadURL("https://example.test/");
+    main.Write("<body>");
+    test::RunPendingTasks();
+    // Retain the otherwise eligible origin and parser, isolating the URL gate.
+    GetDocument().SetURL(KURL(url));
+    main.Complete("<pyscript>forbidden scheme</pyscript>");
+    test::RunPendingTasks();
+    EXPECT_EQ(0u, runner_.contexts_created);
+    EXPECT_EQ(0u, runner_.batches);
+  }
 }
 
 TEST_F(HTMLPyScriptElementTest, RejectsAPIMutationBeforeClosingTag) {
@@ -346,9 +389,84 @@ TEST_F(HTMLPyScriptElementTest, DomBridgeHasBoundedStringsAndDocumentCalls) {
     for (unsigned i = 2; i < 1024; ++i) {
       EXPECT_EQ(WebPythonDomError::kNone, host.GetElementById("missing").error);
     }
-    EXPECT_EQ(WebPythonDomError::kLimit, host.SetText(handle, "deny").error);
+    EXPECT_EQ(WebPythonDomError::kStopped, host.SetText(handle, "deny").error);
+    EXPECT_FALSE(host.IsActive());
+    EXPECT_EQ(WebPythonDomError::kStopped, host.GetElementById("result").error);
+    EXPECT_EQ(WebPythonDomError::kStopped,
+              host.SetText(handle, "still denied").error);
   });
   Load("<p id=result>before</p><pyscript>bridge</pyscript>");
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, FatalResultAllowsPrefixAndReleasesContext) {
+  runner_.supplied_results = std::vector<WebPythonScriptResult>{
+      {false, false, "before stop", {}, "cooperative timeout", true}};
+  Load("<pyscript>loop</pyscript><pyscript>must not run</pyscript>");
+  EXPECT_EQ(1u, *runner_.destructions);
+  ASSERT_EQ(2u, ConsoleMessages().size());
+  EXPECT_EQ("before stop", ConsoleMessages()[0]);
+  EXPECT_TRUE(ConsoleMessages()[1].contains("cooperative timeout"));
+}
+
+TEST_F(HTMLPyScriptElementTest, OrdinaryErrorRetainsContextAndLaterResults) {
+  runner_.supplied_results = std::vector<WebPythonScriptResult>{
+      {false, false, {}, {}, "ValueError: ordinary"},
+      {true, false, "later block", {}, {}}};
+  Load("<pyscript>error</pyscript><pyscript>later</pyscript>");
+  EXPECT_EQ(0u, *runner_.destructions);
+  ASSERT_EQ(2u, ConsoleMessages().size());
+  EXPECT_EQ("later block", ConsoleMessages()[1]);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit) {
+  runner_.supplied_results = std::vector<WebPythonScriptResult>{
+      {true, false, WebString::FromUtf8(std::string(9000, 'x')), {}, {}},
+      {false,
+       false,
+       {},
+       WebString::FromUtf8(std::string(9000, 'y')),
+       "error that no longer fits"}};
+  Load("<pyscript>stdout</pyscript><pyscript>stderr</pyscript>");
+  size_t bytes = 0;
+  unsigned notices = 0;
+  for (const auto& message : ConsoleMessages()) {
+    bytes += message.Utf8().size();
+    notices += message.contains("output was truncated at 16 KiB");
+  }
+  EXPECT_LE(bytes, 16384u);
+  EXPECT_EQ(1u, notices);
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, ParserDiagnosticsShareDocumentConsoleLimit) {
+  StringBuilder html;
+  for (unsigned i = 0; i < 600; ++i) {
+    html.Append("<pyscript src=unsupported>ignored</pyscript>");
+  }
+  Load(html.ToString());
+  size_t bytes = 0;
+  unsigned notices = 0;
+  for (const auto& message : ConsoleMessages()) {
+    bytes += message.Utf8().size();
+    notices += message.contains("output was truncated at 16 KiB");
+  }
+  EXPECT_LE(bytes, 16384u);
+  EXPECT_EQ(1u, notices);
+  EXPECT_EQ(0u, runner_.contexts_created);
+}
+
+TEST_F(HTMLPyScriptElementTest, CleanupTaskRechecksForbiddenScope) {
+  Load("<pyscript>bridge</pyscript>");
+  {
+    ScriptForbiddenScope forbid;
+    PythonScriptController::StopDocument(GetDocument());
+    test::RunPendingTasks();
+    EXPECT_EQ(0u, *runner_.destructions);
+  }
+  test::RunDelayedTasks(base::Milliseconds(10));
+  EXPECT_EQ(1u, *runner_.destructions);
 }
 
 TEST_F(HTMLPyScriptElementTest,
@@ -391,6 +509,29 @@ TEST_F(HTMLPyScriptElementTest, NavigationDisposesOldDocumentContext) {
   Load("<pyscript>bridge</pyscript>");
   EXPECT_EQ(0u, *runner_.destructions);
   Load("<p>next document</p>");
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, GarbageCollectionAndNavigationReleaseContexts) {
+  for (unsigned i = 0; i < 4; ++i) {
+    Load("<pyscript>keep live document</pyscript>");
+    ThreadState::Current()->CollectAllGarbageForTesting();
+    test::RunPendingTasks();
+    EXPECT_EQ(i, *runner_.destructions);
+    Load("<p>replacement</p>");
+    ThreadState::Current()->CollectAllGarbageForTesting();
+    test::RunPendingTasks();
+    EXPECT_EQ(i + 1, *runner_.destructions);
+  }
+  EXPECT_EQ(runner_.contexts_created, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ClosingFrameReleasesContextOutsideLifecycleStack) {
+  Load("<pyscript>close document</pyscript>");
+  EXPECT_EQ(0u, *runner_.destructions);
+  WebViewHelper().Reset();
+  test::RunPendingTasks();
   EXPECT_EQ(1u, *runner_.destructions);
 }
 

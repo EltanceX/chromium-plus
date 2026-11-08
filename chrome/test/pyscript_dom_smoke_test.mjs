@@ -36,19 +36,69 @@ assert not hasattr(dom, 'marker')
 assert 'answer' not in globals() and 'handle' not in globals()
 dom.set_text(dom.get_element_by_id('result'), 'isolated')
 `))}],
-  ['/budget', {body: wrap(block(`
-import dom
-for count in range(1023):
+  ['/budget', {body: wrap('<p id="result">before</p>' +
+    Array.from({length: 8}, (_, index) => block(`
+${index === 0 ? 'import dom' : ''}
+for count in range(128):
     assert dom.get_element_by_id('missing') is None
-print('BUDGET_FIRST', count + 1)
-`) + block(`
-assert dom.get_element_by_id('missing') is None
+${index === 7 ? "print('BUDGET_FIRST', 1024)" : ''}
+`)).join('') + block(`
 try:
     dom.get_element_by_id('missing')
-except ValueError:
-    print('BUDGET_REJECTED_AT_1024')
+except RuntimeError:
+    pass
 else:
     raise AssertionError('document call budget reset between blocks')
+`) + block(`
+dom.set_text(dom.get_element_by_id('result'), 'forbidden')
+print('FORBIDDEN_AFTER_DOM_STOP')
+`))}],
+  ['/timeout', {body: wrap('<p id="result">before</p>' + block(`
+while True: pass
+`) + block(`
+import dom
+dom.set_text(dom.get_element_by_id('result'), 'forbidden')
+print('FORBIDDEN_AFTER_TIMEOUT')
+`))}],
+  ['/output-budget', {body: wrap('<p id="result">before</p>' + block(`
+import sys, dom
+handle = dom.get_element_by_id('result')
+print('x' * 9000)
+`) + block(`
+# Even clearing tracing and catching the native failure cannot restore DOM.
+sys.settrace(None)
+try:
+    sys.stderr.write('界' * 3000)
+except RuntimeError:
+    pass
+try:
+    dom.set_text(handle, 'forbidden')
+except ReferenceError:
+    pass
+`) + block(`print('FORBIDDEN_AFTER_OUTPUT_STOP')`))}],
+  ['/diagnostic-loop', {body: wrap(block(`
+class Failure(Exception):
+    def __str__(self):
+        while True: pass
+raise Failure()
+`) + block(`print('FORBIDDEN_AFTER_DIAGNOSTIC_STOP')`))}],
+  ['/diagnostic-budget', {body: wrap(block(`raise ValueError('界' * 10000)`)
+    + block(`print('FORBIDDEN_AFTER_DIAGNOSTIC_STOP')`))}],
+  ['/console-stop', {body: wrap('<p id="result">before</p>' +
+    block(`print('x' * 16330, end='')`) + block(`
+import dom
+dom.set_text(dom.get_element_by_id('result'), 'forbidden')
+`))}],
+  ['/parser-diagnostics', {body: wrap(
+    block('ignored').replace('<pyscript>', '<pyscript src="unsupported">').repeat(600))}],
+  ['/cleanup-loop', {body: wrap('<p id="result">before</p>' + block(`
+import dom
+dom.set_text(dom.get_element_by_id('result'), 'alive')
+class Finalizer:
+    def __del__(self):
+        while True: pass
+value = Finalizer()
+value.cycle = value
 `))}],
   ['/finalizers', {body: wrap('<p id="result">before</p>' + block(`
 import dom, atexit
@@ -226,11 +276,73 @@ try {
   });
   await check('DOM call budget is shared across blocks', async () => {
     const logs = await navigate('/budget');
-    assert.ok(!logs.some(entry => entry.level === 'error'), JSON.stringify(logs));
     const text = logs.map(entry => entry.text).join('\n');
-    assert.match(text, /BUDGET_FIRST 1023/);
-    assert.match(text, /BUDGET_REJECTED_AT_1024/);
+    assert.match(text, /BUDGET_FIRST 1024/);
+    assert.match(text, /1024 DOM call budget/);
+    assert.doesNotMatch(text, /FORBIDDEN_AFTER_DOM_STOP/);
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'before');
     return logs;
+  });
+  await check('Pure Python timeout stops later blocks and reload starts fresh', async () => {
+    const logs = await navigate('/timeout');
+    const text = logs.map(entry => entry.text).join('\n');
+    assert.match(text, /100 ms cooperative execution budget/);
+    assert.doesNotMatch(text, /FORBIDDEN_AFTER_TIMEOUT/);
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'before');
+    events.length = 0;
+    await send('Page.reload');
+    await waitFor(() => events.some(event => event.method === 'Page.loadEventFired'));
+    assert.match(nativeLogs().map(entry => entry.text).join('\n'), /100 ms/);
+    await navigate('/isolated');
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'isolated');
+    return logs;
+  });
+  await check('Document output budget revokes DOM even after caught failure', async () => {
+    const logs = await navigate('/output-budget');
+    const text = logs.map(entry => entry.text).join('\n');
+    const bytes = logs.reduce((sum, entry) => sum + Buffer.byteLength(entry.text), 0);
+    assert.ok(bytes <= 16384, String(bytes));
+    assert.match(text, /output was truncated at 16 KiB/);
+    assert.equal((text.match(/output was truncated at 16 KiB/g) ?? []).length, 1);
+    assert.doesNotMatch(text, /FORBIDDEN_AFTER_OUTPUT_STOP/);
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'before');
+    return {bytes, entries: logs.length};
+  });
+  await check('Exception formatting has a cooperative time budget', async () => {
+    const logs = await navigate('/diagnostic-loop');
+    const text = logs.map(entry => entry.text).join('\n');
+    assert.match(text, /100 ms cooperative execution budget/);
+    assert.doesNotMatch(text, /FORBIDDEN_AFTER_DIAGNOSTIC_STOP/);
+    return logs;
+  });
+  await check('Oversized exception stops remaining blocks', async () => {
+    const logs = await navigate('/diagnostic-budget');
+    const text = logs.map(entry => entry.text).join('\n');
+    assert.match(text, /output was truncated at 16 KiB/);
+    assert.doesNotMatch(text, /FORBIDDEN_AFTER_DIAGNOSTIC_STOP/);
+    return logs;
+  });
+  await check('Parser diagnostics share the document console limit', async () => {
+    const logs = await navigate('/parser-diagnostics');
+    const bytes = logs.reduce((sum, entry) => sum + Buffer.byteLength(entry.text), 0);
+    assert.ok(bytes <= 16384, String(bytes));
+    assert.equal(logs.filter(entry => entry.text.includes('output was truncated at 16 KiB')).length, 1);
+    return {bytes, entries: logs.length};
+  });
+  await check('Console truncation stops execution before the next block', async () => {
+    const logs = await navigate('/console-stop');
+    assert.equal(logs.filter(entry => entry.text.includes('output was truncated at 16 KiB')).length, 1);
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'before');
+    return {bytes: logs.reduce((sum, entry) => sum + Buffer.byteLength(entry.text), 0)};
+  });
+  await check('Cyclic Python finalizer loop does not block later navigation', async () => {
+    for (let i = 0; i < 3; ++i) {
+      await navigate('/cleanup-loop');
+      assert.equal(await evaluate('document.querySelector("#result").textContent'), 'alive');
+      await navigate('/isolated');
+      assert.equal(await evaluate('document.querySelector("#result").textContent'), 'isolated');
+    }
+    return {iterations: 3};
   });
   await check('document.open invalidates the context and never executes written Python', async () => {
     await navigate('/finalizers');
@@ -258,6 +370,17 @@ try {
     assert.ok(failure.params.notRestoredExplanations.some(explanation =>
       explanation.reason === 'Unknown' && explanation.type === 'SupportPending'),
       JSON.stringify(failure));
+    await evaluate('globalThis.secondDocumentMarker = true');
+    events.length = 0;
+    await evaluate('history.forward()');
+    await waitFor(() => evaluate(`location.href === ${JSON.stringify(origin + '/other')} &&
+      document.readyState === 'complete'`));
+    events.length = 0;
+    await evaluate('history.back()');
+    await waitFor(() => events.some(event => event.method === 'Page.loadEventFired'));
+    assert.equal(await evaluate('location.href'), origin + '/sample');
+    assert.equal(await evaluate('globalThis.secondDocumentMarker === undefined'), true);
+    assert.equal(await evaluate('document.querySelector("#result").textContent'), 'Python 计算结果：42');
     return failure.params;
   });
   await check('Reload creates a new Python document context', async () => {
@@ -271,14 +394,21 @@ try {
     assert.ok(!nativeLogs().some(entry => entry.level === 'error'), JSON.stringify(nativeLogs()));
   });
   await check('Repeated finalizer teardown and document creation stay responsive', async () => {
-    for (let i = 0; i < 6; ++i) {
+    for (let i = 0; i < 20; ++i) {
       await navigate('/finalizers');
       assert.equal(await evaluate('document.querySelector("#result").textContent'), 'alive');
       await navigate('/isolated');
       assert.equal(await evaluate('document.querySelector("#result").textContent'), 'isolated');
     }
     assert.ok(!requests.some(url => url.startsWith('/must-not-load')));
-    return {iterations: 6};
+    return {iterations: 20};
+  });
+  await check('Browser closes normally with a pending cyclic finalizer', async () => {
+    await navigate('/cleanup-loop');
+    await send('Browser.close');
+    await waitFor(() => child.exitCode !== null, 30000);
+    assert.equal(child.exitCode, 0);
+    return {exitCode: child.exitCode};
   });
   report.passed = true;
 } catch (error) {

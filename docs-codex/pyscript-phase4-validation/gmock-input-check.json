@@ -1,0 +1,21 @@
+{
+  "object": "obj/third_party/googletest/gmock/gmock-matchers.obj",
+  "sha256": "abb858c5f188189828075af34629ab8ff48874ce9058926adf50be973dd7719c",
+  "mappedSha256": "abb858c5f188189828075af34629ab8ff48874ce9058926adf50be973dd7719c",
+  "readErrors": [
+    "Section 1347: relocation 0 has invalid symbol 3673844729 or type 18211",
+    "Section 1348: relocation 0 has invalid symbol 1130784689 or type 34111",
+    "Section 1349: relocation 0 has invalid symbol 3074861198 or type 17495",
+    "Section 1350: relocation 0 has invalid symbol 4184065207 or type 31459",
+    "Section 1351: relocation 0 has invalid symbol 57455192 or type 21011",
+    "Invalid CodeView record at 0x74233 (length 21019, kind 0xa2ec)"
+  ],
+  "mappedErrors": [
+    "Section 1347: relocation 0 has invalid symbol 3673844729 or type 18211",
+    "Section 1348: relocation 0 has invalid symbol 1130784689 or type 34111",
+    "Section 1349: relocation 0 has invalid symbol 3074861198 or type 17495",
+    "Section 1350: relocation 0 has invalid symbol 4184065207 or type 31459",
+    "Section 1351: relocation 0 has invalid symbol 57455192 or type 21011",
+    "Invalid CodeView record at 0x74233 (length 21019, kind 0xa2ec)"
+  ]
+}

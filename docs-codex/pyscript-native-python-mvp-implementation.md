@@ -4,7 +4,7 @@
 - 项目：Chromium 158.0.8126.0，首个验证平台为 Windows x64 Debug component build。
 - 当前分支：`codex/kernel-debug-settings`；方案初版整理基点：`9257464d67`，阶段一依赖提交：`c53586b2f7`。
 - 已选方向：Renderer 内嵌 CPython，Blink 原生识别 `<pyscript>`，在主线程同步执行，通过 C++ 函数桥接当前 Document 的有限 DOM 操作。
-- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的实现与计划内验证完成，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三已于 2026-11-09 完成计划内验收：运行时 15 项单测、Blink 定向单测 20 项、完整 Chrome 与 Blink 测试目标构建、DOM 浏览器测试 9 项及阶段二浏览器回归 26 项均通过；启用 / 关闭两组 WPT 在已记录的诊断配置下通过，详见[阶段三实施记录](pyscript-phase3-document-context-dom.md)。阶段四的执行时间与文档累计预算等工作，以及阶段五完整验收尚未完成。
+- 状态：阶段一至四实现与计划内验证已完成，详见[阶段一](pyscript-phase1-cpython-runtime.md)、[阶段二](pyscript-phase2-tags-parsing-execution.md)、[阶段三](pyscript-phase3-document-context-dom.md)与[阶段四](pyscript-phase4-budgets-navigation-cleanup.md)记录。2026-11-09 最终标准构建、运行时 22 / 22、Blink 28 / 28、DOM 浏览器 17 / 17、解析与权限浏览器 27 / 27 均通过；启用 / 关闭两组 WPT 在已记录诊断配置下通过。阶段五完整验收记录正在整理。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
 ## 1. 验证目标
@@ -308,6 +308,8 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 阶段产物：不经 JavaScript 的原生 Python -> C++ -> Blink DOM 链路。
 
 ### 阶段四：预算、导航与安全清理
+
+实施状态：2026-11-09 已完成。完整标准构建、运行时 22 / 22、Blink 28 / 28、DOM 浏览器 17 / 17、解析与权限回归 27 / 27 均通过；两组 WPT 在已记录诊断配置下通过。包括预算锁存、逐块控制台停止、安全任务清理、GC / 关页计数、导航与前进 / 后退验证。详见[阶段四实施记录](pyscript-phase4-budgets-navigation-cleanup.md)。
 
 1. 实现源码、输出、DOM 操作和协作式执行预算。
 2. 加入不可逆的停止状态、Python 重入保护及每次桥接的状态复核。

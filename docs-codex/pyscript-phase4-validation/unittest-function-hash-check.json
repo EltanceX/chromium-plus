@@ -1,0 +1,14 @@
+{
+  "target": "obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj",
+  "function_hashes": 247,
+  "objects": 4665,
+  "mismatches": [],
+  "errors": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/media_query_evaluator_test.obj",
+      "error": "Invalid type record at 0x2969"
+    }
+  ],
+  "matching_records": 317121,
+  "elapsed_seconds": 97.28
+}

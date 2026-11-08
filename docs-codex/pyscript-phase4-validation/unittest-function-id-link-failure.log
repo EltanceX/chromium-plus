@@ -1,0 +1,77 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.6138953s
+load siso config done 28.6173ms
+schedule pending:1+ready:0 (node:441013 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441013 edge:6)
+schedule pending:103902+ready:0 (node:441013 edge:103916)
+ 1.09s schedule pending:97058+ready:10468 (node:441013 edge:107526)
+
+build start: Ready 10468 Pending 97058
+[0/30263] 34.31s S CXX obj/services/network/test_support/udp_socket_test_util.obj
+[0/10587] 35.26s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/547] 35.73s S LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[0/57] 41.89s F CXX obj/services/network/test_support/udp_socket_test_util.obj
+[1/23] 41.90s S LINK blink_common_unittests.exe blink_common_unittests.exe.pdb
+[1/23] 41.90s S LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[1/23] 41.92s S LINK content_shell.exe content_shell.exe.pdb
+[1/23] 42.43s F LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[2/23] 49.11s F LINK blink_common_unittests.exe blink_common_unittests.exe.pdb
+[3/23] 59.60s F LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[4/14] 1m09.93s F LINK content_shell.exe content_shell.exe.pdb
+[5/14] 1m18.56s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[6/11] 1m18.58s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[6/11] 1m33.62s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 06bdeb83-7ac6-4893-9858-49bd3638de45 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_string<0>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x25674A which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::CodeLocation::CodeLocation` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x25674C which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256BD9 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256BDB which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256BDB which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::Test::Setup` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256BDE which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::test::TaskEnvironment::CreateTaskEnvironmentWithPriorities<base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E22 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::test::TaskEnvironment::TaskEnvironment<base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E23 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::HasTrait<base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E25 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,0,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E27 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::ThreadPoolCOMEnvironment,1,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E29 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::ThreadingMode,0,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E2B which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::ThreadPoolExecutionMode,1,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E2D which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::MainThreadType,0,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E2F which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetEnum<base::test::TaskEnvironment::TimeSource,0,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E31 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetTraitFromArgList<base::trait_helpers::EnumTraitFilter<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,0>,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E32 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::GetTraitFromArgListImpl<base::trait_helpers::EnumTraitFilter<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,0>,base::test::TaskEnvironment::SubclassCreatesDefaultTaskRunner>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E37 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::BasicTraitFilter<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,base::test::TaskEnvironment::ScopedExecutionFenceBehaviour>::operator base::test::TaskEnvironment::ScopedExecutionFenceBehaviour` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E38 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::EnumTraitFilter<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,0>::EnumTraitFilter` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E39 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::trait_helpers::BasicTraitFilter<base::test::TaskEnvironment::ScopedExecutionFenceBehaviour,base::test::TaskEnvironment::ScopedExecutionFenceBehaviour>::BasicTraitFilter` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x256E3A which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:7 remote:0 cache:0 skip:107515
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 5696(err:6) / r:785(err:0) 3.48GiB / w:4(err:0) 754.25KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m34.29s Build Failure: 7 done, 1 failed, 4 remaining - 0.07/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-025255.13668
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -1,0 +1,84 @@
+{
+  "phase": 4,
+  "acceptance": "passed",
+  "observedAt": "2026-11-09T03:11:24.319193+08:00",
+  "buildCommand": "autoninja -C out/Debug chrome python_runtime_unittests blink_unittests blink_tests",
+  "buildResult": "1m36.77s Build Succeeded: 3 steps - 0.03/s",
+  "unitTests": {
+    "runtime": {
+      "passed": 22,
+      "total": 22
+    },
+    "blink": {
+      "passed": 28,
+      "total": 28
+    }
+  },
+  "wpt": {
+    "enabled": {
+      "expected": "PASS",
+      "actual": "PASS",
+      "shard": null,
+      "time": 2.1,
+      "has_stderr": true,
+      "artifacts": {
+        "command": [
+          "layout-test-results\\wpt_internal/pyscript/parsing-enabled-command.txt"
+        ],
+        "stderr": [
+          "layout-test-results\\wpt_internal/pyscript/parsing-enabled-stderr.txt"
+        ]
+      }
+    },
+    "disabled": {
+      "expected": "PASS",
+      "actual": "PASS",
+      "shard": null,
+      "time": 1.5
+    }
+  },
+  "wptDiagnosticFlags": [
+    "--disable-system-font-check",
+    "--enable-features=NetworkServiceInProcess2"
+  ],
+  "wptContentShellHasNoCPythonEmbedder": true,
+  "browser": {
+    "dom": {
+      "passed": 17,
+      "total": 17,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    },
+    "phase2": {
+      "passed": 27,
+      "total": 27,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    }
+  },
+  "sourceSha256": {
+    "components/python_runtime/python_execution_budget.cc": "9f1cdef3d45078523841bd62316b42c2f07646af305fd197a35eddff1779a34c",
+    "components/python_runtime/python_runtime.cc": "952fd01ea436ec18f8d53c2a5df1c163a7403a6f7e3a98f3dd0a61f2441a6eeb",
+    "components/python_runtime/python_runtime_unittest.cc": "689aa0f3f58fb98edeaa260baaf8f58a95d13fe911a8ae922e12eecb8fa6e737",
+    "chrome/renderer/python_script_runner.cc": "dfe83ca4f8a9d56d5d6de433514d2651149d203b53e35b1908c79cf3e9970f92",
+    "chrome/test/pyscript_dom_smoke_test.mjs": "94f2baed284a9b75728e1af79e2d3eb8a014d275d55a472a6191a3e46dbde122",
+    "third_party/blink/public/web/web_python_script_runner.h": "c63bc7d5104f5ccaf1bb78dff135b05d199560899265450902559d9520b91554",
+    "third_party/blink/renderer/core/html/python_script_controller.cc": "e65dbb08b0b2da34721fc6d2d5f0f9454b218170e43957f24c3544d04a118c6c",
+    "third_party/blink/renderer/core/html/python_script_controller.h": "1214430e29428bce8a0c9aaae8309de9640a39059cee7a35390225f2d2177367",
+    "third_party/blink/renderer/core/html/html_py_script_element_test.cc": "d4808410e368efd38ec2e0c20bc9780f344fe9552c4855229f3f50f4d5bccb50"
+  },
+  "generatedObjects": {
+    "rebuilt": 18,
+    "changedHashes": 16,
+    "allOriginalsRetained": true,
+    "cause": "not_determined",
+    "mockClipboardHashUnchangedDespiteInitialScanError": true,
+    "udpInitialScanErrorNotReproducedOnRepeatedReads": true
+  },
+  "unrelatedMcjeChangesPreserved": true,
+  "limitations": [
+    "Execution and cleanup limits are cooperative, not hard preemption.",
+    "Long native work, malicious tracing/finalizers and memory exhaustion remain unbounded.",
+    "Discarded renderer-shutdown cleanup tasks can retain interpreters until process exit."
+  ]
+}

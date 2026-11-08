@@ -7,6 +7,8 @@
 #include "base/auto_reset.h"
 #include "base/check.h"
 #include "base/functional/bind.h"
+#include "base/strings/string_util.h"
+#include "base/time/time.h"
 #include "third_party/blink/public/platform/task_type.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
@@ -22,11 +24,13 @@
 #include "third_party/blink/renderer/core/inspector/console_message.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
 #include "third_party/blink/renderer/platform/heap/persistent.h"
+#include "third_party/blink/renderer/platform/heap/thread_state.h"
 #include "third_party/blink/renderer/platform/runtime_enabled_features.h"
 #include "third_party/blink/renderer/platform/scheduler/public/frame_or_worker_scheduler.h"
 #include "third_party/blink/renderer/platform/scheduler/public/scheduling_policy.h"
 #include "third_party/blink/renderer/platform/wtf/text/strcat.h"
 #include "third_party/blink/renderer/platform/wtf/threading.h"
+#include "v8/include/cppgc/heap-state.h"
 
 namespace blink {
 
@@ -54,6 +58,25 @@ namespace {
 WebPythonScriptRunner* g_runner = nullptr;
 bool g_python_running = false;
 uint64_t g_next_document_id = 0;
+
+void DestroyContextWhenSafe(
+    WebPythonScriptContext* context,
+    scoped_refptr<base::SingleThreadTaskRunner> task_runner) {
+  CHECK(IsMainThread());
+  auto* thread_state = ThreadState::Current();
+  if (g_python_running || ScriptForbiddenScope::IsScriptForbidden() ||
+      ScriptForbiddenScope::WillBeScriptForbidden() ||
+      thread_state->IsSweepingOnOwningThread() ||
+      cppgc::subtle::HeapState::IsInAtomicPause(thread_state->heap_handle())) {
+    task_runner->PostDelayedTask(
+        FROM_HERE,
+        base::BindOnce(&DestroyContextWhenSafe, context, task_runner),
+        base::Milliseconds(1));
+    return;
+  }
+  base::AutoReset<bool> entry(&g_python_running, true);
+  delete context;
+}
 
 bool Eligible(Document& document, bool check_input = true) {
   auto* window = document.domWindow();
@@ -118,6 +141,43 @@ void PythonScriptController::Trace(Visitor* visitor) const {
   ExecutionContextLifecycleObserver::Trace(visitor);
 }
 
+PythonScriptController& PythonScriptController::GetOrCreate(
+    Document& document) {
+  auto* controller =
+      Supplement<Document>::From<PythonScriptController>(document);
+  if (!controller) {
+    controller = MakeGarbageCollected<PythonScriptController>(document);
+    ProvideTo(document, controller);
+  }
+  return *controller;
+}
+
+void PythonScriptController::AppendConsole(
+    const HTMLPyScriptElement& element,
+    const String& text,
+    mojom::blink::ConsoleMessageLevel level) {
+  if (text.empty() || console_truncated_) {
+    return;
+  }
+  constexpr size_t kLimit = 16 * 1024;
+  constexpr std::string_view kNotice =
+      "[pyscript] Python output was truncated at 16 KiB; document execution "
+      "stopped.";
+  const std::string utf8 = text.Utf8();
+  const size_t remaining = kLimit - kNotice.size() - console_bytes_;
+  const std::string_view accepted =
+      base::TruncateUTF8ToByteSize(utf8, remaining);
+  Log(*GetSupplementable(), element, String::FromUtf8(accepted), level);
+  console_bytes_ += accepted.size();
+  if (accepted.size() != utf8.size()) {
+    console_truncated_ = true;
+    Log(*GetSupplementable(), element, String::FromUtf8(kNotice),
+        mojom::blink::ConsoleMessageLevel::kError);
+    console_bytes_ += kNotice.size();
+    Dispose();
+  }
+}
+
 void PythonScriptController::ReleaseContext() {
   if (!context_ || running_) {
     return;
@@ -129,8 +189,7 @@ void PythonScriptController::ReleaseContext() {
   auto* context = context_.release();
   cleanup_task_runner_->PostTask(
       FROM_HERE,
-      base::BindOnce([](WebPythonScriptContext* value) { delete value; },
-                     context));
+      base::BindOnce(&DestroyContextWhenSafe, context, cleanup_task_runner_));
 }
 
 void PythonScriptController::Dispose() {
@@ -156,19 +215,29 @@ void PythonScriptController::ContextDestroyed() {
 
 bool PythonScriptController::IsActive() const {
   Document* document = GetSupplementable();
-  return running_ && !stopped_ && !ScriptForbiddenScope::IsScriptForbidden() &&
+  return running_ && !stopped_ && !dom_budget_exhausted_ &&
+         !ScriptForbiddenScope::IsScriptForbidden() &&
          Eligible(*document, false) &&
          document->domWindow()->CanExecuteScripts(kAboutToExecuteScript);
 }
 
 WebPythonDomResult PythonScriptController::CheckDomCall() {
+  if (dom_budget_exhausted_) {
+    return {{},
+            WebPythonDomError::kStopped,
+            "Python document exceeded the 1024 DOM call budget"};
+  }
   if (!IsActive()) {
     return {
         {}, WebPythonDomError::kReference, "The document context is inactive"};
   }
   if (dom_calls_ >= 1024) {
-    return {
-        {}, WebPythonDomError::kLimit, "At most 1024 DOM calls per document"};
+    dom_budget_exhausted_ = true;
+    ++generation_;
+    handles_.clear();
+    return {{},
+            WebPythonDomError::kStopped,
+            "Python document exceeded the 1024 DOM call budget"};
   }
   ++dom_calls_;
   return {};
@@ -247,18 +316,14 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
 void PythonScriptController::Report(Document& document,
                                     const HTMLPyScriptElement& element,
                                     const String& text) {
-  Log(document, element, StrCat({"[pyscript] ", text}),
+  GetOrCreate(document).AppendConsole(
+      element, StrCat({"[pyscript] ", text}),
       mojom::blink::ConsoleMessageLevel::kError);
 }
 
 void PythonScriptController::Register(HTMLPyScriptElement& element) {
   Document& document = element.GetDocument();
-  auto* controller =
-      Supplement<Document>::From<PythonScriptController>(document);
-  if (!controller) {
-    controller = MakeGarbageCollected<PythonScriptController>(document);
-    ProvideTo(document, controller);
-  }
+  auto* controller = &GetOrCreate(document);
   if (controller->consumed_ || controller->stopped_) {
     return;
   }
@@ -324,30 +389,44 @@ void PythonScriptController::ExecutePending(Document& document) {
       SchedulingPolicy::Feature::kNativePython,
       {SchedulingPolicy::DisableBackForwardCache()});
   controller->running_ = true;
-  const auto results = controller->context_->Run(sources, *controller);
+  wtf_size_t reported = 0;
+  auto report_result = [&](const WebPythonScriptResult& result) {
+    if (controller->stopped_ || !Eligible(document)) {
+      controller->Dispose();
+      return false;
+    }
+    CHECK_LT(reported, accepted.size());
+    const auto& element = *accepted[reported++];
+    controller->AppendConsole(element, result.stdout_text,
+                              mojom::blink::ConsoleMessageLevel::kInfo);
+    controller->AppendConsole(element, result.stderr_text,
+                              mojom::blink::ConsoleMessageLevel::kError);
+    if (!result.success) {
+      Report(document, element, result.error);
+    }
+    if (result.output_truncated && !result.stopped) {
+      Report(document, element, "Python output was truncated at 16 KiB.");
+    }
+    if (result.stopped || controller->console_truncated_) {
+      controller->Dispose();
+      return false;
+    }
+    return true;
+  };
+  const auto results =
+      controller->context_->Run(sources, *controller, report_result);
   controller->running_ = false;
   if (controller->stopped_) {
     controller->ReleaseContext();
     return;
   }
-  if (!Eligible(document)) {
-    controller->Dispose();
-    return;
-  }
+  CHECK_EQ(results.size(), reported);
   CHECK_EQ(results.size(), accepted.size());
-  for (wtf_size_t i = 0; i < accepted.size(); ++i) {
-    const auto& result = results[i];
-    const auto& element = *accepted[i];
-    Log(document, element, result.stdout_text,
-        mojom::blink::ConsoleMessageLevel::kInfo);
-    Log(document, element, result.stderr_text,
-        mojom::blink::ConsoleMessageLevel::kError);
-    if (!result.success) {
-      Report(document, element, result.error);
-    }
-    if (result.output_truncated) {
-      Report(document, element, "Python output was truncated at 16 KiB.");
-    }
+  if (controller->dom_budget_exhausted_) {
+    // Revoke even if a test embedder omitted the fatal result flag.
+    Report(document, *accepted.back(),
+           "Python document exceeded the 1024 DOM call budget");
+    controller->Dispose();
   }
 }
 
