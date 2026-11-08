@@ -1,0 +1,34 @@
+PASS real omnibox classifier recognizes MCJE URLs
+PASS native TCP query, handshake, escaped MOTD and opaque origin
+PASS CSP blocks injected scripts and remote images
+PASS optional missing icon uses placeholder and preserves status
+PASS optional type icon uses placeholder and preserves status
+PASS optional base64 icon uses placeholder and preserves status
+PASS optional whitespace icon uses placeholder and preserves status
+PASS optional mime icon uses placeholder and preserves status
+PASS optional remote icon uses placeholder and preserves status
+PASS optional dimensions icon uses placeholder and preserves status
+PASS optional signature icon uses placeholder and preserves status
+PASS optional corrupt icon uses placeholder and preserves status
+PASS optional encodedOversize icon uses placeholder and preserves status
+PASS optional decodedOversize icon uses placeholder and preserves status
+PASS DNS target retains logical hostname in handshake
+PASS reload starts a new TCP query
+PASS same-document fragment makes no connection
+PASS invalid URLs never connect
+PASS subframe and fetch cannot open TCP query
+PASS split response keeps valid state and matched Pong
+PASS pong-first response keeps valid state and matched Pong
+PASS wrong-pong response keeps valid state and matched Pong
+PASS valid status without Pong ends after short wait
+PASS connection close after valid status preserves MOTD
+PASS bad-json yields a local query error
+PASS truncated yields a local query error
+PASS silent server respects five-second total budget
+PASS navigation cancellation closes socket without retry
+PASS closing a pending tab cancels TCP
+PASS explicit IPv6 endpoint
+PASS back and forward preserve native results
+PASS all local handshakes have expected frame order
+PASS browser shutdown cancels an outstanding query
+Results: C:\src\src\out\Debug\pyscript-phase5-mcje.json

@@ -4,7 +4,7 @@
 - 项目：Chromium 158.0.8126.0，首个验证平台为 Windows x64 Debug component build。
 - 当前分支：`codex/kernel-debug-settings`；方案初版整理基点：`9257464d67`，阶段一依赖提交：`c53586b2f7`。
 - 已选方向：Renderer 内嵌 CPython，Blink 原生识别 `<pyscript>`，在主线程同步执行，通过 C++ 函数桥接当前 Document 的有限 DOM 操作。
-- 状态：阶段一至四实现与计划内验证已完成，详见[阶段一](pyscript-phase1-cpython-runtime.md)、[阶段二](pyscript-phase2-tags-parsing-execution.md)、[阶段三](pyscript-phase3-document-context-dom.md)与[阶段四](pyscript-phase4-budgets-navigation-cleanup.md)记录。2026-11-09 最终标准构建、运行时 22 / 22、Blink 28 / 28、DOM 浏览器 17 / 17、解析与权限浏览器 27 / 27 均通过；启用 / 关闭两组 WPT 在已记录诊断配置下通过。阶段五完整验收记录正在整理。
+- 状态：2026-11-09 阶段一至五的第一版实现与必要验证完成，适用范围为 Windows x64 Debug 的受控实验配置。最终标准构建、运行时 22 / 22、Blink 28 / 28、DOM 浏览器 17 / 17、解析与权限浏览器 27 / 27、Renderer 沙箱检查 2 / 2、MCBE 17 / 17、MCJE 33 / 33 通过；WPT 两文件与 chromiumPlus 15 / 15 使用已记录诊断配置。chromiumPlus 默认模式仍因网络服务崩溃 / 超时失败，原始记录保留。详见[阶段五验收](pyscript-phase5-build-e2e-acceptance.md)的完整测试矩阵、配置和限制；[阶段一](pyscript-phase1-cpython-runtime.md)、[阶段二](pyscript-phase2-tags-parsing-execution.md)、[阶段三](pyscript-phase3-document-context-dom.md)与[阶段四](pyscript-phase4-budgets-navigation-cleanup.md)保留各阶段实施经过。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
 ## 1. 验证目标
@@ -321,6 +321,8 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 
 ### 阶段五：构建、端到端验证与记录
 
+实施状态：已完成第一版范围内的构建、测试矩阵核对、真实沙箱浏览器验证、既有功能回归、失败 / 诊断复测、源码校验及截图记录。WPT 和 chromiumPlus 的诊断配置、chromiumPlus 默认模式失败均明确保留，不算作默认配置全部通过。详见[阶段五验收记录](pyscript-phase5-build-e2e-acceptance.md)。
+
 1. 运行相应单元测试与 WPT；检查 expectations，避免把预期失败视作功能通过。
 2. 构建完整浏览器，在实际沙箱、真实 HTTP 页面和独立测试 Profile 下验证。
 3. 通过 CDP 记录 DOM、控制台、CSP 违规和请求日志；确认样例无需 JavaScript 执行桥接。
@@ -350,7 +352,7 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 
 ## 12. 构建与验证命令约定
 
-当前目录已有 `out/Debug`。阶段一已经使用的实际命令见其实施记录；以下 Blink 构建与网页验证入口仍面向后续阶段：
+当前目录使用 `out/Debug`。以下构建和验证入口均已实际执行，完整命令、配置及结果见各阶段记录：
 
 ```powershell
 autoninja -C out/Debug chrome
@@ -370,7 +372,7 @@ vpython3 third_party/blink/tools/run_web_tests.py -t Debug --additional-driver-f
 vpython3 third_party/blink/tools/run_web_tests.py -t Debug --additional-driver-flag=--disable-blink-features=PythonScript wpt_internal/pyscript/feature-disabled.html
 ```
 
-浏览器端到端脚本建议新增 `chrome/test/pyscript_smoke_test.mjs`，自行启动本地 HTTP 服务，以其精确 origin 配置实验范围，并启动独立 Profile。功能开关计划使用新增 RuntimeEnabledFeature 对应的 `--enable-blink-features=PythonScript`；允许来源参数 / 配置的实际形式须在实现后补齐。
+浏览器端到端脚本为 `chrome/test/pyscript_smoke_test.mjs` 与 `chrome/test/pyscript_dom_smoke_test.mjs`，自行启动本地 HTTP 服务，并以 `--enable-blink-features=PythonScript --native-python-allowed-origin=http://127.0.0.1:<实际端口>` 配置实验范围及独立 Profile。具体命令和最终结果见阶段五记录。
 
 测试不使用 `--no-sandbox`、全局关闭 CSP 或页面 JavaScript 求值代替原生 Python 执行。验证脚本可以用 CDP 读取结果，但样例的计算和 DOM 写入必须由 Python / C++ 完成。
 

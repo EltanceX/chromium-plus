@@ -1,0 +1,99 @@
+{
+  "phase": 5,
+  "acceptance": "verified_with_documented_diagnostic_configuration",
+  "observedAt": "2026-11-09T03:11:24.456727+08:00",
+  "pythonMvpRequirementsVerified": true,
+  "cpython": {
+    "version": "3.13.18",
+    "unmodifiedUpstreamFiles": 775,
+    "archiveSha256": "abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68"
+  },
+  "pythonTests": {
+    "unitTests": {
+      "runtime": {
+        "passed": 22,
+        "total": 22
+      },
+      "blink": {
+        "passed": 28,
+        "total": 28
+      }
+    },
+    "browser": {
+      "dom": {
+        "passed": 17,
+        "total": 17,
+        "sandboxDisabled": false,
+        "chromeArgs": []
+      },
+      "phase2": {
+        "passed": 27,
+        "total": 27,
+        "sandboxDisabled": false,
+        "chromeArgs": []
+      }
+    },
+    "renderer": {
+      "passed": 2,
+      "total": 2,
+      "sandboxReports": 6,
+      "sandboxDisabled": false
+    },
+    "wptFiles": 2,
+    "wptSubtests": 7,
+    "domTestharnessAssertions": 9
+  },
+  "chromiumPlus": {
+    "default": "failed_timeout_with_network_service_crash",
+    "diagnostic": {
+      "passed": 15,
+      "total": 15,
+      "chromeArgs": [
+        "--enable-features=NetworkServiceInProcess2"
+      ]
+    },
+    "sandboxDisabled": false,
+    "cause": "not_determined"
+  },
+  "protocols": {
+    "mcbe": {
+      "passed": 17,
+      "total": 17,
+      "chromeArgs": []
+    },
+    "mcje": {
+      "passed": 33,
+      "total": 33,
+      "chromeArgs": []
+    }
+  },
+  "artifacts": {
+    "out/Debug/chrome.exe": {
+      "size": 6290944,
+      "sha256": "8ca8fed4e3f71ea418737690d341ecebefc7d1f2c869adcf2682b148d115d7a2"
+    },
+    "out/Debug/chrome.dll": {
+      "size": 445061632,
+      "sha256": "0db99f86bb872b81f0c26a7dff803cd468645c544e07894fe26ed374eca2b164"
+    },
+    "out/Debug/python_runtime.dll": {
+      "size": 7581696,
+      "sha256": "a5518d093b6b446328c6c965b7c538f176f9973dc4af1430df21a3c14f206354"
+    }
+  },
+  "regressionTestSourceSha256": {
+    "chrome/test/pyscript_smoke_test.mjs": "e42852b6370b6c77dd0ca0f7c34f2f25698a06efcd2298cc5c75169b828d0b9f",
+    "chrome/test/pyscript_dom_smoke_test.mjs": "94f2baed284a9b75728e1af79e2d3eb8a014d275d55a472a6191a3e46dbde122",
+    "chrome/test/python_runtime_smoke_test.mjs": "53483aed91b4bcb1a1be50e3d8d0e782cee17af272769f355bf16b0108496e6c",
+    "chrome/test/chromium_plus_smoke_test.py": "bdb833962ad505a645eaca4da5847d5e5fd0d2d204a62d8bab12f241e6affd4c",
+    "chrome/test/mcbe_smoke_test.mjs": "f98ff1605de40c7dbec78bb41a6a4fe458fe8115e5ae8a4b001209c119e3af45",
+    "chrome/test/mcje_smoke_test.mjs": "bd1503143ca50175e3bffe1926c36fc4fe84d533274f475238cfdfb54882134b"
+  },
+  "unrelatedMcjeWorkspaceChangesPreservedAndExcludedFromCommit": true,
+  "scope": "Windows x64 Debug component build; installation and Release/other-platform validation excluded",
+  "limitations": [
+    "Execution and cleanup limits are cooperative, not hard preemption.",
+    "Long native work, malicious tracing/finalizers and memory exhaustion remain unbounded.",
+    "Discarded renderer-shutdown cleanup tasks can retain interpreters until process exit."
+  ]
+}

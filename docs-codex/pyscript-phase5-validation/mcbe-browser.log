@@ -1,0 +1,18 @@
+PASS native navigation, UTF-8, escaped HTML and GUID precision
+PASS reload starts a fresh query
+PASS CSP blocks injected scripts
+PASS one lost ping retries once
+PASS unrelated pong is ignored before valid response
+PASS missing optional MOTD fields
+PASS MOTD and RakNet GUIDs may differ
+PASS invalid response error and bounded retries
+PASS silent server times out within total budget
+PASS unsupported URL components cause no UDP traffic
+PASS navigation cancellation closes the query before retry
+PASS subframe and fetch cannot open the UDP loader
+PASS localhost DNS and address fallback
+PASS DNS failure renders a local error page
+PASS explicit IPv6 endpoint
+PASS back and forward preserve native URL and result
+PASS browser shutdown cancels an outstanding query
+Results: C:\src\src\out\Debug\pyscript-phase5-mcbe.json

@@ -1,0 +1,13 @@
+{
+  "program": "python",
+  "arguments": [
+    "chrome/test/chromium_plus_smoke_test.py",
+    "--chrome-binary=out/Debug/chrome.exe",
+    "--chrome-arg=--enable-features=NetworkServiceInProcess2",
+    "--output=out/Debug/pyscript-phase5-chromium-plus-diagnostic.json",
+    "--verbose"
+  ],
+  "started": "2026-11-09T03:10:42.9165270+08:00",
+  "ended": "2026-11-09T03:10:49.1647893+08:00",
+  "exitCode": 0
+}

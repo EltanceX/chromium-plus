@@ -1,0 +1,67 @@
+"GET /index.html HTTP/1.1" 200 -
+"GET /suite.js HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: page first script and property descriptor
+"POST /progress HTTP/1.1" 200 -
+PASS: mutation, same-document navigation and deletion
+code 404, message File not found
+"GET /favicon.ico HTTP/1.1" 404 -
+"POST /progress HTTP/1.1" 200 -
+PASS: initial about:blank iframe
+code 404, message File not found
+"GET /favicon.ico HTTP/1.1" 404 -
+"POST /progress HTTP/1.1" 200 -
+PASS: initial about:blank popup
+"POST /progress HTTP/1.1" 200 -
+PASS: srcdoc first script
+"GET /frame.html?token=9669dddd-bc43-48e8-a825-559a45200c9a HTTP/1.1" 200 -
+"GET /frame.js HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: same-origin iframe first script
+"GET /frame.html?token=32c0ba18-4fec-408a-a1f2-333b6321f862 HTTP/1.1" 200 -
+"GET /frame.js HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: cross-site iframe first script
+"GET /frame.html?token=f1d26a08-7ad5-4253-9e11-4dc04fcbfe63&csp=1 HTTP/1.1" 200 -
+"GET /frame.js HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: iframe with restrictive script CSP
+"GET /worker.js?kind=dedicated&type=classic HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: dedicated classic worker
+"GET /worker.js?kind=shared&type=classic HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: shared classic worker
+"GET /worker.js?kind=service&type=classic HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: service classic worker
+"GET /worker.js?kind=dedicated&type=module HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: dedicated module worker
+"GET /worker.js?kind=shared&type=module HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: shared module worker
+"GET /worker.js?kind=service&type=module HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: service module worker
+"GET /index.html HTTP/1.1" 200 -
+"GET /suite.js HTTP/1.1" 200 -
+"POST /progress HTTP/1.1" 200 -
+PASS: reload restores default before first script
+"POST /results HTTP/1.1" 200 -
+PASS: page first script and property descriptor
+PASS: mutation, same-document navigation and deletion
+PASS: initial about:blank iframe
+PASS: initial about:blank popup
+PASS: srcdoc first script
+PASS: same-origin iframe first script
+PASS: cross-site iframe first script
+PASS: iframe with restrictive script CSP
+PASS: dedicated classic worker
+PASS: shared classic worker
+PASS: service classic worker
+PASS: dedicated module worker
+PASS: shared module worker
+PASS: service module worker
+PASS: reload restores default before first script
+15/15 checks passed

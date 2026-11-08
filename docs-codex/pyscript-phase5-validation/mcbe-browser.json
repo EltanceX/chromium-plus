@@ -1,0 +1,102 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "chromeArgs": [],
+  "results": [
+    {
+      "name": "native navigation, UTF-8, escaped HTML and GUID precision",
+      "passed": true,
+      "elapsedMs": 464,
+      "detail": {
+        "url": "mcbe://127.0.0.1:51999/",
+        "origin": "null",
+        "ready": "complete",
+        "text": "MINECRAFT BEDROCK · UDP STATUS\n测试 <img src=x onerror=\"globalThis.mcbeInjected=1\"> & Bedrock\n\nmcbe://127.0.0.1:51999/\n\n查询成功\n\n主机\n127.0.0.1\n查询端口\n51999\n响应端点\n127.0.0.1:51999\n副标题\n副标题\n版本\n1.26.test\n协议版本\n944\n在线人数\n12 / 100\n游戏模式\nSurvival\n服务器 GUID\n18446744073709551615\n往返耗时\n8.0 ms\n查询时间\n2026-11-08 19:08:36 UTC\n原始 MOTD\n使用浏览器刷新可重新查询。超时仅表示未收到响应，不能据此确认服务器离线。",
+        "state": "查询成功",
+        "injected": false,
+        "images": 0,
+        "scripts": 0,
+        "secure": false
+      }
+    },
+    {
+      "name": "reload starts a fresh query",
+      "passed": true,
+      "elapsedMs": 288
+    },
+    {
+      "name": "CSP blocks injected scripts",
+      "passed": true,
+      "elapsedMs": 11
+    },
+    {
+      "name": "one lost ping retries once",
+      "passed": true,
+      "elapsedMs": 2724
+    },
+    {
+      "name": "unrelated pong is ignored before valid response",
+      "passed": true,
+      "elapsedMs": 193
+    },
+    {
+      "name": "missing optional MOTD fields",
+      "passed": true,
+      "elapsedMs": 1794
+    },
+    {
+      "name": "MOTD and RakNet GUIDs may differ",
+      "passed": true,
+      "elapsedMs": 169
+    },
+    {
+      "name": "invalid response error and bounded retries",
+      "passed": true,
+      "elapsedMs": 5209
+    },
+    {
+      "name": "silent server times out within total budget",
+      "passed": true,
+      "elapsedMs": 5158
+    },
+    {
+      "name": "unsupported URL components cause no UDP traffic",
+      "passed": true,
+      "elapsedMs": 3766
+    },
+    {
+      "name": "navigation cancellation closes the query before retry",
+      "passed": true,
+      "elapsedMs": 3187
+    },
+    {
+      "name": "subframe and fetch cannot open the UDP loader",
+      "passed": true,
+      "elapsedMs": 640
+    },
+    {
+      "name": "localhost DNS and address fallback",
+      "passed": true,
+      "elapsedMs": 336
+    },
+    {
+      "name": "DNS failure renders a local error page",
+      "passed": true,
+      "elapsedMs": 364
+    },
+    {
+      "name": "explicit IPv6 endpoint",
+      "passed": true,
+      "elapsedMs": 324
+    },
+    {
+      "name": "back and forward preserve native URL and result",
+      "passed": true,
+      "elapsedMs": 1062
+    },
+    {
+      "name": "browser shutdown cancels an outstanding query",
+      "passed": true,
+      "elapsedMs": 3852
+    }
+  ]
+}

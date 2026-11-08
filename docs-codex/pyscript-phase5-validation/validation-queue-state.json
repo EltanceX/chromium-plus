@@ -1,0 +1,84 @@
+{
+  "phase": 4,
+  "status": "completed-with-failures",
+  "started": "2026-11-09T03:04:20.3337733+08:00",
+  "updated": "2026-11-09T03:09:42.4756862+08:00",
+  "buildProcessId": 0,
+  "steps": [
+    {
+      "name": "final-build",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-build.log"
+    },
+    {
+      "name": "runtime-unit-tests",
+      "started": "2026-11-09T03:04:20.4008016+08:00",
+      "ended": "2026-11-09T03:04:22.3922675+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-runtime-final.log"
+    },
+    {
+      "name": "blink-unit-tests",
+      "started": "2026-11-09T03:04:22.3949582+08:00",
+      "ended": "2026-11-09T03:04:37.3350249+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-blink.log"
+    },
+    {
+      "name": "wpt-enabled-diagnostic",
+      "started": "2026-11-09T03:04:37.3393327+08:00",
+      "ended": "2026-11-09T03:05:02.5226777+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-wpt-enabled.log"
+    },
+    {
+      "name": "wpt-disabled-diagnostic",
+      "started": "2026-11-09T03:05:02.5264375+08:00",
+      "ended": "2026-11-09T03:05:17.3578316+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-wpt-disabled.log"
+    },
+    {
+      "name": "dom-browser-smoke",
+      "started": "2026-11-09T03:05:17.3617438+08:00",
+      "ended": "2026-11-09T03:05:49.6728027+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-dom.log"
+    },
+    {
+      "name": "phase2-browser-regression",
+      "started": "2026-11-09T03:05:49.6743874+08:00",
+      "ended": "2026-11-09T03:06:23.3017261+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase4-final-phase2.log"
+    },
+    {
+      "name": "phase1-renderer-regression",
+      "started": "2026-11-09T03:06:23.3032906+08:00",
+      "ended": "2026-11-09T03:06:32.0644201+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase5-runtime-renderer.log"
+    },
+    {
+      "name": "chromium-plus-regression",
+      "started": "2026-11-09T03:06:32.0659599+08:00",
+      "ended": "2026-11-09T03:08:33.8208551+08:00",
+      "exitCode": 1,
+      "log": "out/Debug/pyscript-phase5-chromium-plus.log"
+    },
+    {
+      "name": "mcbe-regression",
+      "started": "2026-11-09T03:08:33.8221939+08:00",
+      "ended": "2026-11-09T03:09:06.4491926+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase5-mcbe.log"
+    },
+    {
+      "name": "mcje-regression",
+      "started": "2026-11-09T03:09:06.4507495+08:00",
+      "ended": "2026-11-09T03:09:42.4679336+08:00",
+      "exitCode": 0,
+      "log": "out/Debug/pyscript-phase5-mcje.log"
+    }
+  ]
+}

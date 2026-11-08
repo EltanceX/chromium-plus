@@ -1,0 +1,98 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "sandboxDisabled": false,
+  "cases": [
+    {
+      "name": "default-off",
+      "passed": true,
+      "pageLoaded": true,
+      "chromiumPlus": "0.0.1",
+      "pythonElement": "HTMLUnknownElement",
+      "poisonedEnvironmentIgnored": true,
+      "reports": []
+    },
+    {
+      "name": "enabled",
+      "passed": true,
+      "pageLoaded": true,
+      "chromiumPlus": "0.0.1",
+      "pythonElement": "HTMLUnknownElement",
+      "poisonedEnvironmentIgnored": true,
+      "reports": [
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 203,
+          "initialization_ms": 38,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 203,
+          "initialization_ms": 47,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 207,
+          "initialization_ms": 59,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 183,
+          "initialization_ms": 46,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 182,
+          "initialization_ms": 41,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 177,
+          "initialization_ms": 49,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        }
+      ]
+    }
+  ],
+  "passed": true
+}
