@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-11-08T17:57:00+08:00",
+  "phase": 2,
+  "status": "chrome_and_browser_checks_complete_blink_build_running",
+  "runtime_acceptance_complete": false,
+  "source_implementation_commit": "002df59590",
+  "prerequisite_commit": "c53586b2f7",
+  "source_changes_this_checkpoint": false,
+  "chrome_build": {
+    "status": "passed",
+    "final_incremental_elapsed": "2m27.90s",
+    "final_incremental_steps": 4,
+    "evidence": "chrome-final-build.log",
+    "object_recovery": "generated-object-recovery-2026-11-08.json"
+  },
+  "browser_smoke": {
+    "status": "passed",
+    "passed": 26,
+    "total": 26,
+    "sandbox_disabled": false,
+    "chrome_args": [],
+    "evidence": "browser-smoke.json"
+  },
+  "phase_one_renderer_regression": {
+    "status": "passed",
+    "passed": 2,
+    "total": 2,
+    "sandbox_disabled": false,
+    "evidence": "runtime-renderer-regression.json"
+  },
+  "runtime_unit_tests": {
+    "passed": 9,
+    "total": 9,
+    "evidence": "resume-runtime-unittests.json",
+    "note": "Passed earlier in this phase; not repeated after generated-object recovery because runtime source did not change"
+  },
+  "chromium_plus_regression": {
+    "default_network_service": {
+      "status": "failed_timeout",
+      "network_service_crash_restart_seen": true,
+      "evidence": "chromium-plus-default-failure.log"
+    },
+    "in_process_network_diagnostic": {
+      "status": "passed",
+      "passed": 15,
+      "total": 15,
+      "chrome_arg": "--enable-features=NetworkServiceInProcess2",
+      "evidence": "chromium-plus-in-process.json"
+    }
+  },
+  "background_blink_build": {
+    "command": "autoninja -C out/Debug blink_unittests blink_tests",
+    "status": "running_at_observation",
+    "progress": "[93/3632] 1m38.06s F CXX obj/media/base/win/test_support/d3d12_mocks.obj",
+    "local_log": "out/Debug/pyscript-phase2-blink-tests-build.log",
+    "snapshot": "blink-tests-build-snapshot.log",
+    "new_compiler_errors_seen": false
+  },
+  "pending": [
+    "Complete blink_unittests and blink_tests build",
+    "Run HTMLPyScriptElementTest.* (13 cases)",
+    "Run enabled and disabled WPT files (7 subtests)",
+    "Resolve or separately track chromiumPlus default-network-service timeout; diagnostic pass does not count as a default-mode pass"
+  ],
+  "scope": "Only native Python validation documents and evidence; existing MCJE edits remain uncommitted",
+  "validation_note": "Earlier snapshots retain their historical state; this record covers the final rebuilt Chrome and tests run against it.",
+  "artifact_sha256": {
+    "chrome.exe": "8ca8fed4e3f71ea418737690d341ecebefc7d1f2c869adcf2682b148d115d7a2",
+    "blink_core.dll": "36de0984964d8b22c8f80172cae8e03dac87ad06ede19e0d9a833448d49e056d",
+    "chrome.dll": "e081f4e6518c48acce9325615939614f040d1c4b8c508755f587c84ae7b2337a",
+    "python_runtime.dll": "408d42a261826c89446b22a99fd4eff6ef45c4d0c73009b510bcf991bf39898a"
+  }
+}

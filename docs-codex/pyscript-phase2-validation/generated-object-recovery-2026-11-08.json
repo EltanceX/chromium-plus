@@ -1,0 +1,216 @@
+{
+  "observed_at": "2026-11-08T17:52:17+08:00",
+  "scope": "Generated COFF objects used by blink_core.dll; no product source changes",
+  "root_cause": "not_determined",
+  "original_chrome_build": {
+    "status": "succeeded",
+    "elapsed": "1h27m27.97s",
+    "steps": 2212,
+    "local_log": "out/Debug/pyscript-phase2-chrome-build.log"
+  },
+  "final_incremental_build": {
+    "status": "succeeded",
+    "local_log": "out/Debug/pyscript-phase2-chrome-repaired-verified.log",
+    "elapsed": "2m27.90s",
+    "steps": 4,
+    "exit_code": 0,
+    "evidence": "chrome-final-build.log"
+  },
+  "recompiled_object_count": 12,
+  "quarantined_objects": [
+    {
+      "path": "obj/third_party/blink/renderer/core/core/check_pseudo_has_fast_reject_filter.obj",
+      "bytes": 1622190,
+      "lastWriteTime": "2026-11-08T15:48:06.9653116+08:00",
+      "sha256": "82A083226CF5A53B4EB14011D83BB9905A3C9E738014FA5F40E93AEE4EE67542"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/dom_token_list.obj",
+      "bytes": 1677986,
+      "lastWriteTime": "2026-11-08T15:43:15.4932582+08:00",
+      "sha256": "3962A6580591415AC84D011DAC8025DBB99A215469A5546F2B7CB6300838A530"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/mutation_observer.obj",
+      "bytes": 7815712,
+      "lastWriteTime": "2026-11-08T14:24:11.9152697+08:00",
+      "sha256": "3FA1DE15BDC4C1630E9D24BC2E0C42C6A86F5B3BAF92C60E03125C72EABE266A"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/canvas_paint_event.obj",
+      "bytes": 1997530,
+      "lastWriteTime": "2026-11-08T14:06:29.0569413+08:00",
+      "sha256": "308EF634459146B6BBEFF29AB34EEC3015B4D3C551515706E292536082491FE7"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+      "bytes": 8563076,
+      "lastWriteTime": "2026-11-08T14:06:30.3051837+08:00",
+      "sha256": "D02319CB96927AB968B4F67AF42DC396E7629858BFC5B18515B4114AD39899D5"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/scroll_target_group_scope.obj",
+      "bytes": 10874967,
+      "lastWriteTime": "2026-11-08T13:40:42.0932837+08:00",
+      "sha256": "550032992C956BCC60AA32B8C9F107684DD6F6B51F27496FC2E45645CCED34F5"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/node.obj",
+      "bytes": 14304794,
+      "lastWriteTime": "2026-11-08T15:47:12.4863636+08:00",
+      "sha256": "D9D574DAFEAE1A33D828C9DD16726C4B2C068C54BDDA651EBE1833E83801ADF1"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/display_lock_utilities.obj",
+      "bytes": 11758141,
+      "lastWriteTime": "2026-11-08T14:16:55.2436687+08:00",
+      "sha256": "3779266559DEE0E1CB2E48942B07DAF25615A9A6F500D81778CC5B9EA901E571"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/view_transition_style_tracker.obj",
+      "bytes": 19222844,
+      "lastWriteTime": "2026-11-08T13:25:30.6856011+08:00",
+      "sha256": "4B958CE33393F1015200D998A9C35B95BC7D602B8BF06917801935824D215BBD"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/presentation_attribute_style.obj",
+      "bytes": 3477613,
+      "lastWriteTime": "2026-11-08T13:39:06.3138266+08:00",
+      "sha256": "E02E500F278DE460AB4A7429BA76F991B5699167E19E3374C8549C1676DA3CF3"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/markup_accumulator.obj",
+      "bytes": 4239824,
+      "lastWriteTime": "2026-11-08T14:27:41.5997154+08:00",
+      "sha256": "BE22870992F32E626428984D9BE5B9BDA36D93C29728FED09C55C4D43F4A7FD3"
+    },
+    {
+      "path": "obj/third_party/blink/renderer/core/core/composition_event.obj",
+      "bytes": 494885,
+      "lastWriteTime": "2026-10-27T05:07:14.7431496+08:00",
+      "sha256": "627990D959D3FE49750AA770B3F2D30B992D943F6AE15BA75F3A5865C12E6D77"
+    }
+  ],
+  "quarantine_local_directory": "out/Debug/pyscript-phase2-corrupt-objects",
+  "scan_scope": "5040 direct .obj inputs from blink_core.dll.rsp, not a complete check of all libraries or arbitrary object contents",
+  "initial_diagnostics": {
+    "section_names": [
+      "check_pseudo_has_fast_reject_filter.obj",
+      "dom_token_list.obj"
+    ],
+    "coff_structure": {
+      "object_files_checked": 5040,
+      "elapsed_seconds": 110.84,
+      "problems": [
+        {
+          "file": "obj/third_party/blink/renderer/core/core/mutation_observer.obj",
+          "errors": [
+            "Section 9995: relocation 2 has invalid symbol 3606492737 or type 63936",
+            "Section 9996: relocation 0 has invalid symbol 2513260102 or type 21634",
+            "Section 9997: relocation 0 has invalid symbol 3081597014 or type 34195",
+            "Section 9998: relocation 0 has invalid symbol 3500345231 or type 7449",
+            "Section 9999: relocation 0 has invalid symbol 1049604227 or type 2645"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/canvas_paint_event.obj",
+          "errors": [
+            "Section 2576: relocation 5 has invalid symbol 3932 or type 26634",
+            "Section 2577: relocation 0 has invalid symbol 1589786445 or type 24102",
+            "Section 2578: relocation 0 has invalid symbol 2362780171 or type 41736",
+            "Section 2579: relocation 0 has invalid symbol 1380776070 or type 36361",
+            "Section 2580: relocation 0 has invalid symbol 2758961496 or type 26769"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+          "errors": [
+            "Section 534: relocation 0 has invalid symbol 1976212613 or type 27209",
+            "Section 535: relocation 0 has invalid symbol 2622102407 or type 6850",
+            "Section 536: relocation 0 has invalid symbol 1928433700 or type 28672",
+            "Section 537: relocation 0 has invalid symbol 833688826 or type 29441",
+            "Section 538: relocation 0 has invalid symbol 2714203186 or type 8786"
+          ]
+        }
+      ]
+    },
+    "symbol_strings": {
+      "object_files_checked": 5040,
+      "elapsed_seconds": 11.38,
+      "problems": [
+        {
+          "file": "obj/third_party/blink/renderer/core/core/scroll_target_group_scope.obj",
+          "string_table_offset": 9744277,
+          "first_non_ascii_printable_offset": 872552,
+          "sample_hex": "697361626c6564436865636b696e67506f6c6963794035364056436f6d2987bf4b19c12462a2ffea1623f8259047f4460afcedc23c728f9d2a1c94ded21503d8bd095ae38dc92407648b411655b77f02eaf1923b3e67cd99778f"
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/node.obj",
+          "string_table_offset": 13070125,
+          "first_non_ascii_printable_offset": 1016015,
+          "sample_hex": "405641746f6d6963537472696e6740626c696e6b404056436f756e746572ff338b07b61b284596a3aadfa34d92a7608245b091dd723fa0c30e8bf18160bf30e1630716e4d945cbc551a6d924bd97900f54bf3ed912eb82bfbcf2"
+        }
+      ]
+    },
+    "codeview_records": {
+      "object_files_checked": 5040,
+      "elapsed_seconds": 62.92,
+      "problems": [
+        {
+          "file": "obj/third_party/blink/renderer/core/core/display_lock_utilities.obj",
+          "errors": [
+            "types: invalid record kind 438b at section-relative 371385"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/view_transition_style_tracker.obj",
+          "errors": [
+            "types: invalid record kind 9752 at section-relative 1020688"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/presentation_attribute_style.obj",
+          "errors": [
+            "types: invalid record kind 5f21 at section-relative 11920"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/markup_accumulator.obj",
+          "errors": [
+            "types: invalid record kind 38c6 at section-relative 1631460"
+          ]
+        },
+        {
+          "file": "obj/third_party/blink/renderer/core/core/composition_event.obj",
+          "errors": [
+            "types: invalid record size 48808 at section-relative 224336"
+          ]
+        }
+      ]
+    }
+  },
+  "rebuilt_object_checks": {
+    "coff_structure": {
+      "object_files_checked": 12,
+      "elapsed_seconds": 0.33,
+      "problems": []
+    },
+    "symbol_strings": {
+      "object_files_checked": 12,
+      "elapsed_seconds": 0.05,
+      "problems": []
+    },
+    "codeview_records": {
+      "object_files_checked": 12,
+      "elapsed_seconds": 0.33,
+      "problems": []
+    }
+  },
+  "local_rebuild_logs": [
+    "out/Debug/pyscript-phase2-object-rebuild.log",
+    "out/Debug/pyscript-phase2-object-rebuild-additional.log",
+    "out/Debug/pyscript-phase2-object-rebuild-strings.log",
+    "out/Debug/pyscript-phase2-object-rebuild-codeview.log"
+  ],
+  "limitations": "These checks identify malformed tables and records; they do not prove every byte of an object is correct. Final linking and executable tests are separate validation steps."
+}

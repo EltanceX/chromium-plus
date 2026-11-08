@@ -1,0 +1,38 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2166575s
+load siso config done 12.0703ms
+schedule pending:1+ready:0 (node:441009 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441009 edge:2)
+build start: Ready 507 Pending 9530
+[0/5] 29.13s S CXX obj/third_party/blink/renderer/core/core/composition_event.obj
+[0/5] 29.13s S CXX obj/third_party/blink/renderer/core/core/markup_accumulator.obj
+[0/5] 29.13s S CXX obj/third_party/blink/renderer/core/core/display_lock_utilities.obj
+[0/5] 29.13s S CXX obj/third_party/blink/renderer/core/core/view_transition_style_tracker.obj
+[0/5] 29.13s S CXX obj/third_party/blink/renderer/core/core/presentation_attribute_style.obj
+[0/5] 33.68s F CXX obj/third_party/blink/renderer/core/core/composition_event.obj
+[1/5] 34.94s F CXX obj/third_party/blink/renderer/core/core/presentation_attribute_style.obj
+[2/5] 39.75s F CXX obj/third_party/blink/renderer/core/core/markup_accumulator.obj
+[3/5] 1m05.05s F CXX obj/third_party/blink/renderer/core/core/display_lock_utilities.obj
+[4/5] 1m14.75s F CXX obj/third_party/blink/renderer/core/core/view_transition_style_tracker.obj
+build finished
+
+	
+noexec:0 local:5 remote:0 cache:0 skip:10032
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 359(err:6) / r:89(err:0) 38.68MiB / w:0(err:0) 0B
+
+
+
+1m15.36s Build Succeeded: 5 steps - 0.07/s
+shutdown cloud logging/monitoring done 0s

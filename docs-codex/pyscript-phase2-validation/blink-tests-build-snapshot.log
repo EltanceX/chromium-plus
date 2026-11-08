@@ -1,0 +1,62 @@
+Partial build snapshot (last 60 lines); not a final result.
+Full local log: out/Debug/pyscript-phase2-blink-tests-build.log
+[39/3632] 58.61s F CXX obj/components/viz/test/test_support/test_context_provider.obj
+[40/3632] 58.75s F CXX obj/components/viz/test/test_support/mock_compositor_frame_sink_client.obj
+[41/3632] 59.54s F CXX obj/media/base/win/test_support/d3d12_video_mocks.obj
+[42/3632] 1m00.17s F CXX obj/components/viz/test/test_support/overlay_candidate_matchers.obj
+[43/3632] 1m00.60s F CXX obj/components/viz/test/test_support/gl_scaler_test_util.obj
+[44/3632] 1m03.17s F CXX obj/components/viz/test/test_support/fake_output_surface.obj
+[45/3632] 1m03.65s F CXX obj/components/viz/test/test_support/draw_quad_matchers.obj
+[46/3632] 1m04.19s F CXX obj/components/viz/test/test_support/delegated_ink_point_renderer_skia_for_test.obj
+[47/3632] 1m04.64s F CXX obj/components/viz/test/test_support/test_frame_sink_manager.obj
+[48/3632] 1m05.29s F CXX obj/components/viz/test/test_support/mock_display_client.obj
+[49/3632] 1m05.96s F CXX obj/components/viz/test/test_support/fake_surface_observer.obj
+[50/3632] 1m06.42s F CXX obj/components/viz/test/test_support/test_latest_local_surface_id_lookup_delegate.obj
+[51/3632] 1m06.83s F CXX obj/components/viz/test/test_support/fake_external_begin_frame_source.obj
+[52/3632] 1m07.22s F CXX obj/components/viz/test/test_support/begin_frame_source_test.obj
+[53/3632] 1m08.71s F CXX obj/components/viz/test/test_support/fake_display_client.obj
+[54/3632] 1m08.78s F CXX obj/third_party/win_virtual_display/controller/controller/display_driver_controller.obj
+[55/3632] 1m08.78s S LIB obj/third_party/win_virtual_display/controller/controller.lib
+[55/3632] 1m08.81s F LIB obj/components/metrics/test_support.lib
+[56/3632] 1m09.11s F LIB obj/gpu/test_support.lib
+[57/3632] 1m09.31s F CXX obj/components/viz/test/test_support/fake_host_frame_sink_client.obj
+[58/3632] 1m09.42s F LIB obj/components/prefs/test_support.lib
+[59/3632] 1m09.56s F RUST obj/base/librun_loop_40cec81c.rlib obj/base/librun_loop_40cec81c.rmeta obj/base/run_loop.rustflags.json obj/base/run_loop.rsp.rust
+[60/3632] 1m09.76s S RUST obj/base/libsequenced_task_runner_40cec81c.rlib obj/base/libsequenced_task_runner_40cec81c.rmeta obj/base/sequenced_task_runner.rustflags.json obj/base/sequenced_task_runner.rsp.rust
+[60/3632] 1m11.64s F CXX obj/components/viz/test/test_support/gpu_host_impl_test_api.obj
+[61/3632] 1m12.07s F CXX obj/components/viz/test/test_support/host_frame_sink_manager_test_api.obj
+[62/3632] 1m14.10s F RUST obj/mojo/public/rust/mojom_value_parser/libmojom_value_parser_core_34eeb95b.rlib obj/mojo/public/rust/mojom_value_parser/libmojom_value_parser_core_34eeb95b.rmeta obj/mojo/public/rust/mojom_value_parser/mojom_value_parser_core.rustflags.json obj/mojo/public/rust/mojom_value_parser/mojom_value_parser_core.rsp.rust
+[63/3632] 1m14.18s S RUST obj/mojo/public/rust/mojom_value_parser/libmojom_value_parser_34eeb95b.rlib obj/mojo/public/rust/mojom_value_parser/libmojom_value_parser_34eeb95b.rmeta obj/mojo/public/rust/mojom_value_parser/mojom_value_parser.rustflags.json obj/mojo/public/rust/mojom_value_parser/mojom_value_parser.rsp.rust
+[63/3632] 1m14.89s F CXX obj/media/base/test_support/test_data_util.obj
+[64/3632] 1m15.05s F CXX obj/media/base/test_support/fake_localized_strings.obj
+[65/3632] 1m15.85s F CXX obj/components/viz/test/test_support/test_shared_image_interface_provider.obj
+[66/3632] 1m16.60s F CXX obj/components/viz/test/test_support/fake_compositor_frame_sink_client.obj
+[67/3632] 1m17.36s F CXX obj/media/base/test_support/mock_demuxer_host.obj
+[68/3632] 1m17.45s F CXX obj/media/base/win/test_support/mf_mocks.obj
+[69/3632] 1m17.98s F CXX obj/components/ukm/test_support/gmock_matchers.obj
+[70/3632] 1m17.98s S LIB obj/components/ukm/test_support.lib
+[70/3632] 1m19.04s F CXX obj/base/run_loop_cxx_generated/run_loop.rs.obj
+[71/3632] 1m19.04s S LIB obj/base/run_loop_cxx_generated.lib
+[71/3632] 1m19.22s F CXX obj/media/base/test_support/fake_audio_render_callback.obj
+[72/3632] 1m20.79s F CXX obj/mojo/public/rust/bindings/cpp_router_handle_cc/associated_endpoint_rust_adapter.obj
+[73/3632] 1m21.67s F CXX obj/components/viz/test/test_support/fake_skia_output_surface.obj
+[74/3632] 1m21.76s F CXX obj/media/base/test_support/test_helpers.obj
+[75/3632] 1m21.91s F CXX obj/media/audio/test_support/test_audio_thread.obj
+[76/3632] 1m22.89s F CXX obj/media/formats/test_support/opus_packet_builder.obj
+[77/3632] 1m23.24s F CXX obj/components/viz/test/test_support/stub_gpu_service.obj
+[78/3632] 1m23.74s F CXX obj/media/gfx/test_support/video_frame_test_utils.obj
+[79/3632] 1m25.86s F CXX obj/components/viz/test/test_support/test_output_surface_provider.obj
+[80/3632] 1m27.47s F CXX obj/ui/display/test_support/screen_util_win.obj
+[81/3632] 1m28.97s F CXX obj/media/formats/test_support/stream_parser_test_base.obj
+[82/3632] 1m29.77s F CXX obj/media/formats/test_support/cluster_builder.obj
+[83/3632] 1m30.50s F CXX obj/media/audio/test_support/audio_device_info_accessor_for_tests.obj
+[84/3632] 1m31.12s F CXX obj/media/audio/test_support/audio_system_test_util.obj
+[85/3632] 1m31.67s F CXX obj/media/gfx/test_support/mock_mappable_shared_image_video_frame_pool.obj
+[86/3632] 1m32.67s F CXX obj/media/video/test_support/fake_video_encode_accelerator.obj
+[87/3632] 1m33.15s F CXX obj/ui/events/test_support/test_event_source.obj
+[88/3632] 1m33.47s F CXX obj/media/audio/test_support/mock_audio_source_callback.obj
+[89/3632] 1m34.89s F CXX obj/ui/display/test_support/test_screen.obj
+[90/3632] 1m36.22s F CXX obj/media/filters/test_support/fake_video_decoder.obj
+[91/3632] 1m36.48s F CXX obj/media/audio/test_support/audio_debug_recording_test.obj
+[92/3632] 1m36.60s F CXX obj/media/video/test_support/mock_video_encode_accelerator.obj
+[93/3632] 1m38.06s F CXX obj/media/base/win/test_support/d3d12_mocks.obj

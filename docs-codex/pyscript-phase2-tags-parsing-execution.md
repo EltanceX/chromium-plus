@@ -3,7 +3,7 @@
 - 日期：2026-11-08（Asia/Shanghai）。
 - 工作区：`C:\src\src`，分支 `codex/kernel-debug-settings`。
 - 实施依据：[第一版方案](pyscript-native-python-mvp-implementation.md)的阶段二。
-- 状态：实现与测试已加入，定向编译与运行时回归通过；恢复构建时已修复 StyleAdjuster 对新元素类型的穷举遗漏。当前优先构建 Chrome，新增 Blink 测试、WPT 和网页端验证尚未运行，阶段二运行验收未完成。
+- 状态：实现与测试已加入，Chrome 最终增量构建通过；新增浏览器端到端检查 26 / 26、阶段一 Renderer 沙箱回归 2 / 2 通过。新增 Blink 单元测试与 WPT 尚未运行，阶段二运行验收未完成。
 - 已按“关键部分完成后可提交”的授权建立阶段一依赖提交 `c53586b2f7`；阶段二实现接入单独提交，验证中的后续修复再分别记录。既有 MCJE 修复保留在工作区。
 
 ## 1. 启动与示例
@@ -90,41 +90,56 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-smoke.json
 
 新增 SimTest 使用记录型执行器检查 Blink 行为；WPT 检查 RAWTEXT、序列化、片段、预加载和默认关闭行为；端到端脚本使用真实本地 HTTP 服务、独立临时 Profile、CDP 日志与请求记录，保留 Renderer 沙箱。
 
-端到端覆盖多块共享变量、中文、错误恢复、defer / Python / DCL 顺序、源码快照、动态与子框架拒绝、分块与 CRLF、缺失关闭标签、源码和块数上限、输出截断、CSP、禁用脚本、origin 配置和导航隔离。prerender 通过 Blink SimTest 验证。
+端到端覆盖多块共享变量、中文、错误恢复、defer / Python / DCL 顺序、源码快照、动态与子框架拒绝、分块与 CRLF、缺失关闭标签、源码和块数上限、输出截断、CSP、禁用脚本、origin 配置和导航隔离。prerender 用例已加入 Blink SimTest，尚未运行。
 
 ## 6. 实际验证结果
 
 | 检查 | 当前结果 |
 | --- | --- |
-| 新元素、控制器、Chrome 执行器及初版 Blink 测试源码 | 定向编译通过；初版 10 个测试仅编译，未运行 |
+| 新元素、控制器、Chrome 执行器及 Blink 测试源码 | 定向编译通过；当前 13 个 Blink 用例尚未运行 |
 | Document、tree builder、document parser、tokenizer、序列化、元素工厂及 Chrome Browser / Renderer 接入点 | 8 个目标定向编译通过 |
 | `python_runtime_unittests` 回归 | 9 / 9 通过 |
 | GN 头文件依赖检查 | Chrome Renderer、Chrome common_lib、Blink Core 均通过 |
 | include 规则检查 | Chrome Renderer 与 Blink core/html 均通过 |
 | C++ 格式、新端到端脚本语法、`git diff --check` | 通过；既有 MCJE 文件仅提示 CRLF 将被转换为 LF |
 | 原 `chrome blink_unittests blink_tests` 完整构建 | 55 分钟后因 StyleAdjuster 缺少新元素的穷举分支而失败，已修复并通过定向复编 |
-| 当前 `chrome` 构建 | 正在后台进行，尚未完成链接；目前未见新的编译错误 |
+| 当前 `chrome` 构建 | 通过；最终增量构建完成两个主要 DLL 的链接，耗时 2m27.90s |
+| `blink_unittests blink_tests` 构建 | Chrome 构建与浏览器检查结束后已启动，当前留在后台 |
 | `HTMLPyScriptElementTest.*` | 当前 13 个用例的源码已通过定向编译，未运行 |
 | 两个新增 WPT 文件 | 共 7 个子测试，未运行 |
-| 新浏览器端到端脚本 | 26 项检查已写入，未运行 |
-| 阶段一 Renderer smoke、chromiumPlus 等浏览器回归 | 本轮尚未重跑 |
+| 新浏览器端到端脚本 | 26 / 26 通过；默认网络服务配置，Renderer 沙箱开启 |
+| 阶段一 Renderer smoke | 2 / 2 通过；默认网络服务配置，Renderer 沙箱开启 |
+| chromiumPlus 完整浏览器回归 | 进程内网络服务诊断模式 15 / 15 通过；默认模式超时，日志出现独立 Network Service 崩溃 / 重启 |
 
 首轮定向编译发现 `HeapVector<WeakMember<...>>` 不受支持，以及 `HTMLDocumentParser` 没有对应的 DowncastTraits。已改为“强队列项 + 弱元素引用”，并让 DocumentParser 默认拒绝、HTMLDocumentParser 显式提供原始输入资格，再次编译通过。首次完整构建为提前验证接口而主动停止，定向编译完成后已恢复完整构建。
 
 2026-11-08 恢复工作时检查到，随后进行的完整构建因 `StyleAdjuster::GetElementTypeCacheKey()` 的穷举遗漏停止。`HTMLPyScriptElement` 没有额外的样式调整行为，已将它归入既有的普通 HTML 元素缓存分组。修复后的 `style_adjuster.obj` 和包含全部 13 个用例的测试源码在同一次定向构建中通过；CPython 运行时再次回归 9 / 9 通过。暂存的 775 个上游文件也逐字节校验通过，包括被全局忽略规则排除、需要显式加入的 `_freeze_module.vcxproj`。
 
-为先取得可运行浏览器产物，当前后台命令调整为：
+为先取得可运行浏览器产物，本轮先单独构建 Chrome：
 
 ```powershell
 autoninja -C out/Debug chrome *> out/Debug/pyscript-phase2-chrome-build.log
 ```
 
-本轮观察到的 siso 进程 PID 为 `4084`；上次交付时的 `16328` 已结束。PID 只表示观察值，不应在后续会话中未经确认就用来操作进程。继续工作时先检查进程和实时日志，避免在同一输出目录并发启动构建。Chrome 构建成功后先运行浏览器 smoke，再顺序构建 `blink_unittests blink_tests` 并运行第 5 节测试与既有浏览器回归。后续仍需确认构建过程中修改的源码已被最终增量构建覆盖。
+这次大构建在 17:09 结束，耗时 1h27m27.97s，共执行 2212 步。随后的最终增量链接发现既有 COFF 对象文件损坏，依次涉及节表、符号表、符号字符串和 CodeView 调试记录。针对 `blink_core.dll.rsp` 中 5040 个直接对象输入进行检查，累计隔离并重新编译 12 份异常对象；重建后的 12 份对象通过上述检查。旧对象保留在 `out/Debug/pyscript-phase2-corrupt-objects/`，未删除源码，也未修改产品代码来绕过链接检查；损坏原因尚未确定。
+
+重建后再次使用标准 `autoninja -C out/Debug chrome` 构建，在 17:52 成功完成最终增量，执行 4 步，耗时 2m27.90s，包含 `blink_core.dll`、V8 context snapshot、Chrome Browser 接入对象与 `chrome.dll`。本轮实际运行的浏览器检查基于该最终产物，不能用较早的大构建成功代替这一步。
+
+新增端到端脚本 26 / 26 通过，实际覆盖内联 Python、共享 globals、异常后继续执行、defer / Python / DCL 顺序、不可变源码、解析边界、预算、CSP 与 nonce、防止动态及子框架执行、精确来源配置、默认关闭和导航隔离。阶段一固定诊断回归 2 / 2 通过。这两项均使用默认网络服务配置并保持 Renderer 沙箱开启，没有使用 `--no-sandbox` 或放宽 CSP。
+
+chromiumPlus 默认模式回归在上报前超时，日志再次出现独立 Network Service 崩溃 / 重启。沿用既有诊断参数 `--enable-features=NetworkServiceInProcess2` 后 15 / 15 通过，未更改产品网络服务配置；默认模式仍记录为失败。
+
+Chrome 构建与上述浏览器检查结束后，已顺序启动 `autoninja -C out/Debug blink_unittests blink_tests`，实时日志为 `out/Debug/pyscript-phase2-blink-tests-build.log`。按用户之前的选择保留耗时构建在后台；成功后再执行第 5 节的 13 个 Blink 用例与 7 个 WPT 子测试。继续工作时先检查实时日志和进程，避免在同一输出目录并发启动构建。
 
 证据：
 
 - [交付状态与待验证清单](pyscript-phase2-validation/results-2026-11-08.json)。
 - [本轮恢复记录](pyscript-phase2-validation/resume-results-2026-11-08.json)。
+- [最终 Chrome 构建、浏览器验证与后台测试构建状态](pyscript-phase2-validation/build-progress-results-2026-11-08.json)。
+- [生成对象恢复与复查](pyscript-phase2-validation/generated-object-recovery-2026-11-08.json)、[原大构建末尾](pyscript-phase2-validation/chrome-original-build-tail.log)和[最终增量构建](pyscript-phase2-validation/chrome-final-build.log)。
+- [26 项浏览器检查](pyscript-phase2-validation/browser-smoke.json)与[执行日志](pyscript-phase2-validation/browser-smoke.log)。
+- [阶段一 Renderer 沙箱回归](pyscript-phase2-validation/runtime-renderer-regression.json)。
+- [chromiumPlus 诊断模式回归](pyscript-phase2-validation/chromium-plus-in-process.json)与[默认模式失败日志](pyscript-phase2-validation/chromium-plus-default-failure.log)。
 - [StyleAdjuster 构建失败诊断](pyscript-phase2-validation/style-build-failure.log)与[修复及 13 用例源码定向构建](pyscript-phase2-validation/style-and-tests-build.log)。
 - [本轮运行时回归](pyscript-phase2-validation/resume-runtime-unittests.json)与[日志](pyscript-phase2-validation/resume-runtime-unittests.log)。
 - [定向构建成功日志](pyscript-phase2-validation/targeted-build.log)。
@@ -133,4 +148,4 @@ autoninja -C out/Debug chrome *> out/Debug/pyscript-phase2-chrome-build.log
 - [首次定向构建失败及诊断](pyscript-phase2-validation/initial-targeted-build-failure.log)。
 - [完整构建交付时快照](pyscript-phase2-validation/background-build-snapshot.log)；实时日志保存在 `out/Debug/pyscript-phase2-build-final.log`，快照不是最终构建结果。
 
-未设置任何预期失败来掩盖结果。原始交付快照保留历史观察值；本轮结果以恢复记录为准。实现提交和编译通过均不表示尚未运行的网页检查已经通过。
+未设置任何预期失败来掩盖结果。原始交付与恢复快照保留历史观察值；本次最终构建和浏览器结果见上述新增证据。浏览器检查通过不表示尚未运行的 Blink 单元测试与 WPT 已通过。

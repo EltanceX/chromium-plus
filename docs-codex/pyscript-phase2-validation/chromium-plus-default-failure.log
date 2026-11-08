@@ -1,0 +1,21 @@
+[11396:7648:1108/175242.622:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[11396:7648:1108/175242.761:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition(). 
+
+DevTools listening on ws://127.0.0.1:54652/devtools/browser/a14d4741-5071-4f39-a10c-5e01f7924078
+[17676:12816:1108/175243.649:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11396:7648:1108/175244.508:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+Traceback (most recent call last):
+  File "C:\src\src\chrome\test\chromium_plus_smoke_test.py", line 142, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\src\src\chrome\test\chromium_plus_smoke_test.py", line 130, in main
+    raise RuntimeError('Browser exited or timed out before reporting results')
+RuntimeError: Browser exited or timed out before reporting results
+[11396:7648:1108/175244.510:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[11396:7648:1108/175245.019:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[11396:7648:1108/175245.173:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: �ܾ����ʡ� (0x5)
+[17676:12816:1108/175245.491:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[17676:12816:1108/175245.491:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11396:6180:1108/175246.140:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[11396:6180:1108/175246.176:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+

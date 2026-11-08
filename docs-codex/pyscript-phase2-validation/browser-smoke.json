@@ -1,0 +1,1294 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "sandboxed Python, shared globals, immutable source, errors and DCL order",
+      "passed": true,
+      "elapsedMs": 1674,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/basic",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 9,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false,
+          "result": "unchanged"
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "info",
+            "text": "Python 世界 42\nliteral &amp; <img src=\"/forbidden.png\">\n<script src=\"/forbidden.js\"></script>\n<link rel=\"stylesheet\" href=\"/forbidden.css\">\n",
+            "timestamp": 1794131542399.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 2
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "SHARED 43\n",
+            "timestamp": 1794131542401.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 9
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\n  File http://127.0.0.1:53192/basic#pyscript-3, line 1, in <module>\nValueError: phase-two",
+            "timestamp": 1794131542401.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 10
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: invalid syntax (http://127.0.0.1:53192/basic#pyscript-4, line 1) (http://127.0.0.1:53192/basic#pyscript-4:1)",
+            "timestamp": 1794131542402.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 11
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "RECOVERED\n",
+            "timestamp": 1794131542402.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 12
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "js",
+            "text": "JS_DEFERRED"
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "Python 世界 42\nliteral &amp; <img src=\"/forbidden.png\">\n<script src=\"/forbidden.js\"></script>\n<link rel=\"stylesheet\" href=\"/forbidden.css\">\n",
+            "timestamp": 1794131542399.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 2
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "SHARED 43\n",
+            "timestamp": 1794131542401.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 9
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\n  File http://127.0.0.1:53192/basic#pyscript-3, line 1, in <module>\nValueError: phase-two",
+            "timestamp": 1794131542401.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 10
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: invalid syntax (http://127.0.0.1:53192/basic#pyscript-4, line 1) (http://127.0.0.1:53192/basic#pyscript-4:1)",
+            "timestamp": 1794131542402.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 11
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "RECOVERED\n",
+            "timestamp": 1794131542402.155,
+            "url": "http://127.0.0.1:53192/basic",
+            "lineNumber": 12
+          },
+          {
+            "kind": "js",
+            "text": "JS_DCL"
+          }
+        ]
+      }
+    },
+    {
+      "name": "network chunks, CRLF normalization and mixed-case closing tag",
+      "passed": true,
+      "elapsedMs": 440,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/chunks",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794131542559.155,
+            "url": "http://127.0.0.1:53192/favicon.ico",
+            "networkRequestId": "13576.8"
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "CHUNK 世界 &amp;\n",
+            "timestamp": 1794131542828.155,
+            "url": "http://127.0.0.1:53192/chunks",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794131542559.155,
+            "url": "http://127.0.0.1:53192/favicon.ico",
+            "networkRequestId": "13576.8"
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "CHUNK 世界 &amp;\n",
+            "timestamp": 1794131542828.155,
+            "url": "http://127.0.0.1:53192/chunks",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "inert input /unclosed",
+      "passed": true,
+      "elapsedMs": 464,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/unclosed",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Missing </pyscript>; block was not executed.",
+            "timestamp": 1794131543224.155,
+            "url": "http://127.0.0.1:53192/unclosed",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Missing </pyscript>; block was not executed.",
+            "timestamp": 1794131543224.155,
+            "url": "http://127.0.0.1:53192/unclosed",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "inert input /unsupported",
+      "passed": true,
+      "elapsedMs": 522,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/unsupported",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 4,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543724.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543725.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543726.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543727.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543724.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543725.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543726.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python blocks support inline source only; src, async, defer and type attributes are not supported.",
+            "timestamp": 1794131543727.155,
+            "url": "http://127.0.0.1:53192/unsupported",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "inert input /write",
+      "passed": true,
+      "elapsedMs": 834,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/write",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 3,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "inert input /write-split",
+      "passed": true,
+      "elapsedMs": 622,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/write-split",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "inert input /removed",
+      "passed": true,
+      "elapsedMs": 481,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/removed",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 0,
+          "display": null,
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "literal closing tag ends RAWTEXT and reports Python syntax error",
+      "passed": true,
+      "elapsedMs": 625,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/literal-end",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: unterminated string literal (detected at line 1) (http://127.0.0.1:53192/literal-end#pyscript-1, line 1) (http://127.0.0.1:53192/literal-end#pyscript-1:1)",
+            "timestamp": 1794131546171.155,
+            "url": "http://127.0.0.1:53192/literal-end",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: unterminated string literal (detected at line 1) (http://127.0.0.1:53192/literal-end#pyscript-1, line 1) (http://127.0.0.1:53192/literal-end#pyscript-1:1)",
+            "timestamp": 1794131546171.155,
+            "url": "http://127.0.0.1:53192/literal-end",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "64 KiB source and 16 block limits",
+      "passed": true,
+      "elapsedMs": 539,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/limits",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 18,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python source exceeds 64 KiB.",
+            "timestamp": 1794131546788.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] At most 16 Python blocks are accepted per document.",
+            "timestamp": 1794131546795.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_0\n",
+            "timestamp": 1794131546869.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_1\n",
+            "timestamp": 1794131546870.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_2\n",
+            "timestamp": 1794131546870.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_3\n",
+            "timestamp": 1794131546871.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_4\n",
+            "timestamp": 1794131546872.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_5\n",
+            "timestamp": 1794131546872.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_6\n",
+            "timestamp": 1794131546873.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_7\n",
+            "timestamp": 1794131546873.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_8\n",
+            "timestamp": 1794131546874.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_9\n",
+            "timestamp": 1794131546874.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_10\n",
+            "timestamp": 1794131546875.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_11\n",
+            "timestamp": 1794131546875.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_12\n",
+            "timestamp": 1794131546876.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_13\n",
+            "timestamp": 1794131546876.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_14\n",
+            "timestamp": 1794131546877.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_15\n",
+            "timestamp": 1794131546877.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python source exceeds 64 KiB.",
+            "timestamp": 1794131546788.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] At most 16 Python blocks are accepted per document.",
+            "timestamp": 1794131546795.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_0\n",
+            "timestamp": 1794131546869.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_1\n",
+            "timestamp": 1794131546870.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_2\n",
+            "timestamp": 1794131546870.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_3\n",
+            "timestamp": 1794131546871.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_4\n",
+            "timestamp": 1794131546872.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_5\n",
+            "timestamp": 1794131546872.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_6\n",
+            "timestamp": 1794131546873.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_7\n",
+            "timestamp": 1794131546873.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_8\n",
+            "timestamp": 1794131546874.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_9\n",
+            "timestamp": 1794131546874.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_10\n",
+            "timestamp": 1794131546875.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_11\n",
+            "timestamp": 1794131546875.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_12\n",
+            "timestamp": 1794131546876.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_13\n",
+            "timestamp": 1794131546876.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_14\n",
+            "timestamp": 1794131546877.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "LIMIT_15\n",
+            "timestamp": 1794131546877.155,
+            "url": "http://127.0.0.1:53192/limits",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bounded output diagnostic",
+      "passed": true,
+      "elapsedMs": 626,
+      "detail": {
+        "logs": [
+          {
+            "source": "other",
+            "level": "info",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "timestamp": 1794131547433.155,
+            "url": "http://127.0.0.1:53192/output-limit",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Python output was truncated at 16 KiB.",
+            "timestamp": 1794131547436.155,
+            "url": "http://127.0.0.1:53192/output-limit",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP none blocks Python",
+      "passed": true,
+      "elapsedMs": 570,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-none",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131547995.155,
+            "url": "http://127.0.0.1:53192/csp-none",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131547995.155,
+            "url": "http://127.0.0.1:53192/csp-none",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP elem blocks Python",
+      "passed": true,
+      "elapsedMs": 419,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-elem",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src-elem 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131548506.155,
+            "url": "http://127.0.0.1:53192/csp-elem",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src-elem 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131548506.155,
+            "url": "http://127.0.0.1:53192/csp-elem",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP fallback blocks Python",
+      "passed": true,
+      "elapsedMs": 433,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-fallback",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback. The action has been blocked.",
+            "timestamp": 1794131548932.155,
+            "url": "http://127.0.0.1:53192/csp-fallback",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. Note also that 'script-src' was not explicitly set, so 'default-src' is used as a fallback. The action has been blocked.",
+            "timestamp": 1794131548932.155,
+            "url": "http://127.0.0.1:53192/csp-fallback",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP sandbox blocks Python",
+      "passed": true,
+      "elapsedMs": 530,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-sandbox",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Blocked script execution in 'http://127.0.0.1:53192/csp-sandbox' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.",
+            "timestamp": 1794131549371.155,
+            "url": "http://127.0.0.1:53192/csp-sandbox"
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Blocked script execution in 'http://127.0.0.1:53192/csp-sandbox' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.",
+            "timestamp": 1794131549371.155,
+            "url": "http://127.0.0.1:53192/csp-sandbox"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP nonce allows matching Python source",
+      "passed": true,
+      "elapsedMs": 462,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-nonce",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 2,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-T9usdpO/uTC94dSslvrWX/3w6trtugsq4m65dFsPN78='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131549882.155,
+            "url": "http://127.0.0.1:53192/csp-nonce",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131549951.155,
+            "url": "http://127.0.0.1:53192/csp-nonce",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-T9usdpO/uTC94dSslvrWX/3w6trtugsq4m65dFsPN78='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131549882.155,
+            "url": "http://127.0.0.1:53192/csp-nonce",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131549951.155,
+            "url": "http://127.0.0.1:53192/csp-nonce",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP hash allows matching Python source",
+      "passed": true,
+      "elapsedMs": 570,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-hash",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131550470.155,
+            "url": "http://127.0.0.1:53192/csp-hash",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131550470.155,
+            "url": "http://127.0.0.1:53192/csp-hash",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "CSP report allows matching Python source",
+      "passed": true,
+      "elapsedMs": 569,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/csp-report",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "info",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The policy is report-only, so the violation has been logged but no further action has been taken.",
+            "timestamp": 1794131550959.155,
+            "url": "http://127.0.0.1:53192/csp-report",
+            "lineNumber": 0
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131551028.155,
+            "url": "http://127.0.0.1:53192/csp-report",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "info",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-JN2rSjfJxtMGARF8scN778+CsBQBuZSu+HAo2/yfS+c='), or a nonce ('nonce-...') is required to enable inline execution. The policy is report-only, so the violation has been logged but no further action has been taken.",
+            "timestamp": 1794131550959.155,
+            "url": "http://127.0.0.1:53192/csp-report",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "POLICY_ALLOWED\n",
+            "timestamp": 1794131551028.155,
+            "url": "http://127.0.0.1:53192/csp-report",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "dangling-markup and duplicate attributes cannot borrow a nonce",
+      "passed": true,
+      "elapsedMs": 472,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/nonce-dangling",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 2,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-tirGFdX8laz8umRaK2u3M/7fYCfk3SyUoCc/ZurPszU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131551514.155,
+            "url": "http://127.0.0.1:53192/nonce-dangling",
+            "lineNumber": 0
+          },
+          {
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-lVyi8/TX2F/KN9RYPttBFPLggDmMoOTwUUeSMWBkIB4='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131551515.155,
+            "url": "http://127.0.0.1:53192/nonce-dangling",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-tirGFdX8laz8umRaK2u3M/7fYCfk3SyUoCc/ZurPszU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131551514.155,
+            "url": "http://127.0.0.1:53192/nonce-dangling",
+            "lineNumber": 0
+          },
+          {
+            "kind": "log",
+            "source": "security",
+            "level": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'nonce-allowed''. Either the 'unsafe-inline' keyword, a hash ('sha256-lVyi8/TX2F/KN9RYPttBFPLggDmMoOTwUUeSMWBkIB4='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+            "timestamp": 1794131551515.155,
+            "url": "http://127.0.0.1:53192/nonce-dangling",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "disabled page scripting blocks Python",
+      "passed": true,
+      "elapsedMs": 329,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/simple",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "navigation creates fresh Python globals",
+      "passed": true,
+      "elapsedMs": 400,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/isolated",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "info",
+            "text": "ISOLATED False\n",
+            "timestamp": 1794131552313.155,
+            "url": "http://127.0.0.1:53192/isolated",
+            "lineNumber": 0
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "ISOLATED False\n",
+            "timestamp": 1794131552313.155,
+            "url": "http://127.0.0.1:53192/isolated",
+            "lineNumber": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "same-document navigation does not rerun Python",
+      "passed": true,
+      "elapsedMs": 663
+    },
+    {
+      "name": "default-off",
+      "passed": true,
+      "elapsedMs": 879,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/off",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLUnknownElement",
+          "display": "inline",
+          "nested": true
+        },
+        "logs": [
+          {
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794131557428.8,
+            "url": "http://127.0.0.1:53192/favicon.ico",
+            "networkRequestId": "9728.2"
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "log",
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794131557428.8,
+            "url": "http://127.0.0.1:53192/favicon.ico",
+            "networkRequestId": "9728.2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "missing-origin",
+      "passed": true,
+      "elapsedMs": 648,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/simple",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "wrong-origin",
+      "passed": true,
+      "elapsedMs": 568,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/simple",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "malformed-origin",
+      "passed": true,
+      "elapsedMs": 869,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/simple",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    },
+    {
+      "name": "non-loopback-origin",
+      "passed": true,
+      "elapsedMs": 468,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:53192/simple",
+          "ready": "complete",
+          "chromiumPlus": "0.0.1",
+          "count": 1,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false
+        },
+        "logs": [],
+        "timeline": []
+      }
+    }
+  ],
+  "passed": true,
+  "requests": [
+    "/basic",
+    "/pause.js",
+    "/deferred.js",
+    "/frame",
+    "/favicon.ico",
+    "/chunks",
+    "/unclosed",
+    "/unsupported",
+    "/write",
+    "/write-split",
+    "/removed",
+    "/literal-end",
+    "/limits",
+    "/output-limit",
+    "/csp-none",
+    "/csp-elem",
+    "/csp-fallback",
+    "/csp-sandbox",
+    "/csp-nonce",
+    "/csp-hash",
+    "/csp-report",
+    "/nonce-dangling",
+    "/simple",
+    "/isolated",
+    "/simple",
+    "/simple",
+    "/favicon.ico",
+    "/off",
+    "/simple",
+    "/favicon.ico",
+    "/simple",
+    "/favicon.ico",
+    "/simple",
+    "/favicon.ico",
+    "/simple",
+    "/favicon.ico"
+  ]
+}

@@ -1,0 +1,16 @@
+PASS: page first script and property descriptor
+PASS: mutation, same-document navigation and deletion
+PASS: initial about:blank iframe
+PASS: initial about:blank popup
+PASS: srcdoc first script
+PASS: same-origin iframe first script
+PASS: cross-site iframe first script
+PASS: iframe with restrictive script CSP
+PASS: dedicated classic worker
+PASS: shared classic worker
+PASS: service classic worker
+PASS: dedicated module worker
+PASS: shared module worker
+PASS: service module worker
+PASS: reload restores default before first script
+15/15 checks passed

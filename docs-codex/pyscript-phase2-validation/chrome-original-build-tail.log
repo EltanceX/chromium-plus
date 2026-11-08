@@ -1,0 +1,30 @@
+[2199/2226] 1h25m33.22s F CXX obj/chrome/browser/ui/webui/settings/impl/glic_handler.obj
+[2200/2225] 1h25m34.00s F CXX obj/chrome/chrome_initial/main_dll_loader_win.obj
+[2201/2225] 1h25m34.51s F CXX obj/chrome/browser/ui/views/bookmarks/impl/bookmark_context_menu.obj
+[2202/2224] 1h25m35.41s F CXX obj/chrome/browser/ssl/impl/ssl_config_service_manager.obj
+[2203/2223] 1h25m37.74s F CXX obj/chrome/browser/ui/tab_contents/impl/core_tab_helper.obj
+[2204/2222] 1h25m40.91s F CXX obj/chrome/browser/ui/views/frame/system_menu_model_builder_impl/system_menu_model_builder.obj
+[2205/2221] 1h25m40.94s F CXX obj/chrome/browser/glic/impl/guest_util.obj
+[2206/2218] 1h25m52.37s F CXX obj/chrome/browser/core/browser_process_impl.obj
+[2207/2218] 1h26m04.78s F CXX obj/chrome/browser/core/chrome_browser_main_win.obj
+[2208/2217] 1h26m26.26s F CXX obj/chrome/browser/renderer_context_menu/impl/render_view_context_menu.obj
+[2209/2215] 1h26m26.30s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[2209/2215] 1h27m26.01s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[2210/2215] 1h27m26.02s S LINK initialexe/chrome.exe initialexe/chrome.exe.pdb
+[2210/2215] 1h27m26.72s F LINK initialexe/chrome.exe initialexe/chrome.exe.pdb
+[2210/2215] 1h27m26.72s S ACTION //chrome:reorder_imports(//build/toolchain/win:win_clang_x64)
+[2211/2215] 1h27m27.14s F ACTION //chrome:reorder_imports(//build/toolchain/win:win_clang_x64)
+build finished
+
+	
+noexec:0 local:2212 remote:0 cache:0 skip:95198
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1342451(err:29) / r:3005(err:0) 20.42GiB / w:27(err:0) 2.38MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14   2193(0) 43m57.32s |▂ ▂▂▂▂█|    32.60s | ▂▂▂█▃ |
+   pool=link/3     16(0)     0.00s |█      |    15.63s |  ▃█▃▂ |
+shutdown cloud logging/monitoring done 0s
+
+1h27m27.97s Build Succeeded: 2212 steps - 0.42/s
