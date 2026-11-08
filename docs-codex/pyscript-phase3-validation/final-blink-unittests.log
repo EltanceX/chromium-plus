@@ -1,0 +1,86 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded:HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution:HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup:HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag:HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder:HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag:HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements:HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes:HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument:HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded
+[       OK ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (1863 ms)
+[ RUN      ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution
+[       OK ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (275 ms)
+[ RUN      ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup
+[       OK ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (249 ms)
+[ RUN      ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag
+[       OK ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (233 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder
+[       OK ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (267 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag
+[       OK ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (263 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements
+[       OK ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (280 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes
+[       OK ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (216 ms)
+[ RUN      ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument
+[       OK ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (230 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced
+[       OK ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (258 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (4160 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (4778 ms total)
+[  PASSED  ] 10 tests.
+[1/20] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (1863 ms)
+[2/20] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (275 ms)
+[3/20] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (249 ms)
+[4/20] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (233 ms)
+[5/20] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (267 ms)
+[6/20] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (263 ms)
+[7/20] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (280 ms)
+[8/20] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (216 ms)
+[9/20] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (230 ms)
+[10/20] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (258 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP:HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies:HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython:HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom:HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets:HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles:HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls:HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask:HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction:HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP
+[       OK ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (204 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies
+[       OK ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (151 ms)
+[ RUN      ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython
+[       OK ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (163 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom
+[       OK ] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom (173 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets
+[       OK ] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets (204 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles
+[       OK ] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles (154 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls
+[       OK ] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls (185 ms)
+[ RUN      ] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask
+[       OK ] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask (156 ms)
+[ RUN      ] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction
+[       OK ] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction (155 ms)
+[ RUN      ] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext
+[       OK ] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext (183 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (1739 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (1818 ms total)
+[  PASSED  ] 10 tests.
+[11/20] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (204 ms)
+[12/20] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (151 ms)
+[13/20] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (163 ms)
+[14/20] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom (173 ms)
+[15/20] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets (204 ms)
+[16/20] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles (154 ms)
+[17/20] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls (185 ms)
+[18/20] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask (156 ms)
+[19/20] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction (155 ms)
+[20/20] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext (183 ms)
+SUCCESS: all tests passed.
+Tests took 10 seconds.

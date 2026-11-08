@@ -1,0 +1,49 @@
+vpython3.bat : Using port 'win-win11'
+所在位置 C:\src\src\out\Debug\pyscript-phase3-final-validation.ps1:18 字符: 3
++   & $Program @Arguments *> $Log
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Using port 'win-win11':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Test configuration: <win11, x86, debug>
+View the test results at file://C:\src\src\out\Debug\pyscript-phase3-final-wpt-enabled\layout-test-results/results.html
+Using random order with seed: 1794159490
+Baseline search path: win -> generic
+Using Debug build
+Regular timeout: 30000, slow test timeout: 150000
+Command line: C:\src\src\out\Debug\content_shell.exe --run-web-tests --user-data-dir --disable-system-font-check --enab
+le-blink-features=PythonScript --ignore-certificate-errors-spki-list=GHzeRS4aLf+NeadKdUm+tUlmntyCJI4XyqCVWkDCnoc=,55qC1
+nKu2A88ESbFmk5sTPQS/ScG+8DD7P+2bgFA9iM=,0Rt4mT6SJXojEMHTnKnlJ/hBKMBcI4kteBlhR1eTTdk=,KLy6vv6synForXwI6lDIl+D3ZrMV6Y1EMT
+Y6YpOcAos= --webtransport-developer-mode --touch-events=enabled --enable-crash-reporter --crash-dumps-dir=C:\src\src\ou
+t\Debug\crash-dumps\reports --enable-features=NetworkServiceInProcess2 -
+
+Collecting tests ...
+Generating MANIFEST.json for wpt_internal ...
+Manifest generation completed for '/wpt_internal/' (wpt_internal)
+Parsing expectations ...
+Found 1 test; running 1, skipping 0.
+Checking build ...
+Checking system dependencies ...
+Starting WPTServe ...
+Server running on http://localhost:8001
+Server running on http://localhost:8081
+Server running on http://localhost:8082
+Server running on http://localhost:8093
+Server running on https://localhost:8444
+Server running on https://localhost:8445
+Server running on https://localhost:8446
+Server running on https://localhost:8447
+Server running on https://localhost:9000
+Server running on ws://localhost:9001
+Server running on wss://localhost:9444
+WebTransportH3 server running on https://localhost:11000
+Sharding tests ...
+Running 1 content_shell.
+
+Starting 1 worker ...
+
+Finally stop servers and clean up
+Stopping WPTServe ...
+Looking for new crash logs ...
+Summarizing results ...
+The test ran as expected.

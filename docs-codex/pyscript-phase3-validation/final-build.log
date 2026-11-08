@@ -1,0 +1,75 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2884895s
+load siso config done 12.9845ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:6)
+schedule pending:78348+ready:0 (node:441011 edge:78358)
+ 1.38s schedule pending:97051+ready:10466 (node:441011 edge:107517)
+
+build start: Ready 10466 Pending 97051
+[0/18411] 33.11s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_projection_layer.obj
+[0/18202] 33.12s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_css.obj
+[0/18122] 33.12s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_gpu_texture.obj
+[0/18097] 33.12s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker_registration.obj
+[0/18013] 33.13s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_public_key_credential.obj
+[0/17450] 33.15s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_language_model_tool_error.obj
+[0/17236] 33.17s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_htmlcanvaselement_htmlimageelement_htmlvideoelement_imagebitmap_imagedata_offscreencanvas_videoframe.obj
+[0/16479] 33.23s S CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object_cache_impl.obj
+[0/15832] 33.28s S CXX obj/third_party/blink/renderer/modules/ai/ai/language_model_tool_call.obj
+[0/2215] 36.95s F CXX obj/third_party/blink/renderer/modules/ai/ai/language_model_tool_call.obj
+[1/2214] 39.30s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_language_model_tool_error.obj
+[2/2214] 39.81s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_public_key_credential.obj
+[3/2214] 40.25s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_gpu_texture.obj
+[4/2214] 42.90s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_projection_layer.obj
+[5/2214] 51.20s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker_registration.obj
+[6/2214] 54.69s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_css.obj
+[7/2214] 54.83s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_htmlcanvaselement_htmlimageelement_htmlvideoelement_imagebitmap_imagedata_offscreencanvas_videoframe.obj
+[8/2213] 1m23.16s F CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object_cache_impl.obj
+[9/2208] 1m23.18s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[9/2206] 1m40.07s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[10/2206] 1m40.07s S LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[10/2202] 1m40.55s F LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[11/2175] 1m40.55s S LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[11/2175] 1m40.55s S LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[11/2175] 1m40.56s S LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[11/2175] 1m40.56s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[11/2174] 1m43.50s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[11/2174] 1m43.50s F LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[12/2174] 1m49.97s F LINK blink_heap_unittests.exe blink_heap_unittests.exe.pdb
+[13/2174] 1m54.86s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[14/2173] 1m58.31s F LINK blink_platform_unittests.exe blink_platform_unittests.exe.pdb
+[15/2163] 2m08.29s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[16/1514] 2m08.29s S LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[16/687] 2m08.30s S LINK(DLL) headless_headless_shell_lib.dll headless_headless_shell_lib.dll.lib headless_headless_shell_lib.dll.pdb
+[16/46] 2m08.33s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[16/46] 2m16.95s F LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[17/40] 2m16.98s S LINK content_shell.exe content_shell.exe.pdb
+[17/40] 2m17.05s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[17/40] 2m21.07s F LINK(DLL) headless_headless_shell_lib.dll headless_headless_shell_lib.dll.lib headless_headless_shell_lib.dll.pdb
+[18/32] 2m46.35s F LINK content_shell.exe content_shell.exe.pdb
+[19/30] 3m05.64s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[20/30] 4m20.44s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:21 remote:0 cache:0 skip:107496
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1221(err:19) / r:813(err:0) 14.73GiB / w:9(err:0) 2.30MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3     11(0)     0.45s |█  ▃   |    27.14s |  ▃▅█▃ |
+
+4m21.45s Build Succeeded: 21 steps - 0.08/s
+shutdown cloud logging/monitoring done 0s

@@ -1,0 +1,22 @@
+{
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/radio_button_group_scope.obj",
+      "errors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x3dd000",
+        "Control byte in COFF string table at file offset 0x3dd010"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_abort_signal.obj",
+      "errors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x208000",
+        "Control byte in COFF string table at file offset 0x208001"
+      ]
+    }
+  ],
+  "elapsed_seconds": 9.11
+}

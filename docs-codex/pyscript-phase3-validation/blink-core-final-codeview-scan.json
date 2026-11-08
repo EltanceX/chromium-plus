@@ -1,0 +1,45 @@
+{
+  "object_files_checked": 5040,
+  "elapsed_seconds": 79.39,
+  "problems": [
+    {
+      "file": "obj/third_party/blink/renderer/core/core/local_font_face_source.obj",
+      "errors": [
+        "Section 3330 b'.debug$S': invalid debug signature",
+        "Section 3331 b'.debug$S': invalid debug signature",
+        "Section 3332 b'.debug$S': invalid debug signature",
+        "Section 3333 b'.debug$S': invalid debug signature",
+        "Section 3334 b'.debug$S': invalid debug signature"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/character_iterator.obj",
+      "errors": [
+        "Invalid debug subsection 942ae9f2, size 2045116613 at 220",
+        "Section 2337 b'.debug$S': invalid debug signature",
+        "Section 2338 b'.debug$S': invalid debug signature",
+        "Section 2339 b'.debug$S': invalid debug signature",
+        "Section 2340 b'.debug$S': invalid debug signature"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+      "errors": [
+        "types: invalid record kind bb9b at section-relative 1657012"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/html_microphone_element.obj",
+      "errors": [
+        "types: invalid record kind 26df at section-relative 2051780"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/frame_set_layout_algorithm.obj",
+      "errors": [
+        "symbols: invalid record kind 21ac at section-relative 65012",
+        "Invalid debug subsection cec9896f, size 973100898 at 85164"
+      ]
+    }
+  ]
+}

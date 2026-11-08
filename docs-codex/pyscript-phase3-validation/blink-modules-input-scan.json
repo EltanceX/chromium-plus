@@ -1,0 +1,64 @@
+{
+  "response": "blink_modules.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 60,
+  "directObjects": 4647,
+  "archiveMembers": 1309,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_gpu_texture.obj",
+      "errors": [
+        "Invalid CodeView record at 0x2802c (length 32567, kind 0x272e)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_language_model_tool_error.obj",
+      "errors": [
+        "Invalid CodeView record at 0x71057 (length 13463, kind 0x8172)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_public_key_credential.obj",
+      "errors": [
+        "Invalid CodeView record at 0x19f001 (length 4590, kind 0x7ca8)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker_registration.obj",
+      "errors": [
+        "Invalid CodeView record at 0x216ffe (length 18, kind 0x4838)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_projection_layer.obj",
+      "errors": [
+        "Invalid CodeView record at 0x12cf7b (length 8169, kind 0xbd93)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_css.obj",
+      "errors": [
+        "Invalid CodeView record at 0x656018 (length 49376, kind 0x4ee6)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_htmlcanvaselement_htmlimageelement_htmlvideoelement_imagebitmap_imagedata_offscreencanvas_videoframe.obj",
+      "errors": [
+        "Invalid CodeView record at 0x38400e (length 1650, kind 0x3eb4)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object_cache_impl.obj",
+      "errors": [
+        "Invalid CodeView record at 0x130cfe6 (length 25200, kind 0x657a)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/ai/ai/language_model_tool_call.obj",
+      "errors": [
+        "Invalid CodeView record at 0x4e2ec (length 25261, kind 0x5ddc)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 56.88
+}

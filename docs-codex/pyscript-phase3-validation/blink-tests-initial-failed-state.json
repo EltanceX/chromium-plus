@@ -1,0 +1,35 @@
+{
+    "phase":  3,
+    "status":  "completed-with-failures",
+    "existingBuildProcessId":  5096,
+    "started":  "2026-11-08T23:38:32.2975103+08:00",
+    "updated":  "2026-11-09T01:09:40.8682994+08:00",
+    "steps":  [
+                  {
+                      "name":  "chrome-build",
+                      "exitCode":  0,
+                      "log":  "C:\\src\\src\\out\\Debug\\pyscript-phase3-chrome-build.log"
+                  },
+                  {
+                      "name":  "dom-browser-smoke",
+                      "started":  "2026-11-08T23:39:33.9577266+08:00",
+                      "ended":  "2026-11-08T23:40:22.3438981+08:00",
+                      "exitCode":  0,
+                      "log":  "out/Debug/pyscript-phase3-dom-smoke.log"
+                  },
+                  {
+                      "name":  "phase2-browser-regression",
+                      "started":  "2026-11-08T23:40:22.3478950+08:00",
+                      "ended":  "2026-11-08T23:41:01.5221218+08:00",
+                      "exitCode":  0,
+                      "log":  "out/Debug/pyscript-phase3-phase2-regression.log"
+                  },
+                  {
+                      "name":  "blink-tests-build",
+                      "started":  "2026-11-08T23:41:01.5241401+08:00",
+                      "ended":  "2026-11-09T01:09:40.8405602+08:00",
+                      "exitCode":  1,
+                      "log":  "out/Debug/pyscript-phase3-blink-tests-build.log"
+                  }
+              ]
+}

@@ -1,0 +1,293 @@
+{
+  "observedAt": "2026-11-09T01:22:51.062167+08:00",
+  "cause": "not_determined",
+  "objects": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/local_font_face_source.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\local_font_face_source.obj",
+      "originalLength": 3984078,
+      "originalModifiedAt": "2026-11-08T21:40:38.459788+08:00",
+      "originalSha256": "70369f9178e734bd754c59aa3fb317c89eb3733ab6a181dda8f8573198569962",
+      "diagnostics": [
+        "Section 3329: relocation 0 has invalid symbol 1973605000 or type 13385",
+        "Section 3330: relocation 0 has invalid symbol 4061044722 or type 54018",
+        "Section 3331: relocation 0 has invalid symbol 3948993803 or type 6614",
+        "Section 3332: relocation 0 has invalid symbol 375223127 or type 22487",
+        "Section 3333: relocation 0 has invalid symbol 2254870542 or type 24634",
+        "Section 3330 b'.debug$S': invalid debug signature",
+        "Section 3331 b'.debug$S': invalid debug signature",
+        "Section 3332 b'.debug$S': invalid debug signature",
+        "Section 3333 b'.debug$S': invalid debug signature",
+        "Section 3334 b'.debug$S': invalid debug signature"
+      ],
+      "rebuiltSha256": "ef1a911246c4bac48c85ef9ccfca757fae551f2023f73ff504455f5b0e75b124",
+      "rebuiltLength": 3984078,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_parser.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\css_parser.obj",
+      "originalLength": 3727136,
+      "originalModifiedAt": "2026-11-08T21:19:52.534842+08:00",
+      "originalSha256": "a140d9e34681789a53ea085b29484775264eca320d99ae163098410780381789",
+      "diagnostics": [
+        "Symbol 2102: invalid section 9340, total 5644",
+        "Symbol 2188: invalid section 13071, total 5644",
+        "Symbol 2428: invalid section 65452, total 5644",
+        "Symbol 2524: invalid section 58688, total 5644",
+        "Symbol 2745: invalid section 62180, total 5644"
+      ],
+      "rebuiltSha256": "0620663d5a84d6f80e224d8a7efe96f56be15a0b3cf94e272d2be2c755dc7f9e",
+      "rebuiltLength": 3727136,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/whitespace_attacher.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\whitespace_attacher.obj",
+      "originalLength": 7236524,
+      "originalModifiedAt": "2026-11-08T13:27:53.901365+08:00",
+      "originalSha256": "aa79e35c8c827cc97b49cee2ab53a2fa362fca03da825d6ee9beaf1204945c18",
+      "diagnostics": [
+        "Invalid string table extent"
+      ],
+      "rebuiltSha256": "2fca88a8dc41599d7ce8e29d8894132e48dbb934995e3f751c35e528f3e8b147",
+      "rebuiltLength": 7236524,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/character_iterator.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\character_iterator.obj",
+      "originalLength": 1848959,
+      "originalModifiedAt": "2026-11-08T16:10:40.021873+08:00",
+      "originalSha256": "91d3d5721a83d1ca5796164e87715ebc6e3e92452b7378082cd3e0d37c898cea",
+      "diagnostics": [
+        "Section 2336: relocation 0 has invalid symbol 1704158613 or type 62860",
+        "Section 2337: relocation 0 has invalid symbol 334738127 or type 60604",
+        "Section 2338: relocation 0 has invalid symbol 1108220034 or type 44956",
+        "Section 2339: relocation 0 has invalid symbol 2358351104 or type 61446",
+        "Section 2340: relocation 0 has invalid symbol 3974573792 or type 1711",
+        "Invalid debug subsection 942ae9f2, size 2045116613 at 220",
+        "Section 2337 b'.debug$S': invalid debug signature",
+        "Section 2338 b'.debug$S': invalid debug signature",
+        "Section 2339 b'.debug$S': invalid debug signature",
+        "Section 2340 b'.debug$S': invalid debug signature"
+      ],
+      "rebuiltSha256": "54a41d2f5f249aedb1d6ed0d14f7443b7e370d7c3fa0644f7c0328d48ea0b738",
+      "rebuiltLength": 1848959,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/local_frame_view.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\local_frame_view.obj",
+      "originalLength": 39102422,
+      "originalModifiedAt": "2026-11-08T21:53:42.586397+08:00",
+      "originalSha256": "adbb2c6f5e330499eb75384d2fa1d7085318fa1f46ca44818a1834f6e824ac9e",
+      "diagnostics": [
+        "Symbol 62563: invalid section 49980, total 47863",
+        "Symbol 62793: invalid section 56825, total 47863",
+        "Symbol 62991: invalid section 64640, total 47863",
+        "Symbol 63510: invalid section 59601, total 47863",
+        "Symbol 64081: invalid section 61858, total 47863"
+      ],
+      "rebuiltSha256": "c9497dd1e17a2fdab150b1b5f6f6b12b3d43b55e87ee072d857c885ea583031a",
+      "rebuiltLength": 39102422,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\html_details_element.obj",
+      "originalLength": 8563076,
+      "originalModifiedAt": "2026-11-08T17:38:58.013833+08:00",
+      "originalSha256": "cb091e2d220364729cc81fc78e47f8e08fc8a3cc57bf107d104f2be6e8e2c1e7",
+      "diagnostics": [
+        "types: invalid record kind bb9b at section-relative 1657012"
+      ],
+      "rebuiltSha256": "e7ddc672919635b19d05be73fada63733482d656499e3ee8722a5f00c1e4be6c",
+      "rebuiltLength": 8563076,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/html_microphone_element.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\html_microphone_element.obj",
+      "originalLength": 5595448,
+      "originalModifiedAt": "2026-11-08T16:19:48.461445+08:00",
+      "originalSha256": "01623a203fb3505a172e899647441933c520c2af9071ed4673f8c82202c69a58",
+      "diagnostics": [
+        "types: invalid record kind 26df at section-relative 2051780"
+      ],
+      "rebuiltSha256": "aba7542e6cb700153411fedfe4754e39d88085aafc631852452c7e3e58bba1f3",
+      "rebuiltLength": 5595448,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/frame_set_layout_algorithm.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\frame_set_layout_algorithm.obj",
+      "originalLength": 9372108,
+      "originalModifiedAt": "2026-11-08T21:51:07.562424+08:00",
+      "originalSha256": "073e2ac22c2bd40d0d2eb5c4666c17fdada5e1929d88d2abd6afc2f674bcd4a7",
+      "diagnostics": [
+        "symbols: invalid record kind 21ac at section-relative 65012",
+        "Invalid debug subsection cec9896f, size 973100898 at 85164"
+      ],
+      "rebuiltSha256": "a5e3fe116c87eb5106845160cf060a830049485d515f10631f244aa67c41c293",
+      "rebuiltLength": 9372108,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/radio_button_group_scope.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\radio_button_group_scope.obj",
+      "originalLength": 4564012,
+      "originalModifiedAt": "2026-11-08T14:15:25.914229+08:00",
+      "originalSha256": "4909d002d7554b12bee2a3a6c96f04d446275a65fee92e8b681f4d39204c1c6a",
+      "diagnostics": [
+        "Invalid UTF-8 in COFF string table at file offset 0x3dd000",
+        "Control byte in COFF string table at file offset 0x3dd010"
+      ],
+      "rebuiltSha256": "e4141dbc4a64468a1b839cff91084cdc73d15e1d8902f9d877d4d2be33d39c76",
+      "rebuiltLength": 4564012,
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_abort_signal.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_abort_signal.obj",
+      "originalLength": 2188144,
+      "originalModifiedAt": "2026-10-27T05:20:25.377526+08:00",
+      "originalSha256": "829470bd36e5582ca17636485a693e994f7a8a97992bf1aeb35629eb69e9c4a6",
+      "diagnostics": [
+        "Invalid UTF-8 in COFF string table at file offset 0x208000",
+        "Control byte in COFF string table at file offset 0x208001"
+      ],
+      "rebuiltSha256": "fb2a6aa74a874bdc614ccf9a1eb6a3ae97b5e144b2b49887042f6d4decd04642",
+      "rebuiltLength": 2188144,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_gpu_texture.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_gpu_texture.obj",
+      "originalLength": 1871155,
+      "originalModifiedAt": "2026-10-27T06:25:31.880010+08:00",
+      "originalSha256": "ab8a9f0be4e0d3b090a7a2ffd598f7c3525e61125be6d01dc41c47c2a40945cb",
+      "diagnostics": [
+        "Invalid CodeView record at 0x2802c (length 32567, kind 0x272e)"
+      ],
+      "rebuiltSha256": "2bb088f37253ff2884e956628a86ec7b76710716aca31477ab652709a16ec440",
+      "rebuiltLength": 1871155,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_language_model_tool_error.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_language_model_tool_error.obj",
+      "originalLength": 1443571,
+      "originalModifiedAt": "2026-11-08T16:30:42.064073+08:00",
+      "originalSha256": "b4e97b8892571b1019924aeb18b343940e806fc8d2ff7bb30db994ca37970339",
+      "diagnostics": [
+        "Invalid CodeView record at 0x71057 (length 13463, kind 0x8172)"
+      ],
+      "rebuiltSha256": "6d8777a0afcfdf27d8223d416807aa3376e253b137ab6f398b563871ed0468df",
+      "rebuiltLength": 1443571,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_public_key_credential.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_public_key_credential.obj",
+      "originalLength": 2223548,
+      "originalModifiedAt": "2026-11-08T16:59:20.657040+08:00",
+      "originalSha256": "7c122428052316db4fdf554cac13e9f34e6706f5a94da29a52e185413d28ef97",
+      "diagnostics": [
+        "Invalid CodeView record at 0x19f001 (length 4590, kind 0x7ca8)"
+      ],
+      "rebuiltSha256": "ac23164b1f0fa7ce9de457a582333d5c87b878a48fa4ee22e77573d80dd873cb",
+      "rebuiltLength": 2223548,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker_registration.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_service_worker_registration.obj",
+      "originalLength": 2700500,
+      "originalModifiedAt": "2026-11-08T16:26:16.914752+08:00",
+      "originalSha256": "474fded28a908ff36e05a80196fcf4d1d26506306c170463f8f2950c0097b3c3",
+      "diagnostics": [
+        "Invalid CodeView record at 0x216ffe (length 18, kind 0x4838)"
+      ],
+      "rebuiltSha256": "d6f0e0ae2442ca89eafbd6d7b9976ec2cf194e79fc67d6338b0ed385464e6b92",
+      "rebuiltLength": 2700500,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_projection_layer.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_xr_projection_layer.obj",
+      "originalLength": 1906897,
+      "originalModifiedAt": "2026-11-08T16:57:50.439863+08:00",
+      "originalSha256": "e025ab455ee0d79a66e7ed7e8928440c1410ecb56d448b73a1e1304aa8fff015",
+      "diagnostics": [
+        "Invalid CodeView record at 0x12cf7b (length 8169, kind 0xbd93)"
+      ],
+      "rebuiltSha256": "6a37f07c85e541495813cc15392a9a48b838c8bf0881c9965e3ca7fde3555d3b",
+      "rebuiltLength": 1906897,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_css.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_css.obj",
+      "originalLength": 8041264,
+      "originalModifiedAt": "2026-11-08T22:41:47.418368+08:00",
+      "originalSha256": "5fa78978e47e6fa9243ebeecc6ac1a9e6c575a529b7ae4b9626a0776a7ff1ef7",
+      "diagnostics": [
+        "Invalid CodeView record at 0x656018 (length 49376, kind 0x4ee6)"
+      ],
+      "rebuiltSha256": "4e73ea7f90f88eb527aea49d1ce333847f6dfeaba1e301b36e9c684f6aec9224",
+      "rebuiltLength": 8041264,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_htmlcanvaselement_htmlimageelement_htmlvideoelement_imagebitmap_imagedata_offscreencanvas_videoframe.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\v8_union_htmlcanvaselement_htmlimageelement_htmlvideoelement_imagebitmap_imagedata_offscreencanvas_videoframe.obj",
+      "originalLength": 6562993,
+      "originalModifiedAt": "2026-11-08T16:54:43.094111+08:00",
+      "originalSha256": "ccc768dd4e6151c0e00311df9d62e25ecd8338e28fe840f6324b373daa86c779",
+      "diagnostics": [
+        "Invalid CodeView record at 0x38400e (length 1650, kind 0x3eb4)"
+      ],
+      "rebuiltSha256": "728f289e68b817bbc55267f1aed9d71a931c7efc41bec5fdde0870ecc360cfc5",
+      "rebuiltLength": 6562993,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object_cache_impl.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\ax_object_cache_impl.obj",
+      "originalLength": 34226484,
+      "originalModifiedAt": "2026-11-08T22:22:03.914081+08:00",
+      "originalSha256": "e9f64d15882ddc33a8d93909e7bc6fdbc70b4a37613c5f4e29c661fad1076119",
+      "diagnostics": [
+        "Invalid CodeView record at 0x130cfe6 (length 25200, kind 0x657a)"
+      ],
+      "rebuiltSha256": "6750e20da1b86559f3d5db1602f0865769b7f0d6df47110141ed66d41a73a839",
+      "rebuiltLength": 34226484,
+      "hashChanged": true
+    },
+    {
+      "component": "blink_modules",
+      "object": "obj/third_party/blink/renderer/modules/ai/ai/language_model_tool_call.obj",
+      "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\final-validation\\language_model_tool_call.obj",
+      "originalLength": 533144,
+      "originalModifiedAt": "2026-10-27T06:45:17.181833+08:00",
+      "originalSha256": "60709aa221d970d564a63cd3b8d49692bd106c64227fa16f23e5efe58d8f1a8f",
+      "diagnostics": [
+        "Invalid CodeView record at 0x4e2ec (length 25261, kind 0x5ddc)"
+      ],
+      "rebuiltSha256": "1228a81ff1661955d9e41aad8c0707412be03efa3b3abcbd0d3b521d3d344e8a",
+      "rebuiltLength": 533144,
+      "hashChanged": true
+    }
+  ],
+  "rebuiltObservedAt": "2026-11-09T01:36:43.457413+08:00",
+  "rebuiltObjects": 19
+}

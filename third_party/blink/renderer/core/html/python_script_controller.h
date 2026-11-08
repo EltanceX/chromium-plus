@@ -7,6 +7,7 @@
 
 #include "base/task/single_thread_task_runner.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
+#include "third_party/blink/renderer/core/core_export.h"
 #include "third_party/blink/renderer/core/execution_context/execution_context_lifecycle_observer.h"
 #include "third_party/blink/renderer/platform/heap/collection_support/heap_vector.h"
 #include "third_party/blink/renderer/platform/heap/prefinalizer.h"
@@ -32,7 +33,7 @@ class PythonScriptController final
   explicit PythonScriptController(Document&);
   static void Register(HTMLPyScriptElement&);
   static void ExecutePending(Document&);
-  static void StopDocument(Document&);
+  CORE_EXPORT static void StopDocument(Document&);
   static void Report(Document&, const HTMLPyScriptElement&, const String&);
   void Trace(Visitor*) const override;
   void ContextDestroyed() override;

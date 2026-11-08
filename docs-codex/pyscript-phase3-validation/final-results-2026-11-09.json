@@ -1,0 +1,89 @@
+{
+  "observedAt": "2026-11-09T01:41:12.055220+08:00",
+  "phase": 3,
+  "acceptance": "passed",
+  "testedSource": "09644b7baa plus CORE_EXPORT on PythonScriptController::StopDocument and its direct core_export.h include",
+  "productSourceFix": "third_party/blink/renderer/core/html/python_script_controller.h",
+  "checks": {
+    "build": {
+      "command": "autoninja -C out/Debug chrome blink_unittests blink_tests",
+      "passed": true,
+      "elapsed": "4m21.45s",
+      "steps": 21
+    },
+    "runtimeUnitTests": {
+      "passed": 15,
+      "total": 15,
+      "rerun": true
+    },
+    "blinkUnitTests": {
+      "passed": 20,
+      "total": 20,
+      "executedNotOnlyCompiled": true,
+      "registeredSuiteWasNotRunInFull": true
+    },
+    "wpt": {
+      "passedFiles": 2,
+      "totalFiles": 2,
+      "results": {
+        "enabled": {
+          "file": "wpt_internal/pyscript/parsing-enabled.html",
+          "actual": "PASS",
+          "expected": "PASS",
+          "skipped": 0,
+          "regressions": 0,
+          "flaky": 0
+        },
+        "disabled": {
+          "file": "wpt_internal/pyscript/feature-disabled.html",
+          "actual": "PASS",
+          "expected": "PASS",
+          "skipped": 0,
+          "regressions": 0,
+          "flaky": 0
+        }
+      },
+      "diagnosticFlags": [
+        "--disable-system-font-check",
+        "--enable-features=NetworkServiceInProcess2"
+      ],
+      "contentShellHasNoCPythonEmbedder": true
+    },
+    "domBrowserSmoke": {
+      "passed": 9,
+      "total": 9,
+      "nestedTestharnessAssertions": 9,
+      "chromeArgs": [],
+      "sandboxDisabled": false
+    },
+    "phase2BrowserRegression": {
+      "passed": 26,
+      "total": 26,
+      "chromeArgs": [],
+      "sandboxDisabled": false
+    },
+    "coreGnHeaderCheck": "passed",
+    "coreHtmlCheckdeps": "passed; pre-existing DEPS escape SyntaxWarning",
+    "headerClangFormatDryRun": "passed",
+    "sourceWhitespace": "passed"
+  },
+  "generatedObjectRecovery": {
+    "coreObjects": 10,
+    "modulesObjects": 9,
+    "totalObjects": 19,
+    "allOldObjectsRetainedOutsideGit": true,
+    "allRebuiltHashesDiffer": true,
+    "rebuiltCoffAndCodeViewChecks": "19/19 no structural problems",
+    "cause": "not_determined",
+    "debugInformationAndLinkerDiagnosticsUnchanged": true
+  },
+  "limitations": [
+    "Cooperative execution time and cumulative document output budgets are phase four and remain unimplemented.",
+    "DOM call budget currently reports a catchable ValueError; the final irreversible stop policy is phase four.",
+    "Discarded shutdown cleanup tasks can retain process-local interpreters until renderer exit.",
+    "Private native-python BFCache feature maps to Unknown/SupportPending in CDP."
+  ],
+  "phase4Started": false,
+  "unrelatedMcjeChangesPreserved": true,
+  "liveQueueStatus": "completed"
+}

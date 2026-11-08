@@ -1,0 +1,14 @@
+PASS Python-only sample under nonce CSP
+PASS WPT testharness DOM bridge assertions
+PASS Same-document navigation does not rerun blocks
+PASS Different Document globals and modules are isolated
+PASS DOM call budget is shared across blocks
+PASS document.open invalidates the context and never executes written Python
+PASS Python documents cannot return from BFCache
+PASS Reload creates a new Python document context
+PASS Repeated finalizer teardown and document creation stay responsive
+{
+  "passed": true,
+  "cases": 9,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-phase3-final-dom.json"
+}

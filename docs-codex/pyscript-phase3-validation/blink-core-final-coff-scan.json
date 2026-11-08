@@ -1,0 +1,52 @@
+{
+  "object_files_checked": 5040,
+  "elapsed_seconds": 78.76,
+  "problems": [
+    {
+      "file": "obj/third_party/blink/renderer/core/core/local_font_face_source.obj",
+      "errors": [
+        "Section 3329: relocation 0 has invalid symbol 1973605000 or type 13385",
+        "Section 3330: relocation 0 has invalid symbol 4061044722 or type 54018",
+        "Section 3331: relocation 0 has invalid symbol 3948993803 or type 6614",
+        "Section 3332: relocation 0 has invalid symbol 375223127 or type 22487",
+        "Section 3333: relocation 0 has invalid symbol 2254870542 or type 24634"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/css_parser.obj",
+      "errors": [
+        "Symbol 2102: invalid section 9340, total 5644",
+        "Symbol 2188: invalid section 13071, total 5644",
+        "Symbol 2428: invalid section 65452, total 5644",
+        "Symbol 2524: invalid section 58688, total 5644",
+        "Symbol 2745: invalid section 62180, total 5644"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/whitespace_attacher.obj",
+      "errors": [
+        "Invalid string table extent"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/character_iterator.obj",
+      "errors": [
+        "Section 2336: relocation 0 has invalid symbol 1704158613 or type 62860",
+        "Section 2337: relocation 0 has invalid symbol 334738127 or type 60604",
+        "Section 2338: relocation 0 has invalid symbol 1108220034 or type 44956",
+        "Section 2339: relocation 0 has invalid symbol 2358351104 or type 61446",
+        "Section 2340: relocation 0 has invalid symbol 3974573792 or type 1711"
+      ]
+    },
+    {
+      "file": "obj/third_party/blink/renderer/core/core/local_frame_view.obj",
+      "errors": [
+        "Symbol 62563: invalid section 49980, total 47863",
+        "Symbol 62793: invalid section 56825, total 47863",
+        "Symbol 62991: invalid section 64640, total 47863",
+        "Symbol 63510: invalid section 59601, total 47863",
+        "Symbol 64081: invalid section 61858, total 47863"
+      ]
+    }
+  ]
+}

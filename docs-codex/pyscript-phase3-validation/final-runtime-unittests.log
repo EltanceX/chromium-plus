@@ -1,0 +1,71 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings:PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal:PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors:PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost:PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers:PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock:PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals:PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput:PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover:PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings
+[       OK ] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings (130 ms)
+[ RUN      ] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal
+[       OK ] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal (58 ms)
+[ RUN      ] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors
+[       OK ] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors (32 ms)
+[ RUN      ] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost
+[       OK ] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost (33 ms)
+[ RUN      ] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers
+[       OK ] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers (31 ms)
+[ RUN      ] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock
+[       OK ] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock (33 ms)
+[ RUN      ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals
+[       OK ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (33 ms)
+[ RUN      ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput
+[       OK ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (56 ms)
+[ RUN      ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover
+[       OK ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (39 ms)
+[ RUN      ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate
+[       OK ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (29 ms)
+[----------] 10 tests from PythonRuntimeTest (489 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (492 ms total)
+[  PASSED  ] 10 tests.
+[1/15] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings (130 ms)
+[2/15] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal (58 ms)
+[3/15] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors (32 ms)
+[4/15] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost (33 ms)
+[5/15] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers (31 ms)
+[6/15] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock (33 ms)
+[7/15] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (33 ms)
+[8/15] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (56 ms)
+[9/15] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (39 ms)
+[10/15] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (29 ms)
+Note: Google Test filter = PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded:PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext:PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts:PythonRuntimeTest.SubinterpretersCannotCreateThreads:PythonRuntimeTest.FixedDiagnosticSelfTest
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded
+[       OK ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (56 ms)
+[ RUN      ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext
+[       OK ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (30 ms)
+[ RUN      ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts
+[       OK ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (902 ms)
+[ RUN      ] PythonRuntimeTest.SubinterpretersCannotCreateThreads
+[       OK ] PythonRuntimeTest.SubinterpretersCannotCreateThreads (45 ms)
+[ RUN      ] PythonRuntimeTest.FixedDiagnosticSelfTest
+[       OK ] PythonRuntimeTest.FixedDiagnosticSelfTest (150 ms)
+[----------] 5 tests from PythonRuntimeTest (1190 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (1190 ms total)
+[  PASSED  ] 5 tests.
+[11/15] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (56 ms)
+[12/15] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (30 ms)
+[13/15] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (902 ms)
+[14/15] PythonRuntimeTest.SubinterpretersCannotCreateThreads (45 ms)
+[15/15] PythonRuntimeTest.FixedDiagnosticSelfTest (150 ms)
+SUCCESS: all tests passed.
+Tests took 2 seconds.

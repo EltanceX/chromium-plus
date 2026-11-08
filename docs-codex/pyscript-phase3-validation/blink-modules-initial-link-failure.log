@@ -1,0 +1,71 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.6238337s
+load siso config done 11.3229ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:6)
+schedule pending:75440+ready:0 (node:441011 edge:75457)
+ 1.35s schedule pending:97051+ready:10466 (node:441011 edge:107517)
+
+build start: Ready 10466 Pending 97051
+[0/23709] 33.41s S CXX obj/third_party/blink/renderer/bindings/core/v8/v8/v8_abort_signal.obj
+[0/22602] 33.47s S CXX obj/third_party/blink/renderer/core/core/radio_button_group_scope.obj
+[0/2328] 37.78s F CXX obj/third_party/blink/renderer/bindings/core/v8/v8/v8_abort_signal.obj
+[1/2327] 44.06s F CXX obj/third_party/blink/renderer/core/core/radio_button_group_scope.obj
+[2/2327] 44.08s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2310] 1m05.61s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[3/2202] 1m05.63s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[3/2202] 1m17.37s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 8ff901e6-769c-4197-81a9-84765544f55d "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `base::internal::FeatureParamTraits<double>::ToCacheStorageType` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x9567D which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::AXObjectCacheLifecycle::StateAllowsImmediateTreeUpdates` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xA8229 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::AXObjectCacheLifecycle::StateAllowsAXObjectsToGainFinalizationNeededBit` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xA822C which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::String::~String` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7DA94 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::GetDocument` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xA8376 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:4 remote:0 cache:0 skip:105315
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1028(err:4) / r:780(err:0) 1.80GiB / w:1(err:0) 391.86KiB
+
+
+
+1m18.52s Build Failure: 4 done, 1 failed, 2198 remaining - 0.05/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-012851.4536
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands
