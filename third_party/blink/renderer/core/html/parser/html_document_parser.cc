@@ -283,6 +283,12 @@ static HTMLTokenizer::State TokenizerStateForContextElement(
 
   const QualifiedName& context_tag = context_element->TagQName();
 
+  if (RuntimeEnabledFeatures::PythonScriptEnabled() &&
+      context_tag.Matches(html_names::kPyscriptTag)) {
+    return report_errors ? HTMLTokenizer::kRAWTEXTState
+                         : HTMLTokenizer::kPLAINTEXTState;
+  }
+
   if (context_tag.Matches(html_names::kTitleTag) ||
       context_tag.Matches(html_names::kTextareaTag)) {
     return HTMLTokenizer::kRCDATAState;
@@ -1006,6 +1012,7 @@ void HTMLDocumentParser::insert(const String& source) {
               source.length(), "parser", (void*)this);
 
   SegmentedString excluded_line_number_source(source);
+  python_input_tainted_ = true;
   excluded_line_number_source.SetExcludeLineNumbers();
   input_.InsertAtCurrentInsertionPoint(excluded_line_number_source);
 

@@ -54,6 +54,10 @@ class CORE_EXPORT DocumentParser : public GarbageCollected<DocumentParser>,
     return nullptr;
   }
 
+  // Only an HTML parser consuming original document input can opt in to the
+  // private PythonScript experiment. Script-created/inserted input is inert.
+  virtual bool HasPythonScriptEligibleInput() const { return false; }
+
   // http://www.whatwg.org/specs/web-apps/current-work/#insertion-point
   virtual bool HasInsertionPoint() { return true; }
 

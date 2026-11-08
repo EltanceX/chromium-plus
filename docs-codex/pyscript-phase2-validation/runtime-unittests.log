@@ -1,0 +1,44 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals:PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput:PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover:PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate:PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded:PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext:PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts:PythonRuntimeTest.SubinterpretersCannotCreateThreads:PythonRuntimeTest.FixedDiagnosticSelfTest
+[==========] Running 9 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 9 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals
+[       OK ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (218 ms)
+[ RUN      ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput
+[       OK ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (185 ms)
+[ RUN      ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover
+[       OK ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (56 ms)
+[ RUN      ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate
+[       OK ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (74 ms)
+[ RUN      ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded
+[       OK ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (95 ms)
+[ RUN      ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext
+[       OK ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (71 ms)
+[ RUN      ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts
+[       OK ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (1668 ms)
+[ RUN      ] PythonRuntimeTest.SubinterpretersCannotCreateThreads
+[       OK ] PythonRuntimeTest.SubinterpretersCannotCreateThreads (75 ms)
+[ RUN      ] PythonRuntimeTest.FixedDiagnosticSelfTest
+[       OK ] PythonRuntimeTest.FixedDiagnosticSelfTest (220 ms)
+[----------] 9 tests from PythonRuntimeTest (2718 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test suite ran. (2718 ms total)
+[  PASSED  ] 9 tests.
+[1/9] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (218 ms)
+[2/9] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (185 ms)
+[3/9] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (56 ms)
+[4/9] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (74 ms)
+[5/9] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (95 ms)
+[6/9] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (71 ms)
+[7/9] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (1668 ms)
+[8/9] PythonRuntimeTest.SubinterpretersCannotCreateThreads (75 ms)
+[9/9] PythonRuntimeTest.FixedDiagnosticSelfTest (220 ms)
+SUCCESS: all tests passed.
+Tests took 3 seconds.

@@ -134,6 +134,12 @@ class CORE_EXPORT HTMLDocumentParser : public ScriptableDocumentParser,
 
   HTMLTokenizer& tokenizer() { return tokenizer_; }
 
+  // Conservatively reject the whole document after document.write(), including
+  // tokens assembled across inserted and original input segments.
+  bool HasPythonScriptEligibleInput() const override {
+    return !WasCreatedByScript() && !python_input_tainted_;
+  }
+
   bool DidPumpTokenizerForTesting() const { return did_pump_tokenizer_; }
 
   unsigned GetChunkCountForTesting() const;
@@ -335,6 +341,7 @@ class CORE_EXPORT HTMLDocumentParser : public ScriptableDocumentParser,
 
   // Set to true if PumpTokenizer() was called at least once.
   bool did_pump_tokenizer_ = false;
+  bool python_input_tainted_ = false;
 
   // Counts CSP meta tags seen by the preload scanner but not necessarily
   // processed by the main parser yet.

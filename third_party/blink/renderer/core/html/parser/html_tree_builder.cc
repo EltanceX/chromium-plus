@@ -45,6 +45,7 @@
 #include "third_party/blink/renderer/core/html/forms/html_select_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_text_area_element.h"
 #include "third_party/blink/renderer/core/html/html_frame_owner_element.h"
+#include "third_party/blink/renderer/core/html/html_py_script_element.h"
 #include "third_party/blink/renderer/core/html/html_template_element.h"
 #include "third_party/blink/renderer/core/html/parser/atomic_html_token.h"
 #include "third_party/blink/renderer/core/html/parser/html_document_parser.h"
@@ -811,6 +812,7 @@ void HTMLTreeBuilder::ProcessStartTagForInBody(AtomicHTMLToken* token) {
     case HTMLTag::kMeta:
     case HTMLTag::kNoframes:
     case HTMLTag::kScript:
+    case HTMLTag::kPyscript:
     case HTMLTag::kStyle:
     case HTMLTag::kTitle:
     case HTMLTag::kTemplate: {
@@ -1385,6 +1387,7 @@ void HTMLTreeBuilder::ProcessStartTagForInTable(AtomicHTMLToken* token) {
       }
       ProcessStartTag(token);
       return;
+    case HTMLTag::kPyscript:
     case HTMLTag::kStyle:
     case HTMLTag::kScript:
       ProcessStartTagForInHead(token);
@@ -1481,6 +1484,7 @@ void HTMLTreeBuilder::ProcessStartTag(AtomicHTMLToken* token) {
         case HTMLTag::kMeta:
         case HTMLTag::kNoframes:
         case HTMLTag::kScript:
+        case HTMLTag::kPyscript:
         case HTMLTag::kStyle:
         case HTMLTag::kTemplate:
         case HTMLTag::kTitle:
@@ -1639,6 +1643,7 @@ void HTMLTreeBuilder::ProcessStartTag(AtomicHTMLToken* token) {
         case HTMLTag::kLink:
         case HTMLTag::kMeta:
         case HTMLTag::kNoframes:
+        case HTMLTag::kPyscript:
         case HTMLTag::kStyle: {
           bool did_process = ProcessStartTagForInHead(token);
           DCHECK(did_process);
@@ -1703,6 +1708,7 @@ void HTMLTreeBuilder::ProcessStartTag(AtomicHTMLToken* token) {
           return;
         case HTMLTag::kLink:
         case HTMLTag::kScript:
+        case HTMLTag::kPyscript:
         case HTMLTag::kStyle:
         case HTMLTag::kMeta:
           ProcessStartTagForInHead(token);
@@ -2621,6 +2627,10 @@ void HTMLTreeBuilder::ProcessEndTag(AtomicHTMLToken* token) {
         parser_->tokenizer().SetState(HTMLTokenizer::kDataState);
         return;
       }
+      if (tag == HTMLTag::kPyscript &&
+          tree_.CurrentStackItem()->MatchesHTMLTag(HTMLTag::kPyscript)) {
+        To<HTMLPyScriptElement>(tree_.CurrentElement())->EndParserBlock(true);
+      }
       tree_.OpenElements()->Pop();
       SetInsertionMode(original_insertion_mode_);
       break;
@@ -2936,6 +2946,9 @@ void HTMLTreeBuilder::ProcessEndOfFile(AtomicHTMLToken* token) {
       return;
     case kTextMode: {
       ParseError(token);
+      if (tree_.CurrentStackItem()->MatchesHTMLTag(HTMLTag::kPyscript)) {
+        To<HTMLPyScriptElement>(tree_.CurrentElement())->EndParserBlock(false);
+      }
       if (tree_.CurrentStackItem()->MatchesHTMLTag(HTMLTag::kScript)) {
         // Mark the script element as "already started".
         // TODO(crbug.com/491743369): This is spec-mandated for all parsers,
@@ -3055,6 +3068,7 @@ bool HTMLTreeBuilder::ProcessStartTagForInHead(AtomicHTMLToken* token) {
       SetInsertionMode(kInHeadNoscriptMode);
       return true;
     case HTMLTag::kNoframes:
+    case HTMLTag::kPyscript:
     case HTMLTag::kStyle:
       ProcessGenericRawTextStartTag(token);
       return true;
@@ -3086,6 +3100,12 @@ void HTMLTreeBuilder::ProcessGenericRawTextStartTag(AtomicHTMLToken* token) {
   original_insertion_mode_ = insertion_mode_;
   SetInsertionMode(kTextMode);
   tree_.InsertHTMLElement(token);
+  if (token->GetHTMLTag() == HTMLTag::kPyscript) {
+    To<HTMLPyScriptElement>(tree_.CurrentElement())
+        ->BeginParserBlock(parser_->GetTextPosition(),
+                           !IsParsingFragmentOrTemplateContents() &&
+                               parser_->HasPythonScriptEligibleInput());
+  }
 }
 
 void HTMLTreeBuilder::ProcessScriptStartTag(AtomicHTMLToken* token) {

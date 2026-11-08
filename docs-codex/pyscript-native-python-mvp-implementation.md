@@ -2,9 +2,9 @@
 
 - 整理日期：2026-11-08（Asia/Shanghai）。
 - 项目：Chromium 158.0.8126.0，首个验证平台为 Windows x64 Debug component build。
-- 当前分支：`codex/kernel-debug-settings`；当前 HEAD：`9257464d67`。
+- 当前分支：`codex/kernel-debug-settings`；方案初版整理基点：`9257464d67`，阶段一依赖提交：`c53586b2f7`。
 - 已选方向：Renderer 内嵌 CPython，Blink 原生识别 `<pyscript>`，在主线程同步执行，通过 C++ 函数桥接当前 Document 的有限 DOM 操作。
-- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二至五尚未实施，网页标签与 DOM 桥接尚未接入。
+- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的标签、解析、执行条件与运行时接入已实现，按用户要求先交付代码，完整构建留在后台，新增网页行为测试尚未运行，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三至五尚未实施，DOM 桥接尚未接入。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
 ## 1. 验证目标
@@ -168,7 +168,7 @@ CPython 是第三方执行引擎依赖，不应只是在某个 HTML 元素方法
 
 页面资格至少要求：顶层 HTML、真实活动文档、非片段、非 prerender、非销毁状态、当前 origin 精确匹配测试允许项。拒绝 opaque origin、WebUI、扩展和自定义协议页面，不因父页合格而允许子框架。
 
-默认关闭与受控 origin 是实验范围约束，不是提供给任意不可信 Python 代码的安全保证。来源配置的最终开关名和传递字段在阶段一 / 二确定；本文不把尚未实现的命令行参数写成现有功能。
+默认关闭与受控 origin 是实验范围约束，不是提供给任意不可信 Python 代码的安全保证。阶段二已实现 `--enable-blink-features=PythonScript` 与 `--native-python-allowed-origin=<精确本地HTTP(S) origin>`；校验规则、执行器接口及验证状态见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。
 
 ### 6.3 CSP 与脚本权限
 
@@ -265,7 +265,7 @@ stdout / stderr 使用解释器内受控对象转发到当前文档控制台。�
 | [html.css](../third_party/blink/renderer/core/html/resources/html.css) | 特性开启时的默认隐藏方式参考 |
 | [chrome_content_renderer_client.cc](../chrome/renderer/chrome_content_renderer_client.cc) | Chrome 嵌入配置与 Renderer 初始化接入参考 |
 
-阶段一已新增 `third_party/cpython/`、`components/python_runtime/`、Renderer 固定诊断接入及基础测试。后续拟新增 `HTMLPyScriptElement`、文档上下文 / DOM 模块、对应构建项与测试；这些后续内容尚未实现，最终 IDL 注册位置和页面配置字段在对应阶段核对。
+阶段一已新增 `third_party/cpython/`、`components/python_runtime/`、Renderer 固定诊断接入及基础测试。阶段二已新增 `HTMLPyScriptElement`、`PythonScriptController`、公开嵌入执行器接口、Chrome 来源配置及对应构建项与测试；文档持久上下文与 DOM 模块仍留到阶段三。
 
 Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGENTS.md)，测试优先采用其要求的 WPT 框架与仓库适用的实验特性套件配置。
 
@@ -285,7 +285,7 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 
 ### 阶段二：标签、解析与执行条件
 
-
+实施状态：代码已接入并单独提交；新增源码、既有接入点以及 StyleAdjuster 穷举修复的定向编译通过，13 个 Blink 用例已编译，运行时回归 9 / 9 通过。当前 Chrome 构建在后台进行，新增 Blink 用例、WPT 和网页端验证尚未运行，阶段二运行验收未完成。实际结果与阶段边界见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。
 
 1. 加入默认关闭的 `PythonScript` 特性及精确测试 origin 配置。
 2. 注册元素与构建项，实现 RAWTEXT、默认隐藏、源码快照和一次登记状态。

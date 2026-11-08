@@ -454,6 +454,12 @@
       interfaceName: "HTMLProgressElement",
     },
     {
+      name: "pyscript",
+      interfaceName: "HTMLPyScriptElement",
+      JSInterfaceName: "HTMLElement",
+      runtimeEnabled: "PythonScript",
+    },
+    {
       name: "q",
       interfaceName: "HTMLQuoteElement",
     },

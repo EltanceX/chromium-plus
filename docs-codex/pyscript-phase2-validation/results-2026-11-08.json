@@ -1,0 +1,69 @@
+{
+  "observed_at": "2026-11-08T13:50:02+08:00",
+  "phase": 2,
+  "status": "implementation_delivered_full_build_running",
+  "user_requested_background_build": true,
+  "runtime_acceptance_complete": false,
+  "git_commit_created": false,
+  "checks": {
+    "new_cpp_targets": "passed_targeted_compilation",
+    "existing_integration_targets": {
+      "status": "passed_targeted_compilation",
+      "count": 8,
+      "targets": [
+        "core_hot/document.obj",
+        "core_hot/html_tree_builder.obj",
+        "core_hot/html_document_parser.obj",
+        "core_hot/html_tokenizer.obj",
+        "core/markup_formatter.obj",
+        "core_generated/html_element_factory.obj",
+        "chrome/browser/core/chrome_content_browser_client.obj",
+        "chrome/renderer/renderer/chrome_content_renderer_client.obj"
+      ]
+    },
+    "python_runtime_unittests": {"status": "passed", "passed": 9, "total": 9},
+    "gn_check": {
+      "status": "passed",
+      "targets": [
+        "//chrome/renderer:renderer",
+        "//chrome/common:common_lib",
+        "//third_party/blink/renderer/core:core"
+      ]
+    },
+    "checkdeps": {
+      "status": "passed",
+      "directories": ["chrome/renderer", "third_party/blink/renderer/core/html"]
+    },
+    "cpp_format": "passed",
+    "smoke_script_node_syntax": "passed",
+    "git_diff_check": "passed"
+  },
+  "background_build": {
+    "command": "autoninja -C out/Debug chrome blink_unittests blink_tests",
+    "status": "running_at_handoff",
+    "observed_siso_pid": 16328,
+    "observed_progress": "328/9456 at 11m53.35s",
+    "compiler_errors_seen_at_handoff": false,
+    "live_log": "out/Debug/pyscript-phase2-build-final.log",
+    "snapshot": "background-build-snapshot.log"
+  },
+  "not_run": [
+    {"suite": "HTMLPyScriptElementTest.*", "written_cases": 13,
+      "note": "The initial 10-case source compiled; the expanded source and all executions await the full build."},
+    {"suite": "wpt_internal/pyscript/parsing-enabled.html", "written_subtests": 5},
+    {"suite": "wpt_internal/pyscript/feature-disabled.html", "written_subtests": 2},
+    {"suite": "chrome/test/pyscript_smoke_test.mjs", "written_checks": 26},
+    {"suite": "phase-one sandboxed renderer smoke and existing browser regressions"}
+  ],
+  "fixed_compile_issues": [
+    "Replaced unsupported HeapVector<WeakMember<Element>> with traced queue entries containing weak element references.",
+    "Replaced unsupported HTMLDocumentParser downcast with a default-deny parser input eligibility method."
+  ],
+  "known_phase_limits": [
+    "No DOM bridge or document-persistent interpreter yet.",
+    "No Python execution time budget yet; use controlled short local code only.",
+    "Output is bounded per block, not cumulatively per document.",
+    "Python traceback lines are relative to the block; console source locations identify the original block.",
+    "Any document.write input disqualifies the entire document."
+  ]
+}

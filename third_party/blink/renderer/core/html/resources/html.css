@@ -27,6 +27,10 @@ html {
     display: block;
 }
 
+@supports blink-feature(PythonScript) {
+    pyscript { display: none; }
+}
+
 :root {
     view-transition-name: root;
 }

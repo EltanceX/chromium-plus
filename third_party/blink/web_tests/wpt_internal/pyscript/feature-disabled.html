@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<meta charset="utf-8">
+<title>PythonScript disabled preserves existing unknown element behavior</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<pyscript id="python"><b id="nested">text</b>&amp;</pyscript>
+<script>
+test(() => {
+  const python = document.querySelector('#python');
+  assert_equals(python.constructor.name, 'HTMLUnknownElement');
+  assert_equals(python.textContent, 'text&');
+  assert_equals(python.children.length, 1);
+  assert_equals(getComputedStyle(python).display, 'inline');
+}, 'Default-off feature leaves normal unknown-tag parsing and style unchanged');
+
+test(() => {
+  const python = document.createElement('pyscript');
+  python.innerHTML = '<b>fragment</b>&amp;';
+  assert_equals(python.children.length, 1);
+  assert_equals(python.textContent, 'fragment&');
+  assert_equals(python.constructor.name, 'HTMLUnknownElement');
+}, 'Default-off fragment parsing still creates regular nested markup');
+</script>

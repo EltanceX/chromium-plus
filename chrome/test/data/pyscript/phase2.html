@@ -1,0 +1,27 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>原生 Python：阶段二</title>
+<h1>原生 Python：标签与执行</h1>
+<p>打开 DevTools Console 查看计算、中文输出、异常诊断和后续代码块。</p>
+<p>当前阶段通过控制台输出结果；页面 DOM 桥接在阶段三实现。</p>
+<pyscript>
+answer = 6 * 7
+print("Python 世界", answer)
+if answer < 100:
+    print("RAWTEXT 保留 &amp; 和 < > 字符")
+</pyscript>
+<pyscript>
+print("共享变量", answer + 1)
+</pyscript>
+<pyscript>
+raise ValueError("阶段二异常示例")
+</pyscript>
+<pyscript>
+print("普通异常后仍执行后续块")
+</pyscript>
+</html>

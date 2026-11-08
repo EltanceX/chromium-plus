@@ -239,6 +239,7 @@
 #include "chrome/common/env_vars.h"
 #include "chrome/common/google_url_loader_throttle.h"
 #include "chrome/common/logging_chrome.h"
+#include "chrome/common/native_python_policy.h"
 #include "chrome/common/pref_names.h"
 #include "chrome/common/profiler/main_thread_stack_sampling_profiler.h"
 #include "chrome/common/profiler/process_type.h"
@@ -3157,6 +3158,14 @@ void ChromeContentBrowserClient::AppendExtraCommandLineSwitches(
 #endif
 
   if (process_type == switches::kRendererProcess) {
+#if BUILDFLAG(IS_WIN) && defined(ARCH_CPU_X86_64)
+    if (const auto origin = ParseNativePythonAllowedOrigin(
+            browser_command_line.GetSwitchValueASCII(
+                switches::kNativePythonAllowedOrigin))) {
+      command_line->AppendSwitchASCII(switches::kNativePythonAllowedOrigin,
+                                      origin->Serialize());
+    }
+#endif
     content::RenderProcessHost* process =
         content::RenderProcessHost::FromID(child_process_id);
     if (process) {

@@ -330,6 +330,10 @@ static_library("renderer") {
   if (is_win) {
     if (current_cpu == "x64") {
       deps += [ "//components/python_runtime" ]
+      sources += [
+        "python_script_runner.cc",
+        "python_script_runner.h",
+      ]
     }
     deps += [ "//third_party/wtl" ]
     sources += [

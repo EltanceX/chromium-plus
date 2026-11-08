@@ -1,0 +1,4 @@
+8274:FAILED: ddd7eb5f-45d5-49fa-9372-95bd9fe3f773 "./obj/third_party/blink/renderer/core/core_hot/style_adjuster.obj" CXX obj/third_party/blink/renderer/core/core_hot/style_adjuster.obj
+8279:../../third_party/blink/renderer/core/css/resolver/style_adjuster.cc(1619,19): error: enumeration value 'kHTMLPyScriptElement' not handled in switch [-Werror,-Wswitch]
+8282:../../third_party/blink/renderer/core/css/resolver/style_adjuster.cc(1901,1): error: non-void function does not return a value in all control paths [-Werror,-Wreturn-type]
+13852:55m22.57s Build Failure: 1350 done, 1 failed, 8104 remaining - 0.41/s

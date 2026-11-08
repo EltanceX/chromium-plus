@@ -27,6 +27,10 @@
 
 namespace switches {
 
+// Exact loopback HTTP(S) origin permitted by the private PythonScript
+// experiment. Execution also requires --enable-blink-features=PythonScript.
+inline constexpr char kNativePythonAllowedOrigin[] = "native-python-allowed-origin";
+
 // -----------------------------------------------------------------------------
 // Can't find the switch you are looking for? Try looking in
 // media/base/media_switches.cc or ui/gl/gl_switches.cc or one of the

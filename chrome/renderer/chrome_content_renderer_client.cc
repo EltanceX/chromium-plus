@@ -37,6 +37,7 @@
 #include "base/json/json_writer.h"
 #include "base/logging.h"
 #include "base/win/access_token.h"
+#include "chrome/renderer/python_script_runner.h"
 #include "components/python_runtime/python_runtime.h"
 #endif
 
@@ -415,6 +416,9 @@ ChromeContentRendererClient::ChromeContentRendererClient(
 ChromeContentRendererClient::~ChromeContentRendererClient() = default;
 
 void ChromeContentRendererClient::RenderThreadStarted() {
+#if BUILDFLAG(IS_WIN) && defined(ARCH_CPU_X86_64)
+  InitializePythonScriptRunner();
+#endif
   RenderThread* thread = RenderThread::Get();
 
   main_thread_profiler_->SetAuxUnwinderFactory(base::BindRepeating(

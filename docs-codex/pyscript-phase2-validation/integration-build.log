@@ -1,0 +1,46 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3107392s
+load siso config done 12.9264ms
+schedule pending:1+ready:0 (node:441009 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441009 edge:2)
+build start: Ready 2850 Pending 30604
+[0/216] 25.83s S CXX obj/third_party/blink/renderer/core/core_hot/html_tokenizer.obj
+[0/210] 25.83s S CXX obj/third_party/blink/renderer/core/core_hot/html_tree_builder.obj
+[0/199] 25.83s S CXX obj/third_party/blink/renderer/core/core/markup_formatter.obj
+[0/196] 25.83s S CXX obj/third_party/blink/renderer/core/core_hot/html_document_parser.obj
+[0/8] 25.84s S CXX obj/third_party/blink/renderer/core/core_generated/html_element_factory.obj
+[0/8] 25.85s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/8] 25.86s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/8] 25.89s S CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[0/8] 41.35s F CXX obj/third_party/blink/renderer/core/core_hot/html_tokenizer.obj
+[1/8] 41.62s F CXX obj/third_party/blink/renderer/core/core/markup_formatter.obj
+[2/8] 51.91s F CXX obj/third_party/blink/renderer/core/core_hot/html_tree_builder.obj
+[3/8] 1m03.34s F CXX obj/third_party/blink/renderer/core/core_hot/html_document_parser.obj
+[4/8] 1m14.78s F CXX obj/third_party/blink/renderer/core/core_generated/html_element_factory.obj
+[5/8] 1m15.01s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[6/8] 1m37.95s F CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[7/8] 1m42.36s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+build finished
+
+	
+noexec:0 local:8 remote:0 cache:0 skip:33446
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 25711(err:1) / r:589(err:0) 101.45MiB / w:0(err:0) 0B
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      8(0)     0.00s |█      |    41.67s |    █▄ |
+
+1m43.17s Build Succeeded: 8 steps - 0.08/s
+shutdown cloud logging/monitoring done 0s

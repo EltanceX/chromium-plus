@@ -275,6 +275,7 @@
 #include "third_party/blink/renderer/core/html/html_style_element.h"
 #include "third_party/blink/renderer/core/html/html_title_element.h"
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
+#include "third_party/blink/renderer/core/html/python_script_controller.h"
 #include "third_party/blink/renderer/core/html/media/lazy_load_media_observer.h"
 #include "third_party/blink/renderer/core/html/menu_safe_triangle.h"
 #include "third_party/blink/renderer/core/html/nesting_level_incrementer.h"
@@ -8086,6 +8087,8 @@ void Document::FinishedParsing() {
       model_context->DidFinishParsing();
     }
   }
+
+  PythonScriptController::ExecutePending(*this);
 
   // FIXME: DOMContentLoaded is dispatched synchronously, but this should be
   // dispatched in a queued task, see https://crbug.com/961428

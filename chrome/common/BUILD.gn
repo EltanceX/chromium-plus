@@ -157,6 +157,7 @@ static_library("common_lib") {
     "media/cdm_registration.h",
     "media/media_resource_provider.cc",
     "media/media_resource_provider.h",
+    "native_python_policy.h",
     "pdf_util.cc",
     "pdf_util.h",
     "pref_names_util.cc",

@@ -5362,6 +5362,12 @@
       base_feature: "none",
     },
     {
+      // Private experiment. Explicit opt-in and an embedder origin policy are
+      // both required. No origin trial or generic experimental enablement.
+      name: "PythonScript",
+      base_feature: "none",
+    },
+    {
       // ChromeStatus: https://chromestatus.com/feature/6194847180128256
       name: "QuotaExceededErrorUpdate",
       status: "stable",

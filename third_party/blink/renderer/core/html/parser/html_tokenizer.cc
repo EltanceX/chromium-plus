@@ -1908,6 +1908,7 @@ std::optional<HTMLTokenizer::State> HTMLTokenizer::SpeculativeStateForTag(
     case html_names::HTMLTag::kScript:
       return HTMLTokenizer::kScriptDataState;
     case html_names::HTMLTag::kStyle:
+    case html_names::HTMLTag::kPyscript:
     case html_names::HTMLTag::kIFrame:
     case html_names::HTMLTag::kXmp:
     case html_names::HTMLTag::kNoembed:

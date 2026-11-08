@@ -1868,6 +1868,7 @@ StyleAdjuster::ElementTypeForCache StyleAdjuster::GetElementTypeCacheKey(
     case ElementType::kHTMLParamElement:
     case ElementType::kHTMLPictureElement:
     case ElementType::kHTMLPreElement:
+    case ElementType::kHTMLPyScriptElement:
     case ElementType::kHTMLQuoteElement:
     case ElementType::kHTMLScriptElement:
     case ElementType::kHTMLSearchElement:

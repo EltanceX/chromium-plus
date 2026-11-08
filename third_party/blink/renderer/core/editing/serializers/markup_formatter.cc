@@ -43,6 +43,7 @@
 #include "third_party/blink/renderer/core/xlink_names.h"
 #include "third_party/blink/renderer/core/xml_names.h"
 #include "third_party/blink/renderer/core/xmlns_names.h"
+#include "third_party/blink/renderer/platform/runtime_enabled_features.h"
 #include "third_party/blink/renderer/platform/weborigin/kurl.h"
 #include "third_party/blink/renderer/platform/wtf/text/character_names.h"
 #include "third_party/blink/renderer/platform/wtf/text/character_visitor.h"
@@ -417,7 +418,9 @@ EntityMask MarkupFormatter::EntityMaskForText(const Text& text) const {
         *parent_name == html_names::kNoscriptTag &&
         text.GetExecutionContext() && text.GetDocument().domWindow() &&
         text.GetExecutionContext()->CanExecuteScripts(kNotAboutToExecuteScript);
-    if (*parent_name == html_names::kScriptTag ||
+    if ((RuntimeEnabledFeatures::PythonScriptEnabled() &&
+         *parent_name == html_names::kPyscriptTag) ||
+        *parent_name == html_names::kScriptTag ||
         *parent_name == html_names::kStyleTag ||
         *parent_name == html_names::kXmpTag ||
         *parent_name == html_names::kIFrameTag ||

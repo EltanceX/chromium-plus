@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-11-08T15:52:29+08:00",
+  "phase": 2,
+  "status": "implementation_checkpoint_chrome_build_running",
+  "runtime_acceptance_complete": false,
+  "prerequisite_commit": "c53586b2f7",
+  "previous_full_build": {
+    "command": "autoninja -C out/Debug chrome blink_unittests blink_tests",
+    "status": "failed",
+    "elapsed": "55m22.57s",
+    "completed_steps": 1350,
+    "remaining_steps": 8104,
+    "failure": "StyleAdjuster::GetElementTypeCacheKey did not handle kHTMLPyScriptElement",
+    "evidence": "style-build-failure.log"
+  },
+  "fix": {
+    "description": "Include HTMLPyScriptElement in the ordinary HTML style adjustment cache group",
+    "targeted_compilation": "passed",
+    "targets": ["core_hot/style_adjuster.obj", "unit_tests/html_py_script_element_test.obj"],
+    "blink_test_cases_compiled": 13,
+    "blink_test_cases_executed": 0,
+    "evidence": "style-and-tests-build.log"
+  },
+  "cpython_upstream_verification": {
+    "working_tree_files_verified": 775,
+    "staged_files_verified_before_prerequisite_commit": 775,
+    "ignored_required_file_explicitly_tracked": "third_party/cpython/src/PCbuild/_freeze_module.vcxproj"
+  },
+  "runtime_unit_tests": {"passed": 9, "total": 9, "evidence": "resume-runtime-unittests.json"},
+  "background_build": {
+    "command": "autoninja -C out/Debug chrome",
+    "status": "running_at_observation",
+    "observed_siso_pid": 4084,
+    "observed_progress": "242/4448 at 10m49.86s",
+    "live_log": "out/Debug/pyscript-phase2-chrome-build.log",
+    "snapshot": "chrome-build-resume-snapshot.log",
+    "new_compiler_errors_seen": false
+  },
+  "pending": [
+    "Finish Chrome build and ensure a final incremental build covers source edits made during compilation",
+    "Run the 26 browser smoke checks with the sandbox enabled",
+    "Build blink_unittests and blink_tests sequentially after the active Chrome build",
+    "Execute the 13 Blink unit cases and 7 WPT subtests",
+    "Re-run phase-one renderer smoke and existing browser regressions"
+  ],
+  "commit_scope": "Native Python prerequisites and phase-two implementation only; existing MCJE edits remain uncommitted",
+  "whitespace_check_scope": "Authored source and documents; unmodified CPython upstream bytes and raw validation logs retain their original whitespace"
+}
