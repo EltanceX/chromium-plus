@@ -1,0 +1,62 @@
+[
+  {
+    "name": "page first script and property descriptor",
+    "passed": true
+  },
+  {
+    "name": "mutation, same-document navigation and deletion",
+    "passed": true
+  },
+  {
+    "name": "initial about:blank iframe",
+    "passed": true
+  },
+  {
+    "name": "initial about:blank popup",
+    "passed": true
+  },
+  {
+    "name": "srcdoc first script",
+    "passed": true
+  },
+  {
+    "name": "same-origin iframe first script",
+    "passed": true
+  },
+  {
+    "name": "cross-site iframe first script",
+    "passed": true
+  },
+  {
+    "name": "iframe with restrictive script CSP",
+    "passed": true
+  },
+  {
+    "name": "dedicated classic worker",
+    "passed": true
+  },
+  {
+    "name": "shared classic worker",
+    "passed": true
+  },
+  {
+    "name": "service classic worker",
+    "passed": true
+  },
+  {
+    "name": "dedicated module worker",
+    "passed": true
+  },
+  {
+    "name": "shared module worker",
+    "passed": true
+  },
+  {
+    "name": "service module worker",
+    "passed": true
+  },
+  {
+    "name": "reload restores default before first script",
+    "passed": true
+  }
+]

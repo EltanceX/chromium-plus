@@ -1,0 +1,134 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("sources.gni")
+
+assert(is_win && current_cpu == "x64",
+       "CPython MVP currently supports Windows x64")
+
+config("headers") {
+  include_dirs = [
+    "$target_gen_dir/config",
+    "src/Include",
+  ]
+  defines = [ "Py_NO_ENABLE_SHARED" ]
+}
+
+config("core_config") {
+  include_dirs = [
+    "src",
+    "src/Include/internal",
+    "src/Include/internal/mimalloc",
+    "src/Python",
+    "src/PC",
+  ]
+  defines = [
+    "Py_BUILD_CORE",
+    "Py_BUILD_CORE_BUILTIN",
+    "VPATH=\"\"",
+  ]
+  cflags = [ "-w" ]
+  libs = [
+    "advapi32.lib",
+    "bcrypt.lib",
+    "ole32.lib",
+    "oleaut32.lib",
+    "pathcch.lib",
+    "shell32.lib",
+    "version.lib",
+    "ws2_32.lib",
+  ]
+}
+
+action("config") {
+  script = "generate_config.py"
+  inputs = [ "src/PC/pyconfig.h.in" ]
+  outputs = [ "$target_gen_dir/config/pyconfig.h" ]
+  args = [
+    rebase_path(inputs[0], root_build_dir),
+    rebase_path(outputs[0], root_build_dir),
+  ]
+}
+
+source_set("entropy") {
+  sources = [ "embedded_entropy.cc" ]
+  deps = [ "//base" ]
+}
+
+source_set("core") {
+  sources = cpython_core_sources - [
+              "src/Modules/getbuildinfo.c",
+              "src/Python/bootstrap_hash.c",
+              "src/Python/dynload_win.c",
+            ]
+  sources += [
+    "builtin_modules.c",
+    "embedded_bootstrap_hash.c",
+    "embedded_buildinfo.c",
+  ]
+  deps = [
+    ":config",
+    ":entropy",
+  ]
+  public_configs = [ ":headers" ]
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs += [
+    "//build/config/compiler:no_chromium_code",
+    ":core_config",
+  ]
+  check_includes = false
+}
+
+executable("freeze_module") {
+  sources = [
+    "src/Modules/getpath_noop.c",
+    "src/Programs/_freeze_module.c",
+  ]
+  deps = [ ":core" ]
+  configs += [ ":core_config" ]
+  check_includes = false
+}
+
+action("frozen") {
+  script = "generate_frozen.py"
+  deps = [ ":freeze_module" ]
+  inputs = [ "frozen_modules.json" ]
+  inputs += [
+    "src/Lib/importlib/_bootstrap.py",
+    "src/Lib/importlib/_bootstrap_external.py",
+    "src/Lib/zipimport.py",
+    "src/Lib/abc.py",
+    "src/Lib/codecs.py",
+    "src/Lib/io.py",
+    "src/Lib/_collections_abc.py",
+    "src/Lib/encodings/__init__.py",
+    "src/Lib/encodings/aliases.py",
+    "src/Lib/encodings/utf_8.py",
+    "src/Lib/encodings/ascii.py",
+    "src/Lib/encodings/latin_1.py",
+    "src/Lib/encodings/utf_8_sig.py",
+    "src/Lib/encodings/cp1252.py",
+    "src/Lib/encodings/mbcs.py",
+  ]
+  outputs = [ "$target_gen_dir/frozen.c" ]
+  args = [
+    rebase_path("$root_out_dir/freeze_module.exe", root_build_dir),
+    rebase_path(".", root_build_dir),
+    rebase_path(outputs[0], root_build_dir),
+  ]
+}
+
+source_set("embedded") {
+  sources = [
+    "$target_gen_dir/frozen.c",
+    "embedded_getpath.c",
+  ]
+  deps = [
+    ":core",
+    ":frozen",
+  ]
+  public_deps = [ ":core" ]
+  configs += [ ":core_config" ]
+  check_includes = false
+}

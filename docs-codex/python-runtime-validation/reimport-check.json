@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "archive_verified": true,
+  "generated_metadata_comparison": "Text equality with CRLF/LF normalized; upstream file checksums match byte-for-byte",
+  "reimport_matches": [
+    "source_manifest.json",
+    "sources.gni",
+    "frozen_modules.json"
+  ]
+}

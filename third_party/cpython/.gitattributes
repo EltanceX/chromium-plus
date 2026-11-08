@@ -1,0 +1,2 @@
+# Preserve imported upstream bytes so source_manifest.json survives checkout.
+src/** -text

@@ -1,0 +1,14 @@
+[17576:5440:1108/123116.819:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[17576:5440:1108/123116.930:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition(). 
+[17220:10856:1108/123117.514:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[17576:5440:1108/123118.263:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[17576:5440:1108/123118.372:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[17220:10856:1108/123118.587:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[17220:10856:1108/123118.587:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[17576:14368:1108/123119.195:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[17576:14872:1108/123119.246:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[17576:5440:1108/123120.180:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[17576:5440:1108/123120.181:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[10116:10984:1108/123121.750:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 2 TIMES
+[7724:16248:1108/123121.751:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 1 TIMES
+[17576:15760:1108/123122.009:WARNING:components\discardable_memory\service\discardable_shared_memory_manager.cc:466] Some MojoDiscardableSharedMemoryManagerImpls are still alive. They will be leaked.

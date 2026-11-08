@@ -1,0 +1,37 @@
+Microsoft (R) COFF/PE Dumper Version 14.51.36260.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file out\Debug\python_runtime.dll
+
+File Type: DLL
+
+  Section contains the following exports for python_runtime.dll
+
+    00000000 characteristics
+           0 time date stamp
+        0.00 version
+           1 ordinal base
+           8 number of functions
+           8 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00001330 ??0PythonContext@native_python@@AEAA@V?$unique_ptr@UImpl@PythonContext@native_python@@U?$default_delete@UImpl@PythonContext@native_python@@@__Cr@std@@@__Cr@std@@@Z = ??0PythonContext@native_python@@AEAA@V?$unique_ptr@UImpl@PythonContext@native_python@@U?$default_delete@UImpl@PythonContext@native_python@@@__Cr@std@@@__Cr@std@@@Z (private: __cdecl native_python::PythonContext::PythonContext(class std::__Cr::unique_ptr<struct native_python::PythonContext::Impl,struct std::__Cr::default_delete<struct native_python::PythonContext::Impl> >))
+          2    1 00002D30 ??1PythonContext@native_python@@QEAA@XZ = ??1PythonContext@native_python@@QEAA@XZ (public: __cdecl native_python::PythonContext::~PythonContext(void))
+          3    2 000013E0 ?Create@PythonContext@native_python@@SA?AV?$unique_ptr@VPythonContext@native_python@@U?$default_delete@VPythonContext@native_python@@@__Cr@std@@@__Cr@std@@PEAV?$basic_string@DU?$char_traits@D@__Cr@std@@V?$allocator@D@23@@45@@Z = ?Create@PythonContext@native_python@@SA?AV?$unique_ptr@VPythonContext@native_python@@U?$default_delete@VPythonContext@native_python@@@__Cr@std@@@__Cr@std@@PEAV?$basic_string@DU?$char_traits@D@__Cr@std@@V?$allocator@D@23@@45@@Z (public: static class std::__Cr::unique_ptr<class native_python::PythonContext,struct std::__Cr::default_delete<class native_python::PythonContext> > __cdecl native_python::PythonContext::Create(class std::__Cr::basic_string<char,struct std::__Cr::char_traits<char>,class std::__Cr::allocator<char> > *))
+          4    3 00002EE0 ?Execute@PythonContext@native_python@@QEAA?AUExecutionResult@2@V?$basic_string_view@DU?$char_traits@D@__Cr@std@@@__Cr@std@@0@Z = ?Execute@PythonContext@native_python@@QEAA?AUExecutionResult@2@V?$basic_string_view@DU?$char_traits@D@__Cr@std@@@__Cr@std@@0@Z (public: struct native_python::ExecutionResult __cdecl native_python::PythonContext::Execute(class std::__Cr::basic_string_view<char,struct std::__Cr::char_traits<char> >,class std::__Cr::basic_string_view<char,struct std::__Cr::char_traits<char> >))
+          5    4 00003670 ?IsInitialized@native_python@@YA_NXZ = ?IsInitialized@native_python@@YA_NXZ (bool __cdecl native_python::IsInitialized(void))
+          6    5 00003770 ?RunSelfTest@native_python@@YA?AVDictValue@base@@XZ = ?RunSelfTest@native_python@@YA?AVDictValue@base@@XZ (class base::DictValue __cdecl native_python::RunSelfTest(void))
+          7    6 00003690 ?Version@native_python@@YA?AV?$basic_string@DU?$char_traits@D@__Cr@std@@V?$allocator@D@23@@__Cr@std@@XZ = ?Version@native_python@@YA?AV?$basic_string@DU?$char_traits@D@__Cr@std@@V?$allocator@D@23@@__Cr@std@@XZ (class std::__Cr::basic_string<char,struct std::__Cr::char_traits<char>,class std::__Cr::allocator<char> > __cdecl native_python::Version(void))
+          8    7 006C25F8 kNativePythonRuntimeSelfTest = kNativePythonRuntimeSelfTest
+
+  Summary
+
+       B1000 .data
+       27000 .pdata
+      196000 .rdata
+        8000 .reloc
+      4F8000 .text
+        1000 .tls
+       47000 PyRuntim

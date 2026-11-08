@@ -1,0 +1,21 @@
+[6444:3480:1108/122658.673:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[6444:3480:1108/122659.100:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition(). 
+
+DevTools listening on ws://127.0.0.1:53444/devtools/browser/a5a95eea-b94c-4505-9413-eeeac41445fa
+[12308:4492:1108/122700.748:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[6444:3480:1108/122702.191:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+Traceback (most recent call last):
+  File "C:\src\src\chrome\test\chromium_plus_smoke_test.py", line 142, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\src\src\chrome\test\chromium_plus_smoke_test.py", line 130, in main
+[6444:3480:1108/122702.193:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[6444:3480:1108/122702.656:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[6444:3480:1108/122702.805:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: �ܾ����ʡ� (0x5)
+[12308:4492:1108/122703.133:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[12308:4492:1108/122703.133:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[6444:10888:1108/122703.663:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[6444:15984:1108/122703.712:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+
+    raise RuntimeError('Browser exited or timed out before reporting results')
+RuntimeError: Browser exited or timed out before reporting results

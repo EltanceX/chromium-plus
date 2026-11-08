@@ -1,0 +1,37 @@
+Name: CPython embedded runtime
+Short Name: cpython
+URL: https://www.python.org/
+Version: 3.13.18
+Update Mechanism: Manual
+License: PSF-2.0, MIT
+License File: src/LICENSE, src/Doc/license.rst
+Security Critical: yes
+Shipped: yes
+
+Description:
+Source-built Windows x64 GIL runtime for the experimental native Python MVP.
+Source: https://www.python.org/ftp/python/3.13.18/Python-3.13.18.tar.xz
+Archive SHA-256: abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68
+
+Local Modifications:
+src/ is an unmodified source subset selected by import_source.py. Its per-file
+SHA-256 hashes are recorded in source_manifest.json. Build inputs are derived
+from the upstream PCbuild/_freeze_module.vcxproj. Upstream tests, tools and
+unused extension sources are not part of the subset.
+
+GN builds a private static core inside one python_runtime.dll, and a separate
+build-time freezer using the same pinned compiler. Frozen bootstrapping and
+encoding modules are enumerated in frozen_modules.json; no on-disk stdlib is
+shipped. Native extension loading is disabled in the generated Windows config.
+embedded_getpath.c replaces path discovery with a strict explicit-path check;
+builtin_modules.c defines the selected built-in table. embedded_buildinfo.c
+supplies deterministic build metadata; sys._vpath is empty. Upstream source files
+are not patched. Host build Python never generates target-version bytecode.
+
+embedded_bootstrap_hash.c redirects CPython's BCryptGenRandom calls through
+embedded_entropy.cc to base::RandBytes, whose Windows ProcessPrng path works in
+the renderer sandbox. Hash seeds remain random; no sandbox policy is relaxed.
+
+The nt/winreg/_io and other bootstrap builtins contain OS capabilities. This
+runtime is NOT a language security sandbox. Phase one exposes only a fixed,
+opt-in renderer self-test; no page Python execution, DOM bridge or import sandbox.

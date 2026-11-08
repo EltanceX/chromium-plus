@@ -57,6 +57,7 @@ include_rules = [
   "+components/password_manager/content/renderer",
   "+components/password_manager/core/common",
   "+components/permissions/features.h",
+  "+components/python_runtime",
   "+components/pdf/common",
   "+components/pdf/renderer",
   "+components/plugins/renderer",

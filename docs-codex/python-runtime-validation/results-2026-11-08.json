@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-08",
+  "platform": "Windows x64 Debug component",
+  "cpython": {
+    "version": "3.13.18",
+    "archive_sha256": "abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68",
+    "upstream_files": 775,
+    "upstream_bytes": 20896105
+  },
+  "runtime_dll": {
+    "bytes": 7561216,
+    "sha256": "ac1326038c6f8190d06bdb2f7aca27c3a640fb4f41d452bbf7a1a51e06de3bcd"
+  },
+  "unit_tests": {
+    "passed": 9,
+    "total": 9
+  },
+  "renderer_smoke": {
+    "passed": true,
+    "cases": 2,
+    "sandboxed_reports": 5,
+    "initialization_ms": [
+      74,
+      54,
+      74,
+      73,
+      52
+    ],
+    "fixed_diagnostic_ms": [
+      338,
+      293,
+      283,
+      281,
+      244
+    ]
+  },
+  "chromium_plus": {
+    "network_service_in_process": {
+      "passed": 15,
+      "total": 15
+    },
+    "default_network_service": "Timed out before report; browser log recorded network service crash/restart. Existing documented environment issue; full default-mode suite not passed."
+  },
+  "build": {
+    "passed": true,
+    "targets": [
+      "chrome",
+      "python_runtime_unittests"
+    ],
+    "final_incremental_seconds": 134.72,
+    "final_steps": 173
+  },
+  "gn_check": {
+    "runtime": true,
+    "cpython": true,
+    "renderer": true
+  },
+  "reimport": {
+    "passed": true,
+    "archive_verified": true,
+    "generated_metadata_comparison": "Text equality with CRLF/LF normalized; upstream file checksums match byte-for-byte",
+    "reimport_matches": [
+      "source_manifest.json",
+      "sources.gni",
+      "frozen_modules.json"
+    ]
+  },
+  "installer_staging": {
+    "passed": true,
+    "destination": "Chrome-bin/158.0.8126.0/python_runtime.dll",
+    "sha256": "ac1326038c6f8190d06bdb2f7aca27c3a640fb4f41d452bbf7a1a51e06de3bcd",
+    "full_installer_built": false
+  }
+}

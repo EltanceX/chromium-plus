@@ -32,6 +32,14 @@
 #include "base/values.h"
 #include "build/branding_buildflags.h"
 #include "build/build_config.h"
+
+#if BUILDFLAG(IS_WIN) && defined(ARCH_CPU_X86_64)
+#include "base/json/json_writer.h"
+#include "base/logging.h"
+#include "base/win/access_token.h"
+#include "components/python_runtime/python_runtime.h"
+#endif
+
 #include "chrome/common/buildflags.h"
 #include "chrome/common/channel_info.h"
 #include "chrome/common/chrome_content_client.h"
@@ -1258,6 +1266,21 @@ void ChromeContentRendererClient::PrepareErrorPageForHttpStatusError(
 }
 
 void ChromeContentRendererClient::PostSandboxInitialized() {
+#if BUILDFLAG(IS_WIN) && defined(ARCH_CPU_X86_64)
+  if (base::FeatureList::IsEnabled(
+          native_python::kNativePythonRuntimeSelfTest)) {
+    auto token = base::win::AccessToken::FromCurrentProcess();
+    const bool sandboxed =
+        token && token->IsRestricted() &&
+        token->IntegrityLevel() <= SECURITY_MANDATORY_LOW_RID;
+    auto report = native_python::RunSelfTest();
+    report.Set("sandboxed", sandboxed);
+    report.Set("passed",
+               report.FindBool("passed").value_or(false) && sandboxed);
+    LOG(ERROR) << "CPYTHON_RUNTIME_SELF_TEST "
+               << base::WriteJson(report).value_or("{}");
+  }
+#endif
 #if BUILDFLAG(IS_CHROMEOS)
   DCHECK(!main_thread_profiler_);
   main_thread_profiler_ =

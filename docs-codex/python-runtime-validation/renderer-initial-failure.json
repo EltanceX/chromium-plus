@@ -1,0 +1,17 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "sandboxDisabled": false,
+  "cases": [
+    {
+      "name": "default-off",
+      "passed": true,
+      "pageLoaded": true,
+      "chromiumPlus": "0.0.1",
+      "pythonElement": "HTMLUnknownElement",
+      "poisonedEnvironmentIgnored": true,
+      "reports": []
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: {\"error\":\"failed to get random numbers to initialize Python\",\"passed\":false,\"sandboxed\":true,\"version\":\"3.13.18\"}\n\nfalse !== true\n\n    at run (file:///C:/src/src/chrome/test/python_runtime_smoke_test.mjs:90:14)\n    at async file:///C:/src/src/chrome/test/python_runtime_smoke_test.mjs:107:3"
+}

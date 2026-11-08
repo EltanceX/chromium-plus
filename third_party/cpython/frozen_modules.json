@@ -1,0 +1,17 @@
+{
+  "_frozen_importlib": "Lib/importlib/_bootstrap.py",
+  "_frozen_importlib_external": "Lib/importlib/_bootstrap_external.py",
+  "zipimport": "Lib/zipimport.py",
+  "abc": "Lib/abc.py",
+  "codecs": "Lib/codecs.py",
+  "io": "Lib/io.py",
+  "_collections_abc": "Lib/_collections_abc.py",
+  "encodings": "Lib/encodings/__init__.py",
+  "encodings.aliases": "Lib/encodings/aliases.py",
+  "encodings.utf_8": "Lib/encodings/utf_8.py",
+  "encodings.ascii": "Lib/encodings/ascii.py",
+  "encodings.latin_1": "Lib/encodings/latin_1.py",
+  "encodings.utf_8_sig": "Lib/encodings/utf_8_sig.py",
+  "encodings.cp1252": "Lib/encodings/cp1252.py",
+  "encodings.mbcs": "Lib/encodings/mbcs.py"
+}

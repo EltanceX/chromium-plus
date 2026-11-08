@@ -328,6 +328,9 @@ static_library("renderer") {
   }
 
   if (is_win) {
+    if (current_cpu == "x64") {
+      deps += [ "//components/python_runtime" ]
+    }
     deps += [ "//third_party/wtl" ]
     sources += [
       "font_prewarmer.cc",

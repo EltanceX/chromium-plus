@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Python phase one</title>
+</head><body data-chromium-plus="0.0.1" data-python-element="HTMLUnknownElement"><p id="result">网页正常</p>
+<pyscript>print("PAGE_PYTHON_SHOULD_BE_INERT")</pyscript>
+<script>
+document.body.dataset.chromiumPlus = globalThis.chromiumPlus;
+document.body.dataset.pythonElement = document.querySelector('pyscript').constructor.name;
+</script></body></html>

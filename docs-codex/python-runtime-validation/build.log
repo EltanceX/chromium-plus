@@ -1,0 +1,382 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87102 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 8.34s S Regenerating ninja files
+[0/2] 53.00s F Regenerating ninja files
+rebuild manifest finished
+52.55s Regenerating ninja files
+
+
+
+loading build.ninja... done 7.3829071s
+load siso config done 5.3802444s
+schedule pending:1+ready:0 (node:441001 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441001 edge:6)
+schedule pending:43621+ready:0 (node:441001 edge:43631)
+ 2.01s schedule pending:89745+ready:9086 (node:441001 edge:98831)
+
+build start: Ready 9086 Pending 89745
+[0/58611] 1m32.82s S CXX obj/third_party/cpython/entropy/embedded_entropy.obj
+[0/56989] 1m32.87s S CC obj/third_party/cpython/core/optimizer.obj
+[0/56343] 1m32.90s S CC obj/third_party/cpython/core/pyfpe.obj
+[0/56222] 1m32.90s S CC obj/third_party/cpython/core/jit.obj
+[0/55068] 1m32.94s S CC obj/third_party/cpython/core/optimizer_analysis.obj
+[0/54989] 1m32.94s S CC obj/third_party/cpython/core/embedded_bootstrap_hash.obj
+[0/53700] 1m32.97s S CC obj/third_party/cpython/core/dynamic_annotations.obj
+[0/53310] 1m32.98s S CC obj/third_party/cpython/core/invalid_parameter_handler.obj
+[0/52987] 1m32.99s S CC obj/third_party/cpython/core/optimizer_symbols.obj
+[0/50346] 1m33.10s S CC obj/third_party/cpython/core/getcopyright.obj
+[0/50325] 1m33.10s S CC obj/third_party/cpython/core/pytime.obj
+[0/50312] 1m33.10s S CC obj/third_party/cpython/core/bytearrayobject.obj
+[0/50312] 1m33.10s S CC obj/third_party/cpython/core/pyhash.obj
+[0/50308] 1m33.10s S CC obj/third_party/cpython/core/getargs.obj
+[0/50308] 1m33.10s S CC obj/third_party/cpython/core/marshal.obj
+[0/50307] 1m33.10s S CC obj/third_party/cpython/core/enumobject.obj
+[0/50306] 1m33.10s S CC obj/third_party/cpython/core/capsule.obj
+[0/50302] 1m33.10s S CC obj/third_party/cpython/core/helpers.obj
+[0/50302] 1m33.10s S CC obj/third_party/cpython/core/thread.obj
+[0/50301] 1m33.10s S CC obj/third_party/cpython/core/classobject.obj
+[0/50302] 1m33.10s S CC obj/third_party/cpython/core/parking_lot.obj
+[0/50298] 1m33.11s S CC obj/third_party/cpython/core/import.obj
+[0/50298] 1m33.11s S CC obj/third_party/cpython/core/_tracemalloc.obj
+[0/50294] 1m33.11s S CC obj/third_party/cpython/core/gc.obj
+[0/50294] 1m33.11s S CC obj/third_party/cpython/core/symtable.obj
+[0/50291] 1m33.11s S CC obj/third_party/cpython/core/errors.obj
+[0/50290] 1m33.11s S CC obj/third_party/cpython/core/winreg.obj
+[0/50286] 1m33.11s S CC obj/third_party/cpython/core/floatobject.obj
+[0/50173] 1m33.11s S CC obj/third_party/cpython/core/critical_section.obj
+[0/49633] 1m33.12s S CC obj/third_party/cpython/core/ast_unparse.obj
+[0/45660] 1m33.22s S CC obj/third_party/cpython/core/getcompiler.obj
+[0/43026] 1m33.33s S CC obj/third_party/cpython/core/tracemalloc.obj
+[0/42994] 1m33.33s S CC obj/third_party/cpython/core/frameobject.obj
+[0/42944] 1m33.33s S CC obj/third_party/cpython/core/object_stack.obj
+[0/42847] 1m33.33s S CC obj/third_party/cpython/core/parser.obj
+[0/42819] 1m33.33s S CC obj/third_party/cpython/core/pyarena.obj
+[0/42773] 1m33.33s S CC obj/third_party/cpython/core/fileobject.obj
+[0/42747] 1m33.33s S CC obj/third_party/cpython/core/modsupport.obj
+[0/42692] 1m33.34s S CC obj/third_party/cpython/core/unionobject.obj
+[0/42127] 1m33.35s S CC obj/third_party/cpython/core/gc_gil.obj
+[0/42112] 1m33.35s S CC obj/third_party/cpython/core/obmalloc.obj
+[0/42062] 1m33.35s S CC obj/third_party/cpython/core/structseq.obj
+[0/41849] 1m33.36s S CC obj/third_party/cpython/core/lock.obj
+[0/41811] 1m33.36s S CC obj/third_party/cpython/core/asdl.obj
+[0/41789] 1m33.36s S CC obj/third_party/cpython/core/listobject.obj
+[0/41751] 1m33.36s S CC obj/third_party/cpython/core/getplatform.obj
+[0/41692] 1m33.36s S CC obj/third_party/cpython/core/gc_free_threading.obj
+[0/41508] 1m33.37s S CC obj/third_party/cpython/core/genericaliasobject.obj
+[0/41477] 1m33.37s S CC obj/third_party/cpython/core/state.obj
+[0/41441] 1m33.37s S CC obj/third_party/cpython/core/frame.obj
+[0/41390] 1m33.37s S CC obj/third_party/cpython/core/importdl.obj
+[0/41364] 1m33.38s S CC obj/third_party/cpython/core/typevarobject.obj
+[0/41318] 1m33.38s S CC obj/third_party/cpython/core/myreadline.obj
+[0/41288] 1m33.38s S CC obj/third_party/cpython/core/getversion.obj
+[0/41286] 1m33.38s S CC obj/third_party/cpython/core/specialize.obj
+[0/41283] 1m33.38s S CC obj/third_party/cpython/core/atexitmodule.obj
+[0/41268] 1m33.38s S CC obj/third_party/cpython/core/utf8_tokenizer.obj
+[0/41268] 1m33.38s S CC obj/third_party/cpython/core/object.obj
+[0/41268] 1m33.38s S CC obj/third_party/cpython/core/legacy_tracing.obj
+[0/41266] 1m33.38s S CC obj/third_party/cpython/core/iterobject.obj
+[0/41265] 1m33.38s S CC obj/third_party/cpython/core/pystrtod.obj
+[0/41264] 1m33.38s S CC obj/third_party/cpython/core/dictobject.obj
+[0/41245] 1m33.38s S CC obj/third_party/cpython/core/setobject.obj
+[0/41236] 1m33.38s S CC obj/third_party/cpython/core/abstract.obj
+[0/41227] 1m33.38s S CC obj/third_party/cpython/core/exceptions.obj
+[0/41224] 1m33.38s S CC obj/third_party/cpython/core/descrobject.obj
+[0/41217] 1m33.38s S CC obj/third_party/cpython/core/ast_opt.obj
+[0/41187] 1m33.38s S CC obj/third_party/cpython/core/pegen_errors.obj
+[0/41180] 1m33.38s S CC obj/third_party/cpython/core/faulthandler.obj
+[0/41179] 1m33.38s S CC obj/third_party/cpython/core/msvcrtmodule.obj
+[0/41178] 1m33.38s S CC obj/third_party/cpython/core/ceval.obj
+[0/41178] 1m33.38s S CC obj/third_party/cpython/core/hashtable.obj
+[0/41170] 1m33.39s S CC obj/third_party/cpython/core/ceval_gil.obj
+[0/41170] 1m33.39s S CC obj/third_party/cpython/core/Python-tokenize.obj
+[0/41169] 1m33.39s S CC obj/third_party/cpython/core/assemble.obj
+[0/41169] 1m33.39s S CC obj/third_party/cpython/core/_iomodule.obj
+[0/41165] 1m33.39s S CC obj/third_party/cpython/core/picklebufobject.obj
+[0/41155] 1m33.39s S CC obj/third_party/cpython/core/pathconfig.obj
+[0/41152] 1m33.39s S CC obj/third_party/cpython/core/unicodectype.obj
+[0/41141] 1m33.39s S CC obj/third_party/cpython/core/preconfig.obj
+[0/41139] 1m33.39s S CC obj/third_party/cpython/core/flowgraph.obj
+[0/41137] 1m33.39s S CC obj/third_party/cpython/core/textio.obj
+[0/41134] 1m33.39s S CC obj/third_party/cpython/core/Python-ast.obj
+[0/41127] 1m33.39s S CC obj/third_party/cpython/core/qsbr.obj
+[0/41124] 1m33.39s S CC obj/third_party/cpython/core/iobase.obj
+[0/41119] 1m33.39s S CC obj/third_party/cpython/core/peg_api.obj
+[0/41102] 1m33.39s S CC obj/third_party/cpython/core/namespaceobject.obj
+[0/41091] 1m33.39s S CC obj/third_party/cpython/core/codecs.obj
+[0/41086] 1m33.39s S CC obj/third_party/cpython/core/bytesobject.obj
+[0/41084] 1m33.39s S CC obj/third_party/cpython/core/file_tokenizer.obj
+[0/41078] 1m33.39s S CC obj/third_party/cpython/core/pystrhex.obj
+[0/41078] 1m33.39s S CC obj/third_party/cpython/core/pymath.obj
+[0/41066] 1m33.39s S CC obj/third_party/cpython/core/perf_jit_trampoline.obj
+[0/41066] 1m33.39s S CC obj/third_party/cpython/core/mystrtoul.obj
+[0/41064] 1m33.39s S CC obj/third_party/cpython/core/pyctype.obj
+[0/41045] 1m33.39s S CC obj/third_party/cpython/core/signalmodule.obj
+[0/41043] 1m33.39s S CC obj/third_party/cpython/core/odictobject.obj
+[0/41037] 1m33.39s S CC obj/third_party/cpython/core/token.obj
+[0/41035] 1m33.39s S CC obj/third_party/cpython/core/buffer.obj
+[0/41028] 1m33.39s S CC obj/third_party/cpython/core/string_tokenizer.obj
+[0/41028] 1m33.39s S CC obj/third_party/cpython/core/bytes_methods.obj
+[0/41028] 1m33.39s S CC obj/third_party/cpython/core/string_parser.obj
+[0/41027] 1m33.39s S CC obj/third_party/cpython/core/initconfig.obj
+[0/41027] 1m33.39s S CC obj/third_party/cpython/core/brc.obj
+[0/41017] 1m33.39s S CC obj/third_party/cpython/core/funcobject.obj
+[0/41010] 1m33.39s S CC obj/third_party/cpython/core/longobject.obj
+[0/41002] 1m33.40s S CC obj/third_party/cpython/core/builtin_modules.obj
+[0/40999] 1m33.40s S CC obj/third_party/cpython/core/bltinmodule.obj
+[0/40999] 1m33.40s S CC obj/third_party/cpython/core/stringio.obj
+[0/40997] 1m33.40s S CC obj/third_party/cpython/core/compile.obj
+[0/40997] 1m33.40s S CC obj/third_party/cpython/core/_codecsmodule.obj
+[0/40997] 1m33.40s S CC obj/third_party/cpython/core/pystate.obj
+[0/40995] 1m33.40s S CC obj/third_party/cpython/core/call.obj
+[0/40997] 1m33.40s S CC obj/third_party/cpython/core/pystrcmp.obj
+[0/40982] 1m33.40s S CC obj/third_party/cpython/core/lexer.obj
+[0/40979] 1m33.40s S CC obj/third_party/cpython/core/weakrefobject.obj
+[0/40972] 1m33.40s S CC obj/third_party/cpython/core/methodobject.obj
+[0/40965] 1m33.40s S CC obj/third_party/cpython/core/posixmodule.obj
+[0/40964] 1m33.40s S CC obj/third_party/cpython/core/genobject.obj
+[0/40955] 1m33.40s S CC obj/third_party/cpython/core/tupleobject.obj
+[0/40956] 1m33.40s S CC obj/third_party/cpython/core/_threadmodule.obj
+[0/40955] 1m33.40s S CC obj/third_party/cpython/core/bufferedio.obj
+[0/40952] 1m33.40s S CC obj/third_party/cpython/core/fileio.obj
+[0/40935] 1m33.40s S CC obj/third_party/cpython/core/future.obj
+[0/40926] 1m33.40s S CC obj/third_party/cpython/core/sliceobject.obj
+[0/40926] 1m33.40s S CC obj/third_party/cpython/core/mysnprintf.obj
+[0/40923] 1m33.40s S CC obj/third_party/cpython/core/getopt.obj
+[0/40926] 1m33.40s S CC obj/third_party/cpython/core/gcmodule.obj
+[0/40922] 1m33.40s S CC obj/third_party/cpython/core/action_helpers.obj
+[0/40919] 1m33.40s S CC obj/third_party/cpython/core/rangeobject.obj
+[0/40923] 1m33.40s S CC obj/third_party/cpython/core/formatter_unicode.obj
+[0/40917] 1m33.40s S CC obj/third_party/cpython/core/fileutils.obj
+[0/40914] 1m33.40s S CC obj/third_party/cpython/core/context.obj
+[0/40909] 1m33.40s S CC obj/third_party/cpython/core/codeobject.obj
+[0/40908] 1m33.40s S CC obj/third_party/cpython/core/instrumentation.obj
+[0/40908] 1m33.40s S CC obj/third_party/cpython/core/interpconfig.obj
+[0/40902] 1m33.40s S CC obj/third_party/cpython/core/complexobject.obj
+[0/40902] 1m33.40s S CC obj/third_party/cpython/core/timemodule.obj
+[0/40902] 1m33.40s S CC obj/third_party/cpython/core/hamt.obj
+[0/40902] 1m33.40s S CC obj/third_party/cpython/core/structmember.obj
+[0/40898] 1m33.40s S CC obj/third_party/cpython/core/_warnings.obj
+[0/40897] 1m33.40s S CC obj/third_party/cpython/core/moduleobject.obj
+[0/40897] 1m33.40s S CC obj/third_party/cpython/core/_weakref.obj
+[0/40897] 1m33.40s S CC obj/third_party/cpython/core/intrinsics.obj
+[0/40896] 1m33.40s S CC obj/third_party/cpython/core/readline_tokenizer.obj
+[0/40888] 1m33.40s S CC obj/third_party/cpython/core/pegen.obj
+[0/40885] 1m33.40s S CC obj/third_party/cpython/core/pythonrun.obj
+[0/40883] 1m33.40s S CC obj/third_party/cpython/core/suggestions.obj
+[0/40879] 1m33.40s S CC obj/third_party/cpython/core/crossinterp.obj
+[0/40876] 1m33.40s S CC obj/third_party/cpython/core/ast.obj
+[0/40875] 1m33.40s S CC obj/third_party/cpython/core/pylifecycle.obj
+[0/40875] 1m33.40s S CC obj/third_party/cpython/core/embedded_buildinfo.obj
+[0/40865] 1m33.40s S CC obj/third_party/cpython/core/cellobject.obj
+[0/40864] 1m33.41s S CC obj/third_party/cpython/core/_abc.obj
+[0/40864] 1m33.41s S CC obj/third_party/cpython/core/winconsoleio.obj
+[0/40854] 1m33.41s S CC obj/third_party/cpython/core/perf_trampoline.obj
+[0/40847] 1m33.41s S CC obj/third_party/cpython/core/traceback.obj
+[0/40844] 1m33.41s S CC obj/third_party/cpython/core/dtoa.obj
+[0/40844] 1m33.41s S CC obj/third_party/cpython/core/boolobject.obj
+[0/40844] 1m33.41s S CC obj/third_party/cpython/core/typeobject.obj
+[0/40839] 1m33.41s S CC obj/third_party/cpython/core/dynload_stub.obj
+[0/40839] 1m33.41s S CC obj/third_party/cpython/core/instruction_sequence.obj
+[0/40466] 1m33.42s S CC obj/third_party/cpython/core/bytesio.obj
+[0/40257] 1m33.43s S CC obj/third_party/cpython/core/sysmodule.obj
+[0/39477] 1m33.45s S CC obj/third_party/cpython/core/memoryobject.obj
+[0/38087] 1m33.52s S CC obj/third_party/cpython/freeze_module/getpath_noop.obj
+[0/37647] 1m33.54s S CC obj/third_party/cpython/freeze_module/_freeze_module.obj
+[0/37636] 1m33.54s S CC obj/third_party/cpython/core/unicodeobject.obj
+[0/29639] 1m33.90s F CC obj/third_party/cpython/core/pyfpe.obj
+[1/29620] 1m33.90s F CC obj/third_party/cpython/core/jit.obj
+[2/29615] 1m33.90s F CC obj/third_party/cpython/core/optimizer.obj
+[3/27654] 1m34.00s F CC obj/third_party/cpython/core/optimizer_symbols.obj
+[4/27184] 1m34.02s F CC obj/third_party/cpython/core/optimizer_analysis.obj
+[5/15420] 1m34.92s F CC obj/third_party/cpython/core/invalid_parameter_handler.obj
+[6/261] 1m36.58s F CC obj/third_party/cpython/core/dynamic_annotations.obj
+[7/261] 1m37.06s F CXX obj/third_party/cpython/entropy/embedded_entropy.obj
+[8/260] 1m37.09s F CC obj/third_party/cpython/core/getcopyright.obj
+[9/260] 1m37.27s F CC obj/third_party/cpython/core/getcompiler.obj
+[10/260] 1m37.75s F CC obj/third_party/cpython/core/pymath.obj
+[11/260] 1m37.82s F CC obj/third_party/cpython/core/helpers.obj
+[12/260] 1m37.94s F CC obj/third_party/cpython/core/pyarena.obj
+[13/260] 1m38.03s F CC obj/third_party/cpython/core/asdl.obj
+[14/260] 1m38.06s F CC obj/third_party/cpython/core/hashtable.obj
+[15/260] 1m38.42s F CC obj/third_party/cpython/core/embedded_bootstrap_hash.obj
+[16/260] 1m38.52s F CC obj/third_party/cpython/core/pytime.obj
+[17/260] 1m38.58s F CC obj/third_party/cpython/core/classobject.obj
+[18/260] 1m38.96s F CC obj/third_party/cpython/core/lock.obj
+[19/260] 1m39.09s F CC obj/third_party/cpython/core/object_stack.obj
+[20/260] 1m39.30s F CC obj/third_party/cpython/core/pystrtod.obj
+[21/260] 1m40.20s F CC obj/third_party/cpython/core/_iomodule.obj
+[22/260] 1m40.75s F CC obj/third_party/cpython/core/rangeobject.obj
+[23/260] 1m40.78s F CC obj/third_party/cpython/core/intrinsics.obj
+[24/260] 1m40.94s F CC obj/third_party/cpython/core/signalmodule.obj
+[25/260] 1m41.12s F CC obj/third_party/cpython/core/interpconfig.obj
+[26/260] 1m41.21s F CC obj/third_party/cpython/core/initconfig.obj
+[27/260] 1m41.35s F CC obj/third_party/cpython/core/textio.obj
+[28/260] 1m41.91s F CC obj/third_party/cpython/core/bytesobject.obj
+[29/260] 1m42.03s F CC obj/third_party/cpython/core/perf_jit_trampoline.obj
+[30/260] 1m42.21s F CC obj/third_party/cpython/core/complexobject.obj
+[31/260] 1m42.29s F CC obj/third_party/cpython/core/unicodeobject.obj
+[32/260] 1m42.56s F CC obj/third_party/cpython/core/Python-ast.obj
+[33/260] 1m42.58s F CC obj/third_party/cpython/core/_threadmodule.obj
+[34/260] 1m42.91s F CC obj/third_party/cpython/core/pylifecycle.obj
+[35/260] 1m43.01s F CC obj/third_party/cpython/core/ceval_gil.obj
+[36/260] 1m43.41s F CC obj/third_party/cpython/core/ast.obj
+[37/260] 1m44.00s F CC obj/third_party/cpython/core/qsbr.obj
+[38/260] 1m44.09s F CC obj/third_party/cpython/core/file_tokenizer.obj
+[39/260] 1m44.11s F CC obj/third_party/cpython/core/winconsoleio.obj
+[40/260] 1m44.27s F CC obj/third_party/cpython/core/gcmodule.obj
+[41/260] 1m44.63s F CC obj/third_party/cpython/freeze_module/getpath_noop.obj
+[42/260] 1m44.80s F CC obj/third_party/cpython/freeze_module/_freeze_module.obj
+[43/260] 1m45.11s F CC obj/third_party/cpython/core/fileutils.obj
+[44/260] 1m45.18s F CC obj/third_party/cpython/core/pystate.obj
+[45/260] 1m45.27s F CC obj/third_party/cpython/core/methodobject.obj
+[46/260] 1m45.45s F CC obj/third_party/cpython/core/_warnings.obj
+[47/260] 1m45.66s F CC obj/third_party/cpython/core/buffer.obj
+[48/260] 1m45.75s F CC obj/third_party/cpython/core/compile.obj
+[48/260] 1m45.75s F CC obj/third_party/cpython/core/atexitmodule.obj
+[50/260] 1m45.80s F CC obj/third_party/cpython/core/msvcrtmodule.obj
+[51/260] 1m46.25s F CC obj/third_party/cpython/core/token.obj
+[52/260] 1m46.73s F CC obj/third_party/cpython/core/specialize.obj
+[53/260] 1m46.88s F CC obj/third_party/cpython/core/typevarobject.obj
+[54/260] 1m47.47s F CC obj/third_party/cpython/core/dtoa.obj
+[55/260] 1m47.49s F CC obj/third_party/cpython/core/pystrcmp.obj
+[56/260] 1m47.50s F CC obj/third_party/cpython/core/perf_trampoline.obj
+[57/260] 1m47.81s F CC obj/third_party/cpython/core/structseq.obj
+[58/260] 1m47.85s F CC obj/third_party/cpython/core/legacy_tracing.obj
+[59/260] 1m48.37s F CC obj/third_party/cpython/core/pystrhex.obj
+[60/260] 1m48.76s F CC obj/third_party/cpython/core/hamt.obj
+[61/260] 1m48.82s F CC obj/third_party/cpython/core/Python-tokenize.obj
+[62/260] 1m49.06s F CC obj/third_party/cpython/core/exceptions.obj
+[63/260] 1m49.15s F CC obj/third_party/cpython/core/peg_api.obj
+[64/260] 1m49.44s F CC obj/third_party/cpython/core/embedded_buildinfo.obj
+[65/260] 1m49.80s F CC obj/third_party/cpython/core/pathconfig.obj
+[66/260] 1m50.00s F CC obj/third_party/cpython/core/pegen.obj
+[67/260] 1m50.35s F CC obj/third_party/cpython/core/instrumentation.obj
+[68/260] 1m50.36s F CC obj/third_party/cpython/core/suggestions.obj
+[69/260] 1m50.42s F CC obj/third_party/cpython/core/action_helpers.obj
+[70/260] 1m50.86s F CC obj/third_party/cpython/core/dictobject.obj
+[71/260] 1m50.96s F CC obj/third_party/cpython/core/sysmodule.obj
+[72/260] 1m50.96s F CC obj/third_party/cpython/core/bufferedio.obj
+[73/260] 1m51.90s F CC obj/third_party/cpython/core/genericaliasobject.obj
+[74/260] 1m52.32s F CC obj/third_party/cpython/core/bytesio.obj
+[75/260] 1m52.54s F CC obj/third_party/cpython/core/structmember.obj
+[76/260] 1m52.55s F CC obj/third_party/cpython/core/pegen_errors.obj
+[77/260] 1m52.58s F CC obj/third_party/cpython/core/context.obj
+[78/260] 1m52.86s F CC obj/third_party/cpython/core/getopt.obj
+[79/260] 1m53.02s F CC obj/third_party/cpython/core/ceval.obj
+[80/260] 1m53.04s F CC obj/third_party/cpython/core/preconfig.obj
+[81/260] 1m53.09s F CC obj/third_party/cpython/core/longobject.obj
+[82/260] 1m53.13s F CC obj/third_party/cpython/core/frame.obj
+[83/260] 1m53.24s F CC obj/third_party/cpython/core/state.obj
+[84/260] 1m53.63s F CC obj/third_party/cpython/core/importdl.obj
+[85/260] 1m54.42s F CC obj/third_party/cpython/core/sliceobject.obj
+[86/260] 1m54.80s F CC obj/third_party/cpython/core/lexer.obj
+[87/260] 1m54.92s F CC obj/third_party/cpython/core/dynload_stub.obj
+[88/260] 1m54.92s F CC obj/third_party/cpython/core/descrobject.obj
+[89/260] 1m55.20s F CC obj/third_party/cpython/core/memoryobject.obj
+[90/260] 1m55.53s F CC obj/third_party/cpython/core/symtable.obj
+[91/260] 1m55.62s F CC obj/third_party/cpython/core/_weakref.obj
+[92/260] 1m55.84s F CC obj/third_party/cpython/core/genobject.obj
+[93/260] 1m55.85s F CC obj/third_party/cpython/core/ast_opt.obj
+[94/260] 1m55.93s F CC obj/third_party/cpython/core/codeobject.obj
+[95/260] 1m55.97s F CC obj/third_party/cpython/core/myreadline.obj
+[96/260] 1m56.47s F CC obj/third_party/cpython/core/codecs.obj
+[97/260] 1m56.83s F CC obj/third_party/cpython/core/future.obj
+[98/260] 1m56.83s F CC obj/third_party/cpython/core/utf8_tokenizer.obj
+[99/260] 1m56.86s F CC obj/third_party/cpython/core/crossinterp.obj
+[100/260] 1m57.61s F CC obj/third_party/cpython/core/assemble.obj
+[101/260] 1m57.61s F CC obj/third_party/cpython/core/picklebufobject.obj
+[102/260] 1m58.05s F CC obj/third_party/cpython/core/iterobject.obj
+[103/260] 1m58.08s F CC obj/third_party/cpython/core/namespaceobject.obj
+[104/260] 1m58.84s F CC obj/third_party/cpython/core/bytes_methods.obj
+[105/260] 1m58.92s F CC obj/third_party/cpython/core/bltinmodule.obj
+[106/260] 1m58.99s F CC obj/third_party/cpython/core/listobject.obj
+[107/260] 1m59.12s F CC obj/third_party/cpython/core/_abc.obj
+[108/260] 1m59.33s F CC obj/third_party/cpython/core/timemodule.obj
+[109/260] 1m59.67s F CC obj/third_party/cpython/core/object.obj
+[110/260] 1m59.69s F CC obj/third_party/cpython/core/import.obj
+[111/260] 1m59.84s F CC obj/third_party/cpython/core/fileio.obj
+[112/260] 2m00.05s F CC obj/third_party/cpython/core/unicodectype.obj
+[113/260] 2m00.11s F CC obj/third_party/cpython/core/posixmodule.obj
+[114/260] 2m00.30s F CC obj/third_party/cpython/core/setobject.obj
+[115/260] 2m00.82s F CC obj/third_party/cpython/core/cellobject.obj
+[116/260] 2m00.83s F CC obj/third_party/cpython/core/iobase.obj
+[117/260] 2m01.28s F CC obj/third_party/cpython/core/parser.obj
+[118/260] 2m01.29s F CC obj/third_party/cpython/core/brc.obj
+[119/260] 2m01.44s F CC obj/third_party/cpython/core/string_tokenizer.obj
+[120/260] 2m01.69s F CC obj/third_party/cpython/core/typeobject.obj
+[121/260] 2m01.86s F CC obj/third_party/cpython/core/formatter_unicode.obj
+[122/260] 2m02.07s F CC obj/third_party/cpython/core/tupleobject.obj
+[123/260] 2m02.21s F CC obj/third_party/cpython/core/unionobject.obj
+[124/260] 2m02.55s F CC obj/third_party/cpython/core/odictobject.obj
+[125/260] 2m02.75s F CC obj/third_party/cpython/core/boolobject.obj
+[126/260] 2m02.96s F CC obj/third_party/cpython/core/instruction_sequence.obj
+[127/260] 2m03.32s F CC obj/third_party/cpython/core/abstract.obj
+[128/260] 2m03.53s F CC obj/third_party/cpython/core/obmalloc.obj
+[129/260] 2m04.37s F CC obj/third_party/cpython/core/mystrtoul.obj
+[130/260] 2m04.56s F CC obj/third_party/cpython/core/call.obj
+[131/260] 2m04.73s F CC obj/third_party/cpython/core/pythonrun.obj
+[132/260] 2m05.42s F CC obj/third_party/cpython/core/stringio.obj
+[133/260] 2m05.88s F CC obj/third_party/cpython/core/faulthandler.obj
+[134/260] 2m06.16s F CC obj/third_party/cpython/core/flowgraph.obj
+[135/260] 2m06.28s F CC obj/third_party/cpython/core/string_parser.obj
+[136/260] 2m06.65s F CC obj/third_party/cpython/core/_codecsmodule.obj
+[137/260] 2m06.68s F CC obj/third_party/cpython/core/traceback.obj
+[138/260] 2m06.93s F CC obj/third_party/cpython/core/builtin_modules.obj
+[139/260] 2m07.10s F CC obj/third_party/cpython/core/funcobject.obj
+[140/260] 2m07.33s F CC obj/third_party/cpython/core/pyhash.obj
+[141/260] 2m07.55s F CC obj/third_party/cpython/core/getversion.obj
+[142/260] 2m07.61s F CC obj/third_party/cpython/core/gc_free_threading.obj
+[143/260] 2m08.00s F CC obj/third_party/cpython/core/getplatform.obj
+[143/260] 2m08.00s F CC obj/third_party/cpython/core/_tracemalloc.obj
+[145/260] 2m08.13s F CC obj/third_party/cpython/core/pyctype.obj
+[146/260] 2m08.18s F CC obj/third_party/cpython/core/weakrefobject.obj
+[147/260] 2m08.70s F CC obj/third_party/cpython/core/readline_tokenizer.obj
+[148/260] 2m08.88s F CC obj/third_party/cpython/core/mysnprintf.obj
+[149/260] 2m09.29s F CC obj/third_party/cpython/core/fileobject.obj
+[150/260] 2m09.60s F CC obj/third_party/cpython/core/frameobject.obj
+[151/260] 2m10.31s F CC obj/third_party/cpython/core/marshal.obj
+[152/260] 2m10.32s F CC obj/third_party/cpython/core/bytearrayobject.obj
+[153/260] 2m10.33s F CC obj/third_party/cpython/core/moduleobject.obj
+[154/260] 2m10.39s F CC obj/third_party/cpython/core/gc.obj
+[155/260] 2m10.40s F CC obj/third_party/cpython/core/tracemalloc.obj
+[156/260] 2m10.45s F CC obj/third_party/cpython/core/floatobject.obj
+[157/260] 2m10.53s F CC obj/third_party/cpython/core/enumobject.obj
+[158/260] 2m10.72s F CC obj/third_party/cpython/core/getargs.obj
+[159/260] 2m10.73s F CC obj/third_party/cpython/core/winreg.obj
+[160/260] 2m10.81s F CC obj/third_party/cpython/core/thread.obj
+[161/260] 2m11.14s F CC obj/third_party/cpython/core/errors.obj
+[162/260] 2m11.16s F CC obj/third_party/cpython/core/parking_lot.obj
+[163/260] 2m11.39s F CC obj/third_party/cpython/core/ast_unparse.obj
+[164/260] 2m11.47s F CC obj/third_party/cpython/core/modsupport.obj
+[165/260] 2m11.64s F CC obj/third_party/cpython/core/critical_section.obj
+[166/260] 2m11.69s F CC obj/third_party/cpython/core/gc_gil.obj
+[167/260] 2m11.76s F CC obj/third_party/cpython/core/capsule.obj
+[168/259] 2m11.76s S LINK freeze_module.exe freeze_module.exe.pdb
+[168/259] 2m12.04s F LINK freeze_module.exe freeze_module.exe.pdb
+[169/259] 2m12.04s S ACTION //third_party/cpython:frozen(//build/toolchain/win:win_clang_x64)
+[169/259] 2m13.00s F ACTION //third_party/cpython:frozen(//build/toolchain/win:win_clang_x64)
+[170/251] 2m13.00s S CC obj/third_party/cpython/embedded/frozen.obj
+[170/250] 2m13.00s S CC obj/third_party/cpython/embedded/embedded_getpath.obj
+[170/183] 2m13.60s F CC obj/third_party/cpython/embedded/embedded_getpath.obj
+[171/183] 2m13.83s F CC obj/third_party/cpython/embedded/frozen.obj
+[172/182] 2m13.83s S LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[172/182] 2m14.09s F LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+build finished
+
+	
+noexec:0 local:173 remote:0 cache:0 skip:98658
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 17274(err:5) / r:949(err:0) 183.04MiB / w:2(err:0) 17.80KiB
+
+
+
+2m14.72s Build Succeeded: 173 steps - 1.28/s
+shutdown cloud logging/monitoring done 0s

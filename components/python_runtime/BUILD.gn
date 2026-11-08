@@ -1,0 +1,32 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//testing/test.gni")
+
+assert(is_win && current_cpu == "x64")
+
+shared_library("python_runtime") {
+  sources = [
+    "python_runtime.cc",
+    "python_runtime.h",
+  ]
+  defines = [ "IS_PYTHON_RUNTIME_IMPL" ]
+  deps = [
+    "//base",
+    "//third_party/cpython:embedded",
+  ]
+  public_deps = [ "//base" ]
+}
+
+test("python_runtime_unittests") {
+  sources = [
+    "python_runtime_unittest.cc",
+    "run_all_unittests.cc",
+  ]
+  deps = [
+    ":python_runtime",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+}
