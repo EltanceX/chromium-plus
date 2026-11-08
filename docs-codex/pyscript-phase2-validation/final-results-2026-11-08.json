@@ -1,0 +1,133 @@
+{
+  "observed_at": "2026-11-08T20:33:46+08:00",
+  "phase": 2,
+  "status": "phase_two_validation_complete_with_environment_limitations",
+  "phase_two_acceptance_complete": true,
+  "overall_python_mvp_complete": false,
+  "source_implementation_commit": "002df59590",
+  "previous_validation_commit": "b02f92b92b",
+  "product_source_changes_this_checkpoint": false,
+  "blink_build": {
+    "status": "passed",
+    "command": "autoninja -C out/Debug blink_unittests blink_tests",
+    "elapsed": "2h9m04.35s",
+    "steps": 3459,
+    "completed_at_local": "2026-11-08T20:04:26+08:00",
+    "evidence": "blink-tests-final-build-tail.log",
+    "full_local_log": "out/Debug/pyscript-phase2-blink-tests-build.log"
+  },
+  "blink_unit_tests": {
+    "status": "passed",
+    "passed": 13,
+    "total": 13,
+    "evidence": "blink-unittests.json",
+    "log": "blink-unittests.log"
+  },
+  "wpt": {
+    "status": "passed_with_environment_configuration",
+    "runner": "run_web_tests.py with content_shell; run_wpt_tests.py skips wpt_internal in this checkout",
+    "files_passed": 2,
+    "subtests_in_passing_files": 7,
+    "variants": [
+      {
+        "file": "wpt_internal/pyscript/parsing-enabled.html",
+        "actual": "PASS",
+        "expected": "PASS",
+        "subtest_count_from_source": 5,
+        "file_pass_implies_all_subtests_passed": true,
+        "exit_code": 0,
+        "command": "vpython3 -vpython-root C:/src/src/out/pyscript-vpython third_party/blink/tools/run_web_tests.py -t Debug --child-processes=1 --no-show-results --no-manifest-update --results-directory=out/Debug/pyscript-wpt-enabled-diagnostic-results --additional-driver-flag=--disable-system-font-check --additional-driver-flag=--enable-features=NetworkServiceInProcess2 --additional-driver-flag=--enable-blink-features=PythonScript wpt_internal/pyscript/parsing-enabled.html",
+        "evidence": "wpt-enabled-results.json",
+        "log": "wpt-enabled.log"
+      },
+      {
+        "file": "wpt_internal/pyscript/feature-disabled.html",
+        "actual": "PASS",
+        "expected": "PASS",
+        "subtest_count_from_source": 2,
+        "file_pass_implies_all_subtests_passed": true,
+        "exit_code": 0,
+        "command": "vpython3 -vpython-root C:/src/src/out/pyscript-vpython third_party/blink/tools/run_web_tests.py -t Debug --child-processes=1 --no-show-results --no-manifest-update --results-directory=out/Debug/pyscript-wpt-disabled-diagnostic-results --additional-driver-flag=--disable-system-font-check --additional-driver-flag=--enable-features=NetworkServiceInProcess2 --additional-driver-flag=--disable-blink-features=PythonScript wpt_internal/pyscript/feature-disabled.html",
+        "evidence": "wpt-disabled-results.json",
+        "log": "wpt-disabled.log"
+      }
+    ],
+    "expected_failure_entries_added": false,
+    "baselines_added_or_modified": false,
+    "manifest_regenerated": true
+  },
+  "browser_smoke": {
+    "status": "passed",
+    "passed": 26,
+    "total": 26,
+    "sandbox_disabled": false,
+    "chrome_args": [],
+    "evidence": "browser-smoke.json"
+  },
+  "phase_one_renderer_regression": {
+    "status": "passed",
+    "passed": 2,
+    "total": 2,
+    "sandbox_disabled": false,
+    "evidence": "runtime-renderer-regression.json"
+  },
+  "runtime_unit_tests": {
+    "passed": 9,
+    "total": 9,
+    "evidence": "resume-runtime-unittests.json",
+    "note": "Passed earlier in this phase; not repeated after generated-object recovery because runtime source did not change"
+  },
+  "chromium_plus_regression": {
+    "default_network_service": {
+      "status": "failed_timeout",
+      "network_service_crash_restart_seen": true,
+      "evidence": "chromium-plus-default-failure.log"
+    },
+    "in_process_network_diagnostic": {
+      "status": "passed",
+      "passed": 15,
+      "total": 15,
+      "chrome_arg": "--enable-features=NetworkServiceInProcess2",
+      "evidence": "chromium-plus-in-process.json"
+    }
+  },
+  "test_environment": {
+    "vpython_root": "C:/src/src/out/pyscript-vpython",
+    "reason_for_local_root": "System Python lacks requests; pre-existing default vpython cache denied access to requests/__init__.py. An independent cache using the repository vpython spec succeeded.",
+    "font_check": "Built-in --disable-system-font-check used for both WPT files. The default content_shell Windows theme check requires Segoe UI; these are DOM/text/resource tests, not pixel tests.",
+    "network_service": "Built-in --enable-features=NetworkServiceInProcess2 used for both WPT files. Default out-of-process Network Service crashed before content_shell was ready; this was a harness-startup failure, not an executed test assertion.",
+    "startup_failure_evidence": [
+      "wpt-initial-font-failure.log",
+      "wpt-default-network-failure.log"
+    ],
+    "product_config_changed": false,
+    "browser_smoke_default_network_configuration_passed": true,
+    "default_network_wpt_pass_claimed": false,
+    "source_tests_and_assertions_changed": false
+  },
+  "browser_artifact_identity": {
+    "chrome.exe": {
+      "sha256": "8ca8fed4e3f71ea418737690d341ecebefc7d1f2c869adcf2682b148d115d7a2",
+      "unchanged_since_browser_smoke": true
+    },
+    "blink_core.dll": {
+      "sha256": "36de0984964d8b22c8f80172cae8e03dac87ad06ede19e0d9a833448d49e056d",
+      "unchanged_since_browser_smoke": true
+    },
+    "chrome.dll": {
+      "sha256": "e081f4e6518c48acce9325615939614f040d1c4b8c508755f587c84ae7b2337a",
+      "unchanged_since_browser_smoke": true
+    },
+    "python_runtime.dll": {
+      "sha256": "408d42a261826c89446b22a99fd4eff6ef45c4d0c73009b510bcf991bf39898a",
+      "unchanged_since_browser_smoke": true
+    }
+  },
+  "outstanding_environment_issue": "Default out-of-process Network Service startup is unreliable in this environment. WPT and chromiumPlus diagnostic passes do not count as default-mode passes.",
+  "future_stages_not_started": [
+    "Document Python context and DOM bridge",
+    "Execution time and lifecycle budgets",
+    "Final full-MVP validation"
+  ],
+  "scope": "Native Python validation records only; existing MCJE edits remain uncommitted"
+}

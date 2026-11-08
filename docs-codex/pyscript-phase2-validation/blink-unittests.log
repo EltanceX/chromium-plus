@@ -1,0 +1,65 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded:HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution:HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup:HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag:HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder:HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag:HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements:HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes:HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument:HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded
+[       OK ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (1509 ms)
+[ RUN      ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution
+[       OK ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (220 ms)
+[ RUN      ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup
+[       OK ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (209 ms)
+[ RUN      ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag
+[       OK ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (156 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder
+[       OK ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (211 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag
+[       OK ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (171 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements
+[       OK ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (179 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes
+[       OK ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (169 ms)
+[ RUN      ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument
+[       OK ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (180 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced
+[       OK ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (208 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (3222 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (3751 ms total)
+[  PASSED  ] 10 tests.
+[1/13] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (1509 ms)
+[2/13] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (220 ms)
+[3/13] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (209 ms)
+[4/13] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (156 ms)
+[5/13] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (211 ms)
+[6/13] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (171 ms)
+[7/13] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (179 ms)
+[8/13] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (169 ms)
+[9/13] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (180 ms)
+[10/13] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (208 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP:HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies:HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP
+[       OK ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (209 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies
+[       OK ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (185 ms)
+[ RUN      ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython
+[       OK ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (221 ms)
+[----------] 3 tests from HTMLPyScriptElementTest (619 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (711 ms total)
+[  PASSED  ] 3 tests.
+[11/13] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (209 ms)
+[12/13] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (185 ms)
+[13/13] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (221 ms)
+SUCCESS: all tests passed.
+Tests took 9 seconds.

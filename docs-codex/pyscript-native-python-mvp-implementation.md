@@ -4,7 +4,7 @@
 - 项目：Chromium 158.0.8126.0，首个验证平台为 Windows x64 Debug component build。
 - 当前分支：`codex/kernel-debug-settings`；方案初版整理基点：`9257464d67`，阶段一依赖提交：`c53586b2f7`。
 - 已选方向：Renderer 内嵌 CPython，Blink 原生识别 `<pyscript>`，在主线程同步执行，通过 C++ 函数桥接当前 Document 的有限 DOM 操作。
-- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的标签、解析、执行条件与运行时接入已实现；Chrome 最终增量构建、新增 26 项网页端检查和阶段一 Renderer 沙箱回归通过，Blink 单元测试与 WPT 尚未运行，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三至五尚未实施，DOM 桥接尚未接入。
+- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的实现与计划内验证完成：Chrome 与 Blink 测试目标构建、26 项网页端检查、13 个 Blink 用例及两个 WPT 文件通过；WPT 使用本机字体检查与进程内网络服务诊断参数，默认网络服务启动问题单独记录，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三至五尚未实施，DOM 桥接尚未接入。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
 ## 1. 验证目标
@@ -285,7 +285,7 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 
 ### 阶段二：标签、解析与执行条件
 
-实施状态：代码已接入并单独提交；Chrome 最终增量构建通过，浏览器端到端 26 / 26、阶段一 Renderer 沙箱回归 2 / 2、运行时单测回归 9 / 9 通过。13 个 Blink 用例已编译，尚未运行；两个 WPT 文件共 7 个子测试尚未运行，阶段二运行验收未完成。实际结果与阶段边界见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。
+实施状态：已完成本阶段实现与计划内验证。Chrome、Blink 单元测试与网页测试目标构建通过；浏览器端到端 26 / 26、阶段一 Renderer 沙箱回归 2 / 2、运行时单测回归 9 / 9、Blink 用例 13 / 13 通过。两个 WPT 文件覆盖 7 个子测试，在本机字体检查与进程内网络服务诊断配置下通过。默认独立网络服务的启动问题仍单独记录，不算作默认模式通过。实际结果与阶段边界见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。
 
 1. 加入默认关闭的 `PythonScript` 特性及精确测试 origin 配置。
 2. 注册元素与构建项，实现 RAWTEXT、默认隐藏、源码快照和一次登记状态。
@@ -359,10 +359,11 @@ autoninja -C out/Debug blink_unittests blink_tests
 out/Debug/blink_unittests.exe --gtest_filter=<实际新增测试类或测试名>
 ```
 
-Web 行为测试优先使用 WPT 框架，按本项目实验特性建立明确启用的测试套件；私有 `<pyscript>` 不因此成为通用 Web 标准。实施时记录实际注册路径后运行：
+Web 行为测试优先使用 WPT 框架，按本项目实验特性建立明确启用的测试套件；私有 `<pyscript>` 不因此成为通用 Web 标准。当前两个文件注册在 `wpt_internal/pyscript/`，本仓库由 `run_web_tests.py` 与 `content_shell` 运行；`run_wpt_tests.py` 会跳过 `wpt_internal`。基本入口如下，本机复现所需的缓存、字体与网络服务诊断参数见阶段二实施记录：
 
 ```text
-python third_party/blink/tools/run_wpt_tests.py -t Debug <实际注册的 WPT 测试路径>
+vpython3 third_party/blink/tools/run_web_tests.py -t Debug --additional-driver-flag=--enable-blink-features=PythonScript wpt_internal/pyscript/parsing-enabled.html
+vpython3 third_party/blink/tools/run_web_tests.py -t Debug --additional-driver-flag=--disable-blink-features=PythonScript wpt_internal/pyscript/feature-disabled.html
 ```
 
 浏览器端到端脚本建议新增 `chrome/test/pyscript_smoke_test.mjs`，自行启动本地 HTTP 服务，以其精确 origin 配置实验范围，并启动独立 Profile。功能开关计划使用新增 RuntimeEnabledFeature 对应的 `--enable-blink-features=PythonScript`；允许来源参数 / 配置的实际形式须在实现后补齐。

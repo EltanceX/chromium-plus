@@ -3,7 +3,7 @@
 - 日期：2026-11-08（Asia/Shanghai）。
 - 工作区：`C:\src\src`，分支 `codex/kernel-debug-settings`。
 - 实施依据：[第一版方案](pyscript-native-python-mvp-implementation.md)的阶段二。
-- 状态：实现与测试已加入，Chrome 最终增量构建通过；新增浏览器端到端检查 26 / 26、阶段一 Renderer 沙箱回归 2 / 2 通过。新增 Blink 单元测试与 WPT 尚未运行，阶段二运行验收未完成。
+- 状态：阶段二实现与计划内验证完成。Chrome、Blink 测试目标构建通过；浏览器端到端 26 / 26、阶段一 Renderer 沙箱回归 2 / 2、Blink 用例 13 / 13 通过；两个 WPT 文件覆盖 7 个子测试，在本机字体检查与网络服务诊断配置下通过。默认网络服务的启动问题单独保留，不计作默认模式通过，详见第 6 节。
 - 已按“关键部分完成后可提交”的授权建立阶段一依赖提交 `c53586b2f7`；阶段二实现接入单独提交，验证中的后续修复再分别记录。既有 MCJE 修复保留在工作区。
 
 ## 1. 启动与示例
@@ -82,21 +82,23 @@ autoninja -C out/Debug chrome blink_unittests blink_tests
 
 out/Debug/blink_unittests.exe --gtest_filter=HTMLPyScriptElementTest.*
 
-python third_party/blink/tools/run_wpt_tests.py -t Debug --additional-driver-flag=--enable-blink-features=PythonScript wpt_internal/pyscript/parsing-enabled.html
-python third_party/blink/tools/run_wpt_tests.py -t Debug --additional-driver-flag=--disable-blink-features=PythonScript wpt_internal/pyscript/feature-disabled.html
+vpython3 -vpython-root C:/src/src/out/pyscript-vpython third_party/blink/tools/run_web_tests.py -t Debug --child-processes=1 --no-show-results --additional-driver-flag=--disable-system-font-check --additional-driver-flag=--enable-features=NetworkServiceInProcess2 --additional-driver-flag=--enable-blink-features=PythonScript wpt_internal/pyscript/parsing-enabled.html
+vpython3 -vpython-root C:/src/src/out/pyscript-vpython third_party/blink/tools/run_web_tests.py -t Debug --child-processes=1 --no-show-results --no-manifest-update --additional-driver-flag=--disable-system-font-check --additional-driver-flag=--enable-features=NetworkServiceInProcess2 --additional-driver-flag=--disable-blink-features=PythonScript wpt_internal/pyscript/feature-disabled.html
 
 node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-smoke.json
 ```
 
 新增 SimTest 使用记录型执行器检查 Blink 行为；WPT 检查 RAWTEXT、序列化、片段、预加载和默认关闭行为；端到端脚本使用真实本地 HTTP 服务、独立临时 Profile、CDP 日志与请求记录，保留 Renderer 沙箱。
 
-端到端覆盖多块共享变量、中文、错误恢复、defer / Python / DCL 顺序、源码快照、动态与子框架拒绝、分块与 CRLF、缺失关闭标签、源码和块数上限、输出截断、CSP、禁用脚本、origin 配置和导航隔离。prerender 用例已加入 Blink SimTest，尚未运行。
+本仓库的 `run_wpt_tests.py` 会跳过 `wpt_internal`，因此这两个私有 WPT 使用 `run_web_tests.py` 与 `content_shell` 运行；测试本身仍使用 WPT testharness。上面的字体检查与网络服务参数用于复现本机验证环境，不是产品默认配置。独立 vpython 缓存解决本机默认缓存的访问错误；具体原因见第 6 节。首次运行更新 manifest 后，未修改测试文件及 metadata 的后续运行才使用 `--no-manifest-update`。
+
+端到端覆盖多块共享变量、中文、错误恢复、defer / Python / DCL 顺序、源码快照、动态与子框架拒绝、分块与 CRLF、缺失关闭标签、源码和块数上限、输出截断、CSP、禁用脚本、origin 配置和导航隔离。prerender 拒绝执行用例已通过 Blink SimTest。
 
 ## 6. 实际验证结果
 
 | 检查 | 当前结果 |
 | --- | --- |
-| 新元素、控制器、Chrome 执行器及 Blink 测试源码 | 定向编译通过；当前 13 个 Blink 用例尚未运行 |
+| 新元素、控制器、Chrome 执行器及 Blink 测试源码 | 定向编译通过；13 个 Blink 用例已运行并通过 |
 | Document、tree builder、document parser、tokenizer、序列化、元素工厂及 Chrome Browser / Renderer 接入点 | 8 个目标定向编译通过 |
 | `python_runtime_unittests` 回归 | 9 / 9 通过 |
 | GN 头文件依赖检查 | Chrome Renderer、Chrome common_lib、Blink Core 均通过 |
@@ -104,9 +106,9 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-smoke.json
 | C++ 格式、新端到端脚本语法、`git diff --check` | 通过；既有 MCJE 文件仅提示 CRLF 将被转换为 LF |
 | 原 `chrome blink_unittests blink_tests` 完整构建 | 55 分钟后因 StyleAdjuster 缺少新元素的穷举分支而失败，已修复并通过定向复编 |
 | 当前 `chrome` 构建 | 通过；最终增量构建完成两个主要 DLL 的链接，耗时 2m27.90s |
-| `blink_unittests blink_tests` 构建 | Chrome 构建与浏览器检查结束后已启动，当前留在后台 |
-| `HTMLPyScriptElementTest.*` | 当前 13 个用例的源码已通过定向编译，未运行 |
-| 两个新增 WPT 文件 | 共 7 个子测试，未运行 |
+| `blink_unittests blink_tests` 构建 | 通过；执行 3459 步，耗时 2h9m04.35s |
+| `HTMLPyScriptElementTest.*` | 13 / 13 通过，测试启动器总耗时 9 秒 |
+| 两个新增 WPT 文件 | 2 / 2 文件通过，覆盖 7 个子测试；使用字体检查与进程内网络服务诊断参数 |
 | 新浏览器端到端脚本 | 26 / 26 通过；默认网络服务配置，Renderer 沙箱开启 |
 | 阶段一 Renderer smoke | 2 / 2 通过；默认网络服务配置，Renderer 沙箱开启 |
 | chromiumPlus 完整浏览器回归 | 进程内网络服务诊断模式 15 / 15 通过；默认模式超时，日志出现独立 Network Service 崩溃 / 重启 |
@@ -129,13 +131,23 @@ autoninja -C out/Debug chrome *> out/Debug/pyscript-phase2-chrome-build.log
 
 chromiumPlus 默认模式回归在上报前超时，日志再次出现独立 Network Service 崩溃 / 重启。沿用既有诊断参数 `--enable-features=NetworkServiceInProcess2` 后 15 / 15 通过，未更改产品网络服务配置；默认模式仍记录为失败。
 
-Chrome 构建与上述浏览器检查结束后，已顺序启动 `autoninja -C out/Debug blink_unittests blink_tests`，实时日志为 `out/Debug/pyscript-phase2-blink-tests-build.log`。按用户之前的选择保留耗时构建在后台；成功后再执行第 5 节的 13 个 Blink 用例与 7 个 WPT 子测试。继续工作时先检查实时日志和进程，避免在同一输出目录并发启动构建。
+Chrome 构建与上述浏览器检查结束后，顺序启动的 `autoninja -C out/Debug blink_unittests blink_tests` 已在 20:04 完成，耗时 2h9m04.35s，共执行 3459 步。完整日志保存在 `out/Debug/pyscript-phase2-blink-tests-build.log`。本轮随后执行 13 个 Blink 用例，全部通过，包括 prerender、解析期间改写、文档写入、CSP 与 nonce 检查。
+
+WPT 验证先遇到测试环境问题：系统 Python 缺少 `requests`；默认 vpython 缓存中的 `requests/__init__.py` 无法访问。使用仓库的既有 vpython 依赖配置和独立缓存 `out/pyscript-vpython` 后，测试工具正常运行，没有修改全局 Python 或仓库依赖版本。
+
+`content_shell` 的默认 Windows 字体检查要求 Segoe UI，本机环境不满足。对这两个仅检查 DOM、文本与资源请求的用例使用既有测试参数 `--disable-system-font-check` 后，默认独立 Network Service 又在测试驱动就绪前崩溃。沿用 `--enable-features=NetworkServiceInProcess2` 后，启用与关闭两组各 1 个 WPT 文件均为实际 `PASS`，覆盖 5 + 2 个子测试，均无跳过、flaky 或预期失败。默认网络服务配置的 WPT 没有运行到断言，不能计作该模式通过。
+
+本轮未修改产品源码、测试断言或 baselines。Chrome、Blink Core、Chrome 主 DLL 与 Python Runtime 的 SHA-256 均与已通过 26 项浏览器检查时一致，因此没有重复运行相同的浏览器检查。阶段二验证已完成，仍保留上述本机测试环境限制；DOM 桥接、执行超时与完整 MVP 验收不在本阶段完成范围内。
 
 证据：
 
 - [交付状态与待验证清单](pyscript-phase2-validation/results-2026-11-08.json)。
 - [本轮恢复记录](pyscript-phase2-validation/resume-results-2026-11-08.json)。
 - [最终 Chrome 构建、浏览器验证与后台测试构建状态](pyscript-phase2-validation/build-progress-results-2026-11-08.json)。
+- [阶段二最终验证结果与环境限制](pyscript-phase2-validation/final-results-2026-11-08.json)。
+- [Blink 测试目标构建末尾](pyscript-phase2-validation/blink-tests-final-build-tail.log)、[13 个用例结果](pyscript-phase2-validation/blink-unittests.json)与[日志](pyscript-phase2-validation/blink-unittests.log)。
+- [启用组 WPT 结果](pyscript-phase2-validation/wpt-enabled-results.json)与[日志](pyscript-phase2-validation/wpt-enabled.log)、[关闭组结果](pyscript-phase2-validation/wpt-disabled-results.json)与[日志](pyscript-phase2-validation/wpt-disabled.log)。
+- [WPT 字体检查启动失败](pyscript-phase2-validation/wpt-initial-font-failure.log)与[默认网络服务启动失败](pyscript-phase2-validation/wpt-default-network-failure.log)。
 - [生成对象恢复与复查](pyscript-phase2-validation/generated-object-recovery-2026-11-08.json)、[原大构建末尾](pyscript-phase2-validation/chrome-original-build-tail.log)和[最终增量构建](pyscript-phase2-validation/chrome-final-build.log)。
 - [26 项浏览器检查](pyscript-phase2-validation/browser-smoke.json)与[执行日志](pyscript-phase2-validation/browser-smoke.log)。
 - [阶段一 Renderer 沙箱回归](pyscript-phase2-validation/runtime-renderer-regression.json)。
@@ -148,4 +160,4 @@ Chrome 构建与上述浏览器检查结束后，已顺序启动 `autoninja -C o
 - [首次定向构建失败及诊断](pyscript-phase2-validation/initial-targeted-build-failure.log)。
 - [完整构建交付时快照](pyscript-phase2-validation/background-build-snapshot.log)；实时日志保存在 `out/Debug/pyscript-phase2-build-final.log`，快照不是最终构建结果。
 
-未设置任何预期失败来掩盖结果。原始交付与恢复快照保留历史观察值；本次最终构建和浏览器结果见上述新增证据。浏览器检查通过不表示尚未运行的 Blink 单元测试与 WPT 已通过。
+未设置任何预期失败来掩盖结果。原始交付、恢复与后台构建快照保留历史观察值；本次最终状态以 `final-results-2026-11-08.json` 为准。诊断参数下通过的 WPT 与 chromiumPlus 检查，不代表默认独立网络服务配置已通过。

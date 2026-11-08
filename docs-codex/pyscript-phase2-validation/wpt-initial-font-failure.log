@@ -1,0 +1,100 @@
+Using port 'win-win11'
+Test configuration: <win11, x86, debug>
+View the test results at file://C:\src\src\out\Debug\pyscript-wpt-enabled-results\layout-test-results/results.html
+Using random order with seed: 1794140944
+Baseline search path: win -> generic
+Using Debug build
+Regular timeout: 30000, slow test timeout: 150000
+Command line: C:\src\src\out\Debug\content_shell.exe --run-web-tests --user-data-dir --enable-blink-features=PythonScript --ignore-certificate-errors-spki-list=GHzeRS4aLf+NeadKdUm+tUlmntyCJI4XyqCVWkDCnoc=,55qC1nKu2A88ESbFmk5sTPQS/ScG+8DD7P+2bgFA9iM=,0Rt4mT6SJXojEMHTnKnlJ/hBKMBcI4kteBlhR1eTTdk=,KLy6vv6synForXwI6lDIl+D3ZrMV6Y1EMTY6YpOcAos= --webtransport-developer-mode --touch-events=enabled --enable-crash-reporter --crash-dumps-dir=C:\src\src\out\Debug\crash-dumps\reports -
+
+Collecting tests ...
+Generating MANIFEST.json for wpt_internal ...
+Manifest generation completed for '/wpt_internal/' (wpt_internal)
+Parsing expectations ...
+Found 1 test; running 1, skipping 0.
+Checking build ...
+Checking system dependencies ...
+Starting WPTServe ...
+Server running on http://localhost:8001
+Server running on http://localhost:8081
+Server running on http://localhost:8082
+Server running on http://localhost:8093
+Server running on https://localhost:8444
+Server running on https://localhost:8445
+Server running on https://localhost:8446
+Server running on https://localhost:8447
+Server running on https://localhost:9000
+Server running on ws://localhost:9001
+Server running on wss://localhost:9444
+WebTransportH3 server running on https://localhost:11000
+Sharding tests ...
+Running 1 content_shell.
+
+Starting 1 worker ...
+The content_shell process crashed while starting: 
+"b"Must use either the Aero or Basic theme. Or change display language to English.\r\n[6016:4412:1108/202929.026:FATAL:content\\web_test\\browser\\web_test_browser_main_runner.cc:177] Check failed: layout_system_deps_ok. \r\n\tbase!base::debug::CollectStackTrace [0x7ff91dc0fc56+36] (C:\\src\\src\\base\\debug\\stack_trace_win.cc:395)\r\n\tbase!base::debug::StackTrace::StackTrace [0x7ff91dbad889+a9] (C:\\src\\src\\base\\debug\\stack_trace.cc:282)\r\n\tbase!base::debug::StackTrace::StackTrace [0x7ff91dbad7b5+25] (C:\\src\\src\\base\\debug\\stack_trace.cc:276)\r\n\tbase!logging::LogMessage::Flush [0x7ff91d79cfa9+b9] (C:\\src\\src\\base\\logging.cc:710)\r\n\tbase!logging::LogMessage::~LogMessage [0x7ff91d79ced2+22] (C:\\src\\src\\base\\logging.cc:699)\r\n\tbase!logging::`anonymous namespace'::CheckLogMessage::~CheckLogMessage [0x7ff91d706648+58] (C:\\src\\src\\base\\check.cc:199)\r\n\tbase!logging::`anonymous namespace'::CheckLogMessage::~CheckLogMessage [0x7ff91d7065c9+29] (C:\\src\\src\\base\\check.cc:196)\r\n\tbase!std::__Cr::default_delete<logging::LogMessage>::operator() [0x7ff91d7071ed+2d] (C:\\src\\src\\third_party\\libc++\\src\\include\\__memory\\unique_ptr.h:74)\r\n\tbase!std::__Cr::unique_ptr<logging::LogMessage,std::__Cr::default_delete<logging::LogMessage> >::reset [0x7ff91d705edf+3f] (C:\\src\\src\\third_party\\libc++\\src\\include\\__memory\\unique_ptr.h:264)\r\n\tbase!logging::CheckNoreturnError::~CheckNoreturnError [0x7ff91d705f27+17] (C:\\src\\src\\base\\check.cc:364)\r\n\tcontent_shell!content::WebTestBrowserMainRunner::Initialize [0x7ff68a1c014e+7e] (C:\\src\\src\\content\\web_test\\browser\\web_test_browser_main_runner.cc:177)\r\n\tcontent_shell!content::ShellMainDelegate::BasicStartupComplete [0x7ff6895fbce4+294] (C:\\src\\src\\content\\shell\\app\\shell_main_delegate.cc:260)\r\n\tcontent!content::ContentMainRunnerImpl::Initialize [0x7ff8d7e34a61+2e1] (C:\\src\\src\\content\\app\\content_main_runner_impl.cc:963)\r\n\tcontent!content::RunContentProcess [0x7ff8d7e3226b+14b] (C:\\src\\src\\content\\app\\content_main.cc:311)\r\n\tcontent!content::ContentMain [0x7ff8d7e32711+51] (C:\\src\\src\\content\\app\\content_main.cc:350)\r\n\tcontent_shell!wWinMain [0x7ff684221450+140] (C:\\src\\src\\content\\shell\\app\\shell_main.cc:51)\r\n\tcontent_shell!invoke_main [0x7ff68bebb742+32] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:123)\r\n\tcontent_shell!__scrt_common_main_seh [0x7ff68bebb882+132] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:288)\r\n\tcontent_shell!__scrt_common_main [0x7ff68bebb90e+e] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:331)\r\n\tcontent_shell!wWinMainCRTStartup [0x7ff68bebb92e+e] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_wwinmain.cpp:17)\r\n\tKERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]\r\n\tntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]\r\n\r\n""
+content_shell took too long to startup.
+Finally stop servers and clean up
+Stopping WPTServe ...
+
+OSError raised: [Errno 22] Invalid argument
+Traceback (most recent call last):
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\port\server_process.py", line 206, in write
+    self._proc.stdin.flush()
+OSError: [Errno 22] Invalid argument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\run_web_tests.py", line 71, in main
+    return run(port, options, args, printer).exit_code
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\run_web_tests.py", line 240, in run
+    run_details = manager.run(args)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\manager.py", line 180, in run
+    run_results = self._run_test_once(
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\manager.py", line 324, in _run_test_once
+    initial_results = self._run_tests(
+                      ^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\manager.py", line 505, in _run_tests
+    return self._runner.run_tests(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\web_test_runner.py", line 172, in run_tests
+    pool.run(
+  File "C:\src\src\third_party\blink\tools\blinkpy\common\message_pool.py", line 151, in run
+    self.wait()
+  File "C:\src\src\third_party\blink\tools\blinkpy\common\message_pool.py", line 207, in wait
+    self._workers[0].run()
+  File "C:\src\src\third_party\blink\tools\blinkpy\common\message_pool.py", line 393, in run
+    self._raise(sys.exc_info())
+  File "C:\src\src\third_party\blink\tools\blinkpy\common\message_pool.py", line 423, in _raise
+    raise exception_value.with_traceback(exception_traceback)
+  File "C:\src\src\third_party\blink\tools\blinkpy\common\message_pool.py", line 379, in run
+    worker.handle(message.name, message.src, *message.args)
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\web_test_runner.py", line 377, in handle
+    device_failed = self._run_test(
+                    ^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\web_test_runner.py", line 409, in _run_test
+    result = single_test_runner.run_single_test(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\single_test_runner.py", line 53, in run_single_test
+    test_result = runner.run()
+                  ^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\single_test_runner.py", line 144, in run
+    return self._run_compare_test()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\controllers\single_test_runner.py", line 158, in _run_compare_test
+    driver_output = self._driver.run_test(self._driver_input())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\port\driver.py", line 370, in run_test
+    return self._run_one_input(driver_input, start_time)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\port\driver.py", line 381, in _run_one_input
+    self._server_process.write(test_command.encode('utf8', 'replace'))
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\port\server_process.py", line 208, in write
+    self.stop(0.0)
+  File "C:\src\src\third_party\blink\tools\blinkpy\web_tests\port\server_process.py", line 426, in stop
+    self._proc.stdin.close()
+OSError: [Errno 22] Invalid argument
