@@ -5,6 +5,7 @@
 #ifndef COMPONENTS_PYTHON_RUNTIME_PYTHON_RUNTIME_H_
 #define COMPONENTS_PYTHON_RUNTIME_PYTHON_RUNTIME_H_
 
+#include <stddef.h>
 #include <stdint.h>
 
 #include <memory>
@@ -13,6 +14,10 @@
 
 #include "base/feature_list.h"
 #include "base/values.h"
+
+namespace base {
+class TickClock;
+}
 
 // This target is always a DLL, including non-component builds.
 #if defined(IS_PYTHON_RUNTIME_IMPL)
@@ -29,7 +34,23 @@ struct DomHandle {
   uint64_t id;
 };
 
-enum class DomError { kNone, kReference, kNotAllowed, kLimit, kState };
+enum class DomError {
+  kNone,
+  kReference,
+  kNotAllowed,
+  kLimit,
+  kState,
+  kStopped
+};
+
+enum class StopReason {
+  kNone,
+  kBlockTime,
+  kDocumentTime,
+  kOutput,
+  kDomCalls,
+  kInactive,
+};
 
 struct PYTHON_RUNTIME_EXPORT DomResult {
   DomHandle handle{};
@@ -56,6 +77,7 @@ struct PYTHON_RUNTIME_EXPORT ExecutionResult {
   std::string stdout_text;
   std::string stderr_text;
   std::string error;
+  StopReason stop_reason = StopReason::kNone;
 };
 
 // A single, main-thread-owned subinterpreter. The embedder must check page
@@ -64,6 +86,10 @@ struct PYTHON_RUNTIME_EXPORT ExecutionResult {
 class PYTHON_RUNTIME_EXPORT PythonContext {
  public:
   static std::unique_ptr<PythonContext> Create(std::string* error);
+  // The clock must outlive the context. Production budgets still apply.
+  static std::unique_ptr<PythonContext> CreateForTesting(
+      std::string* error,
+      const base::TickClock* clock);
   ~PythonContext();
   PythonContext(const PythonContext&) = delete;
   PythonContext& operator=(const PythonContext&) = delete;
@@ -73,9 +99,21 @@ class PYTHON_RUNTIME_EXPORT PythonContext {
 
  private:
   struct Impl;
+  static std::unique_ptr<PythonContext> CreateWithClock(
+      std::string* error,
+      const base::TickClock* clock);
   explicit PythonContext(std::unique_ptr<Impl> impl);
   std::unique_ptr<Impl> impl_;
 };
+
+struct RuntimeStatistics {
+  size_t contexts_created = 0;
+  size_t contexts_destroyed = 0;
+  size_t live_contexts = 0;
+  size_t cleanup_budget_exhaustions = 0;
+};
+
+PYTHON_RUNTIME_EXPORT RuntimeStatistics GetRuntimeStatisticsForTesting();
 
 PYTHON_RUNTIME_EXPORT bool IsInitialized();
 PYTHON_RUNTIME_EXPORT std::string Version();

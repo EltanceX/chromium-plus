@@ -71,6 +71,7 @@ bool CheckResult(const DomResult& result) {
       exception = PyExc_ValueError;
       break;
     case DomError::kState:
+    case DomError::kStopped:
       exception = PyExc_RuntimeError;
       break;
   }

@@ -16,8 +16,10 @@
 #include "base/strings/string_number_conversions.h"
 #include "base/strings/string_util.h"
 #include "base/threading/platform_thread.h"
+#include "base/time/default_tick_clock.h"
 #include "base/time/time.h"
 #include "components/python_runtime/python_dom_module.h"
+#include "components/python_runtime/python_execution_budget.h"
 
 namespace native_python {
 
@@ -42,23 +44,31 @@ void AppendBounded(std::string& target,
   }
 }
 
-std::string Text(PyObject* object) {
+std::string Text(PyObject* object, ExecutionBudget* budget) {
+  if (budget && !budget->Check()) {
+    return budget->Message();
+  }
   if (!object) {
     PyErr_Clear();
     return "<unavailable>";
   }
   PyRef rendered(PyObject_Str(object));
-  const char* text = rendered ? PyUnicode_AsUTF8(rendered.get()) : nullptr;
+  Py_ssize_t length = 0;
+  const char* text =
+      rendered ? PyUnicode_AsUTF8AndSize(rendered.get(), &length) : nullptr;
   if (!text) {
     PyErr_Clear();
     return "<unprintable>";
+  }
+  if (budget && static_cast<size_t>(length) > budget->OutputRemaining()) {
+    budget->Stop(StopReason::kOutput);
   }
   std::string result;
   AppendBounded(result, text, kOutputLimit);
   return result;
 }
 
-std::string TakeError() {
+std::string TakeError(ExecutionBudget* budget = nullptr) {
   PyRef exception(PyErr_GetRaisedException());
   if (!exception) {
     return "CPython operation failed without an exception";
@@ -73,29 +83,36 @@ std::string TakeError() {
     PyRef filename(code ? PyObject_GetAttrString(code.get(), "co_filename")
                         : nullptr);
     PyRef name(code ? PyObject_GetAttrString(code.get(), "co_name") : nullptr);
-    message += "  File " + Text(filename.get()) + ", line " + Text(line.get()) +
-               ", in " + Text(name.get()) + "\n";
+    message += "  File " + Text(filename.get(), budget) + ", line " +
+               Text(line.get(), budget) + ", in " + Text(name.get(), budget) +
+               "\n";
     traceback.reset(PyObject_GetAttrString(traceback.get(), "tb_next"));
     if (message.size() > kOutputLimit) {
       break;
     }
   }
   message += std::string(Py_TYPE(exception.get())->tp_name) + ": " +
-             Text(exception.get());
+             Text(exception.get(), budget);
   if (PyErr_GivenExceptionMatches(exception.get(), PyExc_SyntaxError)) {
     PyRef filename(PyObject_GetAttrString(exception.get(), "filename"));
     PyRef line(PyObject_GetAttrString(exception.get(), "lineno"));
-    message += " (" + Text(filename.get()) + ":" + Text(line.get()) + ")";
+    message += " (" + Text(filename.get(), budget) + ":" +
+               Text(line.get(), budget) + ")";
   }
   PyErr_Clear();
   std::string bounded;
+  if (budget && message.size() > budget->OutputRemaining()) {
+    budget->Stop(StopReason::kOutput);
+  }
   AppendBounded(bounded, message, kOutputLimit);
   return bounded;
 }
 
 struct Capture {
+  explicit Capture(const base::TickClock* clock) : budget(clock) {}
   ExecutionResult result;
-  bool active = true;
+  ExecutionBudget budget;
+  bool active = false;
 };
 
 struct HostState {
@@ -115,17 +132,24 @@ PyObject* Write(PyObject* module, PyObject* args) {
     // Finalizers must not call a host callback during interpreter teardown.
     return PyLong_FromSsize_t(PyUnicode_GetLength(text));
   }
+  auto& budget = state->capture->budget;
+  if (budget.RaiseIfStopped()) {
+    return nullptr;
+  }
   Py_ssize_t length = 0;
   const char* bytes = PyUnicode_AsUTF8AndSize(text, &length);
   if (!bytes) {
     return nullptr;
   }
   auto& result = state->capture->result;
-  const size_t remaining =
-      kOutputLimit - result.stdout_text.size() - result.stderr_text.size();
+  const size_t remaining = budget.OutputRemaining();
   result.output_truncated |= static_cast<size_t>(length) > remaining;
   AppendBounded(stderr_stream ? result.stderr_text : result.stdout_text,
                 std::string_view(bytes, length), remaining);
+  if (!budget.ConsumeOutput(length)) {
+    budget.RaiseIfStopped();
+    return nullptr;
+  }
   return PyLong_FromSsize_t(PyUnicode_GetLength(text));
 }
 
@@ -242,6 +266,7 @@ class Runtime {
   RAW_PTR_EXCLUSION PyThreadState* main = nullptr;
   double initialization_ms = 0;
   bool executing = false;
+  RuntimeStatistics statistics;
 
  private:
   friend class base::NoDestructor<Runtime>;
@@ -254,11 +279,13 @@ class Runtime {
 }  // namespace
 
 struct PythonContext::Impl {
+  explicit Impl(const base::TickClock* clock) : capture(clock) {}
   // CPython owns thread; globals owns a Python reference, released under its
   // GIL.
   RAW_PTR_EXCLUSION PyThreadState* thread = nullptr;
   RAW_PTR_EXCLUSION PyObject* globals = nullptr;
   RAW_PTR_EXCLUSION PyObject* dom_module = nullptr;
+  RAW_PTR_EXCLUSION PyObject* trace_token = nullptr;
   Capture capture;
 };
 
@@ -266,6 +293,19 @@ PythonContext::PythonContext(std::unique_ptr<Impl> impl)
     : impl_(std::move(impl)) {}
 
 std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
+  return CreateWithClock(error, base::DefaultTickClock::GetInstance());
+}
+
+std::unique_ptr<PythonContext> PythonContext::CreateForTesting(
+    std::string* error,
+    const base::TickClock* clock) {
+  CHECK(clock);
+  return CreateWithClock(error, clock);
+}
+
+std::unique_ptr<PythonContext> PythonContext::CreateWithClock(
+    std::string* error,
+    const base::TickClock* clock) {
   CHECK(error);
   auto& runtime = Runtime::Get();
   runtime.CheckThread();
@@ -273,11 +313,12 @@ std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
     *error = "Nested Python entry is not supported";
     return nullptr;
   }
+  base::AutoReset<bool> executing(&runtime.executing, true);
   if (!runtime.Initialize(error)) {
     return nullptr;
   }
   PyEval_RestoreThread(runtime.main);
-  auto impl = std::make_unique<Impl>();
+  auto impl = std::make_unique<Impl>(clock);
   const PyInterpreterConfig config = {
       0, 0, 0, 0, 0, 1, PyInterpreterConfig_SHARED_GIL};
   const PyStatus status = Py_NewInterpreterFromConfig(&impl->thread, &config);
@@ -309,6 +350,11 @@ std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
             result;
       }
     }
+    if (setup_ok) {
+      impl->trace_token =
+          PyCapsule_New(&impl->capture.budget, kBudgetCapsuleName, nullptr);
+      setup_ok = impl->trace_token != nullptr;
+    }
     if (!setup_ok) {
       *error = TakeError();
     }
@@ -317,21 +363,35 @@ std::unique_ptr<PythonContext> PythonContext::Create(std::string* error) {
     impl->capture.active = false;
     Py_XDECREF(impl->globals);
     Py_XDECREF(impl->dom_module);
+    Py_XDECREF(impl->trace_token);
     Py_EndInterpreter(impl->thread);
     return nullptr;
   }
   PyEval_SaveThread();
+  ++runtime.statistics.contexts_created;
+  ++runtime.statistics.live_contexts;
   return std::unique_ptr<PythonContext>(new PythonContext(std::move(impl)));
 }
 
 PythonContext::~PythonContext() {
-  Runtime::Get().CheckThread();
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  CHECK(!runtime.executing);
+  base::AutoReset<bool> executing(&runtime.executing, true);
   PyEval_RestoreThread(impl_->thread);
   impl_->capture.active = false;
   SetDomHost(impl_->dom_module, nullptr);
+  impl_->capture.budget.BeginCleanup();
+  PyEval_SetTrace(BudgetTrace, impl_->trace_token);
   Py_DECREF(impl_->globals);
   Py_DECREF(impl_->dom_module);
+  // The thread trace owns the remaining reference while finalization runs.
+  Py_DECREF(impl_->trace_token);
   Py_EndInterpreter(impl_->thread);
+  ++runtime.statistics.contexts_destroyed;
+  --runtime.statistics.live_contexts;
+  runtime.statistics.cleanup_budget_exhaustions +=
+      impl_->capture.budget.cleanup_exhausted();
 }
 
 ExecutionResult PythonContext::Execute(std::string_view source,
@@ -344,6 +404,13 @@ ExecutionResult PythonContext::Execute(std::string_view source,
     result.error = "Nested Python entry is not supported";
     return result;
   }
+  auto& budget = impl_->capture.budget;
+  if (budget.reason() != StopReason::kNone) {
+    ExecutionResult result;
+    result.stop_reason = budget.reason();
+    result.error = budget.Message();
+    return result;
+  }
   if (source.size() > kSourceLimit || source.contains('\0') ||
       filename.contains('\0') || filename.size() > 2048 ||
       !base::IsStringUTF8(source) || !base::IsStringUTF8(filename)) {
@@ -354,23 +421,54 @@ ExecutionResult PythonContext::Execute(std::string_view source,
   PyEval_RestoreThread(impl_->thread);
   base::AutoReset<bool> executing(&runtime.executing, true);
   impl_->capture.result = {};
+  impl_->capture.active = true;
+  budget.Begin(dom_host);
+  BudgetedDomHost bridge(budget);
+  PyEval_SetTrace(BudgetTrace, impl_->trace_token);
   {
     const std::string input(source), name(filename);
-    PyRef code(Py_CompileString(input.c_str(), name.c_str(), Py_file_input));
-    SetDomHost(impl_->dom_module, dom_host);
+    PyRef code(
+        budget.RaiseIfStopped()
+            ? nullptr
+            : Py_CompileString(input.c_str(), name.c_str(), Py_file_input));
+    SetDomHost(impl_->dom_module, &bridge);
     PyRef result(
-        code ? PyEval_EvalCode(code.get(), impl_->globals, impl_->globals)
-             : nullptr);
+        code && !budget.RaiseIfStopped()
+            ? PyEval_EvalCode(code.get(), impl_->globals, impl_->globals)
+            : nullptr);
     // Error formatting and decrefs may execute Python special methods. They
     // are diagnostic/cleanup work and must not inherit the document capability.
     SetDomHost(impl_->dom_module, nullptr);
     impl_->capture.result.success = result != nullptr;
-    if (!result) {
-      impl_->capture.result.error = TakeError();
+    if (!result && budget.reason() == StopReason::kNone) {
+      const std::string error = TakeError(&budget);
+      AppendBounded(impl_->capture.result.error, error,
+                    budget.OutputRemaining());
+      if (!budget.ConsumeOutput(error.size())) {
+        impl_->capture.result.output_truncated = true;
+      }
+    } else {
+      PyErr_Clear();
     }
   }
+  budget.Finish();
+  PyEval_SetTrace(nullptr, nullptr);
+  impl_->capture.active = false;
+  impl_->capture.result.stop_reason = budget.reason();
+  if (budget.reason() != StopReason::kNone) {
+    impl_->capture.result.success = false;
+    impl_->capture.result.error = budget.Message();
+    impl_->capture.result.output_truncated |=
+        budget.reason() == StopReason::kOutput;
+  }
+  PyErr_Clear();
   PyEval_SaveThread();
   return std::move(impl_->capture.result);
+}
+
+RuntimeStatistics GetRuntimeStatisticsForTesting() {
+  Runtime::Get().CheckThread();
+  return Runtime::Get().statistics;
 }
 
 bool IsInitialized() {
@@ -416,8 +514,9 @@ base::DictValue RunSelfTest() {
       calculation.success && calculation.stdout_text == "Python 世界 42\n" &&
       persistence.success && isolation.success && modules.success &&
       !exception.success && exception.error.contains("ValueError") &&
-      exception.error.contains("<phase-one-error>") && output.success &&
-      output.output_truncated && output.stdout_text.size() <= kOutputLimit &&
+      exception.error.contains("<phase-one-error>") && !output.success &&
+      output.stop_reason == StopReason::kOutput && output.output_truncated &&
+      output.stdout_text.size() <= kOutputLimit &&
       base::IsStringUTF8(output.stdout_text) && cleanup.success;
   report.Set("passed", passed);
   report.Set("stdout", calculation.stdout_text);

@@ -6,6 +6,8 @@
 
 #include <functional>
 
+#include "base/test/simple_test_tick_clock.h"
+#include "base/time/time.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace native_python {
@@ -104,15 +106,21 @@ TEST(PythonRuntimeTest, DomRejectsInactiveHostsAndConvertsHostErrors) {
   result = context->Execute("dom.get_element_by_id('x')", "inactive", &host);
   EXPECT_FALSE(result.success);
   EXPECT_EQ(0, host.gets);
+  EXPECT_EQ(StopReason::kInactive, result.stop_reason);
   host.active = true;
+  EXPECT_FALSE(context->Execute("print('must not resume')").success);
+  context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
   for (auto [failure, name] :
        {std::pair{DomError::kReference, "ReferenceError"},
         std::pair{DomError::kNotAllowed, "PermissionError"},
         std::pair{DomError::kLimit, "ValueError"},
         std::pair{DomError::kState, "RuntimeError"}}) {
     host.failure = failure;
-    result = context->Execute("dom.set_text(dom.get_element_by_id('x'),'text')",
-                              "host-error", &host);
+    result = context->Execute(
+        "import dom\n"
+        "dom.set_text(dom.get_element_by_id('x'),'text')",
+        "host-error", &host);
     EXPECT_FALSE(result.success);
     EXPECT_NE(std::string::npos, result.error.find(name));
   }
@@ -244,11 +252,169 @@ TEST(PythonRuntimeTest, OutputIsBoundedAndStderrIsSeparate) {
   ASSERT_TRUE(context) << error;
   auto result = context->Execute(
       "import sys\nprint('err', file=sys.stderr)\nprint('界'*20000)");
-  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kOutput, result.stop_reason);
   EXPECT_TRUE(result.output_truncated);
   EXPECT_LE(result.stdout_text.size() + result.stderr_text.size(), 16384u);
   EXPECT_EQ("err\n", result.stderr_text);
-  EXPECT_EQ("42\n", context->Execute("print(42)").stdout_text);
+  EXPECT_TRUE(context->Execute("print(42)").stdout_text.empty());
+}
+
+TEST(PythonRuntimeTest, CooperativeBudgetInterruptsPurePythonAndLatchesStop) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  const auto started = base::TimeTicks::Now();
+  auto result = context->Execute("while True: pass", "loop.py");
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kBlockTime, result.stop_reason);
+  EXPECT_NE(std::string::npos, result.error.find("100 ms"));
+  EXPECT_LT(base::TimeTicks::Now() - started, base::Seconds(5));
+  result = context->Execute("print('must not run')");
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kBlockTime, result.stop_reason);
+  EXPECT_TRUE(result.stdout_text.empty());
+}
+
+TEST(PythonRuntimeTest, DocumentTimeIsCumulativeButIdleTimeIsExcluded) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  host.on_get = [&] { clock.Advance(base::Milliseconds(80)); };
+  for (int i = 0; i < 3; ++i) {
+    auto result = context->Execute("import dom\ndom.get_element_by_id('x')",
+                                   "cumulative", &host);
+    EXPECT_TRUE(result.success) << result.error;
+    clock.Advance(base::Seconds(10));
+  }
+  auto result = context->Execute("dom.get_element_by_id('x')", "last", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kDocumentTime, result.stop_reason);
+  EXPECT_EQ(4, host.gets);
+  EXPECT_EQ(StopReason::kDocumentTime,
+            context->Execute("print('must not run')").stop_reason);
+}
+
+TEST(PythonRuntimeTest, OutputAndDiagnosticsShareTheDocumentBudget) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  EXPECT_TRUE(context->Execute("print('x' * 9000)").success);
+  auto result = context->Execute("import sys\nsys.stderr.write('界' * 3000)");
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kOutput, result.stop_reason);
+  EXPECT_TRUE(result.output_truncated);
+  EXPECT_LE(result.stderr_text.size(), 16384u - 9001);
+  EXPECT_EQ(result.stderr_text.size() % 3, 0u);
+  EXPECT_TRUE(context->Execute("print('forbidden')").stdout_text.empty());
+
+  context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  EXPECT_TRUE(context->Execute("print('x' * 15000)").success);
+  result = context->Execute("raise ValueError('y' * 3000)");
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kOutput, result.stop_reason);
+
+  context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  result = context->Execute("raise ValueError('界' * 10000)");
+  EXPECT_EQ(StopReason::kOutput, result.stop_reason);
+  EXPECT_TRUE(result.output_truncated);
+  EXPECT_EQ(StopReason::kOutput, context->Execute("pass").stop_reason);
+}
+
+TEST(PythonRuntimeTest, CatchingOutputFailureCannotRestoreDomOrLaterExecution) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import sys, dom
+h = dom.get_element_by_id('x')
+# This intentionally demonstrates that tracing is not a language sandbox.
+# The C++ output latch must still revoke DOM and reject the next Execute.
+sys.settrace(None)
+try:
+    print('x' * 20000)
+except BaseException:
+    pass
+try:
+    dom.set_text(h, 'forbidden')
+except ReferenceError:
+    pass
+)PY",
+                                 "caught-output", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kOutput, result.stop_reason);
+  EXPECT_EQ(0, host.sets);
+  EXPECT_EQ(StopReason::kOutput, context->Execute("pass").stop_reason);
+}
+
+TEST(PythonRuntimeTest, DomBudgetAndNavigationStopAtNativeBoundary) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  host.failure = DomError::kStopped;
+  auto result = context->Execute(
+      "import dom\ndom.set_text(dom.get_element_by_id('x'), 'denied')",
+      "dom-budget", &host);
+  EXPECT_EQ(StopReason::kDomCalls, result.stop_reason);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kDomCalls, context->Execute("pass").stop_reason);
+
+  context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  host.failure = DomError::kNone;
+  host.on_get = [&] { host.active = false; };
+  result = context->Execute(
+      "import dom\ndom.set_text(dom.get_element_by_id('x'), 'denied')",
+      "navigation", &host);
+  EXPECT_EQ(StopReason::kInactive, result.stop_reason);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(1, host.sets);
+}
+
+TEST(PythonRuntimeTest, ExceptionFormattingCannotRunAnUnboundedPythonLoop) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  auto result = context->Execute(R"PY(
+class Failure(Exception):
+    def __str__(self):
+        while True:
+            pass
+raise Failure()
+)PY",
+                                 "diagnostic-loop");
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ(StopReason::kBlockTime, result.stop_reason);
+}
+
+TEST(PythonRuntimeTest, CleanupCooperativelyInterruptsAPlainPythonFinalizer) {
+  const auto before = GetRuntimeStatisticsForTesting();
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+class Finalizer:
+    def __del__(self):
+        while True:
+            pass
+value = Finalizer()
+value.cycle = value
+)PY")
+                  .success);
+  const auto started = base::TimeTicks::Now();
+  context.reset();
+  EXPECT_LT(base::TimeTicks::Now() - started, base::Seconds(5));
+  const auto after = GetRuntimeStatisticsForTesting();
+  EXPECT_EQ(before.live_contexts, after.live_contexts);
+  EXPECT_EQ(before.cleanup_budget_exhaustions + 1,
+            after.cleanup_budget_exhaustions);
 }
 
 TEST(PythonRuntimeTest, PathsEnvironmentAndDynamicModulesAreExcluded) {
@@ -277,6 +443,7 @@ TEST(PythonRuntimeTest, SourceBoundariesAreRejectedWithoutPoisoningContext) {
 }
 
 TEST(PythonRuntimeTest, RepeatedDestructionAndOutOfOrderContexts) {
+  const auto before = GetRuntimeStatisticsForTesting();
   std::string error;
   auto first = PythonContext::Create(&error);
   auto survivor = PythonContext::Create(&error);
@@ -293,6 +460,11 @@ TEST(PythonRuntimeTest, RepeatedDestructionAndOutOfOrderContexts) {
             .success);
   }
   EXPECT_TRUE(survivor->Execute("assert 6*7 == 42").success);
+  EXPECT_EQ(before.live_contexts + 1,
+            GetRuntimeStatisticsForTesting().live_contexts);
+  survivor.reset();
+  EXPECT_EQ(before.live_contexts,
+            GetRuntimeStatisticsForTesting().live_contexts);
 }
 
 TEST(PythonRuntimeTest, SubinterpretersCannotCreateThreads) {
