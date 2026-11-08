@@ -1,0 +1,34 @@
+{
+  "objects": [
+    {
+      "observed": "2026-11-08T22:05:02.1458158+08:00",
+      "path": "C:\\src\\src\\out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\core_initializer.obj",
+      "bytes": 2134469,
+      "lastWriteTime": "2026-11-08T21:55:54.8436471+08:00",
+      "sha256": "68134E9FA776DFA680F08A695ED44F77F26C8D1EB1FFE11E7E860739080F09F5",
+      "rebuilt": {
+        "bytes": 2134469,
+        "sha256": "68134E9FA776DFA680F08A695ED44F77F26C8D1EB1FFE11E7E860739080F09F5"
+      },
+      "identicalAfterRebuild": true,
+      "result": "valid local function IDs; identical rebuild did not resolve linker failure"
+    },
+    {
+      "bytes": 7762874,
+      "lastWriteTime": "2026-11-08T14:19:07.9457805+08:00",
+      "sha256": "FB3B8E04A5A70C49017AA2E7538A05C32D04C3A055E987A4FC9B633950D0CFDC",
+      "path": "C:\\src\\src\\out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\initial_letter_utils.obj",
+      "observed": "2026-11-08T22:12:40.4016360+08:00",
+      "rebuilt": {
+        "bytes": 7762874,
+        "sha256": "DA443FBAD2DD8D9409152D53B6D496D53CC3C26219E28A36463F7911901904FC"
+      },
+      "identicalAfterRebuild": false,
+      "result": "structurally malformed type record; rebuild resolved linker failure"
+    }
+  ],
+  "rootCause": "not_determined",
+  "blinkCoreBuild": "passed",
+  "blinkCoreBuildElapsed": "1m25.24s",
+  "sourceChanges": false
+}

@@ -3,8 +3,8 @@
 - 日期：2026-11-08（Asia/Shanghai）。
 - 分支：`codex/kernel-debug-settings`；阶段二基点：`d63e4e2d64`。
 - 依据：[第一版实现方案](pyscript-native-python-mvp-implementation.md)第 7 节及阶段三。
-- 当前状态：运行时 DOM 模块已构建并通过 15 / 15 单测；Blink 控制器、Chrome 适配器和 20 个 Blink 用例源码已定向编译通过。完整 Chrome 正在重建，浏览器端到端及 Blink 用例执行尚未完成，不能视为阶段三验收通过。
-- 关键提交：`5dcb4e0cde`（每解释器 DOM 模块与 15 项运行时测试）。本记录随文档上下文接入继续补充。
+- 当前状态：运行时 DOM 模块已构建并通过 15 / 15 单测；Blink 控制器、Chrome 适配器和 20 个 Blink 用例源码已定向编译通过。恢复并重建一份结构异常的生成对象后，新的 `blink_core.dll` 已链接通过。完整 Chrome 正在继续构建，浏览器端到端及 Blink 用例执行尚未完成，不能视为阶段三验收通过。
+- 关键提交：`5dcb4e0cde`（每解释器 DOM 模块与 15 项运行时测试），`1ffbda7979`（文档上下文、DOM 接入及示例）。
 
 ## 1. 接口与使用
 
@@ -85,7 +85,8 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-phase3-phas
 | Node 语法与本阶段 diff 空白检查 | 通过 |
 | 示例 / testharness 内嵌代码语法 | 两个示例的 7 块 Python 及测试用 JavaScript 已检查，保留预期语法异常样例 |
 | Navigation metrics XML 校验 | `validate_format.py --xml_paths tools/metrics/histograms/metadata/navigation/enums.xml` 通过 |
-| 完整 Chrome | 正在重建；scheduler mojom 改动触发较多依赖 |
+| Blink Core DLL | 结构异常对象重建后链接通过，耗时 1m25.24s；本次没有修改产品源码 |
+| 完整 Chrome | 首轮在链接时失败；已恢复构建，约 3,337 项增量任务，结果待完成 |
 | Blink 20 用例 / 浏览器 DOM smoke / 阶段二回归 | 待运行 |
 
 原始日志和结构化结果保存在 [pyscript-phase3-validation/](pyscript-phase3-validation/)。未完成的检查不会记为通过。既有 MCJE SRV 修复不属于本阶段提交。
@@ -102,3 +103,17 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-phase3-phas
 同一输出目录的构建始终串行。Chrome 构建失败时队列停止，不运行 ABI 尚不一致的旧浏览器。运行后的检查结果会单独记录，失败不会自动改写断言或变成预期失败。
 
 本机任务文件位于忽略目录 `out/Debug/pyscript-phase3-followup.ps1`，实时状态为 `out/Debug/pyscript-phase3-validation-state.json`。构建日志为 `out/Debug/pyscript-phase3-chrome-build.log`，后续各项日志与 JSON 同在 `out/Debug/`。本次交付的 [结构化快照](pyscript-phase3-validation/results-2026-11-08.json)仅记录当时状态；后台实际完成后仍需检查结果、修复失败并补充验收记录。
+
+## 7. 22:04 恢复与生成对象修复
+
+首轮完整 Chrome 构建在 22:01 左右停止：耗时 48m05.80s，完成 947 项、失败 1 项、剩余 3,348 项。`blink_core.dll` 链接器报告 `core_initializer.obj` 的 procedure symbol 引用的 PDB item 不是有效的 function ID。后续队列正确停止，没有运行旧浏览器或未重新链接的测试程序。
+
+先保存并重建了被诊断直接指向的 `core_initializer.obj`，重建后的 SHA-256 与旧件完全一致，单独链接仍出现相同错误。其局部函数 ID 与 18,328 项类型记录检查正常，不能据此认定这份对象损坏。sccache 统计显示当前 `-fmodules-cache-path` 调用均不可缓存；绕过缓存没有改变结果。
+
+随后检查 `blink_core.dll` 的 5,040 个直接对象输入，核对 806 项目标函数哈希与类型记录。没有发现目标函数哈希的跨类型冲突，但发现已有 `initial_letter_utils.obj` 在类型索引 `0x41ae` 处存在无效记录长度。该旧件时间为 14:19，早于本轮阶段三构建。
+
+保留旧件后重建 `initial_letter_utils.obj`，文件长度仍为 7,762,874 字节，SHA-256 已改变；两份重建对象的 COFF 结构和 CodeView 记录检查均通过。再次运行标准 `autoninja -C out/Debug blink_core.dll`，在 1m25.24s 内完成编译和链接，原 PDB 错误消失。异常对象的产生原因仍未确定，没有修改源码、关闭调试信息或放宽链接器诊断来绕过问题。
+
+旧对象与元数据位于忽略目录 `out/Debug/pyscript-phase3-corrupt-objects/`。证据包括[首轮链接失败](pyscript-phase3-validation/chrome-initial-link-failure.log)、[对象哈希与恢复结果](pyscript-phase3-validation/object-recovery.json)、[5,040 项诊断结果](pyscript-phase3-validation/function-hash-check.json)、[重建对象结构检查](pyscript-phase3-validation/coff-rebuilt-check.json)、[CodeView 检查](pyscript-phase3-validation/coff-codeview-rebuilt-check.json)和[成功的 Blink Core 构建](pyscript-phase3-validation/blink-core-repaired-build.log)。
+
+22:15 恢复标准 `autoninja -C out/Debug chrome python_runtime_unittests`，本轮待完成约 3,337 项；22:16 重新启动后续验证队列。实时构建进程为 `6736`，后续进程为 `16144`，仅用于本次本机恢复定位，退出后不代表其他同号进程仍属于此任务。当前恢复状态见 [resume-results-2026-11-08.json](pyscript-phase3-validation/resume-results-2026-11-08.json)。浏览器端到端、20 项 Blink 用例和 WPT 回归仍待构建完成后运行。

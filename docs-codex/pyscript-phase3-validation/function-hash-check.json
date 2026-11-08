@@ -1,0 +1,14 @@
+{
+  "target": "obj/third_party/blink/renderer/core/core/core_initializer.obj",
+  "function_hashes": 806,
+  "objects": 5040,
+  "mismatches": [],
+  "errors": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/initial_letter_utils.obj",
+      "error": "Invalid type record at 0x41ae"
+    }
+  ],
+  "matching_records": 1864390,
+  "elapsed_seconds": 78.12
+}

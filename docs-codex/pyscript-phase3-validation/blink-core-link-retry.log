@@ -1,0 +1,62 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.6412195s
+load siso config done 15.5949ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:3)
+build start: Ready 3157 Pending 38089
+[0/1] 31.91s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[0/1] 45.95s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: cb40cc07-1e02-458b-b17e-fa6c15597654 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: procedure symbol record for `blink::TreeOrderedMap::Contains` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A09FF which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::HashMap<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer>,blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::HeapAllocator>::Contains` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A0F which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::TreeOrderedMap::ContainsMultiple` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A10 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::HashMap<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer>,blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::HeapAllocator>::find` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A11 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::HashTableIteratorAdapter<blink::HashTable<blink::AtomicString,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::KeyValuePairExtractor,blink::HashMapValueTraits<blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >,blink::HashTraits<blink::AtomicString>,blink::HeapAllocator>,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >::operator HashTableConstIteratorAdapter` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A12 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::operator==<blink::HashTable<blink::AtomicString,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::KeyValuePairExtractor,blink::HashMapValueTraits<blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >,blink::HashTraits<blink::AtomicString>,blink::HeapAllocator>,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A13 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::HashMap<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer>,blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::HeapAllocator>::end` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A14 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::HashTableConstIteratorAdapter<blink::HashTable<blink::AtomicString,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> >,blink::KeyValuePairExtractor,blink::HashMapValueTraits<blink::HashTraits<blink::AtomicString>,blink::HashTraits<cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >,blink::HashTraits<blink::AtomicString>,blink::HeapAllocator>,blink::KeyValuePair<blink::AtomicString,cppgc::internal::BasicMember<blink::TreeOrderedMap::MapEntry,cppgc::internal::StrongMemberTag,cppgc::internal::DijkstraWriteBarrierPolicy,cppgc::internal::DisabledCheckingPolicy,cppgc::internal::CompressedPointer> > >::operator->` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A15 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::TreeScope::HasElementWithId` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A16 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::AtomicString::IsNull` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A17 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::TreeScope::HasElementWithId::<lambda_1>::operator()` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A20 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::TreeScope::ContainsMultipleElementsWithId` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0A21 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ImmutableCSSPropertyValueSet::ArrayBase` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AE5 which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckGTImpl<unsigned int,unsigned int,`lambda at ..\..\third_party\blink\renderer\core\css\css_property_value_set.h:331:3'>` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AE8 which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckNoreturnError::CheckError` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AEA which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ImmutableCSSPropertyValueSet::Properties` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AEC which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::span<blink::CSSPropertyValue,18446744073709551615,blink::CSSPropertyValue *>::span` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AF0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::StrictNumeric<unsigned long long>::StrictNumeric<unsigned int>` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AF1 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::span<const blink::CSSPropertyValue,18446744073709551615,const blink::CSSPropertyValue *>::span<const blink::CSSPropertyValue *>` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AF3 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::CSSPropertyValueSet::PropertyAt` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x1A0AF4 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:1 remote:0 cache:0 skip:41245
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 480(err:1) / r:264(err:0) 1.36MiB / w:0(err:0) 0B
+
+
+
+46.93s Build Failure: 1 done, 1 failed, 0 remaining - 0.02/s
+ 1 steps failed: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261108-220638.15724
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

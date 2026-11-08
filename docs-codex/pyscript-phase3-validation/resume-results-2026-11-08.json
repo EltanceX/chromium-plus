@@ -1,0 +1,52 @@
+{
+  "observedAt": "2026-11-08T22:17:00+08:00",
+  "phase": 3,
+  "acceptance": "pending full build and browser/Blink execution",
+  "firstChromeBuild": {
+    "status": "failed",
+    "elapsed": "48m05.80s",
+    "completed": 947,
+    "failed": 1,
+    "remaining": 3348,
+    "step": "blink_core.dll link",
+    "diagnostic": "procedure symbol references a PDB item that is not a valid function ID",
+    "followupQueueStoppedWithoutRunningOldBinaries": true
+  },
+  "recovery": {
+    "productSourceChanges": false,
+    "coreInitializerRebuilt": "identical SHA-256; error remained; local function IDs valid",
+    "directObjectInputsChecked": 5040,
+    "targetFunctionHashesChecked": 806,
+    "crossKindHashMismatches": 0,
+    "malformedObject": "obj/third_party/blink/renderer/core/core/initial_letter_utils.obj",
+    "error": "invalid type record at 0x41ae",
+    "malformedObjectOriginalTimestamp": "2026-11-08T14:19:07.9457805+08:00",
+    "objectRetained": "out/Debug/pyscript-phase3-corrupt-objects/initial_letter_utils-original.obj",
+    "rebuiltObjectHasDifferentHash": true,
+    "rebuiltCoffAndCodeViewChecks": "2 objects checked, no problems",
+    "blinkCoreBuild": "passed",
+    "blinkCoreBuildElapsed": "1m25.24s",
+    "rootCause": "not_determined"
+  },
+  "currentBuild": {
+    "command": "autoninja -C out/Debug chrome python_runtime_unittests",
+    "status": "running",
+    "incrementalTaskCount": 3337,
+    "processId": 6736,
+    "log": "out/Debug/pyscript-phase3-chrome-build.log"
+  },
+  "followupQueue": {
+    "status": "waiting-for-chrome",
+    "processId": 16144,
+    "started": "2026-11-08T22:16:15+08:00",
+    "state": "out/Debug/pyscript-phase3-validation-state.json",
+    "steps": ["dom-browser-smoke", "phase2-browser-regression", "blink-tests-build", "blink-unit-tests", "wpt-enabled-diagnostic", "wpt-disabled-diagnostic"]
+  },
+  "previousPassedChecks": {
+    "runtimeTests": "15/15",
+    "targetedSourceCompilation": "passed; includes 20 unexecuted Blink test cases",
+    "dependencyAndFormattingChecks": "passed"
+  },
+  "snapshotIsNotACompletionResult": true,
+  "unrelatedMcjeChangesPreserved": true
+}
