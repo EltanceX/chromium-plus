@@ -1,0 +1,55 @@
+autoninja.bat : offline mode
+所在位置 C:\src\src\out\Debug\pyscript-phase3-resume-build.ps1:3 字符: 1
++ & autoninja -C out/Debug chrome python_runtime_unittests *> out/Debug ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (offline mode:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.6211485s
+load siso config done 12.9289ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:6)
+schedule pending:44226+ready:0 (node:441011 edge:44240)
+ 1.77s schedule pending:89749+ready:9086 (node:441011 edge:98835)
+
+build start: Ready 9086 Pending 89749
+[0/8637] 37.71s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[0/7305] 37.78s S LINK(DLL) components_ui_devtools.dll components_ui_devtools.dll.lib components_ui_devtools.dll.pdb
+[0/7260] 37.78s S LINK(DLL) chrome_browser_vr_vr_ui.dll chrome_browser_vr_vr_ui.dll.lib chrome_browser_vr_vr_ui.dll.pdb
+[0/7138] 37.78s S LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[0/6694] 37.79s S LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[0/889] 38.62s F LINK(DLL) chrome_browser_vr_vr_ui.dll chrome_browser_vr_vr_ui.dll.lib chrome_browser_vr_vr_ui.dll.pdb
+[1/889] 38.63s S LINK(DLL) chrome_browser_vr_vr_common.dll chrome_browser_vr_vr_common.dll.lib chrome_browser_vr_vr_common.dll.pdb
+[1/888] 38.64s F LINK(DLL) components_ui_devtools.dll components_ui_devtools.dll.lib components_ui_devtools.dll.pdb
+[2/888] 40.35s F LINK(DLL) chrome_browser_vr_vr_common.dll chrome_browser_vr_vr_common.dll.lib chrome_browser_vr_vr_common.dll.pdb
+[3/874] 41.55s F LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[4/15] 42.86s F LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[5/15] 43.25s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[6/13] 43.25s S LIB obj/chrome/renderer/renderer.lib
+[6/13] 43.65s F LIB obj/chrome/renderer/renderer.lib
+[7/13] 43.73s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[7/13] 1m48.52s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:8 remote:0 cache:0 skip:98827
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1074(err:8) / r:780(err:0) 5.51GiB / w:7(err:0) 1.19MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      6(0)     0.11s |鈻?鈻?   |    12.54s |  鈻呪枃 鈻?|
+shutdown cloud logging/monitoring done 0s
+
+1m49.36s Build Succeeded: 8 steps - 0.07/s

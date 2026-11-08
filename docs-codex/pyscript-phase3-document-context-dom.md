@@ -86,8 +86,10 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-phase3-phas
 | 示例 / testharness 内嵌代码语法 | 两个示例的 7 块 Python 及测试用 JavaScript 已检查，保留预期语法异常样例 |
 | Navigation metrics XML 校验 | `validate_format.py --xml_paths tools/metrics/histograms/metadata/navigation/enums.xml` 通过 |
 | Blink Core DLL | 结构异常对象重建后链接通过，耗时 1m25.24s；本次没有修改产品源码 |
-| 完整 Chrome | 首轮在链接时失败；已恢复构建，约 3,337 项增量任务，结果待完成 |
-| Blink 20 用例 / 浏览器 DOM smoke / 阶段二回归 | 待运行 |
+| 完整 Chrome | 两次生成对象异常修复后，标准构建通过：1m49.36s，8 项重建 |
+| 浏览器 DOM smoke | 默认配置 9 / 9 通过，包含页面 testharness 的 9 项断言；保留 Renderer 沙箱 |
+| 阶段二浏览器回归 | 默认配置 26 / 26 通过 |
+| Blink 20 用例 / WPT 回归 | 待构建和运行 |
 
 原始日志和结构化结果保存在 [pyscript-phase3-validation/](pyscript-phase3-validation/)。未完成的检查不会记为通过。既有 MCJE SRV 修复不属于本阶段提交。
 
@@ -117,3 +119,31 @@ node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-phase3-phas
 旧对象与元数据位于忽略目录 `out/Debug/pyscript-phase3-corrupt-objects/`。证据包括[首轮链接失败](pyscript-phase3-validation/chrome-initial-link-failure.log)、[对象哈希与恢复结果](pyscript-phase3-validation/object-recovery.json)、[5,040 项诊断结果](pyscript-phase3-validation/function-hash-check.json)、[重建对象结构检查](pyscript-phase3-validation/coff-rebuilt-check.json)、[CodeView 检查](pyscript-phase3-validation/coff-codeview-rebuilt-check.json)和[成功的 Blink Core 构建](pyscript-phase3-validation/blink-core-repaired-build.log)。
 
 22:15 恢复标准 `autoninja -C out/Debug chrome python_runtime_unittests`，本轮待完成约 3,337 项；22:16 重新启动后续验证队列。实时构建进程为 `6736`，后续进程为 `16144`，仅用于本次本机恢复定位，退出后不代表其他同号进程仍属于此任务。当前恢复状态见 [resume-results-2026-11-08.json](pyscript-phase3-validation/resume-results-2026-11-08.json)。浏览器端到端、20 项 Blink 用例和 WPT 回归仍待构建完成后运行。
+
+## 8. 23:37 第二次生成对象修复
+
+22:15 恢复的完整构建在 23:17 停止：耗时 1h2m15.05s，完成 1,120 项、失败 1 项、剩余 1,074 项。此次失败目标为 `components_webapps_isolated_web_apps.dll`，同样报告 PDB function ID 错误，首先指向 `client.obj` 和 `ecdsa_p256_public_key.obj`。单独运行标准链接仍在 39.09s 后失败。后续验证队列再次停止，没有运行旧浏览器。
+
+检查该目标的 2,911 个直接对象后，COFF 结构、CodeView 记录边界和局部函数 ID 引用均没有发现异常。针对 `client.obj` 的 63 项函数哈希也没有发现跨类型冲突，因此没有重建或认定这两个报错对象损坏。
+
+进一步扫描响应文件中可直接定位的 233 个静态库，包括 thin archive 引用的外部对象，共检查 2,831 个成员，其中 2,671 个带有类型记录。发现 `obj/third_party/tflite/tflite_framework_core/flatbuffer_to_proto.obj` 的类型索引 `0x1b62` 使用无效的记录类型 `0xce2d`。目标对象的 167 项函数哈希与静态库成员对照未发现跨类型冲突。这里的自编结构检查只用于定位，不能代替编译器或完整链接验证。
+
+异常对象的原时间为 2026-10-27 02:49:46，长度 3,209,935 字节。保留原文件与元数据后，仅重建该生成对象；新件长度相同、SHA-256 已改变，COFF 和 CodeView 检查均通过。再次执行 `autoninja -C out/Debug components_webapps_isolated_web_apps.dll`，在 1m24.24s 内完成目标与依赖的 10 项重建，原链接错误消失。本次未修改产品源码、构建配置或链接诊断；旧对象异常的产生原因仍未确定。
+
+证据包括[第二次完整构建失败](pyscript-phase3-validation/chrome-iwa-link-failure.log)、[独立链接复现](pyscript-phase3-validation/iwa-link-retry.log)、[直接对象 COFF 检查](pyscript-phase3-validation/iwa-coff-full-check.json)、[CodeView 检查](pyscript-phase3-validation/iwa-codeview-full-check.json)、[局部函数 ID 检查](pyscript-phase3-validation/iwa-local-function-ids.json)、[函数哈希检查](pyscript-phase3-validation/iwa-function-hash-check.json)、[静态库成员检查](pyscript-phase3-validation/iwa-archive-check.json)、[对象恢复元数据](pyscript-phase3-validation/iwa-object-recovery.json)、[重建对象结构检查](pyscript-phase3-validation/iwa-coff-rebuilt-check.json)、[重建对象 CodeView 检查](pyscript-phase3-validation/iwa-codeview-rebuilt-check.json)和[成功的标准链接](pyscript-phase3-validation/iwa-repaired-build.log)。原文件保存在忽略目录 `out/Debug/pyscript-phase3-corrupt-objects/flatbuffer_to_proto-before-rebuild.obj`。
+
+23:37 再次恢复完整 Chrome 与运行时测试目标构建，23:38 重新启动后续队列。此次构建进程为 `5096`，队列进程为 `12280`。默认浏览器测试失败时，队列会额外运行 `NetworkServiceInProcess2` 诊断配置，并分别保存结果；诊断通过不会覆盖默认配置失败。最终验收仍取决于真实运行结果。
+
+完整 Chrome 构建随后在 1m49.36s 内通过，共完成 8 项重建，包含新的 `chrome.dll` 链接。[构建日志](pyscript-phase3-validation/chrome-repaired-build.log)与[恢复结果快照](pyscript-phase3-validation/iwa-recovery-results-2026-11-08.json)已经保存。后续浏览器与 Blink 检查单独记录，不能由构建成功推定通过。
+
+## 9. 浏览器端到端结果
+
+重新链接后的 Chrome 在默认网络服务配置下通过全部 9 项 DOM smoke，其中真实页面 testharness 的 9 项断言也全部通过。测试使用独立 Profile、精确的本地 HTTP origin，保留 Renderer 沙箱与 CSP；没有使用 `--no-sandbox`、`--disable-web-security` 或进程内网络服务诊断参数。
+
+实测覆盖无 JavaScript 的 nonce CSP 示例、同文档共享 globals / 句柄、DOM 参数和目标限制、16 KiB UTF-8 边界、普通异常后继续执行、MutationObserver 在所有 Python 块返回后运行、文档隔离、1024 次共享调用预算、`document.open()` 失效、BFCache 排除、刷新以及六轮含循环引用 finalizer 的导航。
+
+随后阶段二浏览器回归 26 / 26 通过，覆盖解析边界、来源限制、默认关闭、页面脚本权限、CSP、输出限制与导航。两个测试均无需启动网络服务诊断重试。
+
+证据：[DOM smoke 结构化结果](pyscript-phase3-validation/dom-browser-smoke.json)、[DOM smoke 日志](pyscript-phase3-validation/dom-browser-smoke.log)、[阶段二回归结果](pyscript-phase3-validation/phase2-browser-regression.json)和[阶段二日志](pyscript-phase3-validation/phase2-browser-regression.log)。[无 JavaScript 示例截图](pyscript-phase3-validation/dom-browser-sample.png)显示 Python 计算结果 42、共享变量与句柄结果 43，以及按纯文本显示的 HTML 字符串。
+
+Blink 单元测试和 WPT 仍需构建后实际运行；浏览器检查通过不代表所有阶段三验收项完成。当前[验收进度快照](pyscript-phase3-validation/acceptance-progress-2026-11-08.json)与[Blink 构建日志快照](pyscript-phase3-validation/blink-tests-build-progress.log)已保存，快照时还有约 1,234 项任务。本机后台构建进程为 `2656`，后续队列仍为 `12280`；实时日志和状态继续写入 `out/Debug/`，本节中的快照不会自动更新。

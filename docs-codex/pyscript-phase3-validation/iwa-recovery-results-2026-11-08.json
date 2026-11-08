@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-11-08T23:40:27.451149+08:00",
+  "phase": 3,
+  "acceptance": "pending browser and Blink execution",
+  "secondChromeBuild": {
+    "status": "failed",
+    "elapsed": "1h2m15.05s",
+    "completed": 1120,
+    "failed": 1,
+    "remaining": 1074,
+    "step": "components_webapps_isolated_web_apps.dll link"
+  },
+  "diagnostics": {
+    "directObjectsChecked": 2911,
+    "directObjectCoffCodeViewAndLocalFunctionIds": "no problems found",
+    "targetFunctionHashes": 167,
+    "staticLibrariesChecked": 233,
+    "archiveMembersChecked": 2831,
+    "membersWithTypes": 2671,
+    "malformedObject": "obj/third_party/tflite/tflite_framework_core/flatbuffer_to_proto.obj",
+    "malformedTypeIndex": "0x1b62",
+    "malformedTypeKind": "0xce2d"
+  },
+  "recovery": {
+    "object": "out\\Debug\\obj\\third_party\\tflite\\tflite_framework_core\\flatbuffer_to_proto.obj",
+    "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\flatbuffer_to_proto-before-rebuild.obj",
+    "old_length": 3209935,
+    "old_mtime": "2026-10-27T02:49:46.891512",
+    "old_sha256": "0f7842aa65b77de8e382d3e8a56ecf7a4a6d60b029581521b292b98c70700326",
+    "diagnostic": "LF type kind 0xce2d at index 0x1b62 is invalid",
+    "rebuild_started": "2026-11-08T23:34:28.724326+08:00",
+    "new_length": 3209935,
+    "new_sha256": "aabc60b904ba27b114ba1d55932917fb421d262cb52790138350135d468a69c7",
+    "rebuilt_at": "2026-11-08T23:35:51.966519+08:00",
+    "hash_changed": true,
+    "changed_bytes": 130552,
+    "first_changed_offset": "0x190000",
+    "last_changed_offset_exclusive": "0x1c0000",
+    "cause": "not_determined"
+  },
+  "isolatedTargetBuild": {
+    "status": "passed",
+    "elapsed": "1m24.24s",
+    "steps": 10
+  },
+  "fullChromeBuild": {
+    "status": "passed",
+    "elapsed": "1m49.36s",
+    "steps": 8,
+    "command": "autoninja -C out/Debug chrome python_runtime_unittests"
+  },
+  "followupQueue": {
+    "processId": 12280,
+    "state": "out/Debug/pyscript-phase3-validation-state.json",
+    "status": "phase2-browser-regression"
+  },
+  "productSourceChangedForRecovery": false,
+  "unrelatedMcjeChangesPreserved": true,
+  "snapshotIsNotACompletionResult": true
+}

@@ -4,7 +4,7 @@
 - 项目：Chromium 158.0.8126.0，首个验证平台为 Windows x64 Debug component build。
 - 当前分支：`codex/kernel-debug-settings`；方案初版整理基点：`9257464d67`，阶段一依赖提交：`c53586b2f7`。
 - 已选方向：Renderer 内嵌 CPython，Blink 原生识别 `<pyscript>`，在主线程同步执行，通过 C++ 函数桥接当前 Document 的有限 DOM 操作。
-- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的实现与计划内验证完成，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三已接入文档持久上下文、`dom` 模块和两个 DOM 接口，运行时 15 项单测及接入源码定向编译通过；完整 Chrome 重建、20 项 Blink 用例执行及新浏览器端到端验证仍在后台队列，尚未验收通过，详见[阶段三实施记录](pyscript-phase3-document-context-dom.md)。阶段四的执行时间与文档累计预算等工作，以及阶段五完整验收尚未完成。
+- 状态：阶段一（CPython 依赖与独立运行时）已完成构建、基础测试和实际 Renderer 沙箱验证，详见[阶段一实施记录](pyscript-phase1-cpython-runtime.md)。阶段二的实现与计划内验证完成，详见[阶段二实施记录](pyscript-phase2-tags-parsing-execution.md)。阶段三已接入文档持久上下文、`dom` 模块和两个 DOM 接口；运行时 15 项单测、完整 Chrome 构建、新 DOM 浏览器测试 9 项及阶段二浏览器回归 26 项均通过。20 项 Blink 用例与 WPT 仍在后台构建验证队列，阶段三尚未完成全部验收，详见[阶段三实施记录](pyscript-phase3-document-context-dom.md)。阶段四的执行时间与文档累计预算等工作，以及阶段五完整验收尚未完成。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
 ## 1. 验证目标
@@ -265,7 +265,7 @@ stdout / stderr 使用解释器内受控对象转发到当前文档控制台。�
 | [html.css](../third_party/blink/renderer/core/html/resources/html.css) | 特性开启时的默认隐藏方式参考 |
 | [chrome_content_renderer_client.cc](../chrome/renderer/chrome_content_renderer_client.cc) | Chrome 嵌入配置与 Renderer 初始化接入参考 |
 
-阶段一已新增 `third_party/cpython/`、`components/python_runtime/`、Renderer 固定诊断接入及基础测试。阶段二已新增 `HTMLPyScriptElement`、`PythonScriptController`、公开嵌入执行器接口、Chrome 来源配置及对应构建项与测试。阶段三已扩展为文档持久上下文、每解释器 `dom` 模块、弱节点句柄和最小生命周期接入；其最终浏览器与 Blink 验证仍待后台队列完成。
+阶段一已新增 `third_party/cpython/`、`components/python_runtime/`、Renderer 固定诊断接入及基础测试。阶段二已新增 `HTMLPyScriptElement`、`PythonScriptController`、公开嵌入执行器接口、Chrome 来源配置及对应构建项与测试。阶段三已扩展为文档持久上下文、每解释器 `dom` 模块、弱节点句柄和最小生命周期接入；完整 Chrome 构建、新 DOM 浏览器测试和阶段二浏览器回归已通过，Blink 单测与 WPT 仍待后台队列完成。
 
 Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGENTS.md)，测试优先采用其要求的 WPT 框架与仓库适用的实验特性套件配置。
 
@@ -297,7 +297,7 @@ Blink Core 修改遵循 [core/AGENTS.md](../third_party/blink/renderer/core/AGEN
 
 ### 阶段三：文档上下文与最小 DOM 桥接
 
-实施状态：代码已接入，运行时 15 / 15 单测、GN / include 检查及控制器、Chrome 适配器和 20 用例源码的定向编译通过。完整 Chrome 重建及后续验证正在后台队列，不能视为阶段三完成。持久解释器所必需的撤销、延迟清理与 BFCache 限制已提前接入，完整阶段四仍未完成。详见[阶段三实施记录](pyscript-phase3-document-context-dom.md)。
+实施状态：代码已接入，运行时 15 / 15 单测、GN / include 检查及控制器、Chrome 适配器和 20 用例源码的定向编译通过。完整 Chrome 构建、新 DOM 浏览器测试 9 / 9 和阶段二浏览器回归 26 / 26 已通过，均保留 Renderer 沙箱；20 项 Blink 单测与 WPT 仍在后台构建验证队列，不能视为阶段三全部验收完成。持久解释器所必需的撤销、延迟清理与 BFCache 限制已提前接入，完整阶段四仍未完成。详见[阶段三实施记录](pyscript-phase3-document-context-dom.md)。
 
 1. 把子解释器、globals、队列、控制台和状态归属到 Document。
 2. 以每解释器模块状态实现 `dom`，加入两个最小接口。

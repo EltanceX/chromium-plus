@@ -1,0 +1,48 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.5633927s
+load siso config done 12.8819ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:3)
+build start: Ready 5671 Pending 57092
+[0/21102] 31.65s S LIB obj/third_party/tflite/tflite_framework_core.lib
+[0/12216] 31.93s F LIB obj/third_party/tflite/tflite_framework_core.lib
+[1/10721] 31.99s S LINK(DLL) third_party_webrtc_overrides_webrtc_component.dll third_party_webrtc_overrides_webrtc_component.dll.lib third_party_webrtc_overrides_webrtc_component.dll.pdb
+[1/659] 36.22s F LINK(DLL) third_party_webrtc_overrides_webrtc_component.dll third_party_webrtc_overrides_webrtc_component.dll.lib third_party_webrtc_overrides_webrtc_component.dll.pdb
+[2/493] 36.23s S LINK(DLL) components_language_detection_core.dll components_language_detection_core.dll.lib components_language_detection_core.dll.pdb
+[2/493] 36.23s S LINK(DLL) media_webrtc.dll media_webrtc.dll.lib media_webrtc.dll.pdb
+[2/238] 36.24s S LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[2/224] 37.69s F LINK(DLL) components_language_detection_core.dll components_language_detection_core.dll.lib components_language_detection_core.dll.pdb
+[3/207] 37.69s S LINK(DLL) services_on_device_model_ml_ml_no_internal.dll services_on_device_model_ml_ml_no_internal.dll.lib services_on_device_model_ml_ml_no_internal.dll.pdb
+[3/207] 37.85s F LINK(DLL) media_webrtc.dll media_webrtc.dll.lib media_webrtc.dll.pdb
+[4/206] 37.88s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[4/205] 40.79s F LINK(DLL) services_on_device_model_ml_ml_no_internal.dll services_on_device_model_ml_ml_no_internal.dll.lib services_on_device_model_ml_ml_no_internal.dll.pdb
+[5/205] 40.80s S LINK(DLL) services_on_device_model_on_device_model_service.dll services_on_device_model_on_device_model_service.dll.lib services_on_device_model_on_device_model_service.dll.pdb
+[5/203] 42.45s F LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[6/196] 44.61s F LINK(DLL) services_on_device_model_on_device_model_service.dll services_on_device_model_on_device_model_service.dll.lib services_on_device_model_on_device_model_service.dll.pdb
+[7/184] 54.68s F LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[8/48] 54.75s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[8/41] 1m13.70s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[9/10] 1m13.71s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[9/10] 1m23.06s F LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+build finished
+
+
+noexec:0 local:10 remote:0 cache:0 skip:62753
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 925(err:10) / r:605(err:0) 4.93GiB / w:9(err:0) 1.54MiB
+
+
+
+1m24.24s Build Succeeded: 10 steps - 0.12/s
+shutdown cloud logging/monitoring done 0s

@@ -1,0 +1,17 @@
+{
+  "object": "out\\Debug\\obj\\third_party\\tflite\\tflite_framework_core\\flatbuffer_to_proto.obj",
+  "preserved": "out\\Debug\\pyscript-phase3-corrupt-objects\\flatbuffer_to_proto-before-rebuild.obj",
+  "old_length": 3209935,
+  "old_mtime": "2026-10-27T02:49:46.891512",
+  "old_sha256": "0f7842aa65b77de8e382d3e8a56ecf7a4a6d60b029581521b292b98c70700326",
+  "diagnostic": "LF type kind 0xce2d at index 0x1b62 is invalid",
+  "rebuild_started": "2026-11-08T23:34:28.724326+08:00",
+  "new_length": 3209935,
+  "new_sha256": "aabc60b904ba27b114ba1d55932917fb421d262cb52790138350135d468a69c7",
+  "rebuilt_at": "2026-11-08T23:35:51.966519+08:00",
+  "hash_changed": true,
+  "changed_bytes": 130552,
+  "first_changed_offset": "0x190000",
+  "last_changed_offset_exclusive": "0x1c0000",
+  "cause": "not_determined"
+}

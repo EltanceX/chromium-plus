@@ -1,0 +1,17 @@
+{
+  "libraries": 233,
+  "members": 2831,
+  "objects_with_types": 2671,
+  "matching_records": 61266,
+  "problems": [
+    {
+      "library": "obj/third_party/tflite/tflite_framework_core.lib",
+      "member": "tflite_framework_core/flatbuffer_to_proto.obj",
+      "offset": 4353946,
+      "error": "invalid type kind 0xce2d at index 0x1b62"
+    }
+  ],
+  "hash_mismatches": [],
+  "target_hashes": 167,
+  "elapsed_seconds": 17.08
+}

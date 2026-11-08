@@ -1,0 +1,9 @@
+{
+  "target": "obj/components/webapps/isolated_web_apps/iwa_client/client.obj",
+  "function_hashes": 63,
+  "objects": 2911,
+  "mismatches": [],
+  "errors": [],
+  "matching_records": 39410,
+  "elapsed_seconds": 7.73
+}

@@ -1,0 +1,30 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.5234578s
+load siso config done 13.2033ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 57 Pending 1347
+[0/1] 29.72s S CXX obj/third_party/tflite/tflite_framework_core/flatbuffer_to_proto.obj
+[0/1] 40.70s F CXX obj/third_party/tflite/tflite_framework_core/flatbuffer_to_proto.obj
+build finished
+
+
+noexec:0 local:1 remote:0 cache:0 skip:1403
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 234(err:2) / r:9(err:0) 4.18MiB / w:0(err:0) 0B
+
+
+
+41.69s Build Succeeded: 1 steps - 0.02/s
+shutdown cloud logging/monitoring done 0s

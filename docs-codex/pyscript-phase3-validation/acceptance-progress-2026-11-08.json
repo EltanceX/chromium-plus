@@ -1,0 +1,80 @@
+{
+  "observedAt": "2026-11-08T23:43:00.999318+08:00",
+  "phase": 3,
+  "testedImplementationCommit": "1ffbda7979",
+  "acceptance": "pending Blink test executable build and execution",
+  "checks": {
+    "runtimeTests": {
+      "passed": 15,
+      "total": 15,
+      "fromPreviousValidation": true
+    },
+    "fullChromeBuild": {
+      "status": "passed",
+      "elapsed": "1m49.36s",
+      "steps": 8
+    },
+    "domBrowserSmoke": {
+      "passed": 9,
+      "total": 9,
+      "pageTestharnessAssertionsPassed": 9,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    },
+    "phase2BrowserRegression": {
+      "passed": 26,
+      "total": 26,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    },
+    "blinkUnitTests": {
+      "status": "not_yet_executed",
+      "plannedCases": 20
+    },
+    "wpt": {
+      "status": "not_yet_executed",
+      "plannedConfigurations": [
+        "enabled-diagnostic",
+        "disabled-diagnostic"
+      ]
+    }
+  },
+  "background": {
+    "buildProcessId": 2656,
+    "followupProcessId": 12280,
+    "state": {
+      "phase": 3,
+      "status": "blink-tests-build",
+      "existingBuildProcessId": 5096,
+      "started": "2026-11-08T23:38:32.2975103+08:00",
+      "updated": "2026-11-08T23:41:01.5241401+08:00",
+      "steps": [
+        {
+          "name": "chrome-build",
+          "exitCode": 0,
+          "log": "C:\\src\\src\\out\\Debug\\pyscript-phase3-chrome-build.log"
+        },
+        {
+          "name": "dom-browser-smoke",
+          "started": "2026-11-08T23:39:33.9577266+08:00",
+          "ended": "2026-11-08T23:40:22.3438981+08:00",
+          "exitCode": 0,
+          "log": "out/Debug/pyscript-phase3-dom-smoke.log"
+        },
+        {
+          "name": "phase2-browser-regression",
+          "started": "2026-11-08T23:40:22.3478950+08:00",
+          "ended": "2026-11-08T23:41:01.5221218+08:00",
+          "exitCode": 0,
+          "log": "out/Debug/pyscript-phase3-phase2-regression.log"
+        }
+      ]
+    }
+  },
+  "scope": {
+    "productSourceChangedThisRecovery": false,
+    "unrelatedMcjeChangesPreserved": true,
+    "phase4Started": false
+  },
+  "snapshotIsNotACompletionResult": true
+}

@@ -1,0 +1,62 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.4376037s
+load siso config done 13.7418ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:3)
+build start: Ready 5671 Pending 57092
+[0/1] 33.77s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[0/1] 38.20s E LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+FAILED: 460c1dcd-eb30-48f2-a1ba-72c879326067 "./components_webapps_isolated_web_apps.dll" LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./components_webapps_isolated_web_apps.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./components_webapps_isolated_web_apps.dll.lib" /DLL "/PDB:./components_webapps_isolated_web_apps.dll.pdb" "@./components_webapps_isolated_web_apps.dll.rsp"
+build step: solink "./components_webapps_isolated_web_apps.dll"
+stderr:
+lld-link: error: procedure symbol record for `std::__Cr::char_traits<char>::length` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E0242 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::data` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E020E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_address<const char>` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E0330 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_address<char>` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E0219 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_pointer` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E021A which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__is_long` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E021B which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_long_pointer` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E021C which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_short_pointer` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E021D which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::pointer_traits<char *>::pointer_to` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E0220 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__constexpr_strlen<char>` in obj/components/webapps/isolated_web_apps/iwa_client/client.obj refers to PDB item index 0x1E0243 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_string` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E0354 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__annotate_new` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E032D which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::size` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E022F which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__annotate_contiguous_container` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E032E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::data` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E032F which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::capacity` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E022E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_pointer` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E0331 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_long_pointer` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E0332 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__get_short_pointer` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E0333 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::pointer_traits<const char *>::pointer_to` in obj/components/web_package/mojom_mapped_types/ecdsa_p256_public_key.obj refers to PDB item index 0x1E0335 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:1 remote:0 cache:0 skip:62762
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 793(err:1) / r:577(err:0) 2.12MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+39.09s Build Failure: 1 done, 1 failed, 0 remaining - 0.03/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261108-232851.9732
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands
