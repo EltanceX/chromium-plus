@@ -1,0 +1,6 @@
+c:\src\src\third_party\blink\renderer\core\script_tools\deps:2: SyntaxWarning: invalid escape sequence '\.'
+  "model_context\.cc": [
+Using base directory: c:\src\src
+Checking: c:\src\src\third_party\blink\renderer\core\html
+
+SUCCESS

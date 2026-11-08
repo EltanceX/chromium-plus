@@ -1,0 +1,151 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87105 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3053297s
+load siso config done 11.5284ms
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441011 edge:2)
+build start: Ready 4854 Pending 44809
+[0/776] 28.98s S CXX obj/third_party/blink/renderer/platform/media/media/web_media_player_impl.obj
+[0/276] 29.00s S CXX obj/third_party/blink/renderer/platform/platform/platform.obj
+[0/274] 29.00s S CXX obj/third_party/blink/renderer/platform/scheduler/scheduler/main_thread_scheduler_impl.obj
+[0/274] 29.00s S CXX obj/third_party/blink/renderer/platform/platform/widget_base.obj
+[0/144] 29.00s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/20] 29.01s S CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[0/20] 31.46s F CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[1/20] 42.19s F CXX obj/third_party/blink/renderer/platform/scheduler/scheduler/main_thread_scheduler_impl.obj
+[2/15] 44.48s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[3/15] 51.45s F CXX obj/third_party/blink/renderer/platform/platform/platform.obj
+[4/15] 52.93s F CXX obj/third_party/blink/renderer/platform/media/media/web_media_player_impl.obj
+[5/14] 53.43s F CXX obj/third_party/blink/renderer/platform/platform/widget_base.obj
+[6/14] 53.44s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[6/11] 1m05.85s F LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[7/8] 1m05.87s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[7/8] 1m36.28s E CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+FAILED: 4205604f-ca58-49e3-8360-4abd85a288fb "./obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj" CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+err: exit=1
+sccache ..\..\third_party\llvm-build\Release+Asserts\bin\clang-cl.exe /c ../../third_party/blink/renderer/core/html/html_py_script_element_test.cc /Foobj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj /nologo /showIncludes "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/VS/include" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/ucrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/um" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/shared" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/winrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/cppwinrt" -D_HAS_NODISCARD -D_CRT_NONSTDC_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS "-DCR_CLANG_REVISION=\"llvmorg-24-init-14453-ge063be79-1\"" -DCOMPONENT_BUILD -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -D_LIBCPP_INSTRUMENTED_WITH_ASAN=0 -DCR_LIBCXX_REVISION=9ba7713d3a0f1e179904c984bb626748b15e57d6 -D__STD_C -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_SCL_SECURE_NO_DEPRECATE -D_ATL_NO_OPENGL -D_WINDOWS -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DPSAPI_VERSION=2 -DWIN32 -D_SECURE_ATL -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DDCHECK_ALWAYS_ON=1 -DUSE_AURA=1 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -D_UNICODE -DUNICODE -DNTDDI_VERSION=NTDDI_WIN11_BR -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -DWINCRYPT_USE_SYMBOL_PREFIX -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DUSING_V8_SHARED -DBLINK_IMPLEMENTATION=1 -DINSIDE_BLINK -DCHROMIUM -DLIBYUV_DISABLE_NEON -DLIBYUV_DISABLE_SVE -DLIBYUV_DISABLE_SME -DLIBYUV_DISABLE_LSX -DLIBYUV_DISABLE_LASX -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED "-DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\"" -DSK_USE_PARTITION_ALLOC -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_ENABLE_LEGACY_SHADERCONTEXT -DSK_LEGACY_DESERIAL_IMAGE_PROC -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_PNG_WITH_RUST -DSK_CODEC_ENCODES_PNG -DSK_CODEC_ENCODES_PNG_WITH_RUST -DSK_CODEC_DECODES_BMP_WITH_RUST -DSK_CODEC_DECODES_ICO_WITH_RUST -DSK_CODEC_COLOR_PROFILE_PARSE_WITH_RUST -DSK_EXIF_PARSE_WITH_RUST -DSK_ENABLE_AVX512_OPTS -DSK_CODEC_DECODES_JPEG -DSK_CODEC_ENCODES_JPEG -DSKIA_DLL -DGR_GL_FUNCTION_TYPE=__stdcall -DSK_GAMMA_SRGB -DSK_GAMMA_CONTRAST=1.0 -DSK_GANESH "-DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\"" -DSK_GL -DSK_GRAPHITE -DSK_DAWN -DSKCMS_DLL=1 -D_WTL_NO_AUTOMATIC_NAMESPACE -DTOOLKIT_VIEWS=1 -DPROTOBUF_MESSAGE_GLOBALS_TEMPORARY_OPTOUT -DGOOGLE_PROTOBUF_NO_RTTI -DPROTOBUF_INTERNAL_BOUNDS_CHECK_MODE_ABORT -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DWEBRTC_ENABLE_SYMBOL_EXPORT -DWEBRTC_EXCLUDE_BUILT_IN_SSL_ROOT_CERTS -DWEBRTC_ENABLE_AVX2 -DRTC_ENABLE_WIN_WGC -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_CHROMIUM_BUILD -DWEBRTC_WIN -DABSL_ALLOCATOR_NOTHROW=1 -DLOGGING_INSIDE_WEBRTC -DWGPU_SHARED_LIBRARY -DUSING_V8_SHARED_PRIVATE -DV8_ARRAY_BUFFER_INTERNAL_FIELD_COUNT=0 -DV8_ARRAY_BUFFER_VIEW_INTERNAL_FIELD_COUNT=0 -DV8_PROMISE_INTERNAL_FIELD_COUNT=0 -DV8_EMBEDDER_DATA_ARRAY_SIZE=5 -DV8_USE_DEFAULT_HASHER_SECRET=true -DV8_ENABLE_CHECKS -DV8_ENABLE_MEMORY_ACCOUNTING_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DV8_DISALLOW_JS_IN_API_INTERRUPTS_IS_CHECKED -DV8_USE_PERFETTO -DV8_USE_PERFETTO_JSON_EXPORT -DV8_SUPPORT_LA57 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_WIN -DCPPGC_ENABLE_API_CHECKS -DCPPGC_SUPPORTS_OBJECT_NAMES -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_ENABLE_LARGER_CAGE -DCPPGC_SLIM_WRITE_BARRIER -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DSKCMS_IMPLEMENTATION=1 -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DLEVELDB_PLATFORM_CHROMIUM=1 -DLEVELDB_SHARED_LIBRARY -DUSE_LIBJPEG_TURBO=1 -DMANGLE_JPEG_NAMES -DWEBP_EXTERN=extern -DUSING_V8_PLATFORM_SHARED -DLIBXSLT_STATIC -DCENTIPEDE_DISABLE_RIEGELI -DFUZZTEST_NO_LEGACY_COVERAGE -DV8_USE_EXTERNAL_STARTUP_DATA -DGTEST_API_= -DGTEST_HAS_POSIX_RE=0 -DGTEST_HAS_ABSL -DGTEST_NO_ABSL_FLAGS -DUNIT_TEST -DLIBGAV1_MAX_BITDEPTH=10 -DLIBGAV1_THREADPOOL_USE_STD_MUTEX -DLIBGAV1_ENABLE_LOGGING=0 -DLIBGAV1_PUBLIC= -DUSE_LIBCXX_MODULES -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -I../../third_party/libyuv/include -I../../third_party/skia -Igen/third_party/skia -I../../third_party/wuffs/src/release/c -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../gpu -I../../third_party/angle/include -I../../third_party/google_benchmark/src/include -Igen/third_party/private_membership/src -Igen/third_party/shell-encryption/src -Igen/components/policy/proto -I../../third_party/wtl/include -I../../third_party/protobuf/src -I../../third_party/protobuf/third_party/utf8_range -I../../third_party/abseil-cpp -I../../base/allocator/partition_allocator/src -Igen/base/allocator/partition_allocator/src -I../../third_party/boringssl/src/include -Igen/net/third_party/quiche/src -I../../third_party/re2/src -I../../third_party/ipcz/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ced/src -I../../third_party/webrtc_overrides -I../../third_party/webrtc -Igen/third_party/webrtc -I../../v8/include -I../../third_party/flatbuffers/src/include -I../../third_party/flatbuffers/src/src -I../../third_party/flatbuffers/src -I../../third_party/flatbuffers/generated -I../../third_party/libwebm/source -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/win -I../../third_party/zlib -I../../third_party/leveldatabase -I../../third_party/leveldatabase/src -I../../third_party/leveldatabase/src/include -I../../third_party/libaom/source/libaom -I../../third_party/libaom/source/config/win/x64 -I../../third_party/libjpeg_turbo/src -I../../third_party/libwebp/src/src -I../../third_party/ots/src/include -I../../third_party/woff2/include -Igen/v8/include -I../../third_party/simdutf -I../../third_party/fp16/src/include -I../../third_party/libxml/src/include -I../../third_party/libxml/win32/include -I../../third_party/libxslt/src -I../../third_party/libxslt/src/libxslt -I../../third_party/fuzztest/src -I../../third_party/googletest/custom -I../../third_party/googletest/src/googlemock/include -I../../third_party/googletest/src/googletest/include -I../../third_party/snappy/src -I../../third_party/snappy/win32 -I../../third_party/rust-toolchain/lib -I../../third_party/rust-toolchain/lib/third_party/crubit -I../../third_party/rust-toolchain/lib/third_party -I../../third_party/harfbuzz/src/src -I../../third_party/harfbuzz -I../../third_party/libgav1/src -I../../third_party/libgav1/src/src /W4 -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wgnu -Wno-gnu-anonymous-struct -Wno-gnu-conditional-omitted-operand -Wno-gnu-include-next -Wno-gnu-label-as-value -Wno-gnu-redeclared-enum -Wno-gnu-statement-expression -Wno-gnu-zero-variadic-macro-arguments -Wno-zero-length-array -Wthread-safety -Wno-unused-template -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wno-stringop-overread -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-thread-safety-reference-return -Wno-nontrivial-memcall -Wno-uninitialized-const-pointer -Wno-unused-but-set-global -Wno-nonportable-include-path -Wexit-time-destructors -Wshadow /WX -fno-delete-null-pointer-checks /clang:-fno-strict-overflow -fno-ident /clang:-fno-math-errno -fcolor-diagnostics /clang:-fdiagnostics-show-inlining-chain -fmerge-all-constants -fcrash-diagnostics-dir=../clang-crashreports -fno-lifetime-dse -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 /clang:-ffp-contract=off -fcomplete-member-pointers /Gy /FS /bigobj /utf-8 /Zc:twoPhase -ffile-reproducible /D__WRL_ENABLE_FUNCTION_STATICS__ -fmsc-version=1934 /Zc:dllexportInlines- -m64 -msse3 /Brepro -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -Xclang -fmodule-file-home-is-cwd -Xclang -fmodules-cache-path=/not_exist_dummy_dir --warning-suppression-mappings=../../build/config/warning_suppression.txt -ftrivial-auto-var-init=pattern /Od /Ob0 /GF /Z7 -gno-codeview-command-line -mllvm -pick-merged-source-locations -gcodeview-ghash -Xclang -fuse-ctor-homing -fsanitize=array-bounds -fsanitize-trap=array-bounds -fsanitize-ignore-for-ubsan-feature=array-bounds -Wno-unsafe-buffer-usage-in-static-sized-array -fsanitize=return -fsanitize-trap=return -fsanitize-ignore-for-ubsan-feature=return -fsanitize=unreachable -fsanitize-trap=unreachable -fsanitize-ignore-for-ubsan-feature=unreachable /guard:cf,nochecks /MDd -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang relax-ctor-checks-for-aggregates -Xclang -add-plugin -Xclang raw-ptr-plugin -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-raw-ptr-plugin -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../third_party/dawn/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../build/config/clang/chrome/test/fuzzing/webidl_fuzzing/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-span-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ref-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang config-path=../../build/config/raw_ptr_plugin_config.yaml -Xclang -plugin-arg-raw-ptr-plugin -Xclang no-special-treatment-for-oilpanized-paths -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-in-blink -DUNSAFE_BUFFERS_BUILD -Wunsafe-buffer-usage -Wno-error=unsafe-buffer-usage -Wno-unsafe-buffer-usage-main-argv -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt /wd4305 /wd4324 /wd4714 /wd4800 -Xclang -plugin-arg-find-bad-constructs -Xclang check-blink-data-member-type -Xclang -add-plugin -Xclang blink-gc-plugin -Wconversion -Wno-float-conversion -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-implicit-int-conversion -Wshorten-64-to-32 -Wtautological-unsigned-zero-compare -Wno-exit-time-destructors -Wno-null-pointer-subtraction /wd4344 /wd4291 -DLIBXML_STATIC= -Wno-sign-compare -Wno-inconsistent-missing-override /wd4800 -Wno-invalid-offsetof -Wenum-compare-conditional -Wno-nullability-completeness -Wunique-object-duplication /std:c++23preview -Wno-trigraphs /GR- -I../../third_party/libc++/src/include -fmodules /clang:-fno-implicit-module-maps -fno-implicit-modules -Xclang -fmodules-local-submodule-visibility -Wno-modules-ambiguous-internal-linkage -Wno-modules-import-nested-redundant -Xclang -fmodules-disable-diagnostic-validation -Wno-module-import-in-extern-c /TP -fmodule-map-file=gen/build/modules/module.modulemap -fmodule-file=//build/modules:system=obj/build/modules/system/module.pcm "-fmodule-name=//third_party/blink/renderer/core:unit_tests_Private" /Fd"obj/third_party/blink/renderer/core/unit_tests_cc.pdb"
+build step: cxx "./obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj"
+stderr:
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(33,27): error: declaration shadows a field of 'blink::(anonymous namespace)::RecordingPythonRunner' [-Werror,-Wshadow]
+   33 |         WebPythonDomHost& host) override {
+      |                           ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(67,29): note: previous declaration is here
+   67 |   raw_ptr<WebPythonDomHost> host = nullptr;
+      |                             ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(329,27): error: no member named 'setInnerHTMLWithoutTrustedTypes' in 'blink::HTMLElement'
+  329 |     GetDocument().body()->setInnerHTMLWithoutTrustedTypes(
+      |     ~~~~~~~~~~~~~~~~~~~~  ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(344,38): error: no member named 'FromUTF8' in 'blink::String'; did you mean 'FromUtf8'?
+  344 |         host.SetText(handle, String::FromUTF8(std::string(16385, 'x'))).error);
+      |                                      ^~~~~~~~
+      |                                      FromUtf8
+../..\third_party/googletest/src/googletest/include/gtest/gtest.h(1888,69): note: expanded from macro 'EXPECT_EQ'
+ 1888 |   EXPECT_PRED_FORMAT2(::testing::internal::EqHelper::Compare, val1, val2)
+      |                                                                     ^~~~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(144,40): note: expanded from macro 'EXPECT_PRED_FORMAT2'
+  144 |   GTEST_PRED_FORMAT2_(pred_format, v1, v2, GTEST_NONFATAL_FAILURE_)
+      |                                        ^~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(134,43): note: expanded from macro 'GTEST_PRED_FORMAT2_'
+  134 |   GTEST_ASSERT_(pred_format(#v1, #v2, v1, v2), on_failure)
+      |                                           ^~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(79,52): note: expanded from macro 'GTEST_ASSERT_'
+   79 |   if (const ::testing::AssertionResult gtest_ar = (expression)) \
+      |                                                    ^~~~~~~~~~
+../..\third_party/blink/renderer/platform/wtf/text/wtf_string.h(88,31): note: 'FromUtf8' declared here
+   88 |   [[nodiscard]] static String FromUtf8(base::span<const uint8_t>);
+      |                               ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(344,47): error: no viable conversion from 'std::string' (aka 'basic_string<char>') to 'base::span<const uint8_t>' (aka 'base::span<const unsigned char>')
+  344 |         host.SetText(handle, String::FromUTF8(std::string(16385, 'x'))).error);
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~
+../..\third_party/googletest/src/googletest/include/gtest/gtest.h(1888,69): note: expanded from macro 'EXPECT_EQ'
+ 1888 |   EXPECT_PRED_FORMAT2(::testing::internal::EqHelper::Compare, val1, val2)
+      |                                                                     ^~~~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(144,40): note: expanded from macro 'EXPECT_PRED_FORMAT2'
+  144 |   GTEST_PRED_FORMAT2_(pred_format, v1, v2, GTEST_NONFATAL_FAILURE_)
+      |                                        ^~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(134,43): note: expanded from macro 'GTEST_PRED_FORMAT2_'
+  134 |   GTEST_ASSERT_(pred_format(#v1, #v2, v1, v2), on_failure)
+      |                                           ^~
+../../third_party/googletest/src/googletest/include\gtest/gtest_pred_impl.h(79,52): note: expanded from macro 'GTEST_ASSERT_'
+   79 |   if (const ::testing::AssertionResult gtest_ar = (expression)) \
+      |                                                    ^~~~~~~~~~
+../..\base/containers/span.h(1169,13): note: candidate constructor not viable: no known conversion from 'std::string' (aka 'basic_string<char>') to 'std::initializer_list<value_type>' (aka 'std::initializer_list<unsigned char>') for 1st argument
+ 1169 |   constexpr span(std::initializer_list<value_type> il LIFETIME_BOUND)
+      |             ^    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../..\base/containers/span.h(1176,13): note: candidate constructor not viable: no known conversion from 'std::string' (aka 'basic_string<char>') to 'const span<const unsigned char> &' for 1st argument
+ 1176 |   constexpr span(const span& other) noexcept = default;
+      |             ^    ~~~~~~~~~~~~~~~~~
+../..\base/containers/span.h(1186,13): note: candidate constructor not viable: no known conversion from 'std::string' (aka 'basic_string<char>') to 'span<const unsigned char> &&' for 1st argument
+ 1186 |   constexpr span(span&& other) noexcept = default;
+      |             ^    ~~~~~~~~~~~~
+../..\base/containers/span.h(1141,13): note: candidate template ignored: could not match 'unsigned char[N]' against 'std::string' (aka 'basic_string<char>')
+ 1141 |   constexpr span(element_type (&arr LIFETIME_BOUND)[N]) noexcept
+      |             ^
+../..\base/containers/span.h(1149,13): note: candidate template ignored: constraints not satisfied [with R = std::string]
+ 1149 |   constexpr span(R&& range LIFETIME_BOUND)
+      |             ^
+../..\base/containers/span.h(1147,14): note: because 'internal::CompatibleRange<element_type, std::string>' evaluated to false
+ 1147 |     requires(internal::CompatibleRange<element_type, R>)
+      |              ^
+../..\base/containers/span.h(398,5): note: because 'LegalDataConversion<std::remove_reference_t<std::ranges::range_reference_t<std::string> >, const unsigned char>' evaluated to false
+  398 |     LegalDataConversion<
+      |     ^
+../..\base/containers/span.h(362,31): note: because 'std::is_convertible_v<char (*)[], const unsigned char (*)[]>' evaluated to false
+  362 | concept LegalDataConversion = std::is_convertible_v<From (*)[], To (*)[]>;
+      |                               ^
+../..\base/containers/span.h(1160,13): note: candidate template ignored: constraints not satisfied [with R = std::string]
+ 1160 |   constexpr span(R&& range)
+      |             ^
+../..\base/containers/span.h(1157,14): note: because 'internal::CompatibleRange<element_type, std::string>' evaluated to false
+ 1157 |     requires(internal::CompatibleRange<element_type, R> &&
+      |              ^
+../..\base/containers/span.h(398,5): note: because 'LegalDataConversion<std::remove_reference_t<std::ranges::range_reference_t<std::string> >, const unsigned char>' evaluated to false
+  398 |     LegalDataConversion<
+      |     ^
+../..\base/containers/span.h(362,31): note: because 'std::is_convertible_v<char (*)[], const unsigned char (*)[]>' evaluated to false
+  362 | concept LegalDataConversion = std::is_convertible_v<From (*)[], To (*)[]>;
+      |                               ^
+../..\base/containers/span.h(362,31): note: and 'std::is_convertible_v<char (*)[], const unsigned char (*)[]>' evaluated to false
+../..\base/containers/span.h(1182,13): note: candidate template ignored: could not match 'span' against 'basic_string'
+ 1182 |   constexpr span(
+      |             ^
+..\..\third_party\libc++\src\include\string(1130,55): note: candidate function
+ 1130 |   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX20 operator __self_view() const _NOEXCEPT {
+      |                                                       ^
+../..\third_party/blink/renderer/platform/wtf/text/wtf_string.h(88,65): note: passing argument to parameter here
+   88 |   [[nodiscard]] static String FromUtf8(base::span<const uint8_t>);
+      |                                                                 ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(364,15): error: use of undeclared identifier 'GetFrame'; did you mean 'WebFrame'?
+  364 |   EXPECT_TRUE(GetFrame()
+      |               ^~~~~~~~
+../..\third_party/blink/renderer/core/frame/frame_test_helpers.h(82,7): note: 'WebFrame' declared here
+   82 | class WebFrame;
+      |       ^
+5 errors generated.
+
+
+build failed
+
+
+noexec:0 local:8 remote:0 cache:0 skip:49655
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 5539(err:3) / r:619(err:0) 1.13GiB / w:1(err:0) 332.90KiB
+
+
+
+1m37.41s Build Failure: 8 done, 1 failed, 0 remaining - 0.08/s
+ 1 steps failed: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261108-210759.18448
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

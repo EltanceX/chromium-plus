@@ -1,0 +1,21 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<meta charset="utf-8">
+<title>Native Python DOM bridge</title>
+<h1>Native Python DOM bridge</h1>
+<p id="result">Waiting for Python</p>
+<p id="shared">Waiting for the second block</p>
+<p id="literal">Waiting for plain text</p>
+<pyscript nonce="python-dom">
+import dom
+answer = 6 * 7
+result = dom.get_element_by_id("result")
+dom.set_text(result, f"Python 计算结果：{answer}")
+</pyscript>
+<pyscript nonce="python-dom">
+dom.set_text(result, f"Python 计算结果：{answer}")
+dom.set_text(dom.get_element_by_id("shared"), f"共享变量与句柄：{answer + 1}")
+dom.set_text(dom.get_element_by_id("literal"), '<img src="/must-not-load.png"> &amp; 世界')
+</pyscript>

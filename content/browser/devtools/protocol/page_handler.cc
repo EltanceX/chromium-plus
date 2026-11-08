@@ -2426,6 +2426,9 @@ Page::BackForwardCacheNotRestoredReason BlocklistedFeatureToProtocol(
           ContentWebAuthenticationAPI;
     case WebSchedulerTrackedFeature::kSharedWorkerMessage:
       return Page::BackForwardCacheNotRestoredReasonEnum::SharedWorkerMessage;
+    case WebSchedulerTrackedFeature::kNativePython:
+      // This private experiment has no public protocol reason value.
+      return Page::BackForwardCacheNotRestoredReasonEnum::Unknown;
     case WebSchedulerTrackedFeature::kWebBluetooth:
       return Page::BackForwardCacheNotRestoredReasonEnum::WebBluetooth;
   }
@@ -2668,6 +2671,8 @@ Page::BackForwardCacheNotRestoredReasonType MapBlocklistedFeatureToType(
     case WebSchedulerTrackedFeature::kKeepaliveRequest:
     case WebSchedulerTrackedFeature::kWebAuthentication:
     case WebSchedulerTrackedFeature::kWebBluetooth:
+      return Page::BackForwardCacheNotRestoredReasonTypeEnum::SupportPending;
+    case WebSchedulerTrackedFeature::kNativePython:
       return Page::BackForwardCacheNotRestoredReasonTypeEnum::SupportPending;
     case WebSchedulerTrackedFeature::kMainResourceHasCacheControlNoStore:
     case WebSchedulerTrackedFeature::kMainResourceHasCacheControlNoCache:

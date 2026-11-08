@@ -4,13 +4,17 @@
 
 #include "third_party/blink/renderer/core/html/html_py_script_element.h"
 
+#include "base/memory/raw_ref.h"
 #include "base/test/bind.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/dom/document.h"
+#include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
+#include "third_party/blink/renderer/core/html/python_script_controller.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_request.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
+#include "third_party/blink/renderer/platform/scheduler/public/frame_scheduler.h"
 #include "third_party/blink/renderer/platform/testing/runtime_enabled_features_test_helpers.h"
 #include "third_party/blink/renderer/platform/testing/unit_test_helpers.h"
 
@@ -19,11 +23,33 @@ namespace {
 
 class RecordingPythonRunner final : public WebPythonScriptRunner {
  public:
+  class Context final : public WebPythonScriptContext {
+   public:
+    explicit Context(RecordingPythonRunner& runner)
+        : runner_(runner), destructions_(runner.destructions) {}
+    ~Context() override { ++*destructions_; }
+    std::vector<WebPythonScriptResult> Run(
+        const std::vector<WebPythonScriptSource>& sources,
+        WebPythonDomHost& dom_host) override {
+      runner_->host = &dom_host;
+      auto results = runner_->Run(sources);
+      runner_->host = nullptr;
+      return results;
+    }
+
+   private:
+    const raw_ref<RecordingPythonRunner> runner_;
+    std::shared_ptr<unsigned> destructions_;
+  };
+  std::unique_ptr<WebPythonScriptContext> CreateContext() override {
+    ++contexts_created;
+    return std::make_unique<Context>(*this);
+  }
   bool IsOriginAllowed(const WebSecurityOrigin& origin) const override {
     return allow && origin.ToString() == "https://example.test";
   }
   std::vector<WebPythonScriptResult> Run(
-      const std::vector<WebPythonScriptSource>& sources) override {
+      const std::vector<WebPythonScriptSource>& sources) {
     ++batches;
     executed = sources;
     if (on_run) {
@@ -36,6 +62,9 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
     return results;
   }
   bool allow = true;
+  unsigned contexts_created = 0;
+  std::shared_ptr<unsigned> destructions = std::make_shared<unsigned>(0);
+  raw_ptr<WebPythonDomHost> host = nullptr;
   unsigned batches = 0;
   base::RepeatingClosure on_run;
   std::vector<WebPythonScriptSource> executed;
@@ -219,6 +248,150 @@ TEST_F(HTMLPyScriptElementTest, PrerenderDoesNotRunOrDeferPython) {
   InitializePrerenderPageRoot();
   Load("<pyscript>prerender</pyscript>");
   EXPECT_EQ(0u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest, DomBridgeWritesOnlyPlainTextAndFindsLightDom) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    EXPECT_TRUE(host.IsActive());
+    auto handle = host.GetElementById("result");
+    EXPECT_NE(0u, handle.handle.id);
+    auto same = host.GetElementById("result");
+    EXPECT_EQ(handle.handle.id, same.handle.id);
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.SetText(handle.handle, "42 <img src=never.png> &amp;").error);
+    EXPECT_EQ("42 <img src=never.png> &amp;",
+              GetElementById("result")->textContent());
+    EXPECT_EQ(nullptr, GetDocument().QuerySelector(AtomicString("img")));
+    EXPECT_EQ(0u, host.GetElementById("missing").handle.id);
+    EXPECT_EQ(0u, host.GetElementById("shadow-child").handle.id);
+    EXPECT_EQ(0u, host.GetElementById("template-child").handle.id);
+    for (const char* id : {"div", "span"}) {
+      EXPECT_EQ(
+          WebPythonDomError::kNone,
+          host.SetText(host.GetElementById(WebString::FromUtf8(id)).handle,
+                       "text")
+              .error);
+    }
+  });
+  Load(R"HTML(<p id=result>before<!-- comment --></p><div id=div></div>
+    <span id=span></span><div id=shadow></div>
+    <template><p id=template-child>hidden</p></template>
+    <script>document.querySelector('#shadow').attachShadow({mode:'closed'})
+      .innerHTML='<p id="shadow-child">hidden</p>';</script>
+    <pyscript>bridge</pyscript>)HTML");
+}
+
+TEST_F(HTMLPyScriptElementTest, DomBridgeRejectsCodeCustomAndContainerTargets) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    for (const char* id : {"script", "python", "style", "custom", "customized",
+                           "pending-is", "container", "svg", "foreign"}) {
+      const auto handle = host.GetElementById(WebString::FromUtf8(id)).handle;
+      ASSERT_NE(0u, handle.id) << id;
+      EXPECT_EQ(WebPythonDomError::kNotAllowed,
+                host.SetText(handle, "deny").error)
+          << id;
+    }
+  });
+  Load(R"HTML(<script id=script></script><style id=style></style>
+    <x-python id=custom></x-python><p is=x-p id=customized>keep</p>
+    <div is=not-defined id=pending-is>keep</div>
+    <div id=container><span>keep</span></div>
+    <svg id=svg><g id=foreign></g></svg>
+    <script>customElements.define('x-python', class extends HTMLElement {});
+      customElements.define('x-p', class extends HTMLParagraphElement {},
+        {extends:'p'});</script><pyscript id=python>bridge</pyscript>)HTML");
+  EXPECT_EQ("keep", GetElementById("container")->textContent());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       DomBridgeRejectsForeignExpiredAndRemovedHandles) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto handle = host.GetElementById("result").handle;
+    auto foreign = handle;
+    ++foreign.document;
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(foreign, "deny").error);
+    foreign = handle;
+    ++foreign.generation;
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(foreign, "deny").error);
+    foreign = handle;
+    foreign.id = 0;
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(foreign, "deny").error);
+    GetElementById("result")->remove();
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(handle, "deny").error);
+    GetDocument().body()->SetInnerHTMLWithoutTrustedTypes(
+        "<p id=result>replacement</p>");
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(handle, "deny").error);
+    EXPECT_EQ("replacement", GetElementById("result")->textContent());
+  });
+  Load("<body><p id=result>before</p><pyscript>bridge</pyscript>");
+}
+
+TEST_F(HTMLPyScriptElementTest, DomBridgeHasBoundedStringsAndDocumentCalls) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto handle = host.GetElementById("result").handle;
+    EXPECT_EQ(WebPythonDomError::kLimit,
+              host.SetText(handle, WebString::FromUtf8(std::string(16385, 'x')))
+                  .error);
+    EXPECT_EQ("before", GetElementById("result")->textContent());
+    for (unsigned i = 2; i < 1024; ++i) {
+      EXPECT_EQ(WebPythonDomError::kNone, host.GetElementById("missing").error);
+    }
+    EXPECT_EQ(WebPythonDomError::kLimit, host.SetText(handle, "deny").error);
+  });
+  Load("<p id=result>before</p><pyscript>bridge</pyscript>");
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ContextPersistsUntilDocumentOpenAndCleansInTask) {
+  WebPythonDomHost* host = nullptr;
+  runner_.on_run = base::BindLambdaForTesting([&] { host = runner_.host; });
+  Load("<pyscript>bridge</pyscript>");
+  ASSERT_TRUE(host);
+  EXPECT_FALSE(host->IsActive());
+  EXPECT_EQ(WebPythonDomError::kReference, host->GetElementById("x").error);
+  EXPECT_EQ(1u, runner_.contexts_created);
+  EXPECT_EQ(0u, *runner_.destructions);
+  EXPECT_TRUE(GetDocument()
+                  .GetFrame()
+                  ->GetFrameScheduler()
+                  ->GetActiveFeaturesTrackedForBackForwardCacheMetrics()
+                  .Contains(SchedulingPolicy::Feature::kNativePython));
+  GetDocument().open();
+  EXPECT_EQ(0u, *runner_.destructions);
+  test::RunPendingTasks();
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, InvalidationDuringRunDefersContextDestruction) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto handle = host.GetElementById("result").handle;
+    PythonScriptController::StopDocument(GetDocument());
+    EXPECT_EQ(0u, *runner_.destructions);
+    EXPECT_FALSE(host.IsActive());
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetText(handle, "deny").error);
+  });
+  Load("<p id=result>before</p><pyscript>bridge</pyscript>");
+  EXPECT_EQ(1u, *runner_.destructions);
+  EXPECT_EQ("before", GetElementById("result")->textContent());
+}
+
+TEST_F(HTMLPyScriptElementTest, NavigationDisposesOldDocumentContext) {
+  Load("<pyscript>bridge</pyscript>");
+  EXPECT_EQ(0u, *runner_.destructions);
+  Load("<p>next document</p>");
+  EXPECT_EQ(1u, *runner_.destructions);
 }
 
 }  // namespace

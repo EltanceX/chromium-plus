@@ -169,5 +169,8 @@ enum WebSchedulerTrackedFeature {
   // Aggressive throttling is disabled when a USB device is opened and
   // re-enabled when the opened device is closed.
   kWebUSB = 72,
+
+  // A document owns a native Python subinterpreter and DOM handles.
+  kNativePython = 73,
 };
 // LINT.ThenChange(//tools/metrics/histograms/metadata/navigation/enums.xml:WebSchedulerTrackedFeature)

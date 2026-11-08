@@ -156,6 +156,8 @@ FeatureNames FeatureToNames(WebSchedulerTrackedFeature feature) {
       return {"sharedworker-message", "Message posted from SharedWorker"};
     case WebSchedulerTrackedFeature::kWebUSB:
       return {"webusb", "USB device open"};
+    case WebSchedulerTrackedFeature::kNativePython:
+      return {"native-python", "page owns a native Python interpreter"};
   }
   return {};
 }
@@ -247,7 +249,8 @@ WebSchedulerTrackedFeatures StickyFeatures() {
           WebSchedulerTrackedFeature::kWebRTCSticky,
           WebSchedulerTrackedFeature::kWebSocketSticky,
           WebSchedulerTrackedFeature::kWebTransportSticky,
-          WebSchedulerTrackedFeature::kParserAborted};
+          WebSchedulerTrackedFeature::kParserAborted,
+          WebSchedulerTrackedFeature::kNativePython};
 }
 
 // static

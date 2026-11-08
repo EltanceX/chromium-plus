@@ -3393,6 +3393,8 @@ void Document::Shutdown() {
   // Allowing script execution when the Document is shutting down can make it
   // easy to accidentally violate this condition.
 
+  PythonScriptController::StopDocument(*this);
+
   if (num_canvases_ > 0)
     UMA_HISTOGRAM_COUNTS_100("Blink.Canvas.NumCanvasesPerPage", num_canvases_);
 
@@ -3980,6 +3982,10 @@ void Document::open(LocalDOMWindow* entered_window,
 // https://html.spec.whatwg.org/C/dynamic-markup-insertion.html#document-open-steps
 void Document::open() {
   TRACE_EVENT("blink", "Document::open");
+
+  // document.open can replace this Document's contents while reusing its
+  // window. Revoke native Python state before the old DOM is removed.
+  PythonScriptController::StopDocument(*this);
 
   DCHECK(!ignore_opens_during_unload_count_);
   if (ScriptableDocumentParser* parser = GetScriptableDocumentParser())

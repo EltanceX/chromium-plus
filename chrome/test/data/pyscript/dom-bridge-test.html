@@ -1,0 +1,151 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<meta charset="utf-8">
+<title>Native Python document and DOM tests</title>
+<!-- Run through pyscript_dom_smoke_test.mjs: content_shell has no CPython host. -->
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<p id="result">before</p><div id="div"></div><span id="span"></span>
+<p id="literal"></p><p id="types"></p><p id="limits"></p>
+<p id="targets"></p><p id="boundary"></p><p id="recovered"></p>
+<div id="container"><span>keep</span></div>
+<x-dom-test id="custom"></x-dom-test>
+<p is="dom-p-test" id="customized">keep</p>
+<div is="not-defined" id="pending-is">keep</div>
+<svg id="svg"><g id="foreign"></g></svg>
+<style id="style"></style><div id="shadow"></div>
+<template><p id="template-child">hidden</p></template>
+<script id="script">
+setup({explicit_done: true});
+globalThis.order = [];
+globalThis.domTestResults = null;
+add_completion_callback((tests, status) => {
+  globalThis.domTestResults = {
+    status: status.status, message: status.message,
+    tests: tests.map(test => ({name: test.name, status: test.status, message: test.message}))
+  };
+});
+customElements.define('x-dom-test', class extends HTMLElement {});
+customElements.define('dom-p-test', class extends HTMLParagraphElement {}, {extends: 'p'});
+document.querySelector('#shadow').attachShadow({mode: 'closed'}).innerHTML =
+    '<p id="shadow-child">hidden</p>';
+new MutationObserver(() => {
+  order.push('observer');
+  test(() => {
+    assert_equals(document.querySelector('#result').textContent, '共享 43');
+    assert_equals(document.querySelector('#recovered').textContent, 'recovered');
+  }, 'Mutation observers run after all Python blocks return');
+}).observe(document.querySelector('#result'), {childList: true});
+</script>
+<pyscript id="python">
+import dom
+answer = 42
+handle = dom.get_element_by_id('result')
+dom.marker = 'document-local'
+dom.set_text(handle, str(answer))
+dom.set_text(dom.get_element_by_id('div'), 'div text')
+dom.set_text(dom.get_element_by_id('span'), 'span text')
+dom.set_text(dom.get_element_by_id('literal'), '<img src="/must-not-load.png"> &amp; 世界')
+assert dom.get_element_by_id('missing') is None
+assert dom.get_element_by_id('shadow-child') is None
+assert dom.get_element_by_id('template-child') is None
+</pyscript>
+<pyscript>
+assert dom.marker == 'document-local'
+dom.set_text(handle, f'共享 {answer + 1}')
+for call in (lambda: dom.ElementHandle(),
+             lambda: object.__new__(dom.ElementHandle),
+             lambda: dom.set_text(1, 'forged'),
+             lambda: dom.set_text(None, 'forged'),
+             lambda: dom.set_text(handle, 42),
+             lambda: dom.get_element_by_id(42)):
+    try:
+        call()
+    except TypeError:
+        pass
+    else:
+        raise AssertionError('invalid argument accepted')
+try:
+    class Forged(dom.ElementHandle):
+        pass
+except TypeError:
+    pass
+else:
+    raise AssertionError('handle can be subclassed')
+dom.set_text(dom.get_element_by_id('types'), 'types passed')
+for target in ('script', 'python', 'style', 'custom', 'customized',
+               'pending-is', 'container', 'svg', 'foreign'):
+    node = dom.get_element_by_id(target)
+    assert node is not None
+    try:
+        dom.set_text(node, 'forbidden')
+    except PermissionError:
+        pass
+    else:
+        raise AssertionError('restricted target accepted: ' + target)
+dom.set_text(dom.get_element_by_id('targets'), 'targets passed')
+for value in ('x' * 16385, '界' * 5462):
+    for call in (lambda: dom.set_text(handle, value),
+                 lambda: dom.get_element_by_id(value)):
+        try:
+            call()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('unbounded UTF-8 accepted')
+try:
+    dom.set_text(handle, '\ud800')
+except UnicodeEncodeError:
+    pass
+else:
+    raise AssertionError('surrogate accepted')
+dom.set_text(dom.get_element_by_id('boundary'), '界' * 5461 + 'x')
+dom.set_text(dom.get_element_by_id('limits'), 'limits passed')
+</pyscript>
+<pyscript>raise ValueError('expected-dom-error')</pyscript>
+<pyscript>if :</pyscript>
+<pyscript>
+dom.set_text(dom.get_element_by_id('recovered'), 'recovered')
+print('DOM_BRIDGE_FINISHED')
+</pyscript>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  order.push('dcl');
+  test(() => assert_equals(document.querySelector('#result').textContent, '共享 43'),
+       'Globals and opaque handles are shared between blocks before DCL');
+  test(() => {
+    assert_equals(document.querySelector('#div').textContent, 'div text');
+    assert_equals(document.querySelector('#span').textContent, 'span text');
+  }, 'Ordinary p, div and span targets accept text');
+  test(() => {
+    const literal = document.querySelector('#literal');
+    assert_equals(literal.textContent, '<img src="/must-not-load.png"> &amp; 世界');
+    assert_equals(literal.children.length, 0);
+    assert_equals(document.querySelector('img'), null);
+  }, 'HTML characters and Unicode are inserted as plain text');
+  test(() => assert_equals(document.querySelector('#types').textContent, 'types passed'),
+       'Arguments are strict strings and handles cannot be forged');
+  test(() => {
+    assert_equals(document.querySelector('#targets').textContent, 'targets passed');
+    assert_equals(document.querySelector('#container').textContent, 'keep');
+    assert_equals(document.querySelector('#customized').textContent, 'keep');
+  }, 'Code, custom elements, SVG and elements containing children reject writes');
+  test(() => {
+    assert_equals(document.querySelector('#limits').textContent, 'limits passed');
+    const value = document.querySelector('#boundary').textContent;
+    assert_equals(new TextEncoder().encode(value).length, 16384);
+    assert_equals(value, '界'.repeat(5461) + 'x');
+  }, 'DOM strings have a strict 16 KiB UTF-8 boundary');
+  test(() => assert_equals(document.querySelector('#recovered').textContent, 'recovered'),
+       'Ordinary Python failures allow the next block to run');
+});
+addEventListener('load', () => {
+  test(() => {
+    assert_true(order.includes('observer'));
+    assert_true(order.includes('dcl'));
+  }, 'Python mutations and DCL complete before the load event');
+  done();
+});
+</script>

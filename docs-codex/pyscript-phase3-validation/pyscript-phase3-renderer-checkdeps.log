@@ -1,0 +1,12 @@
+c:\src\src\net\deps:27: SyntaxWarning: invalid escape sequence '\.'
+  "structured_headers\.cc": [
+c:\src\src\components\optimization_guide\core\deps:37: SyntaxWarning: invalid escape sequence '\.'
+  "fake_model_assets\.cc": [
+c:\src\src\components\permissions\deps:73: SyntaxWarning: invalid escape sequence '\.'
+  "permission_util_unittest\.cc": [
+c:\src\src\third_party\tflite\deps:8: SyntaxWarning: invalid escape sequence '\.'
+  'shims/minimal_logging_chromium\.cc': [
+Using base directory: c:\src\src
+Checking: c:\src\src\chrome\renderer
+
+SUCCESS

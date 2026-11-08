@@ -217,6 +217,7 @@ WebSchedulerTrackedFeatures GetDisallowedWebSchedulerTrackedFeatures() {
           WebSchedulerTrackedFeature::kKeyboardLock,
           WebSchedulerTrackedFeature::kKeepaliveRequest,
           WebSchedulerTrackedFeature::kLiveMediaStreamTrack,
+          WebSchedulerTrackedFeature::kNativePython,
           WebSchedulerTrackedFeature::kPaymentManager,
           WebSchedulerTrackedFeature::kPictureInPicture,
           WebSchedulerTrackedFeature::kPrinting,
