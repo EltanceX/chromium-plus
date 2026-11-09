@@ -1,0 +1,53 @@
+{
+  "recordedAt": "2026-11-09T12:46:37.910197+00:00",
+  "sourceCommit": "8f4c92eaa964585fdd7dac3e96c55e235b63a9a3",
+  "failedFullBuild": {
+    "exitCode": 1,
+    "statusFile": "failed-build-status.json",
+    "completeOriginalLog": "out/Debug/pyscript-event-phase3-completion/attempt1-build.log"
+  },
+  "recovery": {
+    "diagnosedObjects": 1,
+    "object": "obj/third_party/blink/renderer/core/core/svg_text_element.obj",
+    "originalTimestampLocal": "2026-11-08 13:53:29",
+    "backupRoot": "out/Debug/pyscript-event-phase3-completion/object-backup/attempt1",
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "rebuiltScanProblems": 0,
+    "cause": "undetermined"
+  },
+  "standardCoreBuild": {
+    "command": "autoninja -C out/Debug blink_core.dll",
+    "exitCode": 0,
+    "steps": 2,
+    "elapsedSeconds": 73.65,
+    "debugAndPdbChecksPreserved": true
+  },
+  "componentRegressionAfterStandardCoreBuild": {
+    "blink": {
+      "passed": 45,
+      "total": 45
+    },
+    "browser": {
+      "passed": 17,
+      "total": 17,
+      "sandboxDisabled": false
+    }
+  },
+  "resumedFullBuild": {
+    "state": "running",
+    "attempt": "attempt2",
+    "startedAt": "2026-11-09T12:39:47.401237+00:00",
+    "helperPid": 3888,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt2-build.log",
+    "sourceCommit": "8f4c92eaa964585fdd7dac3e96c55e235b63a9a3",
+    "buildPid": 11652
+  },
+  "lastProgressAtSnapshot": "[90/2558] 6m44.36s F CXX obj/third_party/blink/renderer/modules/csspaint/csspaint/background_color_paint_image_generator_impl.obj",
+  "fullBuildPassed": false
+}

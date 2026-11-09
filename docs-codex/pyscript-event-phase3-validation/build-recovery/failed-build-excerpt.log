@@ -1,0 +1,32 @@
+Failure excerpt; complete original log: out/Debug/pyscript-event-phase3-completion/attempt1-build.log
+
+[189/2854] 14m27.07s F CXX obj/third_party/blink/renderer/modules/hid/hid/hid.obj
+[190/2854] 14m29.94s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: f1523a6d-ae1b-449d-9642-4551193e2dfc "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/svg_text_element.obj: �3��� should not refer to non-existent section 40937
+
+
+Final build summary:
+[191/2854] 15m05.57s - CXX obj/third_party/blink/renderer/modules/service_worker/service_worker/service_worker_container.obj
+[191/2854] 15m05.60s - CXX obj/third_party/blink/renderer/modules/exported/exported/web_embedded_worker_impl.obj
+build failed
+
+
+noexec:0 local:191 remote:0 cache:0 skip:99237
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 499888(err:2) / r:954(err:0) 3.32GiB / w:1(err:0) 379.10KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14  564(360) 11m06.33s |▂   ▂▃█|    21.31s |    █▅ |
+shutdown cloud logging/monitoring done 0s
+
+15m06.87s Build Failure: 191 done, 1 failed, 2663 remaining - 0.21/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-200510.10392
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -242,7 +242,7 @@ dom.remove_event_listener(listener)
 
 ### 阶段三：Blink 原生 click 派发
 
-实施状态：已接通原生 listener、同步回调、once 消费、授权元数据与派发时策略复核。运行时 44 / 44、适配 7 / 7、Blink 45 / 45、CSP nonce 3 / 3、点击浏览器验证 17 / 17、既有 DOM 17 / 17 与解析回归 27 / 27 通过；定向重链保留标准 GN 链接参数，完整依赖图构建仍在后台。预算仍为现有累计额度。详见[阶段三实施记录](pyscript-event-phase3-native-click-dispatch.md)。
+实施状态：已接通原生 listener、同步回调、once 消费、授权元数据与派发时策略复核。运行时 44 / 44、适配 7 / 7、Blink 45 / 45、CSP nonce 3 / 3、点击浏览器验证 17 / 17、既有 DOM 17 / 17 与解析回归 27 / 27 通过。后续修复一份旧 COFF 对象引起的完整构建失败，Core 标准构建及 Blink 45 / 45、点击 17 / 17 重跑通过；四目标完整依赖图构建已恢复在后台进行。预算仍为现有累计额度。详见[阶段三实施记录](pyscript-event-phase3-native-click-dispatch.md)。
 
 1. 增加原生 listener 和 Document 订阅表，接入普通元素的 click。
 2. 实现同步回调、只读快照、`once`、显式移除、监听顺序以及回调期间增删监听的规则。

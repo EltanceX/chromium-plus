@@ -1,0 +1,18 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/svg_text_element.obj",
+    "originalSha256": "360f168318a75b9a057e03fcfd3544c2541e0656e70d01349bfdc57371af11fc",
+    "size": 7064059,
+    "mtimeNs": 1794117209057431400,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Symbol 6346: invalid section 40937, total 10427",
+      "Symbol 6457: invalid section 11899, total 10427",
+      "Symbol 6551: invalid section 17158, total 10427",
+      "Symbol 6760: invalid section 31272, total 10427",
+      "Symbol 6983: invalid section 39801, total 10427"
+    ],
+    "rebuiltSha256": "d91e18f2f79225cb04cdaca2c2bc7d8c78b05a5458a1046329eb4bfde0eba420",
+    "rebuiltStableAcrossReadAndMmap": true
+  }
+]

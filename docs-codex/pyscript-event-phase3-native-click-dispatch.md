@@ -54,11 +54,21 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 
 本次先通过 `autoninja` 定向编译改动对象和运行时。为尽早运行上述测试，从当前 GN 生成的 Ninja 规则提取完整链接参数，用新对象及其余现有对象定向重链 `blink_core.dll`、`python_document_context_unittests.exe`、`blink_unittests.exe`。保留相同的 `/DEBUG`、PDB、输入和链接检查。浏览器验证使用现有 Chrome 程序加载本轮更新的 Blink Core / Python Runtime 组件。这属于定向集成验证；完整依赖图构建另行记录。
 
-完整构建约展开 2,900 项 Blink 任务。按此前长构建的交付安排，`chrome blink_unittests python_runtime_unittests python_document_context_unittests` 已恢复在后台运行，交付时状态为进行中。实时状态和退出码保存在本机 `out/Debug/pyscript-event-phase3-full-build-status.json`，日志为 `out/Debug/pyscript-event-phase3-full-build-background.log`；文档内保存的是交付时快照，后续检查应读取本机状态文件。此次记录没有把后台任务计为构建通过。
+首次交付时完整构建约展开 2,900 项 Blink 任务，`chrome blink_unittests python_runtime_unittests python_document_context_unittests` 留在后台运行。实时状态和退出码保存在本机 `out/Debug/pyscript-event-phase3-full-build-status.json`，完整日志路径由其中的 `log` 字段给出；[首次交付快照](pyscript-event-phase3-validation/full-build-snapshot.json)保留当时状态，后续进展见下文恢复记录。完整构建结果仍待确认。
 
 定向链接期间，对 Core 的 5,040 个直接对象、59 个库 / 560 个成员，以及 Blink 测试的 4,665 个直接对象、194 个库 / 2,819 个成员进行扫描，发现 27 份 Core 和 5 份测试输入存在 COFF / CodeView 结构异常。原件时间戳早于本轮改动，多次普通读取和 mmap 的 SHA-256 一致。保存原件和哈希后，仅使这 32 份已诊断对象失效并定向重建；重建扫描为 0 问题，随后链接通过。未改动对应功能的源码。原件位于本机忽略目录 `out/Debug/pyscript-event-phase3-object-backup/`；结构扫描与哈希见验证目录。损坏原因尚未确定。
 
 测试准备时曾修复安全缓冲区检查不接受的 CPython tuple 宏访问，改用检查索引的函数接口；新增析构测试改用嵌入式环境可用的析构标记。Blink 测试显式区分原生和绑定层事件入口，并在节点回收断言前完成渲染生命周期。CDP 键盘测试补全 Enter 文本事件，局部变量限定在独立作用域。最终结果均来自这些修复后的实际重跑。
+
+### 2026-11-09：完整构建失败恢复
+
+后续检查发现，首次后台构建完成 191 步后，在 Blink Core 链接处因 `svg_text_element.obj` 的 COFF 符号引用不存在的 section 而失败，退出码为 1。该对象未在这次构建中重新编译，原件时间戳为 2026-11-08 13:53:29（本机时间）。
+
+保存实际响应文件、失败命令和日志后，再次扫描 Core 的 5,040 个直接对象、59 个库及 560 个成员，仅发现这一份异常对象。多次普通读取及 mmap 的 SHA-256 一致；保存原件后仅重建该对象，重建扫描为 0 问题。损坏原因仍未确定。
+
+`autoninja -C out/Debug blink_core.dll` 的标准构建已通过，共 2 步、1 分 13.65 秒，保留正常 Debug / PDB 链接检查。使用这次标准构建的 Core 组件，重新运行 Blink Python 单测 **45 / 45** 和真实浏览器点击测试 **17 / 17**，均通过。
+
+四目标完整构建已作为 `attempt2` 恢复，目前仍在后台重编译 Blink Modules 和测试对象。上述结果属于 Core 标准构建及组件回归，四目标完整构建尚未通过。诊断与恢复结果见 [build-recovery/summary.json](pyscript-event-phase3-validation/build-recovery/summary.json)。异常原件位于本机 `out/Debug/pyscript-event-phase3-completion/object-backup/attempt1/`，实时构建状态仍读取上面的本机状态文件。
 
 ## 留给阶段四的限制
 
