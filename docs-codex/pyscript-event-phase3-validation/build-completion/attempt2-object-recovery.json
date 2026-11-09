@@ -1,0 +1,52 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/style_resolver_test.obj",
+    "originalSha256": "82834ee4463391f4ef63120598da04a414bd9ed5379ba53ac3a6db4c665580a6",
+    "size": 21313314,
+    "mtimeNs": 1794154221741019500,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x84f049 (length 48261, kind 0x22b4)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/layout_text_fragment_test.obj",
+    "originalSha256": "88806c5d116f3f548ceef3eba486cd14d15d33c7e709e15c5e8440543b623d28",
+    "size": 10414487,
+    "mtimeNs": 1794157540299476300,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x289008 (length 25409, kind 0x349a)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/list_marker_test.obj",
+    "originalSha256": "f86eda8989f26896cfd110a13f63c50ec7fb18b6f66bb4419d4baab1431fce8f",
+    "size": 10382854,
+    "mtimeNs": 1794154352613222100,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x3da178 (length 38210, kind 0xea3b)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/scrollable_area_painter_test.obj",
+    "originalSha256": "65729b65ff17b47ef54d98dff8e0169b9e33d505e3929edaee637cc09471702f",
+    "size": 11627608,
+    "mtimeNs": 1794153558159003200,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x9662b2 (length 3639, kind 0xabbf)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/unit_tests/credential_manager_type_converters_unittest.obj",
+    "originalSha256": "7ed9e49e4b40205d5967b4f574c364f7dcd0a29404670b046fd2f4ce6bd40a47",
+    "size": 6725246,
+    "mtimeNs": 1794134588541130700,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x4a0176 (length 32920, kind 0xcc51)"
+    ]
+  }
+]

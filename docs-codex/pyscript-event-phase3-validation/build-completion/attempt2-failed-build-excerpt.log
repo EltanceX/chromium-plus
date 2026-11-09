@@ -1,0 +1,46 @@
+FAILED: d6a2f61b-a6f3-479c-a02c-44604d61717b "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `testing::internal::GetTypeId<blink::bindings::`anonymous namespace'::V8ExternalMemoryAccounterTest>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x33E8EE which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_string<0>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x33E8EF which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::CodeLocation::CodeLocation` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x33E8F0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26A9E6 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26A9E8 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26A9E8 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::Test::Setup` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26A9EF which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::operator bool` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26942D which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::failure_message` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x33E93B which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::Message::~Message` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x33E93C which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::~AssertionResult` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26942F which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::PrintToString<int>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26B51C which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_stringstream<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_stringstream` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26ADD5 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::UniversalTersePrinter<int>::Print` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x26B51E which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:382 remote:0 cache:0 skip:101708
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 863322(err:8) / r:1168(err:0) 14.14GiB / w:7(err:0) 1.85MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14    376(0) 15m45.14s |▂  ▂▂▅█|  1m22.43s |  ▂ ▄█ |
+   pool=link/3      5(1)     0.00s |▇      |  2m05.91s |   ▃▇▃ |
+shutdown cloud logging/monitoring done 0s
+
+38m15.33s Build Failure: 382 done, 1 failed, 1 remaining - 0.17/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-203948.7464
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -34,6 +34,25 @@
     }
   },
   "resumedFullBuild": {
+    "state": "passed",
+    "attempt": "attempt3",
+    "startedAt": "2026-11-09T13:28:03.606690+00:00",
+    "helperPid": 12728,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt3-build.log",
+    "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+    "buildPid": 10116,
+    "exitCode": 0,
+    "finishedAt": "2026-11-09T13:30:02.956520+00:00"
+  },
+  "lastProgressAtSnapshot": "[90/2558] 6m44.36s F CXX obj/third_party/blink/renderer/modules/csspaint/csspaint/background_color_paint_image_generator_impl.obj",
+  "fullBuildPassed": true,
+  "resumedFullBuildAtPreviousSnapshot": {
     "state": "running",
     "attempt": "attempt2",
     "startedAt": "2026-11-09T12:39:47.401237+00:00",
@@ -48,6 +67,6 @@
     "sourceCommit": "8f4c92eaa964585fdd7dac3e96c55e235b63a9a3",
     "buildPid": 11652
   },
-  "lastProgressAtSnapshot": "[90/2558] 6m44.36s F CXX obj/third_party/blink/renderer/modules/csspaint/csspaint/background_color_paint_image_generator_impl.obj",
-  "fullBuildPassed": false
+  "completionRecord": "../build-completion/summary.json",
+  "lastUpdatedAt": "2026-11-09T14:37:08.571939+00:00"
 }

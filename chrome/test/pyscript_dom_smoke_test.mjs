@@ -38,9 +38,10 @@ dom.set_text(dom.get_element_by_id('result'), 'isolated')
 `))}],
   ['/budget', {body: wrap('<p id="result">before</p>' +
     Array.from({length: 8}, (_, index) => block(`
-${index === 0 ? 'import dom' : ''}
-for count in range(128):
-    assert dom.get_element_by_id('missing') is None
+${index === 0 ? 'import dom\nlookup = dom.get_element_by_id' : ''}
+# Reduce opcode tracing overhead so the independent time limit is less likely
+# to stop this call-count test before all 1,024 native bridge calls complete.
+assert list(map(lookup, ['missing'] * 128)) == [None] * 128
 ${index === 7 ? "print('BUDGET_FIRST', 1024)" : ''}
 `)).join('') + block(`
 try:

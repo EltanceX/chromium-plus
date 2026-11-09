@@ -1,0 +1,121 @@
+{
+  "startedAt": "2026-11-09T13:30:41.552396+00:00",
+  "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+  "fullBuild": {
+    "state": "passed",
+    "attempt": "attempt3",
+    "startedAt": "2026-11-09T13:28:03.606690+00:00",
+    "helperPid": 12728,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt3-build.log",
+    "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+    "buildPid": 10116,
+    "exitCode": 0,
+    "finishedAt": "2026-11-09T13:30:02.956520+00:00"
+  },
+  "checks": {
+    "runtime": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_runtime_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\runtime.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 3.08,
+      "expected": 44,
+      "total": 44,
+      "passed": 44,
+      "verified": true
+    },
+    "adapter": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_document_context_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\adapter.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.42,
+      "expected": 7,
+      "total": 7,
+      "passed": 7,
+      "verified": true
+    },
+    "blink": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=HTMLPyScriptElementTest.*",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\blink.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 19.78,
+      "expected": 45,
+      "total": 45,
+      "passed": 45,
+      "verified": true
+    },
+    "csp": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=ContentSecurityPolicyTest.NonceSinglePolicy:ContentSecurityPolicyTest.NonceInline:ContentSecurityPolicyTest.NonceMultiplePolicy",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\csp.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 2.8,
+      "expected": 3,
+      "total": 3,
+      "passed": 3,
+      "verified": true
+    },
+    "browser": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_event_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\browser.json"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 20.22,
+      "expected": 17,
+      "total": 8,
+      "passed": 7,
+      "sandboxDisabled": false,
+      "verified": false
+    },
+    "dom-regression": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_dom_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\dom-regression.json"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 13.24,
+      "expected": 17,
+      "total": 5,
+      "passed": 4,
+      "sandboxDisabled": false,
+      "verified": false
+    },
+    "parser-regression": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\parser-regression.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 45.45,
+      "expected": 27,
+      "total": 27,
+      "passed": 27,
+      "sandboxDisabled": false,
+      "verified": true
+    }
+  },
+  "finishedAt": "2026-11-09T13:32:27.653674+00:00",
+  "passed": false
+}

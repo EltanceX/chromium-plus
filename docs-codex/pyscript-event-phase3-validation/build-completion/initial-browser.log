@@ -1,0 +1,13 @@
+PASS Trusted mouse and keyboard clicks share Python state
+PASS Nonce CSP sample uses no JavaScript and survives source removal
+PASS Duplicate registrations remain independent after handles are dropped
+PASS Once consumes registration even when Python raises
+PASS Self removal skips later listener and additions wait until next click
+PASS Ordinary exceptions retain listeners and include callback source
+PASS Disconnected nodes skip and reconnection resumes without id transfer
+{
+  "passed": false,
+  "cases": 8,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\browser.json",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:318:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:310:3"
+}

@@ -1,0 +1,40 @@
+{
+  "response": "pyscript-event-phase3-completion/attempt2-blink_unittests.exe.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 194,
+  "directObjects": 4665,
+  "archiveMembers": 2819,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/style_resolver_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x84f049 (length 48261, kind 0x22b4)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/layout_text_fragment_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x289008 (length 25409, kind 0x349a)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/list_marker_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x3da178 (length 38210, kind 0xea3b)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/scrollable_area_painter_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x9662b2 (length 3639, kind 0xabbf)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/credential_manager_type_converters_unittest.obj",
+      "errors": [
+        "Invalid CodeView record at 0x4a0176 (length 32920, kind 0xcc51)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 129.53
+}

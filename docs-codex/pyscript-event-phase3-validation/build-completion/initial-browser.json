@@ -1,0 +1,85 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:62150",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Trusted mouse and keyboard clicks share Python state",
+      "passed": true,
+      "elapsedMs": 700,
+      "detail": {
+        "mouse": "trusted",
+        "keyboard": "trusted",
+        "script": "untrusted"
+      }
+    },
+    {
+      "name": "Nonce CSP sample uses no JavaScript and survives source removal",
+      "passed": true,
+      "elapsedMs": 774
+    },
+    {
+      "name": "Duplicate registrations remain independent after handles are dropped",
+      "passed": true,
+      "elapsedMs": 438
+    },
+    {
+      "name": "Once consumes registration even when Python raises",
+      "passed": true,
+      "elapsedMs": 402
+    },
+    {
+      "name": "Self removal skips later listener and additions wait until next click",
+      "passed": true,
+      "elapsedMs": 403
+    },
+    {
+      "name": "Ordinary exceptions retain listeners and include callback source",
+      "passed": true,
+      "elapsedMs": 394,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:62150/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794231082952.426,
+          "url": "http://127.0.0.1:62150/error",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:62150/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794231082966.426,
+          "url": "http://127.0.0.1:62150/error",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Disconnected nodes skip and reconnection resumes without id transfer",
+      "passed": true,
+      "elapsedMs": 349
+    },
+    {
+      "name": "Native subscriptions and source metadata do not retain detached DOM nodes",
+      "passed": false,
+      "elapsedMs": 347,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:318:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:310:3"
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:318:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:310:3",
+  "requests": [
+    "/counter",
+    "/favicon.ico",
+    "/sample",
+    "/duplicates",
+    "/once",
+    "/order",
+    "/error",
+    "/counter",
+    "/counter"
+  ]
+}

@@ -1,0 +1,38 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface:PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime:PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent:PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations:PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation:PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover:PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[       OK ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (51 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[       OK ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (30 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[       OK ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (53 ms)
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+[       OK ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (126 ms)
+[ RUN      ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[       OK ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (26 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[       OK ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (26 ms)
+[ RUN      ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[       OK ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (25 ms)
+[----------] 7 tests from PythonDocumentContextTest (343 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (344 ms total)
+[  PASSED  ] 7 tests.
+[1/7] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (51 ms)
+[2/7] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (30 ms)
+[3/7] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (53 ms)
+[4/7] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (126 ms)
+[5/7] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (26 ms)
+[6/7] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (26 ms)
+[7/7] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (25 ms)
+SUCCESS: all tests passed.
+Tests took 0 seconds.

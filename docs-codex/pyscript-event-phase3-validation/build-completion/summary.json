@@ -1,0 +1,163 @@
+{
+  "recordedAt": "2026-11-09T14:37:08.571939+00:00",
+  "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+  "fullBuild": {
+    "state": "passed",
+    "attempt": "attempt3",
+    "startedAt": "2026-11-09T13:28:03.606690+00:00",
+    "helperPid": 12728,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt3-build.log",
+    "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+    "buildPid": 10116,
+    "exitCode": 0,
+    "finishedAt": "2026-11-09T13:30:02.956520+00:00"
+  },
+  "command": "autoninja -C out/Debug chrome blink_unittests python_runtime_unittests python_document_context_unittests",
+  "elapsedSecondsReportedByBuild": 118.0,
+  "steps": 6,
+  "debugAndPdbChecksPreserved": true,
+  "failedAttempt2": {
+    "state": "failed",
+    "exitCode": 1,
+    "completedSteps": 382,
+    "failure": "blink_unittests.exe CodeView / PDB linking",
+    "inputResponseSha256": "24479ed91600a6072b1e3fd7b2de715841ba0f9161b11dfd651aa041b33d1abd",
+    "diagnosedObjects": 5,
+    "scannedDirectObjects": 4665,
+    "scannedLibraries": 194,
+    "scannedArchiveMembers": 2819,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "rebuiltScanProblems": 0,
+    "backupRoot": "out/Debug/pyscript-event-phase3-completion/object-backup/attempt2",
+    "cause": "undetermined"
+  },
+  "checks": {
+    "runtime": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_runtime_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\runtime.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 3.08,
+      "expected": 44,
+      "total": 44,
+      "passed": 44,
+      "verified": true
+    },
+    "adapter": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_document_context_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\adapter.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.42,
+      "expected": 7,
+      "total": 7,
+      "passed": 7,
+      "verified": true
+    },
+    "blink": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=HTMLPyScriptElementTest.*",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\blink.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 19.78,
+      "expected": 45,
+      "total": 45,
+      "passed": 45,
+      "verified": true
+    },
+    "csp": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=ContentSecurityPolicyTest.NonceSinglePolicy:ContentSecurityPolicyTest.NonceInline:ContentSecurityPolicyTest.NonceMultiplePolicy",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\csp.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 2.8,
+      "expected": 3,
+      "total": 3,
+      "passed": 3,
+      "verified": true
+    },
+    "browser": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_event_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-stability\\browser.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 14.02,
+      "expected": 17,
+      "total": 17,
+      "passed": 17,
+      "sandboxDisabled": false,
+      "verified": true
+    },
+    "dom-regression": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_dom_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-stability\\dom-regression.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 28.62,
+      "expected": 17,
+      "total": 17,
+      "passed": 17,
+      "sandboxDisabled": false,
+      "verified": true
+    },
+    "parser-regression": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "chrome/test/pyscript_smoke_test.mjs",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\final-validation\\parser-regression.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 45.45,
+      "expected": 27,
+      "total": 27,
+      "passed": 27,
+      "sandboxDisabled": false,
+      "verified": true
+    }
+  },
+  "testScriptChanges": {
+    "chrome/test/pyscript_event_smoke_test.mjs": {
+      "beforeSha256": "4e2c75d026c9bd77df142449a0383027788aa02e6889b381bd03e7337f1ec123",
+      "afterSha256": "224a1d6e2dac8672dbe08a7a01e8157909d77c6d01514070402c97ef280182ef"
+    },
+    "chrome/test/pyscript_dom_smoke_test.mjs": {
+      "beforeSha256": "94f2baed284a9b75728e1af79e2d3eb8a014d275d55a472a6191a3e46dbde122",
+      "afterSha256": "dcec33a52193c2335886468a609a6f1f9110cfa26aa6b43ea87e6b2bd272c60a"
+    }
+  },
+  "initialVerificationFailures": {
+    "browser": "Detached node GC assertion preceded rendering lifecycle completion; fixed by waiting for two animation frames, retaining both weak-reference assertions. The fixed browser suite passed twice.",
+    "dom-regression": "The 250ms document time limit preceded the 1024-call limit. An unchanged standalone run passed 17/17. The fixture now uses map to reduce Python opcode tracing while retaining 8 blocks of 128 native calls, the exact 1025th-call rejection and subsequent stop assertions. Production budgets are unchanged.",
+    "records": [
+      "initial-verification-summary.json",
+      "initial-browser.json",
+      "initial-dom-regression.json",
+      "unchanged-dom-rerun.json"
+    ]
+  },
+  "productionCodeChangedInThisRecovery": false,
+  "passed": true,
+  "limitations": [
+    "Phase-four interaction-window budgets and the remaining lifecycle matrix are not implemented."
+  ]
+}

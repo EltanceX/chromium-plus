@@ -1,0 +1,104 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:57441",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only sample under nonce CSP",
+      "passed": true,
+      "elapsedMs": 1369,
+      "detail": {
+        "result": "Python 计算结果：42",
+        "shared": "共享变量与句柄：43",
+        "literal": "<img src=\"/must-not-load.png\"> &amp; 世界",
+        "images": 0,
+        "scripts": 0
+      }
+    },
+    {
+      "name": "WPT testharness DOM bridge assertions",
+      "passed": true,
+      "elapsedMs": 1314,
+      "detail": {
+        "status": 0,
+        "message": null,
+        "tests": [
+          {
+            "name": "Globals and opaque handles are shared between blocks before DCL",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Ordinary p, div and span targets accept text",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "HTML characters and Unicode are inserted as plain text",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Arguments are strict strings and handles cannot be forged",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Code, custom elements, SVG and elements containing children reject writes",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "DOM strings have a strict 16 KiB UTF-8 boundary",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Ordinary Python failures allow the next block to run",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Mutation observers run after all Python blocks return",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Python mutations and DCL complete before the load event",
+            "status": 0,
+            "message": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "Same-document navigation does not rerun blocks",
+      "passed": true,
+      "elapsedMs": 381
+    },
+    {
+      "name": "Different Document globals and modules are isolated",
+      "passed": true,
+      "elapsedMs": 629,
+      "detail": []
+    },
+    {
+      "name": "DOM call budget is shared across blocks",
+      "passed": false,
+      "elapsedMs": 728,
+      "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /BUDGET_FIRST 1024/. Input:\n\n'[pyscript] Python document exceeded the 250 ms cooperative execution budget'\n\n    at file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:280:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:225:20)\n    at async file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:277:3"
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /BUDGET_FIRST 1024/. Input:\n\n'[pyscript] Python document exceeded the 250 ms cooperative execution budget'\n\n    at file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:280:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:225:20)\n    at async file:///C:/src/src/chrome/test/pyscript_dom_smoke_test.mjs:277:3",
+  "requests": [
+    "/sample",
+    "/favicon.ico",
+    "/harness",
+    "/resources/testharness.js",
+    "/resources/testharnessreport.js",
+    "/isolated",
+    "/budget"
+  ]
+}

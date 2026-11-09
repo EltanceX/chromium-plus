@@ -76,23 +76,25 @@
     "cause": "undetermined"
   },
   "fullBuild": {
-    "state": "running",
-    "attempt": "attempt2",
-    "startedAt": "2026-11-09T12:39:47.401237+00:00",
-    "helperPid": 3888,
+    "state": "passed",
+    "attempt": "attempt3",
+    "startedAt": "2026-11-09T13:28:03.606690+00:00",
+    "helperPid": 12728,
     "targets": [
       "chrome",
       "blink_unittests",
       "python_runtime_unittests",
       "python_document_context_unittests"
     ],
-    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt2-build.log",
-    "sourceCommit": "8f4c92eaa964585fdd7dac3e96c55e235b63a9a3",
-    "buildPid": 11652
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt3-build.log",
+    "sourceCommit": "9ae16a492d6cc6a65cfeae43468927391c1fe2ab",
+    "buildPid": 10116,
+    "exitCode": 0,
+    "finishedAt": "2026-11-09T13:30:02.956520+00:00"
   },
   "limitations": [
     "Existing cumulative 100ms per entry / 250ms document execution budget, 1024 DOM calls and 16KiB output remain until phase four.",
-    "Full dependency graph build was still running at this snapshot; passing counts above refer to targeted component integration."
+    "Phase four interaction-window budgets and the remaining lifecycle matrix are still pending."
   ],
   "fullBuildAtInitialDelivery": {
     "state": "running",
@@ -118,7 +120,87 @@
       "passed": 17,
       "total": 17
     },
-    "fourTargetFullBuild": "running"
+    "fourTargetFullBuild": "passed",
+    "completionRecord": "build-completion/summary.json"
   },
-  "lastUpdatedAt": "2026-11-09T12:46:37.910197+00:00"
+  "lastUpdatedAt": "2026-11-09T14:37:08.571939+00:00",
+  "fullBuildAtPreviousRecoverySnapshot": {
+    "state": "running",
+    "attempt": "attempt2",
+    "startedAt": "2026-11-09T12:39:47.401237+00:00",
+    "helperPid": 3888,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-completion\\attempt2-build.log",
+    "sourceCommit": "8f4c92eaa964585fdd7dac3e96c55e235b63a9a3",
+    "buildPid": 11652
+  },
+  "postFullBuildRegression": {
+    "record": "build-completion/summary.json",
+    "checks": {
+      "runtime": {
+        "exitCode": 0,
+        "elapsedSeconds": 3.08,
+        "expected": 44,
+        "total": 44,
+        "passed": 44,
+        "verified": true
+      },
+      "adapter": {
+        "exitCode": 0,
+        "elapsedSeconds": 1.42,
+        "expected": 7,
+        "total": 7,
+        "passed": 7,
+        "verified": true
+      },
+      "blink": {
+        "exitCode": 0,
+        "elapsedSeconds": 19.78,
+        "expected": 45,
+        "total": 45,
+        "passed": 45,
+        "verified": true
+      },
+      "csp": {
+        "exitCode": 0,
+        "elapsedSeconds": 2.8,
+        "expected": 3,
+        "total": 3,
+        "passed": 3,
+        "verified": true
+      },
+      "browser": {
+        "exitCode": 0,
+        "elapsedSeconds": 14.02,
+        "expected": 17,
+        "total": 17,
+        "passed": 17,
+        "sandboxDisabled": false,
+        "verified": true
+      },
+      "dom-regression": {
+        "exitCode": 0,
+        "elapsedSeconds": 28.62,
+        "expected": 17,
+        "total": 17,
+        "passed": 17,
+        "sandboxDisabled": false,
+        "verified": true
+      },
+      "parser-regression": {
+        "exitCode": 0,
+        "elapsedSeconds": 45.45,
+        "expected": 27,
+        "total": 27,
+        "passed": 27,
+        "sandboxDisabled": false,
+        "verified": true
+      }
+    }
+  }
 }

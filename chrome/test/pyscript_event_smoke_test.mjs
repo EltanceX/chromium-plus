@@ -314,6 +314,12 @@ try {
       globalThis.buttonWeak=new WeakRef(button);globalThis.sourceWeak=new WeakRef(source);
       button.remove();source.remove();return true;
     })()`);
+    // Finish rendering after detaching nodes so pending layout work cannot keep
+    // them alive independently of the Python listener and source metadata.
+    await send('Runtime.evaluate', {
+      expression: 'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+      awaitPromise: true,
+    });
     await send('HeapProfiler.collectGarbage');
     assert.equal(await evaluate('buttonWeak.deref() === undefined'), true);
     assert.equal(await evaluate('sourceWeak.deref() === undefined'), true);

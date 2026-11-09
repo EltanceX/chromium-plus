@@ -1,0 +1,43 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.5735518s
+load siso config done 21.1089ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:82238+ready:0 (node:441061 edge:82248)
+ 1.22s schedule pending:92859+ready:9232 (node:441061 edge:102091)
+
+build start: Ready 9232 Pending 92859
+[0/11510] 35.15s S CXX obj/third_party/blink/renderer/core/unit_tests/scrollable_area_painter_test.obj
+[0/11442] 35.15s S CXX obj/third_party/blink/renderer/core/unit_tests/list_marker_test.obj
+[0/11081] 35.19s S CXX obj/third_party/blink/renderer/core/unit_tests/layout_text_fragment_test.obj
+[0/11079] 35.20s S CXX obj/third_party/blink/renderer/core/unit_tests/style_resolver_test.obj
+[0/9853] 35.31s S CXX obj/third_party/blink/renderer/modules/unit_tests/credential_manager_type_converters_unittest.obj
+[0/10] 48.09s F CXX obj/third_party/blink/renderer/modules/unit_tests/credential_manager_type_converters_unittest.obj
+[1/10] 1m19.65s F CXX obj/third_party/blink/renderer/core/unit_tests/list_marker_test.obj
+[2/10] 1m19.85s F CXX obj/third_party/blink/renderer/core/unit_tests/layout_text_fragment_test.obj
+[3/10] 1m21.92s F CXX obj/third_party/blink/renderer/core/unit_tests/scrollable_area_painter_test.obj
+[4/10] 1m27.36s F CXX obj/third_party/blink/renderer/core/unit_tests/style_resolver_test.obj
+[5/7] 1m27.39s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[5/6] 1m57.28s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:6 remote:0 cache:0 skip:102085
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1032(err:6) / r:769(err:0) 2.40GiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m58.00s Build Succeeded: 6 steps - 0.05/s

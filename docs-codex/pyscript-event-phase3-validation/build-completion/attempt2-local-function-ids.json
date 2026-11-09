@@ -1,0 +1,27 @@
+{
+  "response": "pyscript-event-phase3-completion/attempt2-blink_unittests.exe.rsp",
+  "objects": 4665,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/style_resolver_test.obj",
+      "error": "invalid type extent"
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/layout_text_fragment_test.obj",
+      "error": "invalid type extent"
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/list_marker_test.obj",
+      "error": "invalid type extent"
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/scrollable_area_painter_test.obj",
+      "error": "invalid type extent"
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/credential_manager_type_converters_unittest.obj",
+      "error": "invalid type extent"
+    }
+  ],
+  "elapsed_seconds": 101.12
+}

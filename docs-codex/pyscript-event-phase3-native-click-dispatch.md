@@ -39,7 +39,7 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 
 ## 验证记录
 
-实际结果见 [validation-summary.json](pyscript-event-phase3-validation/validation-summary.json)。
+实际结果见 [validation-summary.json](pyscript-event-phase3-validation/validation-summary.json)。下表的单测与浏览器结果已在四目标标准构建通过后重新验证，最终证据见 [build-completion/summary.json](pyscript-event-phase3-validation/build-completion/summary.json)。
 
 | 检查 | 实际结果 |
 | --- | --- |
@@ -54,7 +54,7 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 
 本次先通过 `autoninja` 定向编译改动对象和运行时。为尽早运行上述测试，从当前 GN 生成的 Ninja 规则提取完整链接参数，用新对象及其余现有对象定向重链 `blink_core.dll`、`python_document_context_unittests.exe`、`blink_unittests.exe`。保留相同的 `/DEBUG`、PDB、输入和链接检查。浏览器验证使用现有 Chrome 程序加载本轮更新的 Blink Core / Python Runtime 组件。这属于定向集成验证；完整依赖图构建另行记录。
 
-首次交付时完整构建约展开 2,900 项 Blink 任务，`chrome blink_unittests python_runtime_unittests python_document_context_unittests` 留在后台运行。实时状态和退出码保存在本机 `out/Debug/pyscript-event-phase3-full-build-status.json`，完整日志路径由其中的 `log` 字段给出；[首次交付快照](pyscript-event-phase3-validation/full-build-snapshot.json)保留当时状态，后续进展见下文恢复记录。完整构建结果仍待确认。
+首次交付时完整构建约展开 2,900 项 Blink 任务，`chrome blink_unittests python_runtime_unittests python_document_context_unittests` 留在后台运行。实时状态和退出码保存在本机 `out/Debug/pyscript-event-phase3-full-build-status.json`，完整日志路径由其中的 `log` 字段给出；[首次交付快照](pyscript-event-phase3-validation/full-build-snapshot.json)保留当时状态。四目标标准构建现已通过，恢复过程见下文。
 
 定向链接期间，对 Core 的 5,040 个直接对象、59 个库 / 560 个成员，以及 Blink 测试的 4,665 个直接对象、194 个库 / 2,819 个成员进行扫描，发现 27 份 Core 和 5 份测试输入存在 COFF / CodeView 结构异常。原件时间戳早于本轮改动，多次普通读取和 mmap 的 SHA-256 一致。保存原件和哈希后，仅使这 32 份已诊断对象失效并定向重建；重建扫描为 0 问题，随后链接通过。未改动对应功能的源码。原件位于本机忽略目录 `out/Debug/pyscript-event-phase3-object-backup/`；结构扫描与哈希见验证目录。损坏原因尚未确定。
 
@@ -68,7 +68,24 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 
 `autoninja -C out/Debug blink_core.dll` 的标准构建已通过，共 2 步、1 分 13.65 秒，保留正常 Debug / PDB 链接检查。使用这次标准构建的 Core 组件，重新运行 Blink Python 单测 **45 / 45** 和真实浏览器点击测试 **17 / 17**，均通过。
 
-四目标完整构建已作为 `attempt2` 恢复，目前仍在后台重编译 Blink Modules 和测试对象。上述结果属于 Core 标准构建及组件回归，四目标完整构建尚未通过。诊断与恢复结果见 [build-recovery/summary.json](pyscript-event-phase3-validation/build-recovery/summary.json)。异常原件位于本机 `out/Debug/pyscript-event-phase3-completion/object-backup/attempt1/`，实时构建状态仍读取上面的本机状态文件。
+四目标完整构建随后作为 `attempt2` 恢复，完成 382 项任务后，在 `blink_unittests.exe` 的 CodeView / PDB 链接处失败，退出码为 1。这一次没有 Python 源码编译错误。此前 Core 恢复过程见 [build-recovery/summary.json](pyscript-event-phase3-validation/build-recovery/summary.json)，其异常原件保存在本机 `out/Debug/pyscript-event-phase3-completion/object-backup/attempt1/`。
+
+### 2026-11-09：四目标标准构建与最终回归通过
+
+保存 `attempt2` 的实际响应文件和失败命令后，对 4,665 个直接对象、194 个库及 2,819 个成员完整扫描，并独立检查直接对象的本地函数 ID。两项检查均定位到 5 份对象的 CodeView 记录长度 / 类型异常；链接器首先点名的 `v8_external_memory_accounter_test.obj` 未发现这些异常，因此没有直接重建该文件。
+
+5 份异常对象的普通重复读取和 mmap 的 SHA-256 一致。保存原件、时间戳及哈希后，仅定向重建这 5 份生成对象；两项复查均为 0 问题。原件位于本机 `out/Debug/pyscript-event-phase3-completion/object-backup/attempt2/`，损坏原因仍未确定，未修改对应生产源码。
+
+`attempt3` 执行正常命令 `autoninja -C out/Debug chrome blink_unittests python_runtime_unittests python_document_context_unittests`，**退出码 0，共 6 步、1 分 58 秒**。保留正常 Debug / PDB 和链接检查。这次是四目标完整依赖图的增量构建通过；前两次已经完成的任务继续复用。
+
+使用这次标准构建的程序重跑：运行时 **44 / 44**、Chrome 适配 **7 / 7**、Blink Python **45 / 45**、CSP nonce **3 / 3**、真实点击 **17 / 17**、DOM / 生命周期 **17 / 17**、解析与来源 **27 / 27**，均通过，浏览器测试保留 Renderer 沙箱。
+
+首轮浏览器回归也保留了两处失败和对应修正：
+
+- 节点移除后立即强制 GC 的检查，可能遇到仍持有节点的待处理渲染生命周期。点击测试改为等待两帧再收集，仍严格检查按钮和源码节点的弱引用均失效；修正后完整点击套件连续两次 **17 / 17**。该顺序也与 Blink 单测完成生命周期后再收集的处理一致。
+- DOM 次数测试曾先触发文档 250 ms 时间限制；原测试独立重跑 **17 / 17**。为减少两类预算的竞争，测试改用 `map` 执行原有 8 块、每块 128 次原生桥接调用，减少 Python 循环指令追踪开销。仍验证 1,024 次成功、第 1,025 次被拒绝以及后续块不能恢复执行，修正后 DOM 套件 **17 / 17**。生产时间、DOM 和输出限额均未调整。
+
+最终状态、完整成功构建日志、失败现场、对象哈希和实际测试结果统一保存至 [build-completion/](pyscript-event-phase3-validation/build-completion/summary.json)。首次交付和此前后台运行快照继续作为历史记录保留。
 
 ## 留给阶段四的限制
 
