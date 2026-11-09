@@ -18,9 +18,13 @@
 namespace blink {
 
 class Document;
+class Element;
+class Event;
 class HTMLPyScriptElement;
 class PendingPythonScriptBlock;
 class PythonDomHandleEntry;
+class PythonClickListener;
+class PythonScriptSource;
 
 class PythonScriptController final
     : public GarbageCollected<PythonScriptController>,
@@ -51,15 +55,24 @@ class PythonScriptController final
                            WebPythonCallbackHandle) override;
 
  private:
+  friend class PythonClickListener;
   static PythonScriptController& GetOrCreate(Document&);
   void AppendConsole(const HTMLPyScriptElement&,
                      const String&,
                      mojom::blink::ConsoleMessageLevel);
+  void AppendConsole(const PythonScriptSource&,
+                     const String&,
+                     mojom::blink::ConsoleMessageLevel);
+  void DispatchClick(PythonClickListener&, Event&);
+  void DetachListener(PythonClickListener&);
+  Element* ResolveElement(WebPythonDomHandle) const;
   void Dispose();
   void ReleaseContext();
   WebPythonDomResult CheckDomCall();
   HeapVector<Member<PendingPythonScriptBlock>> pending_;
   HeapVector<Member<PythonDomHandleEntry>> handles_;
+  HeapVector<Member<PythonClickListener>> listeners_;
+  Member<PythonScriptSource> current_source_;
   std::unique_ptr<WebPythonScriptContext> context_;
   scoped_refptr<base::SingleThreadTaskRunner> cleanup_task_runner_;
   const uint64_t document_id_;
@@ -71,6 +84,7 @@ class PythonScriptController final
   bool running_ = false;
   bool stopped_ = false;
   bool consumed_ = false;
+  bool dispatch_warning_reported_ = false;
 };
 
 }  // namespace blink

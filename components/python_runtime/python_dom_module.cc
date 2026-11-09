@@ -209,7 +209,7 @@ PyObject* AddEventListener(PyObject* module, PyObject* args, PyObject* kwargs) {
     return nullptr;
   }
   listener->element = reinterpret_cast<ElementHandle*>(element)->value;
-  listener->callback = RegisterDomCallback(module, callback);
+  listener->callback = RegisterDomCallback(module, callback, once == Py_True);
   if (!listener->callback.id) {
     Py_DECREF(listener);
     return nullptr;
@@ -421,7 +421,9 @@ void InitializeDomCallbacks(PyObject* module, uint64_t context_id) {
   state->context_id = context_id;
 }
 
-CallbackHandle RegisterDomCallback(PyObject* module, PyObject* callable) {
+CallbackHandle RegisterDomCallback(PyObject* module,
+                                   PyObject* callable,
+                                   bool once) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   if (!state->callbacks || !state->context_id) {
     PyErr_SetString(PyExc_ReferenceError, "The callback registry is inactive");
@@ -452,7 +454,9 @@ CallbackHandle RegisterDomCallback(PyObject* module, PyObject* callable) {
   if (!key) {
     return {};
   }
-  const int status = PyDict_SetItem(state->callbacks, key, callable);
+  PyObject* entry = PyTuple_Pack(2, callable, once ? Py_True : Py_False);
+  const int status = entry ? PyDict_SetItem(state->callbacks, key, entry) : -1;
+  Py_XDECREF(entry);
   Py_DECREF(key);
   return status == 0 ? CallbackHandle{state->context_id, id} : CallbackHandle{};
 }
@@ -468,8 +472,19 @@ PyObject* GetDomCallback(PyObject* module, CallbackHandle handle) {
   if (!key) {
     return nullptr;
   }
+  PyObject* entry = nullptr;
+  const int found = PyDict_GetItemRef(state->callbacks, key, &entry);
   PyObject* callback = nullptr;
-  const int found = PyDict_GetItemRef(state->callbacks, key, &callback);
+  if (found == 1) {
+    // Keep the callable alive across table removal, exceptions and
+    // self-removal.
+    callback = Py_NewRef(PyTuple_GetItem(entry, 0));
+    if (PyTuple_GetItem(entry, 1) == Py_True &&
+        PyDict_DelItem(state->callbacks, key) < 0) {
+      Py_CLEAR(callback);
+    }
+  }
+  Py_XDECREF(entry);
   Py_DECREF(key);
   if (found == 0) {
     PyErr_SetString(PyExc_ReferenceError, "The callback was removed");

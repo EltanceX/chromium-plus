@@ -15,7 +15,10 @@
 #include "third_party/blink/renderer/core/dom/document.h"
 #include "third_party/blink/renderer/core/dom/document_parser.h"
 #include "third_party/blink/renderer/core/dom/element.h"
+#include "third_party/blink/renderer/core/dom/events/event.h"
 #include "third_party/blink/renderer/core/dom/events/event_dispatch_forbidden_scope.h"
+#include "third_party/blink/renderer/core/dom/events/native_event_listener.h"
+#include "third_party/blink/renderer/core/event_type_names.h"
 #include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
@@ -51,6 +54,56 @@ class PythonDomHandleEntry final
   explicit PythonDomHandleEntry(Element& value) : element(&value) {}
   void Trace(Visitor* visitor) const { visitor->Trace(element); }
   WeakMember<Element> element;
+};
+
+// Shared by subscriptions created by one block (including in its callbacks).
+// Strings and positions cannot keep the original pyscript node alive.
+class PythonScriptSource final : public GarbageCollected<PythonScriptSource> {
+ public:
+  explicit PythonScriptSource(const HTMLPyScriptElement& element)
+      : source(element.SourceSnapshot()),
+        nonce(element.NonceSnapshot()),
+        url(element.GetDocument().Url().GetString()),
+        position(element.SourcePosition()) {}
+  void Trace(Visitor*) const {}
+  const String source;
+  const String nonce;
+  const String url;
+  const TextPosition position;
+};
+
+class PythonClickListener final : public NativeEventListener {
+ public:
+  PythonClickListener(PythonScriptController& controller,
+                      Element& element,
+                      PythonScriptSource& source,
+                      WebPythonDomHandle handle,
+                      WebPythonCallbackHandle callback,
+                      bool once)
+      : controller(&controller),
+        element(&element),
+        source(&source),
+        handle(handle),
+        callback(callback),
+        once(once) {}
+  void Invoke(ExecutionContext*, Event* event) override {
+    if (controller && active) {
+      controller->DispatchClick(*this, *event);
+    }
+  }
+  void Trace(Visitor* visitor) const override {
+    visitor->Trace(controller);
+    visitor->Trace(element);
+    visitor->Trace(source);
+    NativeEventListener::Trace(visitor);
+  }
+  WeakMember<PythonScriptController> controller;
+  WeakMember<Element> element;
+  Member<PythonScriptSource> source;
+  const WebPythonDomHandle handle;
+  const WebPythonCallbackHandle callback;
+  const bool once;
+  bool active = true;
 };
 
 namespace {
@@ -117,7 +170,7 @@ bool ScriptsAllowed(Document& document) {
 }
 
 void Log(Document& document,
-         const HTMLPyScriptElement& element,
+         const PythonScriptSource& source,
          const String& text,
          mojom::blink::ConsoleMessageLevel level) {
   if (text.empty() || !document.GetExecutionContext()) {
@@ -127,9 +180,8 @@ void Log(Document& document,
       MakeGarbageCollected<ConsoleMessage>(
           mojom::blink::ConsoleMessageSource::kOther, level, text,
           MakeGarbageCollected<SourceLocation>(
-              document.Url().GetString(), String(),
-              element.SourcePosition().line_.OneBasedInt(),
-              element.SourcePosition().column_.OneBasedInt(), nullptr)));
+              source.url, String(), source.position.line_.OneBasedInt(),
+              source.position.column_.OneBasedInt(), nullptr)));
 }
 
 }  // namespace
@@ -157,6 +209,8 @@ PythonScriptController::PythonScriptController(Document& document)
 void PythonScriptController::Trace(Visitor* visitor) const {
   visitor->Trace(pending_);
   visitor->Trace(handles_);
+  visitor->Trace(listeners_);
+  visitor->Trace(current_source_);
   Supplement<Document>::Trace(visitor);
   ExecutionContextLifecycleObserver::Trace(visitor);
 }
@@ -176,6 +230,14 @@ void PythonScriptController::AppendConsole(
     const HTMLPyScriptElement& element,
     const String& text,
     mojom::blink::ConsoleMessageLevel level) {
+  AppendConsole(*MakeGarbageCollected<PythonScriptSource>(element), text,
+                level);
+}
+
+void PythonScriptController::AppendConsole(
+    const PythonScriptSource& source,
+    const String& text,
+    mojom::blink::ConsoleMessageLevel level) {
   if (text.empty() || console_truncated_) {
     return;
   }
@@ -187,11 +249,11 @@ void PythonScriptController::AppendConsole(
   const size_t remaining = kLimit - kNotice.size() - console_bytes_;
   const std::string_view accepted =
       base::TruncateUTF8ToByteSize(utf8, remaining);
-  Log(*GetSupplementable(), element, String::FromUtf8(accepted), level);
+  Log(*GetSupplementable(), source, String::FromUtf8(accepted), level);
   console_bytes_ += accepted.size();
   if (accepted.size() != utf8.size()) {
     console_truncated_ = true;
-    Log(*GetSupplementable(), element, String::FromUtf8(kNotice),
+    Log(*GetSupplementable(), source, String::FromUtf8(kNotice),
         mojom::blink::ConsoleMessageLevel::kError);
     console_bytes_ += kNotice.size();
     Dispose();
@@ -218,6 +280,10 @@ void PythonScriptController::Dispose() {
     ++generation_;
     pending_.clear();
     handles_.clear();
+    while (!listeners_.empty()) {
+      DetachListener(*listeners_.back());
+    }
+    current_source_ = nullptr;
   }
   ReleaseContext();
 }
@@ -333,35 +399,177 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
 }
 
 WebPythonDomResult PythonScriptController::AddEventListener(
-    WebPythonDomHandle,
-    const WebString&,
-    WebPythonCallbackHandle,
-    bool) {
+    WebPythonDomHandle handle,
+    const WebString& type,
+    WebPythonCallbackHandle callback,
+    bool once) {
   auto status = CheckDomCall();
   if (status.error != WebPythonDomError::kNone) {
     return status;
   }
-  // The listener API/adapter is available before native click dispatch lands.
-  return {{},
-          WebPythonDomError::kState,
-          "Native Python click dispatch is not implemented yet"};
+  Element* element = ResolveElement(handle);
+  if (!element) {
+    return {{}, WebPythonDomError::kReference, "Invalid or expired DOM handle"};
+  }
+  if (type != "click" || !element->IsHTMLElement() ||
+      element->GetCustomElementState() != CustomElementState::kUncustomized ||
+      element->FastHasAttribute(html_names::kIsAttr)) {
+    return {{},
+            WebPythonDomError::kNotAllowed,
+            "Python click listeners require an ordinary HTML element"};
+  }
+  if (!current_source_ || !callback.context || !callback.id) {
+    return {{}, WebPythonDomError::kState, "No active Python callback source"};
+  }
+  if (listeners_.size() >= 128) {
+    return {{}, WebPythonDomError::kLimit, "At most 128 Python listeners"};
+  }
+  for (const auto& listener : listeners_) {
+    if (listener->callback.context == callback.context &&
+        listener->callback.id == callback.id) {
+      return {{}, WebPythonDomError::kState, "Callback is already installed"};
+    }
+  }
+  auto* listener = MakeGarbageCollected<PythonClickListener>(
+      *this, *element, *current_source_, handle, callback, once);
+  listeners_.push_back(listener);
+  // Each registration has a distinct native listener, preserving Blink's
+  // dispatch order and add/remove-during-dispatch semantics. once is consumed
+  // only after Python admission, rather than by EventTarget before admission.
+  element->addEventListener(event_type_names::kClick, listener, false);
+  return {};
 }
 
 WebPythonDomResult PythonScriptController::RemoveEventListener(
-    WebPythonDomHandle,
-    WebPythonCallbackHandle) {
+    WebPythonDomHandle handle,
+    WebPythonCallbackHandle callback) {
   auto status = CheckDomCall();
   if (status.error != WebPythonDomError::kNone) {
     return status;
   }
-  return {{},
-          WebPythonDomError::kState,
-          "Native Python click dispatch is not implemented yet"};
+  if (handle.document != document_id_ || handle.generation != generation_ ||
+      !handle.id || handle.id > handles_.size()) {
+    return {{}, WebPythonDomError::kReference, "Invalid or expired DOM handle"};
+  }
+  RevokeEventListener(handle, callback);
+  return {};
 }
 
-void PythonScriptController::RevokeEventListener(WebPythonDomHandle,
-                                                 WebPythonCallbackHandle) {
-  // This phase never installs a Blink listener, so rollback has nothing to do.
+void PythonScriptController::DetachListener(PythonClickListener& listener) {
+  listener.active = false;
+  if (listener.element) {
+    listener.element->removeEventListener(event_type_names::kClick, &listener,
+                                          false);
+  }
+  auto index = listeners_.Find(&listener);
+  if (index != kNotFound) {
+    listeners_.EraseAt(index);
+  }
+}
+
+void PythonScriptController::RevokeEventListener(
+    WebPythonDomHandle handle,
+    WebPythonCallbackHandle callback) {
+  for (const auto& listener : listeners_) {
+    if (listener->handle.document == handle.document &&
+        listener->handle.generation == handle.generation &&
+        listener->handle.id == handle.id &&
+        listener->callback.context == callback.context &&
+        listener->callback.id == callback.id) {
+      DetachListener(*listener);
+      return;
+    }
+  }
+}
+
+Element* PythonScriptController::ResolveElement(
+    WebPythonDomHandle handle) const {
+  if (handle.document != document_id_ || handle.generation != generation_ ||
+      !handle.id || handle.id > handles_.size()) {
+    return nullptr;
+  }
+  Element* element = handles_[static_cast<wtf_size_t>(handle.id - 1)]->element;
+  return element && &element->GetDocument() == GetSupplementable() &&
+                 element->isConnected() && !element->IsInShadowTree()
+             ? element
+             : nullptr;
+}
+
+void PythonScriptController::DispatchClick(PythonClickListener& listener,
+                                           Event& event) {
+  if (stopped_ || !listener.active || !context_ ||
+      event.type() != event_type_names::kClick) {
+    return;
+  }
+  Element* element = ResolveElement(listener.handle);
+  if (!element || element != listener.element ||
+      event.currentTarget() != element || !element->IsHTMLElement() ||
+      element->GetCustomElementState() != CustomElementState::kUncustomized ||
+      element->FastHasAttribute(html_names::kIsAttr)) {
+    return;
+  }
+  Document& document = *GetSupplementable();
+  auto* thread = ThreadState::Current();
+  if (thread->IsSweepingOnOwningThread() ||
+      cppgc::subtle::HeapState::IsInAtomicPause(thread->heap_handle())) {
+    return;
+  }
+  const bool safe =
+      !g_python_running && !running_ &&
+      !ScriptForbiddenScope::IsScriptForbidden() &&
+      !ScriptForbiddenScope::WillBeScriptForbidden() &&
+      !thread->IsSweepingOnOwningThread() &&
+      !cppgc::subtle::HeapState::IsInAtomicPause(thread->heap_handle());
+  if (!safe || !Eligible(document, false) || !ScriptsAllowed(document)) {
+    // Never queue a skipped click. Keep diagnostics bounded for this document.
+    if (!dispatch_warning_reported_) {
+      dispatch_warning_reported_ = true;
+      AppendConsole(*listener.source,
+                    "[pyscript] Python click skipped: document "
+                    "policy or execution state does not allow callbacks.",
+                    mojom::blink::ConsoleMessageLevel::kWarning);
+    }
+    return;
+  }
+  Persistent<PythonScriptController> protect(this);
+  Persistent<PythonClickListener> protect_listener(&listener);
+  Persistent<PythonScriptSource> source(listener.source);
+  if (!g_runner->AllowsUnrestrictedPages() &&
+      !document.domWindow()->GetContentSecurityPolicy()->AllowInline(
+          ContentSecurityPolicy::InlineType::kScript, nullptr, source->source,
+          source->nonce, source->url, source->position)) {
+    return;
+  }
+  base::AutoReset<bool> entry(&g_python_running, true);
+  running_ = true;
+  current_source_ = source;
+  if (listener.once) {
+    DetachListener(listener);
+  }
+  const auto result = context_->InvokeCallback(
+      listener.callback, {"click", listener.handle, event.isTrusted()}, *this);
+  const String prefix = StrCat(
+      {"[pyscript callback ", String::Number(listener.callback.id), "] "});
+  if (!result.stdout_text.IsEmpty()) {
+    AppendConsole(*source, StrCat({prefix, result.stdout_text}),
+                  mojom::blink::ConsoleMessageLevel::kInfo);
+  }
+  if (!result.stderr_text.IsEmpty()) {
+    AppendConsole(*source, StrCat({prefix, result.stderr_text}),
+                  mojom::blink::ConsoleMessageLevel::kError);
+  }
+  if (!result.success) {
+    AppendConsole(*source, StrCat({prefix, result.error}),
+                  mojom::blink::ConsoleMessageLevel::kError);
+  }
+  if (result.stopped || dom_budget_exhausted_ || !Eligible(document, false)) {
+    Dispose();
+  }
+  current_source_ = nullptr;
+  running_ = false;
+  if (stopped_) {
+    ReleaseContext();
+  }
 }
 
 void PythonScriptController::Report(Document& document,
@@ -406,6 +614,7 @@ void PythonScriptController::ExecutePending(Document& document) {
 
   std::vector<WebPythonScriptSource> sources;
   HeapVector<Member<HTMLPyScriptElement>> accepted;
+  HeapVector<Member<PythonScriptSource>> authorizations;
   unsigned index = 0;
   for (const auto& block : pending) {
     ++index;
@@ -426,6 +635,8 @@ void PythonScriptController::ExecutePending(Document& document) {
                        StrCat({document.Url().GetString(), "#pyscript-",
                                String::Number(index)})});
     accepted.push_back(element);
+    authorizations.push_back(
+        MakeGarbageCollected<PythonScriptSource>(*element));
   }
   if (sources.empty() || !Eligible(document)) {
     return;
@@ -441,6 +652,7 @@ void PythonScriptController::ExecutePending(Document& document) {
       SchedulingPolicy::Feature::kNativePython,
       {SchedulingPolicy::DisableBackForwardCache()});
   controller->running_ = true;
+  controller->current_source_ = authorizations.front();
   wtf_size_t reported = 0;
   auto report_result = [&](const WebPythonScriptResult& result) {
     if (controller->stopped_ || !Eligible(document)) {
@@ -463,11 +675,15 @@ void PythonScriptController::ExecutePending(Document& document) {
       controller->Dispose();
       return false;
     }
+    controller->current_source_ = reported < authorizations.size()
+                                      ? authorizations[reported].Get()
+                                      : nullptr;
     return true;
   };
   const auto results =
       controller->context_->Run(sources, *controller, report_result);
   controller->running_ = false;
+  controller->current_source_ = nullptr;
   if (controller->stopped_) {
     controller->ReleaseContext();
     return;

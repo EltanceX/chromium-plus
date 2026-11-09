@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-09",
+  "recordedAt": "2026-11-09T12:08:13.978343+00:00",
+  "baseCommit": "b7c2b537011ca0af7c613d5ff3720428f67a95ce",
+  "unitTests": {
+    "runtime": {
+      "passed": 44,
+      "total": 44
+    },
+    "adapter": {
+      "passed": 7,
+      "total": 7
+    },
+    "blink": {
+      "passed": 45,
+      "total": 45
+    },
+    "csp": {
+      "passed": 3,
+      "total": 3
+    }
+  },
+  "browserTests": {
+    "browser": {
+      "passed": 17,
+      "total": 17,
+      "sandboxDisabled": false
+    },
+    "dom-regression": {
+      "passed": 17,
+      "total": 17,
+      "sandboxDisabled": false
+    },
+    "parser-regression": {
+      "passed": 27,
+      "total": 27,
+      "sandboxDisabled": false
+    }
+  },
+  "targetedLinks": [
+    {
+      "target": "blink_core.dll",
+      "status": "passed",
+      "method": "targeted relink using current GN-generated inputs/flags and existing other objects",
+      "debugAndPdbFlagsPreserved": true,
+      "responseSha256": "63a2aab119de3c826d3c3b64dec252aeaaa27dab6efa1ca831ac976ba762c651"
+    },
+    {
+      "target": "python_document_context_unittests.exe",
+      "status": "passed",
+      "method": "targeted relink using current GN-generated inputs/flags and existing other objects",
+      "debugAndPdbFlagsPreserved": true,
+      "responseSha256": "bfe94ce80314a2c0d5f80e9925c3b644aeb77527e33573eeeb4fcce293083054"
+    },
+    {
+      "target": "blink_unittests.exe",
+      "status": "passed",
+      "method": "targeted relink using current GN-generated inputs/flags and existing other objects",
+      "debugAndPdbFlagsPreserved": true,
+      "responseSha256": "58113077e870772f9d93421f5adb39e6fb71d839048a235b88e20067c9e3fdff"
+    }
+  ],
+  "checks": {
+    "gn": "passed",
+    "checkdeps": "passed",
+    "modifiedRangeFormatting": "passed",
+    "nodeSyntax": "passed",
+    "diffWhitespace": "passed"
+  },
+  "generatedObjectRecovery": {
+    "coreObjects": 27,
+    "unitObjects": 5,
+    "backups": "out/Debug/pyscript-event-phase3-object-backup",
+    "stableAcrossNormalReadsAndMmap": true,
+    "rebuiltScanProblems": 0,
+    "cause": "undetermined"
+  },
+  "fullBuild": {
+    "state": "running",
+    "startedAt": "2026-11-09T12:05:09.485535+00:00",
+    "helperPid": 12820,
+    "targets": [
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests"
+    ],
+    "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-full-build-background.log",
+    "buildPid": 17052
+  },
+  "limitations": [
+    "Existing cumulative 100ms per entry / 250ms document execution budget, 1024 DOM calls and 16KiB output remain until phase four.",
+    "Full dependency graph build was still running at this snapshot; passing counts above refer to targeted component integration."
+  ]
+}

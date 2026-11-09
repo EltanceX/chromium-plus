@@ -13,14 +13,20 @@
 #include "third_party/blink/public/web/web_navigation_params.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/dom/document.h"
+#include "third_party/blink/renderer/core/dom/events/event.h"
+#include "third_party/blink/renderer/core/event_type_names.h"
+#include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/frame/web_local_frame_impl.h"
+#include "third_party/blink/renderer/core/html/html_head_element.h"
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
 #include "third_party/blink/renderer/core/html/python_script_controller.h"
+#include "third_party/blink/renderer/core/html_names.h"
 #include "third_party/blink/renderer/core/testing/mock_policy_container_host.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_request.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
+#include "third_party/blink/renderer/platform/bindings/exception_state.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
 #include "third_party/blink/renderer/platform/heap/thread_state.h"
 #include "third_party/blink/renderer/platform/scheduler/public/frame_scheduler.h"
@@ -63,11 +69,17 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
       return results;
     }
 
-    WebPythonScriptResult InvokeCallback(WebPythonCallbackHandle,
-                                         const WebPythonCallbackEvent&,
-                                         WebPythonDomHost&) override {
-      ADD_FAILURE() << "Unexpected callback in parser-only tests";
-      return {};
+    WebPythonScriptResult InvokeCallback(WebPythonCallbackHandle callback,
+                                         const WebPythonCallbackEvent& event,
+                                         WebPythonDomHost& dom_host) override {
+      runner_->invoked.push_back(callback.id);
+      runner_->last_event = event;
+      runner_->host = &dom_host;
+      if (runner_->on_click) {
+        runner_->on_click.Run();
+      }
+      runner_->host = nullptr;
+      return runner_->callback_result;
     }
     WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) override {
       ADD_FAILURE() << "Unexpected callback removal in parser-only tests";
@@ -109,6 +121,10 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
   raw_ptr<WebPythonDomHost> host = nullptr;
   unsigned batches = 0;
   base::RepeatingClosure on_run;
+  base::RepeatingClosure on_click;
+  std::vector<uint64_t> invoked;
+  WebPythonCallbackEvent last_event;
+  WebPythonScriptResult callback_result{true};
   std::vector<WebPythonScriptSource> executed;
   std::optional<std::vector<WebPythonScriptResult>> supplied_results;
 };
@@ -128,6 +144,25 @@ class HTMLPyScriptElementTest : public SimTest {
     LoadURL("https://example.test/");
     main.Complete(html);
     test::RunPendingTasks();
+  }
+  void Click(const char* id = "button", bool trusted = false) {
+    auto* event = Event::CreateBubble(event_type_names::kClick);
+    if (trusted) {
+      GetElementById(id)->DispatchEvent(*event);
+    } else {
+      GetElementById(id)->dispatchEventForBindings(event, ASSERT_NO_EXCEPTION);
+    }
+  }
+  void RegisterClick(bool once = false) {
+    runner_.on_run = base::BindLambdaForTesting([&, once] {
+      auto& host = *runner_.host;
+      auto target = host.GetElementById("button").handle;
+      EXPECT_EQ(WebPythonDomError::kNone,
+                host.AddEventListener(target, "click", {1, 1}, once).error);
+    });
+    Load(
+        "<body><button id=button><span id=child>click</span></button>"
+        "<p id=result>before</p><pyscript id=python>register</pyscript>");
   }
   ScopedPythonScriptForTest enabled_{true};
   RecordingPythonRunner runner_;
@@ -490,15 +525,14 @@ TEST_F(HTMLPyScriptElementTest, DomBridgeHasBoundedStringsAndDocumentCalls) {
   EXPECT_EQ(1u, *runner_.destructions);
 }
 
-TEST_F(HTMLPyScriptElementTest,
-       ListenerAdapterRejectsUntilDispatchAndCountsCalls) {
+TEST_F(HTMLPyScriptElementTest, ListenerRegistrationAndRemovalCountDomCalls) {
   runner_.on_run = base::BindLambdaForTesting([&] {
     auto& host = *runner_.host;
     const auto element = host.GetElementById("button").handle;
     const WebPythonCallbackHandle callback{1, 1};
-    EXPECT_EQ(WebPythonDomError::kState,
+    EXPECT_EQ(WebPythonDomError::kNone,
               host.AddEventListener(element, "click", callback, true).error);
-    EXPECT_EQ(WebPythonDomError::kState,
+    EXPECT_EQ(WebPythonDomError::kNone,
               host.RemoveEventListener(element, callback).error);
     host.RevokeEventListener(element, callback);
     for (unsigned i = 3; i < 1024; ++i) {
@@ -514,6 +548,196 @@ TEST_F(HTMLPyScriptElementTest,
   });
   Load("<button id=button>button</button><pyscript>bridge</pyscript>");
   EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, NativeClickBubblesAndUsesDocumentHost) {
+  RegisterClick();
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    EXPECT_TRUE(host.IsActive());
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.SetText(host.GetElementById("result").handle, "clicked").error);
+  });
+  Click("child");
+  EXPECT_FALSE(runner_.last_event.is_trusted);
+  Click("button", true);
+  EXPECT_EQ((std::vector<uint64_t>{1, 1}), runner_.invoked);
+  EXPECT_EQ("click", runner_.last_event.type);
+  EXPECT_TRUE(runner_.last_event.is_trusted);
+  EXPECT_EQ("clicked", GetElementById("result")->textContent());
+}
+
+TEST_F(HTMLPyScriptElementTest, OnceConsumesBeforeCallbackEvenOnError) {
+  RegisterClick(true);
+  runner_.callback_result = {false, false, {}, {}, "ValueError: once"};
+  runner_.on_click = base::BindLambdaForTesting([&] { Click(); });
+  Click();
+  Click();
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.invoked);
+  EXPECT_TRUE(ConsoleMessages().back().contains("callback 1"));
+  EXPECT_EQ(0u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       OrdinaryCallbackErrorRetainsListenerFatalStopsAll) {
+  RegisterClick();
+  runner_.callback_result = {false, false, {}, {}, "ValueError: ordinary"};
+  Click();
+  Click();
+  EXPECT_EQ(2u, runner_.invoked.size());
+  runner_.callback_result.stopped = true;
+  Click();
+  test::RunPendingTasks();
+  Click();
+  EXPECT_EQ(3u, runner_.invoked.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       CallbackCanRemoveLaterListenerAndAddForNextClick) {
+  WebPythonDomHandle target;
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    target = host.GetElementById("button").handle;
+    for (uint64_t id : {1, 2}) {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                host.AddEventListener(target, "click", {1, id}, false).error);
+    }
+  });
+  Load("<button id=button>click</button><pyscript>register</pyscript>");
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    if (runner_.invoked.back() != 1) {
+      return;
+    }
+    auto& host = *runner_.host;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.RemoveEventListener(target, {1, 2}).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.RemoveEventListener(target, {1, 1}).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(target, "click", {1, 3}, false).error);
+  });
+  Click();
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.invoked);
+  Click();
+  EXPECT_EQ((std::vector<uint64_t>{1, 3}), runner_.invoked);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       DetachedNodesSkipReconnectResumesReplacementDoesNot) {
+  RegisterClick();
+  Persistent<Element> original(GetElementById("button"));
+  original->remove();
+  original->DispatchEvent(*Event::CreateBubble(event_type_names::kClick));
+  EXPECT_TRUE(runner_.invoked.empty());
+  GetDocument().body()->AppendChild(original);
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+  original->remove();
+  auto* replacement = GetDocument().CreateRawElement(html_names::kButtonTag);
+  replacement->setAttribute(html_names::kIdAttr, AtomicString("button"));
+  GetDocument().body()->AppendChild(replacement);
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ClickRechecksPolicyAndDoesNotRequireSourceNode) {
+  RegisterClick(true);
+  GetElementById("python")->remove();
+  runner_.allow = false;
+  Click();
+  EXPECT_TRUE(runner_.invoked.empty());
+  runner_.allow = true;
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, ClickRechecksCurrentCSPWithCopiedNonce) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(host.GetElementById("button").handle,
+                                    "click", {1, 1}, false)
+                  .error);
+  });
+  SimRequest::Params params;
+  params.response_http_headers.insert("Content-Security-Policy",
+                                      "script-src 'nonce-click'");
+  Load(
+      "<body><button id=button>click</button>"
+      "<pyscript nonce=click id=python>register</pyscript>",
+      params);
+  GetElementById("python")->remove();
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       LateCSPAndUnrestrictedOverrideApplyToOldListeners) {
+  RegisterClick();
+  auto* meta = GetDocument().CreateRawElement(html_names::kMetaTag);
+  meta->setAttribute(html_names::kHttpEquivAttr,
+                     AtomicString("Content-Security-Policy"));
+  meta->setAttribute(html_names::kContentAttr,
+                     AtomicString("script-src 'none'"));
+  GetDocument().head()->AppendChild(meta);
+  Click();
+  EXPECT_TRUE(runner_.invoked.empty());
+  runner_.unrestricted = true;
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, NestedClickIsSkippedWithoutQueuing) {
+  RegisterClick();
+  runner_.on_click = base::BindLambdaForTesting([&] { Click(); });
+  Click();
+  test::RunPendingTasks();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, ScriptForbiddenClickDoesNotConsumeOnce) {
+  RegisterClick(true);
+  {
+    ScriptForbiddenScope forbidden;
+    Click();
+  }
+  EXPECT_TRUE(runner_.invoked.empty());
+  Click();
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, InvalidationDuringCallbackDefersDestruction) {
+  RegisterClick();
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    PythonScriptController::StopDocument(GetDocument());
+    EXPECT_FALSE(runner_.host->IsActive());
+    EXPECT_EQ(0u, *runner_.destructions);
+  });
+  Click();
+  test::RunPendingTasks();
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, SubscriptionsDoNotRetainDetachedNodes) {
+  RegisterClick();
+  Compositor().BeginFrame();
+  WeakPersistent<Element> button(GetElementById("button"));
+  WeakPersistent<Element> source(GetElementById("python"));
+  button->remove();
+  source->remove();
+  Compositor().BeginFrame();
+  test::RunPendingTasks();
+  ThreadState::Current()->CollectAllGarbageForTesting();
+  EXPECT_FALSE(button);
+  EXPECT_FALSE(source);
+  test::RunPendingTasks();
+  EXPECT_EQ(0u, *runner_.destructions);
 }
 
 TEST_F(HTMLPyScriptElementTest, FatalResultAllowsPrefixAndReleasesContext) {

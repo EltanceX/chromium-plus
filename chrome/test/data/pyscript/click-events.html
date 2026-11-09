@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Python 原生点击事件</title>
+<style>body{font:20px system-ui;margin:48px}button{font:inherit;padding:12px 24px}#result{font-size:40px}</style>
+<h1>Python 原生点击事件</h1>
+<button id="button">点击计数</button>
+<p id="result">0</p>
+<p>按钮由 Python 注册原生 click 监听，无需 JavaScript。</p>
+<pyscript nonce="python-click">
+import dom
+count = 0
+result = dom.get_element_by_id('result')
+def clicked(event):
+    global count
+    count += 1
+    dom.set_text(result, str(count))
+listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', clicked)
+</pyscript>

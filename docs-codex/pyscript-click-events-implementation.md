@@ -2,7 +2,7 @@
 
 - 整理日期：2026-11-09（Asia/Shanghai）。
 - 实现基线：`dabd65e514`，已完成 Python 解释器设置与页面权限模式。
-- 状态：阶段一运行时基础与阶段二 Python 注册 / 移除 API、Chrome 适配已完成。Blink 当前明确拒绝安装监听，真实 click 派发与交互预算仍未接入；本文页面示例尚不能作为完整功能使用。详见[阶段一](pyscript-event-phase1-runtime-callbacks.md)与[阶段二实施记录](pyscript-event-phase2-dom-registration-adapter.md)。
+- 状态：阶段一至三已接通运行时、Python 注册 / 移除 API、Chrome 适配与 Blink 原生 click 派发。阶段三定向集成和真实浏览器验证已通过，完整构建后台进行中；交互窗口预算待阶段四实现。详见[阶段一](pyscript-event-phase1-runtime-callbacks.md)、[阶段二](pyscript-event-phase2-dom-registration-adapter.md)与[阶段三实施记录](pyscript-event-phase3-native-click-dispatch.md)。
 - 目标平台：沿用 Windows x64 Debug，Renderer 主线程内嵌 CPython。
 - 前置记录：[Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM 桥接](pyscript-phase3-document-context-dom.md)、[预算与清理](pyscript-phase4-budgets-navigation-cleanup.md)、[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。
 
@@ -241,6 +241,8 @@ dom.remove_event_listener(listener)
 完成标准：定向编译、GN / checkdeps 和接口测试通过，接口没有跨层 `PyObject*` / DOM 裸指针泄漏。
 
 ### 阶段三：Blink 原生 click 派发
+
+实施状态：已接通原生 listener、同步回调、once 消费、授权元数据与派发时策略复核。运行时 44 / 44、适配 7 / 7、Blink 45 / 45、CSP nonce 3 / 3、点击浏览器验证 17 / 17、既有 DOM 17 / 17 与解析回归 27 / 27 通过；定向重链保留标准 GN 链接参数，完整依赖图构建仍在后台。预算仍为现有累计额度。详见[阶段三实施记录](pyscript-event-phase3-native-click-dispatch.md)。
 
 1. 增加原生 listener 和 Document 订阅表，接入普通元素的 click。
 2. 实现同步回调、只读快照、`once`、显式移除、监听顺序以及回调期间增删监听的规则。

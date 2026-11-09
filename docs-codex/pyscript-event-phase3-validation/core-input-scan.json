@@ -1,0 +1,259 @@
+{
+  "response": "pyscript-event-phase3-blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_supports_rule.obj",
+      "errors": [
+        "Invalid string table extent",
+        "Invalid string table extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_unit_value.obj",
+      "errors": [
+        "Section 930: relocation 0 has invalid symbol 604 or type 54532",
+        "Section 931: relocation 0 has invalid symbol 2129425409 or type 5270",
+        "Section 932: relocation 0 has invalid symbol 2526333607 or type 57014",
+        "Section 933: relocation 0 has invalid symbol 870906272 or type 65481",
+        "Section 936: relocation 0 has invalid symbol 3827180323 or type 52598"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_unparsed_value.obj",
+      "errors": [
+        "Invalid string table extent",
+        "Invalid string table extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/apply_block_element_command.obj",
+      "errors": [
+        "Symbol 4484: invalid section 37031, total 10562",
+        "Symbol 4593: invalid section 42431, total 10562",
+        "Symbol 4808: invalid section 44459, total 10562",
+        "Symbol 4967: invalid section 42584, total 10562",
+        "Symbol 5171: invalid section 50790, total 10562"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/idle_spell_check_controller.obj",
+      "errors": [
+        "Section 5670: relocation 0 has invalid symbol 4017560694 or type 65400",
+        "Section 5671: relocation 0 has invalid symbol 1282753264 or type 56568",
+        "Section 5672: relocation 0 has invalid symbol 579664503 or type 60962",
+        "Section 5673: relocation 0 has invalid symbol 2526705825 or type 10527",
+        "Section 5674: relocation 0 has invalid symbol 3059486719 or type 27213",
+        "Invalid b'.debug$T' signature/extent",
+        "Invalid CodeView record at 0x1b7ffd (length 14, kind 0x9842)",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 126
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/display_ad_element_monitor.obj",
+      "errors": [
+        "Section 582: relocation 0 has invalid symbol 2088552136 or type 50610",
+        "Section 583: relocation 0 has invalid symbol 3542611947 or type 5979",
+        "Section 584: relocation 0 has invalid symbol 2641714636 or type 5643",
+        "Section 585: relocation 0 has invalid symbol 1970257593 or type 22916",
+        "Section 587: relocation 0 has invalid symbol 1959893134 or type 33182"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+      "errors": [
+        "Section 1741: invalid raw data extent",
+        "Section 1741: invalid relocation extent",
+        "Section 1742: invalid raw data extent",
+        "Section 1742: invalid relocation extent",
+        "Section 1743: invalid raw data extent",
+        "Section 1743: invalid relocation extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/inspector_style_sheet.obj",
+      "errors": [
+        "Section 25590: relocation 0 has invalid symbol 1189411311 or type 54023",
+        "Section 25591: relocation 0 has invalid symbol 2780524756 or type 48684",
+        "Section 25592: relocation 0 has invalid symbol 3881382580 or type 25724",
+        "Section 25593: relocation 0 has invalid symbol 3277051481 or type 52907",
+        "Section 25594: relocation 0 has invalid symbol 3905301280 or type 22448",
+        "Invalid CodeView record at 0x77600e (length 42300, kind 0x630f)",
+        "Invalid CodeView record at 0x75606a (length 48724, kind 0xea69)",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 79
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/grid_node.obj",
+      "errors": [
+        "Invalid CodeView record at 0x610041 (length 27633, kind 0x3d45)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/math_row_layout_algorithm.obj",
+      "errors": [
+        "Invalid CodeView record at 0x3a3014 (length 21572, kind 0xea31)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/navigation_policy.obj",
+      "errors": [
+        "Section 259: relocation 0 has invalid symbol 1620785474 or type 1151",
+        "Section 260: relocation 0 has invalid symbol 302639579 or type 58102",
+        "Section 261: relocation 0 has invalid symbol 1213068417 or type 49899",
+        "Section 262: relocation 0 has invalid symbol 3255568147 or type 53689",
+        "Section 263: relocation 0 has invalid symbol 2764072774 or type 55455",
+        "Invalid CodeView record at 0xd050 (length 42109, kind 0x27c2)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 61
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_style_sheet_resource.obj",
+      "errors": [
+        "Invalid CodeView record at 0x210001 (length 52112, kind 0x8c3d)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/mathml_padded_element.obj",
+      "errors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x6ae001",
+        "Control byte in COFF string table at file offset 0x6ae000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/module_import_meta.obj",
+      "errors": [
+        "Invalid string table extent",
+        "Invalid string table extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/pending_import_map.obj",
+      "errors": [
+        "Unexpected COFF machine 5490",
+        "Invalid string table offset"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/computed_style.obj",
+      "errors": [
+        "Section 18514: relocation 0 has invalid symbol 731174461 or type 4180",
+        "Section 18515: relocation 0 has invalid symbol 1166244534 or type 35144",
+        "Section 18516: relocation 0 has invalid symbol 2645960965 or type 22066",
+        "Section 18517: relocation 0 has invalid symbol 2661188009 or type 40005",
+        "Section 18518: relocation 0 has invalid symbol 1223685546 or type 53902",
+        "Invalid CodeView record at 0x693069 (length 5367, kind 0x2f2f)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 57
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core_hot/container_node.obj",
+      "errors": [
+        "Invalid CodeView record at 0x780014 (length 46638, kind 0x8d25)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core_hot/text_control_element.obj",
+      "errors": [
+        "Invalid CodeView record at 0x5f0016 (length 26795, kind 0xdd97)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_submit_event_init.obj",
+      "errors": [
+        "Section 3307: relocation 2 has invalid symbol 1043664098 or type 32401",
+        "Section 3308: relocation 0 has invalid symbol 1440183014 or type 3043",
+        "Section 3309: relocation 0 has invalid symbol 20200580 or type 62330",
+        "Section 3310: relocation 0 has invalid symbol 315587840 or type 31044",
+        "Section 3311: relocation 0 has invalid symbol 3912979392 or type 58167"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_event_trigger.obj",
+      "errors": [
+        "Section 926: relocation 0 has invalid symbol 473853144 or type 24286",
+        "Section 927: relocation 0 has invalid symbol 3349173605 or type 54329",
+        "Section 928: relocation 0 has invalid symbol 2773764904 or type 18187",
+        "Section 929: relocation 0 has invalid symbol 4278626016 or type 25623",
+        "Section 930: relocation 0 has invalid symbol 1293469641 or type 33307",
+        "Invalid b'.debug$T' signature/extent",
+        "Invalid CodeView record at 0x47fff (length 50706, kind 0x8ce7)",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 15
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_readable_stream_byob_request.obj",
+      "errors": [
+        "Unexpected COFF machine 736c",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 25
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_text.obj",
+      "errors": [
+        "Section 2908: relocation 0 has invalid symbol 345152424 or type 7913",
+        "Section 2909: relocation 0 has invalid symbol 726922483 or type 16472",
+        "Section 2910: relocation 0 has invalid symbol 252259653 or type 28441",
+        "Section 2911: relocation 0 has invalid symbol 1790092624 or type 13039",
+        "Section 2912: relocation 0 has invalid symbol 1463710814 or type 38174",
+        "Invalid CodeView record at 0xd6012 (length 8484, kind 0xe526)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 227
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_xml_serializer.obj",
+      "errors": [
+        "Invalid CodeView record at 0xf8061 (length 45875, kind 0x8228)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_union_double_string_stringsequence.obj",
+      "errors": [
+        "Invalid CodeView record at 0xd7a0c (length 29801, kind 0x6d68)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_union_float_stringelementrecord.obj",
+      "errors": [
+        "Invalid CodeView record at 0x147d45 (length 24557, kind 0xe744)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/animation/animation/css_basic_shape_interpolation_type.obj",
+      "errors": [
+        "Section 9750: relocation 1 has invalid symbol 1560286575 or type 32811",
+        "Section 9751: relocation 0 has invalid symbol 2957187287 or type 50624",
+        "Section 9752: relocation 0 has invalid symbol 2482849531 or type 60977",
+        "Section 9753: relocation 0 has invalid symbol 2003372937 or type 16666",
+        "Section 9754: relocation 0 has invalid symbol 1654695853 or type 17445"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/animation/animation/css_color_interpolation_type.obj",
+      "errors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x748000",
+        "Control byte in COFF string table at file offset 0x748002"
+      ]
+    }
+  ],
+  "elapsed_seconds": 144.92
+}

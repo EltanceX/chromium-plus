@@ -1,0 +1,40 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 12.5319738s
+load siso config done 27.3917ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 4749 Pending 42460
+[0/13] 35.60s S CXX obj/third_party/blink/renderer/core/fuzztest_utils/css_domains.obj
+[0/5] 35.61s S CXX obj/third_party/blink/renderer/core/unit_tests/dom_parser_test.obj
+[0/5] 35.61s S CXX obj/third_party/blink/renderer/modules/unit_tests/ax_object_test.obj
+[0/5] 35.61s S CXX obj/third_party/blink/renderer/modules/unit_tests/canvas_rendering_context_2d_api_test.obj
+[0/5] 35.61s S CXX obj/third_party/blink/renderer/modules/unit_tests/user_media_client_test.obj
+[0/5] 1m25.67s F CXX obj/third_party/blink/renderer/core/unit_tests/dom_parser_test.obj
+[1/5] 1m37.93s F CXX obj/third_party/blink/renderer/modules/unit_tests/user_media_client_test.obj
+[2/5] 1m39.25s F CXX obj/third_party/blink/renderer/modules/unit_tests/canvas_rendering_context_2d_api_test.obj
+[3/5] 1m44.76s F CXX obj/third_party/blink/renderer/core/fuzztest_utils/css_domains.obj
+[4/5] 1m51.02s F CXX obj/third_party/blink/renderer/modules/unit_tests/ax_object_test.obj
+build finished
+
+
+noexec:0 local:5 remote:0 cache:0 skip:47204
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 827(err:6) / r:575(err:0) 1.89GiB / w:0(err:0) 0B
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      5(0)     0.00s |▇      |  1m04.07s |    ▃▇ |
+
+1m51.75s Build Succeeded: 5 steps - 0.04/s
+shutdown cloud logging/monitoring done 0s

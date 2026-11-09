@@ -622,7 +622,11 @@ bool ContentSecurityPolicy::AllowInline(
     const String& context_url,
     const TextPosition& context_position,
     ReportingDisposition reporting_disposition) {
-  DCHECK(element || inline_type == InlineType::kScriptAttribute ||
+  // Parser Python callbacks recheck immutable source/nonce metadata after
+  // their original node may have been collected. A null script element gets
+  // normal nonce/hash checks and cannot inherit dynamic-script trust.
+  DCHECK(element || inline_type == InlineType::kScript ||
+         inline_type == InlineType::kScriptAttribute ||
          inline_type == InlineType::kNavigation);
 
   const bool is_script = IsScriptInlineType(inline_type);

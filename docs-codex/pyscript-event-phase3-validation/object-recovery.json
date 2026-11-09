@@ -1,0 +1,551 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_supports_rule.obj",
+    "size": 817639,
+    "mtimeNs": 1793047353505075800,
+    "sha256": "6f2b809140bc602adfaf7072613f5815f8a40b6c9179f8e7e5ed2b3a1df9462d",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Invalid string table extent"
+    ],
+    "scanErrors": [
+      "Invalid string table extent",
+      "Invalid string table extent"
+    ],
+    "rebuiltSha256": "4dcfd932e0aa4baa14e97ffdf1455d041f3f944f0788710321ec5d091421238f"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_unit_value.obj",
+    "size": 3051966,
+    "mtimeNs": 1794124154489572700,
+    "sha256": "640fe966d820a894ac8b41ed44e4acb9901591694521d4a797a74394e906c191",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 930: relocation 0 has invalid symbol 604 or type 54532",
+      "Section 931: relocation 0 has invalid symbol 2129425409 or type 5270",
+      "Section 932: relocation 0 has invalid symbol 2526333607 or type 57014",
+      "Section 933: relocation 0 has invalid symbol 870906272 or type 65481",
+      "Section 936: relocation 0 has invalid symbol 3827180323 or type 52598"
+    ],
+    "scanErrors": [
+      "Section 930: relocation 0 has invalid symbol 604 or type 54532",
+      "Section 931: relocation 0 has invalid symbol 2129425409 or type 5270",
+      "Section 932: relocation 0 has invalid symbol 2526333607 or type 57014",
+      "Section 933: relocation 0 has invalid symbol 870906272 or type 65481",
+      "Section 936: relocation 0 has invalid symbol 3827180323 or type 52598"
+    ],
+    "rebuiltSha256": "527a7aaae7fa2d0f5ceafa84f7f7f5980caba2175fa34cc7a465f8e5b24c327b"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_unparsed_value.obj",
+    "size": 2471703,
+    "mtimeNs": 1793047576233774500,
+    "sha256": "67a64e1e2e1036ec36a5991e08633408825dee8acf4000b39c7a7b7a4a784cc5",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Invalid string table extent"
+    ],
+    "scanErrors": [
+      "Invalid string table extent",
+      "Invalid string table extent"
+    ],
+    "rebuiltSha256": "8dc93102f25e275d1b4edd553d99b48a3d759b9175754333442f8490605820e2"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/apply_block_element_command.obj",
+    "size": 7120695,
+    "mtimeNs": 1794117137899775900,
+    "sha256": "be8110aaec2fd921ff55aca5558e81b9e590f305c232bb639c211375f38ba51f",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Symbol 4484: invalid section 37031, total 10562",
+      "Symbol 4593: invalid section 42431, total 10562",
+      "Symbol 4808: invalid section 44459, total 10562",
+      "Symbol 4967: invalid section 42584, total 10562",
+      "Symbol 5171: invalid section 50790, total 10562"
+    ],
+    "scanErrors": [
+      "Symbol 4484: invalid section 37031, total 10562",
+      "Symbol 4593: invalid section 42431, total 10562",
+      "Symbol 4808: invalid section 44459, total 10562",
+      "Symbol 4967: invalid section 42584, total 10562",
+      "Symbol 5171: invalid section 50790, total 10562"
+    ],
+    "rebuiltSha256": "615a9b9943f2ea58537aa8bdd4dae9f33ca58b16aeba6b9492e4ad52052311e7"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/idle_spell_check_controller.obj",
+    "size": 5232382,
+    "mtimeNs": 1794145855421129400,
+    "sha256": "325246600c15c9defe73afd023a1b44679fb4cb2f3d816a1729246e19505c409",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 5670: relocation 0 has invalid symbol 4017560694 or type 65400",
+      "Section 5671: relocation 0 has invalid symbol 1282753264 or type 56568",
+      "Section 5672: relocation 0 has invalid symbol 579664503 or type 60962",
+      "Section 5673: relocation 0 has invalid symbol 2526705825 or type 10527",
+      "Section 5674: relocation 0 has invalid symbol 3059486719 or type 27213"
+    ],
+    "scanErrors": [
+      "Section 5670: relocation 0 has invalid symbol 4017560694 or type 65400",
+      "Section 5671: relocation 0 has invalid symbol 1282753264 or type 56568",
+      "Section 5672: relocation 0 has invalid symbol 579664503 or type 60962",
+      "Section 5673: relocation 0 has invalid symbol 2526705825 or type 10527",
+      "Section 5674: relocation 0 has invalid symbol 3059486719 or type 27213",
+      "Invalid b'.debug$T' signature/extent",
+      "Invalid CodeView record at 0x1b7ffd (length 14, kind 0x9842)",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "8832a56ef400702b254de5ed0aadb4f1c00df646ffb6fbf64dc773fcdd692fba"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/display_ad_element_monitor.obj",
+    "size": 9265044,
+    "mtimeNs": 1794144972666060400,
+    "sha256": "4e761dec2c71b24c1aef7f8821cc9baf41d8235b27df00f7fee368c49728c109",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 582: relocation 0 has invalid symbol 2088552136 or type 50610",
+      "Section 583: relocation 0 has invalid symbol 3542611947 or type 5979",
+      "Section 584: relocation 0 has invalid symbol 2641714636 or type 5643",
+      "Section 585: relocation 0 has invalid symbol 1970257593 or type 22916",
+      "Section 587: relocation 0 has invalid symbol 1959893134 or type 33182"
+    ],
+    "scanErrors": [
+      "Section 582: relocation 0 has invalid symbol 2088552136 or type 50610",
+      "Section 583: relocation 0 has invalid symbol 3542611947 or type 5979",
+      "Section 584: relocation 0 has invalid symbol 2641714636 or type 5643",
+      "Section 585: relocation 0 has invalid symbol 1970257593 or type 22916",
+      "Section 587: relocation 0 has invalid symbol 1959893134 or type 33182"
+    ],
+    "rebuiltSha256": "7c19af7b1a94393ba2d60f7a1980e87cb1685c72af517d7d9d825a0292a186a2"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/html_details_element.obj",
+    "size": 8563076,
+    "mtimeNs": 1794158636532536300,
+    "sha256": "0e117caecc8c8987650b91eb37e52da560f587b4ea19ab02e682c593452c2946",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 1741: invalid raw data extent",
+      "Section 1741: invalid relocation extent",
+      "Section 1742: invalid raw data extent",
+      "Section 1742: invalid relocation extent",
+      "Section 1743: invalid raw data extent",
+      "Section 1743: invalid relocation extent"
+    ],
+    "scanErrors": [
+      "Section 1741: invalid raw data extent",
+      "Section 1741: invalid relocation extent",
+      "Section 1742: invalid raw data extent",
+      "Section 1742: invalid relocation extent",
+      "Section 1743: invalid raw data extent",
+      "Section 1743: invalid relocation extent"
+    ],
+    "rebuiltSha256": "e7ddc672919635b19d05be73fada63733482d656499e3ee8722a5f00c1e4be6c"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_style_sheet.obj",
+    "size": 18281059,
+    "mtimeNs": 1794144940292377400,
+    "sha256": "5690a05a297cbf3978bcda75b71eb1e699a383b46dc6e50a8c0ebac5af8cb7d2",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 25590: relocation 0 has invalid symbol 1189411311 or type 54023",
+      "Section 25591: relocation 0 has invalid symbol 2780524756 or type 48684",
+      "Section 25592: relocation 0 has invalid symbol 3881382580 or type 25724",
+      "Section 25593: relocation 0 has invalid symbol 3277051481 or type 52907",
+      "Section 25594: relocation 0 has invalid symbol 3905301280 or type 22448"
+    ],
+    "scanErrors": [
+      "Section 25590: relocation 0 has invalid symbol 1189411311 or type 54023",
+      "Section 25591: relocation 0 has invalid symbol 2780524756 or type 48684",
+      "Section 25592: relocation 0 has invalid symbol 3881382580 or type 25724",
+      "Section 25593: relocation 0 has invalid symbol 3277051481 or type 52907",
+      "Section 25594: relocation 0 has invalid symbol 3905301280 or type 22448",
+      "Invalid CodeView record at 0x77600e (length 42300, kind 0x630f)",
+      "Invalid CodeView record at 0x75606a (length 48724, kind 0xea69)",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "be6e1b8e8f521371ffb34a2938f5f60204237732e5cdff443ae9a66f201847e1"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/grid_node.obj",
+    "size": 9848313,
+    "mtimeNs": 1794116801979610900,
+    "sha256": "bdbb320b6630d36304406c323ade99ca0972f20fcbb51166e3d860be59f0cfde",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x610041 (length 27633, kind 0x3d45)"
+    ],
+    "rebuiltSha256": "5c330b5347bdf977f2036e15b153c8906e28d60089816b203b4da33145be1099"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/math_row_layout_algorithm.obj",
+    "size": 9383205,
+    "mtimeNs": 1794117254387123400,
+    "sha256": "b64c3f939f0aa07f6eb79be40817f2e7bed4df314a5a5f8c56477a81a3c70b08",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x3a3014 (length 21572, kind 0xea31)"
+    ],
+    "rebuiltSha256": "4df858dea1c92b0e24d3f79b5b7c02b2d03142666296a2ee26e525ca54a6cb46"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/navigation_policy.obj",
+    "size": 501198,
+    "mtimeNs": 1794116541054989300,
+    "sha256": "f3394078467d65818bea269ef90c1ab73b75b62256505f885918698fc419858e",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 259: relocation 0 has invalid symbol 1620785474 or type 1151",
+      "Section 260: relocation 0 has invalid symbol 302639579 or type 58102",
+      "Section 261: relocation 0 has invalid symbol 1213068417 or type 49899",
+      "Section 262: relocation 0 has invalid symbol 3255568147 or type 53689",
+      "Section 263: relocation 0 has invalid symbol 2764072774 or type 55455"
+    ],
+    "scanErrors": [
+      "Section 259: relocation 0 has invalid symbol 1620785474 or type 1151",
+      "Section 260: relocation 0 has invalid symbol 302639579 or type 58102",
+      "Section 261: relocation 0 has invalid symbol 1213068417 or type 49899",
+      "Section 262: relocation 0 has invalid symbol 3255568147 or type 53689",
+      "Section 263: relocation 0 has invalid symbol 2764072774 or type 55455",
+      "Invalid CodeView record at 0xd050 (length 42109, kind 0x27c2)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "08c0cd40093f2379f7d884c378215315a03f9b410ff9bbf0f378060072d4c956"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_style_sheet_resource.obj",
+    "size": 3177909,
+    "mtimeNs": 1794144050517065000,
+    "sha256": "1fff21d0625794ac77ebe58ceea897572bb73a6f9927ffc3b5d696a7717e67ae",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x210001 (length 52112, kind 0x8c3d)"
+    ],
+    "rebuiltSha256": "8b7d5fea9f51f869d458c1aed49fdbf63c9d74e8abd1d1d812ab01e3cfaa73db"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/mathml_padded_element.obj",
+    "size": 7097961,
+    "mtimeNs": 1794116884053418900,
+    "sha256": "5df78ecae0a40f76889389cc1bd62591683a58a8599852cd31eb272519b01352",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid UTF-8 in COFF string table at file offset 0x6ae001",
+      "Control byte in COFF string table at file offset 0x6ae000"
+    ],
+    "rebuiltSha256": "c6e2f6e7e1c76a612410ff00f8723f6f34f9c3b77212860b57e1d9917d5cbea6"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/module_import_meta.obj",
+    "size": 1327517,
+    "mtimeNs": 1794117073031723100,
+    "sha256": "12d5d158b0caea2e459d5dc49241eeb3d3257bc08c6421759ab6818194af957e",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Invalid string table extent"
+    ],
+    "scanErrors": [
+      "Invalid string table extent",
+      "Invalid string table extent"
+    ],
+    "rebuiltSha256": "5025fb14b32bc28eabc374a0143e03b12c444878c37bf9f13e71d8c6f246fc13"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/pending_import_map.obj",
+    "size": 2439383,
+    "mtimeNs": 1794145496925123700,
+    "sha256": "9134fde7138bc22ed0fe98dacd5da4c7bcfdefb97d9bf67afd40ced6ab8fc587",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Unexpected COFF machine 5490"
+    ],
+    "scanErrors": [
+      "Unexpected COFF machine 5490",
+      "Invalid string table offset"
+    ],
+    "rebuiltSha256": "6300fe0bf8e86d94ebea68bbd4138944e40c88f99e12f93cb30d204f0a062a27"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/computed_style.obj",
+    "size": 16939609,
+    "mtimeNs": 1794146258186279800,
+    "sha256": "5222f2fbdb699fb8463aee761a7e7b5871c5e25105631439df0b431547ee4404",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 18514: relocation 0 has invalid symbol 731174461 or type 4180",
+      "Section 18515: relocation 0 has invalid symbol 1166244534 or type 35144",
+      "Section 18516: relocation 0 has invalid symbol 2645960965 or type 22066",
+      "Section 18517: relocation 0 has invalid symbol 2661188009 or type 40005",
+      "Section 18518: relocation 0 has invalid symbol 1223685546 or type 53902"
+    ],
+    "scanErrors": [
+      "Section 18514: relocation 0 has invalid symbol 731174461 or type 4180",
+      "Section 18515: relocation 0 has invalid symbol 1166244534 or type 35144",
+      "Section 18516: relocation 0 has invalid symbol 2645960965 or type 22066",
+      "Section 18517: relocation 0 has invalid symbol 2661188009 or type 40005",
+      "Section 18518: relocation 0 has invalid symbol 1223685546 or type 53902",
+      "Invalid CodeView record at 0x693069 (length 5367, kind 0x2f2f)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "a18cc5c079e468d22d6027b68be87c6e255643b2f8c1c4d3b64b4c7a2c6b7e53"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_hot/container_node.obj",
+    "size": 12984623,
+    "mtimeNs": 1794144719731001400,
+    "sha256": "72a10e76bfe16849aff7acd5434d9c0db4c2155849ef3914646f4eccc2728d25",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x780014 (length 46638, kind 0x8d25)"
+    ],
+    "rebuiltSha256": "9dfb0c67e437c6bbfb8617010a45271f15cab94a4d8c3d5bcf60033e255b1c47"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_hot/text_control_element.obj",
+    "size": 10445326,
+    "mtimeNs": 1794144476709826500,
+    "sha256": "6e3aa4a0439bd721963a69dfd91892390d77b54a8d86eab3729fe58f6f5fe084",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x5f0016 (length 26795, kind 0xdd97)"
+    ],
+    "rebuiltSha256": "4ed134a083385900518e610f67b3c11214d258e44ddfa5a8eccf17b112843b19"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_submit_event_init.obj",
+    "size": 2418339,
+    "mtimeNs": 1794125219320565000,
+    "sha256": "b503563658af24e839e99a020b3020be33b48a4d5cc98294f9c3c3a05285b87e",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 3307: relocation 2 has invalid symbol 1043664098 or type 32401",
+      "Section 3308: relocation 0 has invalid symbol 1440183014 or type 3043",
+      "Section 3309: relocation 0 has invalid symbol 20200580 or type 62330",
+      "Section 3310: relocation 0 has invalid symbol 315587840 or type 31044",
+      "Section 3311: relocation 0 has invalid symbol 3912979392 or type 58167"
+    ],
+    "scanErrors": [
+      "Section 3307: relocation 2 has invalid symbol 1043664098 or type 32401",
+      "Section 3308: relocation 0 has invalid symbol 1440183014 or type 3043",
+      "Section 3309: relocation 0 has invalid symbol 20200580 or type 62330",
+      "Section 3310: relocation 0 has invalid symbol 315587840 or type 31044",
+      "Section 3311: relocation 0 has invalid symbol 3912979392 or type 58167"
+    ],
+    "rebuiltSha256": "9571be46bac1a699197387e1e765c6cc5547384893b63c2e398cbce072cba03a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_event_trigger.obj",
+    "size": 2023011,
+    "mtimeNs": 1794124347256766900,
+    "sha256": "098d365029dc22ab8f2e42a477b1580e7dc97ccc89f8614f68ae466a4ac1e3b3",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 926: relocation 0 has invalid symbol 473853144 or type 24286",
+      "Section 927: relocation 0 has invalid symbol 3349173605 or type 54329",
+      "Section 928: relocation 0 has invalid symbol 2773764904 or type 18187",
+      "Section 929: relocation 0 has invalid symbol 4278626016 or type 25623",
+      "Section 930: relocation 0 has invalid symbol 1293469641 or type 33307"
+    ],
+    "scanErrors": [
+      "Section 926: relocation 0 has invalid symbol 473853144 or type 24286",
+      "Section 927: relocation 0 has invalid symbol 3349173605 or type 54329",
+      "Section 928: relocation 0 has invalid symbol 2773764904 or type 18187",
+      "Section 929: relocation 0 has invalid symbol 4278626016 or type 25623",
+      "Section 930: relocation 0 has invalid symbol 1293469641 or type 33307",
+      "Invalid b'.debug$T' signature/extent",
+      "Invalid CodeView record at 0x47fff (length 50706, kind 0x8ce7)",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "747de9185e784c5469c08b7bd324b2ec7dcd4f3ed1470528bdbac341eb652d17"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_readable_stream_byob_request.obj",
+    "size": 785067,
+    "mtimeNs": 1793050911127386600,
+    "sha256": "ab6e83be0e270758f6d1078e9fe326419921bd2bafa43ac6dbd993e3ded91975",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Unexpected COFF machine 736c"
+    ],
+    "scanErrors": [
+      "Unexpected COFF machine 736c",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "b689022cf2f34f920b007d30330d7ae6db8fb5c49dd2a6bc491290b28645a779"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_text.obj",
+    "size": 3682588,
+    "mtimeNs": 1794126115637174600,
+    "sha256": "0ebdcb4148de02c4b7d7ec3f718036de7a64abe45f4523bd001d05f9be73dab2",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 2908: relocation 0 has invalid symbol 345152424 or type 7913",
+      "Section 2909: relocation 0 has invalid symbol 726922483 or type 16472",
+      "Section 2910: relocation 0 has invalid symbol 252259653 or type 28441",
+      "Section 2911: relocation 0 has invalid symbol 1790092624 or type 13039",
+      "Section 2912: relocation 0 has invalid symbol 1463710814 or type 38174"
+    ],
+    "scanErrors": [
+      "Section 2908: relocation 0 has invalid symbol 345152424 or type 7913",
+      "Section 2909: relocation 0 has invalid symbol 726922483 or type 16472",
+      "Section 2910: relocation 0 has invalid symbol 252259653 or type 28441",
+      "Section 2911: relocation 0 has invalid symbol 1790092624 or type 13039",
+      "Section 2912: relocation 0 has invalid symbol 1463710814 or type 38174",
+      "Invalid CodeView record at 0xd6012 (length 8484, kind 0xe526)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "60ad53becc79b96ae3c90c695b2d67a50ccacee5a094d99579f73eaf84d25d4c"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_xml_serializer.obj",
+    "size": 1359319,
+    "mtimeNs": 1794115729440070500,
+    "sha256": "20674faf6e24d6ac7cbb48dd6220724b448f17916b48c4c7934cdefd9af45798",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0xf8061 (length 45875, kind 0x8228)"
+    ],
+    "rebuiltSha256": "b9860df04ec716d1188f20b5073741e437fc48ab678f269d836ddff68a5d52c8"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_union_double_string_stringsequence.obj",
+    "size": 1483547,
+    "mtimeNs": 1793052591312039500,
+    "sha256": "ce92d1e5ec0702e1429562d15fb3f40ac95d65a832ac9de8905a5959412ee671",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0xd7a0c (length 29801, kind 0x6d68)"
+    ],
+    "rebuiltSha256": "5ae85464109ab37677c4b12226248026259dd5cfb985bbbdf635473b92a0a3e0"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_union_float_stringelementrecord.obj",
+    "size": 2860446,
+    "mtimeNs": 1794116992530258100,
+    "sha256": "1619fbb412e97405b3acb3347446aff8215d36a9f1cebfeb358ecaba36c5e5d8",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid CodeView record at 0x147d45 (length 24557, kind 0xe744)"
+    ],
+    "rebuiltSha256": "76ff9725b092f732fd42bd4918645bb58ebff48a91f86731c1914eb090c580ed"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/animation/animation/css_basic_shape_interpolation_type.obj",
+    "size": 7760116,
+    "mtimeNs": 1794117440127805700,
+    "sha256": "aad389d806568498976273de8a4b358f491f3947412728cdac2875d9df44d884",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [
+      "Section 9750: relocation 1 has invalid symbol 1560286575 or type 32811",
+      "Section 9751: relocation 0 has invalid symbol 2957187287 or type 50624",
+      "Section 9752: relocation 0 has invalid symbol 2482849531 or type 60977",
+      "Section 9753: relocation 0 has invalid symbol 2003372937 or type 16666",
+      "Section 9754: relocation 0 has invalid symbol 1654695853 or type 17445"
+    ],
+    "scanErrors": [
+      "Section 9750: relocation 1 has invalid symbol 1560286575 or type 32811",
+      "Section 9751: relocation 0 has invalid symbol 2957187287 or type 50624",
+      "Section 9752: relocation 0 has invalid symbol 2482849531 or type 60977",
+      "Section 9753: relocation 0 has invalid symbol 2003372937 or type 16666",
+      "Section 9754: relocation 0 has invalid symbol 1654695853 or type 17445"
+    ],
+    "rebuiltSha256": "bfec3451ff7cbc1e025bc1b80ee9725e130166c848070ce7bb2035b791e3af09"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/animation/animation/css_color_interpolation_type.obj",
+    "size": 8175391,
+    "mtimeNs": 1794118328420671200,
+    "sha256": "849256c3782b0a3e5c0f4c772ee022a668f6d50aec20e86c848bb31827d3d2c8",
+    "stableAcrossReadsAndMmap": true,
+    "structureErrors": [],
+    "scanErrors": [
+      "Invalid UTF-8 in COFF string table at file offset 0x748000",
+      "Control byte in COFF string table at file offset 0x748002"
+    ],
+    "rebuiltSha256": "8b3723549131f356b400bd1bed65068bebfa5841ca1b53e549106e36855c7eb0"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/dom_parser_test.obj",
+    "size": 6482683,
+    "mtimeNs": 1794157101719142400,
+    "sha256": "df870c7fb688de4109906eefffe7846912f90cb0f6db9cdcff467c23ad80d3aa",
+    "stableAcrossReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x2e001d (length 43530, kind 0xb694)"
+    ],
+    "rebuiltSha256": "c03b15c3e0e96d6f2f255085bc5d634f8e24acf90a9b39c8435c575eff725369"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/fuzztest_utils/css_domains.obj",
+    "size": 88705175,
+    "mtimeNs": 1794133651095786300,
+    "sha256": "6bb6f8570c8614d36fd9e629bb1fd00e7c6eab24da6babad7a25b07ba802fd86",
+    "stableAcrossReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x2b400bb (length 8466, kind 0xb82d)"
+    ],
+    "rebuiltSha256": "16fc26bb0ea463e902b96906703fcd421277860b9f90da8d72f5e82a22110e08"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/unit_tests/ax_object_test.obj",
+    "size": 17837371,
+    "mtimeNs": 1794153099428875900,
+    "sha256": "b91b1f46edc60ff96847fb2a4d05cbc97d38829b7f6682f686159fe03847e3dc",
+    "stableAcrossReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x20a1b7 (length 33877, kind 0xe18b)"
+    ],
+    "rebuiltSha256": "59e79a7e4818b60cd976efd70c8246b63e9179d60575f115efab2d76a6a22f24"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/unit_tests/canvas_rendering_context_2d_api_test.obj",
+    "size": 12919340,
+    "mtimeNs": 1794157554372527400,
+    "sha256": "be3581e519c4434651b7cd6bb263d20e432e340b19f889b9325115417c354cad",
+    "stableAcrossReadsAndMmap": true,
+    "scanErrors": [
+      "Section 8697: relocation 0 has invalid symbol 505617728 or type 46365",
+      "Section 8698: relocation 0 has invalid symbol 2694766906 or type 1931",
+      "Section 8699: relocation 0 has invalid symbol 2793156299 or type 51263",
+      "Section 8700: relocation 0 has invalid symbol 3944900997 or type 41384",
+      "Section 8701: relocation 0 has invalid symbol 713654846 or type 58166",
+      "Invalid CodeView record at 0x29b09f (length 24680, kind 0x28e6)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "rebuiltSha256": "270c453861aaf758d8201ae8972d16c7fbda4f6abf8202153b462154f04dee97"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/unit_tests/user_media_client_test.obj",
+    "size": 17074892,
+    "mtimeNs": 1794153550315727400,
+    "sha256": "c080667c44e9504a75d9d5bd2eec8831d3912dc2a6f5de41c325069fd990e9f7",
+    "stableAcrossReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0xb0a00d (length 43814, kind 0x1d3e)"
+    ],
+    "rebuiltSha256": "55d86bd62259b2e0f75745a2e0397a6a923326c5a61a0c7d91e1b491a3b7de70"
+  }
+]

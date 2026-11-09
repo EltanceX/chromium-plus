@@ -1,0 +1,48 @@
+{
+  "response": "pyscript-event-phase3-blink_unittests.exe.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 194,
+  "directObjects": 4665,
+  "archiveMembers": 2819,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/dom_parser_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x2e001d (length 43530, kind 0xb694)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/fuzztest_utils/css_domains.obj",
+      "errors": [
+        "Invalid CodeView record at 0x2b400bb (length 8466, kind 0xb82d)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/ax_object_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x20a1b7 (length 33877, kind 0xe18b)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/canvas_rendering_context_2d_api_test.obj",
+      "errors": [
+        "Section 8697: relocation 0 has invalid symbol 505617728 or type 46365",
+        "Section 8698: relocation 0 has invalid symbol 2694766906 or type 1931",
+        "Section 8699: relocation 0 has invalid symbol 2793156299 or type 51263",
+        "Section 8700: relocation 0 has invalid symbol 3944900997 or type 41384",
+        "Section 8701: relocation 0 has invalid symbol 713654846 or type 58166",
+        "Invalid CodeView record at 0x29b09f (length 24680, kind 0x28e6)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "totalErrorCount": 81
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/user_media_client_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0xb0a00d (length 43814, kind 0x1d3e)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 193.64
+}

@@ -117,7 +117,7 @@ def callback(event):
     assert event.type == 'click'
     dom.set_text(event.current_target, 'value-' + str(count))
     print(count, event.is_trusted)
-listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=True)
+listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=False)
 )PY";
 
 TEST(PythonDocumentContextTest,
@@ -126,7 +126,7 @@ TEST(PythonDocumentContextTest,
   TestHost host;
   auto result = RunSource(*context, host, kRegister);
   ASSERT_TRUE(result.success) << result.error.Utf8();
-  EXPECT_TRUE(host.last_once);
+  EXPECT_FALSE(host.last_once);
   result = context->InvokeCallback(host.last, host.Event(true), host);
   EXPECT_TRUE(result.success) << result.error.Utf8();
   EXPECT_EQ("1 True\n", result.stdout_text.Utf8());
@@ -141,6 +141,19 @@ TEST(PythonDocumentContextTest,
   EXPECT_TRUE(result.success) << result.error.Utf8();
   EXPECT_EQ(2, host.removes);
   EXPECT_TRUE(host.installed.empty());
+  EXPECT_FALSE(context->InvokeCallback(host.last, host.Event(), host).success);
+}
+
+TEST(PythonDocumentContextTest, ForwardsOnceConsumptionToRuntime) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  std::string source(kRegister);
+  source.replace(source.find("once=False"), 10, "once=True");
+  ASSERT_TRUE(RunSource(*context, host, source).success);
+  EXPECT_TRUE(host.last_once);
+  auto result = context->InvokeCallback(host.last, host.Event(true), host);
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ("1 True\n", result.stdout_text.Utf8());
   EXPECT_FALSE(context->InvokeCallback(host.last, host.Event(), host).success);
 }
 

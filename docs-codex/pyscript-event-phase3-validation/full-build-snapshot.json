@@ -1,0 +1,13 @@
+{
+  "state": "running",
+  "startedAt": "2026-11-09T12:05:09.485535+00:00",
+  "helperPid": 12820,
+  "targets": [
+    "chrome",
+    "blink_unittests",
+    "python_runtime_unittests",
+    "python_document_context_unittests"
+  ],
+  "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase3-full-build-background.log",
+  "buildPid": 17052
+}

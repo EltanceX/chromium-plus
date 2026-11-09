@@ -96,6 +96,42 @@ CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
 }
 
+TEST(PythonRuntimeTest, OnceConsumptionReleasesCallableEvenAfterException) {
+  for (bool fail : {false, true}) {
+    std::string error;
+    auto context = PythonContext::Create(&error);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    ASSERT_TRUE(context
+                    ->Execute(R"PY(
+import dom
+destroyed = False
+class Callback:
+    def __del__(self):
+        global destroyed
+        destroyed = True
+    def __call__(self, event):
+        print('called')
+        if fail:
+            raise ValueError('once failed')
+callback = Callback()
+listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=True)
+)PY",
+                              "once.py", &host)
+                    .success);
+    ASSERT_TRUE(context
+                    ->Execute(fail ? "fail=True\ndel callback"
+                                   : "fail=False\ndel callback")
+                    .success);
+    auto result = context->InvokeCallback(host.last_callback, Click(), &host);
+    EXPECT_EQ(!fail, result.success) << result.error;
+    EXPECT_EQ("called\n", result.stdout_text);
+    EXPECT_FALSE(context->InvokeCallback(host.last_callback, Click()).success);
+    EXPECT_TRUE(context->Execute("assert destroyed").success);
+    EXPECT_TRUE(context->RemoveCallback(host.last_callback).success);
+  }
+}
+
 TEST(PythonRuntimeTest, PythonListenersRetainClosuresAndHaveOpaqueHandles) {
   std::string error;
   auto context = PythonContext::Create(&error);
