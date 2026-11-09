@@ -1,0 +1,46 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87116 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 9.48s S Regenerating ninja files
+[0/2] 36.91s F Regenerating ninja files
+rebuild manifest finished
+36.70s Regenerating ninja files
+
+
+
+loading build.ninja... done 8.2990856s
+load siso config done 4.9677099s
+schedule pending:1+ready:0 (node:441039 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441039 edge:6)
+schedule pending:57351+ready:0 (node:441039 edge:57358)
+ 1.74s schedule pending:92850+ready:9229 (node:441039 edge:102079)
+
+build start: Ready 9229 Pending 92850
+[0/39832] 1m09.17s S LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[0/29522] 1m09.47s S CXX obj/services/network/test_support/url_loader_context_for_tests.obj
+[0/12603] 1m10.36s S CXX obj/third_party/blink/renderer/controller/blink_bindings_test_sources/shadow_realm_context_test.obj
+[0/8781] 1m10.51s F LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[1/2548] 1m10.93s S CXX obj/third_party/blink/renderer/core/unit_tests/check_pseudo_has_argument_context_test.obj
+[1/34] 1m17.39s F CXX obj/third_party/blink/renderer/controller/blink_bindings_test_sources/shadow_realm_context_test.obj
+[2/34] 1m18.70s F CXX obj/services/network/test_support/url_loader_context_for_tests.obj
+[3/9] 1m33.52s F CXX obj/third_party/blink/renderer/core/unit_tests/check_pseudo_has_argument_context_test.obj
+[4/6] 1m33.54s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[4/5] 2m04.08s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:5 remote:0 cache:0 skip:102074
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1039(err:5) / r:777(err:0) 2.48GiB / w:1(err:0) 4.04KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+2m04.86s Build Succeeded: 5 steps - 0.04/s

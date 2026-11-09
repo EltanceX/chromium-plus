@@ -1,0 +1,33 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//testing/test.gni")
+
+source_set("settings") {
+  sources = [
+    "native_python_settings.cc",
+    "native_python_settings.h",
+  ]
+  deps = [
+    "//chrome/common:constants",
+    "//chrome/common:native_python_policy",
+  ]
+  public_deps = [
+    "//base",
+    "//components/prefs",
+  ]
+}
+
+test("native_python_settings_unittests") {
+  sources = [
+    "native_python_settings_unittest.cc",
+    "run_all_unittests.cc",
+  ]
+  deps = [
+    ":settings",
+    "//base/test:test_support",
+    "//components/prefs:test_support",
+    "//testing/gtest",
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "response": "pyscript-settings-unit-inputs.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 194,
+  "directObjects": 4665,
+  "archiveMembers": 2819,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/controller/blink_bindings_test_sources/shadow_realm_context_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0xb10e1 (length 54105, kind 0x566a)"
+      ]
+    },
+    {
+      "object": "obj/services/network/test_support/url_loader_context_for_tests.obj",
+      "errors": [
+        "Section 158: relocation 0 has invalid symbol 3981551200 or type 39364",
+        "Invalid CodeView record at 0x703a (length 57967, kind 0x3737)",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/check_pseudo_has_argument_context_test.obj",
+      "errors": [
+        "Invalid CodeView record at 0x2ef10a (length 48345, kind 0x6bcb)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 203.14
+}

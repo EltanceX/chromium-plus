@@ -31,15 +31,41 @@ export interface KernelDebugInfo {
   tabs: KernelDebugTab[];
 }
 
+export interface NativePythonSettings {
+  supported: boolean;
+  enabled: boolean;
+  unrestricted: boolean;
+  allowedOrigin: string;
+  activeEnabled: boolean;
+  activeUnrestricted: boolean;
+  activeAllowedOrigin: string;
+  commandLineOverride: boolean;
+  restartRequired: boolean;
+}
+
 export interface KernelDebugPageBrowserProxy {
   startMonitoring(): void;
   stopMonitoring(): void;
   getTabDetails(tabId: number): Promise<KernelDebugTabDetails|null>;
   closeTab(tabId: number): void;
+  getPythonSettings(): Promise<NativePythonSettings>;
+  setPythonSettings(settings: {
+    enabled: boolean, unrestricted: boolean, allowedOrigin: string,
+  }): Promise<NativePythonSettings>;
 }
 
 export class KernelDebugPageBrowserProxyImpl implements
     KernelDebugPageBrowserProxy {
+  getPythonSettings(): Promise<NativePythonSettings> {
+    return sendWithPromise('getNativePythonSettings');
+  }
+
+  setPythonSettings(settings: {
+    enabled: boolean, unrestricted: boolean, allowedOrigin: string,
+  }): Promise<NativePythonSettings> {
+    return sendWithPromise('setNativePythonSettings', settings);
+  }
+
   startMonitoring() {
     chrome.send('startKernelDebugMonitoring');
   }

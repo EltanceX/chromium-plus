@@ -236,6 +236,7 @@ source_set("impl") {
     "//chrome/browser/media/prefs",
     "//chrome/browser/metrics",
     "//chrome/browser/metrics/critical_user_journeys",
+    "//chrome/browser/native_python:settings",
     "//chrome/browser/net",
     "//chrome/browser/obsolete_system",
     "//chrome/browser/password_manager",

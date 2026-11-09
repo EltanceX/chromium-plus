@@ -1,0 +1,55 @@
+{
+  "validatedAt": "2026-11-09T09:58:54.217636+08:00",
+  "platform": "Windows x64 Debug",
+  "buildTargets": [
+    "chrome",
+    "native_python_settings_unittests",
+    "blink_unittests"
+  ],
+  "nativeSettingsTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "blinkTests": {
+    "passed": 32,
+    "failed": 0
+  },
+  "browserRegressions": {
+    "smoke": {
+      "passed": true,
+      "cases": 12,
+      "sandboxDisabled": false,
+      "chromeArgs": [
+        "--enable-features=NativePythonRuntimeSelfTest"
+      ]
+    },
+    "restricted-regression": {
+      "passed": true,
+      "cases": 27,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    },
+    "dom-regression": {
+      "passed": true,
+      "cases": 17,
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    }
+  },
+  "gnChecks": [
+    "//chrome/browser/native_python:settings",
+    "//third_party/blink/renderer/core:core",
+    "//third_party/blink/renderer/core:unit_tests",
+    "//chrome/renderer:renderer"
+  ],
+  "rendererSandboxConfirmed": true,
+  "reconstructedGeneratedObjects": 9,
+  "reconstructedObjectStructureProblems": 0,
+  "initialTestFixtureFailures": [
+    "missing browser-computed opaque navigation origin",
+    "unregistered extension scheme produced an opaque test origin",
+    "scheme registry restored before Document teardown; fixed by retaining and restoring original origin"
+  ],
+  "initialFailuresRetained": true,
+  "debugInformationAndLinkDiagnosticsBypassed": false
+}

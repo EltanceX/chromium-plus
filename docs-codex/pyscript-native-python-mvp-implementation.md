@@ -7,6 +7,8 @@
 - 状态：2026-11-09 阶段一至五的第一版实现与必要验证完成，适用范围为 Windows x64 Debug 的受控实验配置。最终标准构建、运行时 22 / 22、Blink 28 / 28、DOM 浏览器 17 / 17、解析与权限浏览器 27 / 27、Renderer 沙箱检查 2 / 2、MCBE 17 / 17、MCJE 33 / 33 通过；WPT 两文件与 chromiumPlus 15 / 15 使用已记录诊断配置。chromiumPlus 默认模式仍因网络服务崩溃 / 超时失败，原始记录保留。详见[阶段五验收](pyscript-phase5-build-e2e-acceptance.md)的完整测试矩阵、配置和限制；[阶段一](pyscript-phase1-cpython-runtime.md)、[阶段二](pyscript-phase2-tags-parsing-execution.md)、[阶段三](pyscript-phase3-document-context-dom.md)与[阶段四](pyscript-phase4-budgets-navigation-cleanup.md)保留各阶段实施经过。
 - 本次文档与既有 MCJE Windows SRV 回退工作分别管理，实施时不得覆盖工作区已有修改。
 
+后续扩展（2026-11-09）：已增加设置页启用与页面权限模式，详见[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。本文下述精确来源、顶层、脚本 / CSP 限制描述第一版受限模式；用户显式选择的放开模式及其验证另行记录，Renderer 沙箱保持生效。
+
 ## 1. 验证目标
 
 验证浏览器能直接执行 HTML 内联 Python 代码，通过 C++ 调用 Blink DOM API，将计算结果显示在同一页面中。示例无需页面 JavaScript、Wasm 运行时或本机 Python 安装：

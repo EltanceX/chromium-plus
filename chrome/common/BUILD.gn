@@ -115,8 +115,16 @@ source_set("ini_parser") {
   deps = [ "//base" ]
 }
 
+source_set("native_python_policy") {
+  sources = [ "native_python_policy.h" ]
+  public_deps = [ "//url" ]
+}
+
 group("common") {
-  public_deps = [ ":common_lib" ]
+  public_deps = [
+    ":common_lib",
+    ":native_python_policy",
+  ]
   if (is_win) {
     public_deps += [ "//chrome/common/win:delay_load_hooks" ]
   }
@@ -157,7 +165,6 @@ static_library("common_lib") {
     "media/cdm_registration.h",
     "media/media_resource_provider.cc",
     "media/media_resource_provider.h",
-    "native_python_policy.h",
     "pdf_util.cc",
     "pdf_util.h",
     "pref_names_util.cc",

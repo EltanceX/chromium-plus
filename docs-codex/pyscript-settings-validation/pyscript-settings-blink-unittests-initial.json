@@ -1,0 +1,715 @@
+{
+  "all_tests": [
+    "HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies",
+    "HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced",
+    "HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope",
+    "HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack",
+    "HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit",
+    "HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask",
+    "HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup",
+    "HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument",
+    "HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls",
+    "HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets",
+    "HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles",
+    "HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom",
+    "HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext",
+    "HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts",
+    "HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution",
+    "HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction",
+    "HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext",
+    "HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP",
+    "HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults",
+    "HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit",
+    "HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython",
+    "HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag",
+    "HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag",
+    "HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes",
+    "HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs",
+    "HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder",
+    "HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements",
+    "HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded",
+    "HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP",
+    "HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin",
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender",
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs"
+  ],
+  "disabled_tests": [
+    "AIPageContentAgentTest.ContentEditableMultilineWithBulletIsNotClassifiedAsCustomPassword",
+    "AIPageContentAgentTest.ContentEditableWithMaskedValuePatternSingleLineRedactsAndPersists",
+    "AccessibilityTest.PositionInCSSContent",
+    "AccessibilityTest.PositionInCSSImageContent",
+    "AccessibilityTest.PositionInTableWithCSSContent",
+    "AdTrackerSimTest.InlineAdScriptRunningInNonAdContext",
+    "All/CanvasRenderingContext2DTestAccelerated.DisableAcceleration_UpdateGPUMemoryUsage/Baseline",
+    "All/CanvasRenderingContext2DTestAccelerated.DisableAcceleration_UpdateGPUMemoryUsage/RasterInducingScroll",
+    "All/CanvasRenderingContext2DTestAccelerated.DisableAcceleration_UpdateGPUMemoryUsage/SpeculativeImageDecodes",
+    "All/PaintPropertyTreeUpdateTest.FrameVisibilityChangeUpdatesProperties/0",
+    "All/PaintPropertyTreeUpdateTest.FrameVisibilityChangeUpdatesProperties/1",
+    "All/PrintContextFrameTest.SubframePrintPageLayout/Baseline",
+    "All/PrintContextFrameTest.SubframePrintPageLayout/RasterInducingScroll",
+    "All/PrintContextFrameTest.SubframePrintPageLayout/SpeculativeImageDecodes",
+    "All/VideoPaintPreviewTest.PosterFlagToggleFrameCapture/Baseline",
+    "All/VideoPaintPreviewTest.PosterFlagToggleFrameCapture/RasterInducingScroll",
+    "All/VideoPaintPreviewTest.PosterFlagToggleFrameCapture/SpeculativeImageDecodes",
+    "All/VideoPaintPreviewTest.URLIsRecordedWhenPaintingPreview/Baseline",
+    "All/VideoPaintPreviewTest.URLIsRecordedWhenPaintingPreview/RasterInducingScroll",
+    "All/VideoPaintPreviewTest.URLIsRecordedWhenPaintingPreview/SpeculativeImageDecodes",
+    "All/VisualViewportTest.TestWebFrameRangeAccountsForVisualViewportScroll/Baseline",
+    "All/VisualViewportTest.TestWebFrameRangeAccountsForVisualViewportScroll/RasterInducingScroll",
+    "All/VisualViewportTest.TestWebFrameRangeAccountsForVisualViewportScroll/SpeculativeImageDecodes",
+    "AnimationKeyframeEffectModel.CompositeAdd",
+    "AnimationKeyframeEffectModel.DependsOnUnderlyingValue",
+    "AnimationKeyframeEffectModel.ExtrapolateAdd",
+    "AnimationKeyframeEffectModel.PerKeyframeComposite",
+    "AnimationKeyframeEffectModel.RecompositeCompositableValue",
+    "AnimationKeyframeEffectModel.SingleKeyframeAtOffsetOne",
+    "AnimationKeyframeEffectModel.SingleKeyframeAtOffsetZero",
+    "AudioRendererMixerManagerTest.CreateInputWithSessionId",
+    "BackgroundPageThrottlingTest.NestedSetTimeoutZero",
+    "BlockLayoutAlgorithmTest.FloatFragmentationParallelFlows",
+    "BlockLayoutAlgorithmTest.FloatFragmentationZeroHeight",
+    "CSSParserThreadedTest.FontFaceDescriptor",
+    "CSSParserThreadedTest.SinglePropertyFilter",
+    "CSSParserThreadedTest.SinglePropertyFont",
+    "CSSParserThreadedTest.ValuePropertyFont",
+    "CSSToLengthConversionDataThreadedTest.Construction",
+    "CSSToLengthConversionDataThreadedTest.ConversionEm",
+    "CSSToLengthConversionDataThreadedTest.ConversionPixel",
+    "CSSToLengthConversionDataThreadedTest.ConversionRem",
+    "CSSToLengthConversionDataThreadedTest.ConversionViewport",
+    "DecoderTemplateTest/0.NoPressureByDefault",
+    "DecoderTemplateTest/1.NoPressureByDefault",
+    "DisplayLockUtilitiesTest.ActivatableLockedInclusiveAncestors",
+    "EditingUtilitiesTest.NextNodeIndex",
+    "EditingUtilitiesTest.firstEditablePositionAfterPositionInRoot",
+    "EditingUtilitiesTest.lastEditablePositionBeforePositionInRoot",
+    "EditingUtilitiesTest.tableElementJustBefore",
+    "FilterOperationResolverThreadedTest.CompoundFilter",
+    "FilterOperationResolverThreadedTest.SimpleBlurFilter",
+    "FilterOperationResolverThreadedTest.SimpleDropShadow",
+    "FilterOperationResolverThreadedTest.SimpleMatrixFilter",
+    "FilterOperationResolverThreadedTest.SimpleTransferFilter",
+    "FontFaceCacheTest.MatchCombinations",
+    "FontObjectThreadedTest.FontSelector",
+    "FontObjectThreadedTest.GetDefaultFontData",
+    "FontObjectThreadedTest.GetFontDefinition",
+    "FontObjectThreadedTest.Language",
+    "FontObjectThreadedTest.TextIntercepts",
+    "FontObjectThreadedTest.WordShaperTest",
+    "HTMLCapabilityElementBaseSimTest.MovePEPCToAnotherDocument",
+    "LayoutInlineTest.FocusRingRecursiveContinuations",
+    "LayoutInlineTest.FocusRingRecursiveContinuationsVerticalRL",
+    "LayoutInlineTest.FocusRingRecursiveInlines",
+    "LayoutInlineTest.FocusRingRecursiveInlinesVerticalRL",
+    "LayoutObjectTest.Depth",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/0",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/1",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/2",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/3",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/4",
+    "LazyMediaLoading/LazyLoadMediaParamsTest.LazyLoadAudioNearViewport/5",
+    "MediaStreamVideoTrackUnderlyingSinkTest.WriteToStreamForwardsToMediaStreamSink",
+    "ModuleRecordTest.InstantiateWithSourcePhaseWasmDep",
+    "OffsetMappingTest.CollapseAllSpaces",
+    "PositionTest.NodeAsRangeLastNodeShadow",
+    "ScrollingSimTest.BasicScroll",
+    "ScrollingSimTest.BasicScrollClampedToScrollerSize",
+    "SelectionControllerTest.MiddleClickPasteToggle",
+    "StyledMarkupSerializerTest.AcrossShadow",
+    "TCPWritableStreamWrapperTest.TriggerHasAborted",
+    "TextFragmentAnchorTest.HighlightOnReload",
+    "TextRendererThreadedTest.DrawText",
+    "TextRendererThreadedTest.MeasureText",
+    "VideoAutoFullscreen.OnPlayTriggersFullscreenWithoutGesture",
+    "WebAssociatedURLLoaderTest.UntrustedCheckHeaders",
+    "WebFrameSwapTest.DoNotPropagateDisplayNonePropertyOnSwap",
+    "WebFrameTest.ChangeResourcePriority",
+    "WebFrameTest.PositionForPointTest",
+    "WebFrameTest.SelectRangeSpanContentEditable",
+    "WebMediaPlayerImplTest.DemuxerOverride",
+    "WebRtcAudioRendererTest.MultipleRenderers",
+    "WebRtcAudioRendererTest.StopRenderer",
+    "WebRtcAudioRendererTest.VerifySinkParameters",
+    "WebRtcMediaStreamTrackAdapterTest.LocalVideoTrack",
+    "WebViewTest.CompareSelectAllToContentAsText",
+    "WorkerThreadTest.TerminateWorkerWhileChildIsLoading",
+    "WorkletAnimationTest.CurrentTimeFromScrollTimelineNotOffsetByStartTime",
+    "WorkletAnimationTest.ScrollTimelineNewlyActive",
+    "WorkletAnimationTest.ScrollTimelineNewlyInactive",
+    "WorkletAnimationTest.ScrollTimelineSetPlaybackRate",
+    "WorkletAnimationTest.ScrollTimelineSetPlaybackRateWhilePlaying"
+  ],
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies": [
+        {
+          "elapsed_time_ms": 135,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:21.199Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced": [
+        {
+          "elapsed_time_ms": 139,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:20.919Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope": [
+        {
+          "elapsed_time_ms": 133,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.356Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack": [
+        {
+          "elapsed_time_ms": 172,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:25.376Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit": [
+        {
+          "elapsed_time_ms": 125,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.055Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask": [
+        {
+          "elapsed_time_ms": 136,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.490Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup": [
+        {
+          "elapsed_time_ms": 251,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:09.983Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument": [
+        {
+          "elapsed_time_ms": 129,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:20.789Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls": [
+        {
+          "elapsed_time_ms": 145,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:22.661Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets": [
+        {
+          "elapsed_time_ms": 146,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:21.618Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles": [
+        {
+          "elapsed_time_ms": 173,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:22.487Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom": [
+        {
+          "elapsed_time_ms": 144,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:21.473Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext": [
+        {
+          "elapsed_time_ms": 123,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:22.807Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts": [
+        {
+          "elapsed_time_ms": 582,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:24.793Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution": [
+        {
+          "elapsed_time_ms": 225,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:09.756Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction": [
+        {
+          "elapsed_time_ms": 124,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.627Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext": [
+        {
+          "elapsed_time_ms": 133,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.752Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP": [
+        {
+          "elapsed_time_ms": 139,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:21.060Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults": [
+        {
+          "elapsed_time_ms": 122,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:22.932Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit": [
+        {
+          "elapsed_time_ms": 174,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:23.181Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython": [
+        {
+          "elapsed_time_ms": 137,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:21.335Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag": [
+        {
+          "elapsed_time_ms": 240,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:10.235Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag": [
+        {
+          "elapsed_time_ms": 290,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:11.090Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes": [
+        {
+          "elapsed_time_ms": 128,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:20.661Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs": [
+        {
+          "elapsed_time_ms": 345,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:10.744Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder": [
+        {
+          "elapsed_time_ms": 266,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:10.476Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements": [
+        {
+          "elapsed_time_ms": 160,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:20.500Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded": [
+        {
+          "elapsed_time_ms": 413,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:09.342Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [
+            {
+              "file": "third_party\\blink\\renderer\\core\\loader\\document_loader.cc",
+              "line": 2529,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Check failed: GetFrameLoader().IsOnInitialEmptyDocument(). \n\tbase!base::debug::CollectStackTrace [0x7ff91e58fc56+36] (C:\\src\\src\\base\\debug\\stack_trace_win.cc:395)\n\tbase!base::debug::StackTrace::StackTrace [0x7ff91e52d889+a9] (C:\\src\\src\\base\\debug\\stack_trace.cc:282)\n\tbase!base::debug::StackTrace::StackTrace [0x7ff91e52d7b5+25] (C:\\src\\src\\base\\debug\\stack_trace.cc:276)\n\tbase!logging::LogMessage::Flush [0x7ff91e11cfa9+b9] (C:\\src\\src\\base\\logging.cc:710)\n\tbase!logging::LogMessage::~LogMessage [0x7ff91e11ced2+22] (C:\\src\\src\\base\\logging.cc:699)\n\tbase!logging::`anonymous namespace'::CheckLogMessage::~CheckLogMessage [0x7ff91e086648+58] (C:\\src\\src\\base\\check.cc:199)\n\tbase!logging::`anonymous namespace'::CheckLogMessage::~CheckLogMessage [0x7ff91e0865c9+29] (C:\\src\\src\\base\\check.cc:196)\n\tbase!std::__Cr::default_delete<logging::LogMessage>::operator() [0x7ff91e0871ed+2d] (C:\\src\\src\\third_party\\libc++\\src\\include\\__memory\\unique_ptr.h:74)\n\tbase!std::__Cr::unique_ptr<logging::LogMessage,std::__Cr::default_delete<logging::LogMessage> >::reset [0x7ff91e085edf+3f] (C:\\src\\src\\third_party\\libc++\\src\\include\\__memory\\unique_ptr.h:264)\n\tbase!logging::CheckNoreturnError::~CheckNoreturnError [0x7ff91e085f27+17] (C:\\src\\src\\base\\check.cc:364)\n\tblink_core!blink::DocumentLoader::CalculateOrigin [0x7ff8c4143093+973] (C:\\src\\src\\third_party\\blink\\renderer\\core\\loader\\document_loader.cc:2529)\n\tblink_core!blink::DocumentLoader::InitializeWindow [0x7ff8c4147ea0+1750] (C:\\src\\src\\third_party\\blink\\renderer\\core\\loader\\document_loader.cc:2811)\n\tblink_core!blink::DocumentLoader::CommitNavigation [0x7ff8c415202f+216f] (C:\\src\\src\\third_party\\blink\\renderer\\core\\loader\\document_loader.cc:3057)\n\tblink_core!blink::FrameLoader::CommitDocumentLoader [0x7ff8c421cfc6+2536] (C:\\src\\src\\third_party\\blink\\renderer\\core\\loader\\frame_loader.cc:1540)\n\tblink_core!blink::FrameLoader::CommitNavigation [0x7ff8c423c06a+5e6a] (C:\\src\\src\\third_party\\blink\\renderer\\core\\loader\\frame_loader.cc:1351)\n\tblink_core!blink::WebLocalFrameImpl::CommitNavigation [0x7ff8c218543f+33f] (C:\\src\\src\\third_party\\blink\\renderer\\core\\frame\\web_local_frame_impl.cc:2895)\n\tblink_unittests!blink::frame_test_helpers::LoadFrameDontWait [0x7ff7988c83c9+349] (C:\\src\\src\\third_party\\blink\\renderer\\core\\frame\\frame_test_helpers.cc:218)\n\tblink_unittests!blink::SimTest::LoadURL [0x7ff79895c2fa+3ca] (C:\\src\\src\\third_party\\blink\\renderer\\core\\testing\\sim\\sim_test.cc:145)\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest::Load [0x7ff79d56e35c+bc] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:113)\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_UnrestrictedPagesBypassOriginAndInlineCSP_Test::TestBody [0x7ff79d570636+c6] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:238)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff796d83945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n\tblink_unittests!testing::Test::Run [0x7ff796d838c3+93] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2753)\n\tblink_unittests!testing::TestInfo::Run [0x7ff796d844e7+117] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2895)\n\tblink_unittests!testing::TestSuite::Run [0x7ff796d854bb+19b] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:3072)\n\tblink_unittests!testing::internal::UnitTestImpl::RunAllTests [0x7ff796d92589+589] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:6063)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff796d91feb+4b] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n\tblink_unittests!testing::UnitTest::Run [0x7ff796d91e11+141] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:5602)\n\tblink_unittests!RUN_ALL_TESTS [0x7ff7a227f091+11] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\include\\gtest\\gtest.h:2337)\n\tblink_unittests!base::TestSuite::RunAllTests [0x7ff7a227f06e+e] (C:\\src\\src\\base\\test\\test_suite.cc:680)\n\tblink_unittests!base::TestSuite::Run [0x7ff7a227d249+b9] (C:\\src\\src\\base\\test\\test_suite.cc:440)\n\tblink_unittests!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff7968b9faa+1a] (C:\\src\\src\\base\\functional\\bind_internal.h:740)\n\tblink_unittests!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff7968b9f5b+4b] (C:\\src\\src\\base\\functional\\bind_internal.h:932)\n\tblink_unittests!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff7968b9f02+22] (C:\\src\\src\\base\\functional\\bind_internal.h:1069)\n\tblink_unittests!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff7968b9e4f+2f] (C:\\src\\src\\base\\functional\\bind_internal.h:982)\n\tblink_unittests!base::OnceCallback<int ()>::Run [0x7ff7a2265222+b2] (C:\\src\\src\\base\\functional\\callback.h:155)\n\tblink_unittests!base::`anonymous namespace'::RunTestSuite [0x7ff7a2264c93+1c3] (C:\\src\\src\\base\\test\\launcher\\unit_test_launcher.cc:189)\n\tblink_unittests!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff7a2263044+184] (C:\\src\\src\\base\\test\\launcher\\unit_test_launcher.cc:272)\n\tblink_unittests!base::LaunchUnitTests [0x7ff7a2262d97+177] (C:\\src\\src\\base\\test\\launcher\\unit_test_launcher.cc:337)\n\tblink_unittests!main [0x7ff7968b95ac+dc] (C:\\src\\src\\third_party\\blink\\renderer\\controller\\tests\\run_all_tests.cc:18)\n\tblink_unittests!invoke_main [0x7ff7a3b0cb49+39] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:79)\n\tblink_unittests!__scrt_common_main_seh [0x7ff7a3b0cc82+132] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:288)\n\tblink_unittests!__scrt_common_main [0x7ff7a3b0cd0e+e] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:331)\n\tblink_unittests!mainCRTStartup [0x7ff7a3b0cd2e+e] (D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_main.cpp:17)\n\tKERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]\n\tntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]\n\n",
+              "message_base64": "Q2hlY2sgZmFpbGVkOiBHZXRGcmFtZUxvYWRlcigpLklzT25Jbml0aWFsRW1wdHlEb2N1bWVudCgpLiAKCWJhc2UhYmFzZTo6ZGVidWc6OkNvbGxlY3RTdGFja1RyYWNlIFsweDdmZjkxZTU4ZmM1NiszNl0gKEM6XHNyY1xzcmNcYmFzZVxkZWJ1Z1xzdGFja190cmFjZV93aW4uY2M6Mzk1KQoJYmFzZSFiYXNlOjpkZWJ1Zzo6U3RhY2tUcmFjZTo6U3RhY2tUcmFjZSBbMHg3ZmY5MWU1MmQ4ODkrYTldIChDOlxzcmNcc3JjXGJhc2VcZGVidWdcc3RhY2tfdHJhY2UuY2M6MjgyKQoJYmFzZSFiYXNlOjpkZWJ1Zzo6U3RhY2tUcmFjZTo6U3RhY2tUcmFjZSBbMHg3ZmY5MWU1MmQ3YjUrMjVdIChDOlxzcmNcc3JjXGJhc2VcZGVidWdcc3RhY2tfdHJhY2UuY2M6Mjc2KQoJYmFzZSFsb2dnaW5nOjpMb2dNZXNzYWdlOjpGbHVzaCBbMHg3ZmY5MWUxMWNmYTkrYjldIChDOlxzcmNcc3JjXGJhc2VcbG9nZ2luZy5jYzo3MTApCgliYXNlIWxvZ2dpbmc6OkxvZ01lc3NhZ2U6On5Mb2dNZXNzYWdlIFsweDdmZjkxZTExY2VkMisyMl0gKEM6XHNyY1xzcmNcYmFzZVxsb2dnaW5nLmNjOjY5OSkKCWJhc2UhbG9nZ2luZzo6YGFub255bW91cyBuYW1lc3BhY2UnOjpDaGVja0xvZ01lc3NhZ2U6On5DaGVja0xvZ01lc3NhZ2UgWzB4N2ZmOTFlMDg2NjQ4KzU4XSAoQzpcc3JjXHNyY1xiYXNlXGNoZWNrLmNjOjE5OSkKCWJhc2UhbG9nZ2luZzo6YGFub255bW91cyBuYW1lc3BhY2UnOjpDaGVja0xvZ01lc3NhZ2U6On5DaGVja0xvZ01lc3NhZ2UgWzB4N2ZmOTFlMDg2NWM5KzI5XSAoQzpcc3JjXHNyY1xiYXNlXGNoZWNrLmNjOjE5NikKCWJhc2Uhc3RkOjpfX0NyOjpkZWZhdWx0X2RlbGV0ZTxsb2dnaW5nOjpMb2dNZXNzYWdlPjo6b3BlcmF0b3IoKSBbMHg3ZmY5MWUwODcxZWQrMmRdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGxpYmMrK1xzcmNcaW5jbHVkZVxfX21lbW9yeVx1bmlxdWVfcHRyLmg6NzQpCgliYXNlIXN0ZDo6X19Dcjo6dW5pcXVlX3B0cjxsb2dnaW5nOjpMb2dNZXNzYWdlLHN0ZDo6X19Dcjo6ZGVmYXVsdF9kZWxldGU8bG9nZ2luZzo6TG9nTWVzc2FnZT4gPjo6cmVzZXQgWzB4N2ZmOTFlMDg1ZWRmKzNmXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxsaWJjKytcc3JjXGluY2x1ZGVcX19tZW1vcnlcdW5pcXVlX3B0ci5oOjI2NCkKCWJhc2UhbG9nZ2luZzo6Q2hlY2tOb3JldHVybkVycm9yOjp+Q2hlY2tOb3JldHVybkVycm9yIFsweDdmZjkxZTA4NWYyNysxN10gKEM6XHNyY1xzcmNcYmFzZVxjaGVjay5jYzozNjQpCglibGlua19jb3JlIWJsaW5rOjpEb2N1bWVudExvYWRlcjo6Q2FsY3VsYXRlT3JpZ2luIFsweDdmZjhjNDE0MzA5Mys5NzNdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcbG9hZGVyXGRvY3VtZW50X2xvYWRlci5jYzoyNTI5KQoJYmxpbmtfY29yZSFibGluazo6RG9jdW1lbnRMb2FkZXI6OkluaXRpYWxpemVXaW5kb3cgWzB4N2ZmOGM0MTQ3ZWEwKzE3NTBdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcbG9hZGVyXGRvY3VtZW50X2xvYWRlci5jYzoyODExKQoJYmxpbmtfY29yZSFibGluazo6RG9jdW1lbnRMb2FkZXI6OkNvbW1pdE5hdmlnYXRpb24gWzB4N2ZmOGM0MTUyMDJmKzIxNmZdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcbG9hZGVyXGRvY3VtZW50X2xvYWRlci5jYzozMDU3KQoJYmxpbmtfY29yZSFibGluazo6RnJhbWVMb2FkZXI6OkNvbW1pdERvY3VtZW50TG9hZGVyIFsweDdmZjhjNDIxY2ZjNisyNTM2XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxjb3JlXGxvYWRlclxmcmFtZV9sb2FkZXIuY2M6MTU0MCkKCWJsaW5rX2NvcmUhYmxpbms6OkZyYW1lTG9hZGVyOjpDb21taXROYXZpZ2F0aW9uIFsweDdmZjhjNDIzYzA2YSs1ZTZhXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxjb3JlXGxvYWRlclxmcmFtZV9sb2FkZXIuY2M6MTM1MSkKCWJsaW5rX2NvcmUhYmxpbms6OldlYkxvY2FsRnJhbWVJbXBsOjpDb21taXROYXZpZ2F0aW9uIFsweDdmZjhjMjE4NTQzZiszM2ZdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcZnJhbWVcd2ViX2xvY2FsX2ZyYW1lX2ltcGwuY2M6Mjg5NSkKCWJsaW5rX3VuaXR0ZXN0cyFibGluazo6ZnJhbWVfdGVzdF9oZWxwZXJzOjpMb2FkRnJhbWVEb250V2FpdCBbMHg3ZmY3OTg4YzgzYzkrMzQ5XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxjb3JlXGZyYW1lXGZyYW1lX3Rlc3RfaGVscGVycy5jYzoyMTgpCglibGlua191bml0dGVzdHMhYmxpbms6OlNpbVRlc3Q6OkxvYWRVUkwgWzB4N2ZmNzk4OTVjMmZhKzNjYV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcYmxpbmtccmVuZGVyZXJcY29yZVx0ZXN0aW5nXHNpbVxzaW1fdGVzdC5jYzoxNDUpCglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6SFRNTFB5U2NyaXB0RWxlbWVudFRlc3Q6OkxvYWQgWzB4N2ZmNzlkNTZlMzVjK2JjXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxjb3JlXGh0bWxcaHRtbF9weV9zY3JpcHRfZWxlbWVudF90ZXN0LmNjOjExMykKCWJsaW5rX3VuaXR0ZXN0cyFibGluazo6YGFub255bW91cyBuYW1lc3BhY2UnOjpIVE1MUHlTY3JpcHRFbGVtZW50VGVzdF9VbnJlc3RyaWN0ZWRQYWdlc0J5cGFzc09yaWdpbkFuZElubGluZUNTUF9UZXN0OjpUZXN0Qm9keSBbMHg3ZmY3OWQ1NzA2MzYrYzZdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcaHRtbFxodG1sX3B5X3NjcmlwdF9lbGVtZW50X3Rlc3QuY2M6MjM4KQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OmludGVybmFsOjpIYW5kbGVFeGNlcHRpb25zSW5NZXRob2RJZlN1cHBvcnRlZDx0ZXN0aW5nOjpUZXN0LHZvaWQ+IFsweDdmZjc5NmQ4Mzk0NSs0NV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxzcmNcZ3Rlc3QuY2M6MjcyOSkKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjpUZXN0OjpSdW4gWzB4N2ZmNzk2ZDgzOGMzKzkzXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxnb29nbGV0ZXN0XHNyY1xnb29nbGV0ZXN0XHNyY1xndGVzdC5jYzoyNzUzKQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OlRlc3RJbmZvOjpSdW4gWzB4N2ZmNzk2ZDg0NGU3KzExN10gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxzcmNcZ3Rlc3QuY2M6Mjg5NSkKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjpUZXN0U3VpdGU6OlJ1biBbMHg3ZmY3OTZkODU0YmIrMTliXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxnb29nbGV0ZXN0XHNyY1xnb29nbGV0ZXN0XHNyY1xndGVzdC5jYzozMDcyKQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OmludGVybmFsOjpVbml0VGVzdEltcGw6OlJ1bkFsbFRlc3RzIFsweDdmZjc5NmQ5MjU4OSs1ODldIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGdvb2dsZXRlc3Rcc3JjXGdvb2dsZXRlc3Rcc3JjXGd0ZXN0LmNjOjYwNjMpCglibGlua191bml0dGVzdHMhdGVzdGluZzo6aW50ZXJuYWw6OkhhbmRsZUV4Y2VwdGlvbnNJbk1ldGhvZElmU3VwcG9ydGVkPHRlc3Rpbmc6OmludGVybmFsOjpVbml0VGVzdEltcGwsYm9vbD4gWzB4N2ZmNzk2ZDkxZmViKzRiXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxnb29nbGV0ZXN0XHNyY1xnb29nbGV0ZXN0XHNyY1xndGVzdC5jYzoyNzI5KQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OlVuaXRUZXN0OjpSdW4gWzB4N2ZmNzk2ZDkxZTExKzE0MV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxzcmNcZ3Rlc3QuY2M6NTYwMikKCWJsaW5rX3VuaXR0ZXN0cyFSVU5fQUxMX1RFU1RTIFsweDdmZjdhMjI3ZjA5MSsxMV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxpbmNsdWRlXGd0ZXN0XGd0ZXN0Lmg6MjMzNykKCWJsaW5rX3VuaXR0ZXN0cyFiYXNlOjpUZXN0U3VpdGU6OlJ1bkFsbFRlc3RzIFsweDdmZjdhMjI3ZjA2ZStlXSAoQzpcc3JjXHNyY1xiYXNlXHRlc3RcdGVzdF9zdWl0ZS5jYzo2ODApCglibGlua191bml0dGVzdHMhYmFzZTo6VGVzdFN1aXRlOjpSdW4gWzB4N2ZmN2EyMjdkMjQ5K2I5XSAoQzpcc3JjXHNyY1xiYXNlXHRlc3RcdGVzdF9zdWl0ZS5jYzo0NDApCglibGlua191bml0dGVzdHMhYmFzZTo6aW50ZXJuYWw6OkRlY2F5ZWRGdW5jdG9yVHJhaXRzPGludCAoYmFzZTo6VGVzdFN1aXRlOjoqKSgpLGJhc2U6OlRlc3RTdWl0ZSAqPjo6SW52b2tlPGludCAoYmFzZTo6VGVzdFN1aXRlOjoqKSgpLGJhc2U6OlRlc3RTdWl0ZSAqPiBbMHg3ZmY3OTY4YjlmYWErMWFdIChDOlxzcmNcc3JjXGJhc2VcZnVuY3Rpb25hbFxiaW5kX2ludGVybmFsLmg6NzQwKQoJYmxpbmtfdW5pdHRlc3RzIWJhc2U6OmludGVybmFsOjpJbnZva2VIZWxwZXI8MCxiYXNlOjppbnRlcm5hbDo6RnVuY3RvclRyYWl0czxpbnQgKGJhc2U6OlRlc3RTdWl0ZTo6KiYmKSgpLGJhc2U6OlRlc3RTdWl0ZSAqPixpbnQsMD46Ok1ha2VJdFNvPGludCAoYmFzZTo6VGVzdFN1aXRlOjoqKSgpLHN0ZDo6X19Dcjo6dHVwbGU8YmFzZTo6aW50ZXJuYWw6OlVucmV0YWluZWRXcmFwcGVyPGJhc2U6OlRlc3RTdWl0ZSxiYXNlOjp1bnJldGFpbmVkX3RyYWl0czo6TWF5Tm90RGFuZyBbMHg3ZmY3OTY4YjlmNWIrNGJdIChDOlxzcmNcc3JjXGJhc2VcZnVuY3Rpb25hbFxiaW5kX2ludGVybmFsLmg6OTMyKQoJYmxpbmtfdW5pdHRlc3RzIWJhc2U6OmludGVybmFsOjpJbnZva2VyPGJhc2U6OmludGVybmFsOjpGdW5jdG9yVHJhaXRzPGludCAoYmFzZTo6VGVzdFN1aXRlOjoqJiYpKCksYmFzZTo6VGVzdFN1aXRlICo+LGJhc2U6OmludGVybmFsOjpCaW5kU3RhdGU8MSwxLDAsaW50IChiYXNlOjpUZXN0U3VpdGU6OiopKCksYmFzZTo6aW50ZXJuYWw6OlVucmV0YWluZWRXcmFwcGVyPGJhc2U6OlRlc3RTdWl0ZSxiYXNlOjp1bnJldGFpbmVkX3RyYWl0czo6TWF5Tm90RGFuZ2xlLDA+ID4saSBbMHg3ZmY3OTY4YjlmMDIrMjJdIChDOlxzcmNcc3JjXGJhc2VcZnVuY3Rpb25hbFxiaW5kX2ludGVybmFsLmg6MTA2OSkKCWJsaW5rX3VuaXR0ZXN0cyFiYXNlOjppbnRlcm5hbDo6SW52b2tlcjxiYXNlOjppbnRlcm5hbDo6RnVuY3RvclRyYWl0czxpbnQgKGJhc2U6OlRlc3RTdWl0ZTo6KiYmKSgpLGJhc2U6OlRlc3RTdWl0ZSAqPixiYXNlOjppbnRlcm5hbDo6QmluZFN0YXRlPDEsMSwwLGludCAoYmFzZTo6VGVzdFN1aXRlOjoqKSgpLGJhc2U6OmludGVybmFsOjpVbnJldGFpbmVkV3JhcHBlcjxiYXNlOjpUZXN0U3VpdGUsYmFzZTo6dW5yZXRhaW5lZF90cmFpdHM6Ok1heU5vdERhbmdsZSwwPiA+LGkgWzB4N2ZmNzk2OGI5ZTRmKzJmXSAoQzpcc3JjXHNyY1xiYXNlXGZ1bmN0aW9uYWxcYmluZF9pbnRlcm5hbC5oOjk4MikKCWJsaW5rX3VuaXR0ZXN0cyFiYXNlOjpPbmNlQ2FsbGJhY2s8aW50ICgpPjo6UnVuIFsweDdmZjdhMjI2NTIyMitiMl0gKEM6XHNyY1xzcmNcYmFzZVxmdW5jdGlvbmFsXGNhbGxiYWNrLmg6MTU1KQoJYmxpbmtfdW5pdHRlc3RzIWJhc2U6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6UnVuVGVzdFN1aXRlIFsweDdmZjdhMjI2NGM5MysxYzNdIChDOlxzcmNcc3JjXGJhc2VcdGVzdFxsYXVuY2hlclx1bml0X3Rlc3RfbGF1bmNoZXIuY2M6MTg5KQoJYmxpbmtfdW5pdHRlc3RzIWJhc2U6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6TGF1bmNoVW5pdFRlc3RzSW50ZXJuYWwgWzB4N2ZmN2EyMjYzMDQ0KzE4NF0gKEM6XHNyY1xzcmNcYmFzZVx0ZXN0XGxhdW5jaGVyXHVuaXRfdGVzdF9sYXVuY2hlci5jYzoyNzIpCglibGlua191bml0dGVzdHMhYmFzZTo6TGF1bmNoVW5pdFRlc3RzIFsweDdmZjdhMjI2MmQ5NysxNzddIChDOlxzcmNcc3JjXGJhc2VcdGVzdFxsYXVuY2hlclx1bml0X3Rlc3RfbGF1bmNoZXIuY2M6MzM3KQoJYmxpbmtfdW5pdHRlc3RzIW1haW4gWzB4N2ZmNzk2OGI5NWFjK2RjXSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxjb250cm9sbGVyXHRlc3RzXHJ1bl9hbGxfdGVzdHMuY2M6MTgpCglibGlua191bml0dGVzdHMhaW52b2tlX21haW4gWzB4N2ZmN2EzYjBjYjQ5KzM5XSAoRDpcYVxfd29ya1wxXHNcc3JjXHZjdG9vbHNcY3J0XHZjc3RhcnR1cFxzcmNcc3RhcnR1cFxleGVfY29tbW9uLmlubDo3OSkKCWJsaW5rX3VuaXR0ZXN0cyFfX3NjcnRfY29tbW9uX21haW5fc2VoIFsweDdmZjdhM2IwY2M4MisxMzJdIChEOlxhXF93b3JrXDFcc1xzcmNcdmN0b29sc1xjcnRcdmNzdGFydHVwXHNyY1xzdGFydHVwXGV4ZV9jb21tb24uaW5sOjI4OCkKCWJsaW5rX3VuaXR0ZXN0cyFfX3NjcnRfY29tbW9uX21haW4gWzB4N2ZmN2EzYjBjZDBlK2VdIChEOlxhXF93b3JrXDFcc1xzcmNcdmN0b29sc1xjcnRcdmNzdGFydHVwXHNyY1xzdGFydHVwXGV4ZV9jb21tb24uaW5sOjMzMSkKCWJsaW5rX3VuaXR0ZXN0cyFtYWluQ1JUU3RhcnR1cCBbMHg3ZmY3YTNiMGNkMmUrZV0gKEQ6XGFcX3dvcmtcMVxzXHNyY1x2Y3Rvb2xzXGNydFx2Y3N0YXJ0dXBcc3JjXHN0YXJ0dXBcZXhlX21haW4uY3BwOjE3KQoJS0VSTkVMMzIhQmFzZVRocmVhZEluaXRUaHVuayBbMHg3ZmY5ODY3MmRkYTcrMTddCgludGRsbCFSdGxVc2VyVGhyZWFkU3RhcnQgWzB4N2ZmOTg4ODdlZTRjKzJjXQoK",
+              "summary": "Check failed: GetFrameLoader().IsOnInitialEmptyDocument(). ",
+              "summary_base64": "Q2hlY2sgZmFpbGVkOiBHZXRGcmFtZUxvYWRlcigpLklzT25Jbml0aWFsRW1wdHlEb2N1bWVudCgpLiA=",
+              "type": "fatal_failure"
+            }
+          ],
+          "status": "CRASH",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:11.382Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin": [
+        {
+          "elapsed_time_ms": 1877,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+              "line": 279,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  0u\n    Which is: 0\n  runner_.contexts_created\n    Which is: 1\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_UnrestrictedPagesRejectInheritedPrivilegedOrigin_Test::TestBody [0x7ff79d571b69+2d9] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:279)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff796d83945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDB1CiAgICBXaGljaCBpczogMAogIHJ1bm5lcl8uY29udGV4dHNfY3JlYXRlZAogICAgV2hpY2ggaXM6IDEKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6SFRNTFB5U2NyaXB0RWxlbWVudFRlc3RfVW5yZXN0cmljdGVkUGFnZXNSZWplY3RJbmhlcml0ZWRQcml2aWxlZ2VkT3JpZ2luX1Rlc3Q6OlRlc3RCb2R5IFsweDdmZjc5ZDU3MWI2OSsyZDldIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcaHRtbFxodG1sX3B5X3NjcmlwdF9lbGVtZW50X3Rlc3QuY2M6Mjc5KQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OmludGVybmFsOjpIYW5kbGVFeGNlcHRpb25zSW5NZXRob2RJZlN1cHBvcnRlZDx0ZXN0aW5nOjpUZXN0LHZvaWQ+IFsweDdmZjc5NmQ4Mzk0NSs0NV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxzcmNcZ3Rlc3QuY2M6MjcyOSkK",
+              "summary": "Expected equality of these values:\n  0u\n    Which is: 0\n  runner_.contexts_created\n    Which is: 1",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDB1CiAgICBXaGljaCBpczogMAogIHJ1bm5lcl8uY29udGV4dHNfY3JlYXRlZAogICAgV2hpY2ggaXM6IDE=",
+              "type": "failure"
+            }
+          ],
+          "status": "FAILURE",
+          "thread_id": 17212,
+          "timestamp": "2026-11-09T01:40:18.621Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "result_parts": [],
+          "status": "NOTRUN"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "result_parts": [],
+          "status": "NOTRUN"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 336
+    },
+    "HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 307
+    },
+    "HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 513
+    },
+    "HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 583
+    },
+    "HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 476
+    },
+    "HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 526
+    },
+    "HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 170
+    },
+    "HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 300
+    },
+    "HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 434
+    },
+    "HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 382
+    },
+    "HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 406
+    },
+    "HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 349
+    },
+    "HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 455
+    },
+    "HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 568
+    },
+    "HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 150
+    },
+    "HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 546
+    },
+    "HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 561
+    },
+    "HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 320
+    },
+    "HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 465
+    },
+    "HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 496
+    },
+    "HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 343
+    },
+    "HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 178
+    },
+    "HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 220
+    },
+    "HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 292
+    },
+    "HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 202
+    },
+    "HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 193
+    },
+    "HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 282
+    },
+    "HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 122
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 232
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 268
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 260
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 242
+    }
+  }
+}

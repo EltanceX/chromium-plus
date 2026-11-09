@@ -132,6 +132,7 @@
 #include "chrome/browser/media/webrtc/rtc_diagnostic_logging_utils.h"
 #include "chrome/browser/media/webrtc/webrtc_logging_controller.h"
 #include "chrome/browser/metrics/chrome_feature_list_creator.h"
+#include "chrome/browser/native_python/native_python_settings.h"
 #include "chrome/browser/navigation_predictor/anchor_element_preloader.h"
 #include "chrome/browser/net/chrome_network_delegate.h"
 #include "chrome/browser/net/disk_cache_dir_util.h"
@@ -239,7 +240,6 @@
 #include "chrome/common/env_vars.h"
 #include "chrome/common/google_url_loader_throttle.h"
 #include "chrome/common/logging_chrome.h"
-#include "chrome/common/native_python_policy.h"
 #include "chrome/common/pref_names.h"
 #include "chrome/common/profiler/main_thread_stack_sampling_profiler.h"
 #include "chrome/common/profiler/process_type.h"
@@ -3159,12 +3159,7 @@ void ChromeContentBrowserClient::AppendExtraCommandLineSwitches(
 
   if (process_type == switches::kRendererProcess) {
 #if BUILDFLAG(IS_WIN) && defined(ARCH_CPU_X86_64)
-    if (const auto origin = ParseNativePythonAllowedOrigin(
-            browser_command_line.GetSwitchValueASCII(
-                switches::kNativePythonAllowedOrigin))) {
-      command_line->AppendSwitchASCII(switches::kNativePythonAllowedOrigin,
-                                      origin->Serialize());
-    }
+    native_python_settings::AppendRendererSwitches(*command_line);
 #endif
     content::RenderProcessHost* process =
         content::RenderProcessHost::FromID(child_process_id);

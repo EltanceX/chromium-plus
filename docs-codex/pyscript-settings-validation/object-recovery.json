@@ -1,0 +1,251 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_parser.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\css_parser.obj",
+    "sha256": "ad23139232236cf85aa0131fb1236465e6fde1033cbf7f52ad9d41f619727b60",
+    "size": 3727136,
+    "mtime": 1794158632.1992686,
+    "scanErrors": [
+      "Section 3573: relocation 3 has invalid symbol 3187 or type 31813",
+      "Section 3574: relocation 0 has invalid symbol 2458346694 or type 2999",
+      "Section 3575: relocation 0 has invalid symbol 2899339718 or type 7307",
+      "Section 3576: relocation 0 has invalid symbol 1369202125 or type 42159",
+      "Section 3577: relocation 0 has invalid symbol 4106809110 or type 11620",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "scanErrorCount": 74,
+    "readErrors": [
+      "Section 3573: relocation 3 has invalid symbol 3187 or type 31813",
+      "Section 3574: relocation 0 has invalid symbol 2458346694 or type 2999",
+      "Section 3575: relocation 0 has invalid symbol 2899339718 or type 7307",
+      "Section 3576: relocation 0 has invalid symbol 1369202125 or type 42159",
+      "Section 3577: relocation 0 has invalid symbol 4106809110 or type 11620",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedErrors": [
+      "Section 3573: relocation 3 has invalid symbol 3187 or type 31813",
+      "Section 3574: relocation 0 has invalid symbol 2458346694 or type 2999",
+      "Section 3575: relocation 0 has invalid symbol 2899339718 or type 7307",
+      "Section 3576: relocation 0 has invalid symbol 1369202125 or type 42159",
+      "Section 3577: relocation 0 has invalid symbol 4106809110 or type 11620",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedSha256": "ad23139232236cf85aa0131fb1236465e6fde1033cbf7f52ad9d41f619727b60",
+    "rebuiltSha256": "0620663d5a84d6f80e224d8a7efe96f56be15a0b3cf94e272d2be2c755dc7f9e",
+    "rebuiltSize": 3727136,
+    "hashChangedAfterRebuild": true
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/child_list_mutation_scope.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\child_list_mutation_scope.obj",
+    "sha256": "364dfc0a1e69d04224ee308869bd6bace81e23adb42068ba34fad4a35df39b35",
+    "size": 3918669,
+    "mtime": 1794119324.6756365,
+    "scanErrors": [
+      "Invalid CodeView record at 0x2b332c (length 39643, kind 0x1ef7)"
+    ],
+    "scanErrorCount": 1,
+    "readErrors": [
+      "Invalid CodeView record at 0x2b332c (length 39643, kind 0x1ef7)"
+    ],
+    "mappedErrors": [
+      "Invalid CodeView record at 0x2b332c (length 39643, kind 0x1ef7)"
+    ],
+    "mappedSha256": "364dfc0a1e69d04224ee308869bd6bace81e23adb42068ba34fad4a35df39b35",
+    "rebuiltSha256": "033c5498418ca06a22517a0e334d8a355e76b583e4a04ee48062f355ec94bf28",
+    "rebuiltSize": 3918669,
+    "hashChangedAfterRebuild": true
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/editing_utilities.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\editing_utilities.obj",
+    "sha256": "703165e0b12c8d95755bd65ad1110833494aa3ff716b2ba97db1fe84c3f2b87e",
+    "size": 10035888,
+    "mtime": 1794144688.3294654,
+    "scanErrors": [
+      "Section 11579: relocation 0 has invalid symbol 393927269 or type 33243",
+      "Section 11580: relocation 0 has invalid symbol 3032259029 or type 25438",
+      "Section 11581: relocation 0 has invalid symbol 2125446514 or type 38040",
+      "Section 11582: relocation 0 has invalid symbol 778362974 or type 12039",
+      "Section 11583: relocation 0 has invalid symbol 446860776 or type 27555",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "scanErrorCount": 327,
+    "readErrors": [
+      "Section 11579: relocation 0 has invalid symbol 393927269 or type 33243",
+      "Section 11580: relocation 0 has invalid symbol 3032259029 or type 25438",
+      "Section 11581: relocation 0 has invalid symbol 2125446514 or type 38040",
+      "Section 11582: relocation 0 has invalid symbol 778362974 or type 12039",
+      "Section 11583: relocation 0 has invalid symbol 446860776 or type 27555",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedErrors": [
+      "Section 11579: relocation 0 has invalid symbol 393927269 or type 33243",
+      "Section 11580: relocation 0 has invalid symbol 3032259029 or type 25438",
+      "Section 11581: relocation 0 has invalid symbol 2125446514 or type 38040",
+      "Section 11582: relocation 0 has invalid symbol 778362974 or type 12039",
+      "Section 11583: relocation 0 has invalid symbol 446860776 or type 27555",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "mappedSha256": "703165e0b12c8d95755bd65ad1110833494aa3ff716b2ba97db1fe84c3f2b87e",
+    "rebuiltSha256": "6e1d3e3de95f1b23e7f288348f3f58cb3c69c261449002592e5d175f13f78219",
+    "rebuiltSize": 10035888,
+    "hashChangedAfterRebuild": true
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/selection_adjuster.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\selection_adjuster.obj",
+    "sha256": "8b0550487839a065ebbfdb74c6a3f0fa9916ede55d39b250d2bcf6c2979ebd8b",
+    "size": 7274224,
+    "mtime": 1794125292.0584688,
+    "scanErrors": [
+      "Symbol 21694: invalid section 29006, total 10852",
+      "Symbol 21703: invalid section 22180, total 10852",
+      "Symbol 21913: invalid section 32535, total 10852",
+      "Symbol 22055: invalid section 34852, total 10852",
+      "Symbol 22309: invalid section 64381, total 10852"
+    ],
+    "scanErrorCount": 5,
+    "readErrors": [
+      "Symbol 21694: invalid section 29006, total 10852",
+      "Symbol 21703: invalid section 22180, total 10852",
+      "Symbol 21913: invalid section 32535, total 10852",
+      "Symbol 22055: invalid section 34852, total 10852",
+      "Symbol 22309: invalid section 64381, total 10852"
+    ],
+    "mappedErrors": [
+      "Symbol 21694: invalid section 29006, total 10852",
+      "Symbol 21703: invalid section 22180, total 10852",
+      "Symbol 21913: invalid section 32535, total 10852",
+      "Symbol 22055: invalid section 34852, total 10852",
+      "Symbol 22309: invalid section 64381, total 10852"
+    ],
+    "mappedSha256": "8b0550487839a065ebbfdb74c6a3f0fa9916ede55d39b250d2bcf6c2979ebd8b",
+    "rebuiltSha256": "597a039709d398e03ca7487a074a7846e0da3e631917b13e8d517202a0007ef1",
+    "rebuiltSize": 7274224,
+    "hashChangedAfterRebuild": true
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/form_data.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\form_data.obj",
+    "sha256": "19c33708255f7842b17e6a987dbdaeee29d18d0da3cea61844b20810d0bb319b",
+    "size": 4132922,
+    "mtime": 1794124056.3190973,
+    "scanErrors": [
+      "Section 1536: invalid raw data extent",
+      "Section 1536: invalid relocation extent",
+      "Section 1537: invalid raw data extent",
+      "Section 1537: invalid relocation extent",
+      "Section 1538: invalid raw data extent",
+      "Section 1538: invalid relocation extent"
+    ],
+    "scanErrorCount": 6,
+    "readErrors": [
+      "Section 1536: invalid raw data extent",
+      "Section 1536: invalid relocation extent",
+      "Section 1537: invalid raw data extent",
+      "Section 1537: invalid relocation extent",
+      "Section 1538: invalid raw data extent",
+      "Section 1538: invalid relocation extent"
+    ],
+    "mappedErrors": [
+      "Section 1536: invalid raw data extent",
+      "Section 1536: invalid relocation extent",
+      "Section 1537: invalid raw data extent",
+      "Section 1537: invalid relocation extent",
+      "Section 1538: invalid raw data extent",
+      "Section 1538: invalid relocation extent"
+    ],
+    "mappedSha256": "19c33708255f7842b17e6a987dbdaeee29d18d0da3cea61844b20810d0bb319b",
+    "rebuiltSha256": "a1f15013634cd98dfae933032a05b89eac2dc36939a2fc244f7980dcb7f78e3f",
+    "rebuiltSize": 4132922,
+    "hashChangedAfterRebuild": true
+  },
+  {
+    "object": "obj/third_party/blink/renderer/controller/blink_bindings_test_sources/shadow_realm_context_test.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\shadow_realm_context_test.obj",
+    "sha256": "1504dfb3fca5b343e9e97e1f64e527b3fd2fe772b6e36a91aac260d7d4dd3cac",
+    "size": 1384042,
+    "mtime": 1794134449.129692,
+    "scanErrors": [
+      "Invalid CodeView record at 0xb10e1 (length 54105, kind 0x566a)"
+    ],
+    "scanErrorCount": 1,
+    "readErrors": [],
+    "mappedErrors": [],
+    "mappedSha256": "1504dfb3fca5b343e9e97e1f64e527b3fd2fe772b6e36a91aac260d7d4dd3cac",
+    "rebuiltSha256": "1504dfb3fca5b343e9e97e1f64e527b3fd2fe772b6e36a91aac260d7d4dd3cac",
+    "rebuiltSize": 1384042,
+    "hashChangedAfterRebuild": false
+  },
+  {
+    "object": "obj/services/network/test_support/url_loader_context_for_tests.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\url_loader_context_for_tests.obj",
+    "sha256": "9f3d4929f7b7c0d5f7a28b7aaea585f18a32b3982df989c8044b94a6dd44bfec",
+    "size": 294484,
+    "mtime": 1794039100.1320107,
+    "scanErrors": [
+      "Section 158: relocation 0 has invalid symbol 3981551200 or type 39364",
+      "Invalid CodeView record at 0x703a (length 57967, kind 0x3737)",
+      "Invalid b'.debug$S' signature/extent"
+    ],
+    "scanErrorCount": 3,
+    "readErrors": [],
+    "mappedErrors": [],
+    "mappedSha256": "9f3d4929f7b7c0d5f7a28b7aaea585f18a32b3982df989c8044b94a6dd44bfec",
+    "rebuiltSha256": "9f3d4929f7b7c0d5f7a28b7aaea585f18a32b3982df989c8044b94a6dd44bfec",
+    "rebuiltSize": 294484,
+    "hashChangedAfterRebuild": false
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/check_pseudo_has_argument_context_test.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\check_pseudo_has_argument_context_test.obj",
+    "sha256": "74c58d52a0d3302ca2bc9daf26a7c764c5354ed33d58d23af0e45fc8a27813dc",
+    "size": 5644792,
+    "mtime": 1794156973.6703446,
+    "scanErrors": [
+      "Invalid CodeView record at 0x2ef10a (length 48345, kind 0x6bcb)"
+    ],
+    "scanErrorCount": 1,
+    "readErrors": [],
+    "mappedErrors": [],
+    "mappedSha256": "74c58d52a0d3302ca2bc9daf26a7c764c5354ed33d58d23af0e45fc8a27813dc",
+    "rebuiltSha256": "74c58d52a0d3302ca2bc9daf26a7c764c5354ed33d58d23af0e45fc8a27813dc",
+    "rebuiltSize": 5644792,
+    "hashChangedAfterRebuild": false
+  },
+  {
+    "object": "obj/chrome/browser/ui/webui/iwa_dev/iwa_dev/iwa_dev_page_handler.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-settings-original-objects\\chrome-link-iwa_dev_page_handler.obj",
+    "sha256": "352d3747b1108283188cf92db25147cf7b4f50d56522fd634b65cf42c3062aef",
+    "size": 6906672,
+    "mtime": 1793065966.7934864,
+    "scanErrors": [
+      "Invalid CodeView record at 0x38d03c (length 44460, kind 0xe03e)"
+    ],
+    "readErrors": [
+      "Invalid CodeView record at 0x38d03c (length 44460, kind 0xe03e)"
+    ],
+    "readErrorCount": 1,
+    "mappedErrors": [
+      "Invalid CodeView record at 0x38d03c (length 44460, kind 0xe03e)"
+    ],
+    "mappedErrorCount": 1,
+    "mappedSha256": "352d3747b1108283188cf92db25147cf7b4f50d56522fd634b65cf42c3062aef",
+    "rebuiltSha256": "52dd86efae5e9715611d6c176563ab0289c37fe4a55112d5586c53e7e3b6cce5",
+    "rebuiltSize": 6906672,
+    "hashChangedAfterRebuild": true
+  }
+]

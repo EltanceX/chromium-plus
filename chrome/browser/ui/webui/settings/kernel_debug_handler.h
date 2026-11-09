@@ -32,6 +32,8 @@ class KernelDebugHandler : public SettingsPageUIHandler {
   void HandleStopMonitoring(const base::ListValue& args);
   void HandleGetTabDetails(const base::ListValue& args);
   void HandleCloseTab(const base::ListValue& args);
+  void HandleGetPythonSettings(const base::ListValue& args);
+  void HandleSetPythonSettings(const base::ListValue& args);
   void SendSnapshot();
 
   std::unique_ptr<base::ProcessMetrics> process_metrics_;

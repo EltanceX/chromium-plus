@@ -78,6 +78,19 @@ void DestroyContextWhenSafe(
   delete context;
 }
 
+bool IsOrdinaryPage(Document& document) {
+  const auto* origin = document.domWindow()->GetSecurityOrigin();
+  // about:blank and blob documents may inherit a privileged origin.
+  if (!origin->IsOpaque() && origin->Protocol() != "http" &&
+      origin->Protocol() != "https" && origin->Protocol() != "file") {
+    return false;
+  }
+  const auto& url = document.Url();
+  return url.ProtocolIsInHttpFamily() || url.ProtocolIs("file") ||
+         url.ProtocolIs("data") || url.ProtocolIs("blob") ||
+         url.IsAboutBlankUrl() || url.IsAboutSrcdocUrl();
+}
+
 bool Eligible(Document& document, bool check_input = true) {
   auto* window = document.domWindow();
   auto* frame = document.GetFrame();
@@ -86,14 +99,21 @@ bool Eligible(Document& document, bool check_input = true) {
          document.IsHTMLDocument() && !document.IsTextDocument() &&
          !document.IsInitialEmptyDocument() &&
          !document.IsDOMParserDocument() && document.IsActive() &&
-         !document.IsPrerendering() && document.IsInOutermostMainFrame() &&
-         document.Url().ProtocolIsInHttpFamily() && window && frame &&
-         frame->IsAttached() && frame->GetDocument() == &document &&
-         !window->IsContextDestroyed() &&
+         !document.IsPrerendering() && window && frame && frame->IsAttached() &&
+         frame->GetDocument() == &document && !window->IsContextDestroyed() &&
          (!check_input || (parser && parser->HasPythonScriptEligibleInput())) &&
-         !window->GetSecurityOrigin()->IsOpaque() &&
-         g_runner->IsOriginAllowed(
-             WebSecurityOrigin(window->GetSecurityOrigin()));
+         (g_runner->AllowsUnrestrictedPages()
+              ? IsOrdinaryPage(document)
+              : (document.IsInOutermostMainFrame() &&
+                 document.Url().ProtocolIsInHttpFamily() &&
+                 !window->GetSecurityOrigin()->IsOpaque() &&
+                 g_runner->IsOriginAllowed(
+                     WebSecurityOrigin(window->GetSecurityOrigin()))));
+}
+
+bool ScriptsAllowed(Document& document) {
+  return g_runner->AllowsUnrestrictedPages() ||
+         document.domWindow()->CanExecuteScripts(kAboutToExecuteScript);
 }
 
 void Log(Document& document,
@@ -217,8 +237,7 @@ bool PythonScriptController::IsActive() const {
   Document* document = GetSupplementable();
   return running_ && !stopped_ && !dom_budget_exhausted_ &&
          !ScriptForbiddenScope::IsScriptForbidden() &&
-         Eligible(*document, false) &&
-         document->domWindow()->CanExecuteScripts(kAboutToExecuteScript);
+         Eligible(*document, false) && ScriptsAllowed(*document);
 }
 
 WebPythonDomResult PythonScriptController::CheckDomCall() {
@@ -349,7 +368,7 @@ void PythonScriptController::ExecutePending(Document& document) {
       !Eligible(document)) {
     return;
   }
-  if (!document.domWindow()->CanExecuteScripts(kAboutToExecuteScript)) {
+  if (!ScriptsAllowed(document)) {
     return;
   }
 
@@ -364,7 +383,8 @@ void PythonScriptController::ExecutePending(Document& document) {
         element->HasUnsupportedAttributes()) {
       continue;
     }
-    if (!document.domWindow()->GetContentSecurityPolicy()->AllowInline(
+    if (!g_runner->AllowsUnrestrictedPages() &&
+        !document.domWindow()->GetContentSecurityPolicy()->AllowInline(
             ContentSecurityPolicy::InlineType::kScript, element,
             element->SourceSnapshot(), element->NonceSnapshot(), document.Url(),
             element->SourcePosition())) {

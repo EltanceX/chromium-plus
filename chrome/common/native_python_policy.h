@@ -11,6 +11,11 @@
 #include "url/gurl.h"
 #include "url/origin.h"
 
+// Opt-in page policy override. It grants no OS capabilities and never changes
+// the renderer sandbox. PythonScript must also be explicitly enabled.
+inline constexpr char kNativePythonUnrestrictedPages[] =
+    "native-python-unrestricted-pages";
+
 // The first experiment accepts one exact loopback HTTP(S) origin, without URL
 // credentials, path, query, fragment, wildcards or a list of origins.
 inline std::optional<url::Origin> ParseNativePythonAllowedOrigin(

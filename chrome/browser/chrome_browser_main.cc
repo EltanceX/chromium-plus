@@ -52,6 +52,7 @@
 #include "chrome/browser/metrics/chrome_metrics_service_accessor.h"
 #include "chrome/browser/metrics/expired_histograms_array.h"
 #include "chrome/browser/metrics/shutdown_watcher_helper.h"
+#include "chrome/browser/native_python/native_python_settings.h"
 #include "chrome/browser/net/system_network_context_manager.h"
 #include "chrome/browser/performance_manager/public/chrome_browser_main_extra_parts_performance_manager.h"
 #include "chrome/browser/performance_monitor/chrome_browser_main_extra_parts_performance_monitor.h"
@@ -999,8 +1000,6 @@ void ChromeBrowserMainParts::RecordBrowserStartupTime() {
 // -----------------------------------------------------------------------------
 // TODO(viettrungluu): move more/rest of BrowserMain() into BrowserMainParts.
 
-
-
 // content::BrowserMainParts implementation ------------------------------------
 
 int ChromeBrowserMainParts::PreEarlyInitialization() {
@@ -1293,6 +1292,9 @@ int ChromeBrowserMainParts::PreCreateThreadsImpl() {
 #endif
 
   PrefService* local_state = browser_process_->local_state();
+
+  native_python_settings::InitializeForProcess(
+      *local_state, *base::CommandLine::ForCurrentProcess());
 
 #if BUILDFLAG(IS_CHROMEOS)
   browser_process_->platform_part()->InitializeCrosSettings();

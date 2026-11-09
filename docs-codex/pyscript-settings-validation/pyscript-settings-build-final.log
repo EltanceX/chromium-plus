@@ -1,0 +1,69 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87113 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4421376s
+load siso config done 12.8041ms
+schedule pending:1+ready:0 (node:441034 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441034 edge:6)
+schedule pending:60072+ready:0 (node:441034 edge:60090)
+ 1.45s schedule pending:92848+ready:9229 (node:441034 edge:102077)
+
+build start: Ready 9229 Pending 92848
+[0/62448] 29.09s S ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[0/20529] 30.76s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/3843] 31.85s F ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[1/3054] 31.90s S ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[1/2850] 31.92s S CXX obj/chrome/browser/prefs/impl/browser_prefs.obj
+[1/2397] 31.96s S CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[1/2379] 32.24s F ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[2/2377] 32.28s S ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[2/2377] 38.41s F ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[3/2375] 38.43s S ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[3/2375] 1m34.01s F CXX obj/chrome/browser/prefs/impl/browser_prefs.obj
+[4/2375] 1m37.97s F ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[5/2372] 1m37.97s S ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[5/2372] 1m38.45s F ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[6/2370] 1m38.45s S ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+[6/2370] 1m39.20s F CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[7/2370] 1m41.62s F ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+[8/2302] 1m41.63s S CXX obj/chrome/browser/ui/webui/settings/impl/kernel_debug_handler.obj
+[8/2302] 1m41.64s S CXX obj/chrome/browser/ui/webui/settings/impl/settings_ui.obj
+[8/2302] 1m47.78s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[9/2301] 1m47.81s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[9/2301] 1m55.48s F CXX obj/chrome/browser/ui/webui/settings/impl/kernel_debug_handler.obj
+[10/2301] 1m56.00s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 826247fc-f65a-4153-887a-04eb3a353cee "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/selection_adjuster.obj: �`I�U:o� should not refer to non-existent section 29006
+
+
+[11/2301] 2m22.60s - CXX obj/chrome/browser/ui/webui/settings/impl/settings_ui.obj
+build failed
+
+
+noexec:0 local:11 remote:0 cache:0 skip:99776
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 11607(err:3) / r:2743(err:0) 148.60MiB / w:1(err:0) 379.10KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      5(1)     0.00s |▇      |    51.74s |    ▅▇ |
+
+2m23.30s Build Failure: 11 done, 1 failed, 2290 remaining - 0.08/s
+ 1 steps failed: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-092002.15204
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

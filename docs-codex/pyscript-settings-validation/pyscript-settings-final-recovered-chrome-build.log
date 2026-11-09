@@ -1,0 +1,35 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87116 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2455269s
+load siso config done 12.2459ms
+schedule pending:1+ready:0 (node:441039 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441039 edge:6)
+schedule pending:81381+ready:0 (node:441039 edge:81392)
+ 1.26s schedule pending:92850+ready:9229 (node:441039 edge:102079)
+
+build start: Ready 9229 Pending 92850
+[0/7052] 30.74s S CXX obj/chrome/browser/ui/webui/iwa_dev/iwa_dev/iwa_dev_page_handler.obj
+[0/16] 49.90s F CXX obj/chrome/browser/ui/webui/iwa_dev/iwa_dev/iwa_dev_page_handler.obj
+[1/7] 49.96s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[1/7] 1m41.82s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:2 remote:0 cache:0 skip:102077
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1000(err:2) / r:766(err:0) 4.98GiB / w:0(err:0) 0B
+
+
+
+1m42.65s Build Succeeded: 2 steps - 0.02/s
+shutdown cloud logging/monitoring done 0s

@@ -1,0 +1,16 @@
+{
+  "response": "pyscript-settings-chrome-inputs.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 788,
+  "directObjects": 12081,
+  "archiveMembers": 5703,
+  "problems": [
+    {
+      "object": "obj/chrome/browser/ui/webui/iwa_dev/iwa_dev/iwa_dev_page_handler.obj",
+      "errors": [
+        "Invalid CodeView record at 0x38d03c (length 44460, kind 0xe03e)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 162.75
+}

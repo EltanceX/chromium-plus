@@ -4,10 +4,84 @@
 
 import {html} from '//resources/lit/v3_0/lit.rollup.js';
 
+import {RestartType} from '../relaunch_mixin_lit.js';
+
 import type {SettingsKernelDebugPageElement} from './kernel_debug_page.js';
 
 export function getHtml(this: SettingsKernelDebugPageElement) {
-  return html`<settings-section page-title="Hello chromium"
+  return html`<settings-section page-title="Python 解释器"
+      class="cr-centered-card-container">
+    <div class="cr-row two-line first">
+      <div class="flex cr-padded-text">
+        <div>启用 Python 解释器</div>
+        <div class="secondary">执行 HTML 中原生 &lt;pyscript&gt; 内联代码。保存后重启浏览器生效。</div>
+      </div>
+      <cr-toggle id="pythonEnabled" aria-label="启用 Python 解释器"
+          .checked="${this.pythonEnabled_}"
+          ?disabled="${!this.pythonSettings_?.supported || this.pythonSaving_}"
+          @change="${this.onPythonEnabledChange_}"></cr-toggle>
+    </div>
+    <div class="cr-row two-line">
+      <div class="flex cr-padded-text">
+        <div>放开 Python 的站点与页面执行限制</div>
+        <div class="secondary">
+          允许普通网页、本地 HTML 及子框架执行 Python，忽略来源白名单、页面脚本开关、CSP 和 sandbox 的脚本限制。
+          仅对可信内容开启。
+        </div>
+      </div>
+      <cr-toggle id="pythonUnrestricted" aria-label="放开 Python 的站点与页面执行限制"
+          .checked="${this.pythonUnrestricted_}"
+          ?disabled="${!this.pythonSettings_?.supported || !this.pythonEnabled_ || this.pythonSaving_}"
+          @change="${this.onPythonUnrestrictedChange_}"></cr-toggle>
+    </div>
+    <div class="cr-row two-line">
+      <div class="flex cr-padded-text">
+        <div id="pythonOriginLabel">受限模式允许的来源</div>
+        <div class="secondary">精确的本地 HTTP(S) 来源，包含端口；例如 http://127.0.0.1:8000。</div>
+        <input id="pythonAllowedOrigin" class="python-origin" type="text"
+            aria-labelledby="pythonOriginLabel" spellcheck="false" maxlength="2048"
+            .value="${this.pythonAllowedOrigin_}"
+            ?disabled="${!this.pythonSettings_?.supported || this.pythonUnrestricted_ || this.pythonSaving_}"
+            @input="${this.onPythonOriginInput_}">
+      </div>
+    </div>
+    <div class="cr-row two-line">
+      <div class="flex cr-padded-text">
+        <div>当前生效状态</div>
+        <div id="pythonActiveState" class="secondary">
+          ${!this.pythonSettings_ ? '读取中...' :
+              !this.pythonSettings_.supported ? '当前平台不支持（仅 Windows x64）' :
+              !this.pythonSettings_.activeEnabled ? '已关闭' :
+              this.pythonSettings_.activeUnrestricted ? '已启用 · 放开页面限制' :
+              `已启用 · 受限来源 ${this.pythonSettings_.activeAllowedOrigin || '未配置'}`}
+        </div>
+        <div class="secondary">
+          Python 始终在 Renderer 沙箱内运行，系统权限与渲染进程相同。
+          WebUI、扩展及 MCBE / MCJE 页面不执行 Python；内联解析规则、DOM 接口及执行预算保持生效。
+        </div>
+        <div class="secondary">预算：单块约 100 ms，文档累计约 250 ms（协作式）；输出 16 KiB，DOM 调用 1024 次。</div>
+        ${this.pythonSettings_?.commandLineOverride ? html`
+          <div class="secondary">启动命令行含 Python 配置，可能覆盖此处设置。</div>
+        ` : ''}
+      </div>
+    </div>
+    <div class="cr-row python-actions">
+      <cr-button id="savePythonSettings"
+          ?disabled="${!this.pythonSettings_?.supported || this.pythonSaving_}"
+          @click="${this.onSavePythonSettingsClick_}">保存设置</cr-button>
+      ${this.pythonSettings_?.restartRequired ? html`
+        <span class="flex secondary">重启后应用已保存设置</span>
+        <cr-button id="relaunchPython" @click="${this.onPythonRelaunchClick_}">重新启动</cr-button>
+      ` : ''}
+    </div>
+    <div id="pythonMessage" class="cr-padded-text secondary python-message"
+        role="status">${this.pythonMessage_}</div>
+  </settings-section>
+  ${this.shouldShowRelaunchDialog ? html`
+    <relaunch-confirmation-dialog .restartType="${RestartType.RELAUNCH}"
+        @close="${this.onRelaunchDialogClose}"></relaunch-confirmation-dialog>
+  ` : ''}
+  <settings-section page-title="Hello chromium"
       class="cr-centered-card-container">
     <div class="cr-row two-line first">
       <div class="flex cr-padded-text">

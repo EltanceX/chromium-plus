@@ -79,13 +79,17 @@ class WebPythonScriptContext {
 };
 
 // Main-thread embedder interface for the private PythonScript experiment.
-// Blink checks document eligibility and CSP before passing immutable sources.
+// Blink checks document eligibility and, in restricted mode, script policy/CSP
+// before passing immutable sources.
 // One context uses one interpreter for the owning Document. It has no async
 // callbacks or JavaScript execution entry points.
 class BLINK_EXPORT WebPythonScriptRunner {
  public:
   virtual ~WebPythonScriptRunner() = default;
   virtual bool IsOriginAllowed(const WebSecurityOrigin&) const = 0;
+  // Explicit browser-user override of ordinary page/origin and script policy.
+  // Does not change OS privileges, document lifetime or parser-only semantics.
+  virtual bool AllowsUnrestrictedPages() const { return false; }
   virtual std::unique_ptr<WebPythonScriptContext> CreateContext() = 0;
 
   // Caller owns the runner and must outlive its installation. Main thread only.

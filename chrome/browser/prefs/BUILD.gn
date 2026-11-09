@@ -90,6 +90,7 @@ source_set("impl") {
     "//chrome/browser/media/webrtc",
     "//chrome/browser/memory",
     "//chrome/browser/metrics",
+    "//chrome/browser/native_python:settings",
     "//chrome/browser/net",
     "//chrome/browser/new_tab_page/prefs",
     "//chrome/browser/permissions",

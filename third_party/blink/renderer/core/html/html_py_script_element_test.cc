@@ -10,11 +10,15 @@
 #include "base/memory/raw_ref.h"
 #include "base/test/bind.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
+#include "third_party/blink/public/web/web_navigation_params.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/dom/document.h"
+#include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
+#include "third_party/blink/renderer/core/frame/web_local_frame_impl.h"
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
 #include "third_party/blink/renderer/core/html/python_script_controller.h"
+#include "third_party/blink/renderer/core/testing/mock_policy_container_host.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_request.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
@@ -23,6 +27,7 @@
 #include "third_party/blink/renderer/platform/testing/runtime_enabled_features_test_helpers.h"
 #include "third_party/blink/renderer/platform/testing/unit_test_helpers.h"
 #include "third_party/blink/renderer/platform/wtf/text/string_builder.h"
+#include "url/url_util.h"
 #include "v8/include/cppgc/heap-state.h"
 
 namespace blink {
@@ -69,6 +74,7 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
   bool IsOriginAllowed(const WebSecurityOrigin& origin) const override {
     return allow && origin.ToString() == "https://example.test";
   }
+  bool AllowsUnrestrictedPages() const override { return unrestricted; }
   std::vector<WebPythonScriptResult> Run(
       const std::vector<WebPythonScriptSource>& sources) {
     ++batches;
@@ -86,6 +92,7 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
     return results;
   }
   bool allow = true;
+  bool unrestricted = false;
   unsigned contexts_created = 0;
   std::shared_ptr<unsigned> destructions = std::make_shared<unsigned>(0);
   raw_ptr<WebPythonDomHost> host = nullptr;
@@ -224,6 +231,79 @@ TEST_F(HTMLPyScriptElementTest, RejectsAPIMutationBeforeClosingTag) {
   main.Complete("tail</pyscript>");
   test::RunPendingTasks();
   EXPECT_EQ(0u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest, UnrestrictedPagesBypassOriginAndInlineCSP) {
+  runner_.allow = false;
+  runner_.unrestricted = true;
+  SimRequest::Params params;
+  params.response_http_headers.insert("Content-Security-Policy",
+                                      "script-src 'none'; sandbox");
+  SimRequest main("https://example.test/", "text/html", params);
+  auto navigation = std::make_unique<WebNavigationParams>();
+  navigation->url = KURL("https://example.test/");
+  MockPolicyContainerHost policy_host;
+  navigation->policy_container = std::make_unique<WebPolicyContainer>(
+      WebPolicyContainerPolicies(),
+      policy_host.BindNewEndpointAndPassDedicatedRemote());
+  frame_test_helpers::FillNavigationParamsResponse(navigation.get());
+  // Unlike SimTest::LoadURL(), supply the sandboxed origin that a real browser
+  // computes before committing the navigation.
+  navigation->origin_to_commit = SecurityOrigin::CreateUniqueOpaque();
+  MainFrame().CommitNavigation(std::move(navigation), nullptr);
+  main.Complete("<pyscript>explicit browser user override</pyscript>");
+  test::RunPendingTasks();
+  EXPECT_TRUE(Window().GetSecurityOrigin()->IsOpaque());
+  EXPECT_EQ(1u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest, UnrestrictedPagesStillExcludePrivilegedURLs) {
+  runner_.allow = false;
+  runner_.unrestricted = true;
+  for (const char* url : {"chrome://version/", "chrome-untrusted://test/",
+                          "chrome-extension://test/", "mcbe://example.test/",
+                          "mcje://example.test/"}) {
+    SCOPED_TRACE(url);
+    SimRequest main("https://example.test/", "text/html");
+    LoadURL("https://example.test/");
+    main.Write("<body>");
+    test::RunPendingTasks();
+    GetDocument().SetURL(KURL(url));
+    main.Complete("<pyscript>forbidden scheme</pyscript>");
+    test::RunPendingTasks();
+    EXPECT_EQ(0u, runner_.contexts_created);
+  }
+}
+
+TEST_F(HTMLPyScriptElementTest, UnrestrictedPagesStillExcludePrerender) {
+  runner_.unrestricted = true;
+  InitializePrerenderPageRoot();
+  Load("<pyscript>prerender</pyscript>");
+  EXPECT_EQ(0u, runner_.contexts_created);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       UnrestrictedPagesRejectInheritedPrivilegedOrigin) {
+  url::ScopedSchemeRegistryForTests scoped_registry;
+  url::AddStandardScheme("chrome-extension", url::SCHEME_WITH_HOST);
+  runner_.unrestricted = true;
+  SimRequest main("https://example.test/", "text/html");
+  LoadURL("https://example.test/");
+  main.Write("<body>");
+  test::RunPendingTasks();
+  GetDocument().SetURL(KURL("about:blank"));
+  scoped_refptr<SecurityOrigin> original_origin =
+      Window().GetMutableSecurityOrigin();
+  auto origin = SecurityOrigin::Create(KURL("chrome-extension://test/"));
+  ASSERT_FALSE(origin->IsOpaque());
+  GetDocument().domWindow()->GetSecurityContext().SetSecurityOriginForTesting(
+      origin);
+  main.Complete("<pyscript>forbidden inherited origin</pyscript>");
+  test::RunPendingTasks();
+  EXPECT_EQ(0u, runner_.contexts_created);
+  // The Document outlives this test body. Restore its origin before the scoped
+  // scheme registry is reset, so teardown can still compute its cookie site.
+  Window().GetSecurityContext().SetSecurityOriginForTesting(original_origin);
 }
 
 TEST_F(HTMLPyScriptElementTest, RejectsRemovedAndAdoptedElements) {

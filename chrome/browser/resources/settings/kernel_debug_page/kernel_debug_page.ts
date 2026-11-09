@@ -4,12 +4,16 @@
 
 import '../settings_page/settings_section.js';
 import 'chrome://resources/cr_elements/cr_icon_button/cr_icon_button.js';
+import 'chrome://resources/cr_elements/cr_button/cr_button.js';
+import 'chrome://resources/cr_elements/cr_toggle/cr_toggle.js';
+import '../relaunch_confirmation_dialog.js';
 
 import {WebUiListenerMixinLit} from 'chrome://resources/cr_elements/web_ui_listener_mixin_lit.js';
 import {css, CrLitElement} from '//resources/lit/v3_0/lit.rollup.js';
 import {RouteObserverMixinLit} from '../router.js';
 import type {Route} from '../router.js';
 import {routes} from '../route.js';
+import {RelaunchMixinLit, RestartType} from '../relaunch_mixin_lit.js';
 
 import type {SearchResult} from '../search_settings.js';
 import type {SettingsPlugin} from '../settings_main/settings_plugin.js';
@@ -19,12 +23,13 @@ import {getCss as getSettingsSharedStyle} from '../settings_shared_lit.css.js';
 import type {
   KernelDebugInfo,
   KernelDebugTabDetails,
+  NativePythonSettings,
 } from './kernel_debug_page_browser_proxy.js';
 import {KernelDebugPageBrowserProxyImpl} from './kernel_debug_page_browser_proxy.js';
 import {getHtml} from './kernel_debug_page.html.js';
 
 const SettingsKernelDebugPageElementBase =
-    RouteObserverMixinLit(WebUiListenerMixinLit(CrLitElement));
+    RelaunchMixinLit(RouteObserverMixinLit(WebUiListenerMixinLit(CrLitElement)));
 
 export class SettingsKernelDebugPageElement extends
     SettingsKernelDebugPageElementBase implements SettingsPlugin {
@@ -37,6 +42,26 @@ export class SettingsKernelDebugPageElement extends
       getCrSharedStyle(),
       getSettingsSharedStyle(),
       css`
+        .python-origin {
+          background: var(--cr-card-background-color);
+          border: 1px solid var(--cr-separator-color);
+          border-radius: 4px;
+          box-sizing: border-box;
+          color: var(--cr-primary-text-color);
+          font: inherit;
+          max-width: 100%;
+          padding: 8px;
+          width: 360px;
+        }
+
+        .python-actions {
+          gap: 12px;
+        }
+
+        .python-message {
+          overflow-wrap: anywhere;
+        }
+
         .tab-list {
           padding: 0 16px;
         }
@@ -107,6 +132,12 @@ export class SettingsKernelDebugPageElement extends
       expandedTabId_: {type: Number},
       tabDetails_: {type: Object},
       detailsLoading_: {type: Boolean},
+      pythonSettings_: {type: Object},
+      pythonEnabled_: {type: Boolean},
+      pythonUnrestricted_: {type: Boolean},
+      pythonAllowedOrigin_: {type: String},
+      pythonSaving_: {type: Boolean},
+      pythonMessage_: {type: String},
     };
   }
 
@@ -115,6 +146,12 @@ export class SettingsKernelDebugPageElement extends
   protected accessor expandedTabId_: number|null = null;
   protected accessor tabDetails_: KernelDebugTabDetails|null = null;
   protected accessor detailsLoading_: boolean = false;
+  protected accessor pythonSettings_: NativePythonSettings|null = null;
+  protected accessor pythonEnabled_: boolean = false;
+  protected accessor pythonUnrestricted_: boolean = false;
+  protected accessor pythonAllowedOrigin_: string = '';
+  protected accessor pythonSaving_: boolean = false;
+  protected accessor pythonMessage_: string = '';
 
   private browserProxy_ = KernelDebugPageBrowserProxyImpl.getInstance();
   private isActiveRoute_: boolean = false;
@@ -147,11 +184,15 @@ export class SettingsKernelDebugPageElement extends
           }
         });
     this.isReady_ = true;
+    this.loadPythonSettings_();
     this.updateMonitoring_();
   }
 
   override currentRouteChanged(newRoute: Route) {
     this.isActiveRoute_ = newRoute === routes.KERNEL_DEBUG;
+    if (this.isActiveRoute_ && this.isReady_) {
+      this.loadPythonSettings_();
+    }
     this.updateMonitoring_();
   }
 
@@ -164,6 +205,55 @@ export class SettingsKernelDebugPageElement extends
     return days > 0 ?
         `${days} 天 ${remainingHours} 小时 ${minutes} 分` :
                        `${hours} 小时 ${minutes} 分 ${remainingSeconds} 秒`;
+  }
+
+  private applyPythonSettings_(settings: NativePythonSettings) {
+    this.pythonSettings_ = settings;
+    this.pythonEnabled_ = settings.enabled;
+    this.pythonUnrestricted_ = settings.unrestricted;
+    this.pythonAllowedOrigin_ = settings.allowedOrigin;
+  }
+
+  private async loadPythonSettings_() {
+    try {
+      this.applyPythonSettings_(await this.browserProxy_.getPythonSettings());
+    } catch {
+      this.pythonMessage_ = '无法读取 Python 设置。';
+    }
+  }
+
+  protected onPythonEnabledChange_(event: Event) {
+    this.pythonEnabled_ = (event.target as HTMLInputElement).checked;
+    this.pythonMessage_ = '';
+  }
+
+  protected onPythonUnrestrictedChange_(event: Event) {
+    this.pythonUnrestricted_ = (event.target as HTMLInputElement).checked;
+    this.pythonMessage_ = '';
+  }
+
+  protected onPythonOriginInput_(event: Event) {
+    this.pythonAllowedOrigin_ = (event.target as HTMLInputElement).value;
+    this.pythonMessage_ = '';
+  }
+
+  protected async onSavePythonSettingsClick_() {
+    this.pythonSaving_ = true;
+    try {
+      this.applyPythonSettings_(await this.browserProxy_.setPythonSettings({
+        enabled: this.pythonEnabled_, unrestricted: this.pythonUnrestricted_,
+        allowedOrigin: this.pythonAllowedOrigin_.trim(),
+      }));
+      this.pythonMessage_ = '设置已保存。';
+    } catch (error) {
+      this.pythonMessage_ = String(error);
+    } finally {
+      this.pythonSaving_ = false;
+    }
+  }
+
+  protected onPythonRelaunchClick_() {
+    this.performRestart(RestartType.RELAUNCH);
   }
 
   protected formatMemory_(): string {

@@ -115,6 +115,11 @@ class ChromePythonScriptRunner final : public blink::WebPythonScriptRunner {
            static_cast<url::Origin>(origin) == *allowed_origin_;
   }
 
+  bool AllowsUnrestrictedPages() const override {
+    return base::CommandLine::ForCurrentProcess()->HasSwitch(
+        kNativePythonUnrestrictedPages);
+  }
+
   std::unique_ptr<blink::WebPythonScriptContext> CreateContext() override {
     return std::make_unique<ChromePythonDocumentContext>();
   }

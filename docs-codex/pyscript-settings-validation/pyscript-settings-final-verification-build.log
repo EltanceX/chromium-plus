@@ -1,0 +1,67 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87116 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2752917s
+load siso config done 13.2979ms
+schedule pending:1+ready:0 (node:441039 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441039 edge:6)
+schedule pending:48556+ready:0 (node:441039 edge:48565)
+ 1.76s schedule pending:92850+ready:9229 (node:441039 edge:102079)
+
+build start: Ready 9229 Pending 92850
+[0/49] 34.10s S CXX obj/chrome/browser/prefs/impl/browser_prefs.obj
+[0/9] 1m16.36s F CXX obj/chrome/browser/prefs/impl/browser_prefs.obj
+[1/7] 1m16.44s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[1/7] 1m43.90s E LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+FAILED: b4ab4336-a2f9-47eb-84f1-37043d818a06 "./chrome.dll" LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./chrome.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./chrome.dll.lib" /DLL "/PDB:./chrome.dll.pdb" "@./chrome.dll.rsp"
+build step: solink "./chrome.dll"
+stderr:
+lld-link: error: procedure symbol record for `std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >::basic_string_view` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x501D97 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::operator<<<std::__Cr::char_traits<char> >` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x501577 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::operator<<<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x501D53 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__throw_bad_optional_access` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x5011BA which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::OnceCallback<void ()>::OnceCallback` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x50056F which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::RefCountedThreadSafe<base::internal::BindStateBase,base::internal::BindStateBaseRefCountTraits>::~RefCountedThreadSafe` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500446 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::internal::BindStateHolder::BindStateHolder` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x50044F which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AdoptRef<base::internal::BindStateBase>` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500450 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AdoptRef<base::internal::BindStateBase>::<lambda_1>::operator()` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500452 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AdoptRef<base::internal::BindStateBase>::<lambda_2>::operator()` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500454 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::subtle::RefCountedThreadSafeBase::Adopted` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500455 which is not a valid function ID record
+lld-link: error: procedure symbol record for `scoped_refptr<base::internal::BindStateBase>::scoped_refptr` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500456 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::subtle::RefCountedThreadSafeBase::Adopted::<lambda_1>::operator()` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500458 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::internal::RawPtrNoOpImpl::Untrace` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x50169E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__annotate_contiguous_container<std::__Cr::allocator<std::__Cr::basic_string<wchar_t,std::__Cr::char_traits<wchar_t>,std::__Cr::allocator<wchar_t> > > >` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x500364 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__is_overaligned_for_new` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x50036C which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__put_character_sequence<char,std::__Cr::char_traits<char> >` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x501578 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::char_traits<char>::length` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x5005F7 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ostream<char,std::__Cr::char_traits<char> >::sentry::sentry` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x501579 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ostream<char,std::__Cr::char_traits<char> >::sentry::operator bool` in obj/chrome/chrome_dll/chrome_main.obj refers to PDB item index 0x50157A which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:102072
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 6144(err:2) / r:764(err:0) 5.76MiB / w:1(err:0) 985.31KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m44.53s Build Failure: 2 done, 1 failed, 5 remaining - 0.02/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-095035.13532
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

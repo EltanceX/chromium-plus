@@ -15,6 +15,8 @@
 #include "base/strings/utf_string_conversions.h"
 #include "base/time/time.h"
 #include "base/values.h"
+#include "chrome/browser/browser_process.h"
+#include "chrome/browser/native_python/native_python_settings.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_interface_iterator.h"
@@ -35,6 +37,14 @@ KernelDebugHandler::~KernelDebugHandler() = default;
 
 void KernelDebugHandler::RegisterMessages() {
   web_ui()->RegisterMessageCallback(
+      "getNativePythonSettings",
+      base::BindRepeating(&KernelDebugHandler::HandleGetPythonSettings,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setNativePythonSettings",
+      base::BindRepeating(&KernelDebugHandler::HandleSetPythonSettings,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
       "startKernelDebugMonitoring",
       base::BindRepeating(&KernelDebugHandler::HandleStartMonitoring,
                           base::Unretained(this)));
@@ -50,6 +60,27 @@ void KernelDebugHandler::RegisterMessages() {
       "closeKernelDebugTab",
       base::BindRepeating(&KernelDebugHandler::HandleCloseTab,
                           base::Unretained(this)));
+}
+
+void KernelDebugHandler::HandleGetPythonSettings(const base::ListValue& args) {
+  CHECK_EQ(1U, args.size());
+  AllowJavascript();
+  ResolveJavascriptCallback(args[0], native_python_settings::GetSettings(
+                                         *g_browser_process->local_state()));
+}
+
+void KernelDebugHandler::HandleSetPythonSettings(const base::ListValue& args) {
+  CHECK_EQ(2U, args.size());
+  AllowJavascript();
+  std::string error;
+  if (!args[1].is_dict() ||
+      !native_python_settings::SaveSettings(*g_browser_process->local_state(),
+                                            args[1].GetDict(), &error)) {
+    RejectJavascriptCallback(args[0], base::Value(error));
+    return;
+  }
+  ResolveJavascriptCallback(args[0], native_python_settings::GetSettings(
+                                         *g_browser_process->local_state()));
 }
 
 void KernelDebugHandler::OnJavascriptDisallowed() {
