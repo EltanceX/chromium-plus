@@ -9,6 +9,8 @@
 
 后续扩展（2026-11-09）：已增加设置页启用与页面权限模式，详见[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。本文下述精确来源、顶层、脚本 / CSP 限制描述第一版受限模式；用户显式选择的放开模式及其验证另行记录，Renderer 沙箱保持生效。
 
+交互扩展计划（2026-11-09）：[元素点击事件首版方案与步骤](pyscript-click-events-implementation.md)规划原生事件监听、Python callable 调用、交互预算和安全清理；该扩展尚未实现。
+
 ## 1. 验证目标
 
 验证浏览器能直接执行 HTML 内联 Python 代码，通过 C++ 调用 Blink DOM API，将计算结果显示在同一页面中。示例无需页面 JavaScript、Wasm 运行时或本机 Python 安装：
