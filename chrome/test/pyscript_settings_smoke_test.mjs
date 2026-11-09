@@ -209,6 +209,11 @@ try {
   browser = await launch();
   await check('settings page defaults and invalid origin validation', async () => {
     await settingsPage();
+    const budgetText = await browser.evaluate(`${findPage}.shadowRoot.textContent`);
+    assert.match(budgetText, /初始化预算：单块约 100 ms/);
+    assert.match(budgetText, /每回调约 50 ms、输出 4 KiB、DOM 调用 128 次/);
+    assert.match(budgetText, /最近 1 秒累计约 250 ms/);
+    assert.match(budgetText, /清理另有约 50 ms/);
     const defaults = await readSettings();
     assert.equal(defaults.enabled, false);
     assert.equal(defaults.activeEnabled, false);

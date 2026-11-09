@@ -81,6 +81,7 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
       runner_->host = nullptr;
       return runner_->callback_result;
     }
+    bool CanInvokeCallback() override { return runner_->callback_admitted; }
     WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) override {
       ADD_FAILURE() << "Unexpected callback removal in parser-only tests";
       return {};
@@ -116,6 +117,7 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
   }
   bool allow = true;
   bool unrestricted = false;
+  bool callback_admitted = true;
   unsigned contexts_created = 0;
   std::shared_ptr<unsigned> destructions = std::make_shared<unsigned>(0);
   raw_ptr<WebPythonDomHost> host = nullptr;
@@ -577,6 +579,85 @@ TEST_F(HTMLPyScriptElementTest, OnceConsumesBeforeCallbackEvenOnError) {
   EXPECT_EQ((std::vector<uint64_t>{1}), runner_.invoked);
   EXPECT_TRUE(ConsoleMessages().back().contains("callback 1"));
   EXPECT_EQ(0u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, WindowRefusalDoesNotConsumeOnceOrQueueClicks) {
+  RegisterClick(true);
+  runner_.callback_admitted = false;
+  const auto messages = ConsoleMessages().size();
+  Click();
+  Click();
+  test::RunPendingTasks();
+  EXPECT_TRUE(runner_.invoked.empty());
+  EXPECT_EQ(messages + 1, ConsoleMessages().size());
+  runner_.callback_admitted = true;
+  test::RunPendingTasks();
+  EXPECT_TRUE(runner_.invoked.empty());
+  Click();
+  Click();
+  EXPECT_EQ(1u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       CallbackDomCallsDoNotSpendInitializationAllowance) {
+  RegisterClick();
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    for (int i = 0; i < 128; ++i) {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                runner_.host->GetElementById("missing").error);
+    }
+  });
+  for (int i = 0; i < 10; ++i) {
+    Click();
+  }
+  EXPECT_EQ(10u, runner_.invoked.size());
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    for (int i = 0; i < 129; ++i) {
+      const auto result = runner_.host->GetElementById("missing");
+      EXPECT_EQ(
+          i == 128 ? WebPythonDomError::kStopped : WebPythonDomError::kNone,
+          result.error);
+    }
+  });
+  Click();
+  test::RunPendingTasks();
+  Click();
+  EXPECT_EQ(11u, runner_.invoked.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       CallbackOutputDoesNotSpendInitializationAllowance) {
+  RegisterClick();
+  runner_.callback_result.stdout_text =
+      String::FromUtf8(std::string(3000, 'x'));
+  for (int i = 0; i < 8; ++i) {
+    Click();
+  }
+  EXPECT_EQ(8u, runner_.invoked.size());
+  EXPECT_EQ(0u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       DocumentOpenDuringCallbackClosesOutputAndDefersCleanup) {
+  RegisterClick();
+  Persistent<Element> old_button(GetElementById("button"));
+  runner_.callback_result.stdout_text = "must-not-log-after-invalidation";
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    GetDocument().open();
+    EXPECT_FALSE(runner_.host->IsActive());
+    EXPECT_EQ(WebPythonDomError::kReference,
+              runner_.host->GetElementById("missing").error);
+    EXPECT_EQ(0u, *runner_.destructions);
+  });
+  Click();
+  test::RunPendingTasks();
+  old_button->DispatchEvent(*Event::CreateBubble(event_type_names::kClick));
+  EXPECT_EQ(1u, runner_.invoked.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+  for (const auto& message : ConsoleMessages()) {
+    EXPECT_FALSE(message.contains("must-not-log-after-invalidation"));
+  }
 }
 
 TEST_F(HTMLPyScriptElementTest,

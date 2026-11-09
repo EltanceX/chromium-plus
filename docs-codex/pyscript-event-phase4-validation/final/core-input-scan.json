@@ -1,0 +1,106 @@
+{
+  "response": "pyscript-event-phase4-completion/attempt2-blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_property_equality.obj",
+      "errors": [
+        "Section 11256: relocation 0 has invalid symbol 3858968522 or type 40479",
+        "Section 11257: relocation 0 has invalid symbol 1350060904 or type 25666",
+        "Section 11258: relocation 0 has invalid symbol 1392202741 or type 10570",
+        "Section 11259: relocation 0 has invalid symbol 4127257753 or type 12231",
+        "Section 11260: relocation 0 has invalid symbol 1776141292 or type 48275",
+        "Invalid CodeView record at 0x40f055 (length 58401, kind 0xe61)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_selector.obj",
+      "errors": [
+        "Section 3448: relocation 0 has invalid symbol 4032052365 or type 53211",
+        "Section 3449: relocation 0 has invalid symbol 3997857339 or type 24159",
+        "Section 3450: relocation 0 has invalid symbol 346527761 or type 8123",
+        "Section 3451: relocation 0 has invalid symbol 1728844699 or type 34510",
+        "Section 3452: relocation 0 has invalid symbol 4205724884 or type 26528",
+        "Invalid UTF-8 in .drectve at file offset 0x10e97a",
+        "Control bytes in .drectve"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_variable_parser.obj",
+      "errors": [
+        "Invalid CodeView record at 0x212385 (length 30467, kind 0x5b82)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/node.obj",
+      "errors": [
+        "Invalid CodeView record at 0x5f9014 (length 39205, kind 0xd30b)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/async_find_buffer.obj",
+      "errors": [
+        "Invalid CodeView record at 0x2e9007 (length 53299, kind 0xc034)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/visible_selection.obj",
+      "errors": [
+        "Invalid CodeView record at 0xfb079 (length 53229, kind 0x9fbc)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj",
+      "errors": [
+        "Invalid CodeView record at 0x3805ac (length 21019, kind 0xa834)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 152.84
+}

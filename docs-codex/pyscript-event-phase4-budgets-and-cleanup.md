@@ -44,6 +44,27 @@
 
 “设置 → 内核调试”预算说明同步列出初始化、事件单次、事件窗口和清理额度；默认关闭、页面权限模式及 Renderer 沙箱保持现有语义。
 
-本阶段验证进行中。运行时标准目标构建和 **49 / 49** 单测已通过，包含异常耗时窗口和停止后的独立清理；运行时及 Chrome 适配目标的 GN / checkdeps 检查通过，见[运行时检查点](pyscript-event-phase4-validation/runtime-checkpoint.json)。完整构建首轮发现并修复 Blink 字符串转换编译错误；第二轮已通过本轮源码编译，在 Core 链接时发现旧生成对象的结构异常，正在保存现场并诊断。Blink 和浏览器最终结果将在实际验证后更新。
+本阶段已完成，原生预算部分已提交为 `dd47ddebfc`。早期的[运行时检查点](pyscript-event-phase4-validation/runtime-checkpoint.json)保留当时完整构建尚未通过的快照；最终结果见[验证汇总](pyscript-event-phase4-validation/validation-summary.json)和[完整证据](pyscript-event-phase4-validation/final/summary.json)。
+
+正常命令 `autoninja -C out/Debug chrome blink_unittests python_runtime_unittests python_document_context_unittests native_python_settings_unittests` 已通过，**退出码 0、14 步、5 分 30.18 秒**，保留正常 Debug / PDB 和链接检查。这是完整目标依赖图的标准增量构建，复用前两轮已完成的编译及设置资源生成。
+
+| 检查 | 本次实际结果 |
+| --- | --- |
+| 原生运行时 | 49 / 49 |
+| Chrome 适配 | 8 / 8 |
+| Blink Python | 49 / 49 |
+| CSP nonce 回归 | 3 / 3 |
+| Python 设置单测 | 8 / 8 |
+| 点击与事件生命周期浏览器测试 | 27 / 27 |
+| 既有 DOM / 预算 / 生命周期浏览器回归 | 17 / 17 |
+| 既有解析与来源浏览器回归 | 27 / 27 |
+| 设置页、重启、权限模式及沙箱浏览器回归 | 12 / 12 |
+| GN / checkdeps / C++ 格式 / Node 语法 / diff 空白 | 通过 |
+
+合计 **117 项单测、83 项浏览器测试**，均使用这次标准构建的程序。浏览器测试保留 Renderer 沙箱；设置页验证了新增预算说明，点击脚本分别启动受限模式和放开页面限制模式，后者验证子框架的独立上下文与安全销毁。持续点击累计执行 1,560 次事件 DOM 调用，分窗口输出测试累计产生 30,720 字节 Python 文本，均不会误用初始化终身额度。
+
+构建准备时修复了新增 deque 成员要求的 out-of-line 析构函数和 Blink 条件字符串的 `WebString` 显式转换。第二轮标准构建通过本轮源码编译后，在 Core 链接处发现旧对象的 COFF relocation、CodeView 和 `.drectve` 异常。保存实际响应文件、失败命令与原始日志，扫描 5,040 个直接对象、59 个库及 560 个成员，共定位 7 份异常对象。重复普通读取及 mmap 的 SHA-256 一致；保存原件、时间戳与哈希后，仅定向重建这 7 份对象，重建扫描为 0 问题，第三轮标准构建通过。未修改这些对象对应的功能源码，损坏原因仍未确定。
+
+原始异常对象保存在本机忽略目录 `out/Debug/pyscript-event-phase4-completion/object-backup/attempt2/`。最终证据目录包含成功构建日志、两轮失败记录、完整输入扫描、对象哈希和测试结果；包含对象二进制字节的链接错误文本在归档日志中进行了转义，原始日志及其 SHA-256 保留在本机和汇总中。
 
 新增与扩展测试覆盖：确定性时钟下的窗口边界、初始化与事件分离、整次额度准入、窗口跳过与 `once` 保留、普通异常计费、单次致命停止、UTF-8 输出、清理预算、持续点击、返回值析构撤销 DOM、同文档导航、`document.open()`、保留旧节点的 iframe 移除和替换，以及正常浏览器关闭。

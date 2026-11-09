@@ -6,6 +6,7 @@
 #define THIRD_PARTY_BLINK_RENDERER_CORE_HTML_PYTHON_SCRIPT_CONTROLLER_H_
 
 #include "base/task/single_thread_task_runner.h"
+#include "base/time/time.h"
 #include "third_party/blink/public/mojom/devtools/console_message.mojom-blink-forward.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/core_export.h"
@@ -78,6 +79,7 @@ class PythonScriptController final
   const uint64_t document_id_;
   uint64_t generation_ = 1;
   unsigned dom_calls_ = 0;
+  unsigned callback_dom_calls_ = 0;
   size_t console_bytes_ = 0;
   bool console_truncated_ = false;
   bool dom_budget_exhausted_ = false;
@@ -85,6 +87,8 @@ class PythonScriptController final
   bool stopped_ = false;
   bool consumed_ = false;
   bool dispatch_warning_reported_ = false;
+  bool callback_running_ = false;
+  base::TimeTicks last_window_warning_;
 };
 
 }  // namespace blink

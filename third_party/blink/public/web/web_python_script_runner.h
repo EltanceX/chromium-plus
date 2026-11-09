@@ -32,6 +32,7 @@ struct WebPythonScriptResult {
   // A fatal native stop. Run may return a prefix ending in this result;
   // subsequent sources must not execute in this document.
   bool stopped = false;
+  bool callback_skipped = false;
 };
 
 struct WebPythonDomHandle {
@@ -103,6 +104,9 @@ class WebPythonScriptContext {
   virtual WebPythonScriptResult InvokeCallback(WebPythonCallbackHandle,
                                                const WebPythonCallbackEvent&,
                                                WebPythonDomHost&) = 0;
+  // Probe immediately before consuming a native once listener. The caller
+  // permits no intervening Python entry; idle time only frees capacity.
+  virtual bool CanInvokeCallback() { return true; }
   // Registry mutation only, including consumption from an active host call.
   virtual WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) = 0;
 };

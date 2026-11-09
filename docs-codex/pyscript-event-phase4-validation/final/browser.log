@@ -1,0 +1,32 @@
+PASS Trusted mouse and keyboard clicks share Python state
+PASS Nonce CSP sample uses no JavaScript and survives source removal
+PASS Duplicate registrations remain independent after handles are dropped
+PASS Once consumes registration even when Python raises
+PASS Self removal skips later listener and additions wait until next click
+PASS Ordinary exceptions retain listeners and include callback source
+PASS Disconnected nodes skip and reconnection resumes without id transfer
+PASS Native subscriptions and source metadata do not retain detached DOM nodes
+PASS Adopting subscribed node into another document cannot run old Python
+PASS Post-registration Shadow DOM and customized built-in are rejected
+PASS New CSP blocks existing callbacks using original source snapshot
+PASS Callback-created subscriptions inherit the correct source authorization
+PASS Disabling page script execution blocks existing callbacks
+PASS Registration rejects SVG, custom elements, customized built-ins and shadow nodes
+PASS Fatal callback timeout revokes document listeners
+PASS Reload creates fresh callback state and navigation drops old listeners
+PASS Window pressure preserves once, drops skipped clicks and recovers after idle
+PASS Sustained clicks use event DOM budgets across initialization lifetime limits
+PASS Fatal callback resource limit revokes all subscriptions: /event-dom-stop
+PASS Fatal callback resource limit revokes all subscriptions: /event-output-stop
+PASS Fatal callback resource limit revokes all subscriptions: /event-diagnostic-stop
+PASS Callback return-value finalizers have no DOM capability
+PASS Fragment navigation retains listeners without repeating initialization
+PASS document.open revokes listeners on retained old nodes
+PASS Removing an unrestricted child frame revokes retained nodes and isolates its replacement
+PASS Child document.open revokes callbacks before a new document is written
+PASS Browser shuts down normally with active Python listeners
+{
+  "passed": true,
+  "cases": 27,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-event-phase4-completion\\final-validation\\browser.json"
+}

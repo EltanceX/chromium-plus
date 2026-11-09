@@ -1,0 +1,17 @@
+{
+  "state": "failed",
+  "startedAt": "2026-11-09T14:56:54.590126+00:00",
+  "helperPid": 5436,
+  "sourceCommit": "186af85632e3280b4f42747773f952d3984c4199",
+  "targets": [
+    "chrome",
+    "blink_unittests",
+    "python_runtime_unittests",
+    "python_document_context_unittests",
+    "native_python_settings_unittests"
+  ],
+  "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase4-full-build-background.log",
+  "buildPid": 14852,
+  "exitCode": 1,
+  "finishedAt": "2026-11-09T14:58:39.577476+00:00"
+}

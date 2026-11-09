@@ -1,0 +1,61 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4156461s
+load siso config done 10.4276ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:69344+ready:0 (node:441061 edge:69359)
+ 1.52s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/18596] 30.25s S CXX obj/third_party/blink/renderer/core/core/visible_selection.obj
+[0/18589] 30.25s S CXX obj/third_party/blink/renderer/core/core/node.obj
+[0/18554] 30.26s S CXX obj/third_party/blink/renderer/core/core/css_property_equality.obj
+[0/18446] 30.26s S CXX obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj
+[0/18398] 30.27s S CXX obj/third_party/blink/renderer/core/core/async_find_buffer.obj
+[0/18371] 30.27s S CXX obj/third_party/blink/renderer/core/core/css_selector.obj
+[0/18316] 30.27s S CXX obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+[0/2297] 46.03s F CXX obj/third_party/blink/renderer/core/core/visible_selection.obj
+[1/2297] 48.38s F CXX obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+[2/2297] 51.80s F CXX obj/third_party/blink/renderer/core/core/css_selector.obj
+[3/2297] 57.64s F CXX obj/third_party/blink/renderer/core/core/async_find_buffer.obj
+[4/2297] 58.87s F CXX obj/third_party/blink/renderer/core/core/css_property_equality.obj
+[5/2297] 1m02.18s F CXX obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj
+[6/2297] 1m14.90s F CXX obj/third_party/blink/renderer/core/core/node.obj
+[7/2297] 1m14.92s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[7/2191] 1m44.21s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[8/2143] 1m44.25s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[8/2143] 1m44.26s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[8/1655] 1m44.29s S ACTION //chrome:packed_resources_extra(//build/toolchain/win:win_clang_x64)
+[8/49] 1m46.52s F ACTION //chrome:packed_resources_extra(//build/toolchain/win:win_clang_x64)
+[9/47] 1m51.40s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[10/29] 1m51.40s S LIB obj/chrome/renderer/renderer.lib
+[10/21] 1m51.44s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[10/21] 1m52.07s F LIB obj/chrome/renderer/renderer.lib
+[11/21] 1m52.21s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[11/20] 1m54.91s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[12/19] 3m10.03s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[13/19] 5m29.36s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:14 remote:0 cache:0 skip:102085
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1113(err:12) / r:783(err:0) 9.66GiB / w:4(err:0) 1.46MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      4(0)     0.00s |▇      |  1m23.45s |    ▆▆ |
+shutdown cloud logging/monitoring done 553.9µs
+
+5m30.18s Build Succeeded: 14 steps - 0.04/s

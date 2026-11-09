@@ -1,0 +1,87 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3570533s
+load siso config done 10.7137ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:78156+ready:0 (node:441061 edge:78166)
+ 1.29s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/35216] 30.01s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/30587] 30.34s S ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[0/23168] 30.72s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/22641] 30.80s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/14769] 31.32s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/3091] 32.24s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2376] 34.19s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/2376] 34.19s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[1/2375] 34.75s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[2/2375] 47.62s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[3/2375] 1m07.65s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[4/2375] 1m08.65s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[5/2375] 1m19.13s F ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[6/2372] 1m19.13s S ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[6/2372] 1m19.27s F ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[7/2370] 1m19.27s S ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+[7/2370] 1m20.50s F ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+[8/2300] 1m31.91s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[9/2299] 1m31.92s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[9/2299] 1m38.92s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 6b2e7b75-e338-4114-9a49-f301dae0a072 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: ignoring unknown argument: -\x1e-F\xab\xe2\xd0\xd3\x06],\xfab\x9fK\xbf\x10{u\x0c*\x13\x91E\xdf`l\\xf1D\xe2!\x8a9\x8a1
+lld-link: error: \xae\xcaY\xe2̭_\xb7\xe1\xad`\x03\xe1\xf4]\xe3\xb2\xcb\xf7s^\xd4CGNc͢c/4\xd5\xf2\xee\x8f\xee`;\x89\x08]\x83\x90 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: e\x80\xc2*\xd4\xda\xff:i\x8a\xd9`_\xf1\x8d\x07\xfbVr\xcd\x06[N̮\xb2\xaf\xf4\x17\x93KC
+\\xe0\x13\xe6\xa6\xf8\x1c\x11\xe53\xf9\x84\x89\xe7\x91o%^\x03\xfa\x9f7\x91\xb0\xff\xee\xc0]O\xcf\xd32\xc1\x91\xc9\xef	\xed_\x1d\xcc\x0b	jI\x8b\x9d\x9c\x1d9jX\xcdOҦ\x80\xf5\xef\xb29rr	\xbe~gUUr\x9f^\xa6-\x98\xa3;SO>\x0c\xe1\xc0\xc0\x80\x10V\xc7/\x96Q\x947\x9f\xc9<\x023\x0c\xe66\xd5)Fs\x97r,= is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+
+lld-link: error: \xe7\xe8FxV\x1d\x95\xa2}c\x01\xd3B\xa5!D\x82NA\xe4\x98\xc2^\xe1\x11\x9bޟͤ\xc0\xe5/\x17D\xde\xf5\xb00\x12\xbc)\xc5\x16\xdf\xd7\ is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \\x12\x9b\x83[r\xa2\x82\x17#\xab\xa9\x04\xf5\x81\xfe\x9da\x07\xd3;\xe8y0\xc2M\x80v\x15\x8b|P\xa9\xf9\x0b\xe37\xbb\xda9\xaa$\xe0n\xd2L\x119\xf59\x1e\xb2\xbb\xe1i2\xabf\x01\xd7V$\xed\xeb\x83a*\xa0\x81\xae\x8e\x0c;\x15ךU\xaagef\x8b\xf0\x8b\xfd\x90>L\xf3\x90\x95]qa\x1eC!ߑ\x95\xbb\xb3\xa8\xe1|\xb3&\x19\x9b\x87\x10\xf1T\xae\xbc\xbaZ\xc7 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \xd1O*\xb1 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \xb1<q\xc1\xf3\xb0\xd6\x01\xa0\x085ŚG\x04\xea@`\xb6\xd6\xd6@\x10\x18\xc1\x96q\xeeu\xb2\xb5\xf5\x91(\xd2\xf7Qvz2\xfb^>\x7f\x1d\x0f.#\x9a;;\xac\x85>\xd0wi\x98\x12Z\xaf\x08\x99\xa3\xf5 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \x92\xa4\xca8\x98\x01\xf2\xe1\xb5}7l\xd6\xdd#B@\x97T\x1c\xaf!\xc0\x13#\xa8 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: U~GԊJ\xfb\xa2\xeb\x8cQ\xae\x11\x98F\xb1\xf1˕;\xfd&Ӹ\x16V\x11\x0b\xe3\xb0\xf0\x13\xbf1v\xb7\xd0E\x08Y(\x03\x87.x\xb2\xef*\xb6\x9e];!\xed\xb6\xf8\x18շ\xcc\xe5\x90R\xef\xf9 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: o\x0e\x03\xc1\x11ka\xb0\xbb\x9e\xa4\xe8\x05\x02\xf4\xf1\xad!n\x13\x04\xb2\x8f|bd\xd2U\xde<#c\x90\x1d\xf3^\x82\xcbγ\xb2\x9c\xf6Fe\x012\xbc\x93\x82\x8b\xdaJ\x0b4\x9eF֝\x9d\xaa\xa1/\x8d	\x15\xdc\x0e\x02\x03\xfc\x9b\xe9\xea%\xf0ua\xaa\x87\x93\xf0˚\xbe\xad\xc0\xbd\xabȝG\xff\xb1\x88Q\xf5\x02\xbfؔ\xfe\xedkk@\x19\xfc=\xe6kʂ\xd37v\x84ܾj\x84{\xa2,\xc0\xa3{\x9f\xd0	:\x02\x94-gg\x95\xf5L)Ģ7\x06\x13~\x1e\xbc\x93+\x08K\xaf%&\x1cL\xefb3\xa8&d\xca^\xb8s\xc7'\xe1\x01T\xf7\xd1\xe8\x8c\xf5\x9e\x9fA\xf8\xfb\xf4\x83\x03̞\xdd\x032]Hk\xa0\x19oָAPh\x82\xe1\x86\xe8\x92\x07\x08\xc2\xe3\xddE\xb12\xde'9\x1a\xfcT- is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \x9a\xa6L\xeaB\x0b\xc9 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \xce\xd5\xd8Ԉ\xf8\xa9\xa4e\x10\xc1\x84\xdd\xf8\x17\xd31\x93uD\xf3\xe6I\xd1Hz\xa7\xa8\xebk\x91\x97h:\xab\x9bqN6\xe6\x11\xc5+\x1f\xc1jx\xf5f\xc0h{ۊ\x15\xebE\x14\xaa6r\xdb\xd1z\x93\xc4\xd1(\x04L\x99\x8c\xcc\x0eЅj\xa7\xa1j\xf9\xb85\xa0pv\xeeE\xder\xa4\xb6\xcc\x03\x1d\xf8l\x86<u is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: (\x1c\x99#\x1d\x1c\x93\x96\xb0?\x8d6z\xfa\x93\xfa\x9e\x07\xad2\xad\xa66q\x86\xe0\x95\x91\x97\x0c~\x85T\xa9\xb6\xfe\xa68\xfa\xc1\xfefs\xf5\x17\xd2:\xba\xc3`\xa0%\x8d\xf7\x9b\xae\x1a\xf5P\xb5*Z\xb0\xba\x13\x99\xf0$&P'[ևp1\xeb\x8eT\xab\xe6\x11\xbc*\x02f\xa9\xeb\xf9j>\x81\xa4\xeb\x1fd'\x9c*\xf4\xbb\xa7i\xc6\x1f\xd9ܠt\x15Q\xaa\xf0\xdd\x1a\xe9\x19\xd6d\xed2\xda\xe2\x07f\xe6\xa9/\x11}\xa7d\xa2\xdd\xe8aU\xbc_\x01q is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: Y!\xb8\xe2\x91s\x1a#\xe4\x97a(n\x14\x7f\xe9'\x8f\x99\xecYm\xf1\xf8\xbb\x1e\xaf\xef>\x95\x13\x94N,&\xca+\x8e\xd4 is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \xd3\xe8z\x02\x16\xd5\x18fkk\xdfŤ\xc2l\xad\x84\xb4\x19m\xf2LoRPNH\xfe[\x01\xb7\xbb2Ph\xb3` is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \xb9+S is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: \x88\xb1xK\xdd''m\xc2\x15aeՓ\xe7\xa2Me\x88\x95I\x11}\xd6=\x90~ is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: yu\xaa\xf9\xa7\x7f\x80\xe2wyڅ\x10^Z is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: .\xfeʕ\xf1\x0cq\xf4\x0b@\x90J\x17\x86$\xba\xd6}\x95\xfc\x8f\x87\x03&T\xfc\x9f\xeb is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: ʑ\x86\x18v\x98@8c\x88\xda1\xab\xb4\x98\xb0\x8e\x1e\xb4$[\x87E=\xc2dFr\xb3\x05\xa7\xfc\x9c#\xd7\xe6\x82LrԊm\x05Y\x1aZ\xa8\xa7d\x92\x9f\xf4\xd4xY\x893}y\x07\xdcިQ\x19\xa1g\xe4\x9d\xdb\xe6\x1a\x85r\xd36#gՍ\xa4\x80;N2t\xf8\x01i/\xa5\x16\x14\xce\x0eca7\x08p is not allowed in .drectve (obj/third_party/blink/renderer/core/core/css_selector.obj)
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:10 remote:0 cache:0 skip:99800
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1280(err:5) / r:786(err:0) 173.14MiB / w:2(err:0) 382.67KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      5(0)     0.00s |▇      |    30.92s |   ▃▇▃ |
+shutdown cloud logging/monitoring done 0s
+
+1m39.77s Build Failure: 10 done, 1 failed, 2289 remaining - 0.10/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-225937.3652
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

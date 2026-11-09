@@ -16,7 +16,8 @@ blink::WebPythonScriptResult ConvertResult(
           blink::WebString::FromUtf8(result.stdout_text),
           blink::WebString::FromUtf8(result.stderr_text),
           blink::WebString::FromUtf8(result.error),
-          result.stop_reason != native_python::StopReason::kNone};
+          result.stop_reason != native_python::StopReason::kNone,
+          result.callback_skipped};
 }
 
 class ChromeDomHost final : public native_python::DomHost {
@@ -136,6 +137,10 @@ class ChromePythonDocumentContext final : public blink::WebPythonScriptContext {
           event.current_target.id},
          event.is_trusted},
         &bridge));
+  }
+
+  bool CanInvokeCallback() override {
+    return context_ && context_->CanInvokeCallback();
   }
 
   blink::WebPythonScriptResult RemoveCallback(

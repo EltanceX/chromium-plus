@@ -238,7 +238,14 @@ void PythonScriptController::AppendConsole(
     const PythonScriptSource& source,
     const String& text,
     mojom::blink::ConsoleMessageLevel level) {
-  if (text.empty() || console_truncated_) {
+  if (text.empty() || console_truncated_ || stopped_) {
+    return;
+  }
+  if (callback_running_) {
+    // Runtime meters callback stdout/stderr/traceback UTF-8 once, including
+    // the sliding window. Fixed browser labels/notices are not Python output.
+    // Do not charge events to the initialization console's lifetime allowance.
+    Log(*GetSupplementable(), source, text, level);
     return;
   }
   constexpr size_t kLimit = 16 * 1024;
@@ -316,15 +323,20 @@ WebPythonDomResult PythonScriptController::CheckDomCall() {
     return {
         {}, WebPythonDomError::kReference, "The document context is inactive"};
   }
-  if (dom_calls_ >= 1024) {
+  auto& calls = callback_running_ ? callback_dom_calls_ : dom_calls_;
+  const unsigned limit = callback_running_ ? 128 : 1024;
+  if (calls >= limit) {
     dom_budget_exhausted_ = true;
     ++generation_;
     handles_.clear();
     return {{},
             WebPythonDomError::kStopped,
-            "Python document exceeded the 1024 DOM call budget"};
+            WebString::FromUtf8(
+                callback_running_
+                    ? "Python callback exceeded the 128 DOM call budget"
+                    : "Python document exceeded the 1024 DOM call budget")};
   }
-  ++dom_calls_;
+  ++calls;
   return {};
 }
 
@@ -524,10 +536,10 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
     // Never queue a skipped click. Keep diagnostics bounded for this document.
     if (!dispatch_warning_reported_) {
       dispatch_warning_reported_ = true;
-      AppendConsole(*listener.source,
-                    "[pyscript] Python click skipped: document "
-                    "policy or execution state does not allow callbacks.",
-                    mojom::blink::ConsoleMessageLevel::kWarning);
+      Log(document, *listener.source,
+          "[pyscript] Python click skipped: document "
+          "policy or execution state does not allow callbacks.",
+          mojom::blink::ConsoleMessageLevel::kWarning);
     }
     return;
   }
@@ -540,7 +552,20 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
           source->nonce, source->url, source->position)) {
     return;
   }
+  if (!context_->CanInvokeCallback()) {
+    const auto now = base::TimeTicks::Now();
+    if (last_window_warning_.is_null() ||
+        now - last_window_warning_ >= base::Seconds(1)) {
+      last_window_warning_ = now;
+      Log(document, *source,
+          "[pyscript] Python click skipped: event budget window is full.",
+          mojom::blink::ConsoleMessageLevel::kWarning);
+    }
+    return;
+  }
   base::AutoReset<bool> entry(&g_python_running, true);
+  base::AutoReset<bool> callback_entry(&callback_running_, true);
+  callback_dom_calls_ = 0;
   running_ = true;
   current_source_ = source;
   if (listener.once) {
@@ -548,6 +573,14 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
   }
   const auto result = context_->InvokeCallback(
       listener.callback, {"click", listener.handle, event.isTrusted()}, *this);
+  if (stopped_ || !Eligible(document, false)) {
+    // Invalidation closes page output as well as DOM capability. Disposal of
+    // the interpreter still waits until the synchronous Python stack returns.
+    Dispose();
+    running_ = false;
+    ReleaseContext();
+    return;
+  }
   const String prefix = StrCat(
       {"[pyscript callback ", String::Number(listener.callback.id), "] "});
   if (!result.stdout_text.IsEmpty()) {
@@ -558,7 +591,7 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
     AppendConsole(*source, StrCat({prefix, result.stderr_text}),
                   mojom::blink::ConsoleMessageLevel::kError);
   }
-  if (!result.success) {
+  if (!result.success && !result.callback_skipped) {
     AppendConsole(*source, StrCat({prefix, result.error}),
                   mojom::blink::ConsoleMessageLevel::kError);
   }

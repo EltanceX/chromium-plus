@@ -180,12 +180,12 @@ dom.remove_event_listener(listener)
 
 原来的 250 ms / 文档时间、1024 次 / 文档 DOM 调用、16 KiB / 文档输出适用于一次性初始化。若直接累计所有点击，页面最终会耗尽额度；若每次点击无条件重置全部额度，则高频事件可持续占满主线程。
 
-建议增加明确的执行类别，分别管理初始化、事件回调和清理。以下为首版建议初值，需要用 Debug 实测后定稿并更新 UI 说明：
+阶段四已分离初始化、事件回调和清理，并采用以下首版额度；计量细节和实际验证见[阶段四实施记录](pyscript-event-phase4-budgets-and-cleanup.md)。时间指进入运行时后的执行耗时，由单调时钟计算。
 
 | 项目 | 初始化 | 点击事件 |
 | --- | --- | --- |
-| 单次 CPU 时间 | 每块 100 ms，协作式 | 每回调 50 ms，协作式 |
-| 累计 CPU 时间 | 初始化累计 250 ms | 每 Document 最近 1 秒累计 250 ms |
+| 单次执行耗时 | 每块 100 ms，协作式 | 每回调 50 ms，协作式 |
+| 累计执行耗时 | 初始化累计 250 ms | 每 Document 最近 1 秒累计 250 ms |
 | DOM 调用 | 初始化累计 1024 次 | 每回调 128 次，最近 1 秒累计 1024 次 |
 | stdout / stderr / 异常 | 初始化累计 16 KiB UTF-8 | 每回调 4 KiB，最近 1 秒累计 16 KiB UTF-8 |
 | 有效订阅 | 最多 128 个 / Document | 与初始化共享同一订阅数量上限 |
@@ -253,6 +253,8 @@ dom.remove_event_listener(listener)
 
 ### 阶段四：交互预算、导航与安全清理
 
+实施状态：已完成初始化 / 事件 / 清理预算分离、事件窗口准入与结算、致命停止整体撤销、文档失活后的输出关闭及设置说明。五目标标准构建通过，117 项单测与 83 项浏览器测试通过，保留 Renderer 沙箱；窗口按完成时间保守归属，时间保护仍为协作式。原生预算部分已作为 `dd47ddebfc` 提交，详见[阶段四实施记录](pyscript-event-phase4-budgets-and-cleanup.md)和[最终验证汇总](pyscript-event-phase4-validation/validation-summary.json)。
+
 1. 分离初始化、事件和清理的预算类别，实现单次限额、窗口准入与实际结算；统一 Blink 与原生输出 / DOM 计量。
 2. 实现致命停止时整体撤销订阅，以及窗口不足时跳过、恢复后仅接受新事件。
 3. 完成导航、`document.open()`、frame 销毁、GC 和回调中失活的撤销顺序；避免引用释放引发重入或 UAF。
@@ -278,7 +280,7 @@ out/Debug/python_runtime_unittests.exe --test-launcher-jobs=1
 out/Debug/native_python_settings_unittests.exe --test-launcher-jobs=1
 out/Debug/blink_unittests.exe --gtest_filter=HTMLPyScriptElementTest.* --test-launcher-jobs=1
 
-# 新增脚本完成后执行；当前尚不存在。
+# 真实事件及既有页面回归。
 node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event-smoke.json
 
 node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-event-parser-regression.json

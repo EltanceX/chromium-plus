@@ -1,0 +1,18 @@
+{
+  "state": "passed",
+  "attempt": "attempt3",
+  "startedAt": "2026-11-09T15:07:42.361841+00:00",
+  "helperPid": 8024,
+  "targets": [
+    "chrome",
+    "blink_unittests",
+    "python_runtime_unittests",
+    "python_document_context_unittests",
+    "native_python_settings_unittests"
+  ],
+  "log": "C:\\src\\src\\out\\Debug\\pyscript-event-phase4-completion\\attempt3-build.log",
+  "sourceCommit": "dd47ddebfc8d5e9a075aebe62682defc8054bf54",
+  "buildPid": 10244,
+  "exitCode": 0,
+  "finishedAt": "2026-11-09T15:13:13.883758+00:00"
+}

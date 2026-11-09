@@ -276,4 +276,28 @@ TEST(PythonDocumentContextTest,
   EXPECT_EQ(1u, results.size());
   EXPECT_TRUE(RunSource(*context, host, "assert value == 42").success);
 }
+
+TEST(PythonDocumentContextTest, CallbackWindowRefusalIsNonfatalAndConverted) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  ASSERT_TRUE(RunSource(*context, host, R"PY(
+import dom
+def callback(event): print('x' * 3072, end='')
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+)PY")
+                  .success);
+  for (int i = 0; i < 5; ++i) {
+    ASSERT_TRUE(context->CanInvokeCallback());
+    ASSERT_TRUE(context->InvokeCallback(host.last, host.Event(), host).success);
+  }
+  EXPECT_FALSE(context->CanInvokeCallback());
+  const auto skipped = context->InvokeCallback(host.last, host.Event(), host);
+  EXPECT_TRUE(skipped.callback_skipped);
+  EXPECT_FALSE(skipped.stopped);
+  EXPECT_TRUE(skipped.error.IsEmpty());
+  EXPECT_TRUE(skipped.stdout_text.IsEmpty());
+  EXPECT_TRUE(
+      RunSource(*context, host, "print('initialization budget is separate')")
+          .success);
+}
 }  // namespace

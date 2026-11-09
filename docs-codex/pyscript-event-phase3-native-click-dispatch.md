@@ -87,8 +87,8 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 
 最终状态、完整成功构建日志、失败现场、对象哈希和实际测试结果统一保存至 [build-completion/](pyscript-event-phase3-validation/build-completion/summary.json)。首次交付和此前后台运行快照继续作为历史记录保留。
 
-## 留给阶段四的限制
+## 阶段三交付时的限制
 
-本阶段仍共用既有累计预算：单次 100 ms、文档累计 Python 执行 250 ms、累计 DOM 调用 1,024 次及累计输出 16 KiB。正常交互仍可能耗尽文档额度；尚未实现初始化、事件、清理分类和滑动窗口准入 / 结算。
+阶段三交付时仍共用既有累计预算：单次 100 ms、文档累计 Python 执行 250 ms、累计 DOM 调用 1,024 次及累计输出 16 KiB。该限制的后续处理见[阶段四：交互预算、导航与安全清理](pyscript-event-phase4-budgets-and-cleanup.md)。
 
-阶段四还需完成交互预算与更完整的导航、`document.open()`、frame 销毁及清理矩阵。阶段五负责首版完整构建与验收汇总。
+这些交互预算及导航、`document.open()`、frame 销毁和清理矩阵已在后续阶段四实现并验证；阶段五负责首版验收汇总。

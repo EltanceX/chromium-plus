@@ -127,6 +127,58 @@ def blocked(event):
 dom.add_event_listener(dom.get_element_by_id('blocked'), 'click', blocked)
 </pyscript>`), headers: {'Content-Security-Policy': "script-src 'nonce-a' 'nonce-b'"}}],
   ['/other', {body: wrap('<p id="other">other</p>')}],
+  ['/event-window', makePage(`
+import dom
+count = 0
+def filler(event):
+    global count
+    count += 1
+    print('x' * 3072, end='')
+def once(event):
+    dom.set_text(dom.get_element_by_id('result'), str(count) + ':once')
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', filler)
+dom.add_event_listener(dom.get_element_by_id('once'), 'click', once, once=True)
+`, '<button id="once">Once</button>')],
+  ['/event-dom', makePage(`
+import dom
+count = 0
+target = dom.get_element_by_id('result')
+lookup = dom.get_element_by_id
+def callback(event):
+    global count
+    assert list(map(lookup, ['missing'] * 64)) == [None] * 64
+    count += 1
+    dom.set_text(target, str(count))
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+`)],
+  ...[
+    ['/event-dom-stop', "list(map(dom.get_element_by_id, ['missing'] * 129))"],
+    ['/event-output-stop', "print('界' * 2000)"],
+    ['/event-diagnostic-stop', "raise ValueError('界' * 2000)"],
+  ].map(([route, statement]) => [route, makePage(`
+import dom
+def callback(event):
+    ${statement}
+def forbidden(event):
+    dom.set_text(dom.get_element_by_id('result'), 'forbidden')
+target = dom.get_element_by_id('button')
+dom.add_event_listener(target, 'click', callback)
+dom.add_event_listener(target, 'click', forbidden)
+`)]),
+  ['/event-finalizer', makePage(`
+import dom
+class Result:
+    def __del__(self):
+        try:
+            dom.set_text(dom.get_element_by_id('result'), 'forbidden')
+        except ReferenceError:
+            print('finalizer capability revoked')
+def callback(event):
+    dom.set_text(dom.get_element_by_id('result'), 'called')
+    return Result()
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+`)],
+  ['/iframe-parent', {body: wrap('<iframe id="frame" src="/counter"></iframe>')}],
 ]);
 const requests = [];
 const server = http.createServer((request, response) => {
@@ -167,21 +219,24 @@ async function close() {
     }
     await Promise.race([new Promise(resolve => child.once('close', resolve)), delay(5000)]);
   }
-  if (log !== undefined) fs.closeSync(log);
+  if (log !== undefined) { fs.closeSync(log); log = undefined; }
 }
-async function launch() {
-  log = fs.openSync(`${output}.chrome.log`, 'w');
+async function launch(unrestricted = false) {
+  const profile = path.join(root, unrestricted ? 'unrestricted' : 'restricted');
+  fs.mkdirSync(profile);
+  log = fs.openSync(`${output}.chrome.log`, unrestricted ? 'a' : 'w');
   child = spawn(binary, ['--headless', '--disable-gpu', '--no-first-run',
     '--no-default-browser-check', '--disable-background-networking', '--no-proxy-server',
-    '--enable-logging=stderr', '--remote-debugging-port=0', `--user-data-dir=${root}`,
+    '--enable-logging=stderr', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
     '--enable-blink-features=PythonScript', `--native-python-allowed-origin=${origin}`,
+    ...(unrestricted ? ['--native-python-unrestricted-pages'] : []),
     ...chromeArgs, 'about:blank'], {windowsHide: true, stdio: ['ignore', log, log]});
   let launchError;
   child.on('error', error => { launchError = error; });
   const port = await waitFor(() => {
     if (launchError) throw launchError;
     assert.equal(child.exitCode, null, `Chrome exited: ${child.exitCode}`);
-    const file = path.join(root, 'DevToolsActivePort');
+    const file = path.join(profile, 'DevToolsActivePort');
     return fs.existsSync(file) && fs.readFileSync(file, 'utf8').split('\n')[0];
   });
   const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
@@ -371,7 +426,7 @@ try {
     await click();
     assert.equal(await text(), 'entered');
     const count = nativeLogs().length;
-    assert.ok(nativeLogs().some(log => /100 ms/.test(log.text)), JSON.stringify(nativeLogs()));
+    assert.ok(nativeLogs().some(log => /50 ms/.test(log.text)), JSON.stringify(nativeLogs()));
     await evaluate('document.querySelector("#result").textContent="stopped"');
     await click();
     assert.equal(await text(), 'stopped');
@@ -386,6 +441,91 @@ try {
     await click(); assert.equal(await text(), '1:False');
     await navigate('/other');
     assert.equal(await evaluate('document.querySelector("#other").textContent'), 'other');
+  });
+  await check('Window pressure preserves once, drops skipped clicks and recovers after idle', async () => {
+    await navigate('/event-window');
+    await evaluate(`for (let i=0;i<7;++i) document.querySelector('#button').click();
+      document.querySelector('#once').click();document.querySelector('#once').click()`);
+    assert.equal(await text(), '0');
+    assert.equal(nativeLogs().filter(log => log.text.includes('event budget window is full')).length, 1);
+    await delay(1100);
+    assert.equal(await text(), '0');
+    await click('#once');
+    assert.equal(await text(), '5:once');
+    await click('#once');
+    assert.equal(await text(), '5:once');
+    await evaluate(`for (let i=0;i<5;++i) document.querySelector('#button').click()`);
+    const outputs = nativeLogs().filter(log => log.text.includes('x'.repeat(3072)));
+    assert.equal(outputs.length, 10);
+    return {payloadBytes: 30720, skippedWarningCount: 1};
+  });
+  await check('Sustained clicks use event DOM budgets across initialization lifetime limits', async () => {
+    await navigate('/event-dom');
+    for (let i = 0; i < 24; ++i) {
+      await click();
+      assert.equal(await text(), String(i + 1));
+      await delay(100);
+    }
+    return {callbacks: 24, eventDomCalls: 24 * 65};
+  });
+  for (const [route, diagnostic] of [
+    ['/event-dom-stop', /128 DOM call budget/],
+    ['/event-output-stop', /4 KiB/],
+    ['/event-diagnostic-stop', /4 KiB/],
+  ]) {
+    await check(`Fatal callback resource limit revokes all subscriptions: ${route}`, async () => {
+      await navigate(route); await click();
+      assert.equal(await text(), '0');
+      assert.ok(nativeLogs().some(log => diagnostic.test(log.text)), JSON.stringify(nativeLogs()));
+      const count = nativeLogs().length;
+      await delay(1100); await click();
+      assert.equal(await text(), '0');
+      assert.equal(nativeLogs().length, count);
+    });
+  }
+  await check('Callback return-value finalizers have no DOM capability', async () => {
+    await navigate('/event-finalizer'); await click();
+    assert.equal(await text(), 'called');
+    assert.ok(nativeLogs().some(log => log.text.includes('finalizer capability revoked')));
+    await click();
+    assert.equal(await text(), 'called');
+  });
+  await check('Fragment navigation retains listeners without repeating initialization', async () => {
+    await navigate('/counter'); await click();
+    await evaluate('location.hash="same-document"');
+    await delay(100); await click();
+    assert.equal(await text(), '2:False');
+  });
+  await check('document.open revokes listeners on retained old nodes', async () => {
+    await navigate('/counter'); await click();
+    await evaluate(`globalThis.oldButton=document.querySelector('#button');
+      document.open();document.write('<p id="result">written</p>');document.close();oldButton.click()`);
+    assert.equal(await text(), 'written');
+    await delay(100); await evaluate('oldButton.click()');
+    assert.equal(await text(), 'written');
+  });
+  await close();
+  await launch(true);
+  report.unrestrictedLifecycleTested = true;
+  await check('Removing an unrestricted child frame revokes retained nodes and isolates its replacement', async () => {
+    await navigate('/iframe-parent');
+    await evaluate(`globalThis.oldDocument=document.querySelector('#frame').contentDocument;
+      globalThis.oldButton=oldDocument.querySelector('#button');oldButton.click()`);
+    assert.equal(await evaluate('oldDocument.querySelector("#result").textContent'), '1:False');
+    await evaluate(`document.querySelector('#frame').remove();oldButton.click()`);
+    assert.equal(await evaluate('oldDocument.querySelector("#result").textContent'), '1:False');
+    await evaluate(`globalThis.replacement=document.createElement('iframe');replacement.src='/counter';document.body.append(replacement)`);
+    await waitFor(() => evaluate('replacement.contentDocument?.querySelector("#button") !== null && replacement.contentDocument?.querySelector("#result")?.textContent === "0"'));
+    await evaluate(`replacement.contentDocument.querySelector('#button').click()`);
+    assert.equal(await evaluate('replacement.contentDocument.querySelector("#result").textContent'), '1:False');
+    assert.equal(await evaluate('oldDocument.querySelector("#result").textContent'), '1:False');
+  });
+  await check('Child document.open revokes callbacks before a new document is written', async () => {
+    await navigate('/iframe-parent');
+    await evaluate(`globalThis.childDocument=document.querySelector('#frame').contentDocument;
+      globalThis.oldChildButton=childDocument.querySelector('#button');oldChildButton.click();
+      childDocument.open();childDocument.write('<p id="result">child written</p>');childDocument.close();oldChildButton.click()`);
+    assert.equal(await evaluate('childDocument.querySelector("#result").textContent'), 'child written');
   });
   await check('Browser shuts down normally with active Python listeners', async () => {
     await navigate('/counter'); await click();

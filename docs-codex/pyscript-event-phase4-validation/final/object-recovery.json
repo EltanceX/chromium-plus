@@ -1,0 +1,85 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_property_equality.obj",
+    "originalSha256": "f747a06f55db8d1303e41adf32ba8b8922a7c536d5220916e7f7bd7e08b15110",
+    "size": 10065841,
+    "mtimeNs": 1794116982879377800,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 11256: relocation 0 has invalid symbol 3858968522 or type 40479",
+      "Section 11257: relocation 0 has invalid symbol 1350060904 or type 25666",
+      "Section 11258: relocation 0 has invalid symbol 1392202741 or type 10570",
+      "Section 11259: relocation 0 has invalid symbol 4127257753 or type 12231",
+      "Section 11260: relocation 0 has invalid symbol 1776141292 or type 48275",
+      "Invalid CodeView record at 0x40f055 (length 58401, kind 0xe61)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_selector.obj",
+    "originalSha256": "3c34c5b03902cbe16bdc56ab3db39e5341a6a81cb9bb44138817fcaa48571c1a",
+    "size": 6696549,
+    "mtimeNs": 1794124415636910000,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 3448: relocation 0 has invalid symbol 4032052365 or type 53211",
+      "Section 3449: relocation 0 has invalid symbol 3997857339 or type 24159",
+      "Section 3450: relocation 0 has invalid symbol 346527761 or type 8123",
+      "Section 3451: relocation 0 has invalid symbol 1728844699 or type 34510",
+      "Section 3452: relocation 0 has invalid symbol 4205724884 or type 26528",
+      "Invalid UTF-8 in .drectve at file offset 0x10e97a",
+      "Control bytes in .drectve"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_variable_parser.obj",
+    "originalSha256": "5fd976467dd6bfc02945f0c1e98e6fabf441e999d18883772780294724b10f21",
+    "size": 3895572,
+    "mtimeNs": 1794124723618264800,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x212385 (length 30467, kind 0x5b82)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/node.obj",
+    "originalSha256": "0fc8f21a7a55a1f077514bd382c4bdc8e734c6f4eed075c576a7e048d96d248d",
+    "size": 14304794,
+    "mtimeNs": 1794226222749989700,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x5f9014 (length 39205, kind 0xd30b)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/async_find_buffer.obj",
+    "originalSha256": "7668e1486b8a1479c39bfd0281c0965d2142805b1be68d7852ff62ea5d10c2da",
+    "size": 7727091,
+    "mtimeNs": 1794119205547844000,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x2e9007 (length 53299, kind 0xc034)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/visible_selection.obj",
+    "originalSha256": "4ac5d2211275d8086a9c6e733d7ed6dd581cff2a1daa6386481f53df840d5dee",
+    "size": 2448259,
+    "mtimeNs": 1794162249007540800,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0xfb079 (length 53229, kind 0x9fbc)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj",
+    "originalSha256": "7dd46d19d7dd8ef6da8ecb618fb4c8a765d94e8c1905f224b89ef0d2425e2ac8",
+    "size": 7557176,
+    "mtimeNs": 1794223709994403300,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x3805ac (length 21019, kind 0xa834)"
+    ]
+  }
+]
