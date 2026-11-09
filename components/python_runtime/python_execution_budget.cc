@@ -15,29 +15,83 @@ constexpr size_t kOutputLimit = 16 * 1024;
 constexpr base::TimeDelta kBlockTime = base::Milliseconds(100);
 constexpr base::TimeDelta kDocumentTime = base::Milliseconds(250);
 constexpr base::TimeDelta kCleanupTime = base::Milliseconds(50);
+constexpr base::TimeDelta kCallbackTime = base::Milliseconds(50);
+constexpr base::TimeDelta kEventWindow = base::Seconds(1);
+constexpr size_t kCallbackDomCalls = 128;
+constexpr size_t kDomCalls = 1024;
+constexpr size_t kCallbackOutput = 4 * 1024;
 }  // namespace
 
 ExecutionBudget::ExecutionBudget(const base::TickClock* clock)
     : clock_(*clock) {}
 
-void ExecutionBudget::Begin(DomHost* host) {
+ExecutionBudget::~ExecutionBudget() = default;
+
+void ExecutionBudget::ExpireEvents() {
+  const auto now = clock_->NowTicks();
+  while (!events_.empty() && now - events_.front().finished >= kEventWindow) {
+    event_time_ -= events_.front().time;
+    event_dom_calls_ -= events_.front().dom_calls;
+    event_output_bytes_ -= events_.front().output_bytes;
+    events_.pop_front();
+  }
+}
+
+bool ExecutionBudget::CanBeginCallback() {
+  ExpireEvents();
+  return mode_ == Mode::kIdle && reason_ == StopReason::kNone &&
+         event_time_ <= kDocumentTime - kCallbackTime &&
+         event_dom_calls_ <= kDomCalls - kCallbackDomCalls &&
+         event_output_bytes_ <= kOutputLimit - kCallbackOutput;
+}
+
+bool ExecutionBudget::Begin(DomHost* host, bool callback) {
   CHECK(mode_ == Mode::kIdle);
+  if (callback && !CanBeginCallback()) {
+    return false;
+  }
+  callback_ = callback;
+  callback_dom_calls_ = 0;
+  callback_output_bytes_ = 0;
   host_ = host;
   started_ = clock_->NowTicks();
   mode_ = Mode::kExecute;
   trace_events_ = 0;
+  return true;
 }
 
 void ExecutionBudget::Finish() {
   if (mode_ == Mode::kExecute) {
     Check();
-    elapsed_ += clock_->NowTicks() - started_;
+    const auto now = clock_->NowTicks();
+    if (callback_) {
+      const EventUsage usage{now, now - started_, callback_dom_calls_,
+                             callback_output_bytes_};
+      event_time_ += usage.time;
+      event_dom_calls_ += usage.dom_calls;
+      event_output_bytes_ += usage.output_bytes;
+      // Bound bookkeeping even for many tiny callbacks. Coalescing retains
+      // older charges until the newest completion expires, conservatively.
+      if (events_.size() == 1024) {
+        auto& last = events_.back();
+        last.finished = now;
+        last.time += usage.time;
+        last.dom_calls += usage.dom_calls;
+        last.output_bytes += usage.output_bytes;
+      } else if (!usage.time.is_zero() || usage.dom_calls ||
+                 usage.output_bytes) {
+        events_.push_back(usage);
+      }
+    } else {
+      elapsed_ += now - started_;
+    }
   }
   host_ = nullptr;
   mode_ = Mode::kIdle;
 }
 
 void ExecutionBudget::BeginCleanup() {
+  CHECK(mode_ == Mode::kIdle);
   host_ = nullptr;
   mode_ = Mode::kCleanup;
   started_ = clock_->NowTicks();
@@ -46,6 +100,7 @@ void ExecutionBudget::BeginCleanup() {
 void ExecutionBudget::Stop(StopReason reason) {
   if (reason_ == StopReason::kNone) {
     reason_ = reason;
+    stopped_in_callback_ = callback_;
   }
 }
 
@@ -61,9 +116,9 @@ bool ExecutionBudget::Check() {
   if (host_ && !host_->IsActive()) {
     Stop(StopReason::kInactive);
   }
-  if (elapsed_ + duration >= kDocumentTime) {
+  if (!callback_ && elapsed_ + duration >= kDocumentTime) {
     Stop(StopReason::kDocumentTime);
-  } else if (duration >= kBlockTime) {
+  } else if (duration >= (callback_ ? kCallbackTime : kBlockTime)) {
     Stop(StopReason::kBlockTime);
   }
   return reason_ == StopReason::kNone;
@@ -74,14 +129,21 @@ const char* ExecutionBudget::Message() const {
     case StopReason::kNone:
       return "Python execution context is inactive";
     case StopReason::kBlockTime:
-      return "Python block exceeded the 100 ms cooperative execution budget";
+      return stopped_in_callback_ ? "Python callback exceeded the 50 ms "
+                                    "cooperative execution budget"
+                                  : "Python block exceeded the 100 ms "
+                                    "cooperative execution budget";
     case StopReason::kDocumentTime:
       return "Python document exceeded the 250 ms cooperative execution budget";
     case StopReason::kOutput:
-      return "Python output was truncated at 16 KiB; document execution "
-             "stopped";
+      return stopped_in_callback_ ? "Python callback output was truncated at 4 "
+                                    "KiB; document execution stopped"
+                                  : "Python output was truncated at 16 KiB; "
+                                    "document execution stopped";
     case StopReason::kDomCalls:
-      return "Python document exceeded the 1024 DOM call budget";
+      return stopped_in_callback_
+                 ? "Python callback exceeded the 128 DOM call budget"
+                 : "Python document exceeded the 1024 DOM call budget";
     case StopReason::kInactive:
       return "The Python document context is inactive";
   }
@@ -110,7 +172,7 @@ bool ExecutionBudget::TraceCheckpoint(int event) {
 
 bool ExecutionBudget::ConsumeOutput(size_t bytes) {
   const size_t accepted = std::min(bytes, OutputRemaining());
-  output_bytes_ += accepted;
+  (callback_ ? callback_output_bytes_ : output_bytes_) += accepted;
   if (accepted != bytes) {
     Stop(StopReason::kOutput);
     return false;
@@ -119,7 +181,21 @@ bool ExecutionBudget::ConsumeOutput(size_t bytes) {
 }
 
 size_t ExecutionBudget::OutputRemaining() const {
-  return kOutputLimit - output_bytes_;
+  return callback_ ? kCallbackOutput - callback_output_bytes_
+                   : kOutputLimit - output_bytes_;
+}
+
+bool ExecutionBudget::ConsumeDomCall() {
+  if (!Check()) {
+    return false;
+  }
+  auto& calls = callback_ ? callback_dom_calls_ : initialization_dom_calls_;
+  if (calls == (callback_ ? kCallbackDomCalls : kDomCalls)) {
+    Stop(StopReason::kDomCalls);
+    return false;
+  }
+  ++calls;
+  return true;
 }
 
 int BudgetTrace(PyObject* token, PyFrameObject* frame, int event, PyObject*) {
@@ -153,14 +229,14 @@ DomResult BudgetedDomHost::FinishCall(DomResult result) {
 }
 
 DomResult BudgetedDomHost::GetElementById(std::string_view id) {
-  if (!IsActive()) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
     return {{}, DomError::kStopped, budget_->Message()};
   }
   return FinishCall(budget_->host()->GetElementById(id));
 }
 
 DomResult BudgetedDomHost::SetText(DomHandle handle, std::string_view text) {
-  if (!IsActive()) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
     return {{}, DomError::kStopped, budget_->Message()};
   }
   return FinishCall(budget_->host()->SetText(handle, text));
@@ -170,7 +246,7 @@ DomResult BudgetedDomHost::AddEventListener(DomHandle element,
                                             std::string_view type,
                                             CallbackHandle callback,
                                             bool once) {
-  if (!IsActive()) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
     return {{}, DomError::kStopped, budget_->Message()};
   }
   return FinishCall(
@@ -179,7 +255,7 @@ DomResult BudgetedDomHost::AddEventListener(DomHandle element,
 
 DomResult BudgetedDomHost::RemoveEventListener(DomHandle element,
                                                CallbackHandle callback) {
-  if (!IsActive()) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
     return {{}, DomError::kStopped, budget_->Message()};
   }
   return FinishCall(budget_->host()->RemoveEventListener(element, callback));

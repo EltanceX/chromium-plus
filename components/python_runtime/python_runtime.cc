@@ -320,7 +320,8 @@ struct PythonContext::Impl {
   Impl(const base::TickClock* clock, uint64_t id)
       : context_id(id), capture(clock) {}
   ExecutionResult Run(DomHost* host,
-                      base::FunctionRef<PyObject*(DomHost*)> operation);
+                      base::FunctionRef<PyObject*(DomHost*)> operation,
+                      bool callback = false);
   // CPython owns thread; globals owns a Python reference, released under its
   // GIL.
   RAW_PTR_EXCLUSION PyThreadState* thread = nullptr;
@@ -333,7 +334,8 @@ struct PythonContext::Impl {
 
 ExecutionResult PythonContext::Impl::Run(
     DomHost* host,
-    base::FunctionRef<PyObject*(DomHost*)> operation) {
+    base::FunctionRef<PyObject*(DomHost*)> operation,
+    bool callback) {
   auto& runtime = Runtime::Get();
   runtime.CheckThread();
   if (runtime.executing) {
@@ -347,13 +349,17 @@ ExecutionResult PythonContext::Impl::Run(
     RecordStop(result, budget);
     return result;
   }
+  if (!budget.Begin(host, callback)) {
+    ExecutionResult result;
+    result.callback_skipped = true;
+    return result;
+  }
   PyEval_RestoreThread(thread);
   base::AutoReset<bool> executing(&runtime.executing, true);
   base::AutoReset<uint64_t> active_context(&runtime.active_context_id,
                                            context_id);
   capture.result = {};
   capture.active = true;
-  budget.Begin(host);
   BudgetedDomHost bridge(budget);
   PyEval_SetTrace(BudgetTrace, trace_token);
   {
@@ -545,35 +551,46 @@ CallbackRegistrationResult PythonContext::RegisterCallback(
 ExecutionResult PythonContext::InvokeCallback(CallbackHandle handle,
                                               const CallbackEvent& event,
                                               DomHost* dom_host) {
-  return impl_->Run(dom_host, [&](DomHost* bridge) -> PyObject* {
-    PyRef callback(GetDomCallback(impl_->dom_module, handle));
-    if (!callback) {
-      return nullptr;
-    }
-    PyRef argument(CreateDomCallbackEvent(impl_->dom_module, event));
-    if (!argument) {
-      return nullptr;
-    }
-    PyRef result;
-    {
-      ScopedDomHost capability(impl_->dom_module, bridge);
-      result.reset(PyObject_CallOneArg(callback.get(), argument.get()));
-    }
-    if (result &&
-        (PyCoro_CheckExact(result.get()) || PyGen_CheckExact(result.get()) ||
-         PyAsyncGen_CheckExact(result.get()))) {
-      if (!PyAsyncGen_CheckExact(result.get())) {
-        PyRef closed(PyObject_CallMethod(result.get(), "close", nullptr));
-        if (!closed) {
+  return impl_->Run(
+      dom_host,
+      [&](DomHost* bridge) -> PyObject* {
+        PyRef callback(GetDomCallback(impl_->dom_module, handle));
+        if (!callback) {
           return nullptr;
         }
-      }
-      PyErr_SetString(PyExc_TypeError, "Callback results must be synchronous");
-      return nullptr;
-    }
-    // Return values are ignored and released with the DOM capability revoked.
-    return result ? Py_NewRef(Py_None) : nullptr;
-  });
+        PyRef argument(CreateDomCallbackEvent(impl_->dom_module, event));
+        if (!argument) {
+          return nullptr;
+        }
+        PyRef result;
+        {
+          ScopedDomHost capability(impl_->dom_module, bridge);
+          result.reset(PyObject_CallOneArg(callback.get(), argument.get()));
+        }
+        if (result && (PyCoro_CheckExact(result.get()) ||
+                       PyGen_CheckExact(result.get()) ||
+                       PyAsyncGen_CheckExact(result.get()))) {
+          if (!PyAsyncGen_CheckExact(result.get())) {
+            PyRef closed(PyObject_CallMethod(result.get(), "close", nullptr));
+            if (!closed) {
+              return nullptr;
+            }
+          }
+          PyErr_SetString(PyExc_TypeError,
+                          "Callback results must be synchronous");
+          return nullptr;
+        }
+        // Return values are ignored and released with the DOM capability
+        // revoked.
+        return result ? Py_NewRef(Py_None) : nullptr;
+      },
+      true);
+}
+
+bool PythonContext::CanInvokeCallback() {
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  return !runtime.executing && impl_->capture.budget.CanBeginCallback();
 }
 
 ExecutionResult PythonContext::RemoveCallback(CallbackHandle handle) {

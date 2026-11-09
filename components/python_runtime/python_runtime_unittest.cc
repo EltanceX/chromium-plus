@@ -805,8 +805,7 @@ TEST(PythonRuntimeTest,
   EXPECT_EQ(StopReason::kBlockTime, stopped.result.stop_reason);
 }
 
-TEST(PythonRuntimeTest,
-     CallbackAndSourceShareCumulativeBudgetsUntilEventPhaseFour) {
+TEST(PythonRuntimeTest, InitializationAndEventTimeAreSeparateAndStopsLatch) {
   std::string error;
   base::SimpleTestTickClock clock;
   auto context = PythonContext::CreateForTesting(&error, &clock);
@@ -820,17 +819,36 @@ TEST(PythonRuntimeTest,
   ASSERT_TRUE(registration.result.success);
   TestDomHost host;
   host.on_get = [&] { clock.Advance(base::Milliseconds(80)); };
+  for (int i = 0; i < 3; ++i) {
+    ASSERT_TRUE(context->Execute("dom.get_element_by_id('x')", "source", &host)
+                    .success);
+  }
+  host.on_get = [&] { clock.Advance(base::Milliseconds(40)); };
+  for (int i = 0; i < 6; ++i) {
+    ASSERT_TRUE(context->CanInvokeCallback());
+    ASSERT_TRUE(
+        context->InvokeCallback(registration.handle, Click(), &host).success);
+  }
+  EXPECT_FALSE(context->CanInvokeCallback());
+  const auto skipped =
+      context->InvokeCallback(registration.handle, Click(), &host);
+  EXPECT_TRUE(skipped.callback_skipped);
+  EXPECT_EQ(StopReason::kNone, skipped.stop_reason);
+  EXPECT_EQ(9, host.gets);
+  // Expire exactly the oldest 40ms completion. The remaining 200ms permits
+  // reserving a full 50ms entry, rather than requiring another whole second.
+  clock.Advance(base::Milliseconds(800));
+  EXPECT_TRUE(context->CanInvokeCallback());
   EXPECT_TRUE(
       context->InvokeCallback(registration.handle, Click(), &host).success);
+  EXPECT_EQ(StopReason::kDocumentTime,
+            context->Execute("dom.get_element_by_id('x')", "source", &host)
+                .stop_reason);
   clock.Advance(base::Seconds(10));
-  EXPECT_TRUE(
-      context->Execute("dom.get_element_by_id('x')", "source", &host).success);
-  EXPECT_TRUE(
-      context->InvokeCallback(registration.handle, Click(), &host).success);
+  EXPECT_FALSE(context->CanInvokeCallback());
   EXPECT_EQ(
       StopReason::kDocumentTime,
       context->InvokeCallback(registration.handle, Click(), &host).stop_reason);
-  EXPECT_EQ(4, host.gets);
 
   context = PythonContext::Create(&error);
   ASSERT_TRUE(context) << error;
@@ -840,9 +858,166 @@ TEST(PythonRuntimeTest,
   ASSERT_TRUE(output_callback.result.success);
   ASSERT_TRUE(context->Execute("print('x' * 15000)").success);
   const auto output = context->InvokeCallback(output_callback.handle, Click());
-  EXPECT_EQ(StopReason::kOutput, output.stop_reason);
-  EXPECT_TRUE(output.output_truncated);
-  EXPECT_LE(output.stdout_text.size(), 16384u - 15001);
+  EXPECT_TRUE(output.success) << output.error;
+  EXPECT_EQ(3001u, output.stdout_text.size());
+}
+
+TEST(PythonRuntimeTest,
+     CallbackOutputWindowSkipsWithoutConsumingOnceAndRecovers) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+import dom
+def filler(event): print('x' * 3072, end='')
+def once(event): print('once')
+dom.add_event_listener(dom.get_element_by_id('x'), 'click', once, once=True)
+)PY",
+                            "output-window", &host)
+                  .success);
+  const auto once = host.last_callback;
+  const auto filler = context->RegisterCallback("filler");
+  ASSERT_TRUE(filler.result.success);
+  for (int i = 0; i < 5; ++i) {
+    ASSERT_TRUE(context->InvokeCallback(filler.handle, Click(), &host).success);
+  }
+  EXPECT_FALSE(context->CanInvokeCallback());
+  auto skipped = context->InvokeCallback(once, Click(), &host);
+  EXPECT_TRUE(skipped.callback_skipped);
+  EXPECT_TRUE(skipped.stdout_text.empty());
+  EXPECT_EQ(StopReason::kNone, skipped.stop_reason);
+  clock.Advance(base::Milliseconds(999));
+  EXPECT_FALSE(context->CanInvokeCallback());
+  clock.Advance(base::Milliseconds(1));
+  EXPECT_TRUE(context->CanInvokeCallback());
+  EXPECT_EQ("once\n",
+            context->InvokeCallback(once, Click(), &host).stdout_text);
+  EXPECT_FALSE(context->InvokeCallback(once, Click(), &host).success);
+}
+
+TEST(PythonRuntimeTest, CallbackDomWindowReservesAndInitializationIsSeparate) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+import dom
+lookup = dom.get_element_by_id
+def callback(event): assert list(map(lookup, ['missing'] * 128)) == [None] * 128
+)PY")
+                  .success);
+  const auto callback = context->RegisterCallback("callback");
+  ASSERT_TRUE(callback.result.success);
+  for (int i = 0; i < 8; ++i) {
+    ASSERT_TRUE(
+        context->Execute("list(map(lookup, ['missing'] * 128))", "init", &host)
+            .success);
+  }
+  for (int i = 0; i < 8; ++i) {
+    ASSERT_TRUE(
+        context->InvokeCallback(callback.handle, Click(), &host).success);
+  }
+  EXPECT_EQ(2048, host.gets);
+  EXPECT_TRUE(context->InvokeCallback(callback.handle, Click(), &host)
+                  .callback_skipped);
+  EXPECT_EQ(2048, host.gets);
+  clock.Advance(base::Seconds(1));
+  EXPECT_TRUE(context->InvokeCallback(callback.handle, Click(), &host).success);
+  EXPECT_EQ(2176, host.gets);
+}
+
+TEST(PythonRuntimeTest, CallbackSingleEntryLimitsAreFatalAcrossWindowExpiry) {
+  for (const std::string body : {
+           "list(map(dom.get_element_by_id, ['missing'] * 129))",
+           "print('界' * 2000)",
+           "raise ValueError('界' * 2000)",
+       }) {
+    std::string error;
+    base::SimpleTestTickClock clock;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    ASSERT_TRUE(
+        context->Execute("import dom\ndef callback(event):\n    " + body)
+            .success);
+    const auto callback = context->RegisterCallback("callback");
+    const auto result =
+        context->InvokeCallback(callback.handle, Click(), &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_FALSE(result.callback_skipped);
+    EXPECT_NE(StopReason::kNone, result.stop_reason);
+    EXPECT_LE(result.stdout_text.size() + result.stderr_text.size(), 4096u);
+    EXPECT_LE(host.gets, 128);
+    clock.Advance(base::Seconds(10));
+    EXPECT_FALSE(context->CanInvokeCallback());
+    EXPECT_EQ(result.stop_reason, context->Execute("pass").stop_reason);
+    EXPECT_EQ(result.stop_reason,
+              context->InvokeCallback(callback.handle, Click()).stop_reason);
+  }
+}
+
+TEST(PythonRuntimeTest, CallbackErrorsChargeWindowAndFiftyMillisecondsIsFatal) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(
+      context
+          ->Execute(
+              "import dom\ndef callback(event):\n    "
+              "dom.get_element_by_id('x')\n    raise ValueError('ordinary')")
+          .success);
+  const auto callback = context->RegisterCallback("callback");
+  host.on_get = [&] { clock.Advance(base::Milliseconds(45)); };
+  for (int i = 0; i < 5; ++i) {
+    auto result = context->InvokeCallback(callback.handle, Click(), &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_EQ(StopReason::kNone, result.stop_reason);
+    EXPECT_NE(std::string::npos, result.error.find("ValueError: ordinary"));
+  }
+  EXPECT_TRUE(context->InvokeCallback(callback.handle, Click(), &host)
+                  .callback_skipped);
+  clock.Advance(base::Seconds(1));
+  host.on_get = [&] { clock.Advance(base::Milliseconds(50)); };
+  auto result = context->InvokeCallback(callback.handle, Click(), &host);
+  EXPECT_EQ(StopReason::kBlockTime, result.stop_reason);
+  EXPECT_NE(std::string::npos, result.error.find("50 ms"));
+  clock.Advance(base::Seconds(1));
+  EXPECT_FALSE(context->CanInvokeCallback());
+}
+
+TEST(PythonRuntimeTest, FatalCallbackStillAllowsIndependentBudgetedCleanup) {
+  const auto before = GetRuntimeStatisticsForTesting();
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+class Finalizer:
+    def __del__(self):
+        while True: pass
+value = Finalizer()
+value.cycle = value
+def callback(event):
+    while True: pass
+)PY")
+                  .success);
+  const auto callback = context->RegisterCallback("callback");
+  EXPECT_EQ(StopReason::kBlockTime,
+            context->InvokeCallback(callback.handle, Click()).stop_reason);
+  const auto started = base::TimeTicks::Now();
+  context.reset();
+  EXPECT_LT(base::TimeTicks::Now() - started, base::Seconds(5));
+  const auto after = GetRuntimeStatisticsForTesting();
+  EXPECT_EQ(before.live_contexts, after.live_contexts);
+  EXPECT_EQ(before.cleanup_budget_exhaustions + 1,
+            after.cleanup_budget_exhaustions);
 }
 
 TEST(PythonRuntimeTest, CallbackCyclesParticipateInGcAndTeardownRevokesDom) {

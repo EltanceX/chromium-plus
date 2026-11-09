@@ -7,6 +7,8 @@
 
 #include <Python.h>
 
+#include <deque>
+
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
 #include "base/time/time.h"
@@ -23,7 +25,9 @@ namespace native_python {
 class ExecutionBudget {
  public:
   explicit ExecutionBudget(const base::TickClock* clock);
-  void Begin(DomHost* host);
+  ~ExecutionBudget();
+  bool Begin(DomHost* host, bool callback = false);
+  bool CanBeginCallback();
   void Finish();
   void BeginCleanup();
   bool Check();
@@ -31,6 +35,7 @@ class ExecutionBudget {
   bool RaiseIfStopped();
   bool TraceCheckpoint(int event);
   bool ConsumeOutput(size_t bytes);
+  bool ConsumeDomCall();
   size_t OutputRemaining() const;
   StopReason reason() const { return reason_; }
   const char* Message() const;
@@ -49,6 +54,22 @@ class ExecutionBudget {
   size_t output_bytes_ = 0;
   bool cleanup_exhausted_ = false;
   unsigned trace_events_ = 0;
+  struct EventUsage {
+    base::TimeTicks finished;
+    base::TimeDelta time;
+    size_t dom_calls = 0;
+    size_t output_bytes = 0;
+  };
+  void ExpireEvents();
+  std::deque<EventUsage> events_;
+  base::TimeDelta event_time_;
+  size_t event_dom_calls_ = 0;
+  size_t event_output_bytes_ = 0;
+  size_t initialization_dom_calls_ = 0;
+  size_t callback_dom_calls_ = 0;
+  size_t callback_output_bytes_ = 0;
+  bool callback_ = false;
+  bool stopped_in_callback_ = false;
 };
 
 // SetTrace holds a capsule pointing to a context-owned ExecutionBudget. The

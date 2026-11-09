@@ -97,6 +97,8 @@ struct PYTHON_RUNTIME_EXPORT ExecutionResult {
   std::string stderr_text;
   std::string error;
   StopReason stop_reason = StopReason::kNone;
+  // Window pressure skips an event without entering Python or consuming once.
+  bool callback_skipped = false;
 };
 
 struct PYTHON_RUNTIME_EXPORT CallbackRegistrationResult {
@@ -126,6 +128,9 @@ class PYTHON_RUNTIME_EXPORT PythonContext {
   ExecutionResult InvokeCallback(CallbackHandle,
                                  const CallbackEvent&,
                                  DomHost* dom_host = nullptr);
+  // Main-thread admission probe. With no intervening Python entry, elapsed
+  // idle time can only free window capacity, never invalidate admission.
+  bool CanInvokeCallback();
   // Idempotent for a removed handle from this context. Also permits registry
   // mutation from this context's active host call, without interpreter reentry.
   ExecutionResult RemoveCallback(CallbackHandle);
