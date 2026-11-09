@@ -1,0 +1,79 @@
+{
+  "recordedAt": "2026-11-09T18:20:41+08:00",
+  "baseCommit": "83433306b8",
+  "scope": "Runtime callback registry and invocation only; page listener APIs and Blink click dispatch are pending.",
+  "environment": {
+    "workspace": "C:\\src\\src",
+    "platform": "Windows x64",
+    "outputDirectory": "out/Debug",
+    "gnArgs": "# Build arguments go here.\n# See \"gn args <out_dir> --list\" for available build arguments.\nis_component_build = true\ntarget_cpu = \"x64\"\ncc_wrapper = \"sccache\"\nis_debug = true"
+  },
+  "results": {
+    "runtimeBaseline": {
+      "passed": true,
+      "tests": 22,
+      "statuses": {
+        "SUCCESS": 22
+      },
+      "summary": "baseline.json",
+      "log": "baseline.log"
+    },
+    "runtimeBuild": {
+      "passed": true,
+      "command": "autoninja -C out/Debug python_runtime_unittests",
+      "log": "build-fixed.log"
+    },
+    "runtimeUnittests": {
+      "passed": true,
+      "tests": 35,
+      "statuses": {
+        "SUCCESS": 35
+      },
+      "summary": "unittests.json",
+      "log": "unittests.log",
+      "command": "out/Debug/python_runtime_unittests.exe --test-launcher-jobs=1 --test-launcher-timeout=60000 --test-launcher-summary-output=out/Debug/pyscript-event-phase1-unittests.json"
+    },
+    "gnCheck": {
+      "passed": true,
+      "command": "gn check out/Debug //components/python_runtime:python_runtime",
+      "log": "gn-check.log"
+    },
+    "checkdeps": {
+      "passed": true,
+      "command": "python buildtools/checkdeps/checkdeps.py components/python_runtime",
+      "log": "checkdeps.log"
+    },
+    "chromeIntegrationBuild": {
+      "passed": true,
+      "command": "autoninja -C out/Debug chrome python_runtime_unittests",
+      "log": "chrome-build.log"
+    },
+    "domBrowserRegression": {
+      "passed": true,
+      "tests": 17,
+      "command": "node chrome/test/pyscript_dom_smoke_test.mjs --output=out/Debug/pyscript-event-phase1-dom-regression.json",
+      "summary": "dom-regression.json",
+      "log": "dom-regression.log",
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    }
+  },
+  "initialFailure": {
+    "log": "build.log",
+    "reason": "Two CPython-owned Python reference fields required RAW_PTR_EXCLUSION. Corrected before the successful build."
+  },
+  "limitations": [
+    "Web dom.add_event_listener and dom.remove_event_listener are not implemented in phase one.",
+    "No Blink listener, real click dispatch, once semantics, or event sliding-window budgets yet.",
+    "Existing source and callback execution share 100 ms per-entry, 250 ms per-document, and 16 KiB cumulative document output budgets.",
+    "A callback inserted before a fatal exit-budget stop can remain in the bounded registry until context teardown; no usable handle is returned.",
+    "The broader MVP acceptance matrix was not rerun."
+  ],
+  "sourceSha256": {
+    "components/python_runtime/python_runtime.h": "47a3727b2f2b4dc84c855a2e38ad349ff4dc2c5a9a165d5b208584a22deb73c6",
+    "components/python_runtime/python_runtime.cc": "3eb6690ffd0aa79f6fe76f9373344feec28e672cfc5a155ca9f0bf3f3518d21a",
+    "components/python_runtime/python_dom_module.h": "472a11dce96931e323bc0b0db039b26bef9abd78289e57912822a0c190ad6776",
+    "components/python_runtime/python_dom_module.cc": "d6fd2756efd903f1b726392c4be659521a9bae263b34f92dae711bc6a69485dd",
+    "components/python_runtime/python_runtime_unittest.cc": "7e70a19fa778bca4de0e13722c2e3c99b655834f42f4a538fee70e9738c736cf"
+  }
+}

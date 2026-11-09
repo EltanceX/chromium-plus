@@ -1,0 +1,41 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87116 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.917049s
+load siso config done 11.3154ms
+schedule pending:1+ready:0 (node:441039 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441039 edge:6)
+schedule pending:88794+ready:0 (node:441039 edge:88801)
+ 1.12s schedule pending:89755+ready:9087 (node:441039 edge:98842)
+
+build start: Ready 9087 Pending 89755
+[0/9268] 31.88s S CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[0/8830] 31.90s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/9] 34.15s F CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[1/9] 1m07.50s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[2/9] 1m07.51s S LIB obj/chrome/renderer/renderer.lib
+[2/9] 1m07.80s F LIB obj/chrome/renderer/renderer.lib
+[3/9] 1m07.88s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[3/9] 2m28.21s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:4 remote:0 cache:0 skip:98838
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 5169(err:3) / r:765(err:0) 4.99GiB / w:2(err:0) 988.67KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      1(0)     0.00s |▅      |  1m19.49s |     ▅ |
+
+2m28.87s Build Succeeded: 4 steps - 0.03/s
+shutdown cloud logging/monitoring done 0s

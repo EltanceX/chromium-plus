@@ -2,7 +2,7 @@
 
 - 整理日期：2026-11-09（Asia/Shanghai）。
 - 实现基线：`dabd65e514`，已完成 Python 解释器设置与页面权限模式。
-- 状态：设计与实施计划；本文 API、事件监听和事件预算尚未实现，实施完成前不能作为现有功能使用。
+- 状态：阶段一运行时回调注册表、同步调用与只读事件快照已完成；网页监听 API、Blink click 派发与交互预算仍未接入。详见[阶段一实施记录](pyscript-event-phase1-runtime-callbacks.md)，本文页面示例尚不能作为现有功能使用。
 - 目标平台：沿用 Windows x64 Debug，Renderer 主线程内嵌 CPython。
 - 前置记录：[Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM 桥接](pyscript-phase3-document-context-dom.md)、[预算与清理](pyscript-phase4-budgets-navigation-cleanup.md)、[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。
 
@@ -87,7 +87,7 @@ dom.remove_event_listener(listener)
 
 现有实现已经具备每 Document 子解释器、跨代码块 globals、有限 DOM 句柄、执行预算、禁止重入、导航失活和安全延迟清理。
 
-当前 `PythonContext::Execute()` 只支持编译和执行源码；`WebPythonScriptContext::Run()` 只面向首次解析后的代码块批次。需要增加独立的 callable 调用入口，不能通过每次点击拼接或重新执行 Python 源码代替。
+阶段一已为 `PythonContext` 增加独立的 callable 注册、调用与移除入口，并与源码执行共用执行边界；`WebPythonScriptContext::Run()` 仍只面向首次解析后的代码块批次，Chrome / Blink 的 callable 适配将在后续接入。事件调用不通过拼接或重新执行 Python 源码实现。
 
 当前 `DomHost` 与 `WebPythonDomHost` 都是执行期间借用的桥接对象。回调等待期间不能保存它们，必须在每一次调用时重新建立桥接，并在异常格式化、引用释放和清理前按既有规则撤销 DOM 能力。
 
@@ -219,6 +219,8 @@ dom.remove_event_listener(listener)
 ## 8. 分阶段实施步骤
 
 ### 阶段一：运行时回调注册表与调用入口
+
+实施状态：运行时实现、35 / 35 单测、Chrome 集成构建、既有 DOM 浏览器回归 17 / 17 及 GN / checkdeps 已通过；网页点击尚未接入。实现边界与验证记录见[阶段一实施记录](pyscript-event-phase1-runtime-callbacks.md)。
 
 1. 为解释器内的回调注册表设计所有权、非复用 ID、注册失败回滚和 GC traverse / clear。
 2. 抽取源码执行与 callable 调用共用的进入、退出、DOM 撤销、输出捕获和异常边界。

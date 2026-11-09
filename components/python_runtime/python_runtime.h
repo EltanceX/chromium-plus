@@ -34,6 +34,17 @@ struct DomHandle {
   uint64_t id;
 };
 
+struct CallbackHandle {
+  uint64_t context = 0;
+  uint64_t id = 0;
+};
+
+struct CallbackEvent {
+  std::string type = "click";
+  DomHandle current_target{};
+  bool is_trusted = false;
+};
+
 enum class DomError {
   kNone,
   kReference,
@@ -58,7 +69,7 @@ struct PYTHON_RUNTIME_EXPORT DomResult {
   std::string message;
 };
 
-// Borrowed only for the synchronous Execute call. No Python object contains a
+// Borrowed only during synchronous execution. No Python object contains a
 // node pointer or retains this host between calls or during finalization.
 class PYTHON_RUNTIME_EXPORT DomHost {
  public:
@@ -80,6 +91,11 @@ struct PYTHON_RUNTIME_EXPORT ExecutionResult {
   StopReason stop_reason = StopReason::kNone;
 };
 
+struct PYTHON_RUNTIME_EXPORT CallbackRegistrationResult {
+  CallbackHandle handle;
+  ExecutionResult result;
+};
+
 // A single, main-thread-owned subinterpreter. The embedder must check page
 // execution policy before use. All instances and the process runtime must use
 // the same thread.
@@ -96,6 +112,15 @@ class PYTHON_RUNTIME_EXPORT PythonContext {
   ExecutionResult Execute(std::string_view source,
                           std::string_view filename = "<native-python>",
                           DomHost* dom_host = nullptr);
+  // Native registration captures the current value of one globals entry, not
+  // source text. Python-facing listener registration is implemented separately.
+  CallbackRegistrationResult RegisterCallback(std::string_view global_name);
+  ExecutionResult InvokeCallback(CallbackHandle,
+                                 const CallbackEvent&,
+                                 DomHost* dom_host = nullptr);
+  // Idempotent for a removed handle from this context. Also permits registry
+  // mutation from this context's active host call, without interpreter reentry.
+  ExecutionResult RemoveCallback(CallbackHandle);
 
  private:
   struct Impl;

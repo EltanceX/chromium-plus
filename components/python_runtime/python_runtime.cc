@@ -7,10 +7,12 @@
 #include <Python.h>
 
 #include <algorithm>
+#include <limits>
 #include <utility>
 
 #include "base/auto_reset.h"
 #include "base/check.h"
+#include "base/functional/function_ref.h"
 #include "base/memory/raw_ptr_exclusion.h"
 #include "base/no_destructor.h"
 #include "base/strings/string_number_conversions.h"
@@ -34,6 +36,21 @@ struct PyDeleter {
   void operator()(PyObject* value) const { Py_XDECREF(value); }
 };
 using PyRef = std::unique_ptr<PyObject, PyDeleter>;
+
+// Both pointers are borrowed within an entered interpreter. Revocation must
+// precede diagnostic work and destruction of arbitrary Python values.
+class ScopedDomHost {
+ public:
+  ScopedDomHost(PyObject* module, DomHost* host)
+      : module_(module), previous_(ExchangeDomHost(module, host)) {}
+  ~ScopedDomHost() { SetDomHost(module_, previous_); }
+  ScopedDomHost(const ScopedDomHost&) = delete;
+  ScopedDomHost& operator=(const ScopedDomHost&) = delete;
+
+ private:
+  RAW_PTR_EXCLUSION PyObject* module_;
+  RAW_PTR_EXCLUSION DomHost* previous_;
+};
 
 void AppendBounded(std::string& target,
                    std::string_view text,
@@ -106,6 +123,25 @@ std::string TakeError(ExecutionBudget* budget = nullptr) {
   }
   AppendBounded(bounded, message, kOutputLimit);
   return bounded;
+}
+
+void RecordError(ExecutionResult& result, ExecutionBudget& budget) {
+  if (budget.reason() == StopReason::kNone) {
+    const std::string error = TakeError(&budget);
+    AppendBounded(result.error, error, budget.OutputRemaining());
+    result.output_truncated |= !budget.ConsumeOutput(error.size());
+  } else {
+    PyErr_Clear();
+  }
+}
+
+void RecordStop(ExecutionResult& result, const ExecutionBudget& budget) {
+  result.stop_reason = budget.reason();
+  if (result.stop_reason != StopReason::kNone) {
+    result.success = false;
+    result.error = budget.Message();
+    result.output_truncated |= result.stop_reason == StopReason::kOutput;
+  }
 }
 
 struct Capture {
@@ -266,6 +302,8 @@ class Runtime {
   RAW_PTR_EXCLUSION PyThreadState* main = nullptr;
   double initialization_ms = 0;
   bool executing = false;
+  uint64_t active_context_id = 0;
+  uint64_t next_context_id = 0;
   RuntimeStatistics statistics;
 
  private:
@@ -279,15 +317,63 @@ class Runtime {
 }  // namespace
 
 struct PythonContext::Impl {
-  explicit Impl(const base::TickClock* clock) : capture(clock) {}
+  Impl(const base::TickClock* clock, uint64_t id)
+      : context_id(id), capture(clock) {}
+  ExecutionResult Run(DomHost* host,
+                      base::FunctionRef<PyObject*(DomHost*)> operation);
   // CPython owns thread; globals owns a Python reference, released under its
   // GIL.
   RAW_PTR_EXCLUSION PyThreadState* thread = nullptr;
   RAW_PTR_EXCLUSION PyObject* globals = nullptr;
   RAW_PTR_EXCLUSION PyObject* dom_module = nullptr;
   RAW_PTR_EXCLUSION PyObject* trace_token = nullptr;
+  const uint64_t context_id;
   Capture capture;
 };
+
+ExecutionResult PythonContext::Impl::Run(
+    DomHost* host,
+    base::FunctionRef<PyObject*(DomHost*)> operation) {
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  if (runtime.executing) {
+    ExecutionResult result;
+    result.error = "Nested Python entry is not supported";
+    return result;
+  }
+  auto& budget = capture.budget;
+  if (budget.reason() != StopReason::kNone) {
+    ExecutionResult result;
+    RecordStop(result, budget);
+    return result;
+  }
+  PyEval_RestoreThread(thread);
+  base::AutoReset<bool> executing(&runtime.executing, true);
+  base::AutoReset<uint64_t> active_context(&runtime.active_context_id,
+                                           context_id);
+  capture.result = {};
+  capture.active = true;
+  budget.Begin(host);
+  BudgetedDomHost bridge(budget);
+  PyEval_SetTrace(BudgetTrace, trace_token);
+  {
+    ScopedDomHost revoked(dom_module, nullptr);
+    PyRef result(budget.RaiseIfStopped() ? nullptr : operation(&bridge));
+    capture.result.success = result != nullptr;
+    if (!result) {
+      RecordError(capture.result, budget);
+    } else {
+      PyErr_Clear();
+    }
+  }
+  budget.Finish();
+  PyEval_SetTrace(nullptr, nullptr);
+  capture.active = false;
+  RecordStop(capture.result, budget);
+  PyErr_Clear();
+  PyEval_SaveThread();
+  return std::move(capture.result);
+}
 
 PythonContext::PythonContext(std::unique_ptr<Impl> impl)
     : impl_(std::move(impl)) {}
@@ -318,7 +404,8 @@ std::unique_ptr<PythonContext> PythonContext::CreateWithClock(
     return nullptr;
   }
   PyEval_RestoreThread(runtime.main);
-  auto impl = std::make_unique<Impl>(clock);
+  CHECK_NE(runtime.next_context_id, std::numeric_limits<uint64_t>::max());
+  auto impl = std::make_unique<Impl>(clock, ++runtime.next_context_id);
   const PyInterpreterConfig config = {
       0, 0, 0, 0, 0, 1, PyInterpreterConfig_SHARED_GIL};
   const PyStatus status = Py_NewInterpreterFromConfig(&impl->thread, &config);
@@ -332,6 +419,7 @@ std::unique_ptr<PythonContext> PythonContext::CreateWithClock(
     PyRef host(PyImport_ImportModule("_chromium_python"));
     impl->dom_module = PyImport_ImportModule("dom");
     if (host && impl->dom_module) {
+      InitializeDomCallbacks(impl->dom_module, impl->context_id);
       static_cast<HostState*>(PyModule_GetState(host.get()))->capture =
           &impl->capture;
       PyRef setup_globals(PyDict_New());
@@ -383,6 +471,7 @@ PythonContext::~PythonContext() {
   SetDomHost(impl_->dom_module, nullptr);
   impl_->capture.budget.BeginCleanup();
   PyEval_SetTrace(BudgetTrace, impl_->trace_token);
+  ClearDomCallbacks(impl_->dom_module);
   Py_DECREF(impl_->globals);
   Py_DECREF(impl_->dom_module);
   // The thread trace owns the remaining reference while finalization runs.
@@ -399,18 +488,6 @@ ExecutionResult PythonContext::Execute(std::string_view source,
                                        DomHost* dom_host) {
   auto& runtime = Runtime::Get();
   runtime.CheckThread();
-  if (runtime.executing) {
-    ExecutionResult result;
-    result.error = "Nested Python entry is not supported";
-    return result;
-  }
-  auto& budget = impl_->capture.budget;
-  if (budget.reason() != StopReason::kNone) {
-    ExecutionResult result;
-    result.stop_reason = budget.reason();
-    result.error = budget.Message();
-    return result;
-  }
   if (source.size() > kSourceLimit || source.contains('\0') ||
       filename.contains('\0') || filename.size() > 2048 ||
       !base::IsStringUTF8(source) || !base::IsStringUTF8(filename)) {
@@ -418,52 +495,112 @@ ExecutionResult PythonContext::Execute(std::string_view source,
     result.error = "Source/filename must be bounded UTF-8 without NUL";
     return result;
   }
-  PyEval_RestoreThread(impl_->thread);
-  base::AutoReset<bool> executing(&runtime.executing, true);
-  impl_->capture.result = {};
-  impl_->capture.active = true;
-  budget.Begin(dom_host);
-  BudgetedDomHost bridge(budget);
-  PyEval_SetTrace(BudgetTrace, impl_->trace_token);
-  {
+  return impl_->Run(dom_host, [&](DomHost* bridge) -> PyObject* {
+    auto& budget = impl_->capture.budget;
     const std::string input(source), name(filename);
     PyRef code(
         budget.RaiseIfStopped()
             ? nullptr
             : Py_CompileString(input.c_str(), name.c_str(), Py_file_input));
-    SetDomHost(impl_->dom_module, &bridge);
-    PyRef result(
-        code && !budget.RaiseIfStopped()
-            ? PyEval_EvalCode(code.get(), impl_->globals, impl_->globals)
-            : nullptr);
-    // Error formatting and decrefs may execute Python special methods. They
-    // are diagnostic/cleanup work and must not inherit the document capability.
-    SetDomHost(impl_->dom_module, nullptr);
-    impl_->capture.result.success = result != nullptr;
-    if (!result && budget.reason() == StopReason::kNone) {
-      const std::string error = TakeError(&budget);
-      AppendBounded(impl_->capture.result.error, error,
-                    budget.OutputRemaining());
-      if (!budget.ConsumeOutput(error.size())) {
-        impl_->capture.result.output_truncated = true;
-      }
-    } else {
-      PyErr_Clear();
+    PyObject* result = nullptr;
+    if (code && !budget.RaiseIfStopped()) {
+      ScopedDomHost capability(impl_->dom_module, bridge);
+      result = PyEval_EvalCode(code.get(), impl_->globals, impl_->globals);
     }
+    return result;
+  });
+}
+
+CallbackRegistrationResult PythonContext::RegisterCallback(
+    std::string_view global_name) {
+  CallbackRegistrationResult registration;
+  Runtime::Get().CheckThread();
+  if (global_name.empty() || global_name.size() > 2048 ||
+      global_name.contains('\0') || !base::IsStringUTF8(global_name)) {
+    registration.result.error =
+        "Callback name must be bounded UTF-8 without NUL";
+    return registration;
   }
-  budget.Finish();
-  PyEval_SetTrace(nullptr, nullptr);
-  impl_->capture.active = false;
-  impl_->capture.result.stop_reason = budget.reason();
-  if (budget.reason() != StopReason::kNone) {
-    impl_->capture.result.success = false;
-    impl_->capture.result.error = budget.Message();
-    impl_->capture.result.output_truncated |=
-        budget.reason() == StopReason::kOutput;
+  registration.result = impl_->Run(nullptr, [&](DomHost*) -> PyObject* {
+    PyRef name(
+        PyUnicode_FromStringAndSize(global_name.data(), global_name.size()));
+    PyObject* callback = nullptr;
+    if (!name || PyDict_GetItemRef(impl_->globals, name.get(), &callback) < 0) {
+      return nullptr;
+    }
+    PyRef owned(callback);
+    if (!owned) {
+      PyErr_SetString(PyExc_NameError, "The callback global was not found");
+      return nullptr;
+    }
+    registration.handle = RegisterDomCallback(impl_->dom_module, owned.get());
+    return registration.handle.id ? Py_NewRef(Py_None) : nullptr;
+  });
+  if (!registration.result.success) {
+    registration.handle = {};
   }
+  return registration;
+}
+
+ExecutionResult PythonContext::InvokeCallback(CallbackHandle handle,
+                                              const CallbackEvent& event,
+                                              DomHost* dom_host) {
+  return impl_->Run(dom_host, [&](DomHost* bridge) -> PyObject* {
+    PyRef callback(GetDomCallback(impl_->dom_module, handle));
+    if (!callback) {
+      return nullptr;
+    }
+    PyRef argument(CreateDomCallbackEvent(impl_->dom_module, event));
+    if (!argument) {
+      return nullptr;
+    }
+    PyRef result;
+    {
+      ScopedDomHost capability(impl_->dom_module, bridge);
+      result.reset(PyObject_CallOneArg(callback.get(), argument.get()));
+    }
+    if (result &&
+        (PyCoro_CheckExact(result.get()) || PyGen_CheckExact(result.get()) ||
+         PyAsyncGen_CheckExact(result.get()))) {
+      if (!PyAsyncGen_CheckExact(result.get())) {
+        PyRef closed(PyObject_CallMethod(result.get(), "close", nullptr));
+        if (!closed) {
+          return nullptr;
+        }
+      }
+      PyErr_SetString(PyExc_TypeError, "Callback results must be synchronous");
+      return nullptr;
+    }
+    // Return values are ignored and released with the DOM capability revoked.
+    return result ? Py_NewRef(Py_None) : nullptr;
+  });
+}
+
+ExecutionResult PythonContext::RemoveCallback(CallbackHandle handle) {
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  auto remove = [&](DomHost*) -> PyObject* {
+    return RemoveDomCallback(impl_->dom_module, handle) ? Py_NewRef(Py_None)
+                                                        : nullptr;
+  };
+  if (!runtime.executing || runtime.active_context_id != impl_->context_id) {
+    return impl_->Run(nullptr, remove);
+  }
+  // A host can revoke the current callback while its interpreter is already
+  // entered. This mutates only the registry; it does not acquire a GIL, switch
+  // interpreters or run a nested callback. Decrefs cannot inherit DOM access.
+  ScopedDomHost revoked(impl_->dom_module, nullptr);
+  auto& budget = impl_->capture.budget;
+  PyRef result(budget.RaiseIfStopped() ? nullptr : remove(nullptr));
+  ExecutionResult execution;
+  execution.success = result != nullptr;
+  if (!result) {
+    RecordError(execution, budget);
+  }
+  budget.Check();
+  RecordStop(execution, budget);
   PyErr_Clear();
-  PyEval_SaveThread();
-  return std::move(impl_->capture.result);
+  return execution;
 }
 
 RuntimeStatistics GetRuntimeStatisticsForTesting() {
