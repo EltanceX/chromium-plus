@@ -9,7 +9,7 @@
 
 后续扩展（2026-11-09）：已增加设置页启用与页面权限模式，详见[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。本文下述精确来源、顶层、脚本 / CSP 限制描述第一版受限模式；用户显式选择的放开模式及其验证另行记录，Renderer 沙箱保持生效。
 
-交互扩展（2026-11-09）：[元素点击事件首版方案与步骤](pyscript-click-events-implementation.md)规划原生事件监听、Python callable 调用、交互预算和安全清理；[阶段一运行时基础](pyscript-event-phase1-runtime-callbacks.md)已完成，网页监听 API、真实点击派发与交互预算尚未接入。
+交互扩展（2026-11-09）：[元素点击事件首版方案与步骤](pyscript-click-events-implementation.md)规划原生事件监听、Python callable 调用、交互预算和安全清理；[阶段一运行时基础](pyscript-event-phase1-runtime-callbacks.md)与[阶段二注册 / 移除及 Chrome 适配](pyscript-event-phase2-dom-registration-adapter.md)已完成，Blink 当前明确拒绝安装监听，真实点击派发与交互预算尚未接入。
 
 ## 1. 验证目标
 

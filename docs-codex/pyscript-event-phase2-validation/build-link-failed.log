@@ -1,0 +1,72 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 11.60s S Regenerating ninja files
+[0/2] 37.22s F Regenerating ninja files
+rebuild manifest finished
+36.74s Regenerating ninja files
+
+
+
+loading build.ninja... done 8.9692124s
+load siso config done 1.9929835s
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:4)
+schedule pending:52448+ready:0 (node:441061 edge:52484)
+ 1.80s schedule pending:92859+ready:9232 (node:441061 edge:102091)
+
+build start: Ready 9232 Pending 92859
+[0/33588] 1m11.65s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/22875] 1m12.26s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/22470] 1m12.37s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/22099] 1m12.43s S CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[0/11028] 1m13.60s S CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[0/11023] 1m13.60s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/10997] 1m13.60s S CXX obj/chrome/renderer/python_document_context_unittests/run_python_document_context_unittests.obj
+[0/10047] 1m13.67s S CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[0/9962] 1m13.68s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/2302] 1m17.61s F CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[1/2302] 1m18.19s F CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[2/2302] 1m18.57s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[3/2302] 1m18.57s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[3/2301] 1m19.18s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[4/2301] 1m22.37s F CXX obj/chrome/renderer/python_document_context_unittests/run_python_document_context_unittests.obj
+[5/2301] 1m25.03s F CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[6/2301] 1m27.89s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[7/2301] 1m45.42s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[8/2301] 1m46.05s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[9/2301] 2m03.40s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[10/2300] 2m03.42s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[10/2300] 2m10.77s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 45c9772d-f0cc-4508-a7b2-3aa0e1037b88 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/text_iterator_text_state.obj: -�
+I
+<�a should not refer to non-existent section 45112
+
+
+build failed
+
+
+noexec:0 local:11 remote:0 cache:0 skip:99791
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1085(err:4) / r:791(err:0) 282.90MiB / w:2(err:0) 382.67KiB
+
+
+
+2m11.38s Build Failure: 11 done, 1 failed, 2289 remaining - 0.08/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261109-184817.10956
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

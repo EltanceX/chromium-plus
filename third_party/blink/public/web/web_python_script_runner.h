@@ -40,6 +40,17 @@ struct WebPythonDomHandle {
   uint64_t id = 0;
 };
 
+struct WebPythonCallbackHandle {
+  uint64_t context = 0;
+  uint64_t id = 0;
+};
+
+struct WebPythonCallbackEvent {
+  WebString type;
+  WebPythonDomHandle current_target;
+  bool is_trusted = false;
+};
+
 enum class WebPythonDomError {
   kNone,
   kReference,
@@ -55,17 +66,29 @@ struct WebPythonDomResult {
   WebString message;
 };
 
-// Borrowed during Run only. Values crossing this boundary never contain Nodes.
+// Borrowed during synchronous Run/InvokeCallback only. Values crossing this
+// boundary never contain Nodes or Python objects.
 class WebPythonDomHost {
  public:
   virtual ~WebPythonDomHost() = default;
   virtual bool IsActive() const = 0;
   virtual WebPythonDomResult GetElementById(const WebString&) = 0;
   virtual WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) = 0;
+  virtual WebPythonDomResult AddEventListener(WebPythonDomHandle,
+                                              const WebString& type,
+                                              WebPythonCallbackHandle,
+                                              bool once) = 0;
+  virtual WebPythonDomResult RemoveEventListener(WebPythonDomHandle,
+                                                 WebPythonCallbackHandle) = 0;
+  // Internal idempotent rollback, even after activity/budget admission fails.
+  // Must not execute script or Python. Not a page API or budgeted DOM call.
+  virtual void RevokeEventListener(WebPythonDomHandle,
+                                   WebPythonCallbackHandle) = 0;
 };
 
 // Owned by a Document controller. Destruction can execute Python finalizers and
-// must happen on the main thread outside GC, script-forbidden scopes and Run.
+// must happen on the main thread outside GC, script-forbidden scopes and any
+// active Python execution.
 class WebPythonScriptContext {
  public:
   // Called synchronously after each block, before executing the next source.
@@ -76,6 +99,12 @@ class WebPythonScriptContext {
       const std::vector<WebPythonScriptSource>&,
       WebPythonDomHost&,
       ReportResult) = 0;
+  // The caller checks document policy and reports this synchronous result.
+  virtual WebPythonScriptResult InvokeCallback(WebPythonCallbackHandle,
+                                               const WebPythonCallbackEvent&,
+                                               WebPythonDomHost&) = 0;
+  // Registry mutation only, including consumption from an active host call.
+  virtual WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) = 0;
 };
 
 // Main-thread embedder interface for the private PythonScript experiment.

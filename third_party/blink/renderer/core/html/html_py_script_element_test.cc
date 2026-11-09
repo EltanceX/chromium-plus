@@ -63,6 +63,17 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
       return results;
     }
 
+    WebPythonScriptResult InvokeCallback(WebPythonCallbackHandle,
+                                         const WebPythonCallbackEvent&,
+                                         WebPythonDomHost&) override {
+      ADD_FAILURE() << "Unexpected callback in parser-only tests";
+      return {};
+    }
+    WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) override {
+      ADD_FAILURE() << "Unexpected callback removal in parser-only tests";
+      return {};
+    }
+
    private:
     const raw_ref<RecordingPythonRunner> runner_;
     std::shared_ptr<unsigned> destructions_;
@@ -476,6 +487,32 @@ TEST_F(HTMLPyScriptElementTest, DomBridgeHasBoundedStringsAndDocumentCalls) {
               host.SetText(handle, "still denied").error);
   });
   Load("<p id=result>before</p><pyscript>bridge</pyscript>");
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ListenerAdapterRejectsUntilDispatchAndCountsCalls) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    const auto element = host.GetElementById("button").handle;
+    const WebPythonCallbackHandle callback{1, 1};
+    EXPECT_EQ(WebPythonDomError::kState,
+              host.AddEventListener(element, "click", callback, true).error);
+    EXPECT_EQ(WebPythonDomError::kState,
+              host.RemoveEventListener(element, callback).error);
+    host.RevokeEventListener(element, callback);
+    for (unsigned i = 3; i < 1024; ++i) {
+      EXPECT_EQ(WebPythonDomError::kNone, host.GetElementById("missing").error);
+    }
+    EXPECT_EQ(WebPythonDomError::kStopped,
+              host.AddEventListener(element, "click", callback, false).error);
+    EXPECT_EQ(WebPythonDomError::kStopped,
+              host.RemoveEventListener(element, callback).error);
+    // Internal rollback does not need permission or consume another DOM call.
+    host.RevokeEventListener(element, callback);
+    EXPECT_FALSE(host.IsActive());
+  });
+  Load("<button id=button>button</button><pyscript>bridge</pyscript>");
   EXPECT_EQ(1u, *runner_.destructions);
 }
 

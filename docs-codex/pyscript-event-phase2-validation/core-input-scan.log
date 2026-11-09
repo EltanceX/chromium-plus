@@ -1,0 +1,158 @@
+Direct objects: 500/5040, 1 problems
+Direct objects: 1000/5040, 3 problems
+Direct objects: 1500/5040, 3 problems
+Direct objects: 2000/5040, 3 problems
+Direct objects: 2500/5040, 4 problems
+Direct objects: 3000/5040, 4 problems
+Direct objects: 3500/5040, 4 problems
+Direct objects: 4000/5040, 4 problems
+Direct objects: 4500/5040, 4 problems
+Direct objects: 5000/5040, 4 problems
+Archives: 1/59, 131 members, 4 problems
+Archives: 2/59, 153 members, 4 problems
+Archives: 3/59, 159 members, 4 problems
+Archives: 4/59, 176 members, 4 problems
+Archives: 5/59, 178 members, 4 problems
+Archives: 6/59, 179 members, 4 problems
+Archives: 7/59, 189 members, 4 problems
+Archives: 8/59, 191 members, 4 problems
+Archives: 9/59, 194 members, 4 problems
+Archives: 10/59, 195 members, 4 problems
+Archives: 11/59, 196 members, 4 problems
+Archives: 12/59, 201 members, 4 problems
+Archives: 13/59, 202 members, 4 problems
+Archives: 14/59, 238 members, 4 problems
+Archives: 15/59, 239 members, 4 problems
+Archives: 16/59, 240 members, 4 problems
+Archives: 17/59, 241 members, 4 problems
+Archives: 18/59, 242 members, 4 problems
+Archives: 19/59, 243 members, 4 problems
+Archives: 20/59, 245 members, 4 problems
+Archives: 21/59, 246 members, 4 problems
+Archives: 22/59, 247 members, 4 problems
+Archives: 23/59, 248 members, 4 problems
+Archives: 24/59, 250 members, 4 problems
+Archives: 25/59, 254 members, 4 problems
+Archives: 26/59, 255 members, 4 problems
+Archives: 27/59, 258 members, 4 problems
+Archives: 28/59, 260 members, 4 problems
+Archives: 29/59, 266 members, 4 problems
+Archives: 30/59, 331 members, 4 problems
+Archives: 31/59, 333 members, 4 problems
+Archives: 32/59, 334 members, 4 problems
+Archives: 33/59, 335 members, 4 problems
+Archives: 34/59, 337 members, 4 problems
+Archives: 35/59, 347 members, 4 problems
+Archives: 36/59, 360 members, 4 problems
+Archives: 37/59, 361 members, 4 problems
+Archives: 38/59, 397 members, 4 problems
+Archives: 39/59, 399 members, 4 problems
+Archives: 40/59, 410 members, 4 problems
+Archives: 41/59, 433 members, 4 problems
+Archives: 42/59, 437 members, 4 problems
+Archives: 43/59, 438 members, 4 problems
+Archives: 44/59, 439 members, 4 problems
+Archives: 45/59, 440 members, 4 problems
+Archives: 46/59, 447 members, 4 problems
+Archives: 47/59, 451 members, 4 problems
+Archives: 48/59, 478 members, 4 problems
+Archives: 49/59, 497 members, 4 problems
+Archives: 50/59, 534 members, 4 problems
+Archives: 51/59, 540 members, 4 problems
+Archives: 52/59, 546 members, 4 problems
+Archives: 53/59, 551 members, 4 problems
+Archives: 54/59, 552 members, 4 problems
+Archives: 55/59, 553 members, 4 problems
+Archives: 56/59, 554 members, 4 problems
+Archives: 57/59, 555 members, 4 problems
+Archives: 58/59, 559 members, 4 problems
+Archives: 59/59, 560 members, 4 problems
+{
+  "response": "blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_scale.obj",
+      "errors": [
+        "Invalid CodeView record at 0x1c7364 (length 64438, kind 0x582c)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_iterator_text_state.obj",
+      "errors": [
+        "Symbol 23848: invalid section 45112, total 11707",
+        "Symbol 24049: invalid section 51097, total 11707",
+        "Symbol 24186: invalid section 28719, total 11707",
+        "Symbol 24405: invalid section 38264, total 11707",
+        "Symbol 24509: invalid section 33400, total 11707",
+        "Invalid UTF-8 in COFF string table at file offset 0x6b7001",
+        "Control byte in COFF string table at file offset 0x6b7000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_fragment_handler.obj",
+      "errors": [
+        "Section 4164: relocation 0 has invalid symbol 1329965655 or type 17634",
+        "Section 4165: relocation 0 has invalid symbol 4144868557 or type 36674",
+        "Section 4166: relocation 0 has invalid symbol 3272486148 or type 24974",
+        "Section 4167: relocation 0 has invalid symbol 3503767606 or type 15885",
+        "Section 4168: relocation 0 has invalid symbol 3518917203 or type 10292",
+        "Invalid CodeView record at 0x10d018 (length 25067, kind 0x3973)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/performance_timing_confidence.obj",
+      "errors": [
+        "Invalid CodeView record at 0x39015 (length 5106, kind 0xd209)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 150.61
+}

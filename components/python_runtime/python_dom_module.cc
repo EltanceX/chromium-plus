@@ -5,9 +5,11 @@
 #include "components/python_runtime/python_dom_module.h"
 
 #include <limits>
+#include <utility>
 
 #include "base/check.h"
 #include "base/memory/raw_ptr_exclusion.h"
+#include "base/memory/raw_ref.h"
 #include "components/python_runtime/python_runtime.h"
 
 namespace native_python {
@@ -20,6 +22,7 @@ struct ModuleState {
   RAW_PTR_EXCLUSION DomHost* host;
   RAW_PTR_EXCLUSION PyTypeObject* handle_type;
   RAW_PTR_EXCLUSION PyTypeObject* event_type;
+  RAW_PTR_EXCLUSION PyTypeObject* listener_type;
   RAW_PTR_EXCLUSION PyObject* callbacks;
   uint64_t context_id;
   uint64_t next_callback_id;
@@ -27,6 +30,23 @@ struct ModuleState {
 
 struct ElementHandle {
   PyObject_HEAD DomHandle value;
+};
+
+struct ListenerHandle {
+  PyObject_HEAD DomHandle element;
+  CallbackHandle callback;
+};
+
+class ScopedHostRevocation {
+ public:
+  explicit ScopedHostRevocation(ModuleState& state)
+      : state_(state), host_(std::exchange(state.host, nullptr)) {}
+  ~ScopedHostRevocation() { state_->host = host_; }
+  DomHost* host() const { return host_; }
+
+ private:
+  const raw_ref<ModuleState> state_;
+  RAW_PTR_EXCLUSION DomHost* host_;
 };
 
 struct CallbackEventObject {
@@ -150,6 +170,97 @@ PyObject* SetText(PyObject* module, PyObject* args) {
   Py_RETURN_NONE;
 }
 
+PyObject* AddEventListener(PyObject* module, PyObject* args, PyObject* kwargs) {
+  PyObject *element, *type, *callback;
+  PyObject* once = Py_False;
+  static const char* names[] = {"element", "event_type", "callback", "once",
+                                nullptr};
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|$O:add_event_listener",
+                                   names, &element, &type, &callback, &once)) {
+    return nullptr;
+  }
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  if (!state || !state->handle_type ||
+      !Py_IS_TYPE(element, state->handle_type)) {
+    PyErr_SetString(PyExc_TypeError,
+                    "Expected this interpreter's ElementHandle");
+    return nullptr;
+  }
+  std::string_view event_type;
+  if (!StringArgument(type, &event_type)) {
+    return nullptr;
+  }
+  if (event_type != "click") {
+    PyErr_SetString(PyExc_ValueError, "Only click listeners are supported");
+    return nullptr;
+  }
+  if (!PyBool_Check(once)) {
+    PyErr_SetString(PyExc_TypeError, "once must be bool");
+    return nullptr;
+  }
+  if (!ActiveState(module)) {
+    return nullptr;
+  }
+  ScopedHostRevocation revoked(*state);
+  // Allocate the result before installing either side of the subscription.
+  auto* listener = reinterpret_cast<ListenerHandle*>(
+      state->listener_type->tp_alloc(state->listener_type, 0));
+  if (!listener) {
+    return nullptr;
+  }
+  listener->element = reinterpret_cast<ElementHandle*>(element)->value;
+  listener->callback = RegisterDomCallback(module, callback);
+  if (!listener->callback.id) {
+    Py_DECREF(listener);
+    return nullptr;
+  }
+  const auto result = revoked.host()->AddEventListener(
+      listener->element, event_type, listener->callback, once == Py_True);
+  if (!CheckResult(result)) {
+    // The wrapper's post-call check can fail after the host installed a
+    // listener. Revoke even after a fatal stop, then release Python ownership
+    // without allowing finalizers to inherit the caller's DOM capability.
+    PyObject* failure = PyErr_GetRaisedException();
+    revoked.host()->RevokeEventListener(listener->element, listener->callback);
+    RemoveDomCallback(module, listener->callback);
+    Py_DECREF(listener);
+    PyErr_Clear();
+    PyErr_SetRaisedException(failure);
+    return nullptr;
+  }
+  return reinterpret_cast<PyObject*>(listener);
+}
+
+PyObject* RemoveEventListener(PyObject* module, PyObject* args) {
+  PyObject* object;
+  if (!PyArg_ParseTuple(args, "O:remove_event_listener", &object)) {
+    return nullptr;
+  }
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  if (!state || !state->listener_type ||
+      !Py_IS_TYPE(object, state->listener_type)) {
+    PyErr_SetString(PyExc_TypeError,
+                    "Expected this interpreter's ListenerHandle");
+    return nullptr;
+  }
+  if (!ActiveState(module)) {
+    return nullptr;
+  }
+  const auto* listener = reinterpret_cast<ListenerHandle*>(object);
+  if (listener->callback.context != state->context_id) {
+    PyErr_SetString(PyExc_ReferenceError,
+                    "The listener belongs to another context");
+    return nullptr;
+  }
+  ScopedHostRevocation revoked(*state);
+  if (!CheckResult(revoked.host()->RemoveEventListener(listener->element,
+                                                       listener->callback)) ||
+      !RemoveDomCallback(module, listener->callback)) {
+    return nullptr;
+  }
+  Py_RETURN_NONE;
+}
+
 void DeleteHandle(PyObject* self) {
   PyTypeObject* type = Py_TYPE(self);
   PyObject_GC_UnTrack(self);
@@ -216,16 +327,28 @@ PyType_Spec kHandleSpec = {"dom.ElementHandle", sizeof(ElementHandle), 0,
                                Py_TPFLAGS_DISALLOW_INSTANTIATION,
                            kHandleSlots};
 
+PyType_Spec kListenerSpec = {"dom.ListenerHandle", sizeof(ListenerHandle), 0,
+                             Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+                                 Py_TPFLAGS_IMMUTABLETYPE |
+                                 Py_TPFLAGS_DISALLOW_INSTANTIATION,
+                             kHandleSlots};
+
 int Initialize(PyObject* module) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   state->handle_type = reinterpret_cast<PyTypeObject*>(
       PyType_FromModuleAndSpec(module, &kHandleSpec, nullptr));
   state->event_type = reinterpret_cast<PyTypeObject*>(
       PyType_FromModuleAndSpec(module, &kEventSpec, nullptr));
+  state->listener_type = reinterpret_cast<PyTypeObject*>(
+      PyType_FromModuleAndSpec(module, &kListenerSpec, nullptr));
   state->callbacks = PyDict_New();
-  if (!state->handle_type || !state->event_type || !state->callbacks ||
+  if (!state->handle_type || !state->event_type || !state->listener_type ||
+      !state->callbacks ||
       PyModule_AddObjectRef(module, "ElementHandle",
                             reinterpret_cast<PyObject*>(state->handle_type)) <
+          0 ||
+      PyModule_AddObjectRef(module, "ListenerHandle",
+                            reinterpret_cast<PyObject*>(state->listener_type)) <
           0) {
     return -1;
   }
@@ -237,6 +360,7 @@ int Traverse(PyObject* module, visitproc visit, void* arg) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   Py_VISIT(state->handle_type);
   Py_VISIT(state->event_type);
+  Py_VISIT(state->listener_type);
   Py_VISIT(state->callbacks);
   return 0;
 }
@@ -247,6 +371,7 @@ int Clear(PyObject* module) {
   // Detach the table before decrefs: finalizers must see a cleared registry.
   Py_CLEAR(state->callbacks);
   Py_CLEAR(state->event_type);
+  Py_CLEAR(state->listener_type);
   Py_CLEAR(state->handle_type);
   return 0;
 }
@@ -254,6 +379,9 @@ int Clear(PyObject* module) {
 PyMethodDef kMethods[] = {
     {"get_element_by_id", GetElementById, METH_VARARGS, nullptr},
     {"set_text", SetText, METH_VARARGS, nullptr},
+    {"add_event_listener", reinterpret_cast<PyCFunction>(AddEventListener),
+     METH_VARARGS | METH_KEYWORDS, nullptr},
+    {"remove_event_listener", RemoveEventListener, METH_VARARGS, nullptr},
     {nullptr}};
 PyModuleDef_Slot kSlots[] = {
     {Py_mod_exec, reinterpret_cast<void*>(Initialize)},

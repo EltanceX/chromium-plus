@@ -4,6 +4,7 @@
 
 #include "components/python_runtime/python_runtime.h"
 
+#include <algorithm>
 #include <functional>
 #include <vector>
 
@@ -37,16 +38,348 @@ class TestDomHost final : public DomHost {
     value = text;
     return {};
   }
+  DomResult AddEventListener(DomHandle element,
+                             std::string_view type,
+                             CallbackHandle callback,
+                             bool once) override {
+    ++adds;
+    last_callback = callback;
+    last_once = once;
+    EXPECT_EQ("click", type);
+    if (element.document != 7 || element.generation != 1 || element.id != 3) {
+      return {{}, DomError::kReference, "Stale listener target"};
+    }
+    listeners.push_back(callback);
+    if (on_add) {
+      on_add();
+    }
+    return {{}, listener_failure, "Listener installation failed"};
+  }
+  DomResult RemoveEventListener(DomHandle element,
+                                CallbackHandle callback) override {
+    ++removes;
+    if (element.document != 7 || element.generation != 1 || element.id != 3) {
+      return {{}, DomError::kReference, "Stale listener target"};
+    }
+    if (listener_failure != DomError::kNone) {
+      return {{}, listener_failure, "Listener removal failed"};
+    }
+    EraseListener(callback);
+    return {};
+  }
+  void RevokeEventListener(DomHandle, CallbackHandle callback) override {
+    ++revokes;
+    EraseListener(callback);
+  }
+  void EraseListener(CallbackHandle callback) {
+    std::erase_if(listeners, [&](CallbackHandle value) {
+      return value.context == callback.context && value.id == callback.id;
+    });
+  }
   bool active = true;
   int gets = 0;
   int sets = 0;
   DomError failure = DomError::kNone;
   std::string value;
   std::function<void()> on_get;
+  int adds = 0;
+  int removes = 0;
+  int revokes = 0;
+  bool last_once = false;
+  CallbackHandle last_callback;
+  DomError listener_failure = DomError::kNone;
+  std::vector<CallbackHandle> listeners;
+  std::function<void()> on_add;
 };
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest, PythonListenersRetainClosuresAndHaveOpaqueHandles) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import dom, gc
+element = dom.get_element_by_id('button')
+def factory():
+    count = 0
+    def callback(event):
+        nonlocal count
+        count += 1
+        dom.set_text(event.current_target, str(count))
+    return callback
+listener = dom.add_event_listener(element, 'click', factory(), once=True)
+assert type(listener) is dom.ListenerHandle
+for make in (lambda: dom.ListenerHandle(),
+             lambda: object.__new__(dom.ListenerHandle)):
+    try:
+        make()
+    except TypeError:
+        pass
+    else:
+        raise AssertionError('fabricated listener')
+try:
+    listener.id = 42
+except (TypeError, AttributeError):
+    pass
+else:
+    raise AssertionError('mutable listener')
+saved = listener
+del listener
+gc.collect()
+)PY",
+                                 "listeners.py", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  EXPECT_TRUE(host.last_once);
+  const auto callback = host.last_callback;
+  EXPECT_TRUE(context->InvokeCallback(callback, Click(), &host).success);
+  EXPECT_EQ("1", host.value);
+  result = context->Execute(
+      "assert dom.remove_event_listener(saved) is None\n"
+      "assert dom.remove_event_listener(saved) is None",
+      "remove", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(2, host.removes);
+  EXPECT_TRUE(host.listeners.empty());
+  EXPECT_FALSE(context->InvokeCallback(callback, Click(), &host).success);
+}
+
+TEST(PythonRuntimeTest, ListenerArgumentsAndModuleIdentityAreValidated) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  const auto result = context->Execute(R"PY(
+import dom, sys
+element = dom.get_element_by_id('button')
+callback = lambda event: None
+async def coroutine(event): pass
+class Truthy:
+    def __bool__(self):
+        raise AssertionError('must not invoke truthiness')
+for action, exception in [
+    (lambda: dom.add_event_listener(None, 'click', callback), TypeError),
+    (lambda: dom.add_event_listener(element, 1, callback), TypeError),
+    (lambda: dom.add_event_listener(element, 'Click', callback), ValueError),
+    (lambda: dom.add_event_listener(element, 'click\0', callback), ValueError),
+    (lambda: dom.add_event_listener(element, 'click', 1), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', coroutine), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', callback, True), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', callback, once=1), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', callback, once=Truthy()), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', callback, capture=True), TypeError),
+    (lambda: dom.remove_event_listener(element), TypeError),
+    (lambda: dom.remove_event_listener(1), TypeError),
+]:
+    try:
+        action()
+    except exception:
+        pass
+    else:
+        raise AssertionError('accepted invalid listener arguments')
+listener = dom.add_event_listener(element=element, event_type='click', callback=callback)
+del sys.modules['dom']
+import dom as other
+assert other.ElementHandle is not dom.ElementHandle
+assert other.ListenerHandle is not dom.ListenerHandle
+for action in (lambda: other.remove_event_listener(listener),
+               lambda: other.add_event_listener(element, 'click', callback)):
+    try:
+        action()
+    except TypeError:
+        pass
+    else:
+        raise AssertionError('foreign module handle accepted')
+sys.modules['dom'] = dom
+)PY",
+                                       "arguments", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(1, host.adds);
+  EXPECT_EQ(0, host.removes);
+}
+
+TEST(PythonRuntimeTest, ListenerInstallationFailuresRollbackBothSides) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  host.listener_failure = DomError::kNotAllowed;
+  auto result = context->Execute(R"PY(
+import dom
+element = dom.get_element_by_id('button')
+callback = lambda event: None
+for i in range(150):
+    try:
+        dom.add_event_listener(element, 'click', callback)
+    except PermissionError:
+        pass
+    else:
+        raise AssertionError('host failure was ignored')
+)PY",
+                                 "rollback", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  EXPECT_EQ(150, host.revokes);
+  EXPECT_TRUE(host.listeners.empty());
+  EXPECT_FALSE(context->InvokeCallback(host.last_callback, Click()).success);
+  host.listener_failure = DomError::kNone;
+  result = context->Execute(
+      "listeners = [dom.add_event_listener(element, 'click', callback) "
+      "for _ in range(128)]",
+      "capacity-after-failure", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(128u, host.listeners.size());
+}
+
+TEST(PythonRuntimeTest, ListenerPostInstallStopsStillRollbackWithoutAdmission) {
+  for (bool inactive : {false, true}) {
+    std::string error;
+    base::SimpleTestTickClock clock;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    host.on_add = [&] {
+      if (inactive) {
+        host.active = false;
+      } else {
+        clock.Advance(base::Milliseconds(101));
+      }
+    };
+    const auto result = context->Execute(
+        "import dom\nlistener = dom.add_event_listener("
+        "dom.get_element_by_id('x'), 'click', lambda event: None)",
+        "post-install-stop", &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_EQ(inactive ? StopReason::kInactive : StopReason::kBlockTime,
+              result.stop_reason);
+    EXPECT_EQ(1, host.adds);
+    EXPECT_EQ(1, host.revokes);
+    EXPECT_TRUE(host.listeners.empty());
+    EXPECT_FALSE(context->Execute("pass").success);
+  }
+}
+
+TEST(PythonRuntimeTest,
+     ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(context
+                  ->Execute("import dom\nlistener = dom.add_event_listener("
+                            "dom.get_element_by_id('x'), 'click', lambda "
+                            "event: print('alive'))",
+                            "register", &host)
+                  .success);
+  const auto handle = host.last_callback;
+  host.listener_failure = DomError::kReference;
+  auto result =
+      context->Execute("dom.remove_event_listener(listener)", "retry", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_NE(std::string::npos, result.error.find("ReferenceError"));
+  EXPECT_EQ("alive\n",
+            context->InvokeCallback(handle, Click(), &host).stdout_text);
+  host.listener_failure = DomError::kNone;
+  EXPECT_TRUE(
+      context->Execute("dom.remove_event_listener(listener)", "retry", &host)
+          .success);
+  EXPECT_FALSE(context->InvokeCallback(handle, Click(), &host).success);
+}
+
+TEST(PythonRuntimeTest,
+     DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  const auto result = context->Execute(R"PY(
+import dom, gc
+element = dom.get_element_by_id('button')
+callback = lambda event: None
+for i in range(128):
+    dom.add_event_listener(element, 'click', callback)
+gc.collect()
+try:
+    dom.add_event_listener(element, 'click', callback)
+except ValueError:
+    pass
+else:
+    raise AssertionError('listener lifetime followed Python handle')
+)PY",
+                                       "dropped", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  ASSERT_EQ(128u, host.listeners.size());
+  EXPECT_LT(host.listeners.front().id, host.listeners.back().id);
+  EXPECT_EQ(0, host.removes);
+  EXPECT_FALSE(host.last_once);
+}
+
+TEST(PythonRuntimeTest, PythonCallbackCanRemoveItselfAndRegisterAnother) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+import dom
+element = dom.get_element_by_id('button')
+def callback(event):
+    dom.remove_event_listener(listener)
+    dom.add_event_listener(element, 'click', lambda event: print('new'))
+    print('old')
+listener = dom.add_event_listener(element, 'click', callback)
+del callback
+)PY",
+                            "self-removal", &host)
+                  .success);
+  const auto old = host.last_callback;
+  auto result = context->InvokeCallback(old, Click(), &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ("old\n", result.stdout_text);
+  EXPECT_FALSE(context->InvokeCallback(old, Click(), &host).success);
+  EXPECT_EQ(
+      "new\n",
+      context->InvokeCallback(host.last_callback, Click(), &host).stdout_text);
+  EXPECT_EQ(1u, host.listeners.size());
+}
+
+TEST(PythonRuntimeTest, ListenerReleaseAndDiagnosticsHaveNoDomCapability) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import dom
+element = dom.get_element_by_id('button')
+def check_revoked():
+    for action in (lambda: dom.add_event_listener(element, 'click', lambda event: None),
+                   lambda: dom.remove_event_listener(listener)):
+        try:
+            action()
+        except ReferenceError:
+            pass
+        else:
+            raise AssertionError('listener API escaped execution')
+    return 'revoked'
+class Callback:
+    def __call__(self, event): pass
+    def __del__(self): print(check_revoked())
+listener = dom.add_event_listener(element, 'click', Callback())
+dom.remove_event_listener(listener)
+class Failure(Exception):
+    def __str__(self): return check_revoked()
+raise Failure()
+)PY",
+                                 "revoked-listeners", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_EQ("revoked\n", result.stdout_text);
+  EXPECT_NE(std::string::npos, result.error.find("Failure: revoked"));
+  EXPECT_EQ(1, host.adds);
+  EXPECT_EQ(1, host.removes);
 }
 
 TEST(PythonRuntimeTest, CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots) {

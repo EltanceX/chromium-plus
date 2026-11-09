@@ -1,0 +1,89 @@
+{
+  "response": "blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_scale.obj",
+      "errors": [
+        "Invalid CodeView record at 0x1c7364 (length 64438, kind 0x582c)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_iterator_text_state.obj",
+      "errors": [
+        "Symbol 23848: invalid section 45112, total 11707",
+        "Symbol 24049: invalid section 51097, total 11707",
+        "Symbol 24186: invalid section 28719, total 11707",
+        "Symbol 24405: invalid section 38264, total 11707",
+        "Symbol 24509: invalid section 33400, total 11707",
+        "Invalid UTF-8 in COFF string table at file offset 0x6b7001",
+        "Control byte in COFF string table at file offset 0x6b7000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_fragment_handler.obj",
+      "errors": [
+        "Section 4164: relocation 0 has invalid symbol 1329965655 or type 17634",
+        "Section 4165: relocation 0 has invalid symbol 4144868557 or type 36674",
+        "Section 4166: relocation 0 has invalid symbol 3272486148 or type 24974",
+        "Section 4167: relocation 0 has invalid symbol 3503767606 or type 15885",
+        "Section 4168: relocation 0 has invalid symbol 3518917203 or type 10292",
+        "Invalid CodeView record at 0x10d018 (length 25067, kind 0x3973)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/performance_timing_confidence.obj",
+      "errors": [
+        "Invalid CodeView record at 0x39015 (length 5106, kind 0xd209)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 150.61
+}

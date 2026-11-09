@@ -332,6 +332,38 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
                                   "The document changed during the DOM call"};
 }
 
+WebPythonDomResult PythonScriptController::AddEventListener(
+    WebPythonDomHandle,
+    const WebString&,
+    WebPythonCallbackHandle,
+    bool) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return status;
+  }
+  // The listener API/adapter is available before native click dispatch lands.
+  return {{},
+          WebPythonDomError::kState,
+          "Native Python click dispatch is not implemented yet"};
+}
+
+WebPythonDomResult PythonScriptController::RemoveEventListener(
+    WebPythonDomHandle,
+    WebPythonCallbackHandle) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return status;
+  }
+  return {{},
+          WebPythonDomError::kState,
+          "Native Python click dispatch is not implemented yet"};
+}
+
+void PythonScriptController::RevokeEventListener(WebPythonDomHandle,
+                                                 WebPythonCallbackHandle) {
+  // This phase never installs a Blink listener, so rollback has nothing to do.
+}
+
 void PythonScriptController::Report(Document& document,
                                     const HTMLPyScriptElement& element,
                                     const String& text) {

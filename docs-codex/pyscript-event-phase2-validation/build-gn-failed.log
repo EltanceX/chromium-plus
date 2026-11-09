@@ -1,0 +1,31 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87116 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 12.97s S Regenerating ninja files
+
+ERROR at //build/config/BUILDCONFIG.gn:587:5: Dependency not allowed.
+    target(_target_type, target_name) {
+    ^----------------------------------
+The item //chrome/renderer:python_document_context
+can not depend on //third_party/blink/renderer/platform:platform
+because it is not in //third_party/blink/renderer/platform:platform's visibility list: [
+  //third_party/blink/*
+]
+
+[0/2] 45.89s E Regenerating ninja files
+FAILED: 23566352-fd25-4e6e-9f61-41e469a2b229 "./build.ninja.stamp" Regenerating ninja files
+err: exit=1
+../../buildtools/win/gn.exe --root=../.. -q --regeneration gen .
+build step: gn "./build.ninja.stamp"
+
+
+rebuild manifest failed
+
+shutdown cloud logging/monitoring done 0s
+
+46.71s Error: manifest error: cannot make progress due to previous 1 errors: exit=1

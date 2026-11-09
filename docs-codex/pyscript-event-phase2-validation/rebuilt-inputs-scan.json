@@ -1,0 +1,30 @@
+{
+  "objectsChecked": 4,
+  "problems": [],
+  "results": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_scale.obj",
+      "sha256": "97adbdb35b02757c77c2432ff871d7b8c983094d1db49cf50046eceedd8c1049",
+      "ordinaryReadErrors": [],
+      "mmapReadErrors": []
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_iterator_text_state.obj",
+      "sha256": "8afb303263430220f8134fcc4de4fac96e40d75c59553de7df505fa5c03c1f4f",
+      "ordinaryReadErrors": [],
+      "mmapReadErrors": []
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_fragment_handler.obj",
+      "sha256": "6b0551416c91c2a0df811ce8d5ef74e150b75a0ce358084ee9db41bb67eb56b8",
+      "ordinaryReadErrors": [],
+      "mmapReadErrors": []
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/performance_timing_confidence.obj",
+      "sha256": "3d01faa216d574bcd85c63811d63deb51d493ec2a5051e90a08dd6b81bbab77e",
+      "ordinaryReadErrors": [],
+      "mmapReadErrors": []
+    }
+  ]
+}

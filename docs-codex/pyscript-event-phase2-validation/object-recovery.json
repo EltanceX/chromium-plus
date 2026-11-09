@@ -1,0 +1,121 @@
+{
+  "scan": "pyscript-event-phase2-blink_core.dll-scan.json",
+  "objects": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_scale.obj",
+      "backup": "pyscript-event-phase2-object-backup/css_scale.obj",
+      "originalSha256": "3630d27796cbe1587e177bcb643493c1411fccf4f012394e39bdb007f58e3d09",
+      "size": 2608756,
+      "scanErrors": [
+        "Invalid CodeView record at 0x1c7364 (length 64438, kind 0x582c)"
+      ],
+      "ordinaryReadErrors": [
+        "Invalid CodeView record at 0x1c7364 (length 64438, kind 0x582c)"
+      ],
+      "mmapReadErrors": [
+        "Invalid CodeView record at 0x1c7364 (length 64438, kind 0x582c)"
+      ],
+      "stableReadError": true,
+      "removedForRebuild": true,
+      "rebuiltSha256": "97adbdb35b02757c77c2432ff871d7b8c983094d1db49cf50046eceedd8c1049",
+      "rebuiltSize": 2608756
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_iterator_text_state.obj",
+      "backup": "pyscript-event-phase2-object-backup/text_iterator_text_state.obj",
+      "originalSha256": "c6656dcf56b69db529647afac5d303a86697205f86a73095cc6b860a5164cf6c",
+      "size": 7447013,
+      "scanErrors": [
+        "Symbol 23848: invalid section 45112, total 11707",
+        "Symbol 24049: invalid section 51097, total 11707",
+        "Symbol 24186: invalid section 28719, total 11707",
+        "Symbol 24405: invalid section 38264, total 11707",
+        "Symbol 24509: invalid section 33400, total 11707",
+        "Invalid UTF-8 in COFF string table at file offset 0x6b7001",
+        "Control byte in COFF string table at file offset 0x6b7000"
+      ],
+      "ordinaryReadErrors": [
+        "Symbol 23848: invalid section 45112, total 11707",
+        "Symbol 24049: invalid section 51097, total 11707",
+        "Symbol 24186: invalid section 28719, total 11707",
+        "Symbol 24405: invalid section 38264, total 11707",
+        "Symbol 24509: invalid section 33400, total 11707",
+        "Invalid UTF-8 in COFF string table at file offset 0x6b7001",
+        "Control byte in COFF string table at file offset 0x6b7000"
+      ],
+      "mmapReadErrors": [
+        "Symbol 23848: invalid section 45112, total 11707",
+        "Symbol 24049: invalid section 51097, total 11707",
+        "Symbol 24186: invalid section 28719, total 11707",
+        "Symbol 24405: invalid section 38264, total 11707",
+        "Symbol 24509: invalid section 33400, total 11707",
+        "Invalid UTF-8 in COFF string table at file offset 0x6b7001",
+        "Control byte in COFF string table at file offset 0x6b7000"
+      ],
+      "stableReadError": true,
+      "removedForRebuild": true,
+      "rebuiltSha256": "8afb303263430220f8134fcc4de4fac96e40d75c59553de7df505fa5c03c1f4f",
+      "rebuiltSize": 7447013
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/text_fragment_handler.obj",
+      "backup": "pyscript-event-phase2-object-backup/text_fragment_handler.obj",
+      "originalSha256": "1a102e1a251a4fda53967ef897794a9189fe108dd9c80d6b7111b30f5ee33f8e",
+      "size": 4132073,
+      "scanErrors": [
+        "Section 4164: relocation 0 has invalid symbol 1329965655 or type 17634",
+        "Section 4165: relocation 0 has invalid symbol 4144868557 or type 36674",
+        "Section 4166: relocation 0 has invalid symbol 3272486148 or type 24974",
+        "Section 4167: relocation 0 has invalid symbol 3503767606 or type 15885",
+        "Section 4168: relocation 0 has invalid symbol 3518917203 or type 10292",
+        "Invalid CodeView record at 0x10d018 (length 25067, kind 0x3973)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "ordinaryReadErrors": [
+        "Section 4164: relocation 0 has invalid symbol 1329965655 or type 17634",
+        "Section 4165: relocation 0 has invalid symbol 4144868557 or type 36674",
+        "Section 4166: relocation 0 has invalid symbol 3272486148 or type 24974",
+        "Section 4167: relocation 0 has invalid symbol 3503767606 or type 15885",
+        "Section 4168: relocation 0 has invalid symbol 3518917203 or type 10292",
+        "Invalid CodeView record at 0x10d018 (length 25067, kind 0x3973)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "mmapReadErrors": [
+        "Section 4164: relocation 0 has invalid symbol 1329965655 or type 17634",
+        "Section 4165: relocation 0 has invalid symbol 4144868557 or type 36674",
+        "Section 4166: relocation 0 has invalid symbol 3272486148 or type 24974",
+        "Section 4167: relocation 0 has invalid symbol 3503767606 or type 15885",
+        "Section 4168: relocation 0 has invalid symbol 3518917203 or type 10292",
+        "Invalid CodeView record at 0x10d018 (length 25067, kind 0x3973)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "stableReadError": true,
+      "removedForRebuild": true,
+      "rebuiltSha256": "6b0551416c91c2a0df811ce8d5ef74e150b75a0ce358084ee9db41bb67eb56b8",
+      "rebuiltSize": 4132073
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/performance_timing_confidence.obj",
+      "backup": "pyscript-event-phase2-object-backup/performance_timing_confidence.obj",
+      "originalSha256": "b1d54727f730df450729e5217c57aa6198006488a8a670a8d40012fe9f6358eb",
+      "size": 501968,
+      "scanErrors": [
+        "Invalid CodeView record at 0x39015 (length 5106, kind 0xd209)"
+      ],
+      "ordinaryReadErrors": [
+        "Invalid CodeView record at 0x39015 (length 5106, kind 0xd209)"
+      ],
+      "mmapReadErrors": [
+        "Invalid CodeView record at 0x39015 (length 5106, kind 0xd209)"
+      ],
+      "stableReadError": true,
+      "removedForRebuild": true,
+      "rebuiltSha256": "3d01faa216d574bcd85c63811d63deb51d493ec2a5051e90a08dd6b81bbab77e",
+      "rebuiltSize": 501968
+    }
+  ],
+  "rootCause": "Unknown; no source or linker checks changed."
+}

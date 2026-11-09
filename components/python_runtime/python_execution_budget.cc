@@ -166,4 +166,31 @@ DomResult BudgetedDomHost::SetText(DomHandle handle, std::string_view text) {
   return FinishCall(budget_->host()->SetText(handle, text));
 }
 
+DomResult BudgetedDomHost::AddEventListener(DomHandle element,
+                                            std::string_view type,
+                                            CallbackHandle callback,
+                                            bool once) {
+  if (!IsActive()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(
+      budget_->host()->AddEventListener(element, type, callback, once));
+}
+
+DomResult BudgetedDomHost::RemoveEventListener(DomHandle element,
+                                               CallbackHandle callback) {
+  if (!IsActive()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->RemoveEventListener(element, callback));
+}
+
+void BudgetedDomHost::RevokeEventListener(DomHandle element,
+                                          CallbackHandle callback) {
+  // Rollback must remain possible after the post-call budget/activity check.
+  if (budget_->executing() && budget_->host()) {
+    budget_->host()->RevokeEventListener(element, callback);
+  }
+}
+
 }  // namespace native_python

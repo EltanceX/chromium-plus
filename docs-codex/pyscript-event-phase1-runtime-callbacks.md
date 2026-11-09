@@ -4,7 +4,7 @@
 
 ## 1. 实施范围
 
-本阶段已实现独立运行时的回调注册、同步调用、移除和只读事件快照。它是后续原生点击监听的基础：当前网页尚不能调用 `dom.add_event_listener()`，也没有接入 Blink click 派发、`once` 或交互滑动窗口预算。
+本阶段已实现独立运行时的回调注册、同步调用、移除和只读事件快照。本阶段交付时尚未提供 Python `dom.add_event_listener()`、Blink click 派发、`once` 或交互滑动窗口预算；后续 API 与 Chrome 接入见[阶段二实施记录](pyscript-event-phase2-dom-registration-adapter.md)。
 
 改动仅涉及 `components/python_runtime/` 的五个源文件，没有新增运行时依赖或改变 Python 启用设置、页面授权规则和 Renderer 沙箱。
 

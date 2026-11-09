@@ -15,6 +15,7 @@ import("//extensions/buildflags/buildflags.gni")
 import("//media/media_options.gni")
 import("//pdf/features.gni")
 import("//testing/libfuzzer/fuzzer_test.gni")
+import("//testing/test.gni")
 import("//third_party/widevine/cdm/widevine.gni")
 import("//tools/grit/grit_rule.gni")
 import("//ui/webui/webui_features.gni")
@@ -329,7 +330,10 @@ static_library("renderer") {
 
   if (is_win) {
     if (current_cpu == "x64") {
-      deps += [ "//components/python_runtime" ]
+      deps += [
+        ":python_document_context",
+        "//components/python_runtime",
+      ]
       sources += [
         "python_script_runner.cc",
         "python_script_runner.h",
@@ -610,6 +614,34 @@ if (is_android) {
         "//crypto",
       ]
     }
+  }
+}
+
+if (is_win && current_cpu == "x64") {
+  source_set("python_document_context") {
+    sources = [
+      "python_document_context.cc",
+      "python_document_context.h",
+    ]
+    deps = [
+      "//base",
+      "//components/python_runtime",
+      "//third_party/blink/public:blink",
+    ]
+    public_deps = [ "//third_party/blink/public:blink_headers" ]
+  }
+
+  test("python_document_context_unittests") {
+    sources = [
+      "python_document_context_unittest.cc",
+      "run_python_document_context_unittests.cc",
+    ]
+    deps = [
+      ":python_document_context",
+      "//base/test:test_support",
+      "//testing/gtest",
+      "//third_party/blink/public:test_support",
+    ]
   }
 }
 

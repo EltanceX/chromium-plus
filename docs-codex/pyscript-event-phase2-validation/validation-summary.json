@@ -1,0 +1,160 @@
+{
+  "recordedAt": "2026-11-09T19:03:29+08:00",
+  "baseCommit": "7580758e69",
+  "scope": "Python listener API and Chrome/public-interface adapter. Blink listener installation and real click dispatch remain unavailable.",
+  "environment": {
+    "platform": "Windows x64",
+    "workspace": "C:\\src\\src",
+    "outputDirectory": "out/Debug",
+    "gnArgs": "# Build arguments go here.\n# See \"gn args <out_dir> --list\" for available build arguments.\nis_component_build = true\ntarget_cpu = \"x64\"\ncc_wrapper = \"sccache\"\nis_debug = true"
+  },
+  "results": {
+    "build": {
+      "passed": true,
+      "command": "autoninja -C out/Debug python_runtime_unittests python_document_context_unittests chrome blink_unittests",
+      "log": "build.log"
+    },
+    "runtime": {
+      "passed": true,
+      "tests": 43,
+      "statuses": {
+        "SUCCESS": 43
+      },
+      "command": "out/Debug/python_runtime_unittests.exe --test-launcher-jobs=1 --test-launcher-timeout=60000 --test-launcher-summary-output=out/Debug/pyscript-event-phase2-runtime-unittests.json",
+      "summary": "runtime-unittests.json",
+      "log": "runtime-unittests.log"
+    },
+    "adapter": {
+      "passed": true,
+      "tests": 6,
+      "statuses": {
+        "SUCCESS": 6
+      },
+      "command": "out/Debug/python_document_context_unittests.exe --test-launcher-jobs=1 --test-launcher-timeout=60000 --test-launcher-summary-output=out/Debug/pyscript-event-phase2-adapter-unittests.json",
+      "summary": "adapter-unittests.json",
+      "log": "adapter-unittests.log"
+    },
+    "blink": {
+      "passed": true,
+      "tests": 33,
+      "statuses": {
+        "SUCCESS": 33
+      },
+      "command": "out/Debug/blink_unittests.exe --gtest_filter=HTMLPyScriptElementTest.* --test-launcher-jobs=1 --test-launcher-timeout=60000 --test-launcher-summary-output=out/Debug/pyscript-event-phase2-blink-unittests.json",
+      "summary": "blink-unittests.json",
+      "log": "blink-unittests.log"
+    },
+    "domBrowserRegression": {
+      "passed": true,
+      "tests": 17,
+      "command": "node chrome/test/pyscript_dom_smoke_test.mjs --output=out/Debug/pyscript-event-phase2-dom-regression.json",
+      "summary": "dom-regression.json",
+      "log": "dom-regression.log",
+      "sandboxDisabled": false,
+      "chromeArgs": []
+    },
+    "dependencies": {
+      "runtime-gn-check": {
+        "passed": true,
+        "command": "gn check out/Debug //components/python_runtime:python_runtime",
+        "log": "runtime-gn-check.log"
+      },
+      "chrome-gn-check": {
+        "passed": true,
+        "command": "gn check out/Debug //chrome/renderer:*",
+        "log": "chrome-gn-check.log"
+      },
+      "blink-gn-check": {
+        "passed": true,
+        "command": "gn check out/Debug //third_party/blink/renderer/core:core",
+        "log": "blink-gn-check.log"
+      },
+      "blink-test-gn-check": {
+        "passed": true,
+        "command": "gn check out/Debug //third_party/blink/renderer/core:unit_tests",
+        "log": "blink-test-gn-check.log"
+      },
+      "runtime-checkdeps": {
+        "passed": true,
+        "command": "python buildtools/checkdeps/checkdeps.py components/python_runtime",
+        "log": "runtime-checkdeps.log"
+      },
+      "chrome-checkdeps": {
+        "passed": true,
+        "command": "python buildtools/checkdeps/checkdeps.py chrome/renderer",
+        "log": "chrome-checkdeps.log"
+      },
+      "blink-checkdeps": {
+        "passed": true,
+        "command": "python buildtools/checkdeps/checkdeps.py third_party/blink/renderer/core/html/python_script_controller.cc",
+        "log": "blink-checkdeps.log"
+      },
+      "blink-test-checkdeps": {
+        "passed": true,
+        "command": "python buildtools/checkdeps/checkdeps.py third_party/blink/renderer/core/html/html_py_script_element_test.cc",
+        "log": "blink-test-checkdeps.log"
+      }
+    },
+    "format": {
+      "passed": true,
+      "checks": [
+        "clang-format --dry-run --Werror for all 14 changed/new C++ headers and sources",
+        "gn format --dry-run chrome/renderer/BUILD.gn",
+        "git diff --check"
+      ]
+    }
+  },
+  "resolvedFailures": [
+    {
+      "log": "build-gn-failed.log",
+      "reason": "Standalone adapter initially depended directly on a private Blink platform target; switched to public Blink targets."
+    },
+    {
+      "log": "build-runtime-failed.log",
+      "reason": "Scoped capability helper reference member needed raw_ref."
+    },
+    {
+      "log": "build-tests-failed.log",
+      "reason": "Test helper Run collided with gtest::Test::Run; a generic lambda did not satisfy base::FunctionRef. Renamed helper and specified parameter type."
+    },
+    {
+      "log": "build-link-failed.log",
+      "reason": "Four old Blink Core object files had reproducible COFF/CodeView structure errors. Backed up, hashed and rebuilt only the diagnosed generated objects."
+    }
+  ],
+  "objectRecovery": {
+    "inputScan": "core-input-scan.json",
+    "recovery": "object-recovery.json",
+    "rebuiltScan": "rebuilt-inputs-scan.json",
+    "objects": 4,
+    "stableOrdinaryAndMmapReadErrors": 4,
+    "rootCause": "Unknown",
+    "originalBinaries": "out/Debug/pyscript-event-phase2-object-backup/ (not committed)"
+  },
+  "blinkSummaryFiltering": "Only unrelated all_tests/disabled_tests/test_locations entries were removed. All 33 selected test results and output snippets are retained; original summary remains under out/Debug.",
+  "limitations": [
+    "The actual Blink host currently checks policy/call budgets and returns an explicit unimplemented error for listener registration/removal.",
+    "Successful registrations and invocations use controlled native hosts, including real CPython through the Chrome adapter; these are not real-click end-to-end tests.",
+    "once is validated and forwarded; consumption before dispatch remains phase three work.",
+    "Execution/output budgets remain cumulative. Sliding-window budgets and full native subscription cleanup remain later phases.",
+    "The broader MVP and settings-page acceptance matrices were not rerun."
+  ],
+  "sourceSha256Lf": {
+    "chrome/renderer/BUILD.gn": "0d68f48c309f0ab1209ef4a47379e6d3da5a2cb87b00b1e4561ab6d10209cd42",
+    "chrome/renderer/DEPS": "c882f3f7e52f37ac3dbf72176e9dcccc61704766f25ca216dea4828db1f182af",
+    "chrome/renderer/python_document_context.cc": "1311bab93ba887abf5677e9ea744560ae6e5698f235732796cf1b1d8338efdcb",
+    "chrome/renderer/python_document_context.h": "cb0acae047135fe7fc8cc16d59a7e27368c6de8108d914342809cbd56a21f5cb",
+    "chrome/renderer/python_document_context_unittest.cc": "fdee0212f41a16f4e98b02c6d057467f75dda54b1a593e2cdb06967ec550daa1",
+    "chrome/renderer/python_script_runner.cc": "33679a5602b4042c6c8dc040f201e9155714951ad0af1687ad25c54fccbc6262",
+    "chrome/renderer/run_python_document_context_unittests.cc": "cf2f4e4a52a38ea3058a2ca10b3f7df297374530c0929ef02eb0540df26dcd9e",
+    "components/python_runtime/python_dom_module.cc": "1393d7a640066e481c8474f10cbc1e3bc2509f0a7e0121c8d58a1bf14b8b4719",
+    "components/python_runtime/python_execution_budget.cc": "dc6738eda3aad27351456456c28cf6e9830507342bd247da21de863a9c7ae9e0",
+    "components/python_runtime/python_execution_budget.h": "b26c92b8d7a53df85d29bea1ae266c8c7c9e0ba49a295c4833aaec9d63bee066",
+    "components/python_runtime/python_runtime.h": "f7d70c1f508db62fd7f0f086429a171f802575a0f4caa6e1f72da04550245d5b",
+    "components/python_runtime/python_runtime_unittest.cc": "d8fb6b7b55cc557ea1c4f77b63a3c71ed23b6bfbccc205272f80fbc69f43d1de",
+    "third_party/blink/public/web/web_python_script_runner.h": "733dd1f2284dd2f05decef10ba2ca3210d6f042f4b8d2fd9089345eedf29f712",
+    "third_party/blink/renderer/core/html/html_py_script_element_test.cc": "12f0b5cf29c84932a0f970ca0aea32d2d2fb55461326f02f20850ee48d442559",
+    "third_party/blink/renderer/core/html/python_script_controller.cc": "f5eaa06232ccfb2666637e26d8320e2c7258dc3b97c4e185ff323f9ff84fc40f",
+    "third_party/blink/renderer/core/html/python_script_controller.h": "f1f0baa9d4f37f53d6291dc5a0fa49650afd0709ecf8dad1134bd804c1d63927"
+  }
+}

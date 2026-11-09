@@ -1,0 +1,185 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython:PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles:PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated:PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides:PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission:PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry:PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct:PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother:PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability:PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots
+[==========] Running 10 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonRuntimeDeathTest
+[ RUN      ] PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython
+[       OK ] PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython (121 ms)
+[----------] 1 test from PythonRuntimeDeathTest (122 ms total)
+
+[----------] 9 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles
+[       OK ] PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles (30 ms)
+[ RUN      ] PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated
+[       OK ] PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated (32 ms)
+[ RUN      ] PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides
+[       OK ] PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides (30 ms)
+[ RUN      ] PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission
+[       OK ] PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission (51 ms)
+[ RUN      ] PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry
+[       OK ] PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry (28 ms)
+[ RUN      ] PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct
+[       OK ] PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct (30 ms)
+[ RUN      ] PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother
+[       OK ] PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother (28 ms)
+[ RUN      ] PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability
+[       OK ] PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability (32 ms)
+[ RUN      ] PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots
+[       OK ] PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots (27 ms)
+[----------] 9 tests from PythonRuntimeTest (297 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 2 test suites ran. (420 ms total)
+[  PASSED  ] 10 tests.
+[1/43] PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython (121 ms)
+[2/43] PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles (30 ms)
+[3/43] PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated (32 ms)
+[4/43] PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides (30 ms)
+[5/43] PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission (51 ms)
+[6/43] PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry (28 ms)
+[7/43] PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct (30 ms)
+[8/43] PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother (28 ms)
+[9/43] PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability (32 ms)
+[10/43] PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots (27 ms)
+Note: Google Test filter = PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts:PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds:PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables:PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies:PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls:PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked:PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom:PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks:PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries:PythonRuntimeTest.CallbackAndSourceShareCumulativeBudgetsUntilEventPhaseFour
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts
+[       OK ] PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts (113 ms)
+[ RUN      ] PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds
+[       OK ] PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds (32 ms)
+[ RUN      ] PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables
+[       OK ] PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables (29 ms)
+[ RUN      ] PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies
+[       OK ] PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies (25 ms)
+[ RUN      ] PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls
+[       OK ] PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls (25 ms)
+[ RUN      ] PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked
+[       OK ] PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked (25 ms)
+[ RUN      ] PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom
+[       OK ] PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom (30 ms)
+[ RUN      ] PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks
+[       OK ] PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks (49 ms)
+[ RUN      ] PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries
+[       OK ] PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries (127 ms)
+[ RUN      ] PythonRuntimeTest.CallbackAndSourceShareCumulativeBudgetsUntilEventPhaseFour
+[       OK ] PythonRuntimeTest.CallbackAndSourceShareCumulativeBudgetsUntilEventPhaseFour (48 ms)
+[----------] 10 tests from PythonRuntimeTest (514 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (514 ms total)
+[  PASSED  ] 10 tests.
+[11/43] PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts (113 ms)
+[12/43] PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds (32 ms)
+[13/43] PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables (29 ms)
+[14/43] PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies (25 ms)
+[15/43] PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls (25 ms)
+[16/43] PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked (25 ms)
+[17/43] PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom (30 ms)
+[18/43] PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks (49 ms)
+[19/43] PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries (127 ms)
+[20/43] PythonRuntimeTest.CallbackAndSourceShareCumulativeBudgetsUntilEventPhaseFour (48 ms)
+Note: Google Test filter = PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom:PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings:PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal:PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors:PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost:PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers:PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock:PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals:PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput:PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom
+[       OK ] PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom (52 ms)
+[ RUN      ] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings
+[       OK ] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings (28 ms)
+[ RUN      ] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal
+[       OK ] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal (55 ms)
+[ RUN      ] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors
+[       OK ] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors (53 ms)
+[ RUN      ] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost
+[       OK ] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost (25 ms)
+[ RUN      ] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers
+[       OK ] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers (27 ms)
+[ RUN      ] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock
+[       OK ] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock (26 ms)
+[ RUN      ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals
+[       OK ] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (26 ms)
+[ RUN      ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput
+[       OK ] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (49 ms)
+[ RUN      ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover
+[       OK ] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (25 ms)
+[----------] 10 tests from PythonRuntimeTest (377 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (378 ms total)
+[  PASSED  ] 10 tests.
+[21/43] PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom (52 ms)
+[22/43] PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings (28 ms)
+[23/43] PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal (55 ms)
+[24/43] PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors (53 ms)
+[25/43] PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost (25 ms)
+[26/43] PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers (27 ms)
+[27/43] PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock (26 ms)
+[28/43] PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals (26 ms)
+[29/43] PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput (49 ms)
+[30/43] PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover (25 ms)
+Note: Google Test filter = PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate:PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop:PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded:PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget:PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution:PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary:PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop:PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer:PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded:PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate
+[       OK ] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (53 ms)
+[ RUN      ] PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop
+[       OK ] PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop (124 ms)
+[ RUN      ] PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded
+[       OK ] PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded (25 ms)
+[ RUN      ] PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget
+[       OK ] PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget (74 ms)
+[ RUN      ] PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution
+[       OK ] PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution (26 ms)
+[ RUN      ] PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary
+[       OK ] PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary (55 ms)
+[ RUN      ] PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop
+[       OK ] PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop (125 ms)
+[ RUN      ] PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer
+[       OK ] PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer (73 ms)
+[ RUN      ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded
+[       OK ] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (25 ms)
+[ RUN      ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext
+[       OK ] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (24 ms)
+[----------] 10 tests from PythonRuntimeTest (615 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (615 ms total)
+[  PASSED  ] 10 tests.
+[31/43] PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate (53 ms)
+[32/43] PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop (124 ms)
+[33/43] PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded (25 ms)
+[34/43] PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget (74 ms)
+[35/43] PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution (26 ms)
+[36/43] PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary (55 ms)
+[37/43] PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop (125 ms)
+[38/43] PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer (73 ms)
+[39/43] PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded (25 ms)
+[40/43] PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext (24 ms)
+Note: Google Test filter = PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts:PythonRuntimeTest.SubinterpretersCannotCreateThreads:PythonRuntimeTest.FixedDiagnosticSelfTest
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from PythonRuntimeTest
+[ RUN      ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts
+[       OK ] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (603 ms)
+[ RUN      ] PythonRuntimeTest.SubinterpretersCannotCreateThreads
+[       OK ] PythonRuntimeTest.SubinterpretersCannotCreateThreads (24 ms)
+[ RUN      ] PythonRuntimeTest.FixedDiagnosticSelfTest
+[       OK ] PythonRuntimeTest.FixedDiagnosticSelfTest (80 ms)
+[----------] 3 tests from PythonRuntimeTest (711 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (711 ms total)
+[  PASSED  ] 3 tests.
+[41/43] PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts (603 ms)
+[42/43] PythonRuntimeTest.SubinterpretersCannotCreateThreads (24 ms)
+[43/43] PythonRuntimeTest.FixedDiagnosticSelfTest (80 ms)
+SUCCESS: all tests passed.
+Tests took 2 seconds.

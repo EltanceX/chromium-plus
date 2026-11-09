@@ -77,6 +77,14 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   virtual bool IsActive() const = 0;
   virtual DomResult GetElementById(std::string_view id) = 0;
   virtual DomResult SetText(DomHandle, std::string_view text) = 0;
+  virtual DomResult AddEventListener(DomHandle,
+                                     std::string_view type,
+                                     CallbackHandle,
+                                     bool once) = 0;
+  virtual DomResult RemoveEventListener(DomHandle, CallbackHandle) = 0;
+  // Idempotent rollback of a possibly installed listener. No policy/budget
+  // admission, script entry or Python calls; never exposed as a Python API.
+  virtual void RevokeEventListener(DomHandle, CallbackHandle) = 0;
 };
 
 PYTHON_RUNTIME_EXPORT

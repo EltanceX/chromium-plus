@@ -2,7 +2,7 @@
 
 - 整理日期：2026-11-09（Asia/Shanghai）。
 - 实现基线：`dabd65e514`，已完成 Python 解释器设置与页面权限模式。
-- 状态：阶段一运行时回调注册表、同步调用与只读事件快照已完成；网页监听 API、Blink click 派发与交互预算仍未接入。详见[阶段一实施记录](pyscript-event-phase1-runtime-callbacks.md)，本文页面示例尚不能作为现有功能使用。
+- 状态：阶段一运行时基础与阶段二 Python 注册 / 移除 API、Chrome 适配已完成。Blink 当前明确拒绝安装监听，真实 click 派发与交互预算仍未接入；本文页面示例尚不能作为完整功能使用。详见[阶段一](pyscript-event-phase1-runtime-callbacks.md)与[阶段二实施记录](pyscript-event-phase2-dom-registration-adapter.md)。
 - 目标平台：沿用 Windows x64 Debug，Renderer 主线程内嵌 CPython。
 - 前置记录：[Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM 桥接](pyscript-phase3-document-context-dom.md)、[预算与清理](pyscript-phase4-budgets-navigation-cleanup.md)、[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。
 
@@ -230,6 +230,8 @@ dom.remove_event_listener(listener)
 完成标准：运行时目标构建通过，新增与既有单测全部通过；此阶段尚不向网页宣称完整点击支持。
 
 ### 阶段二：Python DOM 注册 / 移除与 Chrome 适配
+
+实施状态：已完成本阶段接口与独立 host 验证，运行时 43 / 43、Chrome 适配 6 / 6、Blink 33 / 33、既有 DOM 浏览器回归 17 / 17、完整构建及 GN / checkdeps 通过。`once` 参数已传递；真实 listener、调用前消费与事件派发留到阶段三。详见[阶段二实施记录](pyscript-event-phase2-dom-registration-adapter.md)。
 
 1. 增加 Python `ListenerHandle` 类型和两项 `dom` API，明确参数、幂等移除、错误类型和 `once` 语义。
 2. 扩展原生 / Blink DOM host 与预算包装层，所有跨层对象保持数值句柄或普通数据。

@@ -64,6 +64,12 @@ class BudgetedDomHost final : public DomHost {
   bool IsActive() const override;
   DomResult GetElementById(std::string_view id) override;
   DomResult SetText(DomHandle handle, std::string_view text) override;
+  DomResult AddEventListener(DomHandle,
+                             std::string_view,
+                             CallbackHandle,
+                             bool once) override;
+  DomResult RemoveEventListener(DomHandle, CallbackHandle) override;
+  void RevokeEventListener(DomHandle, CallbackHandle) override;
 
  private:
   DomResult FinishCall(DomResult result);
