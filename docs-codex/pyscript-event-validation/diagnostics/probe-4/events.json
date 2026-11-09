@@ -1,0 +1,270 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:59127",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Trusted mouse and keyboard clicks share Python state",
+      "passed": true,
+      "elapsedMs": 499,
+      "detail": {
+        "mouse": "trusted",
+        "keyboard": "trusted",
+        "script": "untrusted"
+      }
+    },
+    {
+      "name": "Callbacks share globals across blocks and retain closure state",
+      "passed": true,
+      "elapsedMs": 611
+    },
+    {
+      "name": "Returning False does not cancel the native checkbox default action",
+      "passed": true,
+      "elapsedMs": 314
+    },
+    {
+      "name": "Restricted child frames cannot initialize Python click listeners",
+      "passed": true,
+      "elapsedMs": 634
+    },
+    {
+      "name": "Nonce CSP sample uses no JavaScript and survives source removal",
+      "passed": true,
+      "elapsedMs": 611
+    },
+    {
+      "name": "Duplicate registrations remain independent after handles are dropped",
+      "passed": true,
+      "elapsedMs": 432
+    },
+    {
+      "name": "Once consumes registration even when Python raises",
+      "passed": true,
+      "elapsedMs": 390
+    },
+    {
+      "name": "Self removal skips later listener and additions wait until next click",
+      "passed": true,
+      "elapsedMs": 370
+    },
+    {
+      "name": "Ordinary exceptions retain listeners and include callback source",
+      "passed": true,
+      "elapsedMs": 367,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:59127/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794243479712.138,
+          "url": "http://127.0.0.1:59127/error",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:59127/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794243479720.138,
+          "url": "http://127.0.0.1:59127/error",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Disconnected nodes skip and reconnection resumes without id transfer",
+      "passed": true,
+      "elapsedMs": 364
+    },
+    {
+      "name": "Native subscriptions and source metadata do not retain detached DOM nodes",
+      "passed": true,
+      "elapsedMs": 383
+    },
+    {
+      "name": "Adopting subscribed node into another document cannot run old Python",
+      "passed": true,
+      "elapsedMs": 410
+    },
+    {
+      "name": "Post-registration Shadow DOM and customized built-in are rejected",
+      "passed": true,
+      "elapsedMs": 350
+    },
+    {
+      "name": "New CSP blocks existing callbacks using original source snapshot",
+      "passed": true,
+      "elapsedMs": 376
+    },
+    {
+      "name": "Callback-created subscriptions inherit the correct source authorization",
+      "passed": true,
+      "elapsedMs": 437
+    },
+    {
+      "name": "Disabling page script execution blocks existing callbacks",
+      "passed": true,
+      "elapsedMs": 387
+    },
+    {
+      "name": "Registration rejects SVG, custom elements, customized built-ins and shadow nodes",
+      "passed": true,
+      "elapsedMs": 335
+    },
+    {
+      "name": "Fatal callback timeout revokes document listeners",
+      "passed": true,
+      "elapsedMs": 433
+    },
+    {
+      "name": "Reload creates fresh callback state and navigation drops old listeners",
+      "passed": true,
+      "elapsedMs": 942
+    },
+    {
+      "name": "History navigation excludes active listeners from BFCache and creates fresh state",
+      "passed": true,
+      "elapsedMs": 1150,
+      "detail": {
+        "loaderId": "B758B1A6C1C13879297CC9745961225A",
+        "frameId": "1EFBDF12B5DD2FCE7C5A0F5F4EA87C53",
+        "notRestoredExplanations": [
+          {
+            "type": "SupportPending",
+            "reason": "Unknown"
+          },
+          {
+            "type": "Circumstantial",
+            "reason": "BrowsingInstanceNotSwapped"
+          }
+        ],
+        "notRestoredExplanationsTree": {
+          "url": "http://127.0.0.1:59127/counter",
+          "explanations": [
+            {
+              "type": "SupportPending",
+              "reason": "Unknown"
+            },
+            {
+              "type": "Circumstantial",
+              "reason": "BrowsingInstanceNotSwapped"
+            }
+          ],
+          "children": []
+        }
+      }
+    },
+    {
+      "name": "Window pressure preserves once, drops skipped clicks and recovers after idle",
+      "passed": true,
+      "elapsedMs": 1667,
+      "detail": {
+        "payloadBytes": 30720,
+        "skippedWarningCount": 1
+      }
+    },
+    {
+      "name": "Sustained clicks use event DOM budgets across initialization lifetime limits",
+      "passed": true,
+      "elapsedMs": 3600,
+      "detail": {
+        "callbacks": 24,
+        "eventDomCalls": 1560
+      }
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-dom-stop",
+      "passed": true,
+      "elapsedMs": 1568
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-output-stop",
+      "passed": true,
+      "elapsedMs": 1451
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1396
+    },
+    {
+      "name": "Callback return-value finalizers have no DOM capability",
+      "passed": true,
+      "elapsedMs": 314
+    },
+    {
+      "name": "Fragment navigation retains listeners without repeating initialization",
+      "passed": true,
+      "elapsedMs": 466
+    },
+    {
+      "name": "document.open revokes listeners on retained old nodes",
+      "passed": true,
+      "elapsedMs": 437
+    },
+    {
+      "name": "Unrestricted callbacks honor the page policy override after registration",
+      "passed": true,
+      "elapsedMs": 472
+    },
+    {
+      "name": "Simultaneous unrestricted child frames keep independent closure state",
+      "passed": true,
+      "elapsedMs": 947
+    },
+    {
+      "name": "Prerender never initializes or defers Python listeners even in unrestricted mode",
+      "passed": false,
+      "elapsedMs": 30515,
+      "error": "Error: Error: Condition timed out after 30000 ms\n[{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"type\":\"page\",\"title\":\"127.0.0.1:59127/prerender-host\",\"url\":\"http://127.0.0.1:59127/prerender-host\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.ruleSetUpdated\",\"params\":{\"ruleSet\":{\"id\":\"14360.0\",\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"sourceText\":\"{\\\"prerender\\\":[{\\\"source\\\":\\\"list\\\",\\\"urls\\\":[\\\"/prerender\\\"]}]}\",\"backendNodeId\":45}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.preloadingAttemptSourcesUpdated\",\"params\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"preloadingAttemptSources\":[{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"ruleSetIds\":[\"14360.0\"],\"nodeIds\":[]}]},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"initiatingFrameId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"prefetchUrl\":\"http://127.0.0.1:59127/prerender\",\"status\":\"Running\",\"prefetchStatus\":\"PrefetchNotFinishedInTime\",\"requestId\":\"3920977EF33996313EB83C5EBB469F1C\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Pending\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetCreated\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":false,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.attachedToTarget\",\"params\":{\"sessionId\":\"D589E84BF2E53223100D1B48A3392D1F\",\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"},\"waitingForDebugger\":false},\"sessionId\":\"E55B02DACF89B06CD23F1501678DCBE1\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Running\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"initiatingFrameId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"prefetchUrl\":\"http://127.0.0.1:59127/prerender\",\"status\":\"Success\",\"prefetchStatus\":\"PrefetchResponseUsed\",\"requestId\":\"3920977EF33996313EB83C5EBB469F1C\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Ready\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"127.0.0.1:59127/prerender\",\"url\":\"http://127.0.0.1:59127/prerender\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"5014C4575F588B7BE39FA7381152F184\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"58F1F23C3CE3D9536E83F85407CE3422\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"}]\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:629:13\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:625:20\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:338:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:621:3"
+    }
+  ],
+  "unrestrictedLifecycleTested": true,
+  "passed": false,
+  "error": "Error: Error: Condition timed out after 30000 ms\n[{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"type\":\"page\",\"title\":\"127.0.0.1:59127/prerender-host\",\"url\":\"http://127.0.0.1:59127/prerender-host\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.ruleSetUpdated\",\"params\":{\"ruleSet\":{\"id\":\"14360.0\",\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"sourceText\":\"{\\\"prerender\\\":[{\\\"source\\\":\\\"list\\\",\\\"urls\\\":[\\\"/prerender\\\"]}]}\",\"backendNodeId\":45}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.preloadingAttemptSourcesUpdated\",\"params\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"preloadingAttemptSources\":[{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"ruleSetIds\":[\"14360.0\"],\"nodeIds\":[]}]},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"initiatingFrameId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"prefetchUrl\":\"http://127.0.0.1:59127/prerender\",\"status\":\"Running\",\"prefetchStatus\":\"PrefetchNotFinishedInTime\",\"requestId\":\"3920977EF33996313EB83C5EBB469F1C\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Pending\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetCreated\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":false,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.attachedToTarget\",\"params\":{\"sessionId\":\"D589E84BF2E53223100D1B48A3392D1F\",\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"\",\"url\":\"\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"},\"waitingForDebugger\":false},\"sessionId\":\"E55B02DACF89B06CD23F1501678DCBE1\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Running\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"initiatingFrameId\":\"210D5B1D9810F5A5DC2D471F0E41D045\",\"prefetchUrl\":\"http://127.0.0.1:59127/prerender\",\"status\":\"Success\",\"prefetchStatus\":\"PrefetchResponseUsed\",\"requestId\":\"3920977EF33996313EB83C5EBB469F1C\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"648D3F81D9B694FC2565FE937C4019E2\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:59127/prerender\"},\"pipelineId\":\"27755084C9605FEC4E13203E7E4BA95A\",\"status\":\"Ready\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"114508FF9C091603B9B22BA119E2C8B3\",\"type\":\"page\",\"title\":\"127.0.0.1:59127/prerender\",\"url\":\"http://127.0.0.1:59127/prerender\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"BD2741ED78237E418B9ACD8843F85639\",\"subtype\":\"prerender\"}},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"5014C4575F588B7BE39FA7381152F184\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"58F1F23C3CE3D9536E83F85407CE3422\"},\"sessionId\":\"CB51F15DA1B9DE91CBE5CCE82AA758D4\"}]\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:629:13\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:625:20\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:338:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:621:3",
+  "requests": [
+    "/counter",
+    "/favicon.ico",
+    "/closure",
+    "/closure",
+    "/default-action",
+    "/iframe-parent",
+    "/counter",
+    "/sample",
+    "/duplicates",
+    "/once",
+    "/order",
+    "/error",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/provenance",
+    "/counter",
+    "/reject",
+    "/timeout",
+    "/counter",
+    "/counter",
+    "/other",
+    "/counter",
+    "/other",
+    "/event-window",
+    "/event-dom",
+    "/event-dom-stop",
+    "/event-output-stop",
+    "/event-diagnostic-stop",
+    "/event-finalizer",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/favicon.ico",
+    "/iframe-parent",
+    "/counter",
+    "/closure",
+    "/closure",
+    "/prerender-host",
+    "/prerender"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-11-09T17:08:30.892982+00:00",
+  "checks": {
+    "node-syntax": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "--check",
+        "chrome/test/pyscript_event_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "output": "",
+      "passed": true
+    },
+    "python-format": {
+      "command": [
+        "C:\\WINDOWS\\system32\\cmd.exe",
+        "/d",
+        "/c",
+        "C:\\src\\depot_tools\\yapf.bat",
+        "--style={based_on_style: pep8, indent_width: 2, column_limit: 80}",
+        "--diff",
+        "chrome/test/run_pyscript_event_validation.py"
+      ],
+      "exitCode": 0,
+      "output": "",
+      "passed": true
+    },
+    "diff-whitespace": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "chrome/test/pyscript_event_smoke_test.mjs",
+        "docs-codex/pyscript-click-events-implementation.md"
+      ],
+      "exitCode": 0,
+      "output": "",
+      "passed": true
+    },
+    "python-syntax": {
+      "passed": true,
+      "method": "ast.parse"
+    },
+    "text-format": {
+      "passed": true,
+      "files": 49,
+      "method": "UTF-8 without BOM, LF, no trailing whitespace, single EOF newline"
+    },
+    "archive-and-source-consistency": {
+      "passed": true,
+      "archivedArtifacts": 45,
+      "sourceFiles": 36,
+      "suites": 9
+    }
+  },
+  "passed": true
+}

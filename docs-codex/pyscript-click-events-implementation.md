@@ -2,7 +2,7 @@
 
 - 整理日期：2026-11-09（Asia/Shanghai）。
 - 实现基线：`dabd65e514`，已完成 Python 解释器设置与页面权限模式。
-- 状态：阶段一至三已接通运行时、Python 注册 / 移除 API、Chrome 适配与 Blink 原生 click 派发。阶段三定向集成和真实浏览器验证已通过，完整构建后台进行中；交互窗口预算待阶段四实现。详见[阶段一](pyscript-event-phase1-runtime-callbacks.md)、[阶段二](pyscript-event-phase2-dom-registration-adapter.md)与[阶段三实施记录](pyscript-event-phase3-native-click-dispatch.md)。
+- 状态：阶段一至五已完成，首版原生 click、文档独立回调、交互窗口预算与安全清理已接通。2026-11-10 标准五目标构建、117 项单测和 90 项真实浏览器验收全部通过，Renderer 沙箱保留。详见[阶段四](pyscript-event-phase4-budgets-and-cleanup.md)和[阶段五验收记录](pyscript-event-phase5-build-and-browser-validation.md)。
 - 目标平台：沿用 Windows x64 Debug，Renderer 主线程内嵌 CPython。
 - 前置记录：[Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM 桥接](pyscript-phase3-document-context-dom.md)、[预算与清理](pyscript-phase4-budgets-navigation-cleanup.md)、[内核调试设置与页面权限](pyscript-settings-and-page-permissions.md)。
 
@@ -265,6 +265,8 @@ dom.remove_event_listener(listener)
 
 ### 阶段五：构建、真实浏览器验证与记录
 
+实施状态：已完成。增加可重复的九组验收编排入口，事件浏览器检查从 27 项扩展到 34 项，补齐跨代码块闭包、False 返回值与默认行为、受限子框架、活动监听器 BFCache、放开模式策略、同时存在的子框架隔离及真实 prerender 激活。标准五目标增量构建通过（本轮无待编译原生输出），117 项单测和 90 项浏览器检查通过；日志、截图、源码 / 二进制哈希和五次测试脚本接入探测均已归档。详见[阶段五记录](pyscript-event-phase5-build-and-browser-validation.md)及[最终汇总](pyscript-event-validation/validation-summary.json)。
+
 1. 构建 Chrome、原生运行时单测、设置模块单测与 Blink 单测。
 2. 添加独立浏览器测试脚本，建议 `chrome/test/pyscript_event_smoke_test.mjs`，并加入本地示例页面。
 3. 使用 CDP `Input.dispatchMouseEvent` 驱动真实输入路径，另用页面 `element.click()` 验证非可信事件；不能只直接调用 Python 函数代替事件端到端测试。
@@ -275,8 +277,9 @@ dom.remove_event_listener(listener)
 建议基础命令：
 
 ```powershell
-autoninja -C out/Debug chrome python_runtime_unittests native_python_settings_unittests blink_unittests
+autoninja -C out/Debug chrome python_runtime_unittests python_document_context_unittests native_python_settings_unittests blink_unittests
 out/Debug/python_runtime_unittests.exe --test-launcher-jobs=1
+out/Debug/python_document_context_unittests.exe --test-launcher-jobs=1
 out/Debug/native_python_settings_unittests.exe --test-launcher-jobs=1
 out/Debug/blink_unittests.exe --gtest_filter=HTMLPyScriptElementTest.* --test-launcher-jobs=1
 
@@ -286,18 +289,23 @@ node chrome/test/pyscript_event_smoke_test.mjs --output=out/Debug/pyscript-event
 node chrome/test/pyscript_smoke_test.mjs --output=out/Debug/pyscript-event-parser-regression.json
 node chrome/test/pyscript_dom_smoke_test.mjs --output=out/Debug/pyscript-event-dom-regression.json
 node chrome/test/pyscript_settings_smoke_test.mjs --output=out/Debug/pyscript-event-settings-regression.json
+
+# 统一运行构建和全部九组验收，默认自动建立新的结果目录。
+python chrome/test/run_pyscript_event_validation.py
 ```
 
 若新测试拆分为独立 suite，应同步调整过滤器。对同一个 `out/Debug` 顺序运行构建。遵循实施时相应目录的 `AGENTS.md`；若完整链接再次遇到生成对象问题，保留输入诊断和原件，不能跳过 PDB 或削弱检查来宣称构建通过。
 
 ## 9. 首版验收清单
 
-- 示例按钮每点击一次，页面计数加一；多次事件共享 Python 全局变量和闭包，其他文档看不到这些状态。
-- 正常点击可持续使用，不在累计 250 ms 或 1024 次 DOM 操作后误用初始化额度停止；时间窗口限额有确定的跳过与恢复行为。
-- 显式移除、重复移除、重复注册、once、自移除以及回调中移除后续订阅具有明确、可验证的语义。
-- 原生 / 脚本生成的 click 均走真实事件路径，`is_trusted` 正确；返回值不取消默认行为，不将普通元素句柄变为任意 DOM 写入能力。
-- 受限来源、CSP、脚本设置及放开模式按约定生效，后加限制能阻止旧订阅继续执行，内部页面排除和 Renderer 沙箱保持有效。
-- 元素移除、重连、替换、迁移和 GC 不造成跨文档执行、节点强保留或在 GC 栈运行 Python。
-- 普通异常可恢复；协作式超时与单次资源超限撤销整个文档的 Python 监听，后续事件不能复活上下文。
-- 导航、刷新、`document.open()`、frame 关闭、BFCache / prerender 和 Renderer 正常关闭没有失效回调、跨解释器引用或非法清理。
-- 新增与受影响回归实际运行通过，文档记录真实结果与已知限制。
+- [x] 示例按钮每点击一次，页面计数加一；多次事件共享 Python 全局变量和闭包，其他文档看不到这些状态。
+- [x] 正常点击可持续使用，不在累计 250 ms 或 1024 次 DOM 操作后误用初始化额度停止；时间窗口限额有确定的跳过与恢复行为。
+- [x] 显式移除、重复移除、重复注册、once、自移除以及回调中移除后续订阅具有明确、可验证的语义。
+- [x] 原生 / 脚本生成的 click 均走真实事件路径，`is_trusted` 正确；返回值不取消默认行为，不将普通元素句柄变为任意 DOM 写入能力。
+- [x] 受限来源、CSP、脚本设置及放开模式按约定生效，后加限制能阻止旧订阅继续执行，内部页面排除和 Renderer 沙箱保持有效。
+- [x] 元素移除、重连、替换、迁移和 GC 不造成跨文档执行、节点强保留或在 GC 栈运行 Python。
+- [x] 普通异常可恢复；协作式超时与单次资源超限撤销整个文档的 Python 监听，后续事件不能复活上下文。
+- [x] 导航、刷新、`document.open()`、frame 关闭、BFCache / prerender 和 Renderer 正常关闭没有失效回调、跨解释器引用或非法清理。
+- [x] 新增与受影响回归实际运行通过，文档记录真实结果与已知限制。
+
+以上按运行时、Blink 与真实浏览器分层验证；具体用例、环境及适用边界见[阶段五验收对应表](pyscript-event-phase5-build-and-browser-validation.md#首版验收对应关系)。

@@ -1,0 +1,146 @@
+{
+  "recordedAt": "2026-11-09T17:05:37.527460+00:00",
+  "record": "final/summary.json",
+  "sourceCommit": "b3a05f25f236ea0231df7c886b8dffef5aee07a0",
+  "build": {
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "C:\\src\\depot_tools\\autoninja.bat",
+      "-C",
+      "C:\\src\\src\\out\\Debug",
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests",
+      "native_python_settings_unittests"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 40.95
+  },
+  "sourceUnchanged": true,
+  "checks": {
+    "runtime": {
+      "exitCode": 0,
+      "elapsedSeconds": 4.78,
+      "expected": 49,
+      "total": 49,
+      "passed": 49,
+      "verified": true
+    },
+    "adapter": {
+      "exitCode": 0,
+      "elapsedSeconds": 0.81,
+      "expected": 8,
+      "total": 8,
+      "passed": 8,
+      "verified": true
+    },
+    "blink": {
+      "exitCode": 0,
+      "elapsedSeconds": 16.11,
+      "expected": 49,
+      "total": 49,
+      "passed": 49,
+      "verified": true
+    },
+    "csp": {
+      "exitCode": 0,
+      "elapsedSeconds": 3.31,
+      "expected": 3,
+      "total": 3,
+      "passed": 3,
+      "verified": true
+    },
+    "settings-unit": {
+      "exitCode": 0,
+      "elapsedSeconds": 0.23,
+      "expected": 8,
+      "total": 8,
+      "passed": 8,
+      "verified": true
+    },
+    "events": {
+      "exitCode": 0,
+      "elapsedSeconds": 30.81,
+      "expected": 34,
+      "total": 34,
+      "passed": 34,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true
+    },
+    "dom": {
+      "exitCode": 0,
+      "elapsedSeconds": 28.78,
+      "expected": 17,
+      "total": 17,
+      "passed": 17,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true
+    },
+    "parser": {
+      "exitCode": 0,
+      "elapsedSeconds": 34.7,
+      "expected": 27,
+      "total": 27,
+      "passed": 27,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true
+    },
+    "settings-browser": {
+      "exitCode": 0,
+      "elapsedSeconds": 54.06,
+      "expected": 12,
+      "total": 12,
+      "passed": 12,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true
+    }
+  },
+  "unitTestsPassed": 117,
+  "browserTestsPassed": 90,
+  "passed": true,
+  "testHarnessDiagnostics": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "casesRun": 31,
+      "casesPassed": 30,
+      "result": "diagnostics/probe-1/events.json"
+    },
+    {
+      "attempt": 2,
+      "passed": false,
+      "casesRun": 31,
+      "casesPassed": 30,
+      "result": "diagnostics/probe-2/events.json"
+    },
+    {
+      "attempt": 3,
+      "passed": false,
+      "casesRun": 31,
+      "casesPassed": 30,
+      "result": "diagnostics/probe-3/events.json"
+    },
+    {
+      "attempt": 4,
+      "passed": false,
+      "casesRun": 31,
+      "casesPassed": 30,
+      "result": "diagnostics/probe-4/events.json"
+    },
+    {
+      "attempt": 5,
+      "passed": false,
+      "casesRun": 31,
+      "casesPassed": 30,
+      "result": "diagnostics/probe-5/events.json"
+    }
+  ],
+  "artifactManifest": "archive-manifest.json"
+}

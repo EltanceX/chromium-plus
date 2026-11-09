@@ -38,6 +38,40 @@ def clicked(event):
     dom.set_text(dom.get_element_by_id('result'), str(count) + ':' + str(event.is_trusted))
 listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', clicked)
 `)],
+  ['/closure', {body: wrap(scaffold + block(`
+import dom
+offset = 0
+def make_callback():
+    count = 0
+    def callback(event):
+        nonlocal count
+        count += 1
+        dom.set_text(dom.get_element_by_id('result'), str(offset + count) + ':' + str(count))
+    return callback
+callback = make_callback()
+`) + block(`
+offset = 7
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+`))}],
+  ['/default-action', {body: wrap('<input id="button" type="checkbox"><p id="result">0</p>' + block(`
+import dom
+count = 0
+def callback(event):
+    global count
+    count += 1
+    dom.set_text(dom.get_element_by_id('result'), str(count))
+    return False
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+`))}],
+  ['/prerender-host', {body: wrap(`<a id="activate" href="/prerender">Activate</a>
+<script type="speculationrules">{"prerender":[{"source":"list","urls":["/prerender"]}]}</script>`)}],
+  ['/prerender', makePage(`
+import dom
+dom.set_text(dom.get_element_by_id('result'), 'initialized')
+def callback(event):
+    dom.set_text(dom.get_element_by_id('result'), 'clicked')
+dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
+`)],
   ['/duplicates', makePage(`
 import dom
 count = 0
@@ -205,12 +239,13 @@ async function waitFor(predicate, timeout = 30000) {
   throw new Error(`Condition timed out after ${timeout} ms`);
 }
 
-let child, ws, log;
+let child, ws, log, pageSession, tabSession;
 const events = [];
 const pending = new Map();
 let sequence = 0;
 async function close() {
   ws?.close();
+  pageSession = tabSession = undefined;
   if (child?.exitCode === null && child.pid) {
     if (process.platform === 'win32') {
       spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], {windowsHide: true});
@@ -239,8 +274,8 @@ async function launch(unrestricted = false) {
     const file = path.join(profile, 'DevToolsActivePort');
     return fs.existsSync(file) && fs.readFileSync(file, 'utf8').split('\n')[0];
   });
-  const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
-  ws = new WebSocket(targets.find(target => target.type === 'page').webSocketDebuggerUrl);
+  const version = await (await fetch(`http://127.0.0.1:${port}/json/version`)).json();
+  ws = new WebSocket(version.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
   ws.onmessage = event => {
     const message = JSON.parse(event.data);
@@ -255,9 +290,20 @@ async function launch(unrestricted = false) {
     for (const resolve of pending.values()) resolve({error: {message: 'CDP closed'}});
     pending.clear();
   };
+  // Use tab-aware sessions throughout. A legacy /devtools/page connection
+  // vetoes prerendering even when Page.setPrerenderingAllowed is true.
+  const {targetInfos} = await send('Target.getTargets', {filter:[{type:'tab'}]}, null);
+  const tab = targetInfos.find(target => target.url === 'about:blank');
+  assert.ok(tab, JSON.stringify(targetInfos));
+  ({sessionId: tabSession} = await send('Target.attachToTarget', {targetId:tab.targetId, flatten:true}, null));
+  await send('Target.setAutoAttach', {autoAttach:true, waitForDebuggerOnStart:false, flatten:true}, tabSession);
+  const primary = await waitFor(() => events.find(event => event.method === 'Target.attachedToTarget' &&
+    event.sessionId === tabSession && event.params.targetInfo.type === 'page' &&
+    !event.params.targetInfo.subtype));
+  pageSession = primary.params.sessionId;
   for (const domain of ['Page', 'Runtime', 'Log', 'Network']) await send(`${domain}.enable`);
 }
-function send(method, params = {}) {
+function send(method, params = {}, sessionId = pageSession) {
   return new Promise((resolve, reject) => {
     const id = ++sequence;
     const timer = setTimeout(() => {
@@ -268,7 +314,7 @@ function send(method, params = {}) {
       clearTimeout(timer);
       message.error ? reject(new Error(JSON.stringify(message.error))) : resolve(message.result);
     });
-    ws.send(JSON.stringify({id, method, params}));
+    ws.send(JSON.stringify({id, method, params, sessionId: sessionId ?? undefined}));
   });
 }
 async function evaluate(expression) {
@@ -315,6 +361,30 @@ try {
     await click('#child');
     assert.equal(await text(), '3:False');
     return {mouse:'trusted',keyboard:'trusted',script:'untrusted'};
+  });
+  await check('Callbacks share globals across blocks and retain closure state', async () => {
+    await navigate('/closure');
+    await click(); assert.equal(await text(), '8:1');
+    await click(); assert.equal(await text(), '9:2');
+    await navigate('/closure');
+    await click(); assert.equal(await text(), '8:1');
+  });
+  await check('Returning False does not cancel the native checkbox default action', async () => {
+    await navigate('/default-action');
+    await evaluate(`globalThis.defaultPrevented=[];
+      document.querySelector('#button').addEventListener('click', event => defaultPrevented.push(event.defaultPrevented))`);
+    await click();
+    assert.equal(await text(), '1');
+    assert.equal(await evaluate('document.querySelector("#button").checked'), true);
+    await click();
+    assert.equal(await text(), '2');
+    assert.equal(await evaluate('document.querySelector("#button").checked'), false);
+    assert.deepEqual(await evaluate('defaultPrevented'), [false, false]);
+  });
+  await check('Restricted child frames cannot initialize Python click listeners', async () => {
+    await navigate('/iframe-parent');
+    await evaluate('document.querySelector("#frame").contentDocument.querySelector("#button").click()');
+    assert.equal(await evaluate('document.querySelector("#frame").contentDocument.querySelector("#result").textContent'), '0');
   });
   await check('Nonce CSP sample uses no JavaScript and survives source removal', async () => {
     await navigate('/sample');
@@ -442,6 +512,23 @@ try {
     await navigate('/other');
     assert.equal(await evaluate('document.querySelector("#other").textContent'), 'other');
   });
+  await check('History navigation excludes active listeners from BFCache and creates fresh state', async () => {
+    await navigate('/counter'); await click(); await click();
+    await evaluate('globalThis.oldDocumentMarker=true');
+    await navigate('/other');
+    events.length = 0;
+    await evaluate('history.back()');
+    await waitFor(() => events.some(event => event.method === 'Page.loadEventFired'));
+    assert.equal(await evaluate('location.href'), origin + '/counter');
+    assert.equal(await evaluate('globalThis.oldDocumentMarker === undefined'), true);
+    assert.equal(await text(), '0');
+    const failure = events.find(event => event.method === 'Page.backForwardCacheNotUsed');
+    assert.ok(failure, JSON.stringify(events.map(event => event.method)));
+    assert.ok(failure.params.notRestoredExplanations.some(explanation =>
+      explanation.reason === 'Unknown' && explanation.type === 'SupportPending'), JSON.stringify(failure));
+    await click(); assert.equal(await text(), '1:False');
+    return failure.params;
+  });
   await check('Window pressure preserves once, drops skipped clicks and recovers after idle', async () => {
     await navigate('/event-window');
     await evaluate(`for (let i=0;i<7;++i) document.querySelector('#button').click();
@@ -507,6 +594,71 @@ try {
   await close();
   await launch(true);
   report.unrestrictedLifecycleTested = true;
+  await check('Unrestricted callbacks honor the page policy override after registration', async () => {
+    await navigate('/counter'); await click();
+    assert.equal(await text(), '1:False');
+    await evaluate(`document.querySelector('pyscript').remove();
+      const m=document.createElement('meta');m.httpEquiv='Content-Security-Policy';m.content="script-src 'none'";document.head.append(m)`);
+    await send('Emulation.setScriptExecutionDisabled', {value:true});
+    await click(); assert.equal(await text(), '2:False');
+    await send('Emulation.setScriptExecutionDisabled', {value:false});
+  });
+  await check('Simultaneous unrestricted child frames keep independent closure state', async () => {
+    await navigate('/iframe-parent');
+    await evaluate(`globalThis.first=document.querySelector('#frame');
+      first.src='/closure';globalThis.second=document.createElement('iframe');
+      second.src='/closure';document.body.append(second)`);
+    await waitFor(() => evaluate(`first.contentWindow.location.href === ${JSON.stringify(origin + '/closure')} &&
+      second.contentWindow.location.href === ${JSON.stringify(origin + '/closure')} &&
+      first.contentDocument.readyState === 'complete' && second.contentDocument.readyState === 'complete' &&
+      first.contentDocument.querySelector('#result')?.textContent === '0' &&
+      second.contentDocument.querySelector('#result')?.textContent === '0'`));
+    await evaluate(`first.contentDocument.querySelector('#button').click();
+      first.contentDocument.querySelector('#button').click();second.contentDocument.querySelector('#button').click()`);
+    assert.equal(await evaluate('first.contentDocument.querySelector("#result").textContent'), '9:2');
+    assert.equal(await evaluate('second.contentDocument.querySelector("#result").textContent'), '8:1');
+  });
+  await check('Prerender never initializes or defers Python listeners even in unrestricted mode', async () => {
+    await send('Preload.enable');
+    await send('Target.setDiscoverTargets', {discover:true});
+    await navigate('/prerender-host');
+    const target = await waitFor(() => {
+      const failure = events.find(event => event.method === 'Preload.prerenderStatusUpdated' &&
+        event.params.key.url === origin + '/prerender' && event.params.status === 'Failure');
+      assert.ok(!failure, JSON.stringify(failure));
+      return events.find(event => event.method === 'Target.targetInfoChanged' &&
+        event.params.targetInfo.url === origin + '/prerender' &&
+        event.params.targetInfo.subtype === 'prerender')?.params.targetInfo;
+    }).catch(error => {
+      throw new Error(String(error) + '\n' + JSON.stringify(events.filter(event =>
+        event.method.startsWith('Preload.') || event.method.startsWith('Target.'))));
+    });
+    const attached = await waitFor(() => events.find(event => event.method === 'Target.attachedToTarget' &&
+      event.sessionId === tabSession && event.params.targetInfo.targetId === target.targetId));
+    const {sessionId} = attached.params;
+    await send('Runtime.enable', {}, sessionId);
+    const snapshot = async () => {
+      const result = await send('Runtime.evaluate', {expression:`({prerendering:document.prerendering,
+        ready:document.readyState, text:document.querySelector('#result')?.textContent})`, returnByValue:true}, sessionId);
+      assert.ok(!result.exceptionDetails, JSON.stringify(result.exceptionDetails));
+      return result.result.value;
+    };
+    await waitFor(async () => (await snapshot()).ready === 'complete');
+    assert.deepEqual(await snapshot(), {prerendering:true, ready:'complete', text:'0'});
+    await click('#activate');
+    pageSession = sessionId;
+    for (const domain of ['Page', 'Log', 'Network']) await send(`${domain}.enable`);
+    await waitFor(() => evaluate(`location.href === ${JSON.stringify(origin + '/prerender')} && !document.prerendering`));
+    assert.equal(await text(), '0');
+    await click(); assert.equal(await text(), '0');
+    // The initiator session is replaced during activation, so its Preload
+    // Success event need not reach this client. Navigation timing proves the
+    // document was activated from prerender rather than loaded afresh.
+    const activationStart = await evaluate("performance.getEntriesByType('navigation')[0].activationStart");
+    assert.ok(activationStart > 0, JSON.stringify({activationStart}));
+    return {prerenderTargetObserved:true, initializedBeforeActivation:false,
+      deferredAfterActivation:false, activationStart};
+  });
   await check('Removing an unrestricted child frame revokes retained nodes and isolates its replacement', async () => {
     await navigate('/iframe-parent');
     await evaluate(`globalThis.oldDocument=document.querySelector('#frame').contentDocument;

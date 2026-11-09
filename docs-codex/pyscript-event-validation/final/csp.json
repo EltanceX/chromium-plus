@@ -1,0 +1,64 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "ContentSecurityPolicyTest.NonceInline": [
+        {
+          "elapsed_time_ms": 114,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 12304,
+          "timestamp": "2026-11-09T17:01:45.066Z"
+        }
+      ],
+      "ContentSecurityPolicyTest.NonceMultiplePolicy": [
+        {
+          "elapsed_time_ms": 114,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 12304,
+          "timestamp": "2026-11-09T17:01:45.181Z"
+        }
+      ],
+      "ContentSecurityPolicyTest.NonceSinglePolicy": [
+        {
+          "elapsed_time_ms": 91,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 12304,
+          "timestamp": "2026-11-09T17:01:44.974Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "ContentSecurityPolicyTest.NonceInline": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\frame\\csp\\content_security_policy_test.cc",
+      "line": 378
+    },
+    "ContentSecurityPolicyTest.NonceMultiplePolicy": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\frame\\csp\\content_security_policy_test.cc",
+      "line": 460
+    },
+    "ContentSecurityPolicyTest.NonceSinglePolicy": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\frame\\csp\\content_security_policy_test.cc",
+      "line": 318
+    }
+  }
+}

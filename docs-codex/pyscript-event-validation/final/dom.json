@@ -1,0 +1,319 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:63581",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only sample under nonce CSP",
+      "passed": true,
+      "elapsedMs": 1208,
+      "detail": {
+        "result": "Python 计算结果：42",
+        "shared": "共享变量与句柄：43",
+        "literal": "<img src=\"/must-not-load.png\"> &amp; 世界",
+        "images": 0,
+        "scripts": 0
+      }
+    },
+    {
+      "name": "WPT testharness DOM bridge assertions",
+      "passed": true,
+      "elapsedMs": 803,
+      "detail": {
+        "status": 0,
+        "message": null,
+        "tests": [
+          {
+            "name": "Globals and opaque handles are shared between blocks before DCL",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Ordinary p, div and span targets accept text",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "HTML characters and Unicode are inserted as plain text",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Arguments are strict strings and handles cannot be forged",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Code, custom elements, SVG and elements containing children reject writes",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "DOM strings have a strict 16 KiB UTF-8 boundary",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Ordinary Python failures allow the next block to run",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Mutation observers run after all Python blocks return",
+            "status": 0,
+            "message": null
+          },
+          {
+            "name": "Python mutations and DCL complete before the load event",
+            "status": 0,
+            "message": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "Same-document navigation does not rerun blocks",
+      "passed": true,
+      "elapsedMs": 276
+    },
+    {
+      "name": "Different Document globals and modules are isolated",
+      "passed": true,
+      "elapsedMs": 325,
+      "detail": []
+    },
+    {
+      "name": "DOM call budget is shared across blocks",
+      "passed": true,
+      "elapsedMs": 378,
+      "detail": [
+        {
+          "source": "other",
+          "level": "info",
+          "text": "BUDGET_FIRST 1024\n",
+          "timestamp": 1794243743058.091,
+          "url": "http://127.0.0.1:63581/budget",
+          "lineNumber": 43
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python document exceeded the 1024 DOM call budget",
+          "timestamp": 1794243743060.091,
+          "url": "http://127.0.0.1:63581/budget",
+          "lineNumber": 49
+        }
+      ]
+    },
+    {
+      "name": "Pure Python timeout stops later blocks and reload starts fresh",
+      "passed": true,
+      "elapsedMs": 1284,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python block exceeded the 100 ms cooperative execution budget",
+          "timestamp": 1794243743391.091,
+          "url": "http://127.0.0.1:63581/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Document output budget revokes DOM even after caught failure",
+      "passed": true,
+      "elapsedMs": 543,
+      "detail": {
+        "bytes": 16383,
+        "entries": 3
+      }
+    },
+    {
+      "name": "Exception formatting has a cooperative time budget",
+      "passed": true,
+      "elapsedMs": 557,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python block exceeded the 100 ms cooperative execution budget",
+          "timestamp": 1794243745341.091,
+          "url": "http://127.0.0.1:63581/diagnostic-loop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Oversized exception stops remaining blocks",
+      "passed": true,
+      "elapsedMs": 339,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python output was truncated at 16 KiB; document execution stopped",
+          "timestamp": 1794243745729.091,
+          "url": "http://127.0.0.1:63581/diagnostic-budget",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Parser diagnostics share the document console limit",
+      "passed": true,
+      "elapsedMs": 375,
+      "detail": {
+        "bytes": 16384,
+        "entries": 151
+      }
+    },
+    {
+      "name": "Console truncation stops execution before the next block",
+      "passed": true,
+      "elapsedMs": 343,
+      "detail": {
+        "bytes": 16384
+      }
+    },
+    {
+      "name": "Cyclic Python finalizer loop does not block later navigation",
+      "passed": true,
+      "elapsedMs": 1998,
+      "detail": {
+        "iterations": 3
+      }
+    },
+    {
+      "name": "document.open invalidates the context and never executes written Python",
+      "passed": true,
+      "elapsedMs": 352,
+      "detail": []
+    },
+    {
+      "name": "Python documents cannot return from BFCache",
+      "passed": true,
+      "elapsedMs": 1558,
+      "detail": {
+        "loaderId": "3D247CB9B417CC43E61F10A8FD2FA4EB",
+        "frameId": "2838BC3B48596406D705AAF25908A503",
+        "notRestoredExplanations": [
+          {
+            "type": "SupportPending",
+            "reason": "Unknown"
+          },
+          {
+            "type": "Circumstantial",
+            "reason": "BrowsingInstanceNotSwapped"
+          }
+        ],
+        "notRestoredExplanationsTree": {
+          "url": "http://127.0.0.1:63581/sample",
+          "explanations": [
+            {
+              "type": "SupportPending",
+              "reason": "Unknown"
+            },
+            {
+              "type": "Circumstantial",
+              "reason": "BrowsingInstanceNotSwapped"
+            }
+          ],
+          "children": []
+        }
+      }
+    },
+    {
+      "name": "Reload creates a new Python document context",
+      "passed": true,
+      "elapsedMs": 654
+    },
+    {
+      "name": "Repeated finalizer teardown and document creation stay responsive",
+      "passed": true,
+      "elapsedMs": 13373,
+      "detail": {
+        "iterations": 20
+      }
+    },
+    {
+      "name": "Browser closes normally with a pending cyclic finalizer",
+      "passed": true,
+      "elapsedMs": 1059,
+      "detail": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "passed": true,
+  "requests": [
+    "/sample",
+    "/favicon.ico",
+    "/harness",
+    "/resources/testharness.js",
+    "/resources/testharnessreport.js",
+    "/isolated",
+    "/budget",
+    "/timeout",
+    "/timeout",
+    "/isolated",
+    "/output-budget",
+    "/diagnostic-loop",
+    "/diagnostic-budget",
+    "/parser-diagnostics",
+    "/console-stop",
+    "/cleanup-loop",
+    "/isolated",
+    "/cleanup-loop",
+    "/isolated",
+    "/cleanup-loop",
+    "/isolated",
+    "/finalizers",
+    "/sample",
+    "/other",
+    "/isolated",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/finalizers",
+    "/isolated",
+    "/cleanup-loop"
+  ]
+}

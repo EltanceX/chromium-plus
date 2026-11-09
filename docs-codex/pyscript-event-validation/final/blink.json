@@ -1,0 +1,846 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies": [
+        {
+          "elapsed_time_ms": 158,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:33.302Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced": [
+        {
+          "elapsed_time_ms": 215,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:32.905Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick": [
+        {
+          "elapsed_time_ms": 194,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.038Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance": [
+        {
+          "elapsed_time_ms": 297,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:36.185Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance": [
+        {
+          "elapsed_time_ms": 231,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:36.483Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope": [
+        {
+          "elapsed_time_ms": 153,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:40.945Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce": [
+        {
+          "elapsed_time_ms": 152,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.537Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode": [
+        {
+          "elapsed_time_ms": 146,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.390Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack": [
+        {
+          "elapsed_time_ms": 137,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:41.884Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit": [
+        {
+          "elapsed_time_ms": 147,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:40.591Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask": [
+        {
+          "elapsed_time_ms": 144,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:41.098Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot": [
+        {
+          "elapsed_time_ms": 155,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.233Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup": [
+        {
+          "elapsed_time_ms": 153,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:29.695Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup": [
+        {
+          "elapsed_time_ms": 216,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:36.716Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument": [
+        {
+          "elapsed_time_ms": 198,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:32.706Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls": [
+        {
+          "elapsed_time_ms": 235,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:34.964Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets": [
+        {
+          "elapsed_time_ms": 160,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:33.812Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles": [
+        {
+          "elapsed_time_ms": 214,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:34.750Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom": [
+        {
+          "elapsed_time_ms": 175,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:33.636Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext": [
+        {
+          "elapsed_time_ms": 142,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:39.527Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts": [
+        {
+          "elapsed_time_ms": 328,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:41.555Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution": [
+        {
+          "elapsed_time_ms": 177,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:29.517Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction": [
+        {
+          "elapsed_time_ms": 177,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:39.133Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction": [
+        {
+          "elapsed_time_ms": 155,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:41.243Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners": [
+        {
+          "elapsed_time_ms": 155,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.690Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls": [
+        {
+          "elapsed_time_ms": 257,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:35.202Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost": [
+        {
+          "elapsed_time_ms": 238,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:35.460Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext": [
+        {
+          "elapsed_time_ms": 154,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:41.399Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing": [
+        {
+          "elapsed_time_ms": 143,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.846Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP": [
+        {
+          "elapsed_time_ms": 180,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:33.121Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError": [
+        {
+          "elapsed_time_ms": 208,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:35.699Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll": [
+        {
+          "elapsed_time_ms": 201,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:36.933Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults": [
+        {
+          "elapsed_time_ms": 173,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:40.417Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit": [
+        {
+          "elapsed_time_ms": 203,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:40.741Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython": [
+        {
+          "elapsed_time_ms": 174,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:33.460Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag": [
+        {
+          "elapsed_time_ms": 150,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:29.849Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag": [
+        {
+          "elapsed_time_ms": 152,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:30.374Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes": [
+        {
+          "elapsed_time_ms": 168,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:32.538Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs": [
+        {
+          "elapsed_time_ms": 213,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:30.160Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder": [
+        {
+          "elapsed_time_ms": 160,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:29.999Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements": [
+        {
+          "elapsed_time_ms": 187,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:32.348Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded": [
+        {
+          "elapsed_time_ms": 221,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:29.294Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce": [
+        {
+          "elapsed_time_ms": 143,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:38.990Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes": [
+        {
+          "elapsed_time_ms": 215,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:39.311Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP": [
+        {
+          "elapsed_time_ms": 153,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:30.528Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin": [
+        {
+          "elapsed_time_ms": 229,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:32.118Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender": [
+        {
+          "elapsed_time_ms": 170,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:30.885Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs": [
+        {
+          "elapsed_time_ms": 202,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:30.682Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks": [
+        {
+          "elapsed_time_ms": 275,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2276,
+          "timestamp": "2026-11-09T17:01:35.908Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 411
+    },
+    "HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 382
+    },
+    "HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 679
+    },
+    "HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 602
+    },
+    "HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 630
+    },
+    "HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 882
+    },
+    "HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 738
+    },
+    "HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 727
+    },
+    "HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 952
+    },
+    "HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 845
+    },
+    "HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 895
+    },
+    "HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 709
+    },
+    "HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 222
+    },
+    "HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 642
+    },
+    "HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 375
+    },
+    "HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 509
+    },
+    "HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 457
+    },
+    "HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 481
+    },
+    "HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 424
+    },
+    "HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 824
+    },
+    "HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 937
+    },
+    "HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 202
+    },
+    "HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 794
+    },
+    "HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 915
+    },
+    "HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 759
+    },
+    "HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 530
+    },
+    "HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 555
+    },
+    "HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 930
+    },
+    "HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 774
+    },
+    "HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 395
+    },
+    "HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 573
+    },
+    "HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 664
+    },
+    "HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 834
+    },
+    "HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 865
+    },
+    "HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 418
+    },
+    "HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 230
+    },
+    "HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 272
+    },
+    "HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 367
+    },
+    "HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 254
+    },
+    "HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 245
+    },
+    "HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 357
+    },
+    "HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 174
+    },
+    "HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 782
+    },
+    "HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 808
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 284
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 334
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 326
+    },
+    "HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 308
+    },
+    "HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 584
+    }
+  }
+}

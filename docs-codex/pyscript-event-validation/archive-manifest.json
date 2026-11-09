@@ -1,0 +1,364 @@
+{
+  "files": [
+    {
+      "file": "final/adapter.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\adapter.json",
+      "originalSha256": "34a9fe1062d2a4a5e7958a422012e682cf02a0c750584c92c631b396de9ea55b",
+      "sha256": "34a9fe1062d2a4a5e7958a422012e682cf02a0c750584c92c631b396de9ea55b",
+      "bytes": 5010,
+      "transformation": "none"
+    },
+    {
+      "file": "final/adapter.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\adapter.log",
+      "originalSha256": "2981304344c71c986e980adaf9aac43a3f19bfc0f8e5a540e979f13afe1857f9",
+      "sha256": "e317d6d705a9f2e221643e7f31b1adddb512185880feb5ca6ea97cf1f8a18dbd",
+      "bytes": 3435,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/blink.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\blink.json",
+      "originalSha256": "f167307cefa7e8fe866670c3389db4b9f074f6486eefaab5123acf611bfbee62",
+      "sha256": "f167307cefa7e8fe866670c3389db4b9f074f6486eefaab5123acf611bfbee62",
+      "bytes": 30175,
+      "transformation": "none"
+    },
+    {
+      "file": "final/blink.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\blink.log",
+      "originalSha256": "1ce224ea90a18222cf78e69178d334c4a25e2573c4446c2d7ca3ed84f8368d7f",
+      "sha256": "ab5cf03cabc46377b419fc65f24d8bbb215c68a0eb26640846e5e19e3b21f858",
+      "bytes": 17739,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/build.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\build.log",
+      "originalSha256": "dce548cfeac4b46e74354c018a8cfff3ec44e671a94b390f220c52cfdea08a88",
+      "sha256": "7483b7963b992243729f917023c1fe12712ad2de403af826aaab94e578c16ca7",
+      "bytes": 806,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/csp.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\csp.json",
+      "originalSha256": "477da1a17b7de9e2a74bb9d690576dd6dd976fe82ac1bc5cdfc25dcbf1657645",
+      "sha256": "477da1a17b7de9e2a74bb9d690576dd6dd976fe82ac1bc5cdfc25dcbf1657645",
+      "bytes": 1864,
+      "transformation": "none"
+    },
+    {
+      "file": "final/csp.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\csp.log",
+      "originalSha256": "67043a55668421ab192499a1c3621ce8079c8e009b9bc61998167bf9a0990a8a",
+      "sha256": "5345e12a7dd9e0531b295a1ff2fd0b968f6ab6cc1a72565d1e109bfb2bb061b6",
+      "bytes": 1357,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/dom.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\dom.json",
+      "originalSha256": "af0e4f2b86acde901a6c05664987f2c468efb24de66542dc1671596ac2f42382",
+      "sha256": "af0e4f2b86acde901a6c05664987f2c468efb24de66542dc1671596ac2f42382",
+      "bytes": 8058,
+      "transformation": "none"
+    },
+    {
+      "file": "final/dom.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\dom.json.chrome.log",
+      "originalSha256": "6091f96d07c17f3dd9528f470d00fbcc8a3036f9528df5f63e54a28d29d94e3b",
+      "sha256": "bbc3fa41c19305944e3ccbff2ed095bb5f8fe2121566f2ce6d16543a9b99b676",
+      "bytes": 68816,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/dom.json.sample.png",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\dom.json.sample.png",
+      "originalSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+      "sha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+      "bytes": 16192,
+      "transformation": "none"
+    },
+    {
+      "file": "final/dom.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\dom.log",
+      "originalSha256": "e320c1b377417366eb47477bcfd29c0c996b4f52d6024ea1e42150c27661510c",
+      "sha256": "e320c1b377417366eb47477bcfd29c0c996b4f52d6024ea1e42150c27661510c",
+      "bytes": 1083,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\events.json",
+      "originalSha256": "b18db55eec1c2e6d819effaddb04ab9291789463b4cf4619b8b506bbd0186cda",
+      "sha256": "b18db55eec1c2e6d819effaddb04ab9291789463b4cf4619b8b506bbd0186cda",
+      "bytes": 8064,
+      "transformation": "none"
+    },
+    {
+      "file": "final/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\events.json.chrome.log",
+      "originalSha256": "7d8a4da6b9a0335e66879b07481f956ce140442e4bc441f1d71e45433ed29249",
+      "sha256": "2ea1c5c70c80ad2f4ebc9939aff153a8486fe7857fcf7381012dfba141520e93",
+      "bytes": 43243,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/events.json.sample.png",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\events.json.sample.png",
+      "originalSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+      "sha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+      "bytes": 12334,
+      "transformation": "none"
+    },
+    {
+      "file": "final/events.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\events.log",
+      "originalSha256": "f1652e1314ac6375fcaf95c2647be69e4294a774a39cc2604f2e36934b978934",
+      "sha256": "f1652e1314ac6375fcaf95c2647be69e4294a774a39cc2604f2e36934b978934",
+      "bytes": 2617,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json",
+      "originalSha256": "a2ac85d40d8b3e259d63517ad3bf166c83e980dd03fe593f9c09235a006f59f1",
+      "sha256": "a2ac85d40d8b3e259d63517ad3bf166c83e980dd03fe593f9c09235a006f59f1",
+      "bytes": 44487,
+      "transformation": "none"
+    },
+    {
+      "file": "final/parser.json.default-off.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.default-off.chrome.log",
+      "originalSha256": "8675726681e9d5e3d68af8a12148fd486a0fc7c9ed62a424dc416f98e516b663",
+      "sha256": "f0ed91d27b17a6b585994da4899fadc1355f8f245874770315fd87c4c90fca55",
+      "bytes": 1988,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json.enabled.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.enabled.chrome.log",
+      "originalSha256": "3a2f6a9566f5856af20e9b5e4533e1c64e78a4901e7c493fdaad5eb800bc93cc",
+      "sha256": "7da1a07d9bede29acd590e4b0e115ea4a46fa72b82efa8780270c86690ba9d81",
+      "bytes": 26693,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json.malformed-origin.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.malformed-origin.chrome.log",
+      "originalSha256": "1aa6fd07551a5585be71f555ca1f975ddfc51baa3a7a38a3f36aed690f59ae6e",
+      "sha256": "16a277548c7da4ddb2ce65529509fcfdba9adf9edebdf53101f12a54c6467ff0",
+      "bytes": 1994,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json.missing-origin.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.missing-origin.chrome.log",
+      "originalSha256": "cf1dd0505e854c0ca356aaed58521bebeae194e8c5e034ca35951ae2fb3b90cb",
+      "sha256": "4ec235532eb73ad9b127252c282005b53a9fc7ed2a269f92d0550ac74074f702",
+      "bytes": 1999,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json.non-loopback-origin.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.non-loopback-origin.chrome.log",
+      "originalSha256": "17b56d0be3f7242b342c745321033968354683831baa9c45e7ff1acf6e51c083",
+      "sha256": "db8c3b21978597caf6f734f9bde40a0ffd1228c450446756de527b036e86ff07",
+      "bytes": 1994,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.json.wrong-origin.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.json.wrong-origin.chrome.log",
+      "originalSha256": "1c1f8eebcbda0e50f2f0f3c208b4bb44dba4ffff821acabc8273e9bee9267e80",
+      "sha256": "0d6e79528bffbcb85b8a61428c4d571e628272523e98a1b06a8f3c56aa64874c",
+      "bytes": 1989,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/parser.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\parser.log",
+      "originalSha256": "a7f8a500fe723ee1b59015ac527b5c034fdd2860d1fdd65b311abfc086c2da0e",
+      "sha256": "a7f8a500fe723ee1b59015ac527b5c034fdd2860d1fdd65b311abfc086c2da0e",
+      "bytes": 1134,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/runtime.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\runtime.json",
+      "originalSha256": "c005b87ad6a27009c9480f3f917effe45bb31604e7969d9de6f62a28c8bca9c2",
+      "sha256": "c005b87ad6a27009c9480f3f917effe45bb31604e7969d9de6f62a28c8bca9c2",
+      "bytes": 29311,
+      "transformation": "none"
+    },
+    {
+      "file": "final/runtime.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\runtime.log",
+      "originalSha256": "9dc4802664404fa546b4562f0edad27c6167f4ca71550a7e2bd316639f3a711f",
+      "sha256": "90824bb0fcc12455e283cf139f89905ecd70b3b7807c000250bbeb2fa5d2e42b",
+      "bytes": 17674,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-browser.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json",
+      "originalSha256": "8f2d54c8fc7486f4254ada23e0164255b417ce804ffbc351cd815b1538fffb8d",
+      "sha256": "8f2d54c8fc7486f4254ada23e0164255b417ce804ffbc351cd815b1538fffb8d",
+      "bytes": 9517,
+      "transformation": "none"
+    },
+    {
+      "file": "final/settings-browser.json.launch-1.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json.launch-1.chrome.log",
+      "originalSha256": "89c6e097600d7ebc9fb84e53be493c322a94041af755e18520d067444d9537f3",
+      "sha256": "07179ec10125838e0c6bc710037806ae0a7ae4a2d2014bc31836f59f0d8d3024",
+      "bytes": 5257,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-browser.json.launch-2.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json.launch-2.chrome.log",
+      "originalSha256": "da2933fc00da45c25c56c046f0b8435420f371a8e8f7d32fbec812ff9d9a6501",
+      "sha256": "6186d1b2501bb0c519f819a729229bff000d75c5535ce605486f57a9f3daa927",
+      "bytes": 5787,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-browser.json.launch-3.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json.launch-3.chrome.log",
+      "originalSha256": "2f6c912c1fef9cf4d831e2c10aa2ac545b25e7fbe68c05704069c65d426348e7",
+      "sha256": "7fb6f14f4994bbf8486ff53c8ecee2aad064ba3da1038c39ff926b7d2caa7845",
+      "bytes": 7107,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-browser.json.launch-4.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json.launch-4.chrome.log",
+      "originalSha256": "ea3a98dad753338fe6c57a773434c0a481a620771df0a735da2f3d7b8d771fd6",
+      "sha256": "e5b3634915c420f84b41895192160196599a0627f9c47f091ec99fd36d467fbf",
+      "bytes": 4103,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-browser.json.settings.png",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.json.settings.png",
+      "originalSha256": "109378c412a2dc17f235529e4df39c238df7b9ba72c139baa464738c053e4eff",
+      "sha256": "109378c412a2dc17f235529e4df39c238df7b9ba72c139baa464738c053e4eff",
+      "bytes": 37248,
+      "transformation": "none"
+    },
+    {
+      "file": "final/settings-browser.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-browser.log",
+      "originalSha256": "bb0b94cd79849bfd838717033adedf31be292ea64cf8545a2d0c8a5b20cc5a98",
+      "sha256": "bb0b94cd79849bfd838717033adedf31be292ea64cf8545a2d0c8a5b20cc5a98",
+      "bytes": 933,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/settings-unit.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-unit.json",
+      "originalSha256": "06e1ef92a650cf56ed65f60d546ed48ee3b3fbb13d908ad701a750cae994af55",
+      "sha256": "06e1ef92a650cf56ed65f60d546ed48ee3b3fbb13d908ad701a750cae994af55",
+      "bytes": 4969,
+      "transformation": "none"
+    },
+    {
+      "file": "final/settings-unit.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\settings-unit.log",
+      "originalSha256": "a575e97a03787c9a3e1a9cc01cfb7d249164e5e29965057619c3e299d6ac0d92",
+      "sha256": "30510421c1459a34c3129ac3c5e29a6ebf182436977aed563cb28bcace55f183",
+      "bytes": 3152,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "final/summary.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-final\\summary.json",
+      "originalSha256": "56f963946635b52b29ba63d035c0e4799e442f829e08230007f04f90a291e4b3",
+      "sha256": "56f963946635b52b29ba63d035c0e4799e442f829e08230007f04f90a291e4b3",
+      "bytes": 13517,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-1/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe\\events.json",
+      "originalSha256": "ab457cf31991186247f0feccb17413d10cfbf863cab9f537d3ca94b2f8394379",
+      "sha256": "ab457cf31991186247f0feccb17413d10cfbf863cab9f537d3ca94b2f8394379",
+      "bytes": 8075,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-1/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe\\events.json.chrome.log",
+      "originalSha256": "18df0c5e54bf8608ab6881bec2b4ad5b387aebb204ecb0fc42c1caf4c6586124",
+      "sha256": "58c45ed6806f760fe6a9b56794e6e6c0c5c897574fdc825a17ad3bbcd718f2e0",
+      "bytes": 44233,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "diagnostics/probe-2/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe2\\events.json",
+      "originalSha256": "30ed0a053c7afd682e22d160f017151bc51705b051161e45799563e24380366c",
+      "sha256": "30ed0a053c7afd682e22d160f017151bc51705b051161e45799563e24380366c",
+      "bytes": 12678,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-2/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe2\\events.json.chrome.log",
+      "originalSha256": "40d2729f9e08f7f935cf48df0e7157e3b7229f7d98ac5cc38ffa28703e03d6a5",
+      "sha256": "d38cb6399302e1a7a892c2b3fc118b80d4aacc9f82b0283063cbbc3ff10cb624",
+      "bytes": 43895,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "diagnostics/probe-3/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe3\\events.json",
+      "originalSha256": "938e58b8026461f70992a03ecd09c85c78196dd8f93bfe0fc1bee4c89459f0e9",
+      "sha256": "938e58b8026461f70992a03ecd09c85c78196dd8f93bfe0fc1bee4c89459f0e9",
+      "bytes": 12884,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-3/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe3\\events.json.chrome.log",
+      "originalSha256": "463855a88e75b23eca9a3a8819cdf1f0ee748dda06963672ac01471a89e495dd",
+      "sha256": "822a2fbe256175f1e8948f00ae2b9fa5439dbd864c9f8e7efa3d77ba2bc4e9d2",
+      "bytes": 44065,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "diagnostics/probe-4/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe4\\events.json",
+      "originalSha256": "99a7b9a224e0419a8b71ccb2e71d6bcc193ba306221c82e3b5795aba0184ee12",
+      "sha256": "99a7b9a224e0419a8b71ccb2e71d6bcc193ba306221c82e3b5795aba0184ee12",
+      "bytes": 17888,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-4/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe4\\events.json.chrome.log",
+      "originalSha256": "1faf005b2d851524b8969b83e2968d6035298db45edbe197475b6675fddea954",
+      "sha256": "15b07620373c7b9fd83a54c693c100a259fc6de5c5c2d17e02535822500caf3f",
+      "bytes": 44269,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    },
+    {
+      "file": "diagnostics/probe-5/events.json",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe5\\events.json",
+      "originalSha256": "7b71e9cafa413072f5a6d4042651e9d53a5b254d5bd372325476b31aa6343cd8",
+      "sha256": "7b71e9cafa413072f5a6d4042651e9d53a5b254d5bd372325476b31aa6343cd8",
+      "bytes": 8136,
+      "transformation": "none"
+    },
+    {
+      "file": "diagnostics/probe-5/events.json.chrome.log",
+      "original": "C:\\src\\src\\out\\Debug\\pyscript-event-phase5-probe5\\events.json.chrome.log",
+      "originalSha256": "088f88f28d3aa7972aeceb83c2ca1c0b5c273ea3f176c6e9903e232dc54ce309",
+      "sha256": "22de01c6bf315ed7480a2e6ecbdc122650c0fcd967c480c12d8f467191a7e738",
+      "bytes": 43685,
+      "transformation": "UTF-8 (invalid bytes escaped), LF, trim line endings and single EOF newline"
+    }
+  ]
+}

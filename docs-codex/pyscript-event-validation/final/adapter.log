@@ -1,0 +1,41 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface:PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime:PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent:PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations:PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation:PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover:PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock:PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[       OK ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (61 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[       OK ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (30 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[       OK ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (61 ms)
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+[       OK ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (142 ms)
+[ RUN      ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[       OK ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (31 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[       OK ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (31 ms)
+[ RUN      ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[       OK ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (36 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[       OK ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (31 ms)
+[----------] 8 tests from PythonDocumentContextTest (432 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test suite ran. (433 ms total)
+[  PASSED  ] 8 tests.
+[1/8] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (61 ms)
+[2/8] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (30 ms)
+[3/8] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (61 ms)
+[4/8] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (142 ms)
+[5/8] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (31 ms)
+[6/8] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (31 ms)
+[7/8] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (36 ms)
+[8/8] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (31 ms)
+SUCCESS: all tests passed.
+Tests took 0 seconds.

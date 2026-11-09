@@ -1,0 +1,149 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover": [
+        {
+          "elapsed_time_ms": 31,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.504Z"
+        }
+      ],
+      "PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent": [
+        {
+          "elapsed_time_ms": 61,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.267Z"
+        }
+      ],
+      "PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted": [
+        {
+          "elapsed_time_ms": 31,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.573Z"
+        }
+      ],
+      "PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations": [
+        {
+          "elapsed_time_ms": 142,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.328Z"
+        }
+      ],
+      "PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface": [
+        {
+          "elapsed_time_ms": 61,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.173Z"
+        }
+      ],
+      "PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime": [
+        {
+          "elapsed_time_ms": 30,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.235Z"
+        }
+      ],
+      "PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation": [
+        {
+          "elapsed_time_ms": 31,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.472Z"
+        }
+      ],
+      "PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock": [
+        {
+          "elapsed_time_ms": 36,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 15824,
+          "timestamp": "2026-11-09T17:01:26.536Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 234
+    },
+    "PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 161
+    },
+    "PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 280
+    },
+    "PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 180
+    },
+    "PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 124
+    },
+    "PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 147
+    },
+    "PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 215
+    },
+    "PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock": {
+      "file": "..\\..\\chrome\\renderer\\python_document_context_unittest.cc",
+      "line": 262
+    }
+  }
+}

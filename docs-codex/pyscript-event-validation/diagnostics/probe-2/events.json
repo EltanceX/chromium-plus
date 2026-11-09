@@ -1,0 +1,270 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:51730",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Trusted mouse and keyboard clicks share Python state",
+      "passed": true,
+      "elapsedMs": 554,
+      "detail": {
+        "mouse": "trusted",
+        "keyboard": "trusted",
+        "script": "untrusted"
+      }
+    },
+    {
+      "name": "Callbacks share globals across blocks and retain closure state",
+      "passed": true,
+      "elapsedMs": 586
+    },
+    {
+      "name": "Returning False does not cancel the native checkbox default action",
+      "passed": true,
+      "elapsedMs": 558
+    },
+    {
+      "name": "Restricted child frames cannot initialize Python click listeners",
+      "passed": true,
+      "elapsedMs": 553
+    },
+    {
+      "name": "Nonce CSP sample uses no JavaScript and survives source removal",
+      "passed": true,
+      "elapsedMs": 657
+    },
+    {
+      "name": "Duplicate registrations remain independent after handles are dropped",
+      "passed": true,
+      "elapsedMs": 591
+    },
+    {
+      "name": "Once consumes registration even when Python raises",
+      "passed": true,
+      "elapsedMs": 513
+    },
+    {
+      "name": "Self removal skips later listener and additions wait until next click",
+      "passed": true,
+      "elapsedMs": 627
+    },
+    {
+      "name": "Ordinary exceptions retain listeners and include callback source",
+      "passed": true,
+      "elapsedMs": 562,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:51730/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794243209734.272,
+          "url": "http://127.0.0.1:51730/error",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:51730/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794243209767.272,
+          "url": "http://127.0.0.1:51730/error",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Disconnected nodes skip and reconnection resumes without id transfer",
+      "passed": true,
+      "elapsedMs": 415
+    },
+    {
+      "name": "Native subscriptions and source metadata do not retain detached DOM nodes",
+      "passed": true,
+      "elapsedMs": 482
+    },
+    {
+      "name": "Adopting subscribed node into another document cannot run old Python",
+      "passed": true,
+      "elapsedMs": 359
+    },
+    {
+      "name": "Post-registration Shadow DOM and customized built-in are rejected",
+      "passed": true,
+      "elapsedMs": 347
+    },
+    {
+      "name": "New CSP blocks existing callbacks using original source snapshot",
+      "passed": true,
+      "elapsedMs": 314
+    },
+    {
+      "name": "Callback-created subscriptions inherit the correct source authorization",
+      "passed": true,
+      "elapsedMs": 344
+    },
+    {
+      "name": "Disabling page script execution blocks existing callbacks",
+      "passed": true,
+      "elapsedMs": 366
+    },
+    {
+      "name": "Registration rejects SVG, custom elements, customized built-ins and shadow nodes",
+      "passed": true,
+      "elapsedMs": 297
+    },
+    {
+      "name": "Fatal callback timeout revokes document listeners",
+      "passed": true,
+      "elapsedMs": 383
+    },
+    {
+      "name": "Reload creates fresh callback state and navigation drops old listeners",
+      "passed": true,
+      "elapsedMs": 875
+    },
+    {
+      "name": "History navigation excludes active listeners from BFCache and creates fresh state",
+      "passed": true,
+      "elapsedMs": 887,
+      "detail": {
+        "loaderId": "1265A02E2244AB58276B12286932A442",
+        "frameId": "EE44D73AF9378510C7FD8D17359A693E",
+        "notRestoredExplanations": [
+          {
+            "type": "SupportPending",
+            "reason": "Unknown"
+          },
+          {
+            "type": "Circumstantial",
+            "reason": "BrowsingInstanceNotSwapped"
+          }
+        ],
+        "notRestoredExplanationsTree": {
+          "url": "http://127.0.0.1:51730/counter",
+          "explanations": [
+            {
+              "type": "SupportPending",
+              "reason": "Unknown"
+            },
+            {
+              "type": "Circumstantial",
+              "reason": "BrowsingInstanceNotSwapped"
+            }
+          ],
+          "children": []
+        }
+      }
+    },
+    {
+      "name": "Window pressure preserves once, drops skipped clicks and recovers after idle",
+      "passed": true,
+      "elapsedMs": 1435,
+      "detail": {
+        "payloadBytes": 30720,
+        "skippedWarningCount": 1
+      }
+    },
+    {
+      "name": "Sustained clicks use event DOM budgets across initialization lifetime limits",
+      "passed": true,
+      "elapsedMs": 3417,
+      "detail": {
+        "callbacks": 24,
+        "eventDomCalls": 1560
+      }
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-dom-stop",
+      "passed": true,
+      "elapsedMs": 1454
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-output-stop",
+      "passed": true,
+      "elapsedMs": 1464
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1414
+    },
+    {
+      "name": "Callback return-value finalizers have no DOM capability",
+      "passed": true,
+      "elapsedMs": 323
+    },
+    {
+      "name": "Fragment navigation retains listeners without repeating initialization",
+      "passed": true,
+      "elapsedMs": 465
+    },
+    {
+      "name": "document.open revokes listeners on retained old nodes",
+      "passed": true,
+      "elapsedMs": 426
+    },
+    {
+      "name": "Unrestricted callbacks honor the page policy override after registration",
+      "passed": true,
+      "elapsedMs": 618
+    },
+    {
+      "name": "Simultaneous unrestricted child frames keep independent closure state",
+      "passed": true,
+      "elapsedMs": 2016
+    },
+    {
+      "name": "Prerender never initializes or defers Python listeners even in unrestricted mode",
+      "passed": false,
+      "elapsedMs": 35159,
+      "error": "Error: Error: Condition timed out after 30000 ms\n[{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"type\":\"page\",\"title\":\"127.0.0.1:51730/prerender-host\",\"url\":\"http://127.0.0.1:51730/prerender-host\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"7415CDD5E73D18D674CCFC548A3B1147\"}}},{\"method\":\"Preload.ruleSetUpdated\",\"params\":{\"ruleSet\":{\"id\":\"2568.0\",\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"sourceText\":\"{\\\"prerender\\\":[{\\\"source\\\":\\\"list\\\",\\\"urls\\\":[\\\"/prerender\\\"]}]}\",\"backendNodeId\":45}}},{\"method\":\"Preload.preloadingAttemptSourcesUpdated\",\"params\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"preloadingAttemptSources\":[{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"ruleSetIds\":[\"2568.0\"],\"nodeIds\":[]}]}},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"initiatingFrameId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"prefetchUrl\":\"http://127.0.0.1:51730/prerender\",\"status\":\"Running\",\"prefetchStatus\":\"PrefetchNotFinishedInTime\",\"requestId\":\"7EC5E3B6CCE78E176235226C64DB6720\"}},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"status\":\"Failure\",\"prerenderStatus\":\"PrerenderingDisabledByDevTools\"}},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"initiatingFrameId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"prefetchUrl\":\"http://127.0.0.1:51730/prerender\",\"status\":\"Ready\",\"prefetchStatus\":\"PrefetchSuccessfulButNotUsed\",\"requestId\":\"7EC5E3B6CCE78E176235226C64DB6720\"}},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"4BB9C55BF336A7678043A952DF318948\"}}]\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:624:13\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:620:20\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:326:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:609:3"
+    }
+  ],
+  "unrestrictedLifecycleTested": true,
+  "passed": false,
+  "error": "Error: Error: Condition timed out after 30000 ms\n[{\"method\":\"Target.targetInfoChanged\",\"params\":{\"targetInfo\":{\"targetId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"type\":\"page\",\"title\":\"127.0.0.1:51730/prerender-host\",\"url\":\"http://127.0.0.1:51730/prerender-host\",\"attached\":true,\"canAccessOpener\":false,\"browserContextId\":\"7415CDD5E73D18D674CCFC548A3B1147\"}}},{\"method\":\"Preload.ruleSetUpdated\",\"params\":{\"ruleSet\":{\"id\":\"2568.0\",\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"sourceText\":\"{\\\"prerender\\\":[{\\\"source\\\":\\\"list\\\",\\\"urls\\\":[\\\"/prerender\\\"]}]}\",\"backendNodeId\":45}}},{\"method\":\"Preload.preloadingAttemptSourcesUpdated\",\"params\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"preloadingAttemptSources\":[{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"ruleSetIds\":[\"2568.0\"],\"nodeIds\":[]}]}},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"initiatingFrameId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"prefetchUrl\":\"http://127.0.0.1:51730/prerender\",\"status\":\"Running\",\"prefetchStatus\":\"PrefetchNotFinishedInTime\",\"requestId\":\"7EC5E3B6CCE78E176235226C64DB6720\"}},{\"method\":\"Preload.prerenderStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prerender\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"status\":\"Failure\",\"prerenderStatus\":\"PrerenderingDisabledByDevTools\"}},{\"method\":\"Preload.prefetchStatusUpdated\",\"params\":{\"key\":{\"loaderId\":\"E0E549D06BC07D1BD48AA564ECF04762\",\"action\":\"Prefetch\",\"url\":\"http://127.0.0.1:51730/prerender\"},\"pipelineId\":\"91A0470DB19C6ADE925D55E8047C7AE5\",\"initiatingFrameId\":\"0A3EF5EB65EFF54BF1760B2DC8C56FF8\",\"prefetchUrl\":\"http://127.0.0.1:51730/prerender\",\"status\":\"Ready\",\"prefetchStatus\":\"PrefetchSuccessfulButNotUsed\",\"requestId\":\"7EC5E3B6CCE78E176235226C64DB6720\"}},{\"method\":\"Target.targetDestroyed\",\"params\":{\"targetId\":\"4BB9C55BF336A7678043A952DF318948\"}}]\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:624:13\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:620:20\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:326:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:609:3",
+  "requests": [
+    "/counter",
+    "/favicon.ico",
+    "/closure",
+    "/closure",
+    "/default-action",
+    "/iframe-parent",
+    "/counter",
+    "/sample",
+    "/duplicates",
+    "/once",
+    "/order",
+    "/error",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/provenance",
+    "/counter",
+    "/reject",
+    "/timeout",
+    "/counter",
+    "/counter",
+    "/other",
+    "/counter",
+    "/other",
+    "/event-window",
+    "/event-dom",
+    "/event-dom-stop",
+    "/event-output-stop",
+    "/event-diagnostic-stop",
+    "/event-finalizer",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/favicon.ico",
+    "/iframe-parent",
+    "/counter",
+    "/closure",
+    "/closure",
+    "/prerender-host",
+    "/prerender"
+  ]
+}
