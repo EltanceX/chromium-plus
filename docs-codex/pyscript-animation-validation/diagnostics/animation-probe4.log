@@ -1,0 +1,15 @@
+PASS Python-only nonce sample updates and cancels native frames
+PASS Duplicate, repeated cancellation and consumed handles preserve next frame
+PASS One-shot errors consume the old request and allow a new request
+PASS A next frame requested before an ordinary error survives
+PASS Fatal frame limit revokes frames and click listeners: /timeout
+PASS Fatal frame limit revokes frames and click listeners: /dom-stop
+PASS Fatal frame limit revokes frames and click listeners: /output-stop
+PASS Fatal frame limit revokes frames and click listeners: /diagnostic-stop
+PASS Window pressure retains one frame and recovers: /output-window
+{
+  "passed": false,
+  "cases": 10,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-animation-phase1\\animation-probe4.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:311:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:309:5"
+}

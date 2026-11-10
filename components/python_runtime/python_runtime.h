@@ -39,6 +39,8 @@ struct CallbackHandle {
   uint64_t id = 0;
 };
 
+enum class ExecutionKind { kInitialization, kCallback, kAnimationFrame };
+
 struct CallbackEvent {
   std::string type = "click";
   DomHandle current_target{};
@@ -85,6 +87,9 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   // Idempotent rollback of a possibly installed listener. No policy/budget
   // admission, script entry or Python calls; never exposed as a Python API.
   virtual void RevokeEventListener(DomHandle, CallbackHandle) = 0;
+  virtual DomResult RequestFrame(CallbackHandle);
+  virtual DomResult CancelFrame(CallbackHandle);
+  virtual void RevokeFrame(CallbackHandle) {}
 };
 
 PYTHON_RUNTIME_EXPORT
@@ -124,13 +129,19 @@ class PYTHON_RUNTIME_EXPORT PythonContext {
                           DomHost* dom_host = nullptr);
   // Native registration captures the current value of one globals entry, not
   // source text. Python-facing listener registration is implemented separately.
-  CallbackRegistrationResult RegisterCallback(std::string_view global_name);
+  CallbackRegistrationResult RegisterCallback(
+      std::string_view global_name,
+      ExecutionKind kind = ExecutionKind::kCallback);
   ExecutionResult InvokeCallback(CallbackHandle,
                                  const CallbackEvent&,
                                  DomHost* dom_host = nullptr);
   // Main-thread admission probe. With no intervening Python entry, elapsed
   // idle time can only free window capacity, never invalidate admission.
   bool CanInvokeCallback();
+  ExecutionResult InvokeFrameCallback(CallbackHandle,
+                                      double timestamp_ms,
+                                      DomHost* dom_host = nullptr);
+  bool CanInvokeFrameCallback();
   // Idempotent for a removed handle from this context. Also permits registry
   // mutation from this context's active host call, without interpreter reentry.
   ExecutionResult RemoveCallback(CallbackHandle);

@@ -1,7 +1,7 @@
 # Copyright 2026 The Chromium Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-"""Build and verify native Python click support without disabling the sandbox.
+"""Build and verify native Python interaction without disabling the sandbox.
 
 Run from any directory. Results go into a new directory under out/Debug by
 default; an existing output directory is never overwritten.
@@ -25,10 +25,10 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 49),
-    ('adapter', 'python_document_context_unittests', [], 8),
+    ('runtime', 'python_runtime_unittests', [], 55),
+    ('adapter', 'python_document_context_unittests', [], 10),
     ('blink', 'blink_unittests', ['--gtest_filter=HTMLPyScriptElementTest.*'],
-     49),
+     62),
     ('csp', 'blink_unittests', [
         '--gtest_filter=ContentSecurityPolicyTest.'
         'NonceSinglePolicy:ContentSecurityPolicyTest.'
@@ -37,6 +37,7 @@ SUITES = [
     ], 3),
     ('settings-unit', 'native_python_settings_unittests', [], 8),
     ('events', 'pyscript_event_smoke_test.mjs', [], 34),
+    ('animation', 'pyscript_animation_smoke_test.mjs', [], 19),
     ('dom', 'pyscript_dom_smoke_test.mjs', [], 17),
     ('parser', 'pyscript_smoke_test.mjs', [], 27),
     ('settings-browser', 'pyscript_settings_smoke_test.mjs', [], 12),
@@ -81,10 +82,12 @@ def main():
 
   # Record the feature's actual inputs, including uncommitted test changes.
   inputs = git(
-      'ls-files', 'components/python_runtime', 'chrome/renderer/python*',
+      'ls-files', '--cached', '--others', '--exclude-standard',
+      'components/python_runtime', 'chrome/renderer/python*',
       'chrome/test/pyscript*', 'chrome/test/run_pyscript_event_validation.py',
       'chrome/test/data/pyscript', 'chrome/common/native_python*',
       'chrome/browser/native_python',
+      'chrome/browser/resources/settings/kernel_debug_page',
       'third_party/blink/public/web/web_python*',
       'third_party/blink/renderer/core/html/*py*script*',
       'third_party/blink/renderer/core/frame/csp/content_security_policy.cc')

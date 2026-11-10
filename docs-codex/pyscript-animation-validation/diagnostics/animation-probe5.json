@@ -1,0 +1,160 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:50958",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only nonce sample updates and cancels native frames",
+      "passed": true,
+      "elapsedMs": 1934,
+      "detail": {
+        "first": [
+          12,
+          1097
+        ],
+        "second": [
+          28,
+          1364
+        ],
+        "stopped": "29:1381"
+      }
+    },
+    {
+      "name": "Duplicate, repeated cancellation and consumed handles preserve next frame",
+      "passed": true,
+      "elapsedMs": 601
+    },
+    {
+      "name": "One-shot errors consume the old request and allow a new request",
+      "passed": true,
+      "elapsedMs": 489
+    },
+    {
+      "name": "A next frame requested before an ordinary error survives",
+      "passed": true,
+      "elapsedMs": 344
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /timeout",
+      "passed": true,
+      "elapsedMs": 1424,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306854495.928,
+          "url": "http://127.0.0.1:50958/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /dom-stop",
+      "passed": true,
+      "elapsedMs": 1437,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306855915.928,
+          "url": "http://127.0.0.1:50958/dom-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /output-stop",
+      "passed": true,
+      "elapsedMs": 1432,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794306857342.928,
+          "url": "http://127.0.0.1:50958/output-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1446,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794306858769.928,
+          "url": "http://127.0.0.1:50958/diagnostic-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Frame output window retains one request and recovers with a fresh timestamp",
+      "passed": true,
+      "elapsedMs": 1207,
+      "detail": {
+        "times": [
+          137,
+          154,
+          171,
+          187,
+          204,
+          1154
+        ],
+        "gaps": [
+          17,
+          17,
+          16,
+          17,
+          950
+        ]
+      }
+    },
+    {
+      "name": "Click DOM charges defer one pending frame until the shared window recovers",
+      "passed": true,
+      "elapsedMs": 1355,
+      "detail": {
+        "clickDomCalls": 960,
+        "frameRequests": 1,
+        "result": "resumed:1274"
+      }
+    },
+    {
+      "name": "Click output and frames share the same window",
+      "passed": true,
+      "elapsedMs": 1341
+    },
+    {
+      "name": "Source tag removal and GC retain copied frame authorization",
+      "passed": true,
+      "elapsedMs": 549
+    },
+    {
+      "name": "Late CSP revokes the pending frame and all Python listeners",
+      "passed": true,
+      "elapsedMs": 679
+    },
+    {
+      "name": "Script execution policy revocation cannot revive old frames",
+      "passed": true,
+      "elapsedMs": 698
+    },
+    {
+      "name": "Frozen page resumes with current timestamps without old-frame bursts",
+      "passed": false,
+      "elapsedMs": 31535,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:150:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:384:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:376:3",
+      "nativeLogs": []
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:150:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:384:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:376:3"
+}

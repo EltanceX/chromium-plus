@@ -7,6 +7,7 @@
 #include <Python.h>
 
 #include <algorithm>
+#include <cmath>
 #include <limits>
 #include <utility>
 
@@ -26,6 +27,14 @@
 namespace native_python {
 
 BASE_FEATURE(kNativePythonRuntimeSelfTest, base::FEATURE_DISABLED_BY_DEFAULT);
+
+DomResult DomHost::RequestFrame(CallbackHandle) {
+  return {{}, DomError::kNotAllowed, "Animation frames are not supported"};
+}
+
+DomResult DomHost::CancelFrame(CallbackHandle) {
+  return {{}, DomError::kNotAllowed, "Animation frames are not supported"};
+}
 
 namespace {
 
@@ -253,7 +262,8 @@ class Runtime {
       status = PyStatus_Error("failed to register native output module");
     }
     if (!PyStatus_Exception(status) &&
-        PyImport_AppendInittab("dom", InitDomModule) != 0) {
+        (PyImport_AppendInittab("dom", InitDomModule) != 0 ||
+         PyImport_AppendInittab("animation", InitAnimationModule) != 0)) {
       status = PyStatus_Error("failed to register native DOM module");
     }
     if (!PyStatus_Exception(status)) {
@@ -321,7 +331,11 @@ struct PythonContext::Impl {
       : context_id(id), capture(clock) {}
   ExecutionResult Run(DomHost* host,
                       base::FunctionRef<PyObject*(DomHost*)> operation,
-                      bool callback = false);
+                      ExecutionKind kind = ExecutionKind::kInitialization);
+  ExecutionResult Call(CallbackHandle,
+                       ExecutionKind,
+                       DomHost*,
+                       base::FunctionRef<PyObject*()> make_argument);
   // CPython owns thread; globals owns a Python reference, released under its
   // GIL.
   RAW_PTR_EXCLUSION PyThreadState* thread = nullptr;
@@ -335,7 +349,7 @@ struct PythonContext::Impl {
 ExecutionResult PythonContext::Impl::Run(
     DomHost* host,
     base::FunctionRef<PyObject*(DomHost*)> operation,
-    bool callback) {
+    ExecutionKind kind) {
   auto& runtime = Runtime::Get();
   runtime.CheckThread();
   if (runtime.executing) {
@@ -349,7 +363,7 @@ ExecutionResult PythonContext::Impl::Run(
     RecordStop(result, budget);
     return result;
   }
-  if (!budget.Begin(host, callback)) {
+  if (!budget.Begin(host, kind)) {
     ExecutionResult result;
     result.callback_skipped = true;
     return result;
@@ -518,7 +532,8 @@ ExecutionResult PythonContext::Execute(std::string_view source,
 }
 
 CallbackRegistrationResult PythonContext::RegisterCallback(
-    std::string_view global_name) {
+    std::string_view global_name,
+    ExecutionKind kind) {
   CallbackRegistrationResult registration;
   Runtime::Get().CheckThread();
   if (global_name.empty() || global_name.size() > 2048 ||
@@ -539,7 +554,9 @@ CallbackRegistrationResult PythonContext::RegisterCallback(
       PyErr_SetString(PyExc_NameError, "The callback global was not found");
       return nullptr;
     }
-    registration.handle = RegisterDomCallback(impl_->dom_module, owned.get());
+    registration.handle =
+        RegisterDomCallback(impl_->dom_module, owned.get(),
+                            kind == ExecutionKind::kAnimationFrame, kind);
     return registration.handle.id ? Py_NewRef(Py_None) : nullptr;
   });
   if (!registration.result.success) {
@@ -551,20 +568,43 @@ CallbackRegistrationResult PythonContext::RegisterCallback(
 ExecutionResult PythonContext::InvokeCallback(CallbackHandle handle,
                                               const CallbackEvent& event,
                                               DomHost* dom_host) {
-  return impl_->Run(
+  return impl_->Call(handle, ExecutionKind::kCallback, dom_host, [&] {
+    return CreateDomCallbackEvent(impl_->dom_module, event);
+  });
+}
+
+ExecutionResult PythonContext::InvokeFrameCallback(CallbackHandle handle,
+                                                   double timestamp_ms,
+                                                   DomHost* dom_host) {
+  Runtime::Get().CheckThread();
+  if (!std::isfinite(timestamp_ms) || timestamp_ms < 0) {
+    ExecutionResult result;
+    result.error = "Animation timestamp must be finite and nonnegative";
+    return result;
+  }
+  return impl_->Call(handle, ExecutionKind::kAnimationFrame, dom_host,
+                     [&] { return PyFloat_FromDouble(timestamp_ms); });
+}
+
+ExecutionResult PythonContext::Impl::Call(
+    CallbackHandle handle,
+    ExecutionKind kind,
+    DomHost* dom_host,
+    base::FunctionRef<PyObject*()> make_argument) {
+  return Run(
       dom_host,
       [&](DomHost* bridge) -> PyObject* {
-        PyRef callback(GetDomCallback(impl_->dom_module, handle));
+        PyRef callback(GetDomCallback(dom_module, handle, kind));
         if (!callback) {
           return nullptr;
         }
-        PyRef argument(CreateDomCallbackEvent(impl_->dom_module, event));
+        PyRef argument(make_argument());
         if (!argument) {
           return nullptr;
         }
         PyRef result;
         {
-          ScopedDomHost capability(impl_->dom_module, bridge);
+          ScopedDomHost capability(dom_module, bridge);
           result.reset(PyObject_CallOneArg(callback.get(), argument.get()));
         }
         if (result && (PyCoro_CheckExact(result.get()) ||
@@ -584,13 +624,20 @@ ExecutionResult PythonContext::InvokeCallback(CallbackHandle handle,
         // revoked.
         return result ? Py_NewRef(Py_None) : nullptr;
       },
-      true);
+      kind);
 }
 
 bool PythonContext::CanInvokeCallback() {
   auto& runtime = Runtime::Get();
   runtime.CheckThread();
   return !runtime.executing && impl_->capture.budget.CanBeginCallback();
+}
+
+bool PythonContext::CanInvokeFrameCallback() {
+  auto& runtime = Runtime::Get();
+  runtime.CheckThread();
+  return !runtime.executing &&
+         impl_->capture.budget.CanBeginCallback(ExecutionKind::kAnimationFrame);
 }
 
 ExecutionResult PythonContext::RemoveCallback(CallbackHandle handle) {

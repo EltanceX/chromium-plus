@@ -1,0 +1,20 @@
+PASS Python-only nonce sample updates and cancels native frames
+PASS Duplicate, repeated cancellation and consumed handles preserve next frame
+PASS One-shot errors consume the old request and allow a new request
+PASS A next frame requested before an ordinary error survives
+PASS Fatal frame limit revokes frames and click listeners: /timeout
+PASS Fatal frame limit revokes frames and click listeners: /dom-stop
+PASS Fatal frame limit revokes frames and click listeners: /output-stop
+PASS Fatal frame limit revokes frames and click listeners: /diagnostic-stop
+PASS Frame output window retains one request and recovers with a fresh timestamp
+PASS Click DOM charges defer one pending frame until the shared window recovers
+PASS Click output and frames share the same window
+PASS Source tag removal and GC retain copied frame authorization
+PASS Late CSP revokes the pending frame and all Python listeners
+PASS Script execution policy revocation cannot revive old frames
+{
+  "passed": false,
+  "cases": 15,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-animation-phase1\\animation-probe5.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:150:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:384:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:237:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:376:3"
+}

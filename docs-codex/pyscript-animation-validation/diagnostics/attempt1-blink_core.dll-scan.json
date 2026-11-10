@@ -1,0 +1,39 @@
+{
+  "response": "pyscript-animation-phase1/attempt1-blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/computed_style_css_value_mapping.obj",
+      "errors": [
+        "Invalid CodeView record at 0x58000e (length 29992, kind 0xc7c5)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_to_length_conversion_data.obj",
+      "errors": [
+        "Section 819: relocation 5 has invalid symbol 33284 or type 33608",
+        "Section 820: invalid raw data extent",
+        "Section 820: invalid relocation extent",
+        "Section 821: invalid raw data extent",
+        "Section 821: invalid relocation extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/display_lock_context.obj",
+      "errors": [
+        "Unexpected COFF machine e288",
+        "Invalid string table offset"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/window_event_context.obj",
+      "errors": [
+        "Invalid CodeView record at 0xf600f (length 14584, kind 0xcf1d)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 138.48
+}

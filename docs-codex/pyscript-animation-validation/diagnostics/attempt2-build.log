@@ -1,0 +1,116 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.7891117s
+load siso config done 12.128ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:62865+ready:0 (node:441061 edge:62879)
+ 1.40s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/60195] 30.11s S ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[0/35476] 30.69s S CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[0/35297] 30.70s S CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[0/35284] 30.70s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/35261] 30.70s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/20784] 31.62s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/20354] 31.66s S CXX obj/third_party/blink/renderer/core/core/css_to_length_conversion_data.obj
+[0/19866] 31.72s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/19032] 31.83s S CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[0/18957] 31.84s S CXX obj/third_party/blink/renderer/core/core/display_lock_context.obj
+[0/18900] 31.86s S CXX obj/third_party/blink/renderer/core/core/computed_style_css_value_mapping.obj
+[0/18532] 31.90s S CXX obj/third_party/blink/renderer/core/core/window_event_context.obj
+[0/15198] 32.25s S CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[0/14823] 32.27s S CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[0/11576] 32.50s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/9877] 32.83s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/9429] 32.85s S CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[0/2397] 35.72s F CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[1/2397] 35.83s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[2/2397] 35.90s F CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[3/2397] 35.90s S LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[3/2397] 37.23s F LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[4/2397] 37.62s F ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[4/2395] 37.63s S ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[5/2395] 38.08s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[6/2395] 38.09s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[6/2395] 38.79s F ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[7/2393] 39.17s S ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[7/2393] 39.30s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[8/2392] 39.40s F CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[9/2392] 39.74s F CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[10/2392] 41.15s F CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[11/2392] 56.85s F CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[12/2392] 56.86s F CXX obj/third_party/blink/renderer/core/core/window_event_context.obj
+[13/2392] 58.65s F ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[14/2390] 58.70s S ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[14/2390] 1m02.49s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[15/2390] 1m14.01s F CXX obj/third_party/blink/renderer/core/core/css_to_length_conversion_data.obj
+[16/2390] 1m15.12s F CXX obj/third_party/blink/renderer/core/core/computed_style_css_value_mapping.obj
+[17/2390] 1m27.01s E CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+FAILED: feb8ccf4-1d68-4ff2-8f90-c1ca61a586b2 "./obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj" CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+err: exit=1
+sccache ..\..\third_party\llvm-build\Release+Asserts\bin\clang-cl.exe /c ../../third_party/blink/renderer/core/html/html_py_script_element_test.cc /Foobj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj /nologo /showIncludes "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/VS/include" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/ucrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/um" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/shared" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/winrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/cppwinrt" -D_HAS_NODISCARD -D_CRT_NONSTDC_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS "-DCR_CLANG_REVISION=\"llvmorg-24-init-14453-ge063be79-1\"" -DCOMPONENT_BUILD -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -D_LIBCPP_INSTRUMENTED_WITH_ASAN=0 -DCR_LIBCXX_REVISION=9ba7713d3a0f1e179904c984bb626748b15e57d6 -D__STD_C -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_SCL_SECURE_NO_DEPRECATE -D_ATL_NO_OPENGL -D_WINDOWS -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DPSAPI_VERSION=2 -DWIN32 -D_SECURE_ATL -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DDCHECK_ALWAYS_ON=1 -DUSE_AURA=1 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -D_UNICODE -DUNICODE -DNTDDI_VERSION=NTDDI_WIN11_BR -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -DWINCRYPT_USE_SYMBOL_PREFIX -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DUSING_V8_SHARED -DBLINK_IMPLEMENTATION=1 -DINSIDE_BLINK -DCHROMIUM -DLIBYUV_DISABLE_NEON -DLIBYUV_DISABLE_SVE -DLIBYUV_DISABLE_SME -DLIBYUV_DISABLE_LSX -DLIBYUV_DISABLE_LASX -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED "-DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\"" -DSK_USE_PARTITION_ALLOC -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_ENABLE_LEGACY_SHADERCONTEXT -DSK_LEGACY_DESERIAL_IMAGE_PROC -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_PNG_WITH_RUST -DSK_CODEC_ENCODES_PNG -DSK_CODEC_ENCODES_PNG_WITH_RUST -DSK_CODEC_DECODES_BMP_WITH_RUST -DSK_CODEC_DECODES_ICO_WITH_RUST -DSK_CODEC_COLOR_PROFILE_PARSE_WITH_RUST -DSK_EXIF_PARSE_WITH_RUST -DSK_ENABLE_AVX512_OPTS -DSK_CODEC_DECODES_JPEG -DSK_CODEC_ENCODES_JPEG -DSKIA_DLL -DGR_GL_FUNCTION_TYPE=__stdcall -DSK_GAMMA_SRGB -DSK_GAMMA_CONTRAST=1.0 -DSK_GANESH "-DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\"" -DSK_GL -DSK_GRAPHITE -DSK_DAWN -DSKCMS_DLL=1 -D_WTL_NO_AUTOMATIC_NAMESPACE -DTOOLKIT_VIEWS=1 -DPROTOBUF_MESSAGE_GLOBALS_TEMPORARY_OPTOUT -DGOOGLE_PROTOBUF_NO_RTTI -DPROTOBUF_INTERNAL_BOUNDS_CHECK_MODE_ABORT -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DWEBRTC_ENABLE_SYMBOL_EXPORT -DWEBRTC_EXCLUDE_BUILT_IN_SSL_ROOT_CERTS -DWEBRTC_ENABLE_AVX2 -DRTC_ENABLE_WIN_WGC -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_CHROMIUM_BUILD -DWEBRTC_WIN -DABSL_ALLOCATOR_NOTHROW=1 -DLOGGING_INSIDE_WEBRTC -DWGPU_SHARED_LIBRARY -DUSING_V8_SHARED_PRIVATE -DV8_ARRAY_BUFFER_INTERNAL_FIELD_COUNT=0 -DV8_ARRAY_BUFFER_VIEW_INTERNAL_FIELD_COUNT=0 -DV8_PROMISE_INTERNAL_FIELD_COUNT=0 -DV8_EMBEDDER_DATA_ARRAY_SIZE=5 -DV8_USE_DEFAULT_HASHER_SECRET=true -DV8_ENABLE_CHECKS -DV8_ENABLE_MEMORY_ACCOUNTING_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DV8_DISALLOW_JS_IN_API_INTERRUPTS_IS_CHECKED -DV8_USE_PERFETTO -DV8_USE_PERFETTO_JSON_EXPORT -DV8_SUPPORT_LA57 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_WIN -DCPPGC_ENABLE_API_CHECKS -DCPPGC_SUPPORTS_OBJECT_NAMES -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_ENABLE_LARGER_CAGE -DCPPGC_SLIM_WRITE_BARRIER -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DSKCMS_IMPLEMENTATION=1 -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DLEVELDB_PLATFORM_CHROMIUM=1 -DLEVELDB_SHARED_LIBRARY -DUSE_LIBJPEG_TURBO=1 -DMANGLE_JPEG_NAMES -DWEBP_EXTERN=extern -DUSING_V8_PLATFORM_SHARED -DLIBXSLT_STATIC -DCENTIPEDE_DISABLE_RIEGELI -DFUZZTEST_NO_LEGACY_COVERAGE -DV8_USE_EXTERNAL_STARTUP_DATA -DGTEST_API_= -DGTEST_HAS_POSIX_RE=0 -DGTEST_HAS_ABSL -DGTEST_NO_ABSL_FLAGS -DUNIT_TEST -DLIBGAV1_MAX_BITDEPTH=10 -DLIBGAV1_THREADPOOL_USE_STD_MUTEX -DLIBGAV1_ENABLE_LOGGING=0 -DLIBGAV1_PUBLIC= -DUSE_LIBCXX_MODULES -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -I../../third_party/libyuv/include -I../../third_party/skia -Igen/third_party/skia -I../../third_party/wuffs/src/release/c -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../gpu -I../../third_party/angle/include -I../../third_party/google_benchmark/src/include -Igen/third_party/private_membership/src -Igen/third_party/shell-encryption/src -Igen/components/policy/proto -I../../third_party/wtl/include -I../../third_party/protobuf/src -I../../third_party/protobuf/third_party/utf8_range -I../../third_party/abseil-cpp -I../../base/allocator/partition_allocator/src -Igen/base/allocator/partition_allocator/src -I../../third_party/boringssl/src/include -Igen/net/third_party/quiche/src -I../../third_party/re2/src -I../../third_party/ipcz/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ced/src -I../../third_party/webrtc_overrides -I../../third_party/webrtc -Igen/third_party/webrtc -I../../v8/include -I../../third_party/flatbuffers/src/include -I../../third_party/flatbuffers/src/src -I../../third_party/flatbuffers/src -I../../third_party/flatbuffers/generated -I../../third_party/libwebm/source -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/win -I../../third_party/zlib -I../../third_party/leveldatabase -I../../third_party/leveldatabase/src -I../../third_party/leveldatabase/src/include -I../../third_party/libaom/source/libaom -I../../third_party/libaom/source/config/win/x64 -I../../third_party/libjpeg_turbo/src -I../../third_party/libwebp/src/src -I../../third_party/ots/src/include -I../../third_party/woff2/include -Igen/v8/include -I../../third_party/simdutf -I../../third_party/fp16/src/include -I../../third_party/libxml/src/include -I../../third_party/libxml/win32/include -I../../third_party/libxslt/src -I../../third_party/libxslt/src/libxslt -I../../third_party/fuzztest/src -I../../third_party/googletest/custom -I../../third_party/googletest/src/googlemock/include -I../../third_party/googletest/src/googletest/include -I../../third_party/snappy/src -I../../third_party/snappy/win32 -I../../third_party/rust-toolchain/lib -I../../third_party/rust-toolchain/lib/third_party/crubit -I../../third_party/rust-toolchain/lib/third_party -I../../third_party/harfbuzz/src/src -I../../third_party/harfbuzz -I../../third_party/libgav1/src -I../../third_party/libgav1/src/src /W4 -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wgnu -Wno-gnu-anonymous-struct -Wno-gnu-conditional-omitted-operand -Wno-gnu-include-next -Wno-gnu-label-as-value -Wno-gnu-redeclared-enum -Wno-gnu-statement-expression -Wno-gnu-zero-variadic-macro-arguments -Wno-zero-length-array -Wthread-safety -Wno-unused-template -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wno-stringop-overread -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-thread-safety-reference-return -Wno-nontrivial-memcall -Wno-uninitialized-const-pointer -Wno-unused-but-set-global -Wno-nonportable-include-path -Wexit-time-destructors -Wshadow /WX -fno-delete-null-pointer-checks /clang:-fno-strict-overflow -fno-ident /clang:-fno-math-errno -fcolor-diagnostics /clang:-fdiagnostics-show-inlining-chain -fmerge-all-constants -fcrash-diagnostics-dir=../clang-crashreports -fno-lifetime-dse -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 /clang:-ffp-contract=off -fcomplete-member-pointers /Gy /FS /bigobj /utf-8 /Zc:twoPhase -ffile-reproducible /D__WRL_ENABLE_FUNCTION_STATICS__ -fmsc-version=1934 /Zc:dllexportInlines- -m64 -msse3 /Brepro -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -Xclang -fmodule-file-home-is-cwd -Xclang -fmodules-cache-path=/not_exist_dummy_dir --warning-suppression-mappings=../../build/config/warning_suppression.txt -ftrivial-auto-var-init=pattern /Od /Ob0 /GF /Z7 -gno-codeview-command-line -mllvm -pick-merged-source-locations -gcodeview-ghash -Xclang -fuse-ctor-homing -fsanitize=array-bounds -fsanitize-trap=array-bounds -fsanitize-ignore-for-ubsan-feature=array-bounds -Wno-unsafe-buffer-usage-in-static-sized-array -fsanitize=return -fsanitize-trap=return -fsanitize-ignore-for-ubsan-feature=return -fsanitize=unreachable -fsanitize-trap=unreachable -fsanitize-ignore-for-ubsan-feature=unreachable /guard:cf,nochecks /MDd -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang relax-ctor-checks-for-aggregates -Xclang -add-plugin -Xclang raw-ptr-plugin -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-raw-ptr-plugin -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../third_party/dawn/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../build/config/clang/chrome/test/fuzzing/webidl_fuzzing/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-span-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ref-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang config-path=../../build/config/raw_ptr_plugin_config.yaml -Xclang -plugin-arg-raw-ptr-plugin -Xclang no-special-treatment-for-oilpanized-paths -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-in-blink -DUNSAFE_BUFFERS_BUILD -Wunsafe-buffer-usage -Wno-error=unsafe-buffer-usage -Wno-unsafe-buffer-usage-main-argv -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt /wd4305 /wd4324 /wd4714 /wd4800 -Xclang -plugin-arg-find-bad-constructs -Xclang check-blink-data-member-type -Xclang -add-plugin -Xclang blink-gc-plugin -Wconversion -Wno-float-conversion -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-implicit-int-conversion -Wshorten-64-to-32 -Wtautological-unsigned-zero-compare -Wno-exit-time-destructors -Wno-null-pointer-subtraction /wd4344 /wd4291 -DLIBXML_STATIC= -Wno-sign-compare -Wno-inconsistent-missing-override /wd4800 -Wno-invalid-offsetof -Wenum-compare-conditional -Wno-nullability-completeness -Wunique-object-duplication /std:c++23preview -Wno-trigraphs /GR- -I../../third_party/libc++/src/include -fmodules /clang:-fno-implicit-module-maps -fno-implicit-modules -Xclang -fmodules-local-submodule-visibility -Wno-modules-ambiguous-internal-linkage -Wno-modules-import-nested-redundant -Xclang -fmodules-disable-diagnostic-validation -Wno-module-import-in-extern-c /TP -fmodule-map-file=gen/build/modules/module.modulemap -fmodule-file=//build/modules:system=obj/build/modules/system/module.pcm "-fmodule-name=//third_party/blink/renderer/core:unit_tests_Private" /Fd"obj/third_party/blink/renderer/core/unit_tests_cc.pdb"
+build step: cxx "./obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj"
+stderr:
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(676,13): error: no member named 'SetVisibilityState' in 'blink::SimPage'
+  676 |   GetPage().SetVisibilityState(mojom::blink::PageVisibilityState::kHidden,
+      |   ~~~~~~~~~ ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(681,13): error: no member named 'SetVisibilityState' in 'blink::SimPage'
+  681 |   GetPage().SetVisibilityState(mojom::blink::PageVisibilityState::kVisible,
+      |   ~~~~~~~~~ ^
+../../third_party/blink/renderer/core/html/html_py_script_element_test.cc(790,18): error: use of overloaded operator '=' is ambiguous (with operand types 'base::RepeatingClosure' (aka 'RepeatingCallback<void ()>') and 'void')
+  790 |   runner_.on_run = {};
+      |   ~~~~~~~~~~~~~~ ^ ~~
+../..\base/functional/callback.h(296,22): note: candidate function
+  296 |   RepeatingCallback& operator=(const RepeatingCallback&) = default;
+      |                      ^
+../..\base/functional/callback.h(301,22): note: candidate function
+  301 |   RepeatingCallback& operator=(RepeatingCallback&&) noexcept = default;
+      |                      ^
+../..\base/functional/callback.h(406,32): note: candidate function
+  406 |   constexpr RepeatingCallback& operator=(internal::NullCallbackTag) {
+      |                                ^
+../..\base/functional/callback.h(414,32): note: candidate function
+  414 |   constexpr RepeatingCallback& operator=(
+      |                                ^
+../..\base/functional/callback.h(424,32): note: candidate function
+  424 |   constexpr RepeatingCallback& operator=(internal::DoNothingCallbackTag)
+      |                                ^
+../..\base/functional/callback.h(436,32): note: candidate function
+  436 |   constexpr RepeatingCallback& operator=(
+      |                                ^
+3 errors generated.
+
+
+[18/2390] 1m27.02s - ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[18/2390] 1m33.91s - CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[18/2390] 1m35.14s - CXX obj/third_party/blink/renderer/core/core/display_lock_context.obj
+[18/2390] 2m00.14s - CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+build failed
+
+
+noexec:0 local:18 remote:0 cache:0 skip:99709
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 22936(err:8) / r:2738(err:0) 94.26MiB / w:2(err:0) 12.63KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14     16(4)     0.00s |█      |    28.93s |   ██▃ |
+shutdown cloud logging/monitoring done 0s
+
+2m00.86s Build Failure: 18 done, 1 failed, 2372 remaining - 0.15/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-181533.7744
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

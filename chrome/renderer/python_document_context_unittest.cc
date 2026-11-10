@@ -8,6 +8,7 @@
 #include <functional>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 
 #include "testing/gtest/include/gtest/gtest.h"
@@ -67,6 +68,22 @@ class TestHost final : public WebPythonDomHost {
     CheckTarget(element);
     Erase(callback);
   }
+  WebPythonDomResult RequestFrame(WebPythonCallbackHandle callback) override {
+    EXPECT_FALSE(frame.id);
+    frame = last_frame = callback;
+    return {{}, failure, WebString::FromUtf8("host frame failure")};
+  }
+  WebPythonDomResult CancelFrame(WebPythonCallbackHandle callback) override {
+    ++frame_cancels;
+    RevokeFrame(callback);
+    return {};
+  }
+  void RevokeFrame(WebPythonCallbackHandle callback) override {
+    if (frame.context == callback.context && frame.id == callback.id) {
+      frame = {};
+    }
+  }
+  WebPythonCallbackHandle TakeFrame() { return std::exchange(frame, {}); }
   WebPythonCallbackEvent Event(bool trusted = false) const {
     return {WebString::FromUtf8("click"), target, trusted};
   }
@@ -84,6 +101,9 @@ class TestHost final : public WebPythonDomHost {
   bool last_once = false;
   WebPythonDomHandle target{71, 9, 2};
   WebPythonCallbackHandle last;
+  WebPythonCallbackHandle frame;
+  WebPythonCallbackHandle last_frame;
+  int frame_cancels = 0;
   WebPythonDomError failure = WebPythonDomError::kNone;
   std::vector<WebPythonCallbackHandle> installed;
   int adds = 0;
@@ -299,5 +319,62 @@ dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback)
   EXPECT_TRUE(
       RunSource(*context, host, "print('initialization budget is separate')")
           .success);
+}
+
+TEST(PythonDocumentContextTest,
+     ForwardsAnimationTimestampAndOneShotConsumption) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  ASSERT_TRUE(RunSource(*context, host, R"PY(
+import animation, dom
+target = dom.get_element_by_id('result')
+def frame(timestamp):
+    assert type(timestamp) is float
+    dom.set_text(target, str(timestamp))
+    animation.request_frame(frame)
+request = animation.request_frame(frame)
+)PY")
+                  .success);
+  EXPECT_TRUE(context->CanInvokeFrameCallback());
+  const auto first = host.TakeFrame();
+  auto result = context->InvokeFrameCallback(first, 123.5, host);
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ("123.5", host.value);
+  EXPECT_GT(host.frame.id, first.id);
+  EXPECT_FALSE(context->InvokeFrameCallback(first, 456, host).success);
+  result = RunSource(*context, host, "animation.cancel_frame(request)");
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_NE(0u, host.frame.id);
+  EXPECT_EQ(1, host.frame_cancels);
+  result = context->InvokeFrameCallback(host.TakeFrame(), 456, host);
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ("456.0", host.value);
+}
+
+TEST(PythonDocumentContextTest, AnimationCancelAndErrorsUsePublicHostContract) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import animation
+request = animation.request_frame(lambda timestamp: None)
+animation.cancel_frame(request)
+animation.cancel_frame(request)
+)PY");
+  ASSERT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_FALSE(host.frame.id);
+  EXPECT_EQ(2, host.frame_cancels);
+  EXPECT_FALSE(context->InvokeFrameCallback(host.last_frame, 1, host).success);
+  for (auto failure :
+       {WebPythonDomError::kReference, WebPythonDomError::kNotAllowed,
+        WebPythonDomError::kLimit, WebPythonDomError::kState}) {
+    host.failure = failure;
+    result = RunSource(*context, host,
+                       "animation.request_frame(lambda timestamp: None)");
+    EXPECT_FALSE(result.success);
+    EXPECT_FALSE(result.stopped);
+    EXPECT_NE(std::string::npos,
+              result.error.Utf8().find("host frame failure"));
+    EXPECT_FALSE(host.frame.id);
+  }
 }
 }  // namespace

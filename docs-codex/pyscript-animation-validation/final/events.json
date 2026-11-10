@@ -1,0 +1,298 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:55443",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Trusted mouse and keyboard clicks share Python state",
+      "passed": true,
+      "elapsedMs": 507,
+      "detail": {
+        "mouse": "trusted",
+        "keyboard": "trusted",
+        "script": "untrusted"
+      }
+    },
+    {
+      "name": "Callbacks share globals across blocks and retain closure state",
+      "passed": true,
+      "elapsedMs": 855
+    },
+    {
+      "name": "Returning False does not cancel the native checkbox default action",
+      "passed": true,
+      "elapsedMs": 434
+    },
+    {
+      "name": "Restricted child frames cannot initialize Python click listeners",
+      "passed": true,
+      "elapsedMs": 491
+    },
+    {
+      "name": "Nonce CSP sample uses no JavaScript and survives source removal",
+      "passed": true,
+      "elapsedMs": 507
+    },
+    {
+      "name": "Duplicate registrations remain independent after handles are dropped",
+      "passed": true,
+      "elapsedMs": 342
+    },
+    {
+      "name": "Once consumes registration even when Python raises",
+      "passed": true,
+      "elapsedMs": 286
+    },
+    {
+      "name": "Self removal skips later listener and additions wait until next click",
+      "passed": true,
+      "elapsedMs": 316
+    },
+    {
+      "name": "Ordinary exceptions retain listeners and include callback source",
+      "passed": true,
+      "elapsedMs": 332,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:55443/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794307162798.138,
+          "url": "http://127.0.0.1:55443/error",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:55443/error#pyscript-1, line 8, in callback\nValueError: ordinary-click-error",
+          "timestamp": 1794307162805.138,
+          "url": "http://127.0.0.1:55443/error",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Disconnected nodes skip and reconnection resumes without id transfer",
+      "passed": true,
+      "elapsedMs": 316
+    },
+    {
+      "name": "Native subscriptions and source metadata do not retain detached DOM nodes",
+      "passed": true,
+      "elapsedMs": 351
+    },
+    {
+      "name": "Adopting subscribed node into another document cannot run old Python",
+      "passed": true,
+      "elapsedMs": 331
+    },
+    {
+      "name": "Post-registration Shadow DOM and customized built-in are rejected",
+      "passed": true,
+      "elapsedMs": 288
+    },
+    {
+      "name": "New CSP blocks existing callbacks using original source snapshot",
+      "passed": true,
+      "elapsedMs": 301
+    },
+    {
+      "name": "Callback-created subscriptions inherit the correct source authorization",
+      "passed": true,
+      "elapsedMs": 327
+    },
+    {
+      "name": "Disabling page script execution blocks existing callbacks",
+      "passed": true,
+      "elapsedMs": 323
+    },
+    {
+      "name": "Registration rejects SVG, custom elements, customized built-ins and shadow nodes",
+      "passed": true,
+      "elapsedMs": 286
+    },
+    {
+      "name": "Fatal callback timeout revokes document listeners",
+      "passed": true,
+      "elapsedMs": 363
+    },
+    {
+      "name": "Reload creates fresh callback state and navigation drops old listeners",
+      "passed": true,
+      "elapsedMs": 839
+    },
+    {
+      "name": "History navigation excludes active listeners from BFCache and creates fresh state",
+      "passed": true,
+      "elapsedMs": 882,
+      "detail": {
+        "loaderId": "7F9D1B8E73BEA2C237973477AA3EDA20",
+        "frameId": "E9D197E685012B97C5B5BCA7D90C4FA3",
+        "notRestoredExplanations": [
+          {
+            "type": "SupportPending",
+            "reason": "Unknown"
+          },
+          {
+            "type": "Circumstantial",
+            "reason": "BrowsingInstanceNotSwapped"
+          }
+        ],
+        "notRestoredExplanationsTree": {
+          "url": "http://127.0.0.1:55443/counter",
+          "explanations": [
+            {
+              "type": "SupportPending",
+              "reason": "Unknown"
+            },
+            {
+              "type": "Circumstantial",
+              "reason": "BrowsingInstanceNotSwapped"
+            }
+          ],
+          "children": []
+        }
+      }
+    },
+    {
+      "name": "Window pressure preserves once, drops skipped clicks and recovers after idle",
+      "passed": true,
+      "elapsedMs": 1482,
+      "detail": {
+        "payloadBytes": 30720,
+        "skippedWarningCount": 1
+      }
+    },
+    {
+      "name": "Sustained clicks use event DOM budgets across initialization lifetime limits",
+      "passed": true,
+      "elapsedMs": 3310,
+      "detail": {
+        "callbacks": 24,
+        "eventDomCalls": 1560
+      }
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-dom-stop",
+      "passed": true,
+      "elapsedMs": 1465
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-output-stop",
+      "passed": true,
+      "elapsedMs": 1445
+    },
+    {
+      "name": "Fatal callback resource limit revokes all subscriptions: /event-diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1406
+    },
+    {
+      "name": "Callback return-value finalizers have no DOM capability",
+      "passed": true,
+      "elapsedMs": 319
+    },
+    {
+      "name": "Fragment navigation retains listeners without repeating initialization",
+      "passed": true,
+      "elapsedMs": 445
+    },
+    {
+      "name": "document.open revokes listeners on retained old nodes",
+      "passed": true,
+      "elapsedMs": 440
+    },
+    {
+      "name": "Unrestricted callbacks honor the page policy override after registration",
+      "passed": true,
+      "elapsedMs": 467
+    },
+    {
+      "name": "Simultaneous unrestricted child frames keep independent closure state",
+      "passed": true,
+      "elapsedMs": 955
+    },
+    {
+      "name": "Prerender never initializes or defers Python listeners even in unrestricted mode",
+      "passed": true,
+      "elapsedMs": 929,
+      "detail": {
+        "prerenderTargetObserved": true,
+        "initializedBeforeActivation": false,
+        "deferredAfterActivation": false,
+        "activationStart": 224
+      }
+    },
+    {
+      "name": "Removing an unrestricted child frame revokes retained nodes and isolates its replacement",
+      "passed": true,
+      "elapsedMs": 689
+    },
+    {
+      "name": "Child document.open revokes callbacks before a new document is written",
+      "passed": true,
+      "elapsedMs": 413
+    },
+    {
+      "name": "Browser shuts down normally with active Python listeners",
+      "passed": true,
+      "elapsedMs": 889,
+      "detail": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "unrestrictedLifecycleTested": true,
+  "passed": true,
+  "requests": [
+    "/counter",
+    "/favicon.ico",
+    "/closure",
+    "/closure",
+    "/default-action",
+    "/iframe-parent",
+    "/counter",
+    "/sample",
+    "/duplicates",
+    "/once",
+    "/order",
+    "/error",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/provenance",
+    "/counter",
+    "/reject",
+    "/timeout",
+    "/counter",
+    "/counter",
+    "/other",
+    "/counter",
+    "/other",
+    "/event-window",
+    "/event-dom",
+    "/event-dom-stop",
+    "/event-output-stop",
+    "/event-diagnostic-stop",
+    "/event-finalizer",
+    "/counter",
+    "/counter",
+    "/counter",
+    "/favicon.ico",
+    "/iframe-parent",
+    "/counter",
+    "/closure",
+    "/closure",
+    "/prerender-host",
+    "/prerender",
+    "/iframe-parent",
+    "/counter",
+    "/counter",
+    "/iframe-parent",
+    "/counter",
+    "/counter"
+  ]
+}

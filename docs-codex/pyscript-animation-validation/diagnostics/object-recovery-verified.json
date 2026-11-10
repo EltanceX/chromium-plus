@@ -1,0 +1,55 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/computed_style_css_value_mapping.obj",
+    "originalSha256": "00de6da36b178cb326aa082a366b488d36d938ced78903560c96c0afa716f801",
+    "size": 7782666,
+    "mtimeNs": 1794118984878526500,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x58000e (length 29992, kind 0xc7c5)"
+    ],
+    "rebuiltSha256": "7febee55fc62e59fe13a3bb7ab5def4ff051d5bbcbb33b9d08f4b6d193298e54",
+    "rebuiltProblems": []
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_to_length_conversion_data.obj",
+    "originalSha256": "350d2e53bbb7511deb36b247ee6fb187db920794512106fa7174f9926b40d114",
+    "size": 7450539,
+    "mtimeNs": 1794143819628058300,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 819: relocation 5 has invalid symbol 33284 or type 33608",
+      "Section 820: invalid raw data extent",
+      "Section 820: invalid relocation extent",
+      "Section 821: invalid raw data extent",
+      "Section 821: invalid relocation extent"
+    ],
+    "rebuiltSha256": "16aea9125530b8234704dcb530e6e386ffb29bb8fd2a93e0c02b04e45d566eb7",
+    "rebuiltProblems": []
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/display_lock_context.obj",
+    "originalSha256": "e70d891f0b976d6e56f4f01637d5291b417daefffa3e5b645526073e4f25fcc7",
+    "size": 12022546,
+    "mtimeNs": 1794144245296558900,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Unexpected COFF machine e288",
+      "Invalid string table offset"
+    ],
+    "rebuiltSha256": "8af35aa13dc9202fb92f5d831cc1000c79dc0d6d0f94e6c5d23508e46d5f9c78",
+    "rebuiltProblems": []
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/window_event_context.obj",
+    "originalSha256": "fb7e3085b418ca785b77420bb4eec752c5a9811b6fa4e284c2dd027352b33ccd",
+    "size": 2187915,
+    "mtimeNs": 1794146042002672500,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0xf600f (length 14584, kind 0xcf1d)"
+    ],
+    "rebuiltSha256": "3e2fd9c875f2fe8799dcfc5709c0ae39e3312a55d6347924b26e8ba81545a91f",
+    "rebuiltProblems": []
+  }
+]

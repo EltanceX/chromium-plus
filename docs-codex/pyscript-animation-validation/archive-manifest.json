@@ -1,0 +1,428 @@
+[
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\adapter.json",
+    "archive": "final/adapter.json",
+    "sourceSha256": "db9216fe90ec4e9a0f492af5998e5c6152270c5b22fb617d792579e2b48ee199",
+    "archiveSha256": "db9216fe90ec4e9a0f492af5998e5c6152270c5b22fb617d792579e2b48ee199"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\adapter.log",
+    "archive": "final/adapter.log",
+    "sourceSha256": "06244d66850549833b2b8764663c97213973af370d3b2120cabee7cba75f1afd",
+    "archiveSha256": "29a9b92699a25edaa0cdeb166113f970b63efec8577075b0ded1041fe1b264f5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\animation.json",
+    "archive": "final/animation.json",
+    "sourceSha256": "29d2e9aa023f16e8ad322063e7bb96774e80767e0cfc8faf01e69468e6f4f5bc",
+    "archiveSha256": "29d2e9aa023f16e8ad322063e7bb96774e80767e0cfc8faf01e69468e6f4f5bc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\animation.json.chrome.log",
+    "archive": "final/animation.json.chrome.log",
+    "sourceSha256": "27f8c5f50233f65cf2c67aad42bf0d1a0bf3a5398d021271efd47158e9c6b85a",
+    "archiveSha256": "e97288d9d22695ea76e0b7c1ed399660a443b640c1457d6bb1ab3e193f96d6d8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\animation.json.sample.png",
+    "archive": "final/animation.json.sample.png",
+    "sourceSha256": "a240c9f0892baefa3c843fb8367a2c7cf121eecce3dab345c97a15ff6dac7548",
+    "archiveSha256": "a240c9f0892baefa3c843fb8367a2c7cf121eecce3dab345c97a15ff6dac7548"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\animation.log",
+    "archive": "final/animation.log",
+    "sourceSha256": "53abd395130459ae575e66be595bd94fd35eb626c8c04aa3615a1b3bd70cb52d",
+    "archiveSha256": "53abd395130459ae575e66be595bd94fd35eb626c8c04aa3615a1b3bd70cb52d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\blink.json",
+    "archive": "final/blink.json",
+    "sourceSha256": "6a5e2ffbbc40879762c29afeece123088b5c2d0b13dde1e81755e9ef5d2cabbb",
+    "archiveSha256": "6a5e2ffbbc40879762c29afeece123088b5c2d0b13dde1e81755e9ef5d2cabbb"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\blink.log",
+    "archive": "final/blink.log",
+    "sourceSha256": "1ff316d9fdd5fb8aa9d69227af7e20651e167879f62c50267021ea20c43d5350",
+    "archiveSha256": "1e09418c27a707c572f03e028818be810595417fd47088be9a260728911b0993"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\build.log",
+    "archive": "final/build.log",
+    "sourceSha256": "5bc62a073faa62316ed0083945c56c46351ef000d000b184d557d1292c9ca8da",
+    "archiveSha256": "a0eb0d86041a41e681157e5c787453f0c0af434a9316f920b299d36464c924bd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\csp.json",
+    "archive": "final/csp.json",
+    "sourceSha256": "fda82ed61018e46b8cfb2877c12289f8a2d686c329c79e2e2591bdf927dee4bf",
+    "archiveSha256": "fda82ed61018e46b8cfb2877c12289f8a2d686c329c79e2e2591bdf927dee4bf"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\csp.log",
+    "archive": "final/csp.log",
+    "sourceSha256": "b0464f5f32e7e658ce22fd3399a72c32a174a4d2079c247f2d64756ddce4a981",
+    "archiveSha256": "177dfff9db9f943afd94dfab0237e748a3dc9a9272882e0dab40ccb1d41f436d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\dom.json",
+    "archive": "final/dom.json",
+    "sourceSha256": "64964e94233f16790c23eb0afc7ed08ee176b07ed4844e7bf92a403b93f6874d",
+    "archiveSha256": "64964e94233f16790c23eb0afc7ed08ee176b07ed4844e7bf92a403b93f6874d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\dom.json.chrome.log",
+    "archive": "final/dom.json.chrome.log",
+    "sourceSha256": "acb211372c0cb73465a786d589d418acaf77c336eefa0b89195eef518ad11594",
+    "archiveSha256": "b4d2fee4e64d88a8f458940536318f09e8776567f85a5845c56807d52e96fb79"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\dom.json.sample.png",
+    "archive": "final/dom.json.sample.png",
+    "sourceSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+    "archiveSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\dom.log",
+    "archive": "final/dom.log",
+    "sourceSha256": "b7b163f0a57b2f09c0bac83b4295dfec8a6f0ee621254da902156d13fe82bb05",
+    "archiveSha256": "b7b163f0a57b2f09c0bac83b4295dfec8a6f0ee621254da902156d13fe82bb05"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\events.json",
+    "archive": "final/events.json",
+    "sourceSha256": "c39ed3747e049485d0f1cdf2b44caa115c9599c4a40b692c05dec05fbdc1808f",
+    "archiveSha256": "c39ed3747e049485d0f1cdf2b44caa115c9599c4a40b692c05dec05fbdc1808f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\events.json.chrome.log",
+    "archive": "final/events.json.chrome.log",
+    "sourceSha256": "32f469326627f1607a96aa5fd7e9ef4bf398bb662a5065dc6666040768b7b05f",
+    "archiveSha256": "120245922549bff20f2b7e8952ae6faab06cbe86ffb4fa371228a4ae08234134"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\events.json.sample.png",
+    "archive": "final/events.json.sample.png",
+    "sourceSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+    "archiveSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\events.log",
+    "archive": "final/events.log",
+    "sourceSha256": "8ffe4ba2ae1cb40f619b3b24b2d106abeeec0105baf0b7ac60abcc90a2c14dd7",
+    "archiveSha256": "8ffe4ba2ae1cb40f619b3b24b2d106abeeec0105baf0b7ac60abcc90a2c14dd7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json",
+    "archive": "final/parser.json",
+    "sourceSha256": "20dc22955f023d2a04c46017feac27a4b8ee4e29c9453e67b00a4a126e4c9ec2",
+    "archiveSha256": "20dc22955f023d2a04c46017feac27a4b8ee4e29c9453e67b00a4a126e4c9ec2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.default-off.chrome.log",
+    "archive": "final/parser.json.default-off.chrome.log",
+    "sourceSha256": "48c27798018e42f8592faa1979827712cc94e0f09e272ee631652d2514a94120",
+    "archiveSha256": "91dbd80894e667b7d5837cabd8d74bb4e76533dfbdfc7d32b9b817a2c1ea213f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.enabled.chrome.log",
+    "archive": "final/parser.json.enabled.chrome.log",
+    "sourceSha256": "2f7462494871ffc308b44254fd68a9c6182c4462f576b204fe5cd3f652fd3c92",
+    "archiveSha256": "ab53b5865854db71f3bc3334ac32eff813410d47196e3510bca37c982b3d1159"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.malformed-origin.chrome.log",
+    "archive": "final/parser.json.malformed-origin.chrome.log",
+    "sourceSha256": "5f4cf2496526e382e42c68439dbfda6671d2989e8e7b9190ad4d3225ac3a6685",
+    "archiveSha256": "a3c73b608f8c7258d8d2f70b228e3dbe5ed94fb91efcaadb520d1eef7cd0e9df"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.missing-origin.chrome.log",
+    "archive": "final/parser.json.missing-origin.chrome.log",
+    "sourceSha256": "85d212d586ea70517b3e01201b48369d5a7b78bed768c1488d92a0df29404d5d",
+    "archiveSha256": "2080121b2e1aff54c541d3010a455872cb5bc142fcfb7e7b104cab32977a2ff6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.non-loopback-origin.chrome.log",
+    "archive": "final/parser.json.non-loopback-origin.chrome.log",
+    "sourceSha256": "edb60455a982b061f751886cdfd79f0b494cc504113195c97d03da004f383dc5",
+    "archiveSha256": "a7c826e45c63a230942fbc44285866194a6a02ffb32269a1dd3cce22b37b6544"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.json.wrong-origin.chrome.log",
+    "archive": "final/parser.json.wrong-origin.chrome.log",
+    "sourceSha256": "19a8da81827c26a525b1a9d91405bc4c13b054287f1b27d92a293d5cbf4ee3db",
+    "archiveSha256": "a3b76ed9b3d2f125e10f4feb548a79ade4e9f51de0a97fd4f02a40ab8950d213"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\parser.log",
+    "archive": "final/parser.log",
+    "sourceSha256": "e083d7439a512b2701ecc1add78afdc1b1e7ded1b7d41dd3714e1956463eeaf7",
+    "archiveSha256": "e083d7439a512b2701ecc1add78afdc1b1e7ded1b7d41dd3714e1956463eeaf7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\runtime.json",
+    "archive": "final/runtime.json",
+    "sourceSha256": "ee6b6dff7cadcfcd12efe97734e35821859ea49d3d5253f9d892bb1ce48f3db7",
+    "archiveSha256": "ee6b6dff7cadcfcd12efe97734e35821859ea49d3d5253f9d892bb1ce48f3db7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\runtime.log",
+    "archive": "final/runtime.log",
+    "sourceSha256": "728ea63c0684b0f79b7cf2532044bebeb2a47f885d9443bb194e374a139bbf84",
+    "archiveSha256": "4ac5eb2ca6832bc9994af2c5d27b63db5881fbe1d03606c0fd1b49db7e3c04df"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json",
+    "archive": "final/settings-browser.json",
+    "sourceSha256": "5757dfb48b9ec2af1967004a30a2d84ce640a14950fc36a1ea3b7863005548ff",
+    "archiveSha256": "5757dfb48b9ec2af1967004a30a2d84ce640a14950fc36a1ea3b7863005548ff"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json.launch-1.chrome.log",
+    "archive": "final/settings-browser.json.launch-1.chrome.log",
+    "sourceSha256": "49b3f304074080a93c8cf3deb1ffcbf69952b35a7ecae8b41dfb3f17f206050a",
+    "archiveSha256": "6e1407d6bdd13399fb94138e42447d7550d05ece8d63510ded4f5b017d014449"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json.launch-2.chrome.log",
+    "archive": "final/settings-browser.json.launch-2.chrome.log",
+    "sourceSha256": "a20042a9f58afa33bafef586f5f4a4421152df89590cbd53b14558865666c2c4",
+    "archiveSha256": "9c259782eb17d1aaa55ebda8b9022c4682d4f33ed299e160841246f90ae176b5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json.launch-3.chrome.log",
+    "archive": "final/settings-browser.json.launch-3.chrome.log",
+    "sourceSha256": "58a354400a19d8dacee7aba6c7498bf88551e6e8f44bc9689f69a015e25c462a",
+    "archiveSha256": "983ca7e2b4671aedaed3a544cefa01f8a5798b9140c828693ca3bab7100f6214"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json.launch-4.chrome.log",
+    "archive": "final/settings-browser.json.launch-4.chrome.log",
+    "sourceSha256": "26e640ceeb502e543ee304abcb659f725b1c7a60532ee5bf20595b8bd8afd320",
+    "archiveSha256": "69893c028eb72d8f248c8b47672760788ac68daa589d0f7b232c0d6f3c37aa6e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json.settings.png",
+    "archive": "final/settings-browser.json.settings.png",
+    "sourceSha256": "2b930e63dcfc75665df54489f74aa1882c546eab9a9b2d8adb6e3b1a00c63e7c",
+    "archiveSha256": "2b930e63dcfc75665df54489f74aa1882c546eab9a9b2d8adb6e3b1a00c63e7c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.log",
+    "archive": "final/settings-browser.log",
+    "sourceSha256": "757e5a7464ddf9ec118eba4ee572f0ae98f3fa58d6af88638f85414d70c008ed",
+    "archiveSha256": "757e5a7464ddf9ec118eba4ee572f0ae98f3fa58d6af88638f85414d70c008ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-unit.json",
+    "archive": "final/settings-unit.json",
+    "sourceSha256": "d3a27c366464f7b2491f0760d92d57a438bb35ca031bb9585822fd19749bc28e",
+    "archiveSha256": "d3a27c366464f7b2491f0760d92d57a438bb35ca031bb9585822fd19749bc28e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\settings-unit.log",
+    "archive": "final/settings-unit.log",
+    "sourceSha256": "97a978e41cb6eef03df7501acc5b1b701bbd1a1ae58d7354199aad4f2261d20e",
+    "archiveSha256": "a485526029c2a035a1dc9cb6a658d6744e68158815d600241941968bc766c2c4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final\\summary.json",
+    "archive": "final/summary.json",
+    "sourceSha256": "6025fb39877ed7581b3cff0882872d1176dbdd243ba02604eb3d0363eba081c0",
+    "archiveSha256": "6025fb39877ed7581b3cff0882872d1176dbdd243ba02604eb3d0363eba081c0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt1-blink_core.dll.rsp",
+    "archive": "diagnostics/attempt1-blink_core.dll.rsp",
+    "sourceSha256": "e294ed57b9c1920d6211cf36cb23d0dbf401c0f5cbf38588ae907759be60b023",
+    "archiveSha256": "e1783f8498138b877165087d44f7f10e4d0579170f2f42f1d8a7fb08e3a8793f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt1-failed-commands.bat",
+    "archive": "diagnostics/attempt1-failed-commands.bat",
+    "sourceSha256": "3c1480ac045322c25d3cd8940518ad38e417da7a5f5ad4bdca01d62718767fd6",
+    "archiveSha256": "6f459028043619d09397e40a6d4001413a44850432948a9cd2b3d46c86705a55"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt1-siso-output",
+    "archive": "diagnostics/attempt1-siso-output",
+    "sourceSha256": "1990f0f2552ebb5664af9fc8d2a241be3dea762b1b203374e1d27cc52be17cf0",
+    "archiveSha256": "533fc25a5235a5e8928eaa95c8e765aed022121d2d9068c6f8062fac6ad4c4b6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt1-blink_core.dll-scan.json",
+    "archive": "diagnostics/attempt1-blink_core.dll-scan.json",
+    "sourceSha256": "07172ef768186c31d68cb505da0b3cbde71df5151f7ea59020f20a56d7281275",
+    "archiveSha256": "af62be59ef0e0abb6692ba1967ebcd19d0823ff26ea70028461dfdca076d36c5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt1-object-recovery.json",
+    "archive": "diagnostics/attempt1-object-recovery.json",
+    "sourceSha256": "c96fb681d801e364717c8b31840b91c695636e38dcac79fcacc934c93f4c276a",
+    "archiveSha256": "97d0fa1aa70b6c58950ec8d2a1d8040c11bd84d1d1305ab426c0061cac06606f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\object-recovery-verified.json",
+    "archive": "diagnostics/object-recovery-verified.json",
+    "sourceSha256": "43b02525f8ff977a5491960cffb8b608690b474c7acce8084bc07dead399e6aa",
+    "archiveSha256": "43b02525f8ff977a5491960cffb8b608690b474c7acce8084bc07dead399e6aa"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt2-build.log",
+    "archive": "diagnostics/attempt2-build.log",
+    "sourceSha256": "af1a83d6c5b6b6f4e3088bb42fae156918fe7cb4a2f32461745f0568f28dc456",
+    "archiveSha256": "70054767685e319ffa0cfa7cf2393a833d620738f5d6c4c81061f704de40b3af"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\attempt3-build.log",
+    "archive": "diagnostics/attempt3-build.log",
+    "sourceSha256": "7a5aae03d3a9b56f6c0af43ea6479da814e34279c287c9df73c6fa12c8658b81",
+    "archiveSha256": "e8a721fafd59cde1e2ff274c4bcd38ab2f764fa26e3af4e012fd1aee5965a5c0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\final-run.log",
+    "archive": "diagnostics/final-run.log",
+    "sourceSha256": "b58efd597b113456eee6c54611edab3a2ba936629797ee3e01bcee995e7fc262",
+    "archiveSha256": "2a8dad0297ff0af28e9f90846e3fd68eb85fec1ca46977cf856e2737f0db5f8f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\checkdeps-runtime.log",
+    "archive": "diagnostics/checkdeps-runtime.log",
+    "sourceSha256": "2e882b0e6fdc7b66f3574d976ac144a13c0842786b107268ca3f270f9a1a1037",
+    "archiveSha256": "fc268d298071252dfee477d7803af1d4a1c9d8577c6c349d07a8c13f3dfe2556"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\checkdeps-adapter.log",
+    "archive": "diagnostics/checkdeps-adapter.log",
+    "sourceSha256": "b926fc4971b0702b4ba9949eac1d72e6626eb6505a5d81cd07a68a67c70027c6",
+    "archiveSha256": "d24f575fe7b0bd6d0b57eae676a7fb57ddde168959e388fdad0bccf5878e3978"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\checkdeps-adapter-test.log",
+    "archive": "diagnostics/checkdeps-adapter-test.log",
+    "sourceSha256": "c7ee1b7fc81abba61143a60a11b6e052e5db5813686b6a661d2fd7c72955992e",
+    "archiveSha256": "e1897ad48a3df03668f246f30dd027c00b5c19f795542e7b1d9fab744b287485"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\checkdeps-blink.log",
+    "archive": "diagnostics/checkdeps-blink.log",
+    "sourceSha256": "2ad4fab5e2c0be1899f4ff4392c43334d41adbcb3bf9cf2675ad3d25c9e792bc",
+    "archiveSha256": "0dd1fc77417a9da0b84a07a1d967fd5d48fdf8a643babc892c2d66396928b703"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\checkdeps-blink-test.log",
+    "archive": "diagnostics/checkdeps-blink-test.log",
+    "sourceSha256": "1834b46154d462ddc0be41978acfe5236d85717766cd935f50df5c161eae8472",
+    "archiveSha256": "2968ef0acabb0ac6de53dbef88300520775052bf7cf8b67f0bc859d8def88c3b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\gn-runtime.log",
+    "archive": "diagnostics/gn-runtime.log",
+    "sourceSha256": "354a60a388b606aab95bc4f08b81d98df4199e65e17bca6554cf3bd91103dc8a",
+    "archiveSha256": "758efd67ba4374faadfea3be2227cf65809c7c37f9e1e304dda137f152db50ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\gn-adapter-final.log",
+    "archive": "diagnostics/gn-adapter-final.log",
+    "sourceSha256": "354a60a388b606aab95bc4f08b81d98df4199e65e17bca6554cf3bd91103dc8a",
+    "archiveSha256": "758efd67ba4374faadfea3be2227cf65809c7c37f9e1e304dda137f152db50ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\gn-blink.log",
+    "archive": "diagnostics/gn-blink.log",
+    "sourceSha256": "354a60a388b606aab95bc4f08b81d98df4199e65e17bca6554cf3bd91103dc8a",
+    "archiveSha256": "758efd67ba4374faadfea3be2227cf65809c7c37f9e1e304dda137f152db50ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\clang-format.log",
+    "archive": "diagnostics/clang-format.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\yapf.log",
+    "archive": "diagnostics/yapf.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe1.json",
+    "archive": "diagnostics/animation-probe1.json",
+    "sourceSha256": "ba7c45befbf001d764f76607309649ad29acf5d463cbb2459f26e4815d1c5cc8",
+    "archiveSha256": "ba7c45befbf001d764f76607309649ad29acf5d463cbb2459f26e4815d1c5cc8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe1.log",
+    "archive": "diagnostics/animation-probe1.log",
+    "sourceSha256": "13a700369eee45df44119286908d9127b163ee605f75c3b3c983ecc2ddbb1243",
+    "archiveSha256": "4c3474d0e9fe854489ee5299bd34fd88d7bfb6ea6455f174f1539c5b1d645a4f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe2.json",
+    "archive": "diagnostics/animation-probe2.json",
+    "sourceSha256": "1aa8c6fb9644d7a166030958f8572c4ad7cdfaabb0e4dc729f3f4cc97e4e3556",
+    "archiveSha256": "1aa8c6fb9644d7a166030958f8572c4ad7cdfaabb0e4dc729f3f4cc97e4e3556"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe2.log",
+    "archive": "diagnostics/animation-probe2.log",
+    "sourceSha256": "244640148d75e609ede2b8c83f55f89bb007b9f47f3db3fb033614561f681931",
+    "archiveSha256": "590bb73e93dc402f3bc11c778ec3d965b6d7307a3d06ea5d3839a5c5c097a018"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe3.json",
+    "archive": "diagnostics/animation-probe3.json",
+    "sourceSha256": "c0d1d3d695652c5ae96ddf8bcbacd0ae87b60c6e9f5a0cd088ad8ee701dc1bd8",
+    "archiveSha256": "c0d1d3d695652c5ae96ddf8bcbacd0ae87b60c6e9f5a0cd088ad8ee701dc1bd8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe3.log",
+    "archive": "diagnostics/animation-probe3.log",
+    "sourceSha256": "cd51844e544f2bbbd301c274b90ed814e6543a4207e8d486063eaf37a7050c67",
+    "archiveSha256": "f3de14c3e0de27cb1b74160d8c5546af9936c8f38ebbb7715318375f53110d08"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe4.json",
+    "archive": "diagnostics/animation-probe4.json",
+    "sourceSha256": "bec5ae8c9d62a4471240502fae6de9ac1b12c7a4dbf31bed30b4986ab318d65e",
+    "archiveSha256": "bec5ae8c9d62a4471240502fae6de9ac1b12c7a4dbf31bed30b4986ab318d65e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe4.log",
+    "archive": "diagnostics/animation-probe4.log",
+    "sourceSha256": "d1687359f424066ed8f404fe965793d457ec78925ffed0bdbd50e039f8e5ff2f",
+    "archiveSha256": "216fafdf5179c2c319636235fb49c9387ab6a9cd11141d6a1a04dd090c8071df"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe5.json",
+    "archive": "diagnostics/animation-probe5.json",
+    "sourceSha256": "b2dddd6082cfa142f81b7c4639305c616397e65ebf5dc07fa6b8ceaddbed5721",
+    "archiveSha256": "b2dddd6082cfa142f81b7c4639305c616397e65ebf5dc07fa6b8ceaddbed5721"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe5.log",
+    "archive": "diagnostics/animation-probe5.log",
+    "sourceSha256": "5b6b063805fc9878a9b69e0e9a89f22c58d96c699e82197b40aa77bf1e6b4599",
+    "archiveSha256": "d5ab97551328d0d8c4267467e7d299dd7c3e3b197bfe488f02c5363c47f1889c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe6.json",
+    "archive": "diagnostics/animation-probe6.json",
+    "sourceSha256": "84643d65ec2258ebda85d7670e7f14bc071c8bf5ccc4521d037418409cb4db6e",
+    "archiveSha256": "84643d65ec2258ebda85d7670e7f14bc071c8bf5ccc4521d037418409cb4db6e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-phase1\\animation-probe6.log",
+    "archive": "diagnostics/animation-probe6.log",
+    "sourceSha256": "07205deb11b8299f2325f941c47e107b7764e584e6de7e4e6d0c2da8eb175b9c",
+    "archiveSha256": "cd530e67a0810f4015f24801388e0141649f97cd807d1b7b9844ffff0c172fb4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-animation-runtime-probe.json",
+    "archive": "diagnostics/runtime-probe1.json",
+    "sourceSha256": "9fbe4650ff93f97e28597c4f7bbba872d9b82cf87b09a09956d363fff39241ad",
+    "archiveSha256": "d84e4792fb8fdc1bd71ef2d1a51d44f448ac573c2a130294fe042fb2be7af0e4"
+  }
+]

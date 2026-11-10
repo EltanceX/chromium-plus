@@ -1,0 +1,62 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:61727",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only nonce sample updates and cancels native frames",
+      "passed": true,
+      "elapsedMs": 2239,
+      "detail": {
+        "first": [
+          10,
+          1370
+        ],
+        "second": [
+          26,
+          1636
+        ],
+        "stopped": "27:1653"
+      }
+    },
+    {
+      "name": "Duplicate, repeated cancellation and consumed handles preserve next frame",
+      "passed": true,
+      "elapsedMs": 570
+    },
+    {
+      "name": "One-shot errors consume the old request and allow a new request",
+      "passed": true,
+      "elapsedMs": 451
+    },
+    {
+      "name": "A next frame requested before an ordinary error survives",
+      "passed": true,
+      "elapsedMs": 287
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /timeout",
+      "passed": true,
+      "elapsedMs": 1401,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306385450.546,
+          "url": "http://127.0.0.1:61727/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /dom-stop",
+      "passed": false,
+      "elapsedMs": 30284,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:147:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:293:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:234:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:291:5"
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:147:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:293:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:234:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:291:5"
+}

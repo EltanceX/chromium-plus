@@ -1,0 +1,41 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = NativePythonSettingsTest.DefaultsDoNotEnableOrRelaxPython:NativePythonSettingsTest.SavedRestrictedOriginIsCanonicalAndValidated:NativePythonSettingsTest.UnrestrictedModeRequiresInterpreterEnabled:NativePythonSettingsTest.CommandLineOriginAndDisableOverridePreferences:NativePythonSettingsTest.ExistingCommandLineOptInStillWorks:NativePythonSettingsTest.SnapshotChangesOnlyAfterInitialization:NativePythonSettingsTest.ChildSwitchesPreserveFeaturesAndSandbox:NativePythonSettingsTest.InvalidMessageDoesNotPartiallyWritePrefs
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from NativePythonSettingsTest
+[ RUN      ] NativePythonSettingsTest.DefaultsDoNotEnableOrRelaxPython
+[       OK ] NativePythonSettingsTest.DefaultsDoNotEnableOrRelaxPython (0 ms)
+[ RUN      ] NativePythonSettingsTest.SavedRestrictedOriginIsCanonicalAndValidated
+[       OK ] NativePythonSettingsTest.SavedRestrictedOriginIsCanonicalAndValidated (0 ms)
+[ RUN      ] NativePythonSettingsTest.UnrestrictedModeRequiresInterpreterEnabled
+[       OK ] NativePythonSettingsTest.UnrestrictedModeRequiresInterpreterEnabled (0 ms)
+[ RUN      ] NativePythonSettingsTest.CommandLineOriginAndDisableOverridePreferences
+[       OK ] NativePythonSettingsTest.CommandLineOriginAndDisableOverridePreferences (0 ms)
+[ RUN      ] NativePythonSettingsTest.ExistingCommandLineOptInStillWorks
+[       OK ] NativePythonSettingsTest.ExistingCommandLineOptInStillWorks (0 ms)
+[ RUN      ] NativePythonSettingsTest.SnapshotChangesOnlyAfterInitialization
+[       OK ] NativePythonSettingsTest.SnapshotChangesOnlyAfterInitialization (0 ms)
+[ RUN      ] NativePythonSettingsTest.ChildSwitchesPreserveFeaturesAndSandbox
+[       OK ] NativePythonSettingsTest.ChildSwitchesPreserveFeaturesAndSandbox (0 ms)
+[ RUN      ] NativePythonSettingsTest.InvalidMessageDoesNotPartiallyWritePrefs
+[       OK ] NativePythonSettingsTest.InvalidMessageDoesNotPartiallyWritePrefs (0 ms)
+[----------] 8 tests from NativePythonSettingsTest (7 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 8 tests.
+[1/8] NativePythonSettingsTest.DefaultsDoNotEnableOrRelaxPython (0 ms)
+[2/8] NativePythonSettingsTest.SavedRestrictedOriginIsCanonicalAndValidated (0 ms)
+[3/8] NativePythonSettingsTest.UnrestrictedModeRequiresInterpreterEnabled (0 ms)
+[4/8] NativePythonSettingsTest.CommandLineOriginAndDisableOverridePreferences (0 ms)
+[5/8] NativePythonSettingsTest.ExistingCommandLineOptInStillWorks (0 ms)
+[6/8] NativePythonSettingsTest.SnapshotChangesOnlyAfterInitialization (0 ms)
+[7/8] NativePythonSettingsTest.ChildSwitchesPreserveFeaturesAndSandbox (0 ms)
+[8/8] NativePythonSettingsTest.InvalidMessageDoesNotPartiallyWritePrefs (0 ms)
+SUCCESS: all tests passed.
+Tests took 0 seconds.

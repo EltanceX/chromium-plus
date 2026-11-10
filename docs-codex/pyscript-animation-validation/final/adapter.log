@@ -1,0 +1,47 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface:PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime:PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent:PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations:PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation:PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover:PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock:PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted:PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption:PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[       OK ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (60 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[       OK ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (31 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[       OK ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (59 ms)
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+[       OK ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (155 ms)
+[ RUN      ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[       OK ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (29 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[       OK ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (30 ms)
+[ RUN      ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[       OK ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (30 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[       OK ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (27 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption
+[       OK ] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (26 ms)
+[ RUN      ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[       OK ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (26 ms)
+[----------] 10 tests from PythonDocumentContextTest (485 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (486 ms total)
+[  PASSED  ] 10 tests.
+[1/10] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (60 ms)
+[2/10] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (31 ms)
+[3/10] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (59 ms)
+[4/10] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (155 ms)
+[5/10] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (29 ms)
+[6/10] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (30 ms)
+[7/10] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (30 ms)
+[8/10] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (27 ms)
+[9/10] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (26 ms)
+[10/10] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (26 ms)
+SUCCESS: all tests passed.
+Tests took 0 seconds.

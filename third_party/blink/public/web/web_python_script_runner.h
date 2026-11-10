@@ -85,6 +85,9 @@ class WebPythonDomHost {
   // Must not execute script or Python. Not a page API or budgeted DOM call.
   virtual void RevokeEventListener(WebPythonDomHandle,
                                    WebPythonCallbackHandle) = 0;
+  virtual WebPythonDomResult RequestFrame(WebPythonCallbackHandle) = 0;
+  virtual WebPythonDomResult CancelFrame(WebPythonCallbackHandle) = 0;
+  virtual void RevokeFrame(WebPythonCallbackHandle) = 0;
 };
 
 // Owned by a Document controller. Destruction can execute Python finalizers and
@@ -107,6 +110,10 @@ class WebPythonScriptContext {
   // Probe immediately before consuming a native once listener. The caller
   // permits no intervening Python entry; idle time only frees capacity.
   virtual bool CanInvokeCallback() { return true; }
+  virtual bool CanInvokeFrameCallback() { return false; }
+  virtual WebPythonScriptResult InvokeFrameCallback(WebPythonCallbackHandle,
+                                                    double timestamp_ms,
+                                                    WebPythonDomHost&) = 0;
   // Registry mutation only, including consumption from an active host call.
   virtual WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) = 0;
 };
@@ -114,8 +121,9 @@ class WebPythonScriptContext {
 // Main-thread embedder interface for the private PythonScript experiment.
 // Blink checks document eligibility and, in restricted mode, script policy/CSP
 // before passing immutable sources.
-// One context uses one interpreter for the owning Document. It has no async
-// callbacks or JavaScript execution entry points.
+// One context uses one interpreter for the owning Document. Browser-scheduled
+// frame callbacks enter synchronously; no JavaScript execution entry is
+// exposed.
 class BLINK_EXPORT WebPythonScriptRunner {
  public:
   virtual ~WebPythonScriptRunner() = default;

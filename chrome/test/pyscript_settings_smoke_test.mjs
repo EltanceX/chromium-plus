@@ -212,6 +212,10 @@ try {
     const budgetText = await browser.evaluate(`${findPage}.shadowRoot.textContent`);
     assert.match(budgetText, /初始化预算：单块约 100 ms/);
     assert.match(budgetText, /每回调约 50 ms、输出 4 KiB、DOM 调用 128 次/);
+    assert.match(budgetText, /动画帧预算：每帧约 8 ms/);
+    assert.match(budgetText, /最近 1 秒帧执行累计约 200 ms/);
+    assert.match(budgetText, /点击与动画帧共享/);
+    assert.match(budgetText, /保留一个待执行帧至后续刷新，不补发旧帧/);
     assert.match(budgetText, /最近 1 秒累计约 250 ms/);
     assert.match(budgetText, /清理另有约 50 ms/);
     const defaults = await readSettings();

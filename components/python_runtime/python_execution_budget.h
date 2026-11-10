@@ -26,8 +26,9 @@ class ExecutionBudget {
  public:
   explicit ExecutionBudget(const base::TickClock* clock);
   ~ExecutionBudget();
-  bool Begin(DomHost* host, bool callback = false);
-  bool CanBeginCallback();
+  bool Begin(DomHost* host,
+             ExecutionKind kind = ExecutionKind::kInitialization);
+  bool CanBeginCallback(ExecutionKind kind = ExecutionKind::kCallback);
   void Finish();
   void BeginCleanup();
   bool Check();
@@ -59,17 +60,20 @@ class ExecutionBudget {
     base::TimeDelta time;
     size_t dom_calls = 0;
     size_t output_bytes = 0;
+    base::TimeDelta frame_time;
   };
   void ExpireEvents();
   std::deque<EventUsage> events_;
   base::TimeDelta event_time_;
+  base::TimeDelta frame_time_;
   size_t event_dom_calls_ = 0;
   size_t event_output_bytes_ = 0;
   size_t initialization_dom_calls_ = 0;
   size_t callback_dom_calls_ = 0;
   size_t callback_output_bytes_ = 0;
-  bool callback_ = false;
-  bool stopped_in_callback_ = false;
+  bool IsCallback() const { return kind_ != ExecutionKind::kInitialization; }
+  ExecutionKind kind_ = ExecutionKind::kInitialization;
+  ExecutionKind stopped_kind_ = ExecutionKind::kInitialization;
 };
 
 // SetTrace holds a capsule pointing to a context-owned ExecutionBudget. The
@@ -91,6 +95,9 @@ class BudgetedDomHost final : public DomHost {
                              bool once) override;
   DomResult RemoveEventListener(DomHandle, CallbackHandle) override;
   void RevokeEventListener(DomHandle, CallbackHandle) override;
+  DomResult RequestFrame(CallbackHandle) override;
+  DomResult CancelFrame(CallbackHandle) override;
+  void RevokeFrame(CallbackHandle) override;
 
  private:
   DomResult FinishCall(DomResult result);

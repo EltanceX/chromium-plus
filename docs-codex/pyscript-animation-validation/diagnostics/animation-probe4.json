@@ -1,0 +1,139 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:51085",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only nonce sample updates and cancels native frames",
+      "passed": true,
+      "elapsedMs": 2461,
+      "detail": {
+        "first": [
+          11,
+          1660
+        ],
+        "second": [
+          27,
+          1927
+        ],
+        "stopped": "27:1927"
+      }
+    },
+    {
+      "name": "Duplicate, repeated cancellation and consumed handles preserve next frame",
+      "passed": true,
+      "elapsedMs": 555
+    },
+    {
+      "name": "One-shot errors consume the old request and allow a new request",
+      "passed": true,
+      "elapsedMs": 447
+    },
+    {
+      "name": "A next frame requested before an ordinary error survives",
+      "passed": true,
+      "elapsedMs": 285
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /timeout",
+      "passed": true,
+      "elapsedMs": 1396,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306676624.572,
+          "url": "http://127.0.0.1:51085/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /dom-stop",
+      "passed": true,
+      "elapsedMs": 1399,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306678025.572,
+          "url": "http://127.0.0.1:51085/dom-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /output-stop",
+      "passed": true,
+      "elapsedMs": 1431,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794306679433.572,
+          "url": "http://127.0.0.1:51085/output-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1412,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794306680832.572,
+          "url": "http://127.0.0.1:51085/diagnostic-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Window pressure retains one frame and recovers: /output-window",
+      "passed": true,
+      "elapsedMs": 1198,
+      "detail": {
+        "times": [
+          146,
+          163,
+          180,
+          196,
+          213,
+          1163
+        ],
+        "gaps": [
+          17,
+          17,
+          16,
+          17,
+          950
+        ]
+      }
+    },
+    {
+      "name": "Window pressure retains one frame and recovers: /dom-window",
+      "passed": false,
+      "elapsedMs": 30308,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:311:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:309:5",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306683477.572,
+          "url": "http://127.0.0.1:51085/dom-window",
+          "lineNumber": 0
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:311:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:309:5"
+}

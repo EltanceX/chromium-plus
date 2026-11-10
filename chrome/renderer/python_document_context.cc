@@ -57,6 +57,17 @@ class ChromeDomHost final : public native_python::DomHost {
         {element.document, element.generation, element.id},
         {callback.context, callback.id});
   }
+  native_python::DomResult RequestFrame(
+      native_python::CallbackHandle callback) override {
+    return Convert(host_->RequestFrame({callback.context, callback.id}));
+  }
+  native_python::DomResult CancelFrame(
+      native_python::CallbackHandle callback) override {
+    return Convert(host_->CancelFrame({callback.context, callback.id}));
+  }
+  void RevokeFrame(native_python::CallbackHandle callback) override {
+    host_->RevokeFrame({callback.context, callback.id});
+  }
 
  private:
   static native_python::DomResult Convert(
@@ -141,6 +152,22 @@ class ChromePythonDocumentContext final : public blink::WebPythonScriptContext {
 
   bool CanInvokeCallback() override {
     return context_ && context_->CanInvokeCallback();
+  }
+
+  bool CanInvokeFrameCallback() override {
+    return context_ && context_->CanInvokeFrameCallback();
+  }
+
+  blink::WebPythonScriptResult InvokeFrameCallback(
+      blink::WebPythonCallbackHandle handle,
+      double timestamp_ms,
+      blink::WebPythonDomHost& host) override {
+    if (!context_ || !host.IsActive()) {
+      return ConvertResult(InactiveResult());
+    }
+    ChromeDomHost bridge(host);
+    return ConvertResult(context_->InvokeFrameCallback(
+        {handle.context, handle.id}, timestamp_ms, &bridge));
   }
 
   blink::WebPythonScriptResult RemoveCallback(

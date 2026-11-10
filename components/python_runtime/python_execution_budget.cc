@@ -16,6 +16,8 @@ constexpr base::TimeDelta kBlockTime = base::Milliseconds(100);
 constexpr base::TimeDelta kDocumentTime = base::Milliseconds(250);
 constexpr base::TimeDelta kCleanupTime = base::Milliseconds(50);
 constexpr base::TimeDelta kCallbackTime = base::Milliseconds(50);
+constexpr base::TimeDelta kFrameTime = base::Milliseconds(8);
+constexpr base::TimeDelta kFrameWindowTime = base::Milliseconds(200);
 constexpr base::TimeDelta kEventWindow = base::Seconds(1);
 constexpr size_t kCallbackDomCalls = 128;
 constexpr size_t kDomCalls = 1024;
@@ -31,26 +33,30 @@ void ExecutionBudget::ExpireEvents() {
   const auto now = clock_->NowTicks();
   while (!events_.empty() && now - events_.front().finished >= kEventWindow) {
     event_time_ -= events_.front().time;
+    frame_time_ -= events_.front().frame_time;
     event_dom_calls_ -= events_.front().dom_calls;
     event_output_bytes_ -= events_.front().output_bytes;
     events_.pop_front();
   }
 }
 
-bool ExecutionBudget::CanBeginCallback() {
+bool ExecutionBudget::CanBeginCallback(ExecutionKind kind) {
   ExpireEvents();
+  const bool frame = kind == ExecutionKind::kAnimationFrame;
   return mode_ == Mode::kIdle && reason_ == StopReason::kNone &&
-         event_time_ <= kDocumentTime - kCallbackTime &&
+         kind != ExecutionKind::kInitialization &&
+         event_time_ <= kDocumentTime - (frame ? kFrameTime : kCallbackTime) &&
+         (!frame || frame_time_ <= kFrameWindowTime - kFrameTime) &&
          event_dom_calls_ <= kDomCalls - kCallbackDomCalls &&
          event_output_bytes_ <= kOutputLimit - kCallbackOutput;
 }
 
-bool ExecutionBudget::Begin(DomHost* host, bool callback) {
+bool ExecutionBudget::Begin(DomHost* host, ExecutionKind kind) {
   CHECK(mode_ == Mode::kIdle);
-  if (callback && !CanBeginCallback()) {
+  if (kind != ExecutionKind::kInitialization && !CanBeginCallback(kind)) {
     return false;
   }
-  callback_ = callback;
+  kind_ = kind;
   callback_dom_calls_ = 0;
   callback_output_bytes_ = 0;
   host_ = host;
@@ -64,10 +70,13 @@ void ExecutionBudget::Finish() {
   if (mode_ == Mode::kExecute) {
     Check();
     const auto now = clock_->NowTicks();
-    if (callback_) {
-      const EventUsage usage{now, now - started_, callback_dom_calls_,
-                             callback_output_bytes_};
+    if (IsCallback()) {
+      const EventUsage usage{
+          now, now - started_, callback_dom_calls_, callback_output_bytes_,
+          kind_ == ExecutionKind::kAnimationFrame ? now - started_
+                                                  : base::TimeDelta()};
       event_time_ += usage.time;
+      frame_time_ += usage.frame_time;
       event_dom_calls_ += usage.dom_calls;
       event_output_bytes_ += usage.output_bytes;
       // Bound bookkeeping even for many tiny callbacks. Coalescing retains
@@ -76,6 +85,7 @@ void ExecutionBudget::Finish() {
         auto& last = events_.back();
         last.finished = now;
         last.time += usage.time;
+        last.frame_time += usage.frame_time;
         last.dom_calls += usage.dom_calls;
         last.output_bytes += usage.output_bytes;
       } else if (!usage.time.is_zero() || usage.dom_calls ||
@@ -100,7 +110,7 @@ void ExecutionBudget::BeginCleanup() {
 void ExecutionBudget::Stop(StopReason reason) {
   if (reason_ == StopReason::kNone) {
     reason_ = reason;
-    stopped_in_callback_ = callback_;
+    stopped_kind_ = kind_;
   }
 }
 
@@ -116,9 +126,11 @@ bool ExecutionBudget::Check() {
   if (host_ && !host_->IsActive()) {
     Stop(StopReason::kInactive);
   }
-  if (!callback_ && elapsed_ + duration >= kDocumentTime) {
+  if (!IsCallback() && elapsed_ + duration >= kDocumentTime) {
     Stop(StopReason::kDocumentTime);
-  } else if (duration >= (callback_ ? kCallbackTime : kBlockTime)) {
+  } else if (duration >= (kind_ == ExecutionKind::kAnimationFrame ? kFrameTime
+                          : IsCallback() ? kCallbackTime
+                                         : kBlockTime)) {
     Stop(StopReason::kBlockTime);
   }
   return reason_ == StopReason::kNone;
@@ -129,19 +141,25 @@ const char* ExecutionBudget::Message() const {
     case StopReason::kNone:
       return "Python execution context is inactive";
     case StopReason::kBlockTime:
-      return stopped_in_callback_ ? "Python callback exceeded the 50 ms "
-                                    "cooperative execution budget"
-                                  : "Python block exceeded the 100 ms "
-                                    "cooperative execution budget";
+      if (stopped_kind_ == ExecutionKind::kAnimationFrame) {
+        return "Python animation frame exceeded the 8 ms cooperative execution "
+               "budget";
+      }
+      return stopped_kind_ != ExecutionKind::kInitialization
+                 ? "Python callback exceeded the 50 ms "
+                   "cooperative execution budget"
+                 : "Python block exceeded the 100 ms "
+                   "cooperative execution budget";
     case StopReason::kDocumentTime:
       return "Python document exceeded the 250 ms cooperative execution budget";
     case StopReason::kOutput:
-      return stopped_in_callback_ ? "Python callback output was truncated at 4 "
-                                    "KiB; document execution stopped"
-                                  : "Python output was truncated at 16 KiB; "
-                                    "document execution stopped";
+      return stopped_kind_ != ExecutionKind::kInitialization
+                 ? "Python callback output was truncated at 4 "
+                   "KiB; document execution stopped"
+                 : "Python output was truncated at 16 KiB; "
+                   "document execution stopped";
     case StopReason::kDomCalls:
-      return stopped_in_callback_
+      return stopped_kind_ != ExecutionKind::kInitialization
                  ? "Python callback exceeded the 128 DOM call budget"
                  : "Python document exceeded the 1024 DOM call budget";
     case StopReason::kInactive:
@@ -172,7 +190,7 @@ bool ExecutionBudget::TraceCheckpoint(int event) {
 
 bool ExecutionBudget::ConsumeOutput(size_t bytes) {
   const size_t accepted = std::min(bytes, OutputRemaining());
-  (callback_ ? callback_output_bytes_ : output_bytes_) += accepted;
+  (IsCallback() ? callback_output_bytes_ : output_bytes_) += accepted;
   if (accepted != bytes) {
     Stop(StopReason::kOutput);
     return false;
@@ -181,16 +199,16 @@ bool ExecutionBudget::ConsumeOutput(size_t bytes) {
 }
 
 size_t ExecutionBudget::OutputRemaining() const {
-  return callback_ ? kCallbackOutput - callback_output_bytes_
-                   : kOutputLimit - output_bytes_;
+  return IsCallback() ? kCallbackOutput - callback_output_bytes_
+                      : kOutputLimit - output_bytes_;
 }
 
 bool ExecutionBudget::ConsumeDomCall() {
   if (!Check()) {
     return false;
   }
-  auto& calls = callback_ ? callback_dom_calls_ : initialization_dom_calls_;
-  if (calls == (callback_ ? kCallbackDomCalls : kDomCalls)) {
+  auto& calls = IsCallback() ? callback_dom_calls_ : initialization_dom_calls_;
+  if (calls == (IsCallback() ? kCallbackDomCalls : kDomCalls)) {
     Stop(StopReason::kDomCalls);
     return false;
   }
@@ -266,6 +284,26 @@ void BudgetedDomHost::RevokeEventListener(DomHandle element,
   // Rollback must remain possible after the post-call budget/activity check.
   if (budget_->executing() && budget_->host()) {
     budget_->host()->RevokeEventListener(element, callback);
+  }
+}
+
+DomResult BudgetedDomHost::RequestFrame(CallbackHandle callback) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->RequestFrame(callback));
+}
+
+DomResult BudgetedDomHost::CancelFrame(CallbackHandle callback) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->CancelFrame(callback));
+}
+
+void BudgetedDomHost::RevokeFrame(CallbackHandle callback) {
+  if (budget_->executing() && budget_->host()) {
+    budget_->host()->RevokeFrame(callback);
   }
 }
 

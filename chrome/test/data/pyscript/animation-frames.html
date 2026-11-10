@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>原生 Python 动画帧</title>
+<style>
+  body { font: 18px system-ui; max-width: 760px; margin: 64px auto; padding: 24px; }
+  button { font: inherit; padding: 8px 20px; margin-right: 12px; }
+  #result { font: 30px ui-monospace, monospace; }
+</style>
+<h1>原生 Python 动画帧</h1>
+<p>计数器由 Python 申请浏览器原生动画帧更新。暂停会取消待执行请求，继续会申请新帧。</p>
+<p id="result">0:0</p>
+<button id="stop">暂停</button><button id="start">继续</button>
+<p>显示格式：帧计数 : 文档时间戳（毫秒）。后台暂停，恢复时使用新的时间戳。</p>
+<pyscript nonce="python-animation">
+import animation, dom
+
+result = dom.get_element_by_id('result')
+count = 0
+request = None
+
+def frame(timestamp_ms):
+    global count, request
+    request = None
+    count += 1
+    dom.set_text(result, str(count) + ':' + str(int(timestamp_ms)))
+    request = animation.request_frame(frame)
+
+def stop(event):
+    global request
+    if request is not None:
+        animation.cancel_frame(request)
+        request = None
+
+def start(event):
+    global request
+    if request is None:
+        request = animation.request_frame(frame)
+
+dom.add_event_listener(dom.get_element_by_id('stop'), 'click', stop)
+dom.add_event_listener(dom.get_element_by_id('start'), 'click', start)
+request = animation.request_frame(frame)
+</pyscript>
+</html>

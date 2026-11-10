@@ -60,7 +60,8 @@ export function getHtml(this: SettingsKernelDebugPageElement) {
           WebUI、扩展及 MCBE / MCJE 页面不执行 Python；内联解析规则、DOM 接口及执行预算保持生效。
         </div>
         <div class="secondary">初始化预算：单块约 100 ms，累计约 250 ms；输出 16 KiB，DOM 调用 1024 次。</div>
-        <div class="secondary">点击预算：每回调约 50 ms、输出 4 KiB、DOM 调用 128 次；每文档最近 1 秒累计约 250 ms、输出 16 KiB、DOM 调用 1024 次。窗口余量不足时跳过事件，单次超限停止该文档的 Python。</div>
+        <div class="secondary">点击预算：每回调约 50 ms、输出 4 KiB、DOM 调用 128 次。动画帧预算：每帧约 8 ms，最近 1 秒帧执行累计约 200 ms；每帧同样限制输出 4 KiB、DOM 调用 128 次。</div>
+        <div class="secondary">交互总预算：点击与动画帧共享每文档最近 1 秒累计约 250 ms、输出 16 KiB、DOM 调用 1024 次。窗口余量不足时跳过点击、保留一个待执行帧至后续刷新，不补发旧帧；单次超限停止该文档的 Python。</div>
         <div class="secondary">时间保护为协作式检查；清理另有约 50 ms 尽力预算。输出按 Python 文本的 UTF-8 字节计量。</div>
         ${this.pythonSettings_?.commandLineOverride ? html`
           <div class="secondary">启动命令行含 Python 配置，可能覆盖此处设置。</div>

@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-11-10T10:42:30.179943+00:00",
+  "checks": {
+    "checkdeps-runtime": {
+      "passed": true,
+      "log": "diagnostics/checkdeps-runtime.log"
+    },
+    "checkdeps-adapter": {
+      "passed": true,
+      "log": "diagnostics/checkdeps-adapter.log"
+    },
+    "checkdeps-adapter-test": {
+      "passed": true,
+      "log": "diagnostics/checkdeps-adapter-test.log"
+    },
+    "checkdeps-blink": {
+      "passed": true,
+      "log": "diagnostics/checkdeps-blink.log"
+    },
+    "checkdeps-blink-test": {
+      "passed": true,
+      "log": "diagnostics/checkdeps-blink-test.log"
+    },
+    "gn-runtime": {
+      "passed": true,
+      "log": "diagnostics/gn-runtime.log"
+    },
+    "gn-adapter-final": {
+      "passed": true,
+      "log": "diagnostics/gn-adapter-final.log"
+    },
+    "gn-blink": {
+      "passed": true,
+      "log": "diagnostics/gn-blink.log"
+    },
+    "clang-format": {
+      "passed": true,
+      "log": "diagnostics/clang-format.log"
+    },
+    "yapf": {
+      "passed": true,
+      "log": "diagnostics/yapf.log"
+    },
+    "syntax": {
+      "passed": true,
+      "method": "node --check for animation/settings scripts; ast.parse for Python validation runner"
+    }
+  }
+}

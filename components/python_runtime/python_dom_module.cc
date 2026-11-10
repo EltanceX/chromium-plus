@@ -23,6 +23,7 @@ struct ModuleState {
   RAW_PTR_EXCLUSION PyTypeObject* handle_type;
   RAW_PTR_EXCLUSION PyTypeObject* event_type;
   RAW_PTR_EXCLUSION PyTypeObject* listener_type;
+  RAW_PTR_EXCLUSION PyTypeObject* frame_type;
   RAW_PTR_EXCLUSION PyObject* callbacks;
   uint64_t context_id;
   uint64_t next_callback_id;
@@ -35,6 +36,10 @@ struct ElementHandle {
 struct ListenerHandle {
   PyObject_HEAD DomHandle element;
   CallbackHandle callback;
+};
+
+struct FrameHandle {
+  PyObject_HEAD CallbackHandle callback;
 };
 
 class ScopedHostRevocation {
@@ -333,6 +338,12 @@ PyType_Spec kListenerSpec = {"dom.ListenerHandle", sizeof(ListenerHandle), 0,
                                  Py_TPFLAGS_DISALLOW_INSTANTIATION,
                              kHandleSlots};
 
+PyType_Spec kFrameSpec = {"animation.FrameHandle", sizeof(FrameHandle), 0,
+                          Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+                              Py_TPFLAGS_IMMUTABLETYPE |
+                              Py_TPFLAGS_DISALLOW_INSTANTIATION,
+                          kHandleSlots};
+
 int Initialize(PyObject* module) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   state->handle_type = reinterpret_cast<PyTypeObject*>(
@@ -341,9 +352,11 @@ int Initialize(PyObject* module) {
       PyType_FromModuleAndSpec(module, &kEventSpec, nullptr));
   state->listener_type = reinterpret_cast<PyTypeObject*>(
       PyType_FromModuleAndSpec(module, &kListenerSpec, nullptr));
+  state->frame_type = reinterpret_cast<PyTypeObject*>(
+      PyType_FromModuleAndSpec(module, &kFrameSpec, nullptr));
   state->callbacks = PyDict_New();
   if (!state->handle_type || !state->event_type || !state->listener_type ||
-      !state->callbacks ||
+      !state->frame_type || !state->callbacks ||
       PyModule_AddObjectRef(module, "ElementHandle",
                             reinterpret_cast<PyObject*>(state->handle_type)) <
           0 ||
@@ -361,6 +374,7 @@ int Traverse(PyObject* module, visitproc visit, void* arg) {
   Py_VISIT(state->handle_type);
   Py_VISIT(state->event_type);
   Py_VISIT(state->listener_type);
+  Py_VISIT(state->frame_type);
   Py_VISIT(state->callbacks);
   return 0;
 }
@@ -372,6 +386,7 @@ int Clear(PyObject* module) {
   Py_CLEAR(state->callbacks);
   Py_CLEAR(state->event_type);
   Py_CLEAR(state->listener_type);
+  Py_CLEAR(state->frame_type);
   Py_CLEAR(state->handle_type);
   return 0;
 }
@@ -397,10 +412,123 @@ PyModuleDef kModule = {PyModuleDef_HEAD_INIT,
                        Clear,
                        nullptr};
 
+struct AnimationState {
+  // Share the interpreter's DOM capability and callback table. This module
+  // cannot keep a second host alive after ScopedDomHost revokes the first.
+  RAW_PTR_EXCLUSION PyObject* dom;
+};
+
+PyObject* RequestFrame(PyObject* module, PyObject* callback) {
+  auto* animation = static_cast<AnimationState*>(PyModule_GetState(module));
+  if (!animation->dom) {
+    PyErr_SetString(PyExc_ReferenceError, "The animation module is inactive");
+    return nullptr;
+  }
+  auto* state = ActiveState(animation->dom);
+  if (!state) {
+    return nullptr;
+  }
+  ScopedHostRevocation revoked(*state);
+  auto* frame = reinterpret_cast<FrameHandle*>(
+      state->frame_type->tp_alloc(state->frame_type, 0));
+  if (!frame) {
+    return nullptr;
+  }
+  frame->callback = RegisterDomCallback(animation->dom, callback, true,
+                                        ExecutionKind::kAnimationFrame);
+  if (!frame->callback.id) {
+    Py_DECREF(frame);
+    return nullptr;
+  }
+  if (!CheckResult(revoked.host()->RequestFrame(frame->callback))) {
+    PyObject* failure = PyErr_GetRaisedException();
+    revoked.host()->RevokeFrame(frame->callback);
+    RemoveDomCallback(animation->dom, frame->callback);
+    Py_DECREF(frame);
+    PyErr_Clear();
+    PyErr_SetRaisedException(failure);
+    return nullptr;
+  }
+  return reinterpret_cast<PyObject*>(frame);
+}
+
+PyObject* CancelFrame(PyObject* module, PyObject* object) {
+  auto* animation = static_cast<AnimationState*>(PyModule_GetState(module));
+  if (!animation->dom) {
+    PyErr_SetString(PyExc_ReferenceError, "The animation module is inactive");
+    return nullptr;
+  }
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(animation->dom));
+  if (!state->frame_type || !Py_IS_TYPE(object, state->frame_type)) {
+    PyErr_SetString(PyExc_TypeError, "Expected this interpreter's FrameHandle");
+    return nullptr;
+  }
+  if (!ActiveState(animation->dom)) {
+    return nullptr;
+  }
+  auto callback = reinterpret_cast<FrameHandle*>(object)->callback;
+  if (callback.context != state->context_id) {
+    PyErr_SetString(PyExc_ReferenceError,
+                    "The frame belongs to another context");
+    return nullptr;
+  }
+  ScopedHostRevocation revoked(*state);
+  if (!CheckResult(revoked.host()->CancelFrame(callback)) ||
+      !RemoveDomCallback(animation->dom, callback)) {
+    return nullptr;
+  }
+  Py_RETURN_NONE;
+}
+
+int InitializeAnimation(PyObject* module) {
+  auto* state = static_cast<AnimationState*>(PyModule_GetState(module));
+  state->dom = PyImport_ImportModule("dom");
+  if (!state->dom) {
+    return -1;
+  }
+  if (!PyModule_Check(state->dom) || PyModule_GetDef(state->dom) != &kModule) {
+    PyErr_SetString(PyExc_TypeError,
+                    "animation requires the native dom module");
+    return -1;
+  }
+  auto* dom = static_cast<ModuleState*>(PyModule_GetState(state->dom));
+  return PyModule_AddObjectRef(module, "FrameHandle",
+                               reinterpret_cast<PyObject*>(dom->frame_type));
+}
+
+int TraverseAnimation(PyObject* module, visitproc visit, void* arg) {
+  auto* state = static_cast<AnimationState*>(PyModule_GetState(module));
+  Py_VISIT(state->dom);
+  return 0;
+}
+
+int ClearAnimation(PyObject* module) {
+  auto* state = static_cast<AnimationState*>(PyModule_GetState(module));
+  Py_CLEAR(state->dom);
+  return 0;
+}
+
+PyMethodDef kAnimationMethods[] = {
+    {"request_frame", RequestFrame, METH_O, nullptr},
+    {"cancel_frame", CancelFrame, METH_O, nullptr},
+    {nullptr}};
+PyModuleDef_Slot kAnimationSlots[] = {
+    {Py_mod_exec, reinterpret_cast<void*>(InitializeAnimation)},
+    {Py_mod_multiple_interpreters, Py_MOD_MULTIPLE_INTERPRETERS_SUPPORTED},
+    {0, nullptr}};
+PyModuleDef kAnimationModule = {
+    PyModuleDef_HEAD_INIT,  "animation",       nullptr,
+    sizeof(AnimationState), kAnimationMethods, kAnimationSlots,
+    TraverseAnimation,      ClearAnimation,    nullptr};
+
 }  // namespace
 
 PyMODINIT_FUNC InitDomModule() {
   return PyModuleDef_Init(&kModule);
+}
+
+PyMODINIT_FUNC InitAnimationModule() {
+  return PyModuleDef_Init(&kAnimationModule);
 }
 
 void SetDomHost(PyObject* module, DomHost* host) {
@@ -423,10 +551,15 @@ void InitializeDomCallbacks(PyObject* module, uint64_t context_id) {
 
 CallbackHandle RegisterDomCallback(PyObject* module,
                                    PyObject* callable,
-                                   bool once) {
+                                   bool once,
+                                   ExecutionKind kind) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   if (!state->callbacks || !state->context_id) {
     PyErr_SetString(PyExc_ReferenceError, "The callback registry is inactive");
+    return {};
+  }
+  if (kind == ExecutionKind::kInitialization) {
+    PyErr_SetString(PyExc_ValueError, "Invalid callback kind");
     return {};
   }
   if (!PyCallable_Check(callable)) {
@@ -454,14 +587,20 @@ CallbackHandle RegisterDomCallback(PyObject* module,
   if (!key) {
     return {};
   }
-  PyObject* entry = PyTuple_Pack(2, callable, once ? Py_True : Py_False);
+  PyObject* purpose = PyLong_FromLong(static_cast<long>(kind));
+  PyObject* entry =
+      purpose ? PyTuple_Pack(3, callable, once ? Py_True : Py_False, purpose)
+              : nullptr;
+  Py_XDECREF(purpose);
   const int status = entry ? PyDict_SetItem(state->callbacks, key, entry) : -1;
   Py_XDECREF(entry);
   Py_DECREF(key);
   return status == 0 ? CallbackHandle{state->context_id, id} : CallbackHandle{};
 }
 
-PyObject* GetDomCallback(PyObject* module, CallbackHandle handle) {
+PyObject* GetDomCallback(PyObject* module,
+                         CallbackHandle handle,
+                         ExecutionKind kind) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
   if (!state->callbacks || !handle.id || handle.context != state->context_id) {
     PyErr_SetString(PyExc_ReferenceError,
@@ -475,7 +614,11 @@ PyObject* GetDomCallback(PyObject* module, CallbackHandle handle) {
   PyObject* entry = nullptr;
   const int found = PyDict_GetItemRef(state->callbacks, key, &entry);
   PyObject* callback = nullptr;
-  if (found == 1) {
+  if (found == 1 &&
+      PyLong_AsLong(PyTuple_GetItem(entry, 2)) != static_cast<long>(kind)) {
+    PyErr_SetString(PyExc_TypeError,
+                    "Callback kind does not match the entry point");
+  } else if (found == 1) {
     // Keep the callable alive across table removal, exceptions and
     // self-removal.
     callback = Py_NewRef(PyTuple_GetItem(entry, 0));

@@ -25,6 +25,7 @@ class HTMLPyScriptElement;
 class PendingPythonScriptBlock;
 class PythonDomHandleEntry;
 class PythonClickListener;
+class PythonAnimationFrame;
 class PythonScriptSource;
 
 class PythonScriptController final
@@ -54,9 +55,13 @@ class PythonScriptController final
                                          WebPythonCallbackHandle) override;
   void RevokeEventListener(WebPythonDomHandle,
                            WebPythonCallbackHandle) override;
+  WebPythonDomResult RequestFrame(WebPythonCallbackHandle) override;
+  WebPythonDomResult CancelFrame(WebPythonCallbackHandle) override;
+  void RevokeFrame(WebPythonCallbackHandle) override;
 
  private:
   friend class PythonClickListener;
+  friend class PythonAnimationFrame;
   static PythonScriptController& GetOrCreate(Document&);
   void AppendConsole(const HTMLPyScriptElement&,
                      const String&,
@@ -65,6 +70,12 @@ class PythonScriptController final
                      const String&,
                      mojom::blink::ConsoleMessageLevel);
   void DispatchClick(PythonClickListener&, Event&);
+  void DispatchFrame(PythonAnimationFrame&, double timestamp_ms);
+  void ScheduleFrame(WebPythonCallbackHandle, PythonScriptSource&);
+  void RetryFrame(WebPythonCallbackHandle);
+  void FinishCallback(const PythonScriptSource&,
+                      const WebPythonScriptResult&,
+                      const String& prefix);
   void DetachListener(PythonClickListener&);
   Element* ResolveElement(WebPythonDomHandle) const;
   void Dispose();
@@ -73,6 +84,7 @@ class PythonScriptController final
   HeapVector<Member<PendingPythonScriptBlock>> pending_;
   HeapVector<Member<PythonDomHandleEntry>> handles_;
   HeapVector<Member<PythonClickListener>> listeners_;
+  Member<PythonAnimationFrame> pending_frame_;
   Member<PythonScriptSource> current_source_;
   std::unique_ptr<WebPythonScriptContext> context_;
   scoped_refptr<base::SingleThreadTaskRunner> cleanup_task_runner_;

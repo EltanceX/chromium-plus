@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "textFilesChecked": 72,
+  "sourceInputsChecked": 41,
+  "manifestFilesChecked": 71,
+  "diagnostics": {
+    "Network service crashed": 12,
+    "oauth": 15,
+    "gpu": 90
+  }
+}

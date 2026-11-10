@@ -1,0 +1,17 @@
+PASS settings page defaults and invalid origin validation
+PASS restricted settings survive browser restart and enable Python
+PASS restricted mode still enforces CSP and exact origin
+PASS unrestricted choice is saved without changing active renderers
+PASS unrestricted mode bypasses CSP sandbox and origin gates after restart
+PASS file and opaque data HTML can execute with the explicit override
+PASS ordinary iframe and srcdoc have independent Python contexts
+PASS page JavaScript setting does not block the Python override
+PASS execution budgets still stop later blocks in unrestricted mode
+PASS unrestricted Python renderers retain restricted sandbox tokens
+PASS settings form reports active mode and saved disable requires restart
+PASS disabling persists and does not leak enabled switches on relaunch
+{
+  "passed": true,
+  "cases": 12,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-animation-phase1\\final\\settings-browser.json"
+}

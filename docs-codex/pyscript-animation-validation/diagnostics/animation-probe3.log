@@ -1,0 +1,11 @@
+PASS Python-only nonce sample updates and cancels native frames
+PASS Duplicate, repeated cancellation and consumed handles preserve next frame
+PASS One-shot errors consume the old request and allow a new request
+PASS A next frame requested before an ordinary error survives
+PASS Fatal frame limit revokes frames and click listeners: /timeout
+{
+  "passed": false,
+  "cases": 6,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-animation-phase1\\animation-probe3.json",
+  "error": "AssertionError [ERR_ASSERTION]: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget\",\"timestamp\":1794306564585.704,\"url\":\"http://127.0.0.1:52067/dom-stop\",\"lineNumber\":0}]\n    at file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:294:14\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:234:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:291:5"
+}

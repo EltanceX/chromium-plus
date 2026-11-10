@@ -18,6 +18,7 @@
 #include "third_party/blink/renderer/core/dom/events/event.h"
 #include "third_party/blink/renderer/core/dom/events/event_dispatch_forbidden_scope.h"
 #include "third_party/blink/renderer/core/dom/events/native_event_listener.h"
+#include "third_party/blink/renderer/core/dom/frame_request_callback_collection.h"
 #include "third_party/blink/renderer/core/event_type_names.h"
 #include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
@@ -104,6 +105,33 @@ class PythonClickListener final : public NativeEventListener {
   const WebPythonCallbackHandle callback;
   const bool once;
   bool active = true;
+};
+
+// No Python objects cross this boundary. The source snapshot outlives removal
+// of the original tag; the weak controller cannot keep a discarded page alive.
+class PythonAnimationFrame final : public FrameCallback {
+ public:
+  PythonAnimationFrame(PythonScriptController& controller,
+                       PythonScriptSource& source,
+                       WebPythonCallbackHandle callback)
+      : controller(&controller), source(&source), callback(callback) {}
+  void Invoke(double timestamp_ms) override {
+    SetId(0);
+    if (controller) {
+      controller->DispatchFrame(*this, timestamp_ms);
+    }
+  }
+  void Trace(Visitor* visitor) const override {
+    visitor->Trace(controller);
+    visitor->Trace(source);
+    FrameCallback::Trace(visitor);
+  }
+  const char* GetHumanReadableName() const override {
+    return "PythonAnimationFrame";
+  }
+  WeakMember<PythonScriptController> controller;
+  Member<PythonScriptSource> source;
+  const WebPythonCallbackHandle callback;
 };
 
 namespace {
@@ -210,6 +238,7 @@ void PythonScriptController::Trace(Visitor* visitor) const {
   visitor->Trace(pending_);
   visitor->Trace(handles_);
   visitor->Trace(listeners_);
+  visitor->Trace(pending_frame_);
   visitor->Trace(current_source_);
   Supplement<Document>::Trace(visitor);
   ExecutionContextLifecycleObserver::Trace(visitor);
@@ -286,6 +315,9 @@ void PythonScriptController::Dispose() {
     stopped_ = true;
     ++generation_;
     pending_.clear();
+    if (pending_frame_) {
+      RevokeFrame(pending_frame_->callback);
+    }
     handles_.clear();
     while (!listeners_.empty()) {
       DetachListener(*listeners_.back());
@@ -507,6 +539,132 @@ Element* PythonScriptController::ResolveElement(
              : nullptr;
 }
 
+WebPythonDomResult PythonScriptController::RequestFrame(
+    WebPythonCallbackHandle callback) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return status;
+  }
+  if (!current_source_ || !callback.context || !callback.id) {
+    return {{}, WebPythonDomError::kState, "No active Python frame source"};
+  }
+  if (pending_frame_) {
+    return {{},
+            WebPythonDomError::kState,
+            "At most one pending Python animation frame per document"};
+  }
+  ScheduleFrame(callback, *current_source_);
+  return {};
+}
+
+WebPythonDomResult PythonScriptController::CancelFrame(
+    WebPythonCallbackHandle callback) {
+  auto status = CheckDomCall();
+  if (status.error == WebPythonDomError::kNone) {
+    RevokeFrame(callback);
+  }
+  return status;
+}
+
+void PythonScriptController::RevokeFrame(WebPythonCallbackHandle callback) {
+  if (pending_frame_ && pending_frame_->callback.context == callback.context &&
+      pending_frame_->callback.id == callback.id) {
+    if (pending_frame_->Id()) {
+      GetSupplementable()->CancelAnimationFrame(pending_frame_->Id(),
+                                                FrameCallbackType::kWebExposed);
+    }
+    pending_frame_ = nullptr;
+  }
+}
+
+void PythonScriptController::ScheduleFrame(WebPythonCallbackHandle callback,
+                                           PythonScriptSource& source) {
+  // Use a fresh adapter on retry: the previous Invoke's AsyncTask probe is
+  // still on the stack. Blink swaps its callback list before invoking it, so
+  // this request can only run in a later rendering update.
+  pending_frame_ =
+      MakeGarbageCollected<PythonAnimationFrame>(*this, source, callback);
+  GetSupplementable()->RequestAnimationFrame(pending_frame_,
+                                             FrameCallbackType::kWebExposed);
+}
+
+void PythonScriptController::RetryFrame(WebPythonCallbackHandle callback) {
+  if (stopped_ || !pending_frame_ || pending_frame_->Id() ||
+      pending_frame_->callback.context != callback.context ||
+      pending_frame_->callback.id != callback.id) {
+    return;
+  }
+  auto* thread = ThreadState::Current();
+  if (ScriptForbiddenScope::IsScriptForbidden() ||
+      ScriptForbiddenScope::WillBeScriptForbidden() ||
+      thread->IsSweepingOnOwningThread() ||
+      cppgc::subtle::HeapState::IsInAtomicPause(thread->heap_handle())) {
+    cleanup_task_runner_->PostDelayedTask(
+        FROM_HERE,
+        base::BindOnce(&PythonScriptController::RetryFrame,
+                       WrapWeakPersistent(this), callback),
+        base::Milliseconds(1));
+    return;
+  }
+  ScheduleFrame(callback, *pending_frame_->source);
+}
+
+void PythonScriptController::DispatchFrame(PythonAnimationFrame& frame,
+                                           double timestamp_ms) {
+  if (stopped_ || !context_ || pending_frame_ != &frame) {
+    return;
+  }
+  auto* thread = ThreadState::Current();
+  if (thread->IsSweepingOnOwningThread() ||
+      cppgc::subtle::HeapState::IsInAtomicPause(thread->heap_handle())) {
+    // Do not allocate a new GC object or enter Python during GC. Re-arm only
+    // from a safe task, then let the normal native frame scheduler dispatch.
+    cleanup_task_runner_->PostTask(
+        FROM_HERE, base::BindOnce(&PythonScriptController::RetryFrame,
+                                  WrapWeakPersistent(this), frame.callback));
+    return;
+  }
+  Document& document = *GetSupplementable();
+  if (!Eligible(document, false) || !ScriptsAllowed(document)) {
+    Dispose();
+    return;
+  }
+  if (document.hidden() || g_python_running || running_ ||
+      ScriptForbiddenScope::IsScriptForbidden() ||
+      ScriptForbiddenScope::WillBeScriptForbidden()) {
+    ScheduleFrame(frame.callback, *frame.source);
+    return;
+  }
+  Persistent<PythonScriptController> protect(this);
+  Persistent<PythonScriptSource> source(frame.source);
+  if (!g_runner->AllowsUnrestrictedPages() &&
+      !document.domWindow()->GetContentSecurityPolicy()->AllowInline(
+          ContentSecurityPolicy::InlineType::kScript, nullptr, source->source,
+          source->nonce, source->url, source->position)) {
+    Dispose();
+    return;
+  }
+  if (!context_->CanInvokeFrameCallback()) {
+    ScheduleFrame(frame.callback, *source);
+    return;
+  }
+  base::AutoReset<bool> entry(&g_python_running, true);
+  base::AutoReset<bool> callback_entry(&callback_running_, true);
+  callback_dom_calls_ = 0;
+  running_ = true;
+  current_source_ = source;
+  // Consume before entry, allowing exactly one new request from this callback.
+  pending_frame_ = nullptr;
+  const auto result =
+      context_->InvokeFrameCallback(frame.callback, timestamp_ms, *this);
+  if (result.callback_skipped && !stopped_ && Eligible(document, false)) {
+    ScheduleFrame(frame.callback, *source);
+  }
+  FinishCallback(
+      *source, result,
+      StrCat({"[pyscript frame ", String::Number(frame.callback.id), "] "}));
+}
+
 void PythonScriptController::DispatchClick(PythonClickListener& listener,
                                            Event& event) {
   if (stopped_ || !listener.active || !context_ ||
@@ -573,6 +731,15 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
   }
   const auto result = context_->InvokeCallback(
       listener.callback, {"click", listener.handle, event.isTrusted()}, *this);
+  FinishCallback(*source, result,
+                 StrCat({"[pyscript callback ",
+                         String::Number(listener.callback.id), "] "}));
+}
+
+void PythonScriptController::FinishCallback(const PythonScriptSource& source,
+                                            const WebPythonScriptResult& result,
+                                            const String& prefix) {
+  Document& document = *GetSupplementable();
   if (stopped_ || !Eligible(document, false)) {
     // Invalidation closes page output as well as DOM capability. Disposal of
     // the interpreter still waits until the synchronous Python stack returns.
@@ -581,18 +748,16 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
     ReleaseContext();
     return;
   }
-  const String prefix = StrCat(
-      {"[pyscript callback ", String::Number(listener.callback.id), "] "});
   if (!result.stdout_text.IsEmpty()) {
-    AppendConsole(*source, StrCat({prefix, result.stdout_text}),
+    AppendConsole(source, StrCat({prefix, result.stdout_text}),
                   mojom::blink::ConsoleMessageLevel::kInfo);
   }
   if (!result.stderr_text.IsEmpty()) {
-    AppendConsole(*source, StrCat({prefix, result.stderr_text}),
+    AppendConsole(source, StrCat({prefix, result.stderr_text}),
                   mojom::blink::ConsoleMessageLevel::kError);
   }
   if (!result.success && !result.callback_skipped) {
-    AppendConsole(*source, StrCat({prefix, result.error}),
+    AppendConsole(source, StrCat({prefix, result.error}),
                   mojom::blink::ConsoleMessageLevel::kError);
   }
   if (result.stopped || dom_budget_exhausted_ || !Eligible(document, false)) {

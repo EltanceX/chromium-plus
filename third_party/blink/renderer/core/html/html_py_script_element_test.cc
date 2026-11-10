@@ -14,6 +14,7 @@
 #include "third_party/blink/public/web/web_python_script_runner.h"
 #include "third_party/blink/renderer/core/dom/document.h"
 #include "third_party/blink/renderer/core/dom/events/event.h"
+#include "third_party/blink/renderer/core/dom/scripted_animation_controller.h"
 #include "third_party/blink/renderer/core/event_type_names.h"
 #include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
@@ -23,6 +24,7 @@
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
 #include "third_party/blink/renderer/core/html/python_script_controller.h"
 #include "third_party/blink/renderer/core/html_names.h"
+#include "third_party/blink/renderer/core/page/page.h"
 #include "third_party/blink/renderer/core/testing/mock_policy_container_host.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_request.h"
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
@@ -82,6 +84,20 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
       return runner_->callback_result;
     }
     bool CanInvokeCallback() override { return runner_->callback_admitted; }
+    bool CanInvokeFrameCallback() override { return runner_->frame_admitted; }
+    WebPythonScriptResult InvokeFrameCallback(
+        WebPythonCallbackHandle callback,
+        double timestamp_ms,
+        WebPythonDomHost& dom_host) override {
+      runner_->frames.push_back(callback.id);
+      runner_->timestamps.push_back(timestamp_ms);
+      runner_->host = &dom_host;
+      if (runner_->on_frame) {
+        runner_->on_frame.Run();
+      }
+      runner_->host = nullptr;
+      return runner_->callback_result;
+    }
     WebPythonScriptResult RemoveCallback(WebPythonCallbackHandle) override {
       ADD_FAILURE() << "Unexpected callback removal in parser-only tests";
       return {};
@@ -118,12 +134,16 @@ class RecordingPythonRunner final : public WebPythonScriptRunner {
   bool allow = true;
   bool unrestricted = false;
   bool callback_admitted = true;
+  bool frame_admitted = true;
   unsigned contexts_created = 0;
   std::shared_ptr<unsigned> destructions = std::make_shared<unsigned>(0);
   raw_ptr<WebPythonDomHost> host = nullptr;
   unsigned batches = 0;
   base::RepeatingClosure on_run;
   base::RepeatingClosure on_click;
+  base::RepeatingClosure on_frame;
+  std::vector<uint64_t> frames;
+  std::vector<double> timestamps;
   std::vector<uint64_t> invoked;
   WebPythonCallbackEvent last_event;
   WebPythonScriptResult callback_result{true};
@@ -165,6 +185,18 @@ class HTMLPyScriptElementTest : public SimTest {
     Load(
         "<body><button id=button><span id=child>click</span></button>"
         "<p id=result>before</p><pyscript id=python>register</pyscript>");
+  }
+  void RegisterFrame() {
+    runner_.on_run = base::BindLambdaForTesting([&] {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                runner_.host->RequestFrame({1, 1}).error);
+    });
+    Load("<body><p id=result>before</p><pyscript id=python>frame</pyscript>");
+  }
+  void Tick(double timestamp) {
+    auto& animation = GetDocument().GetScriptedAnimationController();
+    animation.SetCurrentFrameTimeMs(timestamp);
+    animation.ExecuteFrameCallbacks();
   }
   ScopedPythonScriptForTest enabled_{true};
   RecordingPythonRunner runner_;
@@ -549,6 +581,243 @@ TEST_F(HTMLPyScriptElementTest, ListenerRegistrationAndRemovalCountDomCalls) {
     EXPECT_FALSE(host.IsActive());
   });
   Load("<button id=button>button</button><pyscript>bridge</pyscript>");
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       NativeFramesConsumeBeforeEntryAndRescheduleLater) {
+  RegisterFrame();
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    EXPECT_TRUE(host.IsActive());
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.SetText(host.GetElementById("result").handle, "frame").error);
+    if (runner_.frames.size() == 1) {
+      EXPECT_EQ(WebPythonDomError::kNone, host.RequestFrame({1, 2}).error);
+    }
+  });
+  EXPECT_TRUE(runner_.frames.empty());
+  Compositor().BeginFrame();
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.frames);
+  Compositor().BeginFrame();
+  EXPECT_EQ((std::vector<uint64_t>{1, 2}), runner_.frames);
+  EXPECT_LT(runner_.timestamps[0], runner_.timestamps[1]);
+  EXPECT_EQ("frame", GetElementById("result")->textContent());
+  EXPECT_FALSE(
+      GetDocument().GetScriptedAnimationController().HasFrameCallback());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       FrameRegistrationIsBoundedAndCancelIsIdempotent) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    EXPECT_EQ(WebPythonDomError::kState, host.RequestFrame({}).error);
+    EXPECT_EQ(WebPythonDomError::kNone, host.RequestFrame({1, 1}).error);
+    EXPECT_EQ(WebPythonDomError::kState, host.RequestFrame({1, 2}).error);
+    EXPECT_EQ(WebPythonDomError::kNone, host.CancelFrame({2, 1}).error);
+    EXPECT_EQ(WebPythonDomError::kNone, host.CancelFrame({1, 1}).error);
+    EXPECT_EQ(WebPythonDomError::kNone, host.CancelFrame({1, 1}).error);
+    EXPECT_EQ(WebPythonDomError::kNone, host.RequestFrame({1, 3}).error);
+  });
+  Load("<pyscript>register</pyscript>");
+  Tick(10);
+  Tick(20);
+  EXPECT_EQ((std::vector<uint64_t>{3}), runner_.frames);
+}
+
+TEST_F(HTMLPyScriptElementTest, OldFrameHandleDoesNotCancelNewRequest) {
+  RegisterFrame();
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    if (runner_.frames.size() == 1) {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                runner_.host->RequestFrame({1, 2}).error);
+      EXPECT_EQ(WebPythonDomError::kNone,
+                runner_.host->CancelFrame({1, 1}).error);
+    }
+  });
+  Tick(10);
+  Tick(20);
+  EXPECT_EQ((std::vector<uint64_t>{1, 2}), runner_.frames);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       FrameWindowRefusalRetainsRequestWithFreshTimestamp) {
+  RegisterFrame();
+  runner_.frame_admitted = false;
+  Tick(10);
+  Tick(20);
+  EXPECT_TRUE(runner_.frames.empty());
+  EXPECT_TRUE(
+      GetDocument().GetScriptedAnimationController().HasFrameCallback());
+  runner_.frame_admitted = true;
+  Tick(30);
+  Tick(40);
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.frames);
+  EXPECT_EQ((std::vector<double>{30}), runner_.timestamps);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ScriptForbiddenFrameRetainsRequestAndSurvivesGC) {
+  RegisterFrame();
+  {
+    ScriptForbiddenScope forbidden;
+    Tick(10);
+  }
+  EXPECT_TRUE(runner_.frames.empty());
+  ThreadState::Current()->CollectAllGarbageForTesting();
+  Tick(20);
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.frames);
+  EXPECT_EQ((std::vector<double>{20}), runner_.timestamps);
+}
+
+TEST_F(HTMLPyScriptElementTest, HiddenFramesPauseAndResumeWithoutCatchUp) {
+  RegisterFrame();
+  GetDocument().GetPage()->SetVisibilityState(
+      mojom::blink::PageVisibilityState::kHidden, false);
+  Tick(10);
+  Tick(20);
+  EXPECT_TRUE(runner_.frames.empty());
+  GetDocument().GetPage()->SetVisibilityState(
+      mojom::blink::PageVisibilityState::kVisible, false);
+  Tick(5000);
+  Tick(5016);
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.frames);
+  EXPECT_EQ((std::vector<double>{5000}), runner_.timestamps);
+}
+
+TEST_F(HTMLPyScriptElementTest, FrameSourceNonceSurvivesDetachedTagCollection) {
+  runner_.frame_admitted = false;
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 1}).error);
+  });
+  SimRequest::Params params;
+  params.response_http_headers.insert("Content-Security-Policy",
+                                      "script-src 'nonce-frame'");
+  Load("<body><pyscript id=python nonce=frame>register</pyscript>", params);
+  Compositor().BeginFrame();
+  // A pending frame must not retain the original element.
+  WeakPersistent<Element> source(GetElementById("python"));
+  source->remove();
+  Compositor().BeginFrame();
+  ThreadState::Current()->CollectAllGarbageForTesting();
+  EXPECT_FALSE(source);
+  EXPECT_TRUE(runner_.frames.empty());
+  runner_.frame_admitted = true;
+  Tick(100);
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.frames);
+}
+
+TEST_F(HTMLPyScriptElementTest, RevokedFramePolicyStopsRatherThanRevives) {
+  RegisterFrame();
+  runner_.allow = false;
+  Tick(10);
+  test::RunPendingTasks();
+  runner_.allow = true;
+  Tick(20);
+  EXPECT_TRUE(runner_.frames.empty());
+  EXPECT_EQ(1u, *runner_.destructions);
+  EXPECT_FALSE(
+      GetDocument().GetScriptedAnimationController().HasFrameCallback());
+}
+
+TEST_F(HTMLPyScriptElementTest, FrameRechecksLateCSPAndUnrestrictedOverride) {
+  RegisterFrame();
+  auto* meta = GetDocument().CreateRawElement(html_names::kMetaTag);
+  meta->setAttribute(html_names::kHttpEquivAttr,
+                     AtomicString("Content-Security-Policy"));
+  meta->setAttribute(html_names::kContentAttr,
+                     AtomicString("script-src 'none'"));
+  GetDocument().head()->AppendChild(meta);
+  runner_.unrestricted = true;
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 2}).error);
+  });
+  Tick(10);
+  EXPECT_EQ(1u, runner_.frames.size());
+  runner_.unrestricted = false;
+  Tick(20);
+  test::RunPendingTasks();
+  EXPECT_EQ(1u, runner_.frames.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, FrameErrorKeepsNewRequestFatalRevokesAll) {
+  RegisterFrame();
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, runner_.frames.back() + 1}).error);
+  });
+  runner_.callback_result = {false, false, {}, {}, "ValueError: frame"};
+  Tick(10);
+  Tick(20);
+  EXPECT_EQ((std::vector<uint64_t>{1, 2}), runner_.frames);
+  EXPECT_EQ(0u, *runner_.destructions);
+  runner_.callback_result.stopped = true;
+  Tick(30);
+  test::RunPendingTasks();
+  Tick(40);
+  EXPECT_EQ(3u, runner_.frames.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+  EXPECT_TRUE(ConsoleMessages().back().contains("pyscript frame 3"));
+}
+
+TEST_F(HTMLPyScriptElementTest, FrameOpenRevokesPendingOutputAndDefersCleanup) {
+  RegisterFrame();
+  runner_.callback_result.stdout_text = "must-not-log-frame-after-open";
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 2}).error);
+    GetDocument().open();
+    EXPECT_FALSE(runner_.host->IsActive());
+    EXPECT_EQ(0u, *runner_.destructions);
+  });
+  Tick(10);
+  test::RunPendingTasks();
+  Tick(20);
+  EXPECT_EQ(1u, runner_.frames.size());
+  EXPECT_EQ(1u, *runner_.destructions);
+  for (const auto& message : ConsoleMessages()) {
+    EXPECT_FALSE(message.contains("must-not-log-frame-after-open"));
+  }
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       NavigationCancelsPendingFrameBeforePythonEntry) {
+  RegisterFrame();
+  runner_.on_run.Reset();
+  Load("<p>new document</p>");
+  Tick(10);
+  test::RunPendingTasks();
+  EXPECT_TRUE(runner_.frames.empty());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
+
+TEST_F(HTMLPyScriptElementTest, FrameBridgeHasItsOwnPerEntryDomAllowance) {
+  RegisterFrame();
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    // Registration itself counts as one of the 128 bridge calls.
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, runner_.frames.back() + 1}).error);
+    for (int i = 0; i < 127; ++i) {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                runner_.host->GetElementById("missing").error);
+    }
+  });
+  Tick(10);
+  Tick(20);
+  EXPECT_EQ(2u, runner_.frames.size());
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    for (int i = 0; i < 129; ++i) {
+      EXPECT_EQ(
+          i == 128 ? WebPythonDomError::kStopped : WebPythonDomError::kNone,
+          runner_.host->GetElementById("missing").error);
+    }
+  });
+  Tick(30);
+  test::RunPendingTasks();
   EXPECT_EQ(1u, *runner_.destructions);
 }
 

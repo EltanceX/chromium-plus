@@ -1,0 +1,72 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:56824",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only nonce sample updates and cancels native frames",
+      "passed": true,
+      "elapsedMs": 2084,
+      "detail": {
+        "first": [
+          12,
+          1195
+        ],
+        "second": [
+          28,
+          1461
+        ],
+        "stopped": "28:1461"
+      }
+    },
+    {
+      "name": "Duplicate, repeated cancellation and consumed handles preserve next frame",
+      "passed": true,
+      "elapsedMs": 574
+    },
+    {
+      "name": "One-shot errors consume the old request and allow a new request",
+      "passed": true,
+      "elapsedMs": 490
+    },
+    {
+      "name": "A next frame requested before an ordinary error survives",
+      "passed": true,
+      "elapsedMs": 331
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /timeout",
+      "passed": true,
+      "elapsedMs": 1449,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306471783.668,
+          "url": "http://127.0.0.1:56824/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /dom-stop",
+      "passed": false,
+      "elapsedMs": 261,
+      "error": "AssertionError [ERR_ASSERTION]: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget\",\"timestamp\":1794306473183.668,\"url\":\"http://127.0.0.1:56824/dom-stop\",\"lineNumber\":0}]\n    at file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:294:14\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:234:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:291:5",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794306473183.668,
+          "url": "http://127.0.0.1:56824/dom-stop",
+          "lineNumber": 0
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 1] Python animation frame exceeded the 8 ms cooperative execution budget\",\"timestamp\":1794306473183.668,\"url\":\"http://127.0.0.1:56824/dom-stop\",\"lineNumber\":0}]\n    at file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:294:14\n    at async check (file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:234:20)\n    at async file:///C:/src/src/chrome/test/pyscript_animation_smoke_test.mjs:291:5"
+}

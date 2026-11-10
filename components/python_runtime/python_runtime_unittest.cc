@@ -6,6 +6,8 @@
 
 #include <algorithm>
 #include <functional>
+#include <limits>
+#include <utility>
 #include <vector>
 
 #include "base/memory/raw_ref.h"
@@ -71,6 +73,28 @@ class TestDomHost final : public DomHost {
     ++revokes;
     EraseListener(callback);
   }
+  DomResult RequestFrame(CallbackHandle callback) override {
+    ++frame_requests;
+    if (frame.id) {
+      return {{}, DomError::kState, "Only one pending frame is allowed"};
+    }
+    frame = last_frame = callback;
+    if (on_frame) {
+      on_frame();
+    }
+    return {{}, frame_failure, "Frame request failed"};
+  }
+  DomResult CancelFrame(CallbackHandle callback) override {
+    RevokeFrame(callback);
+    return {};
+  }
+  void RevokeFrame(CallbackHandle callback) override {
+    ++frame_revokes;
+    if (frame.context == callback.context && frame.id == callback.id) {
+      frame = {};
+    }
+  }
+  CallbackHandle TakeFrame() { return std::exchange(frame, {}); }
   void EraseListener(CallbackHandle callback) {
     std::erase_if(listeners, [&](CallbackHandle value) {
       return value.context == callback.context && value.id == callback.id;
@@ -90,10 +114,264 @@ class TestDomHost final : public DomHost {
   DomError listener_failure = DomError::kNone;
   std::vector<CallbackHandle> listeners;
   std::function<void()> on_add;
+  CallbackHandle frame;
+  CallbackHandle last_frame;
+  DomError frame_failure = DomError::kNone;
+  int frame_requests = 0;
+  int frame_revokes = 0;
+  std::function<void()> on_frame;
 };
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest,
+     AnimationRequestsAreOpaqueBoundedAndConsumedBeforeCall) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import animation, dom
+count = 0
+last = -1
+def tick(timestamp):
+    global count, last, handle
+    assert type(timestamp) is float and timestamp > last
+    last = timestamp
+    count += 1
+    dom.set_text(dom.get_element_by_id('result'), str(count))
+    if count < 3:
+        handle = animation.request_frame(tick)
+handle = animation.request_frame(tick)
+assert type(handle) is animation.FrameHandle
+try:
+    animation.request_frame(tick)
+except RuntimeError:
+    pass
+else:
+    raise AssertionError('duplicate pending frame')
+for operation in (lambda: animation.FrameHandle(), lambda: dom.remove_event_listener(handle),
+                  lambda: animation.cancel_frame(1), lambda: animation.request_frame(1)):
+    try:
+        operation()
+    except TypeError:
+        pass
+    else:
+        raise AssertionError('invalid animation operation accepted')
+)PY",
+                                 "animation.py", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  for (int i = 1; i <= 3; ++i) {
+    auto callback = host.TakeFrame();
+    ASSERT_NE(0u, callback.id);
+    result = context->InvokeFrameCallback(callback, i * 16.5, &host);
+    ASSERT_TRUE(result.success) << result.error;
+    EXPECT_EQ(std::to_string(i), host.value);
+    EXPECT_FALSE(context->InvokeFrameCallback(callback, 100, &host).success);
+  }
+  EXPECT_EQ(0u, host.frame.id);
+  EXPECT_TRUE(
+      context
+          ->Execute(
+              "animation.cancel_frame(handle)\nanimation.cancel_frame(handle)",
+              "cancel.py", &host)
+          .success);
+}
+
+TEST(PythonRuntimeTest,
+     AnimationKindAndTimestampValidationDoNotConsumeRequest) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  auto other = PythonContext::Create(&error);
+  ASSERT_TRUE(context && other) << error;
+  ASSERT_TRUE(context->Execute("def tick(value): print(value)").success);
+  auto registered =
+      context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+  ASSERT_TRUE(registered.result.success) << registered.result.error;
+  auto callback = registered.handle;
+  EXPECT_FALSE(context->InvokeCallback(callback, Click()).success);
+  EXPECT_FALSE(other->InvokeFrameCallback(callback, 1).success);
+  for (double invalid : {-1.0, std::numeric_limits<double>::infinity(),
+                         std::numeric_limits<double>::quiet_NaN()}) {
+    EXPECT_FALSE(context->InvokeFrameCallback(callback, invalid).success);
+  }
+  auto result = context->InvokeFrameCallback(callback, 12.5);
+  ASSERT_TRUE(result.success) << result.error;
+  EXPECT_EQ("12.5\n", result.stdout_text);
+  EXPECT_FALSE(context->InvokeFrameCallback(callback, 13).success);
+  registered = context->RegisterCallback("tick");
+  ASSERT_TRUE(registered.result.success);
+  EXPECT_FALSE(context->InvokeFrameCallback(registered.handle, 1).success);
+  EXPECT_TRUE(context->InvokeCallback(registered.handle, Click()).success);
+}
+
+TEST(PythonRuntimeTest,
+     AnimationInstallationRollbackAndCancellationRevokeCapabilities) {
+  for (bool invalidate : {false, true}) {
+    std::string error;
+    auto context = PythonContext::Create(&error);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    host.frame_failure = invalidate ? DomError::kNone : DomError::kState;
+    if (invalidate) {
+      host.on_frame = [&] { host.active = false; };
+    }
+    auto result = context->Execute(R"PY(
+import animation, dom
+class Callback:
+    def __call__(self, timestamp): pass
+try:
+    animation.request_frame(Callback())
+except RuntimeError:
+    pass
+)PY",
+                                   "rollback.py", &host);
+    EXPECT_EQ(0u, host.frame.id);
+    EXPECT_EQ(1, host.frame_revokes);
+    EXPECT_EQ(0, host.gets);
+    EXPECT_EQ(invalidate ? StopReason::kInactive : StopReason::kNone,
+              result.stop_reason);
+    if (!invalidate) {
+      EXPECT_TRUE(result.success) << result.error;
+    }
+  }
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  const auto result = context->Execute(R"PY(
+import animation, dom
+class Callback:
+    def __call__(self, timestamp): pass
+    def __del__(self):
+        try:
+            dom.get_element_by_id('forbidden')
+        except ReferenceError:
+            print('frame finalizer revoked')
+request = animation.request_frame(Callback())
+# The registry now owns the last reference. Cancel releases it in native code.
+animation.cancel_frame(request)
+)PY",
+                                       "cancel.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_FALSE(host.frame.id);
+  EXPECT_EQ(0, host.gets);
+  EXPECT_EQ("frame finalizer revoked\n", result.stdout_text);
+}
+
+TEST(PythonRuntimeTest,
+     AnimationWindowUsesEightMillisecondReservationAndFrameSubquota) {
+  base::SimpleTestTickClock clock;
+  std::string error;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(
+      context
+          ->Execute("import dom\ndef tick(t): dom.get_element_by_id('x')\ndef "
+                    "click(e): dom.get_element_by_id('x')")
+          .success);
+  host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
+  for (int i = 0; i < 28; ++i) {
+    auto callback =
+        context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+    ASSERT_TRUE(callback.result.success);
+    ASSERT_TRUE(context->CanInvokeFrameCallback());
+    auto result = context->InvokeFrameCallback(callback.handle, i, &host);
+    ASSERT_TRUE(result.success) << result.error;
+  }
+  EXPECT_FALSE(context->CanInvokeFrameCallback());
+  EXPECT_TRUE(context->CanInvokeCallback());
+  auto pending =
+      context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+  ASSERT_TRUE(pending.result.success);
+  EXPECT_TRUE(
+      context->InvokeFrameCallback(pending.handle, 29, &host).callback_skipped);
+  auto click = context->RegisterCallback("click");
+  host.on_get = [&] { clock.Advance(base::Milliseconds(39)); };
+  EXPECT_TRUE(context->InvokeCallback(click.handle, Click(), &host).success);
+  EXPECT_FALSE(context->CanInvokeFrameCallback());
+  clock.Advance(base::Milliseconds(1001));
+  host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
+  EXPECT_TRUE(context->CanInvokeFrameCallback());
+  EXPECT_TRUE(context->InvokeFrameCallback(pending.handle, 100, &host).success);
+}
+
+TEST(PythonRuntimeTest, AnimationAndInputShareTotalTimeAndOutputWindows) {
+  for (bool output : {false, true}) {
+    base::SimpleTestTickClock clock;
+    std::string error;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    ASSERT_TRUE(
+        context
+            ->Execute(
+                output
+                    ? "def click(e): print('x'*3072, end='')\ndef tick(t): pass"
+                    : "import dom\ndef click(e): "
+                      "dom.get_element_by_id('x')\ndef tick(t): "
+                      "dom.get_element_by_id('x')")
+            .success);
+    auto click = context->RegisterCallback("click");
+    ASSERT_TRUE(click.result.success);
+    host.on_get = [&] { clock.Advance(base::Milliseconds(40)); };
+    for (int i = 0; i < (output ? 5 : 6); ++i) {
+      ASSERT_TRUE(
+          context->InvokeCallback(click.handle, Click(), &host).success);
+    }
+    auto frame =
+        context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+    ASSERT_TRUE(frame.result.success);
+    EXPECT_EQ(!output, context->CanInvokeFrameCallback());
+    if (!output) {
+      host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
+      EXPECT_TRUE(context->InvokeFrameCallback(frame.handle, 1, &host).success);
+      frame = context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+      EXPECT_FALSE(context->CanInvokeFrameCallback());
+    }
+    EXPECT_TRUE(
+        context->InvokeFrameCallback(frame.handle, 2, &host).callback_skipped);
+    clock.Advance(base::Milliseconds(1001));
+    EXPECT_TRUE(context->InvokeFrameCallback(frame.handle, 3, &host).success);
+  }
+}
+
+TEST(PythonRuntimeTest, AnimationFatalLimitsLatchAcrossAllEntryKinds) {
+  for (int scenario = 0; scenario < 3; ++scenario) {
+    base::SimpleTestTickClock clock;
+    std::string error;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    ASSERT_TRUE(context) << error;
+    TestDomHost host;
+    const char* source =
+        scenario == 0   ? "import dom\ndef tick(t): dom.get_element_by_id('x')"
+        : scenario == 1 ? "def tick(t): print('x'*4097)"
+                        : "import dom\ndef tick(t): "
+                          "list(map(dom.get_element_by_id, ['x']*129))";
+    ASSERT_TRUE(context->Execute(source).success);
+    auto frame =
+        context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+    ASSERT_TRUE(frame.result.success);
+    if (scenario == 0) {
+      host.on_get = [&] { clock.Advance(base::Milliseconds(8)); };
+    }
+    auto result = context->InvokeFrameCallback(frame.handle, 1, &host);
+    EXPECT_EQ(scenario == 0   ? StopReason::kBlockTime
+              : scenario == 1 ? StopReason::kOutput
+                              : StopReason::kDomCalls,
+              result.stop_reason);
+    if (scenario == 0) {
+      EXPECT_NE(std::string::npos, result.error.find("8 ms"));
+    }
+    clock.Advance(base::Seconds(2));
+    EXPECT_FALSE(context->CanInvokeFrameCallback());
+    EXPECT_FALSE(context->CanInvokeCallback());
+    EXPECT_EQ(result.stop_reason,
+              context->Execute("print('forbidden')").stop_reason);
+  }
 }
 
 TEST(PythonRuntimeTest, OnceConsumptionReleasesCallableEvenAfterException) {
@@ -1072,20 +1350,31 @@ TEST(PythonRuntimeDeathTest,
   ASSERT_TRUE(context) << error;
   class WrongThread final : public base::PlatformThread::Delegate {
    public:
-    explicit WrongThread(PythonContext& context) : context_(context) {}
-    void ThreadMain() override { context_->InvokeCallback({}, Click()); }
+    WrongThread(PythonContext& context, bool frame)
+        : context_(context), frame_(frame) {}
+    void ThreadMain() override {
+      if (frame_) {
+        context_->InvokeFrameCallback({},
+                                      std::numeric_limits<double>::quiet_NaN());
+      } else {
+        context_->InvokeCallback({}, Click());
+      }
+    }
 
    private:
     const raw_ref<PythonContext> context_;
+    const bool frame_;
   };
-  EXPECT_DEATH_IF_SUPPORTED(
-      {
-        WrongThread delegate(*context);
-        base::PlatformThreadHandle thread;
-        ASSERT_TRUE(base::PlatformThread::Create(0, &delegate, &thread));
-        base::PlatformThread::Join(thread);
-      },
-      "thread_");
+  for (bool frame : {false, true}) {
+    EXPECT_DEATH_IF_SUPPORTED(
+        {
+          WrongThread delegate(*context, frame);
+          base::PlatformThreadHandle thread;
+          ASSERT_TRUE(base::PlatformThread::Create(0, &delegate, &thread));
+          base::PlatformThread::Join(thread);
+        },
+        "thread_");
+  }
 }
 
 TEST(PythonRuntimeTest, DomModuleUsesOpaqueHandlesAndStrictStrings) {
