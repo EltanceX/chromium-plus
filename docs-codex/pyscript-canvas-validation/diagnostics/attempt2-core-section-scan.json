@@ -1,0 +1,25 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5041,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_unparsed_value.obj",
+      "errors": [
+        "Section 1557: invalid name b'/\\xa6\\xe5:u\\x91\\x13\\x84'",
+        "Section 1636: invalid name b'/\\xa3\\xaa\\xd9\\xb6\\xa8\\x9b\\x7f'",
+        "Section 1843: invalid name b\"/-\\xb3eS'\\xf71\"",
+        "Section 1852: invalid name b'/\\xbb:\\xdd\\xd5\\x05\\xd5\\x83'",
+        "Section 1963: invalid name b'/h)\\xa5\\x9c3\\x9f\\xb6'",
+        "Section 2525: invalid name b'/\\xa4\\x96\\xbf\\x08\\x03\\xd6\\x1c'",
+        "Section 2790: invalid name b'/\\xc6h\\xeb\\x7f\\x89\\xad\\xbc'"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/style_rule_import.obj",
+      "errors": [
+        "Section 1167: invalid name b'/T}\\xc3\\xa96\\xd41'",
+        "Section 1181: invalid name b'/Ra `w\\x88\\xb4'"
+      ]
+    }
+  ]
+}

@@ -553,6 +553,8 @@ blink_core_sources_html = [
   "nesting_level_incrementer.h",
   "plugin_document.cc",
   "plugin_document.h",
+  "python_canvas_bridge.cc",
+  "python_canvas_bridge.h",
   "python_script_controller.cc",
   "python_script_controller.h",
   "rel_list.cc",

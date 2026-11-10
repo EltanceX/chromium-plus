@@ -49,6 +49,23 @@ DomResult DomHost::SetPointerCapture(DomHandle, int32_t, bool) {
   return {{}, DomError::kNotAllowed, "Pointer capture is not supported"};
 }
 
+CanvasResult DomHost::GetCanvasContext(DomHandle) {
+  return {{{}, DomError::kNotAllowed, "Canvas is unavailable"}};
+}
+CanvasResult DomHost::CreateCanvasSurface(uint32_t, uint32_t) {
+  return {{{}, DomError::kNotAllowed, "Canvas is unavailable"}};
+}
+CanvasResult DomHost::ResizeCanvas(CanvasHandle, uint32_t, uint32_t) {
+  return {{{}, DomError::kNotAllowed, "Canvas is unavailable"}};
+}
+DomResult DomHost::ReleaseCanvas(CanvasHandle) {
+  return {{}, DomError::kNotAllowed, "Canvas is unavailable"};
+}
+CanvasResult DomHost::SubmitCanvas(CanvasHandle,
+                                   const std::vector<CanvasCommand>&) {
+  return {{{}, DomError::kNotAllowed, "Canvas is unavailable"}};
+}
+
 namespace {
 
 constexpr size_t kOutputLimit = 16 * 1024;
@@ -276,7 +293,8 @@ class Runtime {
     }
     if (!PyStatus_Exception(status) &&
         (PyImport_AppendInittab("dom", InitDomModule) != 0 ||
-         PyImport_AppendInittab("animation", InitAnimationModule) != 0)) {
+         PyImport_AppendInittab("animation", InitAnimationModule) != 0 ||
+         PyImport_AppendInittab("canvas", InitCanvasModule) != 0)) {
       status = PyStatus_Error("failed to register native DOM module");
     }
     if (!PyStatus_Exception(status)) {

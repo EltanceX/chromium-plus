@@ -25,8 +25,15 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 61),
-    ('adapter', 'python_document_context_unittests', [], 12),
+    ('runtime', 'python_runtime_unittests', [], 67),
+    ('adapter', 'python_document_context_unittests', [], 15),
+    ('canvas-unit', 'blink_unittests', [
+        '--gtest_filter=PythonCanvasBatchTest.*:PythonCanvasBridgeTest.*'
+    ], 19),
+    ('canvas-native', 'blink_unittests', [
+        '--gtest_filter=CanvasRenderingContext2DAPITest.DefaultAttributeValues:'
+        'CanvasRenderingContext2DAPITest.LineDashStateSave'
+    ], 2),
     ('blink', 'blink_unittests', ['--gtest_filter=HTMLPyScriptElementTest.*'],
      74),
     ('csp', 'blink_unittests', [
@@ -38,6 +45,7 @@ SUITES = [
     ('settings-unit', 'native_python_settings_unittests', [], 8),
     ('events', 'pyscript_event_smoke_test.mjs', [], 34),
     ('input', 'pyscript_input_smoke_test.mjs', [], 25),
+    ('canvas', 'pyscript_canvas_smoke_test.mjs', [], 23),
     ('animation', 'pyscript_animation_smoke_test.mjs', [], 19),
     ('dom', 'pyscript_dom_smoke_test.mjs', [], 17),
     ('parser', 'pyscript_smoke_test.mjs', [], 27),
@@ -91,6 +99,14 @@ def main():
       'chrome/browser/resources/settings/kernel_debug_page',
       'third_party/blink/public/web/web_python*',
       'third_party/blink/renderer/core/html/*py*script*',
+      'third_party/blink/renderer/core/html/python_canvas*',
+      'third_party/blink/renderer/modules/canvas/canvas2d/python_canvas*',
+      'third_party/blink/renderer/modules/canvas/canvas2d/canvas_2d_recorder_context.h',
+      'third_party/blink/renderer/modules/modules_initializer.cc',
+      'third_party/blink/renderer/modules/BUILD.gn',
+      'third_party/blink/renderer/modules/canvas/BUILD.gn',
+      'third_party/blink/renderer/core/html/build.gni',
+      'third_party/blink/public/BUILD.gn',
       'third_party/blink/renderer/core/frame/csp/content_security_policy.cc')
   paths = sorted(
       set(inputs.splitlines()) | {Path(__file__).relative_to(repo).as_posix()})
@@ -148,7 +164,11 @@ def main():
     suffix = '.exe' if windows else ''
     binaries = [build / (target + suffix) for target in TARGETS]
     if windows:
-      binaries += [build / 'chrome.dll', build / 'blink_core.dll']
+      binaries += [
+          build / name for name in ('chrome.dll', 'blink_core.dll',
+                                    'blink_modules.dll', 'blink_platform.dll',
+                                    'python_runtime.dll')
+      ]
     record['binarySha256'] = {str(file): sha256(file) for file in binaries}
     save()
     for name, target, switches, expected in SUITES:

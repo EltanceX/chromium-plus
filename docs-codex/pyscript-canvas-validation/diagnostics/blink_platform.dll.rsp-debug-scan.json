@@ -1,0 +1,13 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_platform.dll.rsp",
+  "directObjects": 3881,
+  "problems": [
+    {
+      "object": "obj/components/metrics/metrics/child_histogram_fetcher_impl.obj",
+      "errors": [
+        "Invalid CodeView type at 0x85157: length 45055, kind 0x4538",
+        "Invalid CodeView type extent 0x85157 != 0xdc11b"
+      ]
+    }
+  ]
+}

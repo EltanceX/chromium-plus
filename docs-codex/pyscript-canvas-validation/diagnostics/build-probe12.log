@@ -1,0 +1,36 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.9730191s
+load siso config done 15.3812ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:80136+ready:0 (node:441071 edge:80146)
+schedule pending:98919+ready:0 (node:441071 edge:98921)
+ 2.27s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/6797] 39.18s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[0/5614] 39.23s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[0/3] 43.62s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[1/2] 1m10.95s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:2 remote:0 cache:0 skip:102102
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1003(err:3) / r:769(err:0) 7.33GiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m11.54s Build Succeeded: 2 steps - 0.03/s

@@ -1,0 +1,147 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2334259s
+load siso config done 9.8563ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:71552+ready:0 (node:441071 edge:71560)
+ 1.31s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/45260] 28.96s S CXX obj/components/metrics/metrics/child_histogram_fetcher_impl.obj
+[0/24792] 29.48s S CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+[0/21973] 29.70s S CXX obj/third_party/blink/renderer/core/core_hot/element_rule_collector.obj
+[0/21222] 29.77s S CXX obj/third_party/blink/renderer/core/core/fragment_directive_utils.obj
+[0/20993] 29.79s S CXX obj/third_party/blink/renderer/core/core/geometry_utils.obj
+[0/20848] 29.81s S CXX obj/third_party/blink/renderer/core/core/sizes_attribute_parser.obj
+[0/20713] 29.82s S CXX obj/third_party/blink/renderer/core/core/svg_text_content_element.obj
+[0/20617] 29.83s S CXX obj/third_party/blink/renderer/core/core/focusable.obj
+[0/20326] 29.86s S CXX obj/third_party/blink/renderer/core/core/select_mutation_observer.obj
+[0/20208] 29.87s S CXX obj/third_party/blink/renderer/core/core/remote_frame_view.obj
+[0/19845] 29.90s S CXX obj/third_party/blink/renderer/core/core/line_box_fragment_builder.obj
+[0/19134] 29.96s S CXX obj/third_party/blink/renderer/core/core/wrap_contents_in_dummy_span_command.obj
+[0/19058] 29.97s S CXX obj/third_party/blink/renderer/core/core/dom_window.obj
+[0/18866] 29.99s S CXX obj/third_party/blink/renderer/core/core/grid_sizing_tree.obj
+[0/18828] 29.99s S CXX obj/third_party/blink/renderer/core/core/table_row_layout_algorithm.obj
+[0/18730] 30.00s S CXX obj/third_party/blink/renderer/core/core/cascade_expansion.obj
+[0/18703] 30.00s S CXX obj/third_party/blink/renderer/core/core/cached_permission_status.obj
+[0/18703] 30.00s S CXX obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj
+[0/15769] 30.20s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/4314] 34.02s F CXX obj/components/metrics/metrics/child_histogram_fetcher_impl.obj
+[0/4275] 34.03s S LINK(DLL) components_feed_feature_list.dll components_feed_feature_list.dll.lib components_feed_feature_list.dll.pdb
+[0/4275] 34.03s S LINK(DLL) cc.dll cc.dll.lib cc.dll.pdb
+[0/4271] 34.03s S LINK(DLL) components_private_insights.dll components_private_insights.dll.lib components_private_insights.dll.pdb
+[0/4271] 34.03s S LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[0/4257] 34.04s S LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[0/4257] 34.04s S LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[0/4257] 34.04s S LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[1/4257] 35.56s F LINK(DLL) components_feed_feature_list.dll components_feed_feature_list.dll.lib components_feed_feature_list.dll.pdb
+[2/4255] 36.33s F LINK(DLL) components_private_insights.dll components_private_insights.dll.lib components_private_insights.dll.pdb
+[3/4255] 37.70s F CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+[4/4255] 39.24s F LINK(DLL) cc.dll cc.dll.lib cc.dll.pdb
+[5/4228] 39.27s S LINK(DLL) blink_common.dll blink_common.dll.lib blink_common.dll.pdb
+[5/4228] 40.36s F LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[6/4228] 42.68s F LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[7/4215] 42.70s S LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[7/4186] 49.14s F LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[8/4175] 49.93s F LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[9/4175] 54.84s F LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[10/4175] 57.65s F CXX obj/third_party/blink/renderer/core/core/focusable.obj
+[11/4175] 58.02s F CXX obj/third_party/blink/renderer/core/core/wrap_contents_in_dummy_span_command.obj
+[12/4175] 58.21s F LINK(DLL) blink_common.dll blink_common.dll.lib blink_common.dll.pdb
+[13/4170] 58.23s S LINK(DLL) blink_platform_wtf.dll blink_platform_wtf.dll.lib blink_platform_wtf.dll.pdb
+[13/4027] 1m00.29s F CXX obj/third_party/blink/renderer/core/core/sizes_attribute_parser.obj
+[14/4027] 1m03.98s F LINK(DLL) blink_platform_wtf.dll blink_platform_wtf.dll.lib blink_platform_wtf.dll.pdb
+[15/4012] 1m04.00s S LINK(DLL) image_decoders.dll image_decoders.dll.lib image_decoders.dll.pdb
+[15/4005] 1m04.01s S LINK(DLL) components_input.dll components_input.dll.lib components_input.dll.pdb
+[15/4005] 1m04.01s S LINK(DLL) gamepad_mojom.dll gamepad_mojom.dll.lib gamepad_mojom.dll.pdb
+[15/4002] 1m04.01s S LINK(DLL) storage_common.dll storage_common.dll.lib storage_common.dll.pdb
+[15/4002] 1m04.02s S LINK(DLL) mojo_public_cpp_bindings_wtf_support.dll mojo_public_cpp_bindings_wtf_support.dll.lib mojo_public_cpp_bindings_wtf_support.dll.pdb
+[15/4002] 1m06.67s F CXX obj/third_party/blink/renderer/core/core/select_mutation_observer.obj
+[16/4002] 1m09.34s F LINK(DLL) gamepad_mojom.dll gamepad_mojom.dll.lib gamepad_mojom.dll.pdb
+[17/4002] 1m09.36s S LINK(DLL) device_gamepad.dll device_gamepad.dll.lib device_gamepad.dll.pdb
+[17/3997] 1m09.39s S LINK(DLL) device_vr.dll device_vr.dll.lib device_vr.dll.pdb
+[17/3996] 1m09.61s F LINK(DLL) mojo_public_cpp_bindings_wtf_support.dll mojo_public_cpp_bindings_wtf_support.dll.lib mojo_public_cpp_bindings_wtf_support.dll.pdb
+[18/3931] 1m09.63s S LINK(DLL) gamepad_mojom_blink.dll gamepad_mojom_blink.dll.lib gamepad_mojom_blink.dll.pdb
+[18/3842] 1m11.44s F CXX obj/third_party/blink/renderer/core/core/fragment_directive_utils.obj
+[19/3842] 1m13.06s F LINK(DLL) storage_common.dll storage_common.dll.lib storage_common.dll.pdb
+[20/3794] 1m13.36s F CXX obj/third_party/blink/renderer/core/core/cached_permission_status.obj
+[21/3794] 1m17.38s F LINK(DLL) components_input.dll components_input.dll.lib components_input.dll.pdb
+[22/3664] 1m17.72s F LINK(DLL) image_decoders.dll image_decoders.dll.lib image_decoders.dll.pdb
+[23/3664] 1m20.74s F LINK(DLL) gamepad_mojom_blink.dll gamepad_mojom_blink.dll.lib gamepad_mojom_blink.dll.pdb
+[24/3663] 1m20.83s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[24/3663] 1m24.49s F LINK(DLL) device_gamepad.dll device_gamepad.dll.lib device_gamepad.dll.pdb
+[25/3661] 1m24.53s F LINK(DLL) device_vr.dll device_vr.dll.lib device_vr.dll.pdb
+[26/3660] 1m25.99s F CXX obj/third_party/blink/renderer/core/core/grid_sizing_tree.obj
+[27/3660] 1m27.76s F CXX obj/third_party/blink/renderer/core/core/svg_text_content_element.obj
+[28/3660] 1m30.00s F CXX obj/third_party/blink/renderer/core/core/geometry_utils.obj
+[29/3660] 1m33.98s F CXX obj/third_party/blink/renderer/core/core/table_row_layout_algorithm.obj
+[30/3660] 1m35.78s F CXX obj/third_party/blink/renderer/core/core/line_box_fragment_builder.obj
+[31/3660] 1m36.83s F CXX obj/third_party/blink/renderer/core/core_hot/element_rule_collector.obj
+[32/3660] 1m38.39s F CXX obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj
+[33/3660] 1m42.07s F CXX obj/third_party/blink/renderer/core/core/dom_window.obj
+[34/3660] 1m42.56s F CXX obj/third_party/blink/renderer/core/core/cascade_expansion.obj
+[35/3638] 1m45.55s F LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[36/3160] 1m45.64s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[36/2329] 1m51.55s F CXX obj/third_party/blink/renderer/core/core/remote_frame_view.obj
+[37/2329] 1m51.57s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[37/2329] 2m19.90s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[38/2329] 2m29.48s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[39/2270] 2m33.63s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[40/2204] 2m33.65s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[40/2204] 2m47.00s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 823ac35a-c61d-45ec-9bca-ec4902c7b003 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: procedure symbol record for `v8::SourceLocation::Current` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D22D which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::numeric_limits<int>::max` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D2A3 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::subtle::AssertRefCountBaseMatches` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D3FE which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::StringImpl::Release` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D3FF which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<unsigned int,0>::load` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D401 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<unsigned int,1>::operator++` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D404 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_load<unsigned int>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D406 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__is_long` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D348 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_address<const char>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D33E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_load<unsigned short>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D2D1 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::atomic_ref<unsigned short>::atomic_ref` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D2E5 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_ref_base<unsigned short>::__atomic_ref_base` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D2EA which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_gcc_order` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x7D2EC which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::char_traits<char>::length` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D309 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__pad_and_output<char,std::__Cr::char_traits<char> >` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D31D which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::fill` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D31E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::flags` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D31F which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ostreambuf_iterator<char,std::__Cr::char_traits<char> >::ostreambuf_iterator` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D320 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ostreambuf_iterator<char,std::__Cr::char_traits<char> >::failed` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D321 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::setstate` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x7D322 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:41 remote:0 cache:0 skip:99900
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 7653(err:37) / r:845(err:0) 6.75GiB / w:19(err:0) 1.47MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14     20(0)     4.66s |█  ▂▃  |    47.12s |   ▃█▆ |
+shutdown cloud logging/monitoring done 0s
+
+2m48.21s Build Failure: 41 done, 1 failed, 2163 remaining - 0.24/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-225713.15848
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

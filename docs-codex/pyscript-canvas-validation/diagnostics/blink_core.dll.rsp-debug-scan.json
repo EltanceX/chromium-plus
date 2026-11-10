@@ -1,0 +1,340 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5041,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/sizes_attribute_parser.obj",
+      "errors": [
+        "Invalid CodeView symbol subsection 0x60bda: kind 0x8fc6950a, size 1915675216"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/cascade_expansion.obj",
+      "errors": [
+        "Invalid CodeView symbol subsection 0x139a79: kind 0x2b4316a4, size 2915552676",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/focusable.obj",
+      "errors": [
+        "Invalid CodeView symbol subsection 0xa7e92: kind 0xe4762c38, size 1770780366",
+        "Invalid CodeView symbol subsection 0xc1006: kind 0xf3f90ce8, size 683394666",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/geometry_utils.obj",
+      "errors": [
+        "Invalid CodeView symbol subsection 0x1c3257: kind 0x2cd7dfc, size 3038483690",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/wrap_contents_in_dummy_span_command.obj",
+      "errors": [
+        "Invalid CodeView type at 0x20e2ab: length 50049, kind 0xc1ad",
+        "Invalid CodeView type extent 0x20e2ab != 0x22dfbf"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/fragment_directive_utils.obj",
+      "errors": [
+        "Invalid CodeView type at 0xe3003: length 56217, kind 0xc989",
+        "Invalid CodeView type extent 0xe3003 != 0x1a23db"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/cached_permission_status.obj",
+      "errors": [
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/execution_context_csp_delegate.obj",
+      "errors": [
+        "Invalid CodeView type at 0x40005d: length 13983, kind 0x38a2",
+        "Invalid CodeView type extent 0x40005d != 0x59461d"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/dom_window.obj",
+      "errors": [
+        "Invalid UTF8 string table at 0x739000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/remote_frame_view.obj",
+      "errors": [
+        "Invalid CodeView type at 0x5cf00b: length 9875, kind 0x3e3c",
+        "Invalid CodeView type extent 0x5cf00b != 0x80d0b7"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/select_mutation_observer.obj",
+      "errors": [
+        "Invalid CodeView type at 0x398084: length 24134, kind 0x52f8",
+        "Invalid CodeView type extent 0x398084 != 0x4dc93c"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/grid_sizing_tree.obj",
+      "errors": [
+        "Invalid UTF8 string table at 0x9b8000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/line_box_fragment_builder.obj",
+      "errors": [
+        "Invalid CodeView type at 0x40e97d: length 55924, kind 0x81c2",
+        "Invalid CodeView type extent 0x40e97d != 0x5e2ec1"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/table_row_layout_algorithm.obj",
+      "errors": [
+        "Invalid UTF8 string table at 0x84a000"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/svg_text_content_element.obj",
+      "errors": [
+        "Invalid CodeView type at 0x40007d: length 29538, kind 0xb44a",
+        "Invalid CodeView type extent 0x40007d != 0x631499"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core_hot/element_rule_collector.obj",
+      "errors": [
+        "Invalid CodeView type at 0x4e4015: length 45944, kind 0x70fe",
+        "Invalid CodeView type extent 0x4e4015 != 0x9466dd"
+      ]
+    },
+    {
+      "object": "obj/components/metrics/metrics/child_histogram_fetcher_impl.obj",
+      "errors": [
+        "Invalid CodeView type at 0x85157: length 45055, kind 0x4538",
+        "Invalid CodeView type extent 0x85157 != 0xdc11b"
+      ]
+    }
+  ]
+}

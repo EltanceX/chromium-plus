@@ -107,6 +107,43 @@ class TestHost final : public WebPythonDomHost {
     last_capture = capture;
     return {};
   }
+  blink::WebPythonCanvasResult GetCanvasContext(WebPythonDomHandle h) override {
+    CheckTarget(h);
+    return {{}, canvas_handle};
+  }
+  blink::WebPythonCanvasResult CreateCanvasSurface(uint32_t w,
+                                                   uint32_t h) override {
+    canvas_size = {w, h};
+    return {{}, surface_handle};
+  }
+  blink::WebPythonCanvasResult ResizeCanvas(blink::WebPythonCanvasHandle h,
+                                            uint32_t w,
+                                            uint32_t height) override {
+    canvas_target = h;
+    canvas_size = {w, height};
+    ++h.version;
+    return {{}, h};
+  }
+  WebPythonDomResult ReleaseCanvas(blink::WebPythonCanvasHandle h) override {
+    canvas_released = h;
+    return {};
+  }
+  blink::WebPythonCanvasResult SubmitCanvas(
+      blink::WebPythonCanvasHandle h,
+      const std::vector<blink::WebPythonCanvasCommand>& commands) override {
+    canvas_target = h;
+    canvas_commands = commands;
+    return {{{}, canvas_failure, WebString::FromUtf8("Canvas host failure")},
+            h,
+            {commands.size(), 456, 789, 0.25}};
+  }
+  blink::WebPythonCanvasHandle canvas_handle{71, 9, 5, 8};
+  blink::WebPythonCanvasHandle surface_handle{71, 9, 7, 11};
+  blink::WebPythonCanvasHandle canvas_target;
+  blink::WebPythonCanvasHandle canvas_released;
+  std::pair<uint32_t, uint32_t> canvas_size;
+  std::vector<blink::WebPythonCanvasCommand> canvas_commands;
+  WebPythonDomError canvas_failure = WebPythonDomError::kNone;
   std::string last_type;
   bool last_passive = false;
   bool last_capture = false;
@@ -173,6 +210,89 @@ def callback(event):
     print(count, event.is_trusted)
 listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=False)
 )PY";
+
+TEST(PythonDocumentContextTest,
+     CanvasPreservesTypedPayloadsVersionsAndMetrics) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import canvas, dom
+c = canvas.get_context_2d(dom.get_element_by_id('game'))
+s = canvas.create_surface(16, 24)
+b = canvas.batch()
+g = b.linear_gradient(0, 1, 2, 3)
+g.add_color_stop(0.5, '#abcdef80')
+b.fill_style(g)
+b.stroke_style('#123')
+b.line_dash([2, 3.5])
+b.fill_text('画布', -1.5, 25)
+b.draw_surface(s, 4, 5, 32, 48)
+r = canvas.submit(c, b)
+assert r == dict(commands=7, bytes=456, pixels=789, native_ms=0.25)
+c = canvas.resize(c, 640, 360)
+canvas.submit(c, b)
+canvas.release(s)
+)PY");
+  ASSERT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ(640u, host.canvas_size.first);
+  EXPECT_EQ(360u, host.canvas_size.second);
+  EXPECT_EQ(71u, host.canvas_target.document);
+  EXPECT_EQ(9u, host.canvas_target.generation);
+  EXPECT_EQ(5u, host.canvas_target.id);
+  EXPECT_EQ(9u, host.canvas_target.version);
+  ASSERT_EQ(7u, host.canvas_commands.size());
+  const auto& gradient = host.canvas_commands[0];
+  EXPECT_EQ(blink::WebPythonCanvasOp::kLinearGradient, gradient.op);
+  EXPECT_EQ(1u, gradient.index);
+  EXPECT_EQ(3, gradient.args[3]);
+  EXPECT_EQ("#abcdef80", host.canvas_commands[1].text);
+  EXPECT_EQ(1u, host.canvas_commands[2].index);
+  EXPECT_EQ((std::vector<double>{2, 3.5}), host.canvas_commands[4].values);
+  EXPECT_EQ("画布", host.canvas_commands[5].text);
+  EXPECT_EQ(-1.5, host.canvas_commands[5].args[0]);
+  EXPECT_EQ(blink::WebPythonCanvasOp::kDrawSurface, host.canvas_commands[6].op);
+  EXPECT_EQ(7u, host.canvas_commands[6].source.id);
+  EXPECT_EQ(11u, host.canvas_commands[6].source.version);
+  EXPECT_EQ(7u, host.canvas_released.id);
+  EXPECT_EQ(11u, host.canvas_released.version);
+}
+
+TEST(PythonDocumentContextTest, CanvasMapsRecoverableNativeErrors) {
+  for (auto error :
+       {WebPythonDomError::kReference, WebPythonDomError::kLimit,
+        WebPythonDomError::kState, WebPythonDomError::kNotAllowed}) {
+    auto context = CreatePythonDocumentContext();
+    TestHost host;
+    host.canvas_failure = error;
+    auto result = RunSource(*context, host, R"PY(
+import canvas
+c = canvas.create_surface(1, 1)
+b = canvas.batch()
+try: canvas.submit(c, b)
+except (ReferenceError, ValueError, RuntimeError, PermissionError) as e:
+    assert str(e) == 'Canvas host failure'
+else: raise AssertionError('native error was dropped')
+)PY");
+    ASSERT_TRUE(result.success) << result.error.Utf8();
+    host.canvas_failure = WebPythonDomError::kNone;
+    EXPECT_TRUE(RunSource(*context, host, "canvas.submit(c,b)").success);
+  }
+}
+
+TEST(PythonDocumentContextTest, CanvasDrawingStopCannotBeCaughtAndResumed) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  host.canvas_failure = WebPythonDomError::kDrawingLimit;
+  auto result = RunSource(*context, host, R"PY(
+import canvas
+c = canvas.create_surface(1, 1)
+try: canvas.submit(c, canvas.batch())
+except RuntimeError: pass
+)PY");
+  EXPECT_FALSE(result.success);
+  host.canvas_failure = WebPythonDomError::kNone;
+  EXPECT_FALSE(RunSource(*context, host, "pass").success);
+}
 
 TEST(PythonDocumentContextTest, InputTargetsPageStateAndCaptureKeepTheirTypes) {
   auto context = CreatePythonDocumentContext();

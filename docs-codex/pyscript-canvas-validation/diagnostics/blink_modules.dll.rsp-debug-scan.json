@@ -1,0 +1,13 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_modules.dll.rsp",
+  "directObjects": 4649,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_html_user_media_element.obj",
+      "errors": [
+        "Invalid CodeView type at 0x148406: length 14616, kind 0x7ae1",
+        "Invalid CodeView type extent 0x148406 != 0x4bf366"
+      ]
+    }
+  ]
+}

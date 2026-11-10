@@ -14,6 +14,7 @@
 
 #include "base/feature_list.h"
 #include "base/values.h"
+#include "components/python_runtime/python_canvas_types.h"
 
 namespace base {
 class TickClock;
@@ -96,7 +97,8 @@ enum class DomError {
   kNotAllowed,
   kLimit,
   kState,
-  kStopped
+  kStopped,
+  kDrawingLimit
 };
 
 enum class StopReason {
@@ -106,6 +108,7 @@ enum class StopReason {
   kOutput,
   kDomCalls,
   kInactive,
+  kDrawing,
 };
 
 struct PYTHON_RUNTIME_EXPORT DomResult {
@@ -117,6 +120,12 @@ struct PYTHON_RUNTIME_EXPORT DomResult {
 struct PageStateResult {
   DomResult status;
   PageState state;
+};
+
+struct CanvasResult {
+  DomResult status;
+  CanvasHandle handle;
+  CanvasStatistics statistics;
 };
 
 // Borrowed only during synchronous execution. No Python object contains a
@@ -146,6 +155,14 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   virtual DomResult SetPointerCapture(DomHandle,
                                       int32_t pointer_id,
                                       bool capture);
+  virtual CanvasResult GetCanvasContext(DomHandle);
+  virtual CanvasResult CreateCanvasSurface(uint32_t width, uint32_t height);
+  virtual CanvasResult ResizeCanvas(CanvasHandle,
+                                    uint32_t width,
+                                    uint32_t height);
+  virtual DomResult ReleaseCanvas(CanvasHandle);
+  virtual CanvasResult SubmitCanvas(CanvasHandle,
+                                    const std::vector<CanvasCommand>&);
 };
 
 PYTHON_RUNTIME_EXPORT

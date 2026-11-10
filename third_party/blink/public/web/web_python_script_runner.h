@@ -13,6 +13,7 @@
 #include "base/functional/function_ref.h"
 #include "third_party/blink/public/platform/web_common.h"
 #include "third_party/blink/public/platform/web_string.h"
+#include "third_party/blink/public/web/web_python_canvas_types.h"
 
 namespace blink {
 
@@ -101,7 +102,8 @@ enum class WebPythonDomError {
   kNotAllowed,
   kLimit,
   kState,
-  kStopped
+  kStopped,
+  kDrawingLimit
 };
 
 struct WebPythonDomResult {
@@ -113,6 +115,12 @@ struct WebPythonDomResult {
 struct WebPythonPageStateResult {
   WebPythonDomResult status;
   WebPythonPageState state;
+};
+
+struct WebPythonCanvasResult {
+  WebPythonDomResult status;
+  WebPythonCanvasHandle handle;
+  WebPythonCanvasStatistics statistics;
 };
 
 // Borrowed during synchronous Run and callbacks only. Values crossing this
@@ -145,6 +153,26 @@ class WebPythonDomHost {
   virtual WebPythonDomResult SetPointerCapture(WebPythonDomHandle,
                                                int32_t pointer_id,
                                                bool capture) = 0;
+  virtual WebPythonCanvasResult GetCanvasContext(WebPythonDomHandle) {
+    return {{{}, WebPythonDomError::kNotAllowed, "Canvas is unavailable"}};
+  }
+  virtual WebPythonCanvasResult CreateCanvasSurface(uint32_t width,
+                                                    uint32_t height) {
+    return {{{}, WebPythonDomError::kNotAllowed, "Canvas is unavailable"}};
+  }
+  virtual WebPythonCanvasResult ResizeCanvas(WebPythonCanvasHandle,
+                                             uint32_t width,
+                                             uint32_t height) {
+    return {{{}, WebPythonDomError::kNotAllowed, "Canvas is unavailable"}};
+  }
+  virtual WebPythonDomResult ReleaseCanvas(WebPythonCanvasHandle) {
+    return {{}, WebPythonDomError::kNotAllowed, "Canvas is unavailable"};
+  }
+  virtual WebPythonCanvasResult SubmitCanvas(
+      WebPythonCanvasHandle,
+      const std::vector<WebPythonCanvasCommand>&) {
+    return {{{}, WebPythonDomError::kNotAllowed, "Canvas is unavailable"}};
+  }
 };
 
 // Owned by a Document controller. Destruction can execute Python finalizers and

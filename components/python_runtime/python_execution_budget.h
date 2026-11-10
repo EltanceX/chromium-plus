@@ -105,6 +105,13 @@ class BudgetedDomHost final : public DomHost {
   DomResult ControlEvent(uint64_t, EventAction) override;
   DomResult SetPointerCapture(DomHandle, int32_t, bool) override;
 
+  CanvasResult GetCanvasContext(DomHandle) override;
+  CanvasResult CreateCanvasSurface(uint32_t, uint32_t) override;
+  CanvasResult ResizeCanvas(CanvasHandle, uint32_t, uint32_t) override;
+  DomResult ReleaseCanvas(CanvasHandle) override;
+  CanvasResult SubmitCanvas(CanvasHandle,
+                            const std::vector<CanvasCommand>&) override;
+
  private:
   DomResult FinishCall(DomResult result);
   const raw_ref<ExecutionBudget> budget_;

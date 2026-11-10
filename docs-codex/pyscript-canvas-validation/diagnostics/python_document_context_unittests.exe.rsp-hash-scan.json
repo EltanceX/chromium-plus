@@ -1,0 +1,9 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\python_document_context_unittests.exe.rsp",
+  "sources": [
+    "obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj",
+    "obj/components/subresource_filter/core/mojom/mojom_shared_cpp_sources/subresource_filter.mojom-shared.obj"
+  ],
+  "targetHashCount": 380,
+  "problems": []
+}

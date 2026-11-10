@@ -1,0 +1,28 @@
+PASS Native rectangles transforms alpha and clear produce expected pixels
+PASS Paths arcs ellipses dashes gradients and text use native Canvas
+PASS Invalid trailing command rejects the whole batch before drawing
+PASS Successful submission replaces pixels and resets state and sealed batches can be reused
+PASS Cache copy smoothing self-copy and released sources obey preflight
+PASS Native resize changes dimensions and expires old context versions
+PASS External dimension changes require reacquiring a new handle
+PASS Resource count release and reused slot versions are bounded
+PASS Aggregate surface pixels and individual dimensions are bounded
+PASS Gradients cannot cross batches or exceed stop limits
+PASS Native arguments styles strings and stack underflow are validated
+PASS Canvas handle expires for detached node
+PASS Canvas handle expires for adopted node
+PASS Canvas handle expires for shadow tree
+PASS Canvas handle expires for customized attribute
+PASS Python does not take over an existing JavaScript context
+PASS A canvas tainted by external JavaScript expires the Python handle
+PASS Drawing budget latches a fatal stop even when Python catches the error
+PASS Python-only layered scene animates with measured batch costs
+PASS Trusted keyboard input moves the Python sprite
+PASS Freeze and resume keep a bounded drawing frame
+PASS Navigation and reload create fresh Python canvas resources
+PASS Browser closes normally with cached surfaces and a pending frame
+{
+  "passed": true,
+  "cases": 23,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-canvas-phase3\\canvas-probe4.json"
+}

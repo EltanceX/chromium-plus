@@ -1,0 +1,59 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.9194072s
+load siso config done 12.5959ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:64948+ready:0 (node:441071 edge:64963)
+ 1.36s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/60375] 30.16s S ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[0/15840] 31.75s S CXX obj/third_party/blink/renderer/core/core/counters_attachment_context.obj
+[0/2378] 33.29s F ACTION //chrome/browser/resources/settings:preprocess_ts_files(//build/toolchain/win:win_clang_x64)
+[0/2376] 33.29s S ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[1/2376] 33.61s F ACTION //chrome/browser/resources/settings:html_wrapper_files(//build/toolchain/win:win_clang_x64)
+[2/2374] 33.64s S ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[2/2374] 39.22s F ACTION //chrome/browser/resources/settings:build_ts(//build/toolchain/win:win_clang_x64)
+[3/2372] 39.25s S ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[3/2372] 53.96s F CXX obj/third_party/blink/renderer/core/core/counters_attachment_context.obj
+[4/2372] 53.97s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[4/2372] 56.92s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: cf9b8a95-f00a-4af6-b0e4-5a088c7d945a "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: getSectionName failed: #1843: invalid section name
+
+
+[5/2372] 1m25.55s F ACTION //chrome/browser/resources/settings:lint_ts(//build/toolchain/win:win_clang_x64)
+[6/2369] 1m25.56s S ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[6/2369] 1m25.68s F ACTION //chrome/browser/resources/settings:build_grd(//build/toolchain/win:win_clang_x64)
+[7/2367] 1m25.69s S ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+[7/2367] 1m26.70s F ACTION //chrome/browser/resources/settings:resources_grit(//build/toolchain/win:win_clang_x64)
+build failed
+
+
+noexec:0 local:8 remote:0 cache:0 skip:99807
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 7048(err:3) / r:2724(err:0) 20.11MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m27.97s Build Failure: 8 done, 1 failed, 2289 remaining - 0.09/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-223505.10324
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

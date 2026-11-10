@@ -103,6 +103,7 @@ class NotShared;
 
 class MODULES_EXPORT Canvas2DRecorderContext : public CanvasPath {
  public:
+  friend class PythonCanvasBridgeImpl;
   Canvas2DRecorderContext(const Canvas2DRecorderContext&) = delete;
   Canvas2DRecorderContext& operator=(const Canvas2DRecorderContext&) = delete;
 

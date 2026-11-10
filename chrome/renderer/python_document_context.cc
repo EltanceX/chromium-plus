@@ -8,6 +8,68 @@
 #include "components/python_runtime/python_runtime.h"
 
 namespace {
+static_assert(static_cast<int>(native_python::CanvasOp::kClearRect) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kClearRect));
+static_assert(static_cast<int>(native_python::CanvasOp::kFillRect) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFillRect));
+static_assert(static_cast<int>(native_python::CanvasOp::kStrokeRect) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kStrokeRect));
+static_assert(static_cast<int>(native_python::CanvasOp::kBeginPath) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kBeginPath));
+static_assert(static_cast<int>(native_python::CanvasOp::kClosePath) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kClosePath));
+static_assert(static_cast<int>(native_python::CanvasOp::kMoveTo) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kMoveTo));
+static_assert(static_cast<int>(native_python::CanvasOp::kLineTo) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kLineTo));
+static_assert(static_cast<int>(native_python::CanvasOp::kArc) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kArc));
+static_assert(static_cast<int>(native_python::CanvasOp::kEllipse) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kEllipse));
+static_assert(static_cast<int>(native_python::CanvasOp::kFill) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFill));
+static_assert(static_cast<int>(native_python::CanvasOp::kStroke) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kStroke));
+static_assert(static_cast<int>(native_python::CanvasOp::kSave) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kSave));
+static_assert(static_cast<int>(native_python::CanvasOp::kRestore) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kRestore));
+static_assert(static_cast<int>(native_python::CanvasOp::kTranslate) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kTranslate));
+static_assert(static_cast<int>(native_python::CanvasOp::kScale) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kScale));
+static_assert(static_cast<int>(native_python::CanvasOp::kRotate) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kRotate));
+static_assert(static_cast<int>(native_python::CanvasOp::kFillColor) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFillColor));
+static_assert(static_cast<int>(native_python::CanvasOp::kStrokeColor) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kStrokeColor));
+static_assert(static_cast<int>(native_python::CanvasOp::kFillGradient) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFillGradient));
+static_assert(static_cast<int>(native_python::CanvasOp::kStrokeGradient) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kStrokeGradient));
+static_assert(static_cast<int>(native_python::CanvasOp::kLinearGradient) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kLinearGradient));
+static_assert(static_cast<int>(native_python::CanvasOp::kColorStop) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kColorStop));
+static_assert(static_cast<int>(native_python::CanvasOp::kLineWidth) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kLineWidth));
+static_assert(static_cast<int>(native_python::CanvasOp::kLineDash) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kLineDash));
+static_assert(static_cast<int>(native_python::CanvasOp::kAlpha) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kAlpha));
+static_assert(static_cast<int>(native_python::CanvasOp::kFont) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFont));
+static_assert(static_cast<int>(native_python::CanvasOp::kTextAlign) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kTextAlign));
+static_assert(static_cast<int>(native_python::CanvasOp::kTextBaseline) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kTextBaseline));
+static_assert(static_cast<int>(native_python::CanvasOp::kFillText) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kFillText));
+static_assert(static_cast<int>(native_python::CanvasOp::kSmoothing) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kSmoothing));
+static_assert(static_cast<int>(native_python::CanvasOp::kDrawSurface) ==
+              static_cast<int>(blink::WebPythonCanvasOp::kDrawSurface));
 
 blink::WebPythonScriptResult ConvertResult(
     const native_python::ExecutionResult& result) {
@@ -27,6 +89,13 @@ blink::WebPythonDomHandle ToWeb(native_python::DomHandle h) {
 native_python::DomHandle FromWeb(blink::WebPythonDomHandle h) {
   return {h.document, h.generation, h.id,
           static_cast<native_python::TargetKind>(h.kind)};
+}
+
+blink::WebPythonCanvasHandle ToWeb(native_python::CanvasHandle h) {
+  return {h.document, h.generation, h.id, h.version};
+}
+native_python::CanvasHandle FromWeb(blink::WebPythonCanvasHandle h) {
+  return {h.document, h.generation, h.id, h.version};
 }
 
 class ChromeDomHost final : public native_python::DomHost {
@@ -98,7 +167,44 @@ class ChromeDomHost final : public native_python::DomHost {
     return Convert(host_->SetPointerCapture(ToWeb(h), id, capture));
   }
 
+  native_python::CanvasResult GetCanvasContext(
+      native_python::DomHandle h) override {
+    return ConvertCanvas(host_->GetCanvasContext(ToWeb(h)));
+  }
+  native_python::CanvasResult CreateCanvasSurface(uint32_t w,
+                                                  uint32_t h) override {
+    return ConvertCanvas(host_->CreateCanvasSurface(w, h));
+  }
+  native_python::CanvasResult ResizeCanvas(native_python::CanvasHandle c,
+                                           uint32_t w,
+                                           uint32_t h) override {
+    return ConvertCanvas(host_->ResizeCanvas(ToWeb(c), w, h));
+  }
+  native_python::DomResult ReleaseCanvas(
+      native_python::CanvasHandle c) override {
+    return Convert(host_->ReleaseCanvas(ToWeb(c)));
+  }
+  native_python::CanvasResult SubmitCanvas(
+      native_python::CanvasHandle c,
+      const std::vector<native_python::CanvasCommand>& commands) override {
+    std::vector<blink::WebPythonCanvasCommand> converted;
+    converted.reserve(commands.size());
+    for (const auto& command : commands) {
+      converted.push_back({static_cast<blink::WebPythonCanvasOp>(command.op),
+                           command.args, command.text, command.values,
+                           ToWeb(command.source), command.index});
+    }
+    return ConvertCanvas(host_->SubmitCanvas(ToWeb(c), converted));
+  }
+
  private:
+  static native_python::CanvasResult ConvertCanvas(
+      const blink::WebPythonCanvasResult& r) {
+    return {Convert(r.status),
+            FromWeb(r.handle),
+            {r.statistics.commands, r.statistics.bytes, r.statistics.pixels,
+             r.statistics.native_ms}};
+  }
   static native_python::DomResult Convert(
       const blink::WebPythonDomResult& result) {
     native_python::DomError error;
@@ -117,6 +223,9 @@ class ChromeDomHost final : public native_python::DomHost {
         break;
       case blink::WebPythonDomError::kState:
         error = native_python::DomError::kState;
+        break;
+      case blink::WebPythonDomError::kDrawingLimit:
+        error = native_python::DomError::kDrawingLimit;
         break;
       case blink::WebPythonDomError::kStopped:
         error = native_python::DomError::kStopped;

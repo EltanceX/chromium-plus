@@ -32,11 +32,13 @@
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/frame/local_frame_view.h"
+#include "third_party/blink/renderer/core/html/canvas/html_canvas_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_input_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_select_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_text_area_element.h"
 #include "third_party/blink/renderer/core/html/html_dialog_element.h"
 #include "third_party/blink/renderer/core/html/html_py_script_element.h"
+#include "third_party/blink/renderer/core/html/python_canvas_bridge.h"
 #include "third_party/blink/renderer/core/html_names.h"
 #include "third_party/blink/renderer/core/inspector/console_message.h"
 #include "third_party/blink/renderer/core/layout/adjust_for_absolute_zoom.h"
@@ -289,6 +291,7 @@ PythonScriptController::PythonScriptController(Document& document)
 
 void PythonScriptController::Trace(Visitor* visitor) const {
   visitor->Trace(pending_);
+  visitor->Trace(canvas_bridge_);
   visitor->Trace(handles_);
   visitor->Trace(listeners_);
   visitor->Trace(pending_frame_);
@@ -371,6 +374,10 @@ void PythonScriptController::Dispose() {
     stopped_ = true;
     ++generation_;
     pending_.clear();
+    if (canvas_bridge_) {
+      canvas_bridge_->Dispose();
+      canvas_bridge_ = nullptr;
+    }
     if (pending_frame_) {
       RevokeFrame(pending_frame_->callback);
     }
@@ -438,6 +445,83 @@ WebPythonDomResult PythonScriptController::CheckDomCall() {
   }
   ++calls;
   return {};
+}
+
+PythonCanvasBridge* PythonScriptController::CanvasBridge() {
+  if (!canvas_bridge_) {
+    canvas_bridge_ = PythonCanvasBridge::Create(*GetSupplementable(),
+                                                document_id_, generation_);
+  }
+  return canvas_bridge_;
+}
+WebPythonCanvasResult PythonScriptController::GetCanvasContext(
+    WebPythonDomHandle handle) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  auto* element = ResolveTarget(handle);
+  auto* canvas =
+      element ? DynamicTo<HTMLCanvasElement>(element->ToNode()) : nullptr;
+  if (!canvas) {
+    return {{{},
+             WebPythonDomError::kNotAllowed,
+             "Expected an ordinary connected HTML canvas"}};
+  }
+  auto* bridge = CanvasBridge();
+  return bridge ? bridge->GetContext(*canvas)
+                : WebPythonCanvasResult{{{},
+                                         WebPythonDomError::kNotAllowed,
+                                         "Canvas is unavailable"}};
+}
+WebPythonCanvasResult PythonScriptController::CreateCanvasSurface(uint32_t w,
+                                                                  uint32_t h) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  auto* bridge = CanvasBridge();
+  return bridge ? bridge->CreateSurface(w, h)
+                : WebPythonCanvasResult{{{},
+                                         WebPythonDomError::kNotAllowed,
+                                         "Canvas is unavailable"}};
+}
+WebPythonCanvasResult PythonScriptController::ResizeCanvas(
+    WebPythonCanvasHandle handle,
+    uint32_t w,
+    uint32_t h) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  return canvas_bridge_ ? canvas_bridge_->Resize(handle, w, h)
+                        : WebPythonCanvasResult{{{},
+                                                 WebPythonDomError::kReference,
+                                                 "Expired Canvas handle"}};
+}
+WebPythonDomResult PythonScriptController::ReleaseCanvas(
+    WebPythonCanvasHandle handle) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return status;
+  }
+  return canvas_bridge_
+             ? canvas_bridge_->Release(handle)
+             : WebPythonDomResult{
+                   {}, WebPythonDomError::kReference, "Expired Canvas handle"};
+}
+WebPythonCanvasResult PythonScriptController::SubmitCanvas(
+    WebPythonCanvasHandle handle,
+    const std::vector<WebPythonCanvasCommand>& commands) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  if (!canvas_bridge_) {
+    return {{{}, WebPythonDomError::kReference, "Expired Canvas handle"}};
+  }
+  return canvas_bridge_->Submit(handle, commands,
+                                [this] { return IsActive(); });
 }
 
 WebPythonDomResult PythonScriptController::GetElementById(const WebString& id) {
@@ -916,6 +1000,9 @@ void PythonScriptController::DispatchFrame(PythonAnimationFrame& frame,
   base::AutoReset<bool> entry(&g_python_running, true);
   base::AutoReset<bool> callback_entry(&callback_running_, true);
   callback_dom_calls_ = 0;
+  if (canvas_bridge_) {
+    canvas_bridge_->BeginExecution();
+  }
   running_ = true;
   current_source_ = source;
   // Consume before entry, allowing exactly one new request from this callback.
@@ -998,6 +1085,9 @@ void PythonScriptController::DispatchEvent(PythonEventListener& listener,
   base::AutoReset<bool> entry(&g_python_running, true);
   base::AutoReset<bool> callback_entry(&callback_running_, true);
   callback_dom_calls_ = 0;
+  if (canvas_bridge_) {
+    canvas_bridge_->BeginExecution();
+  }
   running_ = true;
   current_source_ = source;
   WebPythonCallbackEvent snapshot;

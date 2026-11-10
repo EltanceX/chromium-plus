@@ -1,0 +1,149 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:55583",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Native rectangles transforms alpha and clear produce expected pixels",
+      "passed": true,
+      "elapsedMs": 497,
+      "detail": {
+        "statistics": "{'commands': 50, 'bytes': 6501, 'pixels': 62314, 'native_ms': 24.0}",
+        "alpha": [
+          0,
+          127,
+          128,
+          255
+        ]
+      }
+    },
+    {
+      "name": "Paths arcs ellipses dashes gradients and text use native Canvas",
+      "passed": true,
+      "elapsedMs": 29,
+      "detail": {
+        "left": [
+          234,
+          0,
+          21,
+          255
+        ],
+        "right": [
+          21,
+          0,
+          234,
+          255
+        ],
+        "textPixels": 173
+      }
+    },
+    {
+      "name": "Invalid trailing command rejects the whole batch before drawing",
+      "passed": true,
+      "elapsedMs": 316
+    },
+    {
+      "name": "Successful submission replaces pixels and resets state and sealed batches can be reused",
+      "passed": true,
+      "elapsedMs": 342
+    },
+    {
+      "name": "Cache copy smoothing self-copy and released sources obey preflight",
+      "passed": true,
+      "elapsedMs": 604,
+      "detail": {
+        "statistics": "{'commands': 2, 'bytes': 256, 'pixels': 32772, 'native_ms': 4.0}"
+      }
+    },
+    {
+      "name": "Native resize changes dimensions and expires old context versions",
+      "passed": true,
+      "elapsedMs": 442
+    },
+    {
+      "name": "External dimension changes require reacquiring a new handle",
+      "passed": true,
+      "elapsedMs": 618
+    },
+    {
+      "name": "Resource count release and reused slot versions are bounded",
+      "passed": true,
+      "elapsedMs": 561
+    },
+    {
+      "name": "Aggregate surface pixels and individual dimensions are bounded",
+      "passed": true,
+      "elapsedMs": 618
+    },
+    {
+      "name": "Gradients cannot cross batches or exceed stop limits",
+      "passed": true,
+      "elapsedMs": 477
+    },
+    {
+      "name": "Native arguments styles strings and stack underflow are validated",
+      "passed": true,
+      "elapsedMs": 514
+    },
+    {
+      "name": "Canvas handle expires for detached node",
+      "passed": true,
+      "elapsedMs": 357
+    },
+    {
+      "name": "Canvas handle expires for adopted node",
+      "passed": true,
+      "elapsedMs": 478
+    },
+    {
+      "name": "Canvas handle expires for shadow tree",
+      "passed": true,
+      "elapsedMs": 583
+    },
+    {
+      "name": "Canvas handle expires for customized attribute",
+      "passed": true,
+      "elapsedMs": 445
+    },
+    {
+      "name": "Python does not take over an existing JavaScript context",
+      "passed": true,
+      "elapsedMs": 506
+    },
+    {
+      "name": "A canvas tainted by external JavaScript expires the Python handle",
+      "passed": true,
+      "elapsedMs": 470
+    },
+    {
+      "name": "Drawing budget latches a fatal stop even when Python catches the error",
+      "passed": true,
+      "elapsedMs": 356
+    },
+    {
+      "name": "Python-only layered scene animates with measured batch costs",
+      "passed": true,
+      "elapsedMs": 1129,
+      "detail": {
+        "state": "frames:28:x:80",
+        "statistics": "commands:7 bytes:903 pixels:679124 native_ms:0.0",
+        "screenshot": "C:\\src\\src\\out\\Debug\\pyscript-canvas-phase3\\canvas-probe3.json.sample.png"
+      }
+    },
+    {
+      "name": "Trusted keyboard input moves the Python sprite",
+      "passed": true,
+      "elapsedMs": 224
+    },
+    {
+      "name": "Freeze and resume keep a bounded drawing frame",
+      "passed": false,
+      "elapsedMs": 30529,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:208:9)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:433:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:295:20)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:427:3",
+      "nativeLogs": []
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:208:9)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:433:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:295:20)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:427:3"
+}

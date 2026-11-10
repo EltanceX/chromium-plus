@@ -163,6 +163,8 @@ const char* ExecutionBudget::Message() const {
       return stopped_kind_ != ExecutionKind::kInitialization
                  ? "Python callback exceeded the 128 DOM call budget"
                  : "Python document exceeded the 1024 DOM call budget";
+    case StopReason::kDrawing:
+      return "Python exceeded the Canvas drawing budget";
     case StopReason::kInactive:
       return "The Python document context is inactive";
   }
@@ -238,6 +240,9 @@ bool BudgetedDomHost::IsActive() const {
 }
 
 DomResult BudgetedDomHost::FinishCall(DomResult result) {
+  if (result.error == DomError::kDrawingLimit) {
+    budget_->Stop(StopReason::kDrawing);
+  }
   if (result.error == DomError::kStopped) {
     budget_->Stop(StopReason::kDomCalls);
   }
@@ -340,6 +345,53 @@ DomResult BudgetedDomHost::SetPointerCapture(DomHandle target,
     return {{}, DomError::kStopped, budget_->Message()};
   }
   return FinishCall(budget_->host()->SetPointerCapture(target, id, capture));
+}
+
+CanvasResult BudgetedDomHost::GetCanvasContext(DomHandle h) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->GetCanvasContext(h);
+  result.status = FinishCall(std::move(result.status));
+  return result;
+}
+
+CanvasResult BudgetedDomHost::CreateCanvasSurface(uint32_t w, uint32_t h) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->CreateCanvasSurface(w, h);
+  result.status = FinishCall(std::move(result.status));
+  return result;
+}
+
+CanvasResult BudgetedDomHost::ResizeCanvas(CanvasHandle c,
+                                           uint32_t w,
+                                           uint32_t h) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->ResizeCanvas(c, w, h);
+  result.status = FinishCall(std::move(result.status));
+  return result;
+}
+
+DomResult BudgetedDomHost::ReleaseCanvas(CanvasHandle c) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->ReleaseCanvas(c));
+}
+
+CanvasResult BudgetedDomHost::SubmitCanvas(
+    CanvasHandle c,
+    const std::vector<CanvasCommand>& commands) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->SubmitCanvas(c, commands);
+  result.status = FinishCall(std::move(result.status));
+  return result;
 }
 
 }  // namespace native_python

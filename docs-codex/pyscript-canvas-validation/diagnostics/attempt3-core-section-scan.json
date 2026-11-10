@@ -1,0 +1,24 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5041,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/live_node_list.obj",
+      "errors": [
+        "Section 1233: invalid name b'/14'"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/grid_track_collection.obj",
+      "errors": [
+        "Section 4002: invalid name b'/84'"
+      ]
+    },
+    {
+      "object": "obj/ui/display/mojom/mojom_blink/display_configuration_params.mojom-blink.obj",
+      "errors": [
+        "Section 112: invalid name b'/4'"
+      ]
+    }
+  ]
+}

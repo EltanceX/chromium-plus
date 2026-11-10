@@ -23,6 +23,7 @@ class Element;
 class Event;
 class EventTarget;
 class PythonInputResetListener;
+class PythonCanvasBridge;
 class PythonPointerCapture;
 class HTMLPyScriptElement;
 class PendingPythonScriptBlock;
@@ -70,7 +71,19 @@ class PythonScriptController final
                                        int32_t,
                                        bool) override;
 
+  WebPythonCanvasResult GetCanvasContext(WebPythonDomHandle) override;
+  WebPythonCanvasResult CreateCanvasSurface(uint32_t, uint32_t) override;
+  WebPythonCanvasResult ResizeCanvas(WebPythonCanvasHandle,
+                                     uint32_t,
+                                     uint32_t) override;
+  WebPythonDomResult ReleaseCanvas(WebPythonCanvasHandle) override;
+  WebPythonCanvasResult SubmitCanvas(
+      WebPythonCanvasHandle,
+      const std::vector<WebPythonCanvasCommand>&) override;
+
  private:
+  PythonCanvasBridge* CanvasBridge();
+  Member<PythonCanvasBridge> canvas_bridge_;
   friend class PythonEventListener;
   friend class PythonAnimationFrame;
   friend class PythonInputResetListener;

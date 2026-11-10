@@ -122,6 +122,37 @@ class TestDomHost final : public DomHost {
     last_capture = capture;
     return {};
   }
+  CanvasResult GetCanvasContext(DomHandle h) override {
+    ++canvas_calls;
+    return {{}, {h.document, h.generation, 5, 2}};
+  }
+  CanvasResult CreateCanvasSurface(uint32_t w, uint32_t h) override {
+    ++canvas_calls;
+    return {{}, {7, 1, 6, 3}};
+  }
+  CanvasResult ResizeCanvas(CanvasHandle h,
+                            uint32_t w,
+                            uint32_t height) override {
+    ++canvas_calls;
+    ++h.version;
+    return {{}, h};
+  }
+  DomResult ReleaseCanvas(CanvasHandle) override {
+    ++canvas_calls;
+    return {};
+  }
+  CanvasResult SubmitCanvas(
+      CanvasHandle h,
+      const std::vector<CanvasCommand>& commands) override {
+    ++canvas_calls;
+    canvas_commands = commands;
+    return {{{}, canvas_failure, "drawing failure"},
+            h,
+            {commands.size(), 321, 654, 0.5}};
+  }
+  int canvas_calls = 0;
+  DomError canvas_failure = DomError::kNone;
+  std::vector<CanvasCommand> canvas_commands;
   std::string last_type;
   bool last_passive = false;
   bool last_capture = false;
@@ -160,6 +191,175 @@ class TestDomHost final : public DomHost {
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest, CanvasBatchTypedCommandsGradientsAndMetrics) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas, dom
+c = canvas.get_context_2d(dom.get_element_by_id('canvas'))
+s = canvas.create_surface(16, 16)
+b = canvas.batch()
+g = b.linear_gradient(0, 0, 10, 20)
+g.add_color_stop(0, '#1234')
+b.fill_style(g)
+b.save(); b.translate(-2, 1.5); b.scale(2, 3); b.rotate(0.5)
+b.fill_rect(0, 0, 10, 20); b.restore()
+b.begin_path(); b.move_to(1, 2); b.line_to(3, 4); b.close_path(); b.fill()
+b.arc(1, 2, 3, 0, 6, True)
+b.ellipse(1, 2, 3, 4, 0, 0, 6, False)
+b.stroke_style('#aabbccdd'); b.line_width(2); b.line_dash([2, 3])
+b.alpha(0.5); b.font(16, 'monospace', True)
+b.text_align('center'); b.text_baseline('top'); b.fill_text('hello', 1, 2)
+b.smoothing(False); b.draw_surface(s, 1, 2, 32, 32)
+r = canvas.submit(c, b)
+assert r == {'commands': 26, 'bytes': 321, 'pixels': 654, 'native_ms': 0.5}
+canvas.submit(c, b)
+for operation in (lambda: b.fill_rect(1,2,3,4), lambda: g.add_color_stop(1, '#fff')):
+    try: operation()
+    except RuntimeError: pass
+    else: raise AssertionError('sealed batch mutated')
+c = canvas.resize(c, 320, 200)
+canvas.release(s)
+)PY",
+                                 "canvas.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  ASSERT_EQ(26u, host.canvas_commands.size());
+  EXPECT_EQ(CanvasOp::kDrawSurface, host.canvas_commands.back().op);
+  EXPECT_EQ(6u, host.canvas_commands.back().source.id);
+  EXPECT_EQ(3u, host.canvas_commands.back().source.version);
+  EXPECT_EQ(1u, host.canvas_commands[0].index);
+  EXPECT_EQ(1u, host.canvas_commands[2].index);
+}
+
+TEST(PythonRuntimeTest,
+     CanvasRejectsForgedHandlesAndReentrantArgumentConversions) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas, dom
+class Evil:
+    def __float__(self): raise AssertionError('conversion ran')
+for cls in (canvas.Context2D, canvas.Batch, canvas.Gradient):
+    try: cls()
+    except TypeError: pass
+    else: raise AssertionError('forged')
+b = canvas.batch()
+for f in (lambda: b.fill_rect(Evil(),0,1,1), lambda: b.alpha(True),
+          lambda: canvas.get_context_2d(dom.get_window()),
+          lambda: canvas.create_surface(True,10),
+          lambda: canvas.create_surface(2049,10),
+          lambda: canvas.resize(None,10,10),
+          lambda: canvas.submit(None,b),
+          lambda: b.arc(0,0,1,0,1,1),
+          lambda: b.fill_rect(float('nan'),0,1,1),
+          lambda: b.fill_rect(float('inf'),0,1,1),
+          lambda: b.fill_style('url(x)'),
+          lambda: b.fill_text('x'*1025,0,0)):
+    try: f()
+    except (TypeError, ValueError): pass
+    else: raise AssertionError('invalid input accepted')
+other = canvas.batch()
+g = other.linear_gradient(0,0,1,1)
+try: b.fill_style(g)
+except ValueError: pass
+else: raise AssertionError('foreign gradient accepted')
+)PY",
+                                 "canvas.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(0, host.canvas_calls);
+}
+
+TEST(PythonRuntimeTest,
+     CanvasBuildersAndCommandMemoryAreBoundedAndCollectible) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas
+batches = [canvas.batch() for _ in range(64)]
+try: canvas.batch()
+except ValueError: pass
+else: raise AssertionError('unbounded batches')
+del batches
+b = canvas.batch()
+for _ in range(4096): b.begin_path()
+try: b.begin_path()
+except ValueError: pass
+else: raise AssertionError('unbounded commands')
+del b
+b = canvas.batch()
+for _ in range(32): b.linear_gradient(0,0,1,1)
+try: b.linear_gradient(0,0,1,1)
+except ValueError: pass
+else: raise AssertionError('unbounded gradients')
+)PY",
+                                 "canvas.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+}
+
+TEST(PythonRuntimeTest, CanvasDrawingLimitLatchesDespitePythonCatch) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  host.canvas_failure = DomError::kDrawingLimit;
+  auto result = context->Execute(R"PY(
+import canvas
+c = canvas.create_surface(1,1)
+try: canvas.submit(c,canvas.batch())
+except RuntimeError: pass
+)PY",
+                                 "canvas.py", &host);
+  EXPECT_EQ(StopReason::kDrawing, result.stop_reason);
+  EXPECT_EQ(StopReason::kDrawing, context->Execute("pass").stop_reason);
+}
+
+TEST(PythonRuntimeTest, CanvasWindowPressureIsRecoverableAndChargesDomCalls) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  host.canvas_failure = DomError::kState;
+  auto result = context->Execute(R"PY(
+import canvas
+c = canvas.create_surface(1,1)
+b = canvas.batch()
+try: canvas.submit(c,b)
+except RuntimeError: pass
+)PY",
+                                 "canvas.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  host.canvas_failure = DomError::kNone;
+  EXPECT_TRUE(
+      context->Execute("canvas.submit(c,b)", "canvas.py", &host).success);
+  EXPECT_EQ(3, host.canvas_calls);
+}
+
+TEST(PythonRuntimeTest, CanvasFinalizersCannotUseNativeHost) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas
+class Finalizer:
+    def __del__(self):
+        try: canvas.create_surface(10,10)
+        except ReferenceError: pass
+f = Finalizer()
+)PY",
+                                 "canvas.py", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  context.reset();
+  EXPECT_EQ(0, host.canvas_calls);
 }
 
 TEST(PythonRuntimeTest, TypedInputTargetsOptionsAndPageState) {

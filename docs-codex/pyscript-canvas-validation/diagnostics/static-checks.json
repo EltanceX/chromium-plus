@@ -1,0 +1,183 @@
+{
+  "recordedAt": "2026-11-10T15:24:29.135593+00:00",
+  "checks": {
+    "clang-format": {
+      "command": [
+        "C:\\WINDOWS\\system32\\cmd.exe",
+        "/d",
+        "/c",
+        "clang-format.bat",
+        "--dry-run",
+        "--Werror",
+        "chrome/renderer/python_document_context.cc",
+        "chrome/renderer/python_document_context_unittest.cc",
+        "components/python_runtime/python_canvas_module.cc",
+        "components/python_runtime/python_canvas_types.h",
+        "components/python_runtime/python_dom_module.cc",
+        "components/python_runtime/python_dom_module.h",
+        "components/python_runtime/python_execution_budget.cc",
+        "components/python_runtime/python_execution_budget.h",
+        "components/python_runtime/python_runtime.cc",
+        "components/python_runtime/python_runtime.h",
+        "components/python_runtime/python_runtime_unittest.cc",
+        "third_party/blink/public/web/web_python_canvas_types.h",
+        "third_party/blink/public/web/web_python_script_runner.h",
+        "third_party/blink/renderer/core/html/python_canvas_bridge.cc",
+        "third_party/blink/renderer/core/html/python_canvas_bridge.h",
+        "third_party/blink/renderer/core/html/python_script_controller.cc",
+        "third_party/blink/renderer/core/html/python_script_controller.h",
+        "third_party/blink/renderer/modules/canvas/canvas2d/canvas_2d_recorder_context.h",
+        "third_party/blink/renderer/modules/canvas/canvas2d/python_canvas_batch.cc",
+        "third_party/blink/renderer/modules/canvas/canvas2d/python_canvas_batch_test.cc",
+        "third_party/blink/renderer/modules/canvas/canvas2d/python_canvas_bridge_impl.cc",
+        "third_party/blink/renderer/modules/canvas/canvas2d/python_canvas_bridge_impl.h",
+        "third_party/blink/renderer/modules/modules_initializer.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 2.61
+    },
+    "gn-format": {
+      "command": [
+        "buildtools/win/gn.exe",
+        "format",
+        "--dry-run",
+        "components/python_runtime/BUILD.gn",
+        "third_party/blink/public/BUILD.gn",
+        "third_party/blink/renderer/core/html/build.gni",
+        "third_party/blink/renderer/modules/BUILD.gn",
+        "third_party/blink/renderer/modules/canvas/BUILD.gn"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.08
+    },
+    "syntax-pyscript_canvas_smoke_test.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_canvas_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.09
+    },
+    "syntax-pyscript_settings_smoke_test.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_settings_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.08
+    },
+    "syntax-validation": {
+      "command": [
+        "python",
+        "-m",
+        "py_compile",
+        "chrome/test/run_pyscript_event_validation.py"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.09
+    },
+    "checkdeps-0": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "components/python_runtime"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 5.33
+    },
+    "checkdeps-1": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "chrome/renderer/python_document_context.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 7.48
+    },
+    "checkdeps-2": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "chrome/renderer/python_document_context_unittest.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 6.95
+    },
+    "checkdeps-3": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/public/web/web_python_canvas_types.h"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 5.95
+    },
+    "checkdeps-4": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/public/web/web_python_script_runner.h"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 5.48
+    },
+    "checkdeps-5": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/core/html/python_canvas_bridge.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 5.75
+    },
+    "checkdeps-6": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/core/html/python_script_controller.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 4.34
+    },
+    "checkdeps-7": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/modules/canvas/canvas2d"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 4.44
+    },
+    "checkdeps-8": {
+      "command": [
+        "python",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/modules/modules_initializer.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 5.49
+    },
+    "syntax-canvas-sample": {
+      "passed": true,
+      "blocks": 3,
+      "method": "Extract inline pyscript blocks and compile without executing them"
+    }
+  },
+  "passed": true
+}

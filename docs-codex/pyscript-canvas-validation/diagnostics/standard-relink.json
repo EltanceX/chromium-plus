@@ -1,0 +1,33 @@
+{
+  "command": [
+    "autoninja.bat",
+    "-C",
+    "out/Debug",
+    "-j",
+    "1",
+    "chrome",
+    "blink_unittests",
+    "python_runtime_unittests",
+    "python_document_context_unittests",
+    "native_python_settings_unittests"
+  ],
+  "buildLog": "build-probe12.log",
+  "exitCode": 0,
+  "debugAndPdbFlagsUnchanged": true,
+  "binaries": [
+    {
+      "binary": "python_document_context_unittests.exe",
+      "diagnosticSha256": "f9228d4ab01ac26daed9f865ca8844766b397211139d7358944a531299ff4a87",
+      "standardRelinkRequired": true,
+      "standardSha256": "eee96f72c00f55804cac8a1b33367b7eaed727cc4698defb4825ccc4db454b75",
+      "standardRelinkPassed": true
+    },
+    {
+      "binary": "blink_unittests.exe",
+      "diagnosticSha256": "af57cd9d187a02ee75e45e5e95c12f91a8dab0f41d5ae6db87f4993663a61012",
+      "standardRelinkRequired": true,
+      "standardSha256": "ca811175396fe976ffbd572a2540380a0883b64408ed85ffa9a97139840d48e4",
+      "standardRelinkPassed": true
+    }
+  ]
+}

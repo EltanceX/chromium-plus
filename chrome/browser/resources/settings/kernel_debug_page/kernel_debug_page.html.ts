@@ -63,6 +63,7 @@ export function getHtml(this: SettingsKernelDebugPageElement) {
         <div class="secondary">输入事件预算：每回调约 50 ms、输出 4 KiB、DOM 调用 128 次。动画帧预算：每帧约 8 ms，最近 1 秒帧执行累计约 200 ms；每帧同样限制输出 4 KiB、DOM 调用 128 次。</div>
         <div class="secondary">交互总预算：点击、键盘、指针等事件与动画帧共享每文档最近 1 秒累计约 250 ms、输出 16 KiB、DOM 调用 1024 次。窗口余量不足时跳过事件、保留一个待执行帧至后续刷新，不补发旧帧；单次超限停止该文档的 Python。</div>
         <div class="secondary">时间保护为协作式检查；清理另有约 50 ms 尽力预算。输出按 Python 文本的 UTF-8 字节计量。</div>
+        <div class="secondary">Canvas：每批最多 4096 条命令、512 KiB 数据；每次执行累计最多 8192 条、2 MiB、32 Mi 像素估算，最近 1 秒累计最多 131072 条、16 MiB、512 Mi 像素估算。最多 8 个表面、单边 2048、合计 8 Mi 像素（逻辑 RGBA8 约 32 MiB）。提交替换整幅画布；窗口不足时拒绝该批，可稍后重试。</div>
         ${this.pythonSettings_?.commandLineOverride ? html`
           <div class="secondary">启动命令行含 Python 配置，可能覆盖此处设置。</div>
         ` : ''}

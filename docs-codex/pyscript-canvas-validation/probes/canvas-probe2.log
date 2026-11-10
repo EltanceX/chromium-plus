@@ -1,0 +1,24 @@
+PASS Native rectangles transforms alpha and clear produce expected pixels
+PASS Paths arcs ellipses dashes gradients and text use native Canvas
+PASS Invalid trailing command rejects the whole batch before drawing
+PASS Successful submission replaces pixels and resets state and sealed batches can be reused
+PASS Cache copy smoothing self-copy and released sources obey preflight
+PASS Native resize changes dimensions and expires old context versions
+PASS External dimension changes require reacquiring a new handle
+PASS Resource count release and reused slot versions are bounded
+PASS Aggregate surface pixels and individual dimensions are bounded
+PASS Gradients cannot cross batches or exceed stop limits
+PASS Native arguments styles strings and stack underflow are validated
+PASS Canvas handle expires for detached node
+PASS Canvas handle expires for adopted node
+PASS Canvas handle expires for shadow tree
+PASS Canvas handle expires for customized attribute
+PASS Python does not take over an existing JavaScript context
+PASS A canvas tainted by external JavaScript expires the Python handle
+PASS Drawing budget latches a fatal stop even when Python catches the error
+{
+  "passed": false,
+  "cases": 19,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-canvas-phase3\\canvas-probe2.json",
+  "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /commands:7 bytes:903 pixels:\\d+ native_ms:/. Input:\n\n'starting'\n\n    at file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:413:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:295:20)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:407:3"
+}

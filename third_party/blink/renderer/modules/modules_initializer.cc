@@ -44,6 +44,7 @@
 #include "third_party/blink/renderer/modules/audio_output_devices/html_media_element_audio_output_device.h"
 #include "third_party/blink/renderer/modules/cache_storage/inspector_cache_storage_agent.h"
 #include "third_party/blink/renderer/modules/canvas/canvas2d/canvas_rendering_context_2d.h"
+#include "third_party/blink/renderer/modules/canvas/canvas2d/python_canvas_bridge_impl.h"
 #include "third_party/blink/renderer/modules/canvas/imagebitmap/image_bitmap_rendering_context.h"
 #include "third_party/blink/renderer/modules/canvas/offscreencanvas2d/offscreen_canvas_rendering_context_2d.h"
 #include "third_party/blink/renderer/modules/content_extraction/ai_page_content_agent.h"
@@ -139,12 +140,14 @@ class SuspendCaptureObserver : public GarbageCollected<SuspendCaptureObserver>,
     // OOPIFs.
     WebLocalFrameImpl* frame = WebLocalFrameImpl::FromFrame(
         DynamicTo<LocalFrame>(GetPage()->MainFrame()));
-    if (!frame)
+    if (!frame) {
       return;
+    }
     WebMediaStreamDeviceObserver* media_stream_device_observer =
         frame->Client()->MediaStreamDeviceObserver();
-    if (!media_stream_device_observer)
+    if (!media_stream_device_observer) {
       return;
+    }
     // Don't suspend media capture devices if page visibility is
     // PageVisibilityState::kHiddenButPainting (e.g. Picture-in-Picture).
     // TODO(crbug.com/1339252): Add tests.
@@ -190,6 +193,7 @@ void ModulesInitializer::Initialize() {
   MediaSourceRegistryImpl::Init();
 
   CoreInitializer::Initialize();
+  PythonCanvasBridge::Init(&PythonCanvasBridgeImpl::Create);
 
   // Canvas context types must be registered with the HTMLCanvasElement.
   HTMLCanvasElement::RegisterRenderingContextFactory(
@@ -327,8 +331,9 @@ void ModulesInitializer::OnClearWindowObjectInMainWorld(
 
   // TODO(nhiroki): Figure out why ServiceWorkerContainer needs to be eagerly
   // initialized.
-  if (!document.IsInitialEmptyDocument())
+  if (!document.IsInitialEmptyDocument()) {
     NavigatorServiceWorker::From(window);
+  }
 
   DOMWindowStorageController::From(window);
   if (RuntimeEnabledFeatures::PresentationEnabled() &&
@@ -343,8 +348,9 @@ void ModulesInitializer::OnClearWindowObjectInMainWorld(
 #if BUILDFLAG(IS_ANDROID)
   LocalFrame* frame = window.GetFrame();
   DCHECK(frame);
-  if (auto* gateway = RemoteObjectGatewayImpl::From(*frame))
+  if (auto* gateway = RemoteObjectGatewayImpl::From(*frame)) {
     gateway->OnClearWindowObjectInMainWorld();
+  }
 #endif  // BUILDFLAG(IS_ANDROID)
 }
 
@@ -398,14 +404,16 @@ void ModulesInitializer::CloneSessionStorage(
     Page* clone_from_page,
     const SessionStorageNamespaceId& clone_to_namespace) {
   StorageNamespace* storage_namespace = StorageNamespace::From(clone_from_page);
-  if (storage_namespace)
+  if (storage_namespace) {
     storage_namespace->CloneTo(WebString::FromLatin1(clone_to_namespace));
+  }
 }
 
 void ModulesInitializer::EvictSessionStorageCachedData(Page* page) {
   StorageNamespace* storage_namespace = StorageNamespace::From(page);
-  if (storage_namespace)
+  if (storage_namespace) {
     storage_namespace->EvictSessionStorageCachedData();
+  }
 }
 
 void ModulesInitializer::DidChangeManifest(LocalFrame& frame) {
@@ -433,8 +441,9 @@ void ModulesInitializer::DidUpdateScreens(
 void ModulesInitializer::SetLocalStorageArea(
     LocalFrame& frame,
     mojo::PendingRemote<mojom::blink::StorageArea> local_storage_area) {
-  if (!frame.DomWindow())
+  if (!frame.DomWindow()) {
     return;
+  }
   DOMWindowStorage::From(*frame.DomWindow())
       .InitLocalStorage(std::move(local_storage_area));
 }
@@ -442,8 +451,9 @@ void ModulesInitializer::SetLocalStorageArea(
 void ModulesInitializer::SetSessionStorageArea(
     LocalFrame& frame,
     mojo::PendingRemote<mojom::blink::StorageArea> session_storage_area) {
-  if (!frame.DomWindow())
+  if (!frame.DomWindow()) {
     return;
+  }
   DOMWindowStorage::From(*frame.DomWindow())
       .InitSessionStorage(std::move(session_storage_area));
 }

@@ -1,0 +1,140 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:58594",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only sample handles held keys, repeat and keyup",
+      "passed": true,
+      "elapsedMs": 1358
+    },
+    {
+      "name": "Control keys prevent native scrolling synchronously",
+      "passed": true,
+      "elapsedMs": 583
+    },
+    {
+      "name": "Editable input keeps native typing and default space behavior",
+      "passed": true,
+      "elapsedMs": 481
+    },
+    {
+      "name": "Real checkbox change reports checked and value snapshots",
+      "passed": true,
+      "elapsedMs": 401
+    },
+    {
+      "name": "Keyboard snapshots preserve modifiers, repeat and trust",
+      "passed": true,
+      "elapsedMs": 343
+    },
+    {
+      "name": "Contenteditable and open dialogs are identified without node exposure",
+      "passed": true,
+      "elapsedMs": 362
+    },
+    {
+      "name": "Script-created keyboard events remain untrusted and preserve composition",
+      "passed": true,
+      "elapsedMs": 300
+    },
+    {
+      "name": "Closed shadow controls conservatively retain native keyboard behavior",
+      "passed": true,
+      "elapsedMs": 364
+    },
+    {
+      "name": "Native button space activation remains accessible",
+      "passed": true,
+      "elapsedMs": 375
+    },
+    {
+      "name": "Real mouse capture delivers pointerup outside the element",
+      "passed": true,
+      "elapsedMs": 600
+    },
+    {
+      "name": "Explicit capture release emits native lostpointercapture",
+      "passed": true,
+      "elapsedMs": 382
+    },
+    {
+      "name": "Real touch cancellation clears held pointer state",
+      "passed": true,
+      "elapsedMs": 579
+    },
+    {
+      "name": "Synthetic pointer IDs cannot acquire native capture",
+      "passed": true,
+      "elapsedMs": 281
+    },
+    {
+      "name": "Retained event token expires in the next event and animation frame",
+      "passed": true,
+      "elapsedMs": 314
+    },
+    {
+      "name": "Passive=false respects native checkbox default behavior",
+      "passed": true,
+      "elapsedMs": 354
+    },
+    {
+      "name": "Passive=true respects native checkbox default behavior",
+      "passed": true,
+      "elapsedMs": 364
+    },
+    {
+      "name": "Capture and bubble ordering, stop propagation and immediate stop",
+      "passed": true,
+      "elapsedMs": 371
+    },
+    {
+      "name": "Read-only page state follows resize and reduced-motion emulation",
+      "passed": true,
+      "elapsedMs": 325,
+      "detail": {
+        "state": "760|540|False|True|True|0"
+      }
+    },
+    {
+      "name": "Native blur clears held keys while Python callbacks lack focus",
+      "passed": true,
+      "elapsedMs": 1056
+    },
+    {
+      "name": "Hidden/frozen page clears input and resumes without stuck keys",
+      "passed": true,
+      "elapsedMs": 915
+    },
+    {
+      "name": "Shared window pressure drops keyup and epoch clears stale held state",
+      "passed": true,
+      "elapsedMs": 1393,
+      "detail": {
+        "state": "False:1"
+      }
+    },
+    {
+      "name": "Fatal input limit revokes global listeners and owned pointer capture",
+      "passed": true,
+      "elapsedMs": 362
+    },
+    {
+      "name": "Navigation while a pointer is captured leaves the next document clean",
+      "passed": true,
+      "elapsedMs": 1032
+    },
+    {
+      "name": "Cleanup preserves capture transferred to a different native owner",
+      "passed": true,
+      "elapsedMs": 431
+    },
+    {
+      "name": "Browser closes normally with input listeners and a pending frame",
+      "passed": true,
+      "elapsedMs": 563
+    }
+  ],
+  "passed": true
+}

@@ -151,6 +151,7 @@ bool CheckResult(const DomResult& result) {
     case DomError::kLimit:
       exception = PyExc_ValueError;
       break;
+    case DomError::kDrawingLimit:
     case DomError::kState:
     case DomError::kStopped:
       exception = PyExc_RuntimeError;
@@ -1016,6 +1017,26 @@ PyObject* CreateDomCallbackEvent(PyObject* module, const CallbackEvent& event) {
     return nullptr;
   }
   return reinterpret_cast<PyObject*>(object);
+}
+
+DomHost* ActiveDomHost(PyObject* module) {
+  auto* state = ActiveState(module);
+  return state ? state->host : nullptr;
+}
+bool ReadDomElementHandle(PyObject* module,
+                          PyObject* object,
+                          DomHandle* value) {
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  if (!state || !Py_IS_TYPE(object, state->handle_type)) {
+    PyErr_SetString(PyExc_TypeError,
+                    "Expected this interpreter's ElementHandle");
+    return false;
+  }
+  *value = reinterpret_cast<ElementHandle*>(object)->value;
+  return true;
+}
+bool CheckDomResult(const DomResult& result) {
+  return CheckResult(result);
 }
 
 void ClearDomCallbacks(PyObject* module) {

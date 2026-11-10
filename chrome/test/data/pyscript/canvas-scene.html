@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>原生 Python Canvas 2D</title>
+<style>
+  body { margin: 28px auto; max-width: 900px; padding: 20px; font: 17px system-ui; background: #f4f2e9; color: #304b43; }
+  canvas { display: block; width: 100%; max-width: 800px; height: auto; border: 2px solid #456b63; image-rendering: pixelated; }
+  #result, #metrics { font: 14px ui-monospace, monospace; }
+</style>
+<h1>原生 Python Canvas 2D</h1>
+<p>Python 记录批次，Blink 原生绘图。背景、云层和像素角色使用受限表面缓存。按左右键移动角色。</p>
+<canvas id="game" width="640" height="360" aria-label="Python 绘制的分层背景与像素角色"></canvas>
+<p id="result">starting</p>
+<p id="metrics">starting</p>
+<pyscript nonce="python-canvas">
+import animation, canvas, dom
+
+screen = canvas.get_context_2d(dom.get_element_by_id('game'))
+background = canvas.create_surface(320, 180)
+clouds = canvas.create_surface(320, 80)
+sprite = canvas.create_surface(16, 16)
+result = dom.get_element_by_id('result')
+metrics = dom.get_element_by_id('metrics')
+
+b = canvas.batch()
+sky = b.linear_gradient(0, 0, 0, 180)
+sky.add_color_stop(0, '#92d0df')
+sky.add_color_stop(0.7, '#c3e9e3')
+sky.add_color_stop(1, '#e8edc8')
+b.fill_style(sky)
+b.fill_rect(0, 0, 320, 180)
+b.fill_style('#fff9d4')
+b.begin_path(); b.arc(270, 40, 17, 0, 6.283185); b.fill()
+for x, peak, color in ((-30, 85, '#a7cda4'), (100, 100, '#96bf96'), (220, 80, '#87b58b')):
+    b.fill_style(color)
+    b.begin_path(); b.move_to(x, 160); b.line_to(x + 70, peak)
+    b.line_to(x + 140, 160); b.close_path(); b.fill()
+b.fill_style('#638b4d'); b.fill_rect(0, 158, 320, 5)
+b.fill_style('#b88b57'); b.fill_rect(0, 163, 320, 17)
+canvas.submit(background, b)
+
+b = canvas.batch()
+for x, y in ((10, 18), (115, 5), (220, 25)):
+    b.fill_style('#f9fff3')
+    b.fill_rect(x, y + 10, 60, 12)
+    b.fill_rect(x + 12, y + 2, 35, 17)
+    b.fill_rect(x + 22, y - 4, 17, 20)
+canvas.submit(clouds, b)
+</pyscript>
+<pyscript nonce="python-canvas">
+pixels = (
+    '.....RRRRR......', '....RRRRRRRRR...', '....BBBTTS......', '...BTBTTTTTS....',
+    '...BTBBTTTTTS...', '....BTTTTTTT....', '.....RRBRR......', '....RRRBRBRRR...',
+    '...RRRRBBBBRRR..', '...TTBRYBBYRBT..', '...TTBBBBBBBTT..', '.....BBBBBB.....',
+    '....BBB..BBB....', '...BBB....BBB...', '...DDD....DDD...', '..DDDD....DDDD..')
+colors = {'R':'#e96041', 'B':'#456b83', 'T':'#f3c394', 'S':'#473d35', 'Y':'#f8db82', 'D':'#6d5140'}
+b = canvas.batch()
+for row, line in enumerate(pixels):
+    col = 0
+    while col < len(line):
+        color = line[col]
+        end = col + 1
+        while end < len(line) and line[end] == color:
+            end += 1
+        if color != '.':
+            b.fill_style(colors[color]); b.fill_rect(col, row, end-col, 1)
+        col = end
+canvas.submit(sprite, b)
+</pyscript>
+<pyscript nonce="python-canvas">
+held = set()
+epoch = dom.get_page_state().input_epoch
+count = 0
+x = 80
+previous = 0
+last_hud = -1000
+
+# Rasterize cache sources and prepare the first native copy during initialization.
+# The animation callback keeps its existing 8 ms cooperative budget.
+b = canvas.batch()
+b.smoothing(False)
+b.draw_surface(background, 0, 0, 640, 360)
+b.draw_surface(clouds, 0, 35, 640, 160)
+b.draw_surface(clouds, 640, 35, 640, 160)
+b.draw_surface(sprite, x, 268, 48, 48)
+b.fill_style('#e9b75b'); b.fill_rect(0, 240, 24, 24)
+canvas.submit(screen, b)
+
+def key(e):
+    if e.code not in ('ArrowLeft', 'ArrowRight'):
+        return
+    if e.type == 'keyup':
+        held.discard(e.code)
+    elif not e.target_is_editable and not e.target_in_dialog and not e.is_composing:
+        held.add(e.code)
+        e.prevent_default()
+
+def frame(timestamp):
+    global count, x, previous, epoch, last_hud
+    state = dom.get_page_state()
+    if state.input_epoch != epoch or state.hidden or not state.has_focus:
+        held.clear()
+        epoch = state.input_epoch
+    dt = min(50, timestamp-previous) if previous else 0
+    previous = timestamp
+    if 'ArrowLeft' in held: x = max(0, x-dt*0.15)
+    if 'ArrowRight' in held: x = min(592, x+dt*0.15)
+    b = canvas.batch()
+    b.smoothing(False)
+    b.draw_surface(background, 0, 0, 640, 360)
+    offset = 0 if state.reduced_motion else (timestamp*0.015)%640
+    b.draw_surface(clouds, -offset, 35, 640, 160)
+    b.draw_surface(clouds, 640-offset, 35, 640, 160)
+    b.draw_surface(sprite, x, 268, 48, 48)
+    b.fill_style('#e9b75b')
+    b.fill_rect((timestamp*0.04)%600, 240, 24, 24)
+    stats = canvas.submit(screen, b)
+    count += 1
+    if timestamp-last_hud >= 150:
+        dom.set_text(result, 'frames:' + str(count) + ':x:' + str(round(x)))
+        dom.set_text(metrics, 'commands:' + str(stats['commands']) + ' bytes:' + str(stats['bytes'])
+                     + ' pixels:' + str(stats['pixels']) + ' native_ms:' + str(round(stats['native_ms'], 3)))
+        last_hud = timestamp
+    animation.request_frame(frame)
+
+dom.add_event_listener(dom.get_document(), 'keydown', key)
+dom.add_event_listener(dom.get_document(), 'keyup', key)
+animation.request_frame(frame)
+</pyscript>
+</html>

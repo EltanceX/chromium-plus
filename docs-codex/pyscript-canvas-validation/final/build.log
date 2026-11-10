@@ -1,0 +1,26 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4581575s
+load siso config done 11.3105ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:70676+ready:0 (node:441071 edge:70694)
+ 1.28s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+build finished
+
+ninja: no work to do.
+shutdown cloud logging/monitoring done 2.0349ms
+
+32.18s Build Succeeded: 0 steps - 0.00/s

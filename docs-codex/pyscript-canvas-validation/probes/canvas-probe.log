@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-canvas-phase3\\canvas-probe.json",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     level: 'error',\n+     lineNumber: 0,\n+     source: 'other',\n+     text: '[pyscript] Python block exceeded the 100 ms cooperative execution budget',\n+     timestamp: 1794323238531.187,\n+     url: 'http://127.0.0.1:56904/primitives'\n+   }\n+ ]\n- []\n\n    at healthy (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:314:10)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:319:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:295:20)\n    at async file:///C:/src/src/chrome/test/pyscript_canvas_smoke_test.mjs:318:3"
+}

@@ -1,0 +1,127 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3060263s
+load siso config done 17.0863ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:65869+ready:0 (node:441071 edge:65891)
+ 1.53s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/16722] 32.53s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_html_user_media_element.obj
+[0/2166] 42.23s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_html_user_media_element.obj
+[1/2165] 42.26s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[1/2163] 59.91s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[2/2163] 59.91s S LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[2/2159] 1m00.33s F LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[3/2140] 1m00.33s S LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[3/2140] 1m00.33s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[3/2140] 1m00.35s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[3/2139] 1m03.96s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[3/2139] 1m03.97s F LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[4/2139] 1m04.64s E LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+FAILED: 23d88fc1-5e71-48ee-b6e8-d028074ec35d "./python_document_context_unittests.exe" LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./python_document_context_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./python_document_context_unittests.exe.pdb" "@./python_document_context_unittests.exe.rsp"
+build step: link "./python_document_context_unittests.exe"
+stderr:
+lld-link: error: procedure symbol record for `base::numerics_internal::DstRangeRelationToSrcRange<long long,std::__Cr::numeric_limits,int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12290E which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::RangeCheck::IsValid` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x1228B1 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::RangeCheck::RangeCheck` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x1228BD which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::StrictNumeric<unsigned long long>::operator unsigned long long<unsigned long long>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122900 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::operator==<base::numerics_internal::StrictNumeric<unsigned long long>,int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122901 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::SafeCompare<base::numerics_internal::IsEqual,unsigned long long,int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12290A which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::IsEqual<unsigned long long,int>::Test` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12290C which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::DstRangeRelationToSrcRange<int,std::__Cr::numeric_limits,unsigned long long>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x1228B0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::RangeCheck::operator==` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12290D which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::DstRangeRelationToSrcRange<unsigned long long,std::__Cr::numeric_limits,int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12290E which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::DstRangeRelationToSrcRangeImpl<int,unsigned long long,std::__Cr::numeric_limits,1,0,0>::Check` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122910 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::NarrowingRange<int,unsigned long long,std::__Cr::numeric_limits>::max` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122914 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::NarrowingRange<int,unsigned long long,std::__Cr::numeric_limits>::Adjust<int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122915 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::numeric_limits<int>::max` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122916 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::ConditionalNegate<unsigned int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x1228C0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::IsValueNegative<int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122917 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::SafeUnsignedAbs<int>` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122918 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__libcpp_numeric_limits<int,1>::max` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x122919 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::DstRangeRelationToSrcRangeImpl<unsigned long long,int,std::__Cr::numeric_limits,0,1,0>::Check` in obj/components/subresource_filter/core/mojom/mojom/subresource_filter.mojom.obj refers to PDB item index 0x12291B which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::numeric_limits<unsigned int>::max` in obj/components/subresource_filter/core/mojom/mojom_shared_cpp_sources/subresource_filter.mojom-shared.obj refers to PDB item index 0x1228BF which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[5/2139] 1m13.99s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[6/2134] 1m24.23s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[7/1784] 1m24.24s S LINK(DLL) components_tracing_tracing_metrics.dll components_tracing_tracing_metrics.dll.lib components_tracing_tracing_metrics.dll.pdb
+[7/1637] 1m24.24s S ACTION //chrome:packed_resources_extra(//build/toolchain/win:win_clang_x64)
+[7/1607] 1m24.24s S LINK(DLL) ui_web_dialogs.dll ui_web_dialogs.dll.lib ui_web_dialogs.dll.pdb
+[7/1550] 1m24.25s S LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[7/1538] 1m24.25s S LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[7/1122] 1m24.28s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[7/1122] 1m24.31s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[7/1116] 1m26.04s F LINK(DLL) components_tracing_tracing_metrics.dll components_tracing_tracing_metrics.dll.lib components_tracing_tracing_metrics.dll.pdb
+[8/1116] 1m27.47s F ACTION //chrome:packed_resources_extra(//build/toolchain/win:win_clang_x64)
+[9/1109] 1m29.12s F LINK(DLL) ui_web_dialogs.dll ui_web_dialogs.dll.lib ui_web_dialogs.dll.pdb
+[10/1109] 1m29.12s S LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[10/1109] 1m29.94s F LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[11/1109] 1m29.95s S LIB obj/chrome/renderer/renderer.lib
+[11/1109] 1m30.20s F LIB obj/chrome/renderer/renderer.lib
+[12/1109] 1m32.11s F LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[13/1076] 1m32.95s F LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[14/1048] 1m42.46s F LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[15/24] 1m42.55s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[15/24] 1m55.96s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 63043335-34c0-4e3b-85fb-71f89b51fa54 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: procedure symbol record for `base::numerics_internal::StrictNumeric<unsigned long long>::operator unsigned long long<unsigned long long>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/crash_memory_metrics_reporter_impl_test.obj refers to PDB item index 0x199CC9 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::operator==<base::numerics_internal::StrictNumeric<unsigned long long>,int>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/crash_memory_metrics_reporter_impl_test.obj refers to PDB item index 0x199CCA which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::IsEqual<unsigned long long,int>::Test` in obj/third_party/blink/renderer/controller/blink_unittests_sources/crash_memory_metrics_reporter_impl_test.obj refers to PDB item index 0x199CCF which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::StrictNumeric<unsigned long long>::StrictNumeric<unsigned int>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/crash_memory_metrics_reporter_impl_test.obj refers to PDB item index 0x199CC2 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::strict_cast<unsigned long long,unsigned int,unsigned int>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/crash_memory_metrics_reporter_impl_test.obj refers to PDB item index 0x199CC6 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::Vector` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C6F which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::TypeConstraints::TypeConstraints` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C72 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::VectorBufferBase` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C79 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::size` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C74 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::capacity` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C70 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::capacity` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C78 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::data` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199CC3 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::Buffer` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199CC7 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::AllocateBuffer` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C7A which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::AllocationSize` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C86 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBuffer<unsigned int,0,blink::PartitionAllocator>::VectorBuffer` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C71 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorBufferBase<unsigned int,blink::PartitionAllocator,0>::Modifications` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C73 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::VectorTypeOperations<unsigned int,blink::PartitionAllocator>::UninitializedCopy<unsigned int>` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C75 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::ElementSpan<blink::Vector<unsigned int,0,blink::PartitionAllocator> >` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C76 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Vector<unsigned int,0,blink::PartitionAllocator>::ElementSpan<const blink::Vector<unsigned int,0,blink::PartitionAllocator> >` in obj/third_party/blink/renderer/controller/blink_bindings_test_sources/to_v8_traits_test.obj refers to PDB item index 0x199C77 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[16/24] 3m04.77s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:17 remote:0 cache:0 skip:102085
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1172(err:15) / r:801(err:0) 10.37GiB / w:13(err:0) 2.47MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3     13(2)     1.09s |█ ▂▄   |    14.54s |  ▂█▅▂ |
+shutdown cloud logging/monitoring done 0s
+
+3m05.47s Build Failure: 17 done, 2 failed, 2 remaining - 0.09/s
+ cannot make progress due to previous 2 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-230245.19072
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

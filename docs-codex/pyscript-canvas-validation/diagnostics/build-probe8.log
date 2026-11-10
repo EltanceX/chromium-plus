@@ -1,0 +1,67 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.6566795s
+load siso config done 14.6457ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:65268+ready:0 (node:441071 edge:65283)
+ 1.43s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/24137] 31.64s S CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+[0/3624] 35.51s F CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+[1/3624] 35.52s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[1/3624] 46.58s E LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+FAILED: 516185f3-526e-42a1-8a83-081e1ce3d6fd "./blink_platform.dll" LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_platform.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_platform.dll.lib" /DLL "/PDB:./blink_platform.dll.pdb" "@./blink_platform.dll.rsp"
+build step: solink "./blink_platform.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `std::__Cr::__annotate_contiguous_container<std::__Cr::allocator<std::__Cr::pair<blink::ColorChannelKeyword,std::__Cr::optional<float> > > >` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x166802 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__is_overaligned_for_new` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x166808 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::operator<<<std::__Cr::char_traits<char> >` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x166895 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__put_character_sequence<char,std::__Cr::char_traits<char> >` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x166896 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::char_traits<char>::length` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1667DA which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ostream<char,std::__Cr::char_traits<char> >::sentry::sentry` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x166899 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ostream<char,std::__Cr::char_traits<char> >::sentry::operator bool` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x16689A which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__pad_and_output<char,std::__Cr::char_traits<char> >` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668AC which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::fill` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668AD which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::flags` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668AE which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ostreambuf_iterator<char,std::__Cr::char_traits<char> >::ostreambuf_iterator` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668AF which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ostreambuf_iterator<char,std::__Cr::char_traits<char> >::failed` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::setstate` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B1 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ostream<char,std::__Cr::char_traits<char> >::sentry::~sentry` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B2 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::good` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B3 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::tie` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B4 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::good` in obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj refers to PDB item index 0x1668B5 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:98480
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 991(err:2) / r:764(err:0) 3.12MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+47.42s Build Failure: 2 done, 1 failed, 3622 remaining - 0.04/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-224554.14632
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

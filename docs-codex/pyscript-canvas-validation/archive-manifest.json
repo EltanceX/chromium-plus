@@ -1,0 +1,722 @@
+[
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/adapter.json",
+    "archive": "final/adapter.json",
+    "sourceSha256": "1cd63abdf0762ecc3f548187825bd9e1ba1feb89b6445a8a248f758f9ae07fb2",
+    "archiveSha256": "1cd63abdf0762ecc3f548187825bd9e1ba1feb89b6445a8a248f758f9ae07fb2"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/adapter.log",
+    "archive": "final/adapter.log",
+    "sourceSha256": "87e2908e91f95d333991debd7578a77f738342b0f6163348dad4639761ce4ee9",
+    "archiveSha256": "259f102fdfb9b96a19e8876c3c32c4c4aae15829f132339707c3d6d4652366d9"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/animation.json",
+    "archive": "final/animation.json",
+    "sourceSha256": "013d6e473697653f310742a20188882533e65e3aa3fd8f007633ca4ffb55b0d2",
+    "archiveSha256": "013d6e473697653f310742a20188882533e65e3aa3fd8f007633ca4ffb55b0d2"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/animation.json.chrome.log",
+    "archive": "final/animation.json.chrome.log",
+    "sourceSha256": "2dd97e14dbf65e75dd9c41781af5de2b2d854dab1e73917baaf31bf81a7588f8",
+    "archiveSha256": "32492584cd0946263092b2cc2d23e5bb6cdcfd9a68d792dc8baf1c30f3e8ed30"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/animation.json.sample.png",
+    "archive": "final/animation.json.sample.png",
+    "sourceSha256": "c7ff37cbf1b2cd04837b10802578ee6125e71bc5ecd398dc81cd678ca790089d",
+    "archiveSha256": "c7ff37cbf1b2cd04837b10802578ee6125e71bc5ecd398dc81cd678ca790089d"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/animation.log",
+    "archive": "final/animation.log",
+    "sourceSha256": "9e30186b0b8f8517b5f13f418b9cff8481c50b52d5b2423b6f5f1e57dcc243d8",
+    "archiveSha256": "9e30186b0b8f8517b5f13f418b9cff8481c50b52d5b2423b6f5f1e57dcc243d8"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/blink.json",
+    "archive": "final/blink.json",
+    "sourceSha256": "21300224d04f16926eaa333f83136b54efc28b6f6ee8e862d92d04b55b6c8a2f",
+    "archiveSha256": "21300224d04f16926eaa333f83136b54efc28b6f6ee8e862d92d04b55b6c8a2f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/blink.log",
+    "archive": "final/blink.log",
+    "sourceSha256": "c31a9e7b20e97777573bad23ec83e0038b72f9efd931d8005f3a6ea93577b842",
+    "archiveSha256": "bc4e5c9f9ad69f2d0bb744f20461fbf6c3250e09e1201d486f9103d590a1dd34"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/build.log",
+    "archive": "final/build.log",
+    "sourceSha256": "af14324718857f0bdd3a700b6569f9624481b6a19eb164f47b68f3061958334b",
+    "archiveSha256": "261f9a40f850aedba4a8ef8a7d9ccf6967d5a92cf6818dc9d47104f16cb1a69f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas-native.json",
+    "archive": "final/canvas-native.json",
+    "sourceSha256": "06f8fd1138f76f19346488d4e0080fc9dcf5cf87f71f9adcd8e1ef25b8302808",
+    "archiveSha256": "06f8fd1138f76f19346488d4e0080fc9dcf5cf87f71f9adcd8e1ef25b8302808"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas-native.log",
+    "archive": "final/canvas-native.log",
+    "sourceSha256": "f2b97d841261c6f66095c92a0892fe894fefe49c591e6a7187f54beaa181889a",
+    "archiveSha256": "7dd19ff22debe875f9b4b02def1ad4aa65e8367d7b83d9ee1b5623e1659d806c"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas-unit.json",
+    "archive": "final/canvas-unit.json",
+    "sourceSha256": "3f81f30af948b4aaa59c5fe24d76ed0926cc40064c650343c03953db4df157eb",
+    "archiveSha256": "3f81f30af948b4aaa59c5fe24d76ed0926cc40064c650343c03953db4df157eb"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas-unit.log",
+    "archive": "final/canvas-unit.log",
+    "sourceSha256": "a09de710107509b00049fdb4443356c5402a967783e62f63c92c0157f75535c5",
+    "archiveSha256": "2ca081ec754f35ced21fee880b27d674ab3b28fff26829c08a7f2ea5b6d17210"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas.json",
+    "archive": "final/canvas.json",
+    "sourceSha256": "daa3b1e746984a3affb110b6220d836315e1bb7a91b23b76897b2fcbfdf8009d",
+    "archiveSha256": "daa3b1e746984a3affb110b6220d836315e1bb7a91b23b76897b2fcbfdf8009d"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas.json.chrome.log",
+    "archive": "final/canvas.json.chrome.log",
+    "sourceSha256": "67d4bc4e5c10c7c8929a5fd2adeefe7c6a1cc441e1549b3f0187822ca004051d",
+    "archiveSha256": "d99ac1963fb3e6b913ef9221a5fde36c5c97d958396e06972ada8f167994bc5f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas.json.sample.png",
+    "archive": "final/canvas.json.sample.png",
+    "sourceSha256": "7b486dbc3d78f4fd156ed73a23bf8e7111ae2c8ffb0cb4aaf46e4414d2f70497",
+    "archiveSha256": "7b486dbc3d78f4fd156ed73a23bf8e7111ae2c8ffb0cb4aaf46e4414d2f70497"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/canvas.log",
+    "archive": "final/canvas.log",
+    "sourceSha256": "faeca36f2c931f4fcbbd3440608145daeb6194cff6d0b8b341595212c8a0de18",
+    "archiveSha256": "faeca36f2c931f4fcbbd3440608145daeb6194cff6d0b8b341595212c8a0de18"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/csp.json",
+    "archive": "final/csp.json",
+    "sourceSha256": "b955837fc2edc42fc9296c48c6b3405930c1bb7c48f678da17ba4995922b7428",
+    "archiveSha256": "b955837fc2edc42fc9296c48c6b3405930c1bb7c48f678da17ba4995922b7428"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/csp.log",
+    "archive": "final/csp.log",
+    "sourceSha256": "a5c49dcfab948f9eb79c13e82856f86f03637906bf636b100c6d3a9253bf9bf8",
+    "archiveSha256": "4353e02ee9eb70756f9079fd6d3abbc75f2cea2af41468b5695309ac0627234f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/dom.json",
+    "archive": "final/dom.json",
+    "sourceSha256": "cc49ed6f242f4948748d2934537457085e396501696ad52f93805feee7052b85",
+    "archiveSha256": "cc49ed6f242f4948748d2934537457085e396501696ad52f93805feee7052b85"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/dom.json.chrome.log",
+    "archive": "final/dom.json.chrome.log",
+    "sourceSha256": "68a840070a5c33977b09af3e195aebbf1267fab7f1e513580a1b23d8db03238d",
+    "archiveSha256": "fdabdc58c02e8a4a9fa47d6b87d83b330d707e9ca1ad8c0480a01ef54e92ff00"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/dom.json.sample.png",
+    "archive": "final/dom.json.sample.png",
+    "sourceSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+    "archiveSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/dom.log",
+    "archive": "final/dom.log",
+    "sourceSha256": "186ce04459a566d975a015c1eda6708d03535041019085ad0dbc0d570bb986da",
+    "archiveSha256": "186ce04459a566d975a015c1eda6708d03535041019085ad0dbc0d570bb986da"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/events.json",
+    "archive": "final/events.json",
+    "sourceSha256": "ec20b68134d3ca37b5aa4dcda6ed2623c73785c4b4b4269a4f0a93122477bff2",
+    "archiveSha256": "ec20b68134d3ca37b5aa4dcda6ed2623c73785c4b4b4269a4f0a93122477bff2"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/events.json.chrome.log",
+    "archive": "final/events.json.chrome.log",
+    "sourceSha256": "31ac8fb111b0f78ffd6c132b24370bbcaadd9d40156af070dbfe1e836192b80b",
+    "archiveSha256": "2201f8d757d29908de370a4af427f85ea05c7b5ca55a5912ed65dc245b250fff"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/events.json.sample.png",
+    "archive": "final/events.json.sample.png",
+    "sourceSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+    "archiveSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/events.log",
+    "archive": "final/events.log",
+    "sourceSha256": "56a0922e48069d3d3eba1589cb0a6e859d935a175b97d14d40053a067678e417",
+    "archiveSha256": "56a0922e48069d3d3eba1589cb0a6e859d935a175b97d14d40053a067678e417"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/input.json",
+    "archive": "final/input.json",
+    "sourceSha256": "15d60fd26be93126dde509cb34dd60a9497c09f8d3cfb842ee3524cbc7602dde",
+    "archiveSha256": "15d60fd26be93126dde509cb34dd60a9497c09f8d3cfb842ee3524cbc7602dde"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/input.json.chrome.log",
+    "archive": "final/input.json.chrome.log",
+    "sourceSha256": "d73ee24fd4da4a56cceb2f14080991ac7879406d69dd7b8cc7ea0a0e4eb9c428",
+    "archiveSha256": "98aae7c68c185d87336f4c4fc1ad7547ec90a14c2d7496cab5ce421f6f010adf"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/input.json.sample.png",
+    "archive": "final/input.json.sample.png",
+    "sourceSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4",
+    "archiveSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/input.log",
+    "archive": "final/input.log",
+    "sourceSha256": "d4a264cab60f503c8332500cb257581e20089e8b45cc732692ef438049bd815b",
+    "archiveSha256": "d4a264cab60f503c8332500cb257581e20089e8b45cc732692ef438049bd815b"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json",
+    "archive": "final/parser.json",
+    "sourceSha256": "6bb19941308f331a0484de040267b9a59270117ae6f8a88931fccca5b0dfff1a",
+    "archiveSha256": "6bb19941308f331a0484de040267b9a59270117ae6f8a88931fccca5b0dfff1a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.default-off.chrome.log",
+    "archive": "final/parser.json.default-off.chrome.log",
+    "sourceSha256": "069f7066ebdd4215e4e33bbe33cdb11fa43a5a0e01b92095fef65e6531f7d423",
+    "archiveSha256": "1e195cc1ff35124b8c8b3050ec79fab9894ac26e32998d8c84f11cbbfaccd3a6"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.enabled.chrome.log",
+    "archive": "final/parser.json.enabled.chrome.log",
+    "sourceSha256": "5af690fdf23fa56192be21e591f2ead4547e5e2cfba61873e20d078caba64623",
+    "archiveSha256": "3c16436f00b95a08342b39238571afbaad553bd542f2f28f5021db039aef4a48"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.malformed-origin.chrome.log",
+    "archive": "final/parser.json.malformed-origin.chrome.log",
+    "sourceSha256": "c23554b2241785c2271168124954dff3277be58e1f766eb461819b8c7b53296e",
+    "archiveSha256": "11ad0bd625faaad78d6234d18d5ce538fdaa85609cf03a9618f5684ca34a1ee8"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.missing-origin.chrome.log",
+    "archive": "final/parser.json.missing-origin.chrome.log",
+    "sourceSha256": "fd79d04e5f62b93c94695e6864756d25bdf3a8de2a77e0d628e5f7abfdbe9c45",
+    "archiveSha256": "98ef88772e03ac030ea9d96585c5803e675178fcd23db17bd6f0c4f33ce3dc5a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.non-loopback-origin.chrome.log",
+    "archive": "final/parser.json.non-loopback-origin.chrome.log",
+    "sourceSha256": "a4bf1b2755eb603bf046aa6b05aa5628bb625c790bff8075bb879a812f485835",
+    "archiveSha256": "ff86a126c95bb14b12c7e6497ed769c0cee59096ec1441d355a61d4c8fc1616e"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.json.wrong-origin.chrome.log",
+    "archive": "final/parser.json.wrong-origin.chrome.log",
+    "sourceSha256": "e20e53fc42649af6ad04050363659880015c9b8f9651c5623852b4be76322163",
+    "archiveSha256": "bf2d11614c1ead2da1d85d3c0ccec79927599c8b78bdceef41475f04f74c8aed"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/parser.log",
+    "archive": "final/parser.log",
+    "sourceSha256": "4ef1b150fe47bd65f04e535daa64c35847b0c23669301dbc4f2570d027fa8263",
+    "archiveSha256": "4ef1b150fe47bd65f04e535daa64c35847b0c23669301dbc4f2570d027fa8263"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/runtime.json",
+    "archive": "final/runtime.json",
+    "sourceSha256": "696a804d4f66ee409918817e112e0a9b1c8da7ad4a6c0c6dc3b429765d50df62",
+    "archiveSha256": "696a804d4f66ee409918817e112e0a9b1c8da7ad4a6c0c6dc3b429765d50df62"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/runtime.log",
+    "archive": "final/runtime.log",
+    "sourceSha256": "572e2c9d0b14a390eba57eb822a806bf517811813022b65914e6bdd9673d2833",
+    "archiveSha256": "a7b2d2cdde9b40babc017c714fc92c6f3e5e954f6038f74cf5657f4064e09711"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json",
+    "archive": "final/settings-browser.json",
+    "sourceSha256": "2d346c97399b3fc4bca7e6a21e599daf7d4850c9d25c586b2bcaad32a7fc7a83",
+    "archiveSha256": "2d346c97399b3fc4bca7e6a21e599daf7d4850c9d25c586b2bcaad32a7fc7a83"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json.launch-1.chrome.log",
+    "archive": "final/settings-browser.json.launch-1.chrome.log",
+    "sourceSha256": "86d56e5f7700ccfa1454d1f7f23e2015b758c7368de9bd0e373d10931a59d0be",
+    "archiveSha256": "4ba349f95d465b0e1a2c7ae695c8aa0372e7f49670ba0f545d2d36366c5b29cc"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json.launch-2.chrome.log",
+    "archive": "final/settings-browser.json.launch-2.chrome.log",
+    "sourceSha256": "658ff3512f06f665e0ee370fad8add612ce4cb53cc97a63acf62ff9969cb9e9f",
+    "archiveSha256": "08c36eb6dc50bc072d880d6ce9ce08ab58d038c6ffebf339747d3e880ffd28a9"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json.launch-3.chrome.log",
+    "archive": "final/settings-browser.json.launch-3.chrome.log",
+    "sourceSha256": "b9640d6d78e6bc8340668855dd248fcb512d78920fcbbf96654c954a2833dc4b",
+    "archiveSha256": "99a6caa967b5aa712f58b2969ff0fb61ce81a7f9ea2f0a4535d49a40fbc80f15"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json.launch-4.chrome.log",
+    "archive": "final/settings-browser.json.launch-4.chrome.log",
+    "sourceSha256": "8a1a1af13a537a29fe97cc6fdfd443383844e726bc46e55ed583f9bace3fdde9",
+    "archiveSha256": "e320485bab5227ed91df824d554f471c6e458e1accae3a81258356715d1371fd"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.json.settings.png",
+    "archive": "final/settings-browser.json.settings.png",
+    "sourceSha256": "ac88cf5ce789c4ada7c091958b1ae5494a7f10b8aeb9726299c6b28459ba44ac",
+    "archiveSha256": "ac88cf5ce789c4ada7c091958b1ae5494a7f10b8aeb9726299c6b28459ba44ac"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-browser.log",
+    "archive": "final/settings-browser.log",
+    "sourceSha256": "fbe590413b9659d292b2c858c2546b499b47b9c166e4e58bf83d6a2e8c945a01",
+    "archiveSha256": "fbe590413b9659d292b2c858c2546b499b47b9c166e4e58bf83d6a2e8c945a01"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-unit.json",
+    "archive": "final/settings-unit.json",
+    "sourceSha256": "f6c78c247af883a55a154973d04c0a694efc87d560a5f1ff27d1b1ab730a4045",
+    "archiveSha256": "f6c78c247af883a55a154973d04c0a694efc87d560a5f1ff27d1b1ab730a4045"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/settings-unit.log",
+    "archive": "final/settings-unit.log",
+    "sourceSha256": "2177f27f0ebe51ebf43a3891517c4c4a5c1e78fb1c3fda5f1a2e686e2ce98e1b",
+    "archiveSha256": "a17f80df157445991568f61af07cc1d2e194e4a35e4a262ea69508ce22a150aa"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final/summary.json",
+    "archive": "final/summary.json",
+    "sourceSha256": "fa5bb1100630e8ab8cf11da38dbfd809ae5016a825d901c8fd51e2e64a98d1ea",
+    "archiveSha256": "fa5bb1100630e8ab8cf11da38dbfd809ae5016a825d901c8fd51e2e64a98d1ea"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-probe.json",
+    "archive": "probes/adapter-probe.json",
+    "sourceSha256": "66d0b36f2f1ecf372728df60e8eb6c4e40e6d429ab76d77f5129052cf942990a",
+    "archiveSha256": "0c274c94c0927c980029226f0af8cb3a846e31cf94c3af4504b00655bcbf1489"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-probe.log",
+    "archive": "probes/adapter-probe.log",
+    "sourceSha256": "80705e83f09e0b240f35fc6e8e5831618fae80a4c2416a934816248fad6b4423",
+    "archiveSha256": "450154001ca5eafea72791409dc5bf79abf29f50218941b018d2b4ed66a26132"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-probe2.json",
+    "archive": "probes/adapter-probe2.json",
+    "sourceSha256": "275590557fd7ddf4178ed8b2d088decafa285e756e17fc33b6d0bc9ccf9d04c5",
+    "archiveSha256": "0458fa77bdf2728583388aa1d1155ddf04a7195b6d14d1da82a46d6de824cbc0"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-probe2.log",
+    "archive": "probes/adapter-probe2.log",
+    "sourceSha256": "6c2e6a74310446560a8af10d64dbcc469fdd7c8fc8a82fac7dd86f46bf53a563",
+    "archiveSha256": "b9a1d6e3adf2bdccf7c0a9ce4ffb492e664fea383475b54b611c9804627910cd"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-unlimited-link-command.txt",
+    "archive": "diagnostics/adapter-unlimited-link-command.txt",
+    "sourceSha256": "aa0ba57c741c8ebd74a21a122bcf05c8f3cf90a21ac51297b7106a18af87cba4",
+    "archiveSha256": "b3ac7d6ef3e1feba541ceab5b33d85186d605d59d010cd42ca9c42c538620d5a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/adapter-unlimited-link.log",
+    "archive": "diagnostics/adapter-unlimited-link.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/animation-compile-command.txt",
+    "archive": "diagnostics/animation-compile-command.txt",
+    "sourceSha256": "f0360318d5a21b910157faf2f91f5abbecac8c55bec022b982287683740be1d5",
+    "archiveSha256": "af6e775b1e555c2f6515364d6c05fa20a1520e0a3e089346985a1b57229a5f27"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/animation-direct-compile.log",
+    "archive": "diagnostics/animation-direct-compile.log",
+    "sourceSha256": "6aef628f0633412f975453f4c5127bdfd09f484392cdab1867c4c15359edd0f8",
+    "archiveSha256": "6aef628f0633412f975453f4c5127bdfd09f484392cdab1867c4c15359edd0f8"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/attempt2-core-section-scan.json",
+    "archive": "diagnostics/attempt2-core-section-scan.json",
+    "sourceSha256": "49f4191efb06af77d919c7a88a7d9b083867532d3befc08a54c73a79c33eb9e0",
+    "archiveSha256": "065146f092d2ecd45a0436745c53ba5fb8ad15777b31e83497ffb5d26675090c"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/attempt3-core-section-scan.json",
+    "archive": "diagnostics/attempt3-core-section-scan.json",
+    "sourceSha256": "3c4d5daebf75127bd8a190dc640f11897ca5937c04bda1cd8083f990dd719d49",
+    "archiveSha256": "c0a1b0d8e3c80f14760bd9c8f4df9116815c05057096ce4b5710a9480e2aedb5"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink-unlimited-link-command.txt",
+    "archive": "diagnostics/blink-unlimited-link-command.txt",
+    "sourceSha256": "20f9a51be935d37fd3aa3f61ca8453c8bca3b1898388d18932d414b9ddbcddd8",
+    "archiveSha256": "6a9eff79d64fa6e591e6f8805127facd6ffcfac281a723c72a68548ec82d7e6c"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink-unlimited-link.log",
+    "archive": "diagnostics/blink-unlimited-link.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink_core.dll.rsp-debug-scan.json",
+    "archive": "diagnostics/blink_core.dll.rsp-debug-scan.json",
+    "sourceSha256": "0d05258c08b7d1b3ca7ce352483b41c15cd3ee065eb9ca3053d3364183900b86",
+    "archiveSha256": "40e7cfd8b1146db284c331d97d4eb779652356363c95c2e4bf59f2d751cd3b2f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink_modules.dll.rsp-debug-scan.json",
+    "archive": "diagnostics/blink_modules.dll.rsp-debug-scan.json",
+    "sourceSha256": "24e72985628e6671ab45add35f9df3007a149dc8a6eddd38093bd55a83483564",
+    "archiveSha256": "f6ff30959e59f4a56a805d6b62a2f060667b0de093bd150b07588b0d24df2eed"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink_platform.dll.rsp-debug-scan.json",
+    "archive": "diagnostics/blink_platform.dll.rsp-debug-scan.json",
+    "sourceSha256": "1759d026e7dbbe47ab85feeb227d15dc022102614b69ca32ead290d4c7bf19ce",
+    "archiveSha256": "44394d76e4c0bdb8af9062a071c86e1813802f68f2a6e71ff51d103bb3f02b68"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/blink_unittests.exe.rsp-debug-scan.json",
+    "archive": "diagnostics/blink_unittests.exe.rsp-debug-scan.json",
+    "sourceSha256": "2297906d26b0d51c4ed2d0b96898ad386101804c70955055230a366856258f6d",
+    "archiveSha256": "9361fc1a0c3e23398f9021a442d07785301b543965a8b448248b25ef5bdb017a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe1.log",
+    "archive": "diagnostics/build-probe1.log",
+    "sourceSha256": "99cef0fd20037a9a9abee05a003412a0e3687c35237c673a81b4685a93543f0e",
+    "archiveSha256": "f81337c695897a843d6649392950dee4ef6474fc88c5420715b489ef9c405711"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe10.log",
+    "archive": "diagnostics/build-probe10.log",
+    "sourceSha256": "bed0f628f94518aa98b6eb79ded565b48cbd0c1d01a2a8a4a7117f4e92ff0c68",
+    "archiveSha256": "418afddcedda621cb0080dc7d478a566e40f4262228e1a329ef66d707a527717"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe11.log",
+    "archive": "diagnostics/build-probe11.log",
+    "sourceSha256": "c43751627ae1a9c555014ddbd4028674aa320e5286d2f344ef760966b196f156",
+    "archiveSha256": "e35ff21950053d677c33de297a58fb2e233086340191837fe9e9c6d2c5a72b36"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe12.log",
+    "archive": "diagnostics/build-probe12.log",
+    "sourceSha256": "060dcd44d829a2d74c92e7186afd0da51a5566e112c3cb1607e4b07ae93e1b13",
+    "archiveSha256": "e39e01b6cd98cf4e5f5f1c37c28ffa42b25118ca52ca41e4e783bc665b52dff3"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe2.log",
+    "archive": "diagnostics/build-probe2.log",
+    "sourceSha256": "de5bd8ef96eaf523afd7bfe2d4675782e67f5d14ce1b1889d39d45fb23153fc5",
+    "archiveSha256": "dedca423235594430e41b9b9c9b0e79d7e69e0e4fb12a91f6922549e1086bb80"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe3.log",
+    "archive": "diagnostics/build-probe3.log",
+    "sourceSha256": "edac5257097f580e9ebced03669bfe2d4fb2fbe24de178b025bd7716230c81bc",
+    "archiveSha256": "bfd9c5381b7653745aafe7c981bca357c274bd00e6b6af21fd8526c85a50fdd4"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe4.log",
+    "archive": "diagnostics/build-probe4.log",
+    "sourceSha256": "1ddcb2791391ec5dcb01baea2415206905505f76dd3be80dcbea3201de0437c5",
+    "archiveSha256": "7a0e2999749ff691a63e2cc467e3dfb87f5f849b477acf564830ec6575e34eac"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe5.log",
+    "archive": "diagnostics/build-probe5.log",
+    "sourceSha256": "921827f062408fefdb258e588c10c6297dec5e9dbac0c4d9949b2498acbc1618",
+    "archiveSha256": "5782e5284a3bad3d5a7f309ed9752a98eccb65c32dc34bd535ac1791042f92bc"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe6.log",
+    "archive": "diagnostics/build-probe6.log",
+    "sourceSha256": "f7e99d3927c48192250d8c22d7b8d31707e3834717b126786cbb81454626d63e",
+    "archiveSha256": "a46b4795d5f3442fd637586a725274b5fe8c0478c86f3b8bd6c39389828240fe"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe7.log",
+    "archive": "diagnostics/build-probe7.log",
+    "sourceSha256": "da18c9feac7abc6b8f65da7af11593ca40566a567cb8060fc67d43c79ac1a83c",
+    "archiveSha256": "ac1e19908eee56f21fedf0b1102e638cae49e422fe0ce2347117db52bb142bdc"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe8.log",
+    "archive": "diagnostics/build-probe8.log",
+    "sourceSha256": "b458d5689079fa6940552d80943ec452eef36e375696e0119e56a6393b2e8885",
+    "archiveSha256": "edc82e6be84f1200694989ef940e3d64636cf4e03ec8c20ebc9175c46b5ad199"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/build-probe9.log",
+    "archive": "diagnostics/build-probe9.log",
+    "sourceSha256": "251690a9567afdbb99fd27d7ba31426eb3112af0477b777f4dd50ae68b372e6f",
+    "archiveSha256": "4e5a2ca17b1320cd35e18ae802ae2262576bd15571d0b2f4a31c911343df9cd1"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe.json",
+    "archive": "probes/canvas-probe.json",
+    "sourceSha256": "59baf2a1b0004070907c41597809138be99d8e98da02370ec14fac51a5085204",
+    "archiveSha256": "59baf2a1b0004070907c41597809138be99d8e98da02370ec14fac51a5085204"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe.json.chrome.log",
+    "archive": "probes/canvas-probe.json.chrome.log",
+    "sourceSha256": "2ddd4983958118ebad2b6ae675ba34727e21e006d6b48b5da1f6459294d06e65",
+    "archiveSha256": "735aeb5919b128c7f7be8b394dc535c9fc3607a14d37b2ff2052efe8752483d2"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe.log",
+    "archive": "probes/canvas-probe.log",
+    "sourceSha256": "3de85955f8a1b40bcf0b8db163d0d7f3d80185af1bc71c37d2ee57b085f0d0e3",
+    "archiveSha256": "f670faac6dc2decae2e663883a6f129d1f74fa0f905e0aace7c468fb2acc96d9"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe2.json",
+    "archive": "probes/canvas-probe2.json",
+    "sourceSha256": "819161512ccaa6a70c1e6f5256510476022f6d917acf08449ef33ab0cf45f5fc",
+    "archiveSha256": "819161512ccaa6a70c1e6f5256510476022f6d917acf08449ef33ab0cf45f5fc"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe2.json.chrome.log",
+    "archive": "probes/canvas-probe2.json.chrome.log",
+    "sourceSha256": "9da29349d0c7d490859bda95b6fe28001b188aac4806c9ab89f5e481d9b2dbbd",
+    "archiveSha256": "d87b40a33485265436a187925c5935ffed85be8aa094ad2886bd3df85fc10aae"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe2.log",
+    "archive": "probes/canvas-probe2.log",
+    "sourceSha256": "b437144683089fe3744f1f6551ac2be30d899d247a01687055050e5b491fa80b",
+    "archiveSha256": "c301dcb26fa0f05f6153e3660a771daa6e86d27884a07310b5147d7c2c31209a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe3.json",
+    "archive": "probes/canvas-probe3.json",
+    "sourceSha256": "2aef94fdfe7a174a4927a977aef2bcf854e0075723a53a934e5a54664dc46dda",
+    "archiveSha256": "2aef94fdfe7a174a4927a977aef2bcf854e0075723a53a934e5a54664dc46dda"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe3.json.chrome.log",
+    "archive": "probes/canvas-probe3.json.chrome.log",
+    "sourceSha256": "893c3eea32b25fccf8da3efc804608c7ae85b15ab2d35f18549055983f056fcc",
+    "archiveSha256": "3afdf37001115e3033c18fa2c1140e2cfb5436675fa9a6dda3deba596a1c0030"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe3.json.sample.png",
+    "archive": "probes/canvas-probe3.json.sample.png",
+    "sourceSha256": "53907a2958161003745daaa1626e34c58cef2f36daa67ae5a799c69c0fe5ad57",
+    "archiveSha256": "53907a2958161003745daaa1626e34c58cef2f36daa67ae5a799c69c0fe5ad57"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe3.log",
+    "archive": "probes/canvas-probe3.log",
+    "sourceSha256": "13a7262aa635681a4c3c570ae52be859c44e1045b7353bf1e37e594113ff78d7",
+    "archiveSha256": "6abf6cb6ad8685736076434c440b4ec366f8c0b673e13b73a1ba21f7278b30d3"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe4.json",
+    "archive": "probes/canvas-probe4.json",
+    "sourceSha256": "a685c71a57d9d4f2cc2d555c82868cdb1d774c7c2f252d5a389d31d2ee96b7c1",
+    "archiveSha256": "a685c71a57d9d4f2cc2d555c82868cdb1d774c7c2f252d5a389d31d2ee96b7c1"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe4.json.chrome.log",
+    "archive": "probes/canvas-probe4.json.chrome.log",
+    "sourceSha256": "3eab3a44a0e091685f8cb9679f12d6c3d689c4381b8a24b08137a2da58aeccb9",
+    "archiveSha256": "29d939dbd0246f4e72f4c0c15bd979efab65d32774cafe2e0f126bda97514b77"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe4.json.sample.png",
+    "archive": "probes/canvas-probe4.json.sample.png",
+    "sourceSha256": "1dfe48fe275333481a8d57ae6222b0a4e8991d4b375ed96ba315a8f91482fc73",
+    "archiveSha256": "1dfe48fe275333481a8d57ae6222b0a4e8991d4b375ed96ba315a8f91482fc73"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/canvas-probe4.log",
+    "archive": "probes/canvas-probe4.log",
+    "sourceSha256": "70d5351d48905223a49826a4bd5c32de1452ac5bf38945bf6f0b92671b101b54",
+    "archiveSha256": "639853db3b1612817eb328a79a9ddd580376f91a47c6268bcbcdbcdaa311261b"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-0.log",
+    "archive": "diagnostics/checkdeps-0.log",
+    "sourceSha256": "2e882b0e6fdc7b66f3574d976ac144a13c0842786b107268ca3f270f9a1a1037",
+    "archiveSha256": "fc268d298071252dfee477d7803af1d4a1c9d8577c6c349d07a8c13f3dfe2556"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-1.log",
+    "archive": "diagnostics/checkdeps-1.log",
+    "sourceSha256": "b926fc4971b0702b4ba9949eac1d72e6626eb6505a5d81cd07a68a67c70027c6",
+    "archiveSha256": "d24f575fe7b0bd6d0b57eae676a7fb57ddde168959e388fdad0bccf5878e3978"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-2.log",
+    "archive": "diagnostics/checkdeps-2.log",
+    "sourceSha256": "c7ee1b7fc81abba61143a60a11b6e052e5db5813686b6a661d2fd7c72955992e",
+    "archiveSha256": "e1897ad48a3df03668f246f30dd027c00b5c19f795542e7b1d9fab744b287485"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-3.log",
+    "archive": "diagnostics/checkdeps-3.log",
+    "sourceSha256": "3f71b75c46b39191a1d4cb702e2988851f6458080d6a8f90494de9d93d8e906e",
+    "archiveSha256": "5034de905cb852d34060ef447095e7fa6d262d5fb0a05c5d9c98080068dddc17"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-4.log",
+    "archive": "diagnostics/checkdeps-4.log",
+    "sourceSha256": "32d5ee557290d78f0e2fd0653b5f67b06205dff0f77d5bbc351669213e416ceb",
+    "archiveSha256": "e85975c40a122df062dc443b26b9545f32611a9bdc47f5428618b1ed2727ea59"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-5.log",
+    "archive": "diagnostics/checkdeps-5.log",
+    "sourceSha256": "d47c59dc844cb6d9b7bec1c9e5a26cbe783c2eb5021ff6490f38562af71b83f0",
+    "archiveSha256": "f64e7e5bad211516a5a9c33d09a32c2ab5faf4bb4b905b41b59598126b2cc196"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-6.log",
+    "archive": "diagnostics/checkdeps-6.log",
+    "sourceSha256": "2ad4fab5e2c0be1899f4ff4392c43334d41adbcb3bf9cf2675ad3d25c9e792bc",
+    "archiveSha256": "0dd1fc77417a9da0b84a07a1d967fd5d48fdf8a643babc892c2d66396928b703"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-7.log",
+    "archive": "diagnostics/checkdeps-7.log",
+    "sourceSha256": "f9e9f30325a8faf52c9694d1843c2aeb33b55232fe3cac0a921977c8bf6ac033",
+    "archiveSha256": "0ca2fc6db9451eae46e33ec4eb9ea8e203a7cc696f632820fa31c125b587b208"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/checkdeps-8.log",
+    "archive": "diagnostics/checkdeps-8.log",
+    "sourceSha256": "dcb5bcdb0ff8478cc8be3f26e5f733ddc657070123a1e0b1edef642dd793ce0d",
+    "archiveSha256": "91568026658b0c842a3efe77f708f1da4f6bce0232cce8346e20cf276a1d02f2"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/clang-format.log",
+    "archive": "diagnostics/clang-format.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/core-section-scan.json",
+    "archive": "diagnostics/core-section-scan.json",
+    "sourceSha256": "3c4d5daebf75127bd8a190dc640f11897ca5937c04bda1cd8083f990dd719d49",
+    "archiveSha256": "c0a1b0d8e3c80f14760bd9c8f4df9116815c05057096ce4b5710a9480e2aedb5"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/final-validation.log",
+    "archive": "diagnostics/final-validation.log",
+    "sourceSha256": "d650fbf61351f02d1ab510cc8f3423e184fc209fe7b53ea1b8d66c7a7390b954",
+    "archiveSha256": "29d5c3ca158294a69e8a1cbb8f56aa610026f2a0382f97bc03c49578e172bee7"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/gn-format.log",
+    "archive": "diagnostics/gn-format.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/object-recovery.json",
+    "archive": "diagnostics/object-recovery.json",
+    "sourceSha256": "60baf0264adae2853968bdeef6c7ec9792dbd5c508b7b31262a7a48761617e75",
+    "archiveSha256": "de58789473667c0970eedffaa19e3f117bd1c825a8a80d0d6bb7e0bf4b5711e1"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/python_document_context_unittests.exe.rsp-debug-scan.json",
+    "archive": "diagnostics/python_document_context_unittests.exe.rsp-debug-scan.json",
+    "sourceSha256": "e96b606482909ff2fa859bfceda0b120bd0d9b377c8b81602cf7d26649b30abb",
+    "archiveSha256": "30fc09436426d14cc6b9155c9639a123746e25dfcbacb34d5a0bca4289e31f03"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/python_document_context_unittests.exe.rsp-hash-scan.json",
+    "archive": "diagnostics/python_document_context_unittests.exe.rsp-hash-scan.json",
+    "sourceSha256": "f5ebcab83b60d7c60643f31aa943dba41e89e9b2b8e6a5c8ae0d631043cfa1c1",
+    "archiveSha256": "00c1d500a16d8629a36fc8d3a795d6a14af73bc7fe5da4176e00f8d1dea5ad4d"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/recache-animation.log",
+    "archive": "diagnostics/recache-animation.log",
+    "sourceSha256": "2d53171429aff8a67ecd7568b4d5ccf00662a8a26263f62dceba5854e6191810",
+    "archiveSha256": "2ebfde5326a7f6214dc380f448b8db39a9edb29bd21109c10661af724b578830"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/runtime-probe.json",
+    "archive": "probes/runtime-probe.json",
+    "sourceSha256": "486852c3b7f482ced8306f75942ea2f664e0a9f71b5c91ef6d031e01ff7a5580",
+    "archiveSha256": "3e05338b76bcbe9185d4faa0094f5ecbeecaa72817a90d7d02a572d1e7f32da9"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/runtime-probe.log",
+    "archive": "probes/runtime-probe.log",
+    "sourceSha256": "b5a57b9390bf9d3af65fd170375dec15a6cc7673722d08c1e0c1195ea2220189",
+    "archiveSha256": "7ee1a093a81116eb2072498df90ef743f77d5ceb5cfade0eeddcbda14122a6c6"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/scan_debug.py",
+    "archive": "diagnostics/scan_debug.py",
+    "sourceSha256": "31594fa4ff839a183e016a3e5e0460c009f73571cd725c999ba0d2bd4097fa43",
+    "archiveSha256": "6ca4e153712323526da764ce2368115f2ca8e13b13ecb16d7da304ea250b041f"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/scan_hashes.py",
+    "archive": "diagnostics/scan_hashes.py",
+    "sourceSha256": "0b69305c114f581435f5f2f799b187e3f08b0b851464931a5e339ed928d3b9ce",
+    "archiveSha256": "4518a299dff551772150d5a6c74f3f568461f3f2e762d48a60d1efc91a9e15db"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/scan_sections.py",
+    "archive": "diagnostics/scan_sections.py",
+    "sourceSha256": "0e5dae8a520e8033da64128c9c67926d1a606dcbb0694b067796f722095a4da8",
+    "archiveSha256": "cc5582ed0c6e0dcc97ae6819e1bd60ca37b9848f323221c703299048abfaadf3"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/standard-relink.json",
+    "archive": "diagnostics/standard-relink.json",
+    "sourceSha256": "81d360fad5667f5aa4a536c56c23f28dd8492696fde861a760b429affd0c2543",
+    "archiveSha256": "96872ad15d88e4511f364b14531d56ad83bcbbff45451cbcba8ae44cc98f83c1"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/static-checks.json",
+    "archive": "diagnostics/static-checks.json",
+    "sourceSha256": "0d1ba6e03cadfb4e00981f39244a82969f2ced83447c99100c45a3b6bacf17c9",
+    "archiveSha256": "a7a9f93cd5303f26c76d3b193188e99a643b95974530459903934d428f310b5a"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/syntax-pyscript_canvas_smoke_test.mjs.log",
+    "archive": "diagnostics/syntax-pyscript_canvas_smoke_test.mjs.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/syntax-pyscript_settings_smoke_test.mjs.log",
+    "archive": "diagnostics/syntax-pyscript_settings_smoke_test.mjs.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "out/Debug/pyscript-canvas-phase3/syntax-validation.log",
+    "archive": "diagnostics/syntax-validation.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

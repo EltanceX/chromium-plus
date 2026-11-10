@@ -3,7 +3,7 @@
 - 整理日期：2026-11-10（Asia/Shanghai）。
 - 浏览器实现基线：`ed9a245bf1e2d6913029eaf733865776ecde6e3a`。
 - 参考项目：`C:\VD\Projects\mario\index.html`；源文件 SHA-256：`53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1`。
-- 当前状态：阶段一、二已完成。阶段二通过标准构建、158 项单测和 134 项浏览器测试，见[输入事件记录](pyscript-input-phase2.md)；阶段一历史验收见[动画帧记录](pyscript-animation-phase1.md)。阶段三至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
+- 当前状态：阶段一至三已完成。阶段三通过标准构建、188 项单测和 157 项浏览器测试，见[Canvas 实现记录](pyscript-canvas-phase3.md)；历史验收见[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段四至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
 - 目标平台：首先延续 Windows x64 Debug 的原生 CPython 路线，再以 Windows x64 Release 验证性能。
 - 前置成果：[原生 Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM](pyscript-phase3-document-context-dom.md)、[解释器设置与页面模式](pyscript-settings-and-page-permissions.md)、[click 方案](pyscript-click-events-implementation.md)、[交互预算与清理](pyscript-event-phase4-budgets-and-cleanup.md)、[click 最终验收](pyscript-event-phase5-build-and-browser-validation.md)。
 
@@ -52,7 +52,8 @@
 | 事件 | 普通 HTML 元素 click / input / change / 指针，Document 键盘与可见性，Window 焦点与 resize；once / passive / capture / 移除 | 后续游戏接入及完整控件交互 |
 | 事件对象 | 按类别只读快照、同步派发控制令牌、指针捕获、页面状态与输入复位代数已实现 | 后续游戏输入状态维护与端到端验证 |
 | 动画 | `animation.request_frame` / `cancel_frame`，原生帧、时间戳、单待执行请求与共享预算已实现 | 后续游戏接入、dt 基准与性能验证 |
-| Canvas / 音频 / 存储 | 尚无 Python 绑定 | 为游戏所需子集建立原生接口与资源计量 |
+| Canvas | 批量 Canvas 2D 子集、受限缓存表面、完整画面替换和绘图额度已实现 | 后续完整游戏接入与性能验证 |
+| 音频 / 存储 | 尚无 Python 绑定 | 为游戏所需子集建立原生接口与资源计量 |
 | Python 模块 | CPython 3.13.18，有限内建及冻结模块 | 按需静态加入数学与随机数依赖；不假定 math / random 已可导入 |
 | 生命周期 | 导航、open、失活、GC、安全任务清理；BFCache 排除、prerender 拒绝 | 新的帧、画布、音频与原生完成回调纳入相同撤销体系 |
 
@@ -161,6 +162,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ## 6. Canvas 2D 与资源计量
 
+本节保留原设计背景。阶段三已经实现该子集；具体 API、完整画面替换语义、资源上限和验证结果以 [Canvas 实现记录](pyscript-canvas-phase3.md) 为准。
+
 建议提供 `canvas.get_context_2d(element_handle)` 等有类型接口，首版仅适用于当前活动 Document 的普通 HTMLCanvasElement。允许设置画布尺寸，并定义尺寸变化后画布状态及缓存失效规则。
 
 所需子集：
@@ -240,6 +243,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 完成标准：Python 可连续记录左右和跳跃状态；游戏控制键能按需阻止默认滚动；控件正常键盘交互可用；不存在卡键、失效事件控制或跨文档句柄使用。
 
 ### 阶段三：Canvas 2D 子集、批量提交与绘图预算
+
+状态：已完成。`canvas` 原生模块、31 种命令、缓存表面与资源句柄、整批预检和绘图预算、无 JavaScript 的分层背景 / 像素角色样例及 345 项统一验收见[阶段三记录](pyscript-canvas-phase3.md)。
 
 1. 建立画布 / 上下文 / 渐变等文档级句柄与尺寸策略，确定符合 Blink 依赖方向的实现位置。
 2. 实现矩形、路径、变换、渐变、透明度和文字子集；先做静态画面能力样例。
@@ -325,4 +330,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一、二已完成原生帧调度与连续输入状态。推荐下一步进入**阶段三：Canvas 2D 子集、批量提交与绘图预算**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一至三已完成原生帧调度、连续输入状态及批量 Canvas 2D。推荐下一步进入**阶段四：数学依赖与核心玩法迁移**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。

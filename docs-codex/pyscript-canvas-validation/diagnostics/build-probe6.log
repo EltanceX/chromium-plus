@@ -1,0 +1,49 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.0516134s
+load siso config done 14.538ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:6)
+schedule pending:51471+ready:0 (node:441071 edge:51475)
+ 1.66s schedule pending:92870+ready:9234 (node:441071 edge:102104)
+
+build start: Ready 9234 Pending 92870
+[0/21176] 32.66s S CXX obj/third_party/blink/renderer/core/core/css_unparsed_value.obj
+[0/19100] 32.80s S CXX obj/third_party/blink/renderer/core/core/style_rule_import.obj
+[0/2292] 37.01s F CXX obj/third_party/blink/renderer/core/core/css_unparsed_value.obj
+[1/2292] 48.75s F CXX obj/third_party/blink/renderer/core/core/style_rule_import.obj
+[2/2292] 48.77s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2292] 51.71s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 110c737f-20de-49d9-8289-125990580ce6 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: getSectionName failed: #1233: string table empty
+
+
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:99812
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 999(err:3) / r:765(err:0) 12.43MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+52.70s Build Failure: 3 done, 1 failed, 2289 remaining - 0.06/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-223905.6292
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

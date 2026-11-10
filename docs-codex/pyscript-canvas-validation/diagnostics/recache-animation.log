@@ -1,0 +1,30 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1436713s
+load siso config done 9.5654ms
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441071 edge:2)
+build start: Ready 482 Pending 9054
+[0/1] 26.86s S CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+[0/1] 28.88s F CXX obj/third_party/blink/renderer/platform/platform/animation_translation_util.obj
+build finished
+
+
+noexec:0 local:1 remote:0 cache:0 skip:9535
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 307(err:2) / r:81(err:0) 1.78MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+29.49s Build Succeeded: 1 steps - 0.03/s
