@@ -1,0 +1,22 @@
+PASS Trusted mouse and keyboard clicks share Python state
+PASS Callbacks share globals across blocks and retain closure state
+PASS Returning False does not cancel the native checkbox default action
+PASS Restricted child frames cannot initialize Python click listeners
+PASS Nonce CSP sample uses no JavaScript and survives source removal
+PASS Duplicate registrations remain independent after handles are dropped
+PASS Once consumes registration even when Python raises
+PASS Self removal skips later listener and additions wait until next click
+PASS Ordinary exceptions retain listeners and include callback source
+PASS Disconnected nodes skip and reconnection resumes without id transfer
+PASS Native subscriptions and source metadata do not retain detached DOM nodes
+PASS Adopting subscribed node into another document cannot run old Python
+PASS Post-registration Shadow DOM and customized built-in are rejected
+PASS New CSP blocks existing callbacks using original source snapshot
+PASS Callback-created subscriptions inherit the correct source authorization
+PASS Disabling page script execution blocks existing callbacks
+{
+  "passed": false,
+  "cases": 17,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final\\events.json",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'0' !== 'rejected'\n\n    at file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:492:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:338:20)\n    at async file:///C:/src/src/chrome/test/pyscript_event_smoke_test.mjs:490:3"
+}

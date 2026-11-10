@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\input-probe2.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:176:9)\n    at async sample (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:294:3)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:299:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:263:20)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:298:3"
+}

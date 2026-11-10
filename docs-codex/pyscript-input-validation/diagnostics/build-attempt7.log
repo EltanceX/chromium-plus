@@ -1,0 +1,53 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.336228s
+load siso config done 10.724ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:64084+ready:0 (node:441061 edge:64100)
+ 1.62s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/22699] 31.18s S CXX obj/third_party/blink/renderer/bindings/core/v8/v8/v8_timeline_trigger_options.obj
+[0/10972] 32.02s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2293] 38.62s F CXX obj/third_party/blink/renderer/bindings/core/v8/v8/v8_timeline_trigger_options.obj
+[1/2292] 38.65s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2276] 1m07.41s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2138] 1m07.44s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[2/39] 1m11.44s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[3/9] 1m12.79s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[4/6] 1m12.81s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[4/6] 1m20.94s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 8e1bb5dd-39f9-4cc8-9d3f-f10908a0b601 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: getSectionName failed: #3196: string table empty
+
+
+build failed
+
+
+noexec:0 local:5 remote:0 cache:0 skip:102093
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1018(err:3) / r:771(err:0) 1.84GiB / w:1(err:0) 396.71KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m21.69s Build Failure: 5 done, 1 failed, 1 remaining - 0.06/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-193528.18424
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

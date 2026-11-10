@@ -1,0 +1,60 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_initial_color_value.obj",
+    "originalSha256": "b0a86c1b710106965550dc63b301cad74ce1aa0cf9ec4e17a4264d06a2105498",
+    "size": 2319218,
+    "mtimeNs": 1794115640575066700,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x12f8f0 (length 12601, kind 0x5e43)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/style_property_map_read_only_main_thread.obj",
+    "originalSha256": "8ad020d2eb87b48872f0157cfd7fa699da1d75bbd021a32c0fcf32a3e3ce8bd1",
+    "size": 4091158,
+    "mtimeNs": 1794117274217786800,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid UTF-8 in COFF string table at file offset 0x3ce002",
+      "Control byte in COFF string table at file offset 0x3ce006"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/style_value_factory.obj",
+    "originalSha256": "05144680765e251c36a50719f3db85f531eb294421d1f7825a013c066bd3fee0",
+    "size": 3795916,
+    "mtimeNs": 1794116454402086400,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x1b109d (length 24641, kind 0xbe90)"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/style_engine.obj",
+    "originalSha256": "00d0413faad8cc08d74b10bbbfed5bc12eaba2eeab6748e50afe24956f6c859d",
+    "size": 33784396,
+    "mtimeNs": 1794226305172416400,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 22813: relocation 0 has invalid symbol 2670717368 or type 23041",
+      "Section 22814: relocation 0 has invalid symbol 255089961 or type 23934",
+      "Section 22815: relocation 0 has invalid symbol 2257199013 or type 50719",
+      "Section 22816: relocation 0 has invalid symbol 1717433370 or type 47093",
+      "Section 22817: relocation 0 has invalid symbol 936551479 or type 60545",
+      "Invalid CodeView record at 0x640029 (length 48432, kind 0x2e45)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/format_block_command.obj",
+    "originalSha256": "fa101cf41ebbdfa72c9c99cffc1f1b7fea4dd690b05e911200326f09579eaf4a",
+    "size": 2622393,
+    "mtimeNs": 1794117983645242500,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0x14ffff (length 8978, kind 0xf2c2)"
+    ]
+  }
+]

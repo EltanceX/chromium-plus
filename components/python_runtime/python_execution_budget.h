@@ -92,12 +92,18 @@ class BudgetedDomHost final : public DomHost {
   DomResult AddEventListener(DomHandle,
                              std::string_view,
                              CallbackHandle,
-                             bool once) override;
+                             bool once,
+                             bool passive,
+                             bool capture) override;
   DomResult RemoveEventListener(DomHandle, CallbackHandle) override;
   void RevokeEventListener(DomHandle, CallbackHandle) override;
   DomResult RequestFrame(CallbackHandle) override;
   DomResult CancelFrame(CallbackHandle) override;
   void RevokeFrame(CallbackHandle) override;
+  DomResult GetEventTarget(TargetKind) override;
+  PageStateResult GetPageState() override;
+  DomResult ControlEvent(uint64_t, EventAction) override;
+  DomResult SetPointerCapture(DomHandle, int32_t, bool) override;
 
  private:
   DomResult FinishCall(DomResult result);

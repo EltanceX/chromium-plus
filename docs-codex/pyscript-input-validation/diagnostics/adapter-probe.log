@@ -1,0 +1,62 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes:PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls:PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface:PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime:PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent:PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations:PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation:PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover:PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock:PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes
+[       OK ] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (412 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls
+[       OK ] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls (102 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[       OK ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (176 ms)
+[ RUN      ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[       OK ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (161 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[       OK ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (337 ms)
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+[       OK ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (767 ms)
+[ RUN      ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[       OK ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (116 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[       OK ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (84 ms)
+[ RUN      ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[       OK ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (88 ms)
+[ RUN      ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[       OK ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (70 ms)
+[----------] 10 tests from PythonDocumentContextTest (2345 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (2348 ms total)
+[  PASSED  ] 10 tests.
+[1/12] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (412 ms)
+[2/12] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls (102 ms)
+[3/12] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (176 ms)
+[4/12] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (161 ms)
+[5/12] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (337 ms)
+[6/12] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (767 ms)
+[7/12] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (116 ms)
+[8/12] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (84 ms)
+[9/12] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (88 ms)
+[10/12] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (70 ms)
+Note: Google Test filter = PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption:PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption
+[       OK ] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (124 ms)
+[ RUN      ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[       OK ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (67 ms)
+[----------] 2 tests from PythonDocumentContextTest (194 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (195 ms total)
+[  PASSED  ] 2 tests.
+[11/12] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (124 ms)
+[12/12] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (67 ms)
+SUCCESS: all tests passed.
+Tests took 3 seconds.

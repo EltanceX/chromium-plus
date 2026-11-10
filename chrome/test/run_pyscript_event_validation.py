@@ -25,10 +25,10 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 55),
-    ('adapter', 'python_document_context_unittests', [], 10),
+    ('runtime', 'python_runtime_unittests', [], 61),
+    ('adapter', 'python_document_context_unittests', [], 12),
     ('blink', 'blink_unittests', ['--gtest_filter=HTMLPyScriptElementTest.*'],
-     62),
+     74),
     ('csp', 'blink_unittests', [
         '--gtest_filter=ContentSecurityPolicyTest.'
         'NonceSinglePolicy:ContentSecurityPolicyTest.'
@@ -37,6 +37,7 @@ SUITES = [
     ], 3),
     ('settings-unit', 'native_python_settings_unittests', [], 8),
     ('events', 'pyscript_event_smoke_test.mjs', [], 34),
+    ('input', 'pyscript_input_smoke_test.mjs', [], 25),
     ('animation', 'pyscript_animation_smoke_test.mjs', [], 19),
     ('dom', 'pyscript_dom_smoke_test.mjs', [], 17),
     ('parser', 'pyscript_smoke_test.mjs', [], 27),

@@ -1,0 +1,21 @@
+{
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj",
+      "errors": [
+        "Section 4309: relocation 0 has invalid symbol 1581676240 or type 13443",
+        "Section 4310: relocation 0 has invalid symbol 2851013830 or type 24006",
+        "Section 4311: relocation 0 has invalid symbol 339452305 or type 5709",
+        "Section 4312: relocation 0 has invalid symbol 3521559123 or type 64992",
+        "Section 4313: relocation 0 has invalid symbol 1165577682 or type 40710",
+        "Invalid CodeView record at 0x180184 (length 22782, kind 0x49b7)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    }
+  ]
+}

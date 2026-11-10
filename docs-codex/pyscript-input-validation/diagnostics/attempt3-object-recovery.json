@@ -1,0 +1,81 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_settings_generated.obj",
+    "originalSha256": "2cf27fe6c32035cca031412bfb5c05a4b3744c24178de9874b5336e7d0582988",
+    "size": 2746072,
+    "mtimeNs": 1794152570741967300,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 825: relocation 0 has invalid symbol 2384761332 or type 30775",
+      "Section 826: relocation 0 has invalid symbol 324093754 or type 50865",
+      "Section 827: relocation 0 has invalid symbol 3483961794 or type 12257",
+      "Section 828: relocation 0 has invalid symbol 2348740679 or type 32798",
+      "Section 829: relocation 0 has invalid symbol 1333162752 or type 51765",
+      "Invalid CodeView record at 0xb100e (length 52573, kind 0xbccf)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/services/network/test_support/test_url_loader_factory.obj",
+    "originalSha256": "97e3b647aee5d6f568003a97e414196db7a5b077b87b742d6baaeff86105440b",
+    "size": 6923561,
+    "mtimeNs": 1794039108165897400,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 10595: relocation 0 has invalid symbol 3261230767 or type 49624",
+      "Section 10596: relocation 0 has invalid symbol 2442221620 or type 20472",
+      "Section 10597: relocation 0 has invalid symbol 3179264411 or type 17739",
+      "Section 10598: relocation 0 has invalid symbol 1419595157 or type 33252",
+      "Section 10599: relocation 0 has invalid symbol 3882003101 or type 25460",
+      "Invalid CodeView record at 0x2580d9 (length 8356, kind 0xae57)",
+      "Invalid b'.debug$S' signature/extent",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/net/dns/test_support/dns_test_util.obj",
+    "originalSha256": "49ce266f93bc93d046e7cdbd9d78d8867449b5dccffc6b2ec317a2387c87cdca",
+    "size": 5212565,
+    "mtimeNs": 1794039107184297800,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid string table extent",
+      "Invalid string table extent"
+    ]
+  },
+  {
+    "object": "obj/net/dns/test_support/mock_mdns_client.obj",
+    "originalSha256": "bdf9cddddee04874266fd9d6427798326a633049b955a0b8b94243f5a0005362",
+    "size": 1609796,
+    "mtimeNs": 1794038691164053900,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 730: relocation 0 has invalid symbol 3375630710 or type 7928",
+      "Section 731: relocation 0 has invalid symbol 1376288086 or type 30264",
+      "Section 732: relocation 0 has invalid symbol 2444046986 or type 33799",
+      "Section 733: relocation 0 has invalid symbol 1756761295 or type 11201",
+      "Section 734: relocation 0 has invalid symbol 2381243858 or type 37636",
+      "Invalid UTF-8 in .drectve at file offset 0x521d7",
+      "Control bytes in .drectve",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  },
+  {
+    "object": "obj/components/services/storage/storage/async_dom_storage_database.obj",
+    "originalSha256": "2715e0dbc487e24120b481d45e2dca1b2cc86b82932cab2b9ab9ed1e9b2b6c34",
+    "size": 5771205,
+    "mtimeNs": 1793055980445098600,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 2208: relocation 0 has invalid symbol 3697856992 or type 33252",
+      "Section 2209: relocation 0 has invalid symbol 2702733441 or type 51094",
+      "Section 2210: relocation 0 has invalid symbol 3199300810 or type 37672",
+      "Section 2211: relocation 0 has invalid symbol 3544393252 or type 14594",
+      "Section 2212: relocation 0 has invalid symbol 3122644918 or type 6202",
+      "Invalid UTF-8 in .drectve at file offset 0x9d9f5",
+      "Control bytes in .drectve",
+      "Invalid b'.debug$S' signature/extent"
+    ]
+  }
+]

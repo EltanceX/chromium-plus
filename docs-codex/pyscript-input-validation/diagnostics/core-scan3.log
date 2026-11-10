@@ -1,0 +1,137 @@
+Direct objects: 500/5040, 3 problems
+Direct objects: 1000/5040, 3 problems
+Direct objects: 1500/5040, 3 problems
+Direct objects: 2000/5040, 3 problems
+Direct objects: 2500/5040, 3 problems
+Direct objects: 3000/5040, 3 problems
+Direct objects: 3500/5040, 3 problems
+Direct objects: 4000/5040, 3 problems
+Direct objects: 4500/5040, 3 problems
+Direct objects: 5000/5040, 3 problems
+Archives: 1/59, 131 members, 3 problems
+Archives: 2/59, 153 members, 3 problems
+Archives: 3/59, 159 members, 3 problems
+Archives: 4/59, 176 members, 3 problems
+Archives: 5/59, 178 members, 3 problems
+Archives: 6/59, 179 members, 3 problems
+Archives: 7/59, 189 members, 3 problems
+Archives: 8/59, 191 members, 3 problems
+Archives: 9/59, 194 members, 3 problems
+Archives: 10/59, 195 members, 3 problems
+Archives: 11/59, 196 members, 3 problems
+Archives: 12/59, 201 members, 3 problems
+Archives: 13/59, 202 members, 3 problems
+Archives: 14/59, 238 members, 3 problems
+Archives: 15/59, 239 members, 3 problems
+Archives: 16/59, 240 members, 3 problems
+Archives: 17/59, 241 members, 3 problems
+Archives: 18/59, 242 members, 3 problems
+Archives: 19/59, 243 members, 3 problems
+Archives: 20/59, 245 members, 3 problems
+Archives: 21/59, 246 members, 3 problems
+Archives: 22/59, 247 members, 3 problems
+Archives: 23/59, 248 members, 3 problems
+Archives: 24/59, 250 members, 3 problems
+Archives: 25/59, 254 members, 3 problems
+Archives: 26/59, 255 members, 3 problems
+Archives: 27/59, 258 members, 3 problems
+Archives: 28/59, 260 members, 3 problems
+Archives: 29/59, 266 members, 3 problems
+Archives: 30/59, 331 members, 3 problems
+Archives: 31/59, 333 members, 3 problems
+Archives: 32/59, 334 members, 3 problems
+Archives: 33/59, 335 members, 3 problems
+Archives: 34/59, 337 members, 3 problems
+Archives: 35/59, 347 members, 3 problems
+Archives: 36/59, 360 members, 3 problems
+Archives: 37/59, 361 members, 3 problems
+Archives: 38/59, 397 members, 3 problems
+Archives: 39/59, 399 members, 3 problems
+Archives: 40/59, 410 members, 3 problems
+Archives: 41/59, 433 members, 3 problems
+Archives: 42/59, 437 members, 3 problems
+Archives: 43/59, 438 members, 3 problems
+Archives: 44/59, 439 members, 3 problems
+Archives: 45/59, 440 members, 3 problems
+Archives: 46/59, 447 members, 3 problems
+Archives: 47/59, 451 members, 3 problems
+Archives: 48/59, 478 members, 3 problems
+Archives: 49/59, 497 members, 3 problems
+Archives: 50/59, 534 members, 3 problems
+Archives: 51/59, 540 members, 3 problems
+Archives: 52/59, 546 members, 3 problems
+Archives: 53/59, 551 members, 3 problems
+Archives: 54/59, 552 members, 3 problems
+Archives: 55/59, 553 members, 3 problems
+Archives: 56/59, 554 members, 3 problems
+Archives: 57/59, 555 members, 3 problems
+Archives: 58/59, 559 members, 3 problems
+Archives: 59/59, 560 members, 3 problems
+{
+  "response": "blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_font_family_value.obj",
+      "errors": [
+        "Invalid CodeView record at 0x22f017 (length 42796, kind 0x80ac)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_image_set_value.obj",
+      "errors": [
+        "Section 9429: relocation 0 has invalid symbol 475664092 or type 12862",
+        "Section 9430: relocation 0 has invalid symbol 3544956447 or type 44586",
+        "Section 9431: relocation 0 has invalid symbol 2190332718 or type 64084",
+        "Section 9432: relocation 0 has invalid symbol 3088863575 or type 57452",
+        "Section 9433: relocation 0 has invalid symbol 2149113275 or type 63092",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_shadow_value.obj",
+      "errors": [
+        "Unexpected COFF machine cb8b",
+        "Invalid string table offset"
+      ]
+    }
+  ],
+  "elapsed_seconds": 132.36
+}

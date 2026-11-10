@@ -36,6 +36,19 @@ DomResult DomHost::CancelFrame(CallbackHandle) {
   return {{}, DomError::kNotAllowed, "Animation frames are not supported"};
 }
 
+DomResult DomHost::GetEventTarget(TargetKind) {
+  return {{}, DomError::kNotAllowed, "Event targets are not supported"};
+}
+PageStateResult DomHost::GetPageState() {
+  return {{{}, DomError::kNotAllowed, "Page state is not supported"}, {}};
+}
+DomResult DomHost::ControlEvent(uint64_t, EventAction) {
+  return {{}, DomError::kReference, "The event control token is inactive"};
+}
+DomResult DomHost::SetPointerCapture(DomHandle, int32_t, bool) {
+  return {{}, DomError::kNotAllowed, "Pointer capture is not supported"};
+}
+
 namespace {
 
 constexpr size_t kOutputLimit = 16 * 1024;

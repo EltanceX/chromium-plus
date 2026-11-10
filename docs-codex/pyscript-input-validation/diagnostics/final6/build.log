@@ -1,0 +1,51 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.7551196s
+load siso config done 14.1201ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:62920+ready:0 (node:441061 edge:62934)
+ 1.50s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/20077] 31.39s S CXX obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj
+[0/2291] 42.35s F CXX obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj
+[1/2291] 42.37s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2260] 1m08.08s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2137] 1m08.10s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[2/38] 1m12.13s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[3/11] 1m12.16s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/5] 1m19.11s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: d939f191-998c-4c34-a38f-c1c1f4546c46 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: getSectionName failed: #1453: invalid section name
+
+
+build failed
+
+
+noexec:0 local:4 remote:0 cache:0 skip:102094
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1009(err:3) / r:767(err:0) 1.80GiB / w:1(err:0) 396.71KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m20.16s Build Failure: 4 done, 1 failed, 1 remaining - 0.05/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-214441.17732
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

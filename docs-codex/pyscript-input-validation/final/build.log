@@ -1,0 +1,39 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.9211245s
+load siso config done 11.3404ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:78321+ready:0 (node:441061 edge:78331)
+ 1.23s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/35854] 30.77s S LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[0/35757] 30.77s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[0/13648] 31.90s F LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[1/11349] 32.05s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[2/8144] 32.23s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[2/3954] 32.37s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[2/5] 39.40s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[3/4] 1m07.83s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:4 remote:0 cache:0 skip:102095
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1030(err:4) / r:769(err:0) 2.85GiB / w:3(err:0) 114.14KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m08.59s Build Succeeded: 4 steps - 0.06/s

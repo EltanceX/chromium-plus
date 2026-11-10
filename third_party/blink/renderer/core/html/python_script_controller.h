@@ -21,10 +21,13 @@ namespace blink {
 class Document;
 class Element;
 class Event;
+class EventTarget;
+class PythonInputResetListener;
+class PythonPointerCapture;
 class HTMLPyScriptElement;
 class PendingPythonScriptBlock;
 class PythonDomHandleEntry;
-class PythonClickListener;
+class PythonEventListener;
 class PythonAnimationFrame;
 class PythonScriptSource;
 
@@ -50,7 +53,9 @@ class PythonScriptController final
   WebPythonDomResult AddEventListener(WebPythonDomHandle,
                                       const WebString&,
                                       WebPythonCallbackHandle,
-                                      bool once) override;
+                                      bool once,
+                                      bool passive = false,
+                                      bool capture = false) override;
   WebPythonDomResult RemoveEventListener(WebPythonDomHandle,
                                          WebPythonCallbackHandle) override;
   void RevokeEventListener(WebPythonDomHandle,
@@ -58,10 +63,17 @@ class PythonScriptController final
   WebPythonDomResult RequestFrame(WebPythonCallbackHandle) override;
   WebPythonDomResult CancelFrame(WebPythonCallbackHandle) override;
   void RevokeFrame(WebPythonCallbackHandle) override;
+  WebPythonDomResult GetEventTarget(WebPythonTargetKind) override;
+  WebPythonPageStateResult GetPageState() override;
+  WebPythonDomResult ControlEvent(uint64_t, WebPythonEventAction) override;
+  WebPythonDomResult SetPointerCapture(WebPythonDomHandle,
+                                       int32_t,
+                                       bool) override;
 
  private:
-  friend class PythonClickListener;
+  friend class PythonEventListener;
   friend class PythonAnimationFrame;
+  friend class PythonInputResetListener;
   static PythonScriptController& GetOrCreate(Document&);
   void AppendConsole(const HTMLPyScriptElement&,
                      const String&,
@@ -69,22 +81,32 @@ class PythonScriptController final
   void AppendConsole(const PythonScriptSource&,
                      const String&,
                      mojom::blink::ConsoleMessageLevel);
-  void DispatchClick(PythonClickListener&, Event&);
+  void DispatchEvent(PythonEventListener&, Event&);
   void DispatchFrame(PythonAnimationFrame&, double timestamp_ms);
   void ScheduleFrame(WebPythonCallbackHandle, PythonScriptSource&);
   void RetryFrame(WebPythonCallbackHandle);
   void FinishCallback(const PythonScriptSource&,
                       const WebPythonScriptResult&,
                       const String& prefix);
-  void DetachListener(PythonClickListener&);
+  void DetachListener(PythonEventListener&);
   Element* ResolveElement(WebPythonDomHandle) const;
+  EventTarget* ResolveTarget(WebPythonDomHandle) const;
+  void ResetInput();
+  void ReleasePointerCaptures();
   void Dispose();
   void ReleaseContext();
   WebPythonDomResult CheckDomCall();
   HeapVector<Member<PendingPythonScriptBlock>> pending_;
   HeapVector<Member<PythonDomHandleEntry>> handles_;
-  HeapVector<Member<PythonClickListener>> listeners_;
+  HeapVector<Member<PythonEventListener>> listeners_;
   Member<PythonAnimationFrame> pending_frame_;
+  Member<PythonInputResetListener> input_reset_listener_;
+  HeapVector<Member<PythonPointerCapture>> pointer_captures_;
+  Member<Event> active_event_;
+  uint64_t next_event_token_ = 0;
+  uint64_t active_event_token_ = 0;
+  uint64_t input_epoch_ = 0;
+  bool active_event_passive_ = false;
   Member<PythonScriptSource> current_source_;
   std::unique_ptr<WebPythonScriptContext> context_;
   scoped_refptr<base::SingleThreadTaskRunner> cleanup_task_runner_;

@@ -1,0 +1,14 @@
+[
+  {
+    "object": "obj/base/i18n/test_support/locales_for_test.obj",
+    "originalSha256": "d82be9315b4dccb07bdf7e979b9463219da56fef9d6a83b0aaeffca912c5103c",
+    "size": 789644,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Section 1453: invalid name b'/\\x80[\\xe02\\xe2_\\xe5'",
+      "Section 1724: invalid name b'/ftMsO\\xa9$'"
+    ],
+    "rebuiltSha256": "4ff6fbc7a496bfad9a5d7d0305eae25dc873980b2e2121d3dcd3921fa8156d99",
+    "rebuiltSectionNameProblems": []
+  }
+]

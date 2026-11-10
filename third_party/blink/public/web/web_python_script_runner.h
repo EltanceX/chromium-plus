@@ -35,10 +35,18 @@ struct WebPythonScriptResult {
   bool callback_skipped = false;
 };
 
+enum class WebPythonTargetKind { kElement, kDocument, kWindow };
+enum class WebPythonEventAction {
+  kPreventDefault,
+  kStopPropagation,
+  kStopImmediatePropagation
+};
+
 struct WebPythonDomHandle {
   uint64_t document = 0;
   uint64_t generation = 0;
   uint64_t id = 0;
+  WebPythonTargetKind kind = WebPythonTargetKind::kElement;
 };
 
 struct WebPythonCallbackHandle {
@@ -50,6 +58,41 @@ struct WebPythonCallbackEvent {
   WebString type;
   WebPythonDomHandle current_target;
   bool is_trusted = false;
+  uint64_t control_token = 0;
+  bool cancelable = false;
+  bool bubbles = false;
+  bool default_prevented = false;
+  bool passive = false;
+  bool target_is_editable = false;
+  bool target_in_dialog = false;
+  WebString key;
+  WebString code;
+  bool repeat = false;
+  bool is_composing = false;
+  bool alt_key = false;
+  bool ctrl_key = false;
+  bool meta_key = false;
+  bool shift_key = false;
+  int32_t pointer_id = 0;
+  WebString pointer_type;
+  int16_t button = 0;
+  uint16_t buttons = 0;
+  double client_x = 0;
+  double client_y = 0;
+  bool is_primary = false;
+  WebString value;
+  bool checked = false;
+  bool value_truncated = false;
+  uint64_t input_epoch = 0;
+};
+
+struct WebPythonPageState {
+  bool hidden = false;
+  bool has_focus = false;
+  int width = 0;
+  int height = 0;
+  bool reduced_motion = false;
+  uint64_t input_epoch = 0;
 };
 
 enum class WebPythonDomError {
@@ -67,7 +110,12 @@ struct WebPythonDomResult {
   WebString message;
 };
 
-// Borrowed during synchronous Run/InvokeCallback only. Values crossing this
+struct WebPythonPageStateResult {
+  WebPythonDomResult status;
+  WebPythonPageState state;
+};
+
+// Borrowed during synchronous Run and callbacks only. Values crossing this
 // boundary never contain Nodes or Python objects.
 class WebPythonDomHost {
  public:
@@ -78,7 +126,9 @@ class WebPythonDomHost {
   virtual WebPythonDomResult AddEventListener(WebPythonDomHandle,
                                               const WebString& type,
                                               WebPythonCallbackHandle,
-                                              bool once) = 0;
+                                              bool once,
+                                              bool passive = false,
+                                              bool capture = false) = 0;
   virtual WebPythonDomResult RemoveEventListener(WebPythonDomHandle,
                                                  WebPythonCallbackHandle) = 0;
   // Internal idempotent rollback, even after activity/budget admission fails.
@@ -88,6 +138,13 @@ class WebPythonDomHost {
   virtual WebPythonDomResult RequestFrame(WebPythonCallbackHandle) = 0;
   virtual WebPythonDomResult CancelFrame(WebPythonCallbackHandle) = 0;
   virtual void RevokeFrame(WebPythonCallbackHandle) = 0;
+  virtual WebPythonDomResult GetEventTarget(WebPythonTargetKind) = 0;
+  virtual WebPythonPageStateResult GetPageState() = 0;
+  virtual WebPythonDomResult ControlEvent(uint64_t token,
+                                          WebPythonEventAction) = 0;
+  virtual WebPythonDomResult SetPointerCapture(WebPythonDomHandle,
+                                               int32_t pointer_id,
+                                               bool capture) = 0;
 };
 
 // Owned by a Document controller. Destruction can execute Python finalizers and

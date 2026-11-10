@@ -1,0 +1,274 @@
+{
+  "startedAt": "2026-11-10T13:50:49.830039+00:00",
+  "sourceCommit": "6f53a6b1c04d659959ea6c323c12416a9c2f0495",
+  "workingTreeStatus": "M chrome/browser/mcje/BUILD.gn\n M chrome/browser/mcje/java_status_query.cc\n M chrome/browser/mcje/java_status_query.h\n M chrome/browser/mcje/java_status_query_unittest.cc\n M chrome/browser/mcje/java_status_resolver.cc\n M chrome/browser/mcje/java_status_resolver.h\n M chrome/browser/mcje/mcje_url_loader_factory.cc\n M chrome/browser/resources/settings/kernel_debug_page/kernel_debug_page.html.ts\n M chrome/renderer/python_document_context.cc\n M chrome/renderer/python_document_context_unittest.cc\n M chrome/test/mcje_smoke_test.mjs\n M chrome/test/pyscript_settings_smoke_test.mjs\n M chrome/test/run_pyscript_event_validation.py\n M components/python_runtime/python_dom_module.cc\n M components/python_runtime/python_execution_budget.cc\n M components/python_runtime/python_execution_budget.h\n M components/python_runtime/python_runtime.cc\n M components/python_runtime/python_runtime.h\n M components/python_runtime/python_runtime_unittest.cc\n M docs-codex/mcje-native-protocol-implementation.md\n M third_party/blink/public/web/web_python_script_runner.h\n M third_party/blink/renderer/core/html/html_py_script_element_test.cc\n M third_party/blink/renderer/core/html/python_script_controller.cc\n M third_party/blink/renderer/core/html/python_script_controller.h\n?? chrome/browser/mcje/java_system_srv_lookup.cc\n?? chrome/browser/mcje/java_system_srv_lookup.h\n?? chrome/browser/mcje/java_system_srv_lookup_unittest.cc\n?? chrome/browser/mcje/java_system_srv_lookup_win.cc\n?? chrome/test/data/pyscript/input-state.html\n?? chrome/test/pyscript_input_smoke_test.mjs\n?? docs-codex/mcje-validation/srv-fix-results-2026-11-07.json\n?? docs-codex/mcje-validation/srv-s2-mc-ucket-top-2026-11-07.png\n?? docs-codex/pyscript-input-phase2.md",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pythonVersion": "3.12.10",
+  "nodeVersion": "v24.22.1",
+  "buildDirectory": "C:\\src\\src\\out\\Debug",
+  "outputDirectory": "C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7",
+  "buildArguments": "# Build arguments go here.\n# See \"gn args <out_dir> --list\" for available build arguments.\nis_component_build = true\ntarget_cpu = \"x64\"\ncc_wrapper = \"sccache\"\nis_debug = true",
+  "sourceSha256": {
+    "chrome/browser/native_python/BUILD.gn": "87d5173d1dee3333f80c193d51f39dd1556c8da2dd63fc8f2d0ce4b61ef88475",
+    "chrome/browser/native_python/native_python_settings.cc": "98f7f993bb88981cc50fea71a929f686bfe1d119ee6bbbe2bcfad9910d6011a8",
+    "chrome/browser/native_python/native_python_settings.h": "e99c4cc8f6146236cd8ffbac062f662c9259e5bc65dc236e65dedfd9664b849d",
+    "chrome/browser/native_python/native_python_settings_unittest.cc": "c240f1a09d546343c28ddd7088ccd882baa06a7e53dae04dddb610c8b4188cdd",
+    "chrome/browser/native_python/run_all_unittests.cc": "0289048b8253be5f1c95e09d3710884a3808e03319e9c75803d6cea23daeced2",
+    "chrome/browser/resources/settings/kernel_debug_page/kernel_debug_page.html.ts": "c649230b8f1dd775ded4ca0ab7d20f6d646bf2e550966f9b39df683be45bbce7",
+    "chrome/browser/resources/settings/kernel_debug_page/kernel_debug_page.ts": "8fae633cc8da2481cefb48af0e17cd97bf737ad486e83057248f640fb5bc1adf",
+    "chrome/browser/resources/settings/kernel_debug_page/kernel_debug_page_browser_proxy.ts": "99ae06ff610c73b058e2691a7d1cdcc469b319eca14530ab94fe6ec4731446c7",
+    "chrome/common/native_python_policy.h": "dad499b236d4c1761b47bf28737c85d4f2c8b54ca3832e8501b6acc806a9ce63",
+    "chrome/renderer/python_document_context.cc": "b15c55e0f4b12f79eda605c60f1d77486ad5e46e5079430291f2aaf9c6c3f3d1",
+    "chrome/renderer/python_document_context.h": "cb0acae047135fe7fc8cc16d59a7e27368c6de8108d914342809cbd56a21f5cb",
+    "chrome/renderer/python_document_context_unittest.cc": "5cfe79d479aba06804f1acd39d6a93dcb0836c9263ff48f9b9e8394ad62df8c0",
+    "chrome/renderer/python_script_runner.cc": "33679a5602b4042c6c8dc040f201e9155714951ad0af1687ad25c54fccbc6262",
+    "chrome/renderer/python_script_runner.h": "876ce658835e34a67abe9e346974097b969d09c166b23b0951eea43bfa78a382",
+    "chrome/test/data/pyscript/animation-frames.html": "334389868b6af947a7f476bb5abbcc35f848204d9f7c8307ef50ed2cae55b42b",
+    "chrome/test/data/pyscript/click-events.html": "cd619bf141509f56afa02c6dd9b898840072b154e22da5790c7a53fec94a5b71",
+    "chrome/test/data/pyscript/dom-bridge-test.html": "247c728fd00e902870409d120b53aedf998c7b4f1873cf42f8e98558682b9e4c",
+    "chrome/test/data/pyscript/input-state.html": "4b86a181c698a3be5ce9eed4a9da6ea07177af4bb57135bfbb799111afb68737",
+    "chrome/test/data/pyscript/phase2.html": "71d9bda96d5551373a87943438237c024eafe723236ec253b3f52b1761f5705a",
+    "chrome/test/data/pyscript/phase3.html": "e34f7ff729bf4719c452ae9675d66c586dba8da9c38913e8baea6763b0249c6c",
+    "chrome/test/pyscript_animation_smoke_test.mjs": "cb2b27494fdc6f9cae90d68ee0e0819ae1a728a2f60d798b17eada8b46efbc86",
+    "chrome/test/pyscript_dom_smoke_test.mjs": "dcec33a52193c2335886468a609a6f1f9110cfa26aa6b43ea87e6b2bd272c60a",
+    "chrome/test/pyscript_event_smoke_test.mjs": "2c64a822a811bf5cc1b410853eac65a43082f02d2bf55117861ad1e8adb6ad7f",
+    "chrome/test/pyscript_input_smoke_test.mjs": "8151d03f1231f5462fb19d13657ccc70a927f998847ea3ea667e976dc9e15153",
+    "chrome/test/pyscript_settings_smoke_test.mjs": "c33e466311724677d6d7bb798c55a9fc88870f8c63759356eab467fa00aad167",
+    "chrome/test/pyscript_smoke_test.mjs": "e42852b6370b6c77dd0ca0f7c34f2f25698a06efcd2298cc5c75169b828d0b9f",
+    "chrome/test/run_pyscript_event_validation.py": "be0bc61968902aab76dd86c6d59a6c9b4157f7d2394c9604f6697874bd0591bd",
+    "components/python_runtime/BUILD.gn": "23e2c05168ade7c5fc4b6d83bca47bb3eb82519c776508fea421a39da701624a",
+    "components/python_runtime/python_dom_module.cc": "33ddf0d8a75df533fea99eb289bd2c54225ead8d5d054425422787dcf3c01591",
+    "components/python_runtime/python_dom_module.h": "9f0a5216594d2a2cb6f2cd337be7425e5f0810e514d519de41b00644c6c60c39",
+    "components/python_runtime/python_execution_budget.cc": "d9feb6aed4f9ad63664beaf74db9817de0da3eda0deba9ee5360a9c5bce7306d",
+    "components/python_runtime/python_execution_budget.h": "72928d3be09567779e98fb705ed7d32d8f63fb5722fe20ed091d210f96a460dc",
+    "components/python_runtime/python_runtime.cc": "b518c07d12ddd3525adfb75bb5d751b70d980dd9da5a2551b0c09aff8233ef54",
+    "components/python_runtime/python_runtime.h": "36012795019110cc34706303ef598b0ecb6fa00ccd3d7f88f20636bad7dcf435",
+    "components/python_runtime/python_runtime_unittest.cc": "ad0c56b82123c816a86d8dcf8f5a9fb310175f2f62c2b9b144dd8c5cb4a5b7d4",
+    "components/python_runtime/run_all_unittests.cc": "0289048b8253be5f1c95e09d3710884a3808e03319e9c75803d6cea23daeced2",
+    "third_party/blink/public/web/web_python_script_runner.h": "2dc6dc795c0ec4a3fda887f478f61a6cbdcd7915fed04577461da71d30e30c3b",
+    "third_party/blink/renderer/core/frame/csp/content_security_policy.cc": "981ca1faa75597ba98be29a2b0adc889e4cac81fbfbf89670cf19a73e0d283db",
+    "third_party/blink/renderer/core/html/html_py_script_element.cc": "95c26521d578d6f60b8597681143f894bbf1a5ef536c1cf1f337dc8bc7691d6e",
+    "third_party/blink/renderer/core/html/html_py_script_element.h": "7eea58567b8a38e6ac7c2bf779e533be3de3813cb0339bf7de38d050705756aa",
+    "third_party/blink/renderer/core/html/html_py_script_element_test.cc": "3913c32fa01a2fa3e7475f7d5fac038f5e1252fecd763095afbd181562fbd0e9",
+    "third_party/blink/renderer/core/html/python_script_controller.cc": "8ec17ba2bafc842aef6c7d675f81a82af615c3567f5215ccba1f426a60ae71dc",
+    "third_party/blink/renderer/core/html/python_script_controller.h": "06dc05ac12b014b7f4d76b22eabd35e871b76c5ff49f65f7c90d35fca09fee04"
+  },
+  "checks": {
+    "runtime": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_runtime_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\runtime.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 4.94,
+      "expected": 61,
+      "rawResultSha256": "0bc95eaa5540d3284e7dd2a949a3f41bcc8b9e3d4e7b3f1bae1d587e9863ad43",
+      "total": 61,
+      "passed": 61,
+      "resultSha256": "858fd9fc485e29fada211f9ecf4ed3bd66d4926e61e1ba8fda43d84cea73cfd2",
+      "verified": true
+    },
+    "adapter": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\python_document_context_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\adapter.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 2.84,
+      "expected": 12,
+      "rawResultSha256": "36c5736dd04eb8006938c2c771653ac8669d86f0079dc09a5135f139e8470734",
+      "total": 12,
+      "passed": 12,
+      "resultSha256": "31c1e62cb1bfb93951869a0eab2af5140a45ad5a07b8a19e4e11a861999a9363",
+      "verified": true
+    },
+    "blink": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=HTMLPyScriptElementTest.*",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\blink.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 28.88,
+      "expected": 74,
+      "rawResultSha256": "a3aa9df51ba6bee269d4f2d2f4dd7bb3f2e989e666a355af127f71656fabb32a",
+      "total": 74,
+      "passed": 74,
+      "resultSha256": "252af84038e8988554b0885df6b91b8b08b09e8342ddd07724e4f442d7515be4",
+      "verified": true
+    },
+    "csp": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\blink_unittests.exe",
+        "--gtest_filter=ContentSecurityPolicyTest.NonceSinglePolicy:ContentSecurityPolicyTest.NonceInline:ContentSecurityPolicyTest.NonceMultiplePolicy",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\csp.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 3.72,
+      "expected": 3,
+      "rawResultSha256": "17aa7cb50f299120d4877788732da53a0ae62034a5b168ab1e20fa687a746971",
+      "total": 3,
+      "passed": 3,
+      "resultSha256": "e0b9b771d560a52644490d5d5661dfc2079202b44b646f0fbfb75833d4c5c623",
+      "verified": true
+    },
+    "settings-unit": {
+      "command": [
+        "C:\\src\\src\\out\\Debug\\native_python_settings_unittests.exe",
+        "--test-launcher-jobs=1",
+        "--test-launcher-summary-output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\settings-unit.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.14,
+      "expected": 8,
+      "rawResultSha256": "1c2aa4d3aec270050222e37e3c2a2a10c139cd36886f8c8e6521d16e1939365e",
+      "total": 8,
+      "passed": 8,
+      "resultSha256": "d990f64e22fde431b326e614a3a85e6f7547773a116363d496f25ad49d445dcc",
+      "verified": true
+    },
+    "events": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_event_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\events.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 33.7,
+      "expected": 34,
+      "rawResultSha256": "39d9a822c854a4daac953c34ed3e7bfc8a7d29f390e332b11bfdf8608256497f",
+      "total": 34,
+      "passed": 34,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "39d9a822c854a4daac953c34ed3e7bfc8a7d29f390e332b11bfdf8608256497f",
+      "verified": true
+    },
+    "input": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_input_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\input.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 22.23,
+      "expected": 25,
+      "rawResultSha256": "209bfdeef9b391c8e490e4367f0c4dc5f139831a4a90302c3a866945d729f4d4",
+      "total": 25,
+      "passed": 25,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "209bfdeef9b391c8e490e4367f0c4dc5f139831a4a90302c3a866945d729f4d4",
+      "verified": true
+    },
+    "animation": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_animation_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\animation.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 35.92,
+      "expected": 19,
+      "rawResultSha256": "2fd585748a3d7bd3199079affadb7b1d89c89baa7cc7864cbcae12758250c3c8",
+      "total": 19,
+      "passed": 19,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "2fd585748a3d7bd3199079affadb7b1d89c89baa7cc7864cbcae12758250c3c8",
+      "verified": true
+    },
+    "dom": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_dom_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\dom.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 30.09,
+      "expected": 17,
+      "rawResultSha256": "26699149aa617be8e675a90697ae24335987c4cd11639f1b683312de6c96a5d7",
+      "total": 17,
+      "passed": 17,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "26699149aa617be8e675a90697ae24335987c4cd11639f1b683312de6c96a5d7",
+      "verified": true
+    },
+    "parser": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\parser.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 42.27,
+      "expected": 27,
+      "rawResultSha256": "fb3f058239df3af2a1a5c83a92862091809b00169b20473cde120c4b157d5e45",
+      "total": 27,
+      "passed": 27,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "fb3f058239df3af2a1a5c83a92862091809b00169b20473cde120c4b157d5e45",
+      "verified": true
+    },
+    "settings-browser": {
+      "command": [
+        "C:\\Users\\EltanceXV\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_settings_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Debug\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final7\\settings-browser.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 57.75,
+      "expected": 12,
+      "rawResultSha256": "39ae900db6766f5d63ed58ff2e8588906c47ab3f3f73c43a6da7f545d16e5e46",
+      "total": 12,
+      "passed": 12,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "resultSha256": "39ae900db6766f5d63ed58ff2e8588906c47ab3f3f73c43a6da7f545d16e5e46",
+      "verified": true
+    }
+  },
+  "passed": true,
+  "build": {
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "C:\\src\\depot_tools\\autoninja.bat",
+      "-C",
+      "C:\\src\\src\\out\\Debug",
+      "chrome",
+      "blink_unittests",
+      "python_runtime_unittests",
+      "python_document_context_unittests",
+      "native_python_settings_unittests"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 69.86
+  },
+  "binarySha256": {
+    "C:\\src\\src\\out\\Debug\\chrome.exe": "8ca8fed4e3f71ea418737690d341ecebefc7d1f2c869adcf2682b148d115d7a2",
+    "C:\\src\\src\\out\\Debug\\blink_unittests.exe": "4f8f5f79861ecf291319b12bb6357d70cab9dca2f94cf07ec9f4414b835ec6a4",
+    "C:\\src\\src\\out\\Debug\\python_runtime_unittests.exe": "fd3e7f8d39cba9b9f12871664347ab765aa019f5f14097141a2c0e776860742e",
+    "C:\\src\\src\\out\\Debug\\python_document_context_unittests.exe": "4afa4490441a91cfc4bda1afba2cecb8b3dce8aafd296a71fdca1f770a6bf81a",
+    "C:\\src\\src\\out\\Debug\\native_python_settings_unittests.exe": "5a2e6176f4dd46f7ae18a048f9de009530a4e23f675fc527eaa5ede6b77dd5a0",
+    "C:\\src\\src\\out\\Debug\\chrome.dll": "84d9e6952f2ccf010efedb9caf8eee3d2197c821020a5c8420ea0d062b7baa5f",
+    "C:\\src\\src\\out\\Debug\\blink_core.dll": "361ebf0e92dcfb09ad7e3828b81fd313a9629ef8797498c527de9ae35bfff132"
+  },
+  "sourceUnchanged": true,
+  "unitTestsPassed": 158,
+  "browserTestsPassed": 134,
+  "finishedAt": "2026-11-10T13:56:27.512706+00:00"
+}

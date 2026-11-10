@@ -3,7 +3,7 @@
 - 整理日期：2026-11-10（Asia/Shanghai）。
 - 浏览器实现基线：`ed9a245bf1e2d6913029eaf733865776ecde6e3a`。
 - 参考项目：`C:\VD\Projects\mario\index.html`；源文件 SHA-256：`53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1`。
-- 当前状态：阶段一已实现并通过标准构建、138 项单测和 109 项浏览器测试，见[阶段一记录](pyscript-animation-phase1.md)；阶段二至七尚未实施。后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
+- 当前状态：阶段一、二已完成。阶段二通过标准构建、158 项单测和 134 项浏览器测试，见[输入事件记录](pyscript-input-phase2.md)；阶段一历史验收见[动画帧记录](pyscript-animation-phase1.md)。阶段三至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
 - 目标平台：首先延续 Windows x64 Debug 的原生 CPython 路线，再以 Windows x64 Release 验证性能。
 - 前置成果：[原生 Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM](pyscript-phase3-document-context-dom.md)、[解释器设置与页面模式](pyscript-settings-and-page-permissions.md)、[click 方案](pyscript-click-events-implementation.md)、[交互预算与清理](pyscript-event-phase4-budgets-and-cleanup.md)、[click 最终验收](pyscript-event-phase5-build-and-browser-validation.md)。
 
@@ -49,8 +49,8 @@
 | --- | --- | --- |
 | Python 文档上下文 | 持久 globals、独立子解释器、原生 callable 注册表 | 复用，并区分初始化 / 输入 / 帧 / 原生完成通知入口 |
 | DOM | `get_element_by_id`；普通无元素子节点的 p / div / span 文本写入 | 类型明确的控件读写、显示状态、class、属性和焦点 |
-| 事件 | 普通 HTML 元素的同步 click，支持 once / 移除 | Document / Window 目标、键盘、指针、表单和页面状态事件 |
-| 事件对象 | type、current_target、is_trusted 只读快照 | 事件类别对应字段，以及仅本次派发有效的控制能力 |
+| 事件 | 普通 HTML 元素 click / input / change / 指针，Document 键盘与可见性，Window 焦点与 resize；once / passive / capture / 移除 | 后续游戏接入及完整控件交互 |
+| 事件对象 | 按类别只读快照、同步派发控制令牌、指针捕获、页面状态与输入复位代数已实现 | 后续游戏输入状态维护与端到端验证 |
 | 动画 | `animation.request_frame` / `cancel_frame`，原生帧、时间戳、单待执行请求与共享预算已实现 | 后续游戏接入、dt 基准与性能验证 |
 | Canvas / 音频 / 存储 | 尚无 Python 绑定 | 为游戏所需子集建立原生接口与资源计量 |
 | Python 模块 | CPython 3.13.18，有限内建及冻结模块 | 按需静态加入数学与随机数依赖；不假定 math / random 已可导入 |
@@ -229,6 +229,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段二：键盘、指针与页面状态事件
 
+状态：已完成。类型化目标、输入快照、同步事件控制、捕获与输入复位、无 JavaScript 示例及 292 项统一验收见[阶段二记录](pyscript-input-phase2.md)。
+
 1. 增加 Document / Window 目标和对应策略，不扩大任意对象访问。
 2. 分批实现键盘、页面状态、表单和指针字段及监听 / 移除。
 3. 实现同步派发控制令牌、prevent_default / stop_propagation、指针捕获与失效检查。
@@ -323,4 +325,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一已完成可取消、可恢复且生命周期正确的 Python 帧计数器。推荐下一步进入**阶段二：键盘、指针与页面状态事件**，再接入 Canvas。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一、二已完成原生帧调度与连续输入状态。推荐下一步进入**阶段三：Canvas 2D 子集、批量提交与绘图预算**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。

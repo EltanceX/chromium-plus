@@ -1,0 +1,301 @@
+{
+  "objects": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_initial_color_value.obj",
+      "originalSha256": "b0a86c1b710106965550dc63b301cad74ce1aa0cf9ec4e17a4264d06a2105498",
+      "size": 2319218,
+      "mtimeNs": 1794115640575066700,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid CodeView record at 0x12f8f0 (length 12601, kind 0x5e43)"
+      ],
+      "recoveryRecord": "attempt1-object-recovery.json",
+      "rebuiltSha256": "613f864619bb89eb197519d0783f6939e9dde772be69811a708b3c7d6b90a784",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/style_property_map_read_only_main_thread.obj",
+      "originalSha256": "8ad020d2eb87b48872f0157cfd7fa699da1d75bbd021a32c0fcf32a3e3ce8bd1",
+      "size": 4091158,
+      "mtimeNs": 1794117274217786800,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x3ce002",
+        "Control byte in COFF string table at file offset 0x3ce006"
+      ],
+      "recoveryRecord": "attempt1-object-recovery.json",
+      "rebuiltSha256": "2c908327d37beea4044c53c9bbbcec22139b9ef451a9c62502ce1063d69ab687",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/style_value_factory.obj",
+      "originalSha256": "05144680765e251c36a50719f3db85f531eb294421d1f7825a013c066bd3fee0",
+      "size": 3795916,
+      "mtimeNs": 1794116454402086400,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid CodeView record at 0x1b109d (length 24641, kind 0xbe90)"
+      ],
+      "recoveryRecord": "attempt1-object-recovery.json",
+      "rebuiltSha256": "95060b7b6619cc56181e038ac1f9c61e85d4a8af21939524e8c722e979689a9a",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/style_engine.obj",
+      "originalSha256": "00d0413faad8cc08d74b10bbbfed5bc12eaba2eeab6748e50afe24956f6c859d",
+      "size": 33784396,
+      "mtimeNs": 1794226305172416400,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 22813: relocation 0 has invalid symbol 2670717368 or type 23041",
+        "Section 22814: relocation 0 has invalid symbol 255089961 or type 23934",
+        "Section 22815: relocation 0 has invalid symbol 2257199013 or type 50719",
+        "Section 22816: relocation 0 has invalid symbol 1717433370 or type 47093",
+        "Section 22817: relocation 0 has invalid symbol 936551479 or type 60545",
+        "Invalid CodeView record at 0x640029 (length 48432, kind 0x2e45)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt1-object-recovery.json",
+      "rebuiltSha256": "42671e868e3f1a22b7e36e30460b1a7aaa6b5bd459be24b23eb281b3f8a8197a",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/format_block_command.obj",
+      "originalSha256": "fa101cf41ebbdfa72c9c99cffc1f1b7fea4dd690b05e911200326f09579eaf4a",
+      "size": 2622393,
+      "mtimeNs": 1794117983645242500,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid CodeView record at 0x14ffff (length 8978, kind 0xf2c2)"
+      ],
+      "recoveryRecord": "attempt1-object-recovery.json",
+      "rebuiltSha256": "5234fa8c74ed907c82a10a0ea94af49abc7a46d5be7e0ad4f331396cfbabb427",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_timeline_trigger_options.obj",
+      "originalSha256": "1b5bd9ffd84eec42b2061790e90a0e1633a29b451c853eb03a3a588ca2c6d17a",
+      "size": 1129459,
+      "mtimeNs": 1793050797891619300,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid CodeView record at 0xc6073 (length 33600, kind 0x17e3)"
+      ],
+      "recoveryRecord": "attempt2-object-recovery.json",
+      "rebuiltSha256": "8d5c485cfe971eafb5453156417bc8f0e2c4ca06006a9e8fd453dd2eb2c6f932",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_settings_generated.obj",
+      "originalSha256": "2cf27fe6c32035cca031412bfb5c05a4b3744c24178de9874b5336e7d0582988",
+      "size": 2746072,
+      "mtimeNs": 1794152570741967300,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 825: relocation 0 has invalid symbol 2384761332 or type 30775",
+        "Section 826: relocation 0 has invalid symbol 324093754 or type 50865",
+        "Section 827: relocation 0 has invalid symbol 3483961794 or type 12257",
+        "Section 828: relocation 0 has invalid symbol 2348740679 or type 32798",
+        "Section 829: relocation 0 has invalid symbol 1333162752 or type 51765",
+        "Invalid CodeView record at 0xb100e (length 52573, kind 0xbccf)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt3-object-recovery.json",
+      "rebuiltSha256": "c7a09f03f3c3ef945acda3062e371faeb4528460d64f67bdd66bd5ffb0f788d2",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/services/network/test_support/test_url_loader_factory.obj",
+      "originalSha256": "97e3b647aee5d6f568003a97e414196db7a5b077b87b742d6baaeff86105440b",
+      "size": 6923561,
+      "mtimeNs": 1794039108165897400,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 10595: relocation 0 has invalid symbol 3261230767 or type 49624",
+        "Section 10596: relocation 0 has invalid symbol 2442221620 or type 20472",
+        "Section 10597: relocation 0 has invalid symbol 3179264411 or type 17739",
+        "Section 10598: relocation 0 has invalid symbol 1419595157 or type 33252",
+        "Section 10599: relocation 0 has invalid symbol 3882003101 or type 25460",
+        "Invalid CodeView record at 0x2580d9 (length 8356, kind 0xae57)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt3-object-recovery.json",
+      "rebuiltSha256": "cb4111c6da1b8c39df6de89e1bedf1a906e88d724fec21d6f2e3cc4fcbc31ad0",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/net/dns/test_support/dns_test_util.obj",
+      "originalSha256": "49ce266f93bc93d046e7cdbd9d78d8867449b5dccffc6b2ec317a2387c87cdca",
+      "size": 5212565,
+      "mtimeNs": 1794039107184297800,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid string table extent",
+        "Invalid string table extent"
+      ],
+      "recoveryRecord": "attempt3-object-recovery.json",
+      "rebuiltSha256": "ec339a5df412baa50dbbd9184b74580d4a33a3b9cc490255a72b009237fa27ad",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/net/dns/test_support/mock_mdns_client.obj",
+      "originalSha256": "bdf9cddddee04874266fd9d6427798326a633049b955a0b8b94243f5a0005362",
+      "size": 1609796,
+      "mtimeNs": 1794038691164053900,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 730: relocation 0 has invalid symbol 3375630710 or type 7928",
+        "Section 731: relocation 0 has invalid symbol 1376288086 or type 30264",
+        "Section 732: relocation 0 has invalid symbol 2444046986 or type 33799",
+        "Section 733: relocation 0 has invalid symbol 1756761295 or type 11201",
+        "Section 734: relocation 0 has invalid symbol 2381243858 or type 37636",
+        "Invalid UTF-8 in .drectve at file offset 0x521d7",
+        "Control bytes in .drectve",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt3-object-recovery.json",
+      "rebuiltSha256": "f3b7af902601ebb73dab737be22041e8c5c7109d299c8c6b5ea9afed6c048caa",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/components/services/storage/storage/async_dom_storage_database.obj",
+      "originalSha256": "2715e0dbc487e24120b481d45e2dca1b2cc86b82932cab2b9ab9ed1e9b2b6c34",
+      "size": 5771205,
+      "mtimeNs": 1793055980445098600,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 2208: relocation 0 has invalid symbol 3697856992 or type 33252",
+        "Section 2209: relocation 0 has invalid symbol 2702733441 or type 51094",
+        "Section 2210: relocation 0 has invalid symbol 3199300810 or type 37672",
+        "Section 2211: relocation 0 has invalid symbol 3544393252 or type 14594",
+        "Section 2212: relocation 0 has invalid symbol 3122644918 or type 6202",
+        "Invalid UTF-8 in .drectve at file offset 0x9d9f5",
+        "Control bytes in .drectve",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt3-object-recovery.json",
+      "rebuiltSha256": "f90f8fa1f838eda4ba70ffb5a6dfb2703b4b3512f639221fe57de523592ffa36",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_font_family_value.obj",
+      "originalSha256": "d4ec5aea5177fb976681ef6c6f551ffb3fe0b50ca7e6b8c14468a48b5894ad4f",
+      "size": 3094724,
+      "mtimeNs": 1794115607480110300,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid CodeView record at 0x22f017 (length 42796, kind 0x80ac)"
+      ],
+      "recoveryRecord": "attempt4-object-recovery.json",
+      "rebuiltSha256": "3e64b690e03195c09b00c9010e28b05077b2e57cb8106b310239f79367f9d984",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_image_set_value.obj",
+      "originalSha256": "f140842061b235cece18aee6022148a375f6e146a51c428561b2b2e01e47c7fc",
+      "size": 11020789,
+      "mtimeNs": 1794145472615962600,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 9429: relocation 0 has invalid symbol 475664092 or type 12862",
+        "Section 9430: relocation 0 has invalid symbol 3544956447 or type 44586",
+        "Section 9431: relocation 0 has invalid symbol 2190332718 or type 64084",
+        "Section 9432: relocation 0 has invalid symbol 3088863575 or type 57452",
+        "Section 9433: relocation 0 has invalid symbol 2149113275 or type 63092",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt4-object-recovery.json",
+      "rebuiltSha256": "26603ec7e9a36e0c3bc9c5080ed5e8543a554fc4f6126f11619b2067296519cf",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_shadow_value.obj",
+      "originalSha256": "4bcc6ceef9b246f28d1e6c635cb4a4480b108aa1c3aebd5d6abe690ae40d4ec2",
+      "size": 2705342,
+      "mtimeNs": 1794123768352790500,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Unexpected COFF machine cb8b",
+        "Invalid string table offset"
+      ],
+      "recoveryRecord": "attempt4-object-recovery.json",
+      "rebuiltSha256": "7b7c9f89048c09bba972c1422a345e20b923d51e15f29d15a99d299764268cf8",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_variable_parser.obj",
+      "originalSha256": "c7a81d3fb35342886d3e32e386bf735a21d9b479a16e85668af00bfd0e6547eb",
+      "size": 3895572,
+      "mtimeNs": 1794236911682147200,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 410: invalid raw data extent",
+        "Section 410: invalid relocation extent",
+        "Section 411: invalid raw data extent",
+        "Section 411: invalid relocation extent",
+        "Section 412: invalid raw data extent",
+        "Section 412: invalid relocation extent"
+      ],
+      "recoveryRecord": "attempt5-object-recovery.json",
+      "rebuiltSha256": "ccf2e87d1d29e9627e639192e010e8bacdf805cfce33a78b8a79de4c455e21f3",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_to_style_map.obj",
+      "originalSha256": "05b85c4f158a78f7ade7770a5c15ec4ac77b460c636da580f2e9ebe9941059a8",
+      "size": 8792427,
+      "mtimeNs": 1794117857970937100,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x843000",
+        "Control byte in COFF string table at file offset 0x843005"
+      ],
+      "recoveryRecord": "attempt6-object-recovery.json",
+      "rebuiltSha256": "c160498e313cc6bb1b2481803c8a163a58dbc6cdd71cb2d131f663c653e9e186",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj",
+      "originalSha256": "279bc5fa717f3430b9800df6e3ecfddc207ace2e8329fb7d757f0ce94381523f",
+      "size": 6860381,
+      "mtimeNs": 1794119152401875600,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 4309: relocation 0 has invalid symbol 1581676240 or type 13443",
+        "Section 4310: relocation 0 has invalid symbol 2851013830 or type 24006",
+        "Section 4311: relocation 0 has invalid symbol 339452305 or type 5709",
+        "Section 4312: relocation 0 has invalid symbol 3521559123 or type 64992",
+        "Section 4313: relocation 0 has invalid symbol 1165577682 or type 40710",
+        "Invalid CodeView record at 0x180184 (length 22782, kind 0x49b7)",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ],
+      "recoveryRecord": "attempt7-object-recovery.json",
+      "rebuiltSha256": "09b8e854046162f8dda69f6fe572d92b12c32409ccbbaf0b1885cbba43c2809c",
+      "hashChanged": true
+    },
+    {
+      "object": "obj/base/i18n/test_support/locales_for_test.obj",
+      "originalSha256": "d82be9315b4dccb07bdf7e979b9463219da56fef9d6a83b0aaeffca912c5103c",
+      "size": 789644,
+      "stableAcrossRepeatedReadsAndMmap": true,
+      "scanErrors": [
+        "Section 1453: invalid name b'/\\x80[\\xe02\\xe2_\\xe5'",
+        "Section 1724: invalid name b'/ftMsO\\xa9$'"
+      ],
+      "rebuiltSha256": "4ff6fbc7a496bfad9a5d7d0305eae25dc873980b2e2121d3dcd3921fa8156d99",
+      "rebuiltSectionNameProblems": [],
+      "recoveryRecord": "attempt8-object-recovery.json",
+      "hashChanged": true
+    }
+  ],
+  "count": 18,
+  "allHashesChanged": true,
+  "finalBuildLog": "final7/build.log",
+  "debugAndPdbChecksEnabled": true
+}

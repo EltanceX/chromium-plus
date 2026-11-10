@@ -1,0 +1,30 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4878276s
+load siso config done 14.2964ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 62 Pending 1301
+[0/1] 27.69s S CXX obj/base/i18n/test_support/locales_for_test.obj
+[0/1] 29.44s F CXX obj/base/i18n/test_support/locales_for_test.obj
+build finished
+
+
+noexec:0 local:1 remote:0 cache:0 skip:1362
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 235(err:2) / r:9(err:0) 1.87MiB / w:0(err:0) 0B
+
+
+
+30.31s Build Succeeded: 1 steps - 0.03/s
+shutdown cloud logging/monitoring done 0s

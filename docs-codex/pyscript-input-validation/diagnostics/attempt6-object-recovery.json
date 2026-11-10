@@ -1,0 +1,13 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_to_style_map.obj",
+    "originalSha256": "05b85c4f158a78f7ade7770a5c15ec4ac77b460c636da580f2e9ebe9941059a8",
+    "size": 8792427,
+    "mtimeNs": 1794117857970937100,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid UTF-8 in COFF string table at file offset 0x843000",
+      "Control byte in COFF string table at file offset 0x843005"
+    ]
+  }
+]

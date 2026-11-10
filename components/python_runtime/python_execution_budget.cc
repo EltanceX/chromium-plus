@@ -5,6 +5,7 @@
 #include "components/python_runtime/python_execution_budget.h"
 
 #include <algorithm>
+#include <utility>
 
 #include "base/check.h"
 #include "base/time/tick_clock.h"
@@ -263,12 +264,14 @@ DomResult BudgetedDomHost::SetText(DomHandle handle, std::string_view text) {
 DomResult BudgetedDomHost::AddEventListener(DomHandle element,
                                             std::string_view type,
                                             CallbackHandle callback,
-                                            bool once) {
+                                            bool once,
+                                            bool passive,
+                                            bool capture) {
   if (!IsActive() || !budget_->ConsumeDomCall()) {
     return {{}, DomError::kStopped, budget_->Message()};
   }
-  return FinishCall(
-      budget_->host()->AddEventListener(element, type, callback, once));
+  return FinishCall(budget_->host()->AddEventListener(element, type, callback,
+                                                      once, passive, capture));
 }
 
 DomResult BudgetedDomHost::RemoveEventListener(DomHandle element,
@@ -305,6 +308,38 @@ void BudgetedDomHost::RevokeFrame(CallbackHandle callback) {
   if (budget_->executing() && budget_->host()) {
     budget_->host()->RevokeFrame(callback);
   }
+}
+
+DomResult BudgetedDomHost::GetEventTarget(TargetKind kind) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->GetEventTarget(kind));
+}
+
+PageStateResult BudgetedDomHost::GetPageState() {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}, {}};
+  }
+  auto result = budget_->host()->GetPageState();
+  result.status = FinishCall(std::move(result.status));
+  return result;
+}
+
+DomResult BudgetedDomHost::ControlEvent(uint64_t token, EventAction action) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->ControlEvent(token, action));
+}
+
+DomResult BudgetedDomHost::SetPointerCapture(DomHandle target,
+                                             int32_t id,
+                                             bool capture) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->SetPointerCapture(target, id, capture));
 }
 
 }  // namespace native_python

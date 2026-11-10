@@ -12,13 +12,19 @@
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_navigation_params.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
+#include "third_party/blink/renderer/bindings/core/v8/v8_binding_for_core.h"
+#include "third_party/blink/renderer/bindings/core/v8/v8_keyboard_event_init.h"
+#include "third_party/blink/renderer/bindings/core/v8/v8_pointer_event_init.h"
 #include "third_party/blink/renderer/core/dom/document.h"
 #include "third_party/blink/renderer/core/dom/events/event.h"
 #include "third_party/blink/renderer/core/dom/scripted_animation_controller.h"
 #include "third_party/blink/renderer/core/event_type_names.h"
+#include "third_party/blink/renderer/core/events/keyboard_event.h"
+#include "third_party/blink/renderer/core/events/pointer_event.h"
 #include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
+#include "third_party/blink/renderer/core/frame/local_frame_view.h"
 #include "third_party/blink/renderer/core/frame/web_local_frame_impl.h"
 #include "third_party/blink/renderer/core/html/html_head_element.h"
 #include "third_party/blink/renderer/core/html/html_unknown_element.h"
@@ -201,6 +207,346 @@ class HTMLPyScriptElementTest : public SimTest {
   ScopedPythonScriptForTest enabled_{true};
   RecordingPythonRunner runner_;
 };
+
+TEST_F(HTMLPyScriptElementTest,
+       DetachedListenerCanBeRemovedWithoutReattaching) {
+  WebPythonDomHandle handle;
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    handle = runner_.host->GetElementById("button").handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->AddEventListener(handle, "click", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 2}).error);
+    auto forbidden = runner_.host->GetElementById("custom").handle;
+    EXPECT_EQ(WebPythonDomError::kNotAllowed,
+              runner_.host->AddEventListener(forbidden, "click", {1, 3}, false)
+                  .error);
+  });
+  Load(
+      "<body><button id=button>click</button><x-native "
+      "id=custom></x-native><pyscript>cancel</pyscript>");
+  Persistent<Element> original(GetElementById("button"));
+  original->remove();
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RemoveEventListener(handle, {1, 1}).error);
+  });
+  Tick(10);
+  GetDocument().body()->AppendChild(original);
+  Click();
+  EXPECT_TRUE(runner_.invoked.empty());
+}
+
+TEST_F(HTMLPyScriptElementTest, PageStateDoesNotForceInitialLayout) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    ASSERT_FALSE(GetDocument().View()->DidFirstLayout());
+    auto result = runner_.host->GetPageState();
+    EXPECT_EQ(WebPythonDomError::kNone, result.status.error);
+    EXPECT_GT(result.state.width, 0);
+    EXPECT_GT(result.state.height, 0);
+    EXPECT_FALSE(GetDocument().View()->DidFirstLayout());
+  });
+  Load("<body><p>Unlaid out</p><pyscript>state</pyscript>");
+  EXPECT_EQ(1u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       TypedTargetsRejectElementOperationsAndWrongEvents) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto doc = host.GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    auto win = host.GetEventTarget(WebPythonTargetKind::kWindow).handle;
+    EXPECT_EQ(WebPythonTargetKind::kDocument, doc.kind);
+    EXPECT_EQ(WebPythonTargetKind::kWindow, win.kind);
+    EXPECT_EQ(WebPythonDomError::kReference, host.SetText(doc, "deny").error);
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.SetPointerCapture(win, 1, true).error);
+    EXPECT_EQ(WebPythonDomError::kNotAllowed,
+              host.AddEventListener(doc, "click", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNotAllowed,
+              host.AddEventListener(win, "keydown", {1, 2}, false).error);
+    auto foreign = doc;
+    ++foreign.generation;
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.AddEventListener(foreign, "keyup", {1, 3}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(doc, "keyup", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(win, "resize", {1, 2}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.RemoveEventListener(doc, {1, 1}).error);
+    auto state = host.GetPageState();
+    EXPECT_EQ(WebPythonDomError::kNone, state.status.error);
+    EXPECT_GT(state.state.width, 0);
+    EXPECT_GT(state.state.height, 0);
+  });
+  Load("<body><pyscript>input</pyscript>");
+  GetDocument().DispatchEvent(*Event::Create(event_type_names::kKeyup));
+  GetDocument().domWindow()->DispatchEvent(
+      *Event::Create(event_type_names::kResize));
+  EXPECT_EQ((std::vector<uint64_t>{2}), runner_.invoked);
+  EXPECT_EQ(WebPythonTargetKind::kWindow,
+            runner_.last_event.current_target.kind);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       KeyboardSnapshotIncludesEditableAndDialogMetadata) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto doc =
+        runner_.host->GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->AddEventListener(doc, "keydown", {1, 1}, false).error);
+  });
+  Load(
+      "<body><dialog open><input id=button></dialog><pyscript>keys</pyscript>");
+  auto* init = KeyboardEventInit::Create();
+  init->setBubbles(true);
+  init->setCancelable(true);
+  init->setKey(" ");
+  init->setCode("Space");
+  init->setRepeat(true);
+  init->setIsComposing(true);
+  init->setCtrlKey(true);
+  init->setShiftKey(true);
+  auto* script_state = ToScriptStateForMainWorld(GetDocument().GetFrame());
+  ScriptState::Scope scope(script_state);
+  auto* event =
+      KeyboardEvent::Create(script_state, event_type_names::kKeydown, init);
+  GetElementById("button")->dispatchEventForBindings(event,
+                                                     ASSERT_NO_EXCEPTION);
+  ASSERT_EQ(1u, runner_.invoked.size());
+  auto& e = runner_.last_event;
+  EXPECT_EQ("Space", e.code);
+  EXPECT_EQ(" ", e.key);
+  EXPECT_TRUE(e.repeat && e.is_composing && e.ctrl_key && e.shift_key);
+  EXPECT_TRUE(e.cancelable && e.bubbles);
+  EXPECT_TRUE(e.target_is_editable && e.target_in_dialog);
+  EXPECT_FALSE(e.is_trusted);
+  EXPECT_EQ(WebPythonTargetKind::kDocument, e.current_target.kind);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       EventControlsPreserveCaptureAndImmediatePropagation) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto target = host.GetElementById("button").handle;
+    auto doc = host.GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(doc, "keydown", {1, 1}, false, false, true)
+                  .error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(target, "click", {1, 2}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(target, "click", {1, 3}, false).error);
+  });
+  Load("<body><button id=button>click</button><pyscript>control</pyscript>");
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    auto token = runner_.last_event.control_token;
+    EXPECT_NE(0u, token);
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->ControlEvent(token, WebPythonEventAction::kPreventDefault)
+            .error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host
+                  ->ControlEvent(
+                      token, WebPythonEventAction::kStopImmediatePropagation)
+                  .error);
+  });
+  auto* event = Event::CreateCancelableBubble(event_type_names::kClick);
+  GetElementById("button")->DispatchEvent(*event);
+  EXPECT_TRUE(event->defaultPrevented());
+  // Dispatch clears transient propagation flags; the second listener must not
+  // run.
+  EXPECT_EQ((std::vector<uint64_t>{2}), runner_.invoked);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       PassiveCannotPreventDefaultAndNonCancelableIsNoop) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto h = runner_.host->GetElementById("button").handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->AddEventListener(h, "click", {1, 1}, false, true).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->AddEventListener(h, "change", {1, 2}, false).error);
+  });
+  Load("<body><input id=button><pyscript>control</pyscript>");
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(runner_.last_event.passive ? WebPythonDomError::kNotAllowed
+                                         : WebPythonDomError::kNone,
+              runner_.host
+                  ->ControlEvent(runner_.last_event.control_token,
+                                 WebPythonEventAction::kPreventDefault)
+                  .error);
+  });
+  auto* click = Event::CreateCancelableBubble(event_type_names::kClick);
+  GetElementById("button")->DispatchEvent(*click);
+  EXPECT_FALSE(click->defaultPrevented());
+  auto* change = Event::Create(event_type_names::kChange);
+  GetElementById("button")->DispatchEvent(*change);
+  EXPECT_FALSE(change->defaultPrevented());
+  EXPECT_EQ(2u, runner_.invoked.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, EventTokenExpiresBeforeNextDispatchAndFrame) {
+  RegisterClick();
+  uint64_t saved = 0;
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    auto current = runner_.last_event.control_token;
+    if (saved) {
+      EXPECT_EQ(WebPythonDomError::kReference,
+                runner_.host
+                    ->ControlEvent(saved, WebPythonEventAction::kPreventDefault)
+                    .error);
+    }
+    saved = current;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 8}).error);
+  });
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(
+        WebPythonDomError::kReference,
+        runner_.host->ControlEvent(saved, WebPythonEventAction::kPreventDefault)
+            .error);
+  });
+  Click();
+  Tick(10);
+  Click();
+  Tick(30);
+  EXPECT_EQ(2u, runner_.invoked.size());
+  EXPECT_EQ(2u, runner_.frames.size());
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       SkippedKeyupChangesInputEpochWithoutConsumingOnce) {
+  uint64_t before = 0;
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    before = runner_.host->GetPageState().state.input_epoch;
+    auto doc =
+        runner_.host->GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->AddEventListener(doc, "keyup", {1, 1}, true).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->RequestFrame({1, 2}).error);
+  });
+  Load("<pyscript>keyup</pyscript>");
+  runner_.callback_admitted = false;
+  GetDocument().DispatchEvent(*Event::Create(event_type_names::kKeyup));
+  EXPECT_TRUE(runner_.invoked.empty());
+  runner_.on_frame = base::BindLambdaForTesting([&] {
+    EXPECT_GT(runner_.host->GetPageState().state.input_epoch, before);
+  });
+  Tick(10);
+  runner_.callback_admitted = true;
+  GetDocument().DispatchEvent(*Event::Create(event_type_names::kKeyup));
+  GetDocument().DispatchEvent(*Event::Create(event_type_names::kKeyup));
+  EXPECT_EQ(1u, runner_.invoked.size());
+  EXPECT_GT(runner_.last_event.input_epoch, before);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       BlurAndVisibilityResetStateWithoutPythonAdmission) {
+  RegisterFrame();
+  runner_.callback_admitted = false;
+  GetDocument().domWindow()->DispatchEvent(
+      *Event::Create(event_type_names::kBlur));
+  GetDocument().DispatchEvent(
+      *Event::Create(event_type_names::kVisibilitychange));
+  runner_.on_frame = base::BindLambdaForTesting(
+      [&] { EXPECT_EQ(2u, runner_.host->GetPageState().state.input_epoch); });
+  Tick(10);
+  EXPECT_EQ(1u, runner_.frames.size());
+}
+
+TEST_F(HTMLPyScriptElementTest, FormSnapshotsUseRetargetedValueAndBoundUtf8) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto h = runner_.host->GetElementById("button").handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->AddEventListener(h, "input", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->AddEventListener(h, "change", {1, 2}, false).error);
+  });
+  Load(
+      "<body><input id=button type=checkbox checked "
+      "value=value><pyscript>form</pyscript>");
+  GetElementById("button")->DispatchEvent(
+      *Event::CreateBubble(event_type_names::kChange));
+  EXPECT_EQ("value", runner_.last_event.value);
+  EXPECT_TRUE(runner_.last_event.checked);
+  EXPECT_FALSE(runner_.last_event.value_truncated);
+  GetElementById("button")->setAttribute(
+      html_names::kValueAttr,
+      AtomicString(String::FromUtf8(std::string(20000, 'a'))));
+  GetElementById("button")->DispatchEvent(
+      *Event::CreateBubble(event_type_names::kInput));
+  EXPECT_EQ(16384u, runner_.last_event.value.Utf8().size());
+  EXPECT_TRUE(runner_.last_event.value_truncated);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       PointerSnapshotAndInvalidCaptureDoNotCreateAnActivePointer) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto h = runner_.host->GetElementById("button").handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->AddEventListener(h, "pointerdown", {1, 1}, false).error);
+  });
+  Load("<body><button id=button>pointer</button><pyscript>pointer</pyscript>");
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    EXPECT_EQ(
+        WebPythonDomError::kState,
+        runner_.host
+            ->SetPointerCapture(runner_.last_event.current_target, 123, true)
+            .error);
+  });
+  auto* init = PointerEventInit::Create();
+  init->setPointerId(123);
+  init->setPointerType("pen");
+  init->setButton(1);
+  init->setButtons(4);
+  init->setClientX(12.5);
+  init->setClientY(24.5);
+  init->setIsPrimary(true);
+  auto* event = PointerEvent::Create(event_type_names::kPointerdown, init);
+  GetElementById("button")->dispatchEventForBindings(event,
+                                                     ASSERT_NO_EXCEPTION);
+  auto& e = runner_.last_event;
+  EXPECT_EQ(123, e.pointer_id);
+  EXPECT_EQ("pen", e.pointer_type);
+  EXPECT_EQ(1, e.button);
+  EXPECT_EQ(4, e.buttons);
+  EXPECT_EQ(12.5, e.client_x);
+  EXPECT_EQ(24.5, e.client_y);
+  EXPECT_TRUE(e.is_primary);
+  EXPECT_FALSE(e.is_trusted);
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       GlobalTargetsAndResetObserversAreRevokedOnNavigation) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto doc =
+        runner_.host->GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    auto win =
+        runner_.host->GetEventTarget(WebPythonTargetKind::kWindow).handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        runner_.host->AddEventListener(doc, "keyup", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              runner_.host->AddEventListener(win, "blur", {1, 2}, false).error);
+  });
+  Load("<pyscript>global</pyscript>");
+  Persistent<Document> old(&GetDocument());
+  Persistent<LocalDOMWindow> window(old->domWindow());
+  runner_.on_run.Reset();
+  Load("<p>new page</p>");
+  old->DispatchEvent(*Event::Create(event_type_names::kKeyup));
+  window->DispatchEvent(*Event::Create(event_type_names::kBlur));
+  EXPECT_TRUE(runner_.invoked.empty());
+  EXPECT_EQ(1u, *runner_.destructions);
+}
 
 TEST_F(HTMLPyScriptElementTest,
        RunsAfterDeferredScriptsBeforeDOMContentLoaded) {

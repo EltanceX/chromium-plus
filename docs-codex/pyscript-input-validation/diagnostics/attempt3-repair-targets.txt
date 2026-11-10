@@ -1,0 +1,5 @@
+obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_settings_generated.obj
+obj/services/network/test_support/test_url_loader_factory.obj
+obj/net/dns/test_support/dns_test_util.obj
+obj/net/dns/test_support/mock_mdns_client.obj
+obj/components/services/storage/storage/async_dom_storage_database.obj

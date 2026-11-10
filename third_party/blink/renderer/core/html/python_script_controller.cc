@@ -4,28 +4,43 @@
 
 #include "third_party/blink/renderer/core/html/python_script_controller.h"
 
+#include <cmath>
+
 #include "base/auto_reset.h"
 #include "base/check.h"
 #include "base/functional/bind.h"
 #include "base/strings/string_util.h"
 #include "base/time/time.h"
+#include "third_party/abseil-cpp/absl/cleanup/cleanup.h"
 #include "third_party/blink/public/platform/task_type.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
+#include "third_party/blink/renderer/core/css/media_values.h"
 #include "third_party/blink/renderer/core/dom/document.h"
 #include "third_party/blink/renderer/core/dom/document_parser.h"
 #include "third_party/blink/renderer/core/dom/element.h"
+#include "third_party/blink/renderer/core/dom/events/add_event_listener_options_resolved.h"
 #include "third_party/blink/renderer/core/dom/events/event.h"
 #include "third_party/blink/renderer/core/dom/events/event_dispatch_forbidden_scope.h"
 #include "third_party/blink/renderer/core/dom/events/native_event_listener.h"
 #include "third_party/blink/renderer/core/dom/frame_request_callback_collection.h"
+#include "third_party/blink/renderer/core/editing/editing_utilities.h"
 #include "third_party/blink/renderer/core/event_type_names.h"
+#include "third_party/blink/renderer/core/events/keyboard_event.h"
+#include "third_party/blink/renderer/core/events/pointer_event.h"
 #include "third_party/blink/renderer/core/frame/csp/content_security_policy.h"
 #include "third_party/blink/renderer/core/frame/local_dom_window.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
+#include "third_party/blink/renderer/core/frame/local_frame_view.h"
+#include "third_party/blink/renderer/core/html/forms/html_input_element.h"
+#include "third_party/blink/renderer/core/html/forms/html_select_element.h"
+#include "third_party/blink/renderer/core/html/forms/html_text_area_element.h"
+#include "third_party/blink/renderer/core/html/html_dialog_element.h"
 #include "third_party/blink/renderer/core/html/html_py_script_element.h"
 #include "third_party/blink/renderer/core/html_names.h"
 #include "third_party/blink/renderer/core/inspector/console_message.h"
+#include "third_party/blink/renderer/core/layout/adjust_for_absolute_zoom.h"
+#include "third_party/blink/renderer/platform/bindings/exception_state.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
 #include "third_party/blink/renderer/platform/heap/persistent.h"
 #include "third_party/blink/renderer/platform/heap/thread_state.h"
@@ -73,38 +88,76 @@ class PythonScriptSource final : public GarbageCollected<PythonScriptSource> {
   const TextPosition position;
 };
 
-class PythonClickListener final : public NativeEventListener {
+class PythonEventListener final : public NativeEventListener {
  public:
-  PythonClickListener(PythonScriptController& controller,
-                      Element& element,
+  PythonEventListener(PythonScriptController& controller,
+                      EventTarget& target,
                       PythonScriptSource& source,
                       WebPythonDomHandle handle,
                       WebPythonCallbackHandle callback,
-                      bool once)
+                      const AtomicString& type,
+                      bool once,
+                      bool passive,
+                      bool capture)
       : controller(&controller),
-        element(&element),
+        target(&target),
         source(&source),
         handle(handle),
         callback(callback),
-        once(once) {}
+        type(type),
+        once(once),
+        passive(passive),
+        capture(capture) {}
   void Invoke(ExecutionContext*, Event* event) override {
     if (controller && active) {
-      controller->DispatchClick(*this, *event);
+      controller->DispatchEvent(*this, *event);
     }
   }
   void Trace(Visitor* visitor) const override {
     visitor->Trace(controller);
-    visitor->Trace(element);
+    visitor->Trace(target);
     visitor->Trace(source);
     NativeEventListener::Trace(visitor);
   }
   WeakMember<PythonScriptController> controller;
-  WeakMember<Element> element;
+  WeakMember<EventTarget> target;
   Member<PythonScriptSource> source;
   const WebPythonDomHandle handle;
   const WebPythonCallbackHandle callback;
+  const AtomicString type;
   const bool once;
+  const bool passive;
+  const bool capture;
   bool active = true;
+};
+
+// These native observers never enter Python or depend on callback admission.
+class PythonInputResetListener final : public NativeEventListener {
+ public:
+  explicit PythonInputResetListener(PythonScriptController& value)
+      : controller(&value) {}
+  void Invoke(ExecutionContext*, Event* event) override {
+    if (event->target() != event->currentTarget()) {
+      return;
+    }
+    if (controller) {
+      controller->ResetInput();
+    }
+  }
+  void Trace(Visitor* visitor) const override {
+    visitor->Trace(controller);
+    NativeEventListener::Trace(visitor);
+  }
+  WeakMember<PythonScriptController> controller;
+};
+
+class PythonPointerCapture final
+    : public GarbageCollected<PythonPointerCapture> {
+ public:
+  PythonPointerCapture(Element& value, int32_t id) : element(&value), id(id) {}
+  void Trace(Visitor* visitor) const { visitor->Trace(element); }
+  WeakMember<Element> element;
+  const int32_t id;
 };
 
 // No Python objects cross this boundary. The source snapshot outlives removal
@@ -239,6 +292,9 @@ void PythonScriptController::Trace(Visitor* visitor) const {
   visitor->Trace(handles_);
   visitor->Trace(listeners_);
   visitor->Trace(pending_frame_);
+  visitor->Trace(input_reset_listener_);
+  visitor->Trace(pointer_captures_);
+  visitor->Trace(active_event_);
   visitor->Trace(current_source_);
   Supplement<Document>::Trace(visitor);
   ExecutionContextLifecycleObserver::Trace(visitor);
@@ -317,6 +373,18 @@ void PythonScriptController::Dispose() {
     pending_.clear();
     if (pending_frame_) {
       RevokeFrame(pending_frame_->callback);
+    }
+    active_event_ = nullptr;
+    active_event_token_ = 0;
+    ReleasePointerCaptures();
+    if (input_reset_listener_) {
+      GetSupplementable()->removeEventListener(
+          event_type_names::kVisibilitychange, input_reset_listener_, true);
+      if (auto* window = GetSupplementable()->domWindow()) {
+        window->removeEventListener(event_type_names::kBlur,
+                                    input_reset_listener_, true);
+      }
+      input_reset_listener_ = nullptr;
     }
     handles_.clear();
     while (!listeners_.empty()) {
@@ -400,7 +468,8 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
   if (status.error != WebPythonDomError::kNone) {
     return status;
   }
-  if (handle.document != document_id_ || handle.generation != generation_ ||
+  if (handle.kind != WebPythonTargetKind::kElement ||
+      handle.document != document_id_ || handle.generation != generation_ ||
       !handle.id || handle.id > handles_.size()) {
     return {{}, WebPythonDomError::kReference, "Invalid or expired DOM handle"};
   }
@@ -446,21 +515,47 @@ WebPythonDomResult PythonScriptController::AddEventListener(
     WebPythonDomHandle handle,
     const WebString& type,
     WebPythonCallbackHandle callback,
-    bool once) {
+    bool once,
+    bool passive,
+    bool capture) {
   auto status = CheckDomCall();
   if (status.error != WebPythonDomError::kNone) {
     return status;
   }
-  Element* element = ResolveElement(handle);
-  if (!element) {
-    return {{}, WebPythonDomError::kReference, "Invalid or expired DOM handle"};
+  EventTarget* target = handle.kind == WebPythonTargetKind::kElement
+                            ? ResolveElement(handle)
+                            : ResolveTarget(handle);
+  if (!target) {
+    return {
+        {}, WebPythonDomError::kReference, "Invalid or expired event target"};
   }
-  if (type != "click" || !element->IsHTMLElement() ||
-      element->GetCustomElementState() != CustomElementState::kUncustomized ||
-      element->FastHasAttribute(html_names::kIsAttr)) {
+  if (auto* element = DynamicTo<Element>(target->ToNode());
+      element &&
+      (!element->IsHTMLElement() ||
+       element->GetCustomElementState() != CustomElementState::kUncustomized ||
+       element->FastHasAttribute(html_names::kIsAttr))) {
     return {{},
             WebPythonDomError::kNotAllowed,
-            "Python click listeners require an ordinary HTML element"};
+            "Python listeners require an ordinary HTML element"};
+  }
+  const String event_type = type;
+  const bool supported =
+      handle.kind == WebPythonTargetKind::kDocument
+          ? (event_type == "keydown" || event_type == "keyup" ||
+             event_type == "visibilitychange")
+      : handle.kind == WebPythonTargetKind::kWindow
+          ? (event_type == "blur" || event_type == "focus" ||
+             event_type == "resize")
+          : (event_type == "click" || event_type == "input" ||
+             event_type == "change" || event_type == "pointerdown" ||
+             event_type == "pointerup" || event_type == "pointermove" ||
+             event_type == "pointercancel" ||
+             event_type == "gotpointercapture" ||
+             event_type == "lostpointercapture");
+  if (!supported) {
+    return {{},
+            WebPythonDomError::kNotAllowed,
+            "Unsupported event type for target"};
   }
   if (!current_source_ || !callback.context || !callback.id) {
     return {{}, WebPythonDomError::kState, "No active Python callback source"};
@@ -474,13 +569,18 @@ WebPythonDomResult PythonScriptController::AddEventListener(
       return {{}, WebPythonDomError::kState, "Callback is already installed"};
     }
   }
-  auto* listener = MakeGarbageCollected<PythonClickListener>(
-      *this, *element, *current_source_, handle, callback, once);
+  auto* listener = MakeGarbageCollected<PythonEventListener>(
+      *this, *target, *current_source_, handle, callback, AtomicString(type),
+      once, passive, capture);
   listeners_.push_back(listener);
   // Each registration has a distinct native listener, preserving Blink's
   // dispatch order and add/remove-during-dispatch semantics. once is consumed
   // only after Python admission, rather than by EventTarget before admission.
-  element->addEventListener(event_type_names::kClick, listener, false);
+  AddEventListenerOptionsResolved options;
+  options.SetCapture(capture);
+  options.SetPassive(passive);
+  options.SetPassiveSpecified(true);
+  target->addEventListener(listener->type, listener, options);
   return {};
 }
 
@@ -491,19 +591,27 @@ WebPythonDomResult PythonScriptController::RemoveEventListener(
   if (status.error != WebPythonDomError::kNone) {
     return status;
   }
+  // Removal only revokes a registration. Preserve cancellation after a
+  // target is detached or changes policy, without resolving a live Node.
+  const bool valid_id = handle.kind == WebPythonTargetKind::kElement
+                            ? handle.id && handle.id <= handles_.size()
+                            : (handle.kind == WebPythonTargetKind::kDocument ||
+                               handle.kind == WebPythonTargetKind::kWindow) &&
+                                  handle.id == 1;
   if (handle.document != document_id_ || handle.generation != generation_ ||
-      !handle.id || handle.id > handles_.size()) {
-    return {{}, WebPythonDomError::kReference, "Invalid or expired DOM handle"};
+      !valid_id) {
+    return {
+        {}, WebPythonDomError::kReference, "Invalid or expired event target"};
   }
   RevokeEventListener(handle, callback);
   return {};
 }
 
-void PythonScriptController::DetachListener(PythonClickListener& listener) {
+void PythonScriptController::DetachListener(PythonEventListener& listener) {
   listener.active = false;
-  if (listener.element) {
-    listener.element->removeEventListener(event_type_names::kClick, &listener,
-                                          false);
+  if (listener.target) {
+    listener.target->removeEventListener(listener.type, &listener,
+                                         listener.capture);
   }
   auto index = listeners_.Find(&listener);
   if (index != kNotFound) {
@@ -518,6 +626,7 @@ void PythonScriptController::RevokeEventListener(
     if (listener->handle.document == handle.document &&
         listener->handle.generation == handle.generation &&
         listener->handle.id == handle.id &&
+        listener->handle.kind == handle.kind &&
         listener->callback.context == callback.context &&
         listener->callback.id == callback.id) {
       DetachListener(*listener);
@@ -528,7 +637,8 @@ void PythonScriptController::RevokeEventListener(
 
 Element* PythonScriptController::ResolveElement(
     WebPythonDomHandle handle) const {
-  if (handle.document != document_id_ || handle.generation != generation_ ||
+  if (handle.kind != WebPythonTargetKind::kElement ||
+      handle.document != document_id_ || handle.generation != generation_ ||
       !handle.id || handle.id > handles_.size()) {
     return nullptr;
   }
@@ -537,6 +647,161 @@ Element* PythonScriptController::ResolveElement(
                  element->isConnected() && !element->IsInShadowTree()
              ? element
              : nullptr;
+}
+
+EventTarget* PythonScriptController::ResolveTarget(
+    WebPythonDomHandle handle) const {
+  if (handle.kind == WebPythonTargetKind::kElement) {
+    Element* e = ResolveElement(handle);
+    return e && e->IsHTMLElement() &&
+                   e->GetCustomElementState() ==
+                       CustomElementState::kUncustomized &&
+                   !e->FastHasAttribute(html_names::kIsAttr)
+               ? e
+               : nullptr;
+  }
+  if (handle.document != document_id_ || handle.generation != generation_ ||
+      handle.id != 1) {
+    return nullptr;
+  }
+  if (handle.kind == WebPythonTargetKind::kDocument) {
+    return GetSupplementable();
+  }
+  if (handle.kind == WebPythonTargetKind::kWindow) {
+    return GetSupplementable()->domWindow();
+  }
+  return nullptr;
+}
+
+WebPythonDomResult PythonScriptController::GetEventTarget(
+    WebPythonTargetKind kind) {
+  auto result = CheckDomCall();
+  if (result.error != WebPythonDomError::kNone) {
+    return result;
+  }
+  if (kind != WebPythonTargetKind::kDocument &&
+      kind != WebPythonTargetKind::kWindow) {
+    return {{},
+            WebPythonDomError::kNotAllowed,
+            "Expected document or window target"};
+  }
+  return {{document_id_, generation_, 1, kind}};
+}
+
+WebPythonPageStateResult PythonScriptController::GetPageState() {
+  auto result = CheckDomCall();
+  if (result.error != WebPythonDomError::kNone) {
+    return {result, {}};
+  }
+  auto& document = *GetSupplementable();
+  auto* frame = document.GetFrame();
+  auto* view = document.View();
+  auto size = view ? view->Size() : gfx::Size();
+  // Do not force layout during an 8 ms Python frame or initial parsing.
+  // Report the viewport currently published by the native frame view.
+  auto* media = MediaValues::CreateDynamicIfFrameExists(document.GetFrame());
+  return {{},
+          {document.hidden(), document.hasFocus(),
+           AdjustForAbsoluteZoom::AdjustInt(size.width(),
+                                            frame->LayoutZoomFactor()),
+           AdjustForAbsoluteZoom::AdjustInt(size.height(),
+                                            frame->LayoutZoomFactor()),
+           media && media->PrefersReducedMotion(), input_epoch_}};
+}
+
+WebPythonDomResult PythonScriptController::ControlEvent(
+    uint64_t token,
+    WebPythonEventAction action) {
+  auto result = CheckDomCall();
+  if (result.error != WebPythonDomError::kNone) {
+    return result;
+  }
+  if (!active_event_ || !token || token != active_event_token_) {
+    return {{},
+            WebPythonDomError::kReference,
+            "The synchronous event control token has expired"};
+  }
+  switch (action) {
+    case WebPythonEventAction::kPreventDefault:
+      if (active_event_passive_) {
+        return {{},
+                WebPythonDomError::kNotAllowed,
+                "A passive listener cannot prevent default"};
+      }
+      if (active_event_->cancelable()) {
+        active_event_->preventDefault();
+      }
+      break;
+    case WebPythonEventAction::kStopPropagation:
+      active_event_->stopPropagation();
+      break;
+    case WebPythonEventAction::kStopImmediatePropagation:
+      active_event_->stopImmediatePropagation();
+      break;
+  }
+  return {};
+}
+
+WebPythonDomResult PythonScriptController::SetPointerCapture(
+    WebPythonDomHandle handle,
+    int32_t id,
+    bool capture) {
+  auto result = CheckDomCall();
+  if (result.error != WebPythonDomError::kNone) {
+    return result;
+  }
+  auto* element = ResolveElement(handle);
+  if (!element || ResolveTarget(handle) != element) {
+    return {
+        {}, WebPythonDomError::kReference, "Invalid pointer capture element"};
+  }
+  for (wtf_size_t i = pointer_captures_.size(); i > 0; --i) {
+    const auto& entry = pointer_captures_[i - 1];
+    if (!entry->element || !entry->element->hasPointerCapture(entry->id)) {
+      pointer_captures_.EraseAt(i - 1);
+    }
+  }
+  if (capture && pointer_captures_.size() >= 32) {
+    return {
+        {}, WebPythonDomError::kLimit, "At most 32 Python pointer captures"};
+  }
+  ExceptionState exception(nullptr);
+  if (capture) {
+    element->setPointerCapture(id, exception);
+  } else {
+    element->releasePointerCapture(id, exception);
+  }
+  if (exception.HadException()) {
+    return {{},
+            WebPythonDomError::kState,
+            "Pointer capture requires an active pointer and connected element"};
+  }
+  for (wtf_size_t i = pointer_captures_.size(); i > 0; --i) {
+    const auto& entry = pointer_captures_[i - 1];
+    if (entry->id == id && (capture || entry->element == element)) {
+      pointer_captures_.EraseAt(i - 1);
+    }
+  }
+  if (capture && element->hasPointerCapture(id)) {
+    pointer_captures_.push_back(
+        MakeGarbageCollected<PythonPointerCapture>(*element, id));
+  }
+  return {};
+}
+
+void PythonScriptController::ReleasePointerCaptures() {
+  for (const auto& entry : pointer_captures_) {
+    if (entry->element && entry->element->hasPointerCapture(entry->id)) {
+      ExceptionState exception(nullptr);
+      entry->element->releasePointerCapture(entry->id, exception);
+    }
+  }
+  pointer_captures_.clear();
+}
+
+void PythonScriptController::ResetInput() {
+  ++input_epoch_;
+  ReleasePointerCaptures();
 }
 
 WebPythonDomResult PythonScriptController::RequestFrame(
@@ -665,17 +930,26 @@ void PythonScriptController::DispatchFrame(PythonAnimationFrame& frame,
       StrCat({"[pyscript frame ", String::Number(frame.callback.id), "] "}));
 }
 
-void PythonScriptController::DispatchClick(PythonClickListener& listener,
+void PythonScriptController::DispatchEvent(PythonEventListener& listener,
                                            Event& event) {
   if (stopped_ || !listener.active || !context_ ||
-      event.type() != event_type_names::kClick) {
+      event.type() != listener.type) {
     return;
   }
-  Element* element = ResolveElement(listener.handle);
-  if (!element || element != listener.element ||
-      event.currentTarget() != element || !element->IsHTMLElement() ||
-      element->GetCustomElementState() != CustomElementState::kUncustomized ||
-      element->FastHasAttribute(html_names::kIsAttr)) {
+  const auto epoch_before = input_epoch_;
+  bool delivered = false;
+  // A skipped input invalidates Python's held-key/pointer state. No old event
+  // is queued; a later frame can observe the epoch even when keyup was lost.
+  const bool input = event.type() != event_type_names::kClick &&
+                     event.type() != event_type_names::kResize &&
+                     event.type() != event_type_names::kFocus;
+  absl::Cleanup invalidate = [&] {
+    if (input && !delivered && input_epoch_ == epoch_before) {
+      ++input_epoch_;
+    }
+  };
+  auto* target = ResolveTarget(listener.handle);
+  if (!target || target != listener.target || event.currentTarget() != target) {
     return;
   }
   Document& document = *GetSupplementable();
@@ -691,18 +965,18 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
       !thread->IsSweepingOnOwningThread() &&
       !cppgc::subtle::HeapState::IsInAtomicPause(thread->heap_handle());
   if (!safe || !Eligible(document, false) || !ScriptsAllowed(document)) {
-    // Never queue a skipped click. Keep diagnostics bounded for this document.
+    // Never queue a skipped event. Keep diagnostics bounded for this document.
     if (!dispatch_warning_reported_) {
       dispatch_warning_reported_ = true;
       Log(document, *listener.source,
-          "[pyscript] Python click skipped: document "
+          "[pyscript] Python event skipped: document "
           "policy or execution state does not allow callbacks.",
           mojom::blink::ConsoleMessageLevel::kWarning);
     }
     return;
   }
   Persistent<PythonScriptController> protect(this);
-  Persistent<PythonClickListener> protect_listener(&listener);
+  Persistent<PythonEventListener> protect_listener(&listener);
   Persistent<PythonScriptSource> source(listener.source);
   if (!g_runner->AllowsUnrestrictedPages() &&
       !document.domWindow()->GetContentSecurityPolicy()->AllowInline(
@@ -716,7 +990,7 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
         now - last_window_warning_ >= base::Seconds(1)) {
       last_window_warning_ = now;
       Log(document, *source,
-          "[pyscript] Python click skipped: event budget window is full.",
+          "[pyscript] Python event skipped: event budget window is full.",
           mojom::blink::ConsoleMessageLevel::kWarning);
     }
     return;
@@ -726,11 +1000,95 @@ void PythonScriptController::DispatchClick(PythonClickListener& listener,
   callback_dom_calls_ = 0;
   running_ = true;
   current_source_ = source;
+  WebPythonCallbackEvent snapshot;
+  snapshot.type = event.type();
+  snapshot.current_target = listener.handle;
+  snapshot.is_trusted = event.isTrusted();
+  snapshot.cancelable = event.cancelable();
+  snapshot.bubbles = event.bubbles();
+  snapshot.default_prevented = event.defaultPrevented();
+  snapshot.passive = listener.passive;
+  snapshot.input_epoch = input_epoch_;
+  auto bounded = [](const String& text) {
+    return WebString::FromUtf8(
+        base::TruncateUTF8ToByteSize(text.substr(0, 16384).Utf8(), 16384));
+  };
+  if (auto* node = event.target() ? event.target()->ToNode() : nullptr;
+      node && &node->GetDocument() == &document) {
+    snapshot.target_is_editable = IsEditable(*node);
+    for (Element* e = node->IsElementNode() ? To<Element>(node)
+                                            : node->parentElement();
+         e; e = e->parentElement()) {
+      if (IsA<HTMLInputElement>(e) || IsA<HTMLTextAreaElement>(e) ||
+          IsA<HTMLSelectElement>(e) || e->GetShadowRoot() ||
+          e->HasTagName(html_names::kButtonTag) ||
+          (e->HasTagName(html_names::kATag) &&
+           e->FastHasAttribute(html_names::kHrefAttr))) {
+        snapshot.target_is_editable = true;
+      }
+      if (auto* dialog = DynamicTo<HTMLDialogElement>(e);
+          dialog && dialog->IsOpen()) {
+        snapshot.target_in_dialog = true;
+      }
+    }
+    // Form data is present only on form notifications, never on key/click.
+    if (event.type() == event_type_names::kInput ||
+        event.type() == event_type_names::kChange) {
+      String value;
+      if (auto* input_element = DynamicTo<HTMLInputElement>(node)) {
+        value = input_element->Value();
+        snapshot.checked = input_element->Checked();
+      } else if (auto* textarea = DynamicTo<HTMLTextAreaElement>(node)) {
+        value = textarea->Value();
+      } else if (auto* select = DynamicTo<HTMLSelectElement>(node)) {
+        value = select->Value();
+      }
+      snapshot.value = bounded(value);
+      snapshot.value_truncated = snapshot.value.length() < value.length();
+    }
+  }
+  if (auto* key = DynamicTo<KeyboardEvent>(event)) {
+    snapshot.key = bounded(key->key());
+    snapshot.code = bounded(key->code());
+    snapshot.repeat = key->repeat();
+    snapshot.is_composing = key->isComposing();
+    snapshot.alt_key = key->altKey();
+    snapshot.ctrl_key = key->ctrlKey();
+    snapshot.meta_key = key->metaKey();
+    snapshot.shift_key = key->shiftKey();
+  }
+  if (auto* pointer = DynamicTo<PointerEvent>(event)) {
+    snapshot.pointer_id = pointer->pointerId();
+    snapshot.pointer_type = bounded(pointer->pointerType());
+    snapshot.button = pointer->button();
+    snapshot.buttons = pointer->buttons();
+    snapshot.client_x = pointer->clientX();
+    snapshot.client_y = pointer->clientY();
+    snapshot.is_primary = pointer->isPrimary();
+    snapshot.alt_key = pointer->altKey();
+    snapshot.ctrl_key = pointer->ctrlKey();
+    snapshot.meta_key = pointer->metaKey();
+    snapshot.shift_key = pointer->shiftKey();
+    if (!std::isfinite(snapshot.client_x) ||
+        !std::isfinite(snapshot.client_y)) {
+      running_ = false;
+      current_source_ = nullptr;
+      return;
+    }
+  }
   if (listener.once) {
     DetachListener(listener);
   }
-  const auto result = context_->InvokeCallback(
-      listener.callback, {"click", listener.handle, event.isTrusted()}, *this);
+  CHECK(++next_event_token_);
+  snapshot.control_token = active_event_token_ = next_event_token_;
+  active_event_ = &event;
+  active_event_passive_ = listener.passive;
+  const auto result =
+      context_->InvokeCallback(listener.callback, snapshot, *this);
+  // Revoke before diagnostics or releasing any Python-owned callback data.
+  active_event_ = nullptr;
+  active_event_token_ = 0;
+  delivered = !result.callback_skipped;
   FinishCallback(*source, result,
                  StrCat({"[pyscript callback ",
                          String::Number(listener.callback.id), "] "}));
@@ -849,6 +1207,12 @@ void PythonScriptController::ExecutePending(Document& document) {
   document.GetExecutionContext()->GetScheduler()->RegisterStickyFeature(
       SchedulingPolicy::Feature::kNativePython,
       {SchedulingPolicy::DisableBackForwardCache()});
+  controller->input_reset_listener_ =
+      MakeGarbageCollected<PythonInputResetListener>(*controller);
+  document.addEventListener(event_type_names::kVisibilitychange,
+                            controller->input_reset_listener_, true);
+  document.domWindow()->addEventListener(
+      event_type_names::kBlur, controller->input_reset_listener_, true);
   controller->running_ = true;
   controller->current_source_ = authorizations.front();
   wtf_size_t reported = 0;

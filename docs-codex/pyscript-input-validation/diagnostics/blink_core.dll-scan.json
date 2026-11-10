@@ -1,0 +1,68 @@
+{
+  "response": "blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_font_family_value.obj",
+      "errors": [
+        "Invalid CodeView record at 0x22f017 (length 42796, kind 0x80ac)"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_image_set_value.obj",
+      "errors": [
+        "Section 9429: relocation 0 has invalid symbol 475664092 or type 12862",
+        "Section 9430: relocation 0 has invalid symbol 3544956447 or type 44586",
+        "Section 9431: relocation 0 has invalid symbol 2190332718 or type 64084",
+        "Section 9432: relocation 0 has invalid symbol 3088863575 or type 57452",
+        "Section 9433: relocation 0 has invalid symbol 2149113275 or type 63092",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent",
+        "Invalid b'.debug$S' signature/extent"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_shadow_value.obj",
+      "errors": [
+        "Unexpected COFF machine cb8b",
+        "Invalid string table offset"
+      ]
+    }
+  ],
+  "elapsed_seconds": 132.36
+}

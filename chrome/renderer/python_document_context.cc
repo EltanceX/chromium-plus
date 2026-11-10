@@ -20,6 +20,15 @@ blink::WebPythonScriptResult ConvertResult(
           result.callback_skipped};
 }
 
+blink::WebPythonDomHandle ToWeb(native_python::DomHandle h) {
+  return {h.document, h.generation, h.id,
+          static_cast<blink::WebPythonTargetKind>(h.kind)};
+}
+native_python::DomHandle FromWeb(blink::WebPythonDomHandle h) {
+  return {h.document, h.generation, h.id,
+          static_cast<native_python::TargetKind>(h.kind)};
+}
+
 class ChromeDomHost final : public native_python::DomHost {
  public:
   explicit ChromeDomHost(blink::WebPythonDomHost& host) : host_(host) {}
@@ -30,32 +39,29 @@ class ChromeDomHost final : public native_python::DomHost {
   native_python::DomResult SetText(native_python::DomHandle handle,
                                    std::string_view text) override {
     return Convert(
-        host_->SetText({handle.document, handle.generation, handle.id},
-                       blink::WebString::FromUtf8(text)));
+        host_->SetText(ToWeb(handle), blink::WebString::FromUtf8(text)));
   }
 
   native_python::DomResult AddEventListener(
       native_python::DomHandle element,
       std::string_view type,
       native_python::CallbackHandle callback,
-      bool once) override {
+      bool once,
+      bool passive,
+      bool capture) override {
     return Convert(host_->AddEventListener(
-        {element.document, element.generation, element.id},
-        blink::WebString::FromUtf8(type), {callback.context, callback.id},
-        once));
+        ToWeb(element), blink::WebString::FromUtf8(type),
+        {callback.context, callback.id}, once, passive, capture));
   }
   native_python::DomResult RemoveEventListener(
       native_python::DomHandle element,
       native_python::CallbackHandle callback) override {
-    return Convert(host_->RemoveEventListener(
-        {element.document, element.generation, element.id},
-        {callback.context, callback.id}));
+    return Convert(host_->RemoveEventListener(ToWeb(element),
+                                              {callback.context, callback.id}));
   }
   void RevokeEventListener(native_python::DomHandle element,
                            native_python::CallbackHandle callback) override {
-    host_->RevokeEventListener(
-        {element.document, element.generation, element.id},
-        {callback.context, callback.id});
+    host_->RevokeEventListener(ToWeb(element), {callback.context, callback.id});
   }
   native_python::DomResult RequestFrame(
       native_python::CallbackHandle callback) override {
@@ -67,6 +73,29 @@ class ChromeDomHost final : public native_python::DomHost {
   }
   void RevokeFrame(native_python::CallbackHandle callback) override {
     host_->RevokeFrame({callback.context, callback.id});
+  }
+
+  native_python::DomResult GetEventTarget(
+      native_python::TargetKind kind) override {
+    return Convert(
+        host_->GetEventTarget(static_cast<blink::WebPythonTargetKind>(kind)));
+  }
+  native_python::PageStateResult GetPageState() override {
+    const auto r = host_->GetPageState();
+    return {Convert(r.status),
+            {r.state.hidden, r.state.has_focus, r.state.width, r.state.height,
+             r.state.reduced_motion, r.state.input_epoch}};
+  }
+  native_python::DomResult ControlEvent(
+      uint64_t token,
+      native_python::EventAction action) override {
+    return Convert(host_->ControlEvent(
+        token, static_cast<blink::WebPythonEventAction>(action)));
+  }
+  native_python::DomResult SetPointerCapture(native_python::DomHandle h,
+                                             int32_t id,
+                                             bool capture) override {
+    return Convert(host_->SetPointerCapture(ToWeb(h), id, capture));
   }
 
  private:
@@ -93,10 +122,7 @@ class ChromeDomHost final : public native_python::DomHost {
         error = native_python::DomError::kStopped;
         break;
     }
-    return {
-        {result.handle.document, result.handle.generation, result.handle.id},
-        error,
-        result.message.Utf8()};
+    return {FromWeb(result.handle), error, result.message.Utf8()};
   }
   const raw_ref<blink::WebPythonDomHost> host_;
 };
@@ -141,13 +167,38 @@ class ChromePythonDocumentContext final : public blink::WebPythonScriptContext {
       return ConvertResult(InactiveResult());
     }
     ChromeDomHost bridge(host);
-    return ConvertResult(context_->InvokeCallback(
-        {handle.context, handle.id},
-        {event.type.Utf8(),
-         {event.current_target.document, event.current_target.generation,
-          event.current_target.id},
-         event.is_trusted},
-        &bridge));
+    native_python::CallbackEvent snapshot;
+    snapshot.current_target = FromWeb(event.current_target);
+    snapshot.type = event.type.Utf8();
+    snapshot.is_trusted = event.is_trusted;
+    snapshot.control_token = event.control_token;
+    snapshot.cancelable = event.cancelable;
+    snapshot.bubbles = event.bubbles;
+    snapshot.default_prevented = event.default_prevented;
+    snapshot.passive = event.passive;
+    snapshot.target_is_editable = event.target_is_editable;
+    snapshot.target_in_dialog = event.target_in_dialog;
+    snapshot.key = event.key.Utf8();
+    snapshot.code = event.code.Utf8();
+    snapshot.repeat = event.repeat;
+    snapshot.is_composing = event.is_composing;
+    snapshot.alt_key = event.alt_key;
+    snapshot.ctrl_key = event.ctrl_key;
+    snapshot.meta_key = event.meta_key;
+    snapshot.shift_key = event.shift_key;
+    snapshot.pointer_id = event.pointer_id;
+    snapshot.pointer_type = event.pointer_type.Utf8();
+    snapshot.button = event.button;
+    snapshot.buttons = event.buttons;
+    snapshot.client_x = event.client_x;
+    snapshot.client_y = event.client_y;
+    snapshot.is_primary = event.is_primary;
+    snapshot.value = event.value.Utf8();
+    snapshot.checked = event.checked;
+    snapshot.value_truncated = event.value_truncated;
+    snapshot.input_epoch = event.input_epoch;
+    return ConvertResult(context_->InvokeCallback({handle.context, handle.id},
+                                                  snapshot, &bridge));
   }
 
   bool CanInvokeCallback() override {

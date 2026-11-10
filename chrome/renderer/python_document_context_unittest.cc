@@ -40,10 +40,14 @@ class TestHost final : public WebPythonDomHost {
   WebPythonDomResult AddEventListener(WebPythonDomHandle element,
                                       const WebString& type,
                                       WebPythonCallbackHandle callback,
-                                      bool once) override {
+                                      bool once,
+                                      bool passive,
+                                      bool capture) override {
     ++adds;
     CheckTarget(element);
-    EXPECT_EQ("click", type.Utf8());
+    last_type = type.Utf8();
+    last_passive = passive;
+    last_capture = capture;
     EXPECT_NE(0u, callback.context);
     EXPECT_NE(0u, callback.id);
     last = callback;
@@ -83,6 +87,34 @@ class TestHost final : public WebPythonDomHost {
       frame = {};
     }
   }
+  WebPythonDomResult GetEventTarget(blink::WebPythonTargetKind kind) override {
+    return {{target.document, target.generation, 1, kind}};
+  }
+  blink::WebPythonPageStateResult GetPageState() override {
+    return {{}, {true, false, 901, 602, true, 51}};
+  }
+  WebPythonDomResult ControlEvent(uint64_t token,
+                                  blink::WebPythonEventAction action) override {
+    last_token = token;
+    last_action = action;
+    return {{}, control_failure, "control error"};
+  }
+  WebPythonDomResult SetPointerCapture(WebPythonDomHandle h,
+                                       int32_t id,
+                                       bool capture) override {
+    CheckTarget(h);
+    last_pointer = id;
+    last_capture = capture;
+    return {};
+  }
+  std::string last_type;
+  bool last_passive = false;
+  bool last_capture = false;
+  int32_t last_pointer = 0;
+  uint64_t last_token = 0;
+  blink::WebPythonEventAction last_action =
+      blink::WebPythonEventAction::kPreventDefault;
+  WebPythonDomError control_failure = WebPythonDomError::kNone;
   WebPythonCallbackHandle TakeFrame() { return std::exchange(frame, {}); }
   WebPythonCallbackEvent Event(bool trusted = false) const {
     return {WebString::FromUtf8("click"), target, trusted};
@@ -90,7 +122,9 @@ class TestHost final : public WebPythonDomHost {
   void CheckTarget(WebPythonDomHandle element) {
     EXPECT_EQ(target.document, element.document);
     EXPECT_EQ(target.generation, element.generation);
-    EXPECT_EQ(target.id, element.id);
+    EXPECT_EQ(
+        element.kind == blink::WebPythonTargetKind::kElement ? target.id : 1,
+        element.id);
   }
   void Erase(WebPythonCallbackHandle callback) {
     std::erase_if(installed, [&](auto item) {
@@ -139,6 +173,85 @@ def callback(event):
     print(count, event.is_trusted)
 listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=False)
 )PY";
+
+TEST(PythonDocumentContextTest, InputTargetsPageStateAndCaptureKeepTheirTypes) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import dom
+page = dom.get_page_state()
+assert (page.hidden, page.has_focus, page.width, page.height,
+        page.reduced_motion, page.input_epoch) == (True, False, 901, 602, True, 51)
+for target, cls, event_type in ((dom.get_document(), dom.DocumentHandle, 'keyup'),
+                                 (dom.get_window(), dom.WindowHandle, 'resize')):
+    assert type(target) is cls
+    listener = dom.add_event_listener(target, event_type, lambda e: None,
+                                     once=True, passive=True, capture=True)
+    dom.remove_event_listener(listener)
+element = dom.get_element_by_id('button')
+dom.set_pointer_capture(element, -25)
+dom.release_pointer_capture(element, -25)
+)PY");
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ("resize", host.last_type);
+  EXPECT_TRUE(host.last_once && host.last_passive);
+  EXPECT_EQ(-25, host.last_pointer);
+  EXPECT_FALSE(host.last_capture);
+  EXPECT_EQ(2, host.removes);
+}
+
+TEST(PythonDocumentContextTest, ForwardsFullInputSnapshotAndEventControls) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import dom
+def callback(e):
+    assert type(e.current_target) is dom.DocumentHandle
+    assert (e.type, e.is_trusted, e.cancelable, e.bubbles, e.default_prevented,
+            e.passive, e.target_is_editable, e.target_in_dialog) == ('keyup', True, True, True, True, True, True, True)
+    assert (e.key, e.code, e.repeat, e.is_composing, e.alt_key, e.ctrl_key,
+            e.meta_key, e.shift_key) == ('界', 'Space', True, True, True, True, True, True)
+    assert (e.pointer_id, e.pointer_type, e.button, e.buttons, e.client_x,
+            e.client_y, e.is_primary, e.value, e.checked, e.value_truncated,
+            e.input_epoch) == (-99, 'pen', -1, 31, 1.5, -2.5, True, '值', True, True, 72)
+    e.prevent_default()
+    e.stop_propagation()
+    e.stop_immediate_propagation()
+listener = dom.add_event_listener(dom.get_document(), 'keyup', callback)
+)PY");
+  ASSERT_TRUE(result.success) << result.error.Utf8();
+  WebPythonCallbackEvent e;
+  e.type = WebString::FromUtf8("keyup");
+  e.current_target = {host.target.document, host.target.generation, 1,
+                      blink::WebPythonTargetKind::kDocument};
+  e.is_trusted = e.cancelable = e.bubbles = e.default_prevented = e.passive =
+      true;
+  e.target_is_editable = e.target_in_dialog = true;
+  e.key = WebString::FromUtf8("界");
+  e.code = WebString::FromUtf8("Space");
+  e.repeat = e.is_composing = e.alt_key = e.ctrl_key = e.meta_key =
+      e.shift_key = true;
+  e.pointer_id = -99;
+  e.pointer_type = WebString::FromUtf8("pen");
+  e.button = -1;
+  e.buttons = 31;
+  e.client_x = 1.5;
+  e.client_y = -2.5;
+  e.is_primary = true;
+  e.value = WebString::FromUtf8("值");
+  e.checked = e.value_truncated = true;
+  e.input_epoch = 72;
+  e.control_token = 1234;
+  result = context->InvokeCallback(host.last, e, host);
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+  EXPECT_EQ(1234u, host.last_token);
+  EXPECT_EQ(blink::WebPythonEventAction::kStopImmediatePropagation,
+            host.last_action);
+  host.control_failure = WebPythonDomError::kNotAllowed;
+  result = context->InvokeCallback(host.last, e, host);
+  EXPECT_FALSE(result.success);
+  EXPECT_NE(std::string::npos, result.error.Utf8().find("PermissionError"));
+}
 
 TEST(PythonDocumentContextTest,
      ForwardsListenerAndSnapshotAcrossThePublicInterface) {

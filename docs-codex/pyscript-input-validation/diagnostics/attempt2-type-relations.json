@@ -1,0 +1,17 @@
+[
+  {
+    "object": "out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\core_initializer.obj",
+    "types": 18328,
+    "errors": []
+  },
+  {
+    "object": "out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\async_iterable.obj",
+    "types": 10311,
+    "errors": []
+  },
+  {
+    "object": "out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\python_script_controller.obj",
+    "types": 35038,
+    "errors": []
+  }
+]

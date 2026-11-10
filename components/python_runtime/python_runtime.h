@@ -28,10 +28,18 @@ class TickClock;
 
 namespace native_python {
 
+enum class TargetKind { kElement, kDocument, kWindow };
+enum class EventAction {
+  kPreventDefault,
+  kStopPropagation,
+  kStopImmediatePropagation
+};
+
 struct DomHandle {
   uint64_t document;
   uint64_t generation;
   uint64_t id;
+  TargetKind kind = TargetKind::kElement;
 };
 
 struct CallbackHandle {
@@ -45,6 +53,41 @@ struct CallbackEvent {
   std::string type = "click";
   DomHandle current_target{};
   bool is_trusted = false;
+  uint64_t control_token = 0;
+  bool cancelable = false;
+  bool bubbles = false;
+  bool default_prevented = false;
+  bool passive = false;
+  bool target_is_editable = false;
+  bool target_in_dialog = false;
+  std::string key;
+  std::string code;
+  bool repeat = false;
+  bool is_composing = false;
+  bool alt_key = false;
+  bool ctrl_key = false;
+  bool meta_key = false;
+  bool shift_key = false;
+  int32_t pointer_id = 0;
+  std::string pointer_type;
+  int16_t button = 0;
+  uint16_t buttons = 0;
+  double client_x = 0;
+  double client_y = 0;
+  bool is_primary = false;
+  std::string value;
+  bool checked = false;
+  bool value_truncated = false;
+  uint64_t input_epoch = 0;
+};
+
+struct PageState {
+  bool hidden = false;
+  bool has_focus = false;
+  int width = 0;
+  int height = 0;
+  bool reduced_motion = false;
+  uint64_t input_epoch = 0;
 };
 
 enum class DomError {
@@ -71,6 +114,11 @@ struct PYTHON_RUNTIME_EXPORT DomResult {
   std::string message;
 };
 
+struct PageStateResult {
+  DomResult status;
+  PageState state;
+};
+
 // Borrowed only during synchronous execution. No Python object contains a
 // node pointer or retains this host between calls or during finalization.
 class PYTHON_RUNTIME_EXPORT DomHost {
@@ -82,7 +130,9 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   virtual DomResult AddEventListener(DomHandle,
                                      std::string_view type,
                                      CallbackHandle,
-                                     bool once) = 0;
+                                     bool once,
+                                     bool passive = false,
+                                     bool capture = false) = 0;
   virtual DomResult RemoveEventListener(DomHandle, CallbackHandle) = 0;
   // Idempotent rollback of a possibly installed listener. No policy/budget
   // admission, script entry or Python calls; never exposed as a Python API.
@@ -90,6 +140,12 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   virtual DomResult RequestFrame(CallbackHandle);
   virtual DomResult CancelFrame(CallbackHandle);
   virtual void RevokeFrame(CallbackHandle) {}
+  virtual DomResult GetEventTarget(TargetKind);
+  virtual PageStateResult GetPageState();
+  virtual DomResult ControlEvent(uint64_t token, EventAction);
+  virtual DomResult SetPointerCapture(DomHandle,
+                                      int32_t pointer_id,
+                                      bool capture);
 };
 
 PYTHON_RUNTIME_EXPORT

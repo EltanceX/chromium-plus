@@ -1,0 +1,308 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = HTMLPyScriptElementTest.TypedTargetsRejectElementOperationsAndWrongEvents:HTMLPyScriptElementTest.KeyboardSnapshotIncludesEditableAndDialogMetadata:HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation:HTMLPyScriptElementTest.PassiveCannotPreventDefaultAndNonCancelableIsNoop:HTMLPyScriptElementTest.EventTokenExpiresBeforeNextDispatchAndFrame:HTMLPyScriptElementTest.SkippedKeyupChangesInputEpochWithoutConsumingOnce:HTMLPyScriptElementTest.BlurAndVisibilityResetStateWithoutPythonAdmission:HTMLPyScriptElementTest.FormSnapshotsUseRetargetedValueAndBoundUtf8:HTMLPyScriptElementTest.PointerSnapshotAndInvalidCaptureDoNotCreateAnActivePointer:HTMLPyScriptElementTest.GlobalTargetsAndResetObserversAreRevokedOnNavigation
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.TypedTargetsRejectElementOperationsAndWrongEvents
+[       OK ] HTMLPyScriptElementTest.TypedTargetsRejectElementOperationsAndWrongEvents (1789 ms)
+[ RUN      ] HTMLPyScriptElementTest.KeyboardSnapshotIncludesEditableAndDialogMetadata
+[       OK ] HTMLPyScriptElementTest.KeyboardSnapshotIncludesEditableAndDialogMetadata (335 ms)
+[ RUN      ] HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation
+..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc(317): error: Value of: event->ImmediatePropagationStopped()
+  Actual: false
+Expected: true
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_EventControlsPreserveCaptureAndImmediatePropagation_Test::TestBody [0x7ff7c9395885+335] (C:\src\src\third_party\blink\renderer\core\html\html_py_script_element_test.cc:317)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7c2ba3945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation (2748 ms)
+[ RUN      ] HTMLPyScriptElementTest.PassiveCannotPreventDefaultAndNonCancelableIsNoop
+[       OK ] HTMLPyScriptElementTest.PassiveCannotPreventDefaultAndNonCancelableIsNoop (240 ms)
+[ RUN      ] HTMLPyScriptElementTest.EventTokenExpiresBeforeNextDispatchAndFrame
+[       OK ] HTMLPyScriptElementTest.EventTokenExpiresBeforeNextDispatchAndFrame (211 ms)
+[ RUN      ] HTMLPyScriptElementTest.SkippedKeyupChangesInputEpochWithoutConsumingOnce
+[       OK ] HTMLPyScriptElementTest.SkippedKeyupChangesInputEpochWithoutConsumingOnce (201 ms)
+[ RUN      ] HTMLPyScriptElementTest.BlurAndVisibilityResetStateWithoutPythonAdmission
+[       OK ] HTMLPyScriptElementTest.BlurAndVisibilityResetStateWithoutPythonAdmission (264 ms)
+[ RUN      ] HTMLPyScriptElementTest.FormSnapshotsUseRetargetedValueAndBoundUtf8
+[       OK ] HTMLPyScriptElementTest.FormSnapshotsUseRetargetedValueAndBoundUtf8 (250 ms)
+[ RUN      ] HTMLPyScriptElementTest.PointerSnapshotAndInvalidCaptureDoNotCreateAnActivePointer
+[       OK ] HTMLPyScriptElementTest.PointerSnapshotAndInvalidCaptureDoNotCreateAnActivePointer (208 ms)
+[ RUN      ] HTMLPyScriptElementTest.GlobalTargetsAndResetObserversAreRevokedOnNavigation
+[       OK ] HTMLPyScriptElementTest.GlobalTargetsAndResetObserversAreRevokedOnNavigation (267 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (6527 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (7169 ms total)
+[  PASSED  ] 9 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation
+
+ 1 FAILED TEST
+[1/72] HTMLPyScriptElementTest.TypedTargetsRejectElementOperationsAndWrongEvents (1789 ms)
+[2/72] HTMLPyScriptElementTest.KeyboardSnapshotIncludesEditableAndDialogMetadata (335 ms)
+[3/72] HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation (2748 ms)
+[4/72] HTMLPyScriptElementTest.PassiveCannotPreventDefaultAndNonCancelableIsNoop (240 ms)
+[5/72] HTMLPyScriptElementTest.EventTokenExpiresBeforeNextDispatchAndFrame (211 ms)
+[6/72] HTMLPyScriptElementTest.SkippedKeyupChangesInputEpochWithoutConsumingOnce (201 ms)
+[7/72] HTMLPyScriptElementTest.BlurAndVisibilityResetStateWithoutPythonAdmission (264 ms)
+[8/72] HTMLPyScriptElementTest.FormSnapshotsUseRetargetedValueAndBoundUtf8 (250 ms)
+[9/72] HTMLPyScriptElementTest.PointerSnapshotAndInvalidCaptureDoNotCreateAnActivePointer (208 ms)
+[10/72] HTMLPyScriptElementTest.GlobalTargetsAndResetObserversAreRevokedOnNavigation (267 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded:HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution:HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup:HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag:HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder:HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs:HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag:HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP:HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs:HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded
+[       OK ] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (368 ms)
+[ RUN      ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution
+[       OK ] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (219 ms)
+[ RUN      ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup
+[       OK ] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (185 ms)
+[ RUN      ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag
+[       OK ] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (178 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder
+[       OK ] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (192 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs
+[       OK ] HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs (273 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag
+[       OK ] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (236 ms)
+[ RUN      ] HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP
+[       OK ] HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP (188 ms)
+[ RUN      ] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs
+[       OK ] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs (238 ms)
+[ RUN      ] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender
+[       OK ] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender (185 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (2274 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (2366 ms total)
+[  PASSED  ] 10 tests.
+[11/72] HTMLPyScriptElementTest.RunsAfterDeferredScriptsBeforeDOMContentLoaded (368 ms)
+[12/72] HTMLPyScriptElementTest.ImmutableSnapshotAndNoDynamicOrTemplateExecution (219 ms)
+[13/72] HTMLPyScriptElementTest.DisabledFeatureKeepsUnknownElementAndMarkup (185 ms)
+[14/72] HTMLPyScriptElementTest.RawTextSurvivesChunksAndMixedCaseEndTag (178 ms)
+[15/72] HTMLPyScriptElementTest.RejectsOriginAndAbsentEmbedder (192 ms)
+[16/72] HTMLPyScriptElementTest.RejectsNonHttpDocumentURLs (273 ms)
+[17/72] HTMLPyScriptElementTest.RejectsAPIMutationBeforeClosingTag (236 ms)
+[18/72] HTMLPyScriptElementTest.UnrestrictedPagesBypassOriginAndInlineCSP (188 ms)
+[19/72] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrivilegedURLs (238 ms)
+[20/72] HTMLPyScriptElementTest.UnrestrictedPagesStillExcludePrerender (185 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin:HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements:HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes:HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument:HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced:HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP:HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies:HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython:HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom:HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin
+[       OK ] HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin (319 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements
+[       OK ] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (325 ms)
+[ RUN      ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes
+[       OK ] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (277 ms)
+[ RUN      ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument
+[       OK ] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (251 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced
+[       OK ] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (218 ms)
+[ RUN      ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP
+[       OK ] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (212 ms)
+[ RUN      ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies
+[       OK ] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (173 ms)
+[ RUN      ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython
+[       OK ] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (193 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom
+[       OK ] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom (204 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets
+[       OK ] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets (241 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (2427 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (2599 ms total)
+[  PASSED  ] 10 tests.
+[21/72] HTMLPyScriptElementTest.UnrestrictedPagesRejectInheritedPrivilegedOrigin (319 ms)
+[22/72] HTMLPyScriptElementTest.RejectsRemovedAndAdoptedElements (325 ms)
+[23/72] HTMLPyScriptElementTest.RejectsMissingCloseAndUnsupportedAttributes (277 ms)
+[24/72] HTMLPyScriptElementTest.DocumentWriteDisqualifiesWholeDocument (251 ms)
+[25/72] HTMLPyScriptElementTest.CSPNoneAndScriptSrcElemAreEnforced (218 ms)
+[26/72] HTMLPyScriptElementTest.NonceUsesOriginalSourceAndCurrentCSP (212 ms)
+[27/72] HTMLPyScriptElementTest.CSPAddedAfterBlockStillApplies (173 ms)
+[28/72] HTMLPyScriptElementTest.PrerenderDoesNotRunOrDeferPython (193 ms)
+[29/72] HTMLPyScriptElementTest.DomBridgeWritesOnlyPlainTextAndFindsLightDom (204 ms)
+[30/72] HTMLPyScriptElementTest.DomBridgeRejectsCodeCustomAndContainerTargets (241 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles:HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls:HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls:HTMLPyScriptElementTest.NativeFramesConsumeBeforeEntryAndRescheduleLater:HTMLPyScriptElementTest.FrameRegistrationIsBoundedAndCancelIsIdempotent:HTMLPyScriptElementTest.OldFrameHandleDoesNotCancelNewRequest:HTMLPyScriptElementTest.FrameWindowRefusalRetainsRequestWithFreshTimestamp:HTMLPyScriptElementTest.ScriptForbiddenFrameRetainsRequestAndSurvivesGC:HTMLPyScriptElementTest.HiddenFramesPauseAndResumeWithoutCatchUp:HTMLPyScriptElementTest.FrameSourceNonceSurvivesDetachedTagCollection
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles
+[       OK ] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles (203 ms)
+[ RUN      ] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls
+[       OK ] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls (185 ms)
+[ RUN      ] HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls
+[       OK ] HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls (177 ms)
+[ RUN      ] HTMLPyScriptElementTest.NativeFramesConsumeBeforeEntryAndRescheduleLater
+[       OK ] HTMLPyScriptElementTest.NativeFramesConsumeBeforeEntryAndRescheduleLater (400 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameRegistrationIsBoundedAndCancelIsIdempotent
+[       OK ] HTMLPyScriptElementTest.FrameRegistrationIsBoundedAndCancelIsIdempotent (147 ms)
+[ RUN      ] HTMLPyScriptElementTest.OldFrameHandleDoesNotCancelNewRequest
+[       OK ] HTMLPyScriptElementTest.OldFrameHandleDoesNotCancelNewRequest (156 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameWindowRefusalRetainsRequestWithFreshTimestamp
+[       OK ] HTMLPyScriptElementTest.FrameWindowRefusalRetainsRequestWithFreshTimestamp (160 ms)
+[ RUN      ] HTMLPyScriptElementTest.ScriptForbiddenFrameRetainsRequestAndSurvivesGC
+[       OK ] HTMLPyScriptElementTest.ScriptForbiddenFrameRetainsRequestAndSurvivesGC (191 ms)
+[ RUN      ] HTMLPyScriptElementTest.HiddenFramesPauseAndResumeWithoutCatchUp
+[       OK ] HTMLPyScriptElementTest.HiddenFramesPauseAndResumeWithoutCatchUp (168 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameSourceNonceSurvivesDetachedTagCollection
+[       OK ] HTMLPyScriptElementTest.FrameSourceNonceSurvivesDetachedTagCollection (202 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (1999 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (2087 ms total)
+[  PASSED  ] 10 tests.
+[31/72] HTMLPyScriptElementTest.DomBridgeRejectsForeignExpiredAndRemovedHandles (203 ms)
+[32/72] HTMLPyScriptElementTest.DomBridgeHasBoundedStringsAndDocumentCalls (185 ms)
+[33/72] HTMLPyScriptElementTest.ListenerRegistrationAndRemovalCountDomCalls (177 ms)
+[34/72] HTMLPyScriptElementTest.NativeFramesConsumeBeforeEntryAndRescheduleLater (400 ms)
+[35/72] HTMLPyScriptElementTest.FrameRegistrationIsBoundedAndCancelIsIdempotent (147 ms)
+[36/72] HTMLPyScriptElementTest.OldFrameHandleDoesNotCancelNewRequest (156 ms)
+[37/72] HTMLPyScriptElementTest.FrameWindowRefusalRetainsRequestWithFreshTimestamp (160 ms)
+[38/72] HTMLPyScriptElementTest.ScriptForbiddenFrameRetainsRequestAndSurvivesGC (191 ms)
+[39/72] HTMLPyScriptElementTest.HiddenFramesPauseAndResumeWithoutCatchUp (168 ms)
+[40/72] HTMLPyScriptElementTest.FrameSourceNonceSurvivesDetachedTagCollection (202 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.RevokedFramePolicyStopsRatherThanRevives:HTMLPyScriptElementTest.FrameRechecksLateCSPAndUnrestrictedOverride:HTMLPyScriptElementTest.FrameErrorKeepsNewRequestFatalRevokesAll:HTMLPyScriptElementTest.FrameOpenRevokesPendingOutputAndDefersCleanup:HTMLPyScriptElementTest.NavigationCancelsPendingFrameBeforePythonEntry:HTMLPyScriptElementTest.FrameBridgeHasItsOwnPerEntryDomAllowance:HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost:HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError:HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks:HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.RevokedFramePolicyStopsRatherThanRevives
+[       OK ] HTMLPyScriptElementTest.RevokedFramePolicyStopsRatherThanRevives (249 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameRechecksLateCSPAndUnrestrictedOverride
+[       OK ] HTMLPyScriptElementTest.FrameRechecksLateCSPAndUnrestrictedOverride (278 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameErrorKeepsNewRequestFatalRevokesAll
+[       OK ] HTMLPyScriptElementTest.FrameErrorKeepsNewRequestFatalRevokesAll (235 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameOpenRevokesPendingOutputAndDefersCleanup
+[       OK ] HTMLPyScriptElementTest.FrameOpenRevokesPendingOutputAndDefersCleanup (194 ms)
+[ RUN      ] HTMLPyScriptElementTest.NavigationCancelsPendingFrameBeforePythonEntry
+[       OK ] HTMLPyScriptElementTest.NavigationCancelsPendingFrameBeforePythonEntry (197 ms)
+[ RUN      ] HTMLPyScriptElementTest.FrameBridgeHasItsOwnPerEntryDomAllowance
+[       OK ] HTMLPyScriptElementTest.FrameBridgeHasItsOwnPerEntryDomAllowance (241 ms)
+[ RUN      ] HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost
+[       OK ] HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost (298 ms)
+[ RUN      ] HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError
+[       OK ] HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError (371 ms)
+[ RUN      ] HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks
+[       OK ] HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks (383 ms)
+[ RUN      ] HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance
+[       OK ] HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance (425 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (2893 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (3023 ms total)
+[  PASSED  ] 10 tests.
+[41/72] HTMLPyScriptElementTest.RevokedFramePolicyStopsRatherThanRevives (249 ms)
+[42/72] HTMLPyScriptElementTest.FrameRechecksLateCSPAndUnrestrictedOverride (278 ms)
+[43/72] HTMLPyScriptElementTest.FrameErrorKeepsNewRequestFatalRevokesAll (235 ms)
+[44/72] HTMLPyScriptElementTest.FrameOpenRevokesPendingOutputAndDefersCleanup (194 ms)
+[45/72] HTMLPyScriptElementTest.NavigationCancelsPendingFrameBeforePythonEntry (197 ms)
+[46/72] HTMLPyScriptElementTest.FrameBridgeHasItsOwnPerEntryDomAllowance (241 ms)
+[47/72] HTMLPyScriptElementTest.NativeClickBubblesAndUsesDocumentHost (298 ms)
+[48/72] HTMLPyScriptElementTest.OnceConsumesBeforeCallbackEvenOnError (371 ms)
+[49/72] HTMLPyScriptElementTest.WindowRefusalDoesNotConsumeOnceOrQueueClicks (383 ms)
+[50/72] HTMLPyScriptElementTest.CallbackDomCallsDoNotSpendInitializationAllowance (425 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance:HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup:HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll:HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick:HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot:HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode:HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce:HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners:HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing:HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance
+[       OK ] HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance (229 ms)
+[ RUN      ] HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup
+[       OK ] HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup (181 ms)
+[ RUN      ] HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll
+[       OK ] HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll (185 ms)
+[ RUN      ] HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick
+[       OK ] HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick (239 ms)
+[ RUN      ] HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot
+[       OK ] HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot (168 ms)
+[ RUN      ] HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode
+[       OK ] HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode (164 ms)
+[ RUN      ] HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce
+[       OK ] HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce (169 ms)
+[ RUN      ] HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners
+[       OK ] HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners (194 ms)
+[ RUN      ] HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing
+[       OK ] HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing (223 ms)
+[ RUN      ] HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce
+[       OK ] HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce (216 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (1988 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (2082 ms total)
+[  PASSED  ] 10 tests.
+[51/72] HTMLPyScriptElementTest.CallbackOutputDoesNotSpendInitializationAllowance (229 ms)
+[52/72] HTMLPyScriptElementTest.DocumentOpenDuringCallbackClosesOutputAndDefersCleanup (181 ms)
+[53/72] HTMLPyScriptElementTest.OrdinaryCallbackErrorRetainsListenerFatalStopsAll (185 ms)
+[54/72] HTMLPyScriptElementTest.CallbackCanRemoveLaterListenerAndAddForNextClick (239 ms)
+[55/72] HTMLPyScriptElementTest.DetachedNodesSkipReconnectResumesReplacementDoesNot (168 ms)
+[56/72] HTMLPyScriptElementTest.ClickRechecksPolicyAndDoesNotRequireSourceNode (164 ms)
+[57/72] HTMLPyScriptElementTest.ClickRechecksCurrentCSPWithCopiedNonce (169 ms)
+[58/72] HTMLPyScriptElementTest.LateCSPAndUnrestrictedOverrideApplyToOldListeners (194 ms)
+[59/72] HTMLPyScriptElementTest.NestedClickIsSkippedWithoutQueuing (223 ms)
+[60/72] HTMLPyScriptElementTest.ScriptForbiddenClickDoesNotConsumeOnce (216 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction:HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes:HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext:HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults:HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit:HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit:HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope:HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask:HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction:HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction
+[       OK ] HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction (353 ms)
+[ RUN      ] HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes
+[       OK ] HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes (519 ms)
+[ RUN      ] HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext
+[       OK ] HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext (247 ms)
+[ RUN      ] HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults
+[       OK ] HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults (258 ms)
+[ RUN      ] HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit
+[       OK ] HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit (249 ms)
+[ RUN      ] HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit
+[       OK ] HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit (310 ms)
+[ RUN      ] HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope
+[       OK ] HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope (273 ms)
+[ RUN      ] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask
+[       OK ] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask (290 ms)
+[ RUN      ] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction
+[       OK ] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction (261 ms)
+[ RUN      ] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext
+[       OK ] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext (263 ms)
+[----------] 10 tests from HTMLPyScriptElementTest (3049 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (3213 ms total)
+[  PASSED  ] 10 tests.
+[61/72] HTMLPyScriptElementTest.InvalidationDuringCallbackDefersDestruction (353 ms)
+[62/72] HTMLPyScriptElementTest.SubscriptionsDoNotRetainDetachedNodes (519 ms)
+[63/72] HTMLPyScriptElementTest.FatalResultAllowsPrefixAndReleasesContext (247 ms)
+[64/72] HTMLPyScriptElementTest.OrdinaryErrorRetainsContextAndLaterResults (258 ms)
+[65/72] HTMLPyScriptElementTest.ConsoleOutputAndErrorsHaveOneUtf8DocumentLimit (249 ms)
+[66/72] HTMLPyScriptElementTest.ParserDiagnosticsShareDocumentConsoleLimit (310 ms)
+[67/72] HTMLPyScriptElementTest.CleanupTaskRechecksForbiddenScope (273 ms)
+[68/72] HTMLPyScriptElementTest.ContextPersistsUntilDocumentOpenAndCleansInTask (290 ms)
+[69/72] HTMLPyScriptElementTest.InvalidationDuringRunDefersContextDestruction (261 ms)
+[70/72] HTMLPyScriptElementTest.NavigationDisposesOldDocumentContext (263 ms)
+Note: Google Test filter = HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts:HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts
+[       OK ] HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts (729 ms)
+[ RUN      ] HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack
+[       OK ] HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack (339 ms)
+[----------] 2 tests from HTMLPyScriptElementTest (1071 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (1292 ms total)
+[  PASSED  ] 2 tests.
+[71/72] HTMLPyScriptElementTest.GarbageCollectionAndNavigationReleaseContexts (729 ms)
+[72/72] HTMLPyScriptElementTest.ClosingFrameReleasesContextOutsideLifecycleStack (339 ms)
+1 test failed:
+    HTMLPyScriptElementTest.EventControlsPreserveCaptureAndImmediatePropagation (..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc:287)
+Tests took 36 seconds.

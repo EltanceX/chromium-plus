@@ -1,0 +1,3 @@
+obj/third_party/blink/renderer/core/core/css_font_family_value.obj
+obj/third_party/blink/renderer/core/core/css_image_set_value.obj
+obj/third_party/blink/renderer/core/core/css_shadow_value.obj

@@ -4,6 +4,7 @@
 
 #include "components/python_runtime/python_dom_module.h"
 
+#include <cmath>
 #include <limits>
 #include <utility>
 
@@ -21,6 +22,9 @@ struct ModuleState {
   // CPython zero-initializes module state; no C++ constructors run here.
   RAW_PTR_EXCLUSION DomHost* host;
   RAW_PTR_EXCLUSION PyTypeObject* handle_type;
+  RAW_PTR_EXCLUSION PyTypeObject* document_type;
+  RAW_PTR_EXCLUSION PyTypeObject* window_type;
+  RAW_PTR_EXCLUSION PyTypeObject* page_type;
   RAW_PTR_EXCLUSION PyTypeObject* event_type;
   RAW_PTR_EXCLUSION PyTypeObject* listener_type;
   RAW_PTR_EXCLUSION PyTypeObject* frame_type;
@@ -55,17 +59,43 @@ class ScopedHostRevocation {
 };
 
 struct CallbackEventObject {
-  PyObject_HEAD
-      // CPython allocates zeroed storage and its member descriptors require raw
-      // Python reference fields, not C++ pointer wrappers.
-      RAW_PTR_EXCLUSION PyObject* type;
+  PyObject_HEAD RAW_PTR_EXCLUSION PyObject* owner;
   RAW_PTR_EXCLUSION PyObject* current_target;
+  RAW_PTR_EXCLUSION PyObject* type;
   char is_trusted;
+  unsigned long long control_token;
+  char cancelable;
+  char bubbles;
+  char default_prevented;
+  char passive;
+  char target_is_editable;
+  char target_in_dialog;
+  RAW_PTR_EXCLUSION PyObject* key;
+  RAW_PTR_EXCLUSION PyObject* code;
+  char repeat;
+  char is_composing;
+  char alt_key;
+  char ctrl_key;
+  char meta_key;
+  char shift_key;
+  int pointer_id;
+  RAW_PTR_EXCLUSION PyObject* pointer_type;
+  short button;
+  unsigned short buttons;
+  double client_x;
+  double client_y;
+  char is_primary;
+  RAW_PTR_EXCLUSION PyObject* value;
+  char checked;
+  char value_truncated;
+  unsigned long long input_epoch;
 };
 
 PyObject* MakeHandle(ModuleState* state, DomHandle value) {
-  auto* handle = reinterpret_cast<ElementHandle*>(
-      state->handle_type->tp_alloc(state->handle_type, 0));
+  auto* type = value.kind == TargetKind::kDocument ? state->document_type
+               : value.kind == TargetKind::kWindow ? state->window_type
+                                                   : state->handle_type;
+  auto* handle = reinterpret_cast<ElementHandle*>(type->tp_alloc(type, 0));
   if (!handle) {
     return nullptr;
   }
@@ -175,32 +205,152 @@ PyObject* SetText(PyObject* module, PyObject* args) {
   Py_RETURN_NONE;
 }
 
-PyObject* AddEventListener(PyObject* module, PyObject* args, PyObject* kwargs) {
-  PyObject *element, *type, *callback;
-  PyObject* once = Py_False;
-  static const char* names[] = {"element", "event_type", "callback", "once",
-                                nullptr};
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|$O:add_event_listener",
-                                   names, &element, &type, &callback, &once)) {
+bool SupportedEvent(TargetKind kind, std::string_view type) {
+  if (kind == TargetKind::kDocument) {
+    return type == "keydown" || type == "keyup" || type == "visibilitychange";
+  }
+  if (kind == TargetKind::kWindow) {
+    return type == "blur" || type == "focus" || type == "resize";
+  }
+  return kind == TargetKind::kElement &&
+         (type == "click" || type == "input" || type == "change" ||
+          type == "pointerdown" || type == "pointerup" ||
+          type == "pointermove" || type == "pointercancel" ||
+          type == "gotpointercapture" || type == "lostpointercapture");
+}
+
+bool TargetArgument(ModuleState* state, PyObject* object, DomHandle* value) {
+  if (!state || !(Py_IS_TYPE(object, state->handle_type) ||
+                  Py_IS_TYPE(object, state->document_type) ||
+                  Py_IS_TYPE(object, state->window_type))) {
+    PyErr_SetString(PyExc_TypeError,
+                    "Expected this interpreter's event target handle");
+    return false;
+  }
+  *value = reinterpret_cast<ElementHandle*>(object)->value;
+  return true;
+}
+
+PyObject* GetTarget(PyObject* module, TargetKind kind) {
+  auto* state = ActiveState(module);
+  if (!state) {
+    return nullptr;
+  }
+  const auto result = state->host->GetEventTarget(kind);
+  if (!CheckResult(result)) {
+    return nullptr;
+  }
+  if (result.handle.kind != kind || !result.handle.document ||
+      !result.handle.generation || !result.handle.id) {
+    PyErr_SetString(PyExc_ReferenceError, "Invalid document or window handle");
+    return nullptr;
+  }
+  return MakeHandle(state, result.handle);
+}
+PyObject* GetDocument(PyObject* module, PyObject*) {
+  return GetTarget(module, TargetKind::kDocument);
+}
+PyObject* GetWindow(PyObject* module, PyObject*) {
+  return GetTarget(module, TargetKind::kWindow);
+}
+
+PyObject* PointerCapture(PyObject* module, PyObject* args, bool capture) {
+  PyObject *target, *pointer;
+  if (!PyArg_ParseTuple(args, "OO:pointer_capture", &target, &pointer)) {
     return nullptr;
   }
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
-  if (!state || !state->handle_type ||
-      !Py_IS_TYPE(element, state->handle_type)) {
+  if (!state || !Py_IS_TYPE(target, state->handle_type)) {
     PyErr_SetString(PyExc_TypeError,
                     "Expected this interpreter's ElementHandle");
+    return nullptr;
+  }
+  if (!PyLong_CheckExact(pointer)) {
+    PyErr_SetString(PyExc_TypeError, "pointer_id must be an int");
+    return nullptr;
+  }
+  const long long id = PyLong_AsLongLong(pointer);
+  if (PyErr_Occurred()) {
+    return nullptr;
+  }
+  if (id < std::numeric_limits<int32_t>::min() ||
+      id > std::numeric_limits<int32_t>::max()) {
+    PyErr_SetString(PyExc_ValueError, "pointer_id is outside int32 range");
+    return nullptr;
+  }
+  if (!ActiveState(module) ||
+      !CheckResult(state->host->SetPointerCapture(
+          reinterpret_cast<ElementHandle*>(target)->value,
+          static_cast<int32_t>(id), capture))) {
+    return nullptr;
+  }
+  Py_RETURN_NONE;
+}
+PyObject* SetPointerCapture(PyObject* m, PyObject* args) {
+  return PointerCapture(m, args, true);
+}
+PyObject* ReleasePointerCapture(PyObject* m, PyObject* args) {
+  return PointerCapture(m, args, false);
+}
+
+PyObject* ControlEvent(PyObject* self, EventAction action) {
+  auto* event = reinterpret_cast<CallbackEventObject*>(self);
+  auto* state = event->owner ? ActiveState(event->owner) : nullptr;
+  if (!state) {
+    if (!PyErr_Occurred()) {
+      PyErr_SetString(PyExc_ReferenceError, "The event is inactive");
+    }
+    return nullptr;
+  }
+  if (!CheckResult(state->host->ControlEvent(event->control_token, action))) {
+    return nullptr;
+  }
+  Py_RETURN_NONE;
+}
+PyObject* PreventDefault(PyObject* self, PyObject*) {
+  return ControlEvent(self, EventAction::kPreventDefault);
+}
+PyObject* StopPropagation(PyObject* self, PyObject*) {
+  return ControlEvent(self, EventAction::kStopPropagation);
+}
+PyObject* StopImmediatePropagation(PyObject* self, PyObject*) {
+  return ControlEvent(self, EventAction::kStopImmediatePropagation);
+}
+PyMethodDef kEventMethods[] = {
+    {"prevent_default", PreventDefault, METH_NOARGS, nullptr},
+    {"stop_propagation", StopPropagation, METH_NOARGS, nullptr},
+    {"stop_immediate_propagation", StopImmediatePropagation, METH_NOARGS,
+     nullptr},
+    {nullptr}};
+
+PyObject* AddEventListener(PyObject* module, PyObject* args, PyObject* kwargs) {
+  PyObject *element, *type, *callback;
+  PyObject* once = Py_False;
+  PyObject* passive = Py_False;
+  PyObject* capture = Py_False;
+  static const char* names[] = {"element", "event_type", "callback", "once",
+                                "passive", "capture",    nullptr};
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|$OOO:add_event_listener",
+                                   names, &element, &type, &callback, &once,
+                                   &passive, &capture)) {
+    return nullptr;
+  }
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  DomHandle target;
+  if (!TargetArgument(state, element, &target)) {
     return nullptr;
   }
   std::string_view event_type;
   if (!StringArgument(type, &event_type)) {
     return nullptr;
   }
-  if (event_type != "click") {
-    PyErr_SetString(PyExc_ValueError, "Only click listeners are supported");
+  if (!SupportedEvent(target.kind, event_type)) {
+    PyErr_SetString(PyExc_ValueError,
+                    "Event type is not supported for this target");
     return nullptr;
   }
-  if (!PyBool_Check(once)) {
-    PyErr_SetString(PyExc_TypeError, "once must be bool");
+  if (!PyBool_Check(once) || !PyBool_Check(passive) || !PyBool_Check(capture)) {
+    PyErr_SetString(PyExc_TypeError, "once, passive and capture must be bool");
     return nullptr;
   }
   if (!ActiveState(module)) {
@@ -213,14 +363,15 @@ PyObject* AddEventListener(PyObject* module, PyObject* args, PyObject* kwargs) {
   if (!listener) {
     return nullptr;
   }
-  listener->element = reinterpret_cast<ElementHandle*>(element)->value;
+  listener->element = target;
   listener->callback = RegisterDomCallback(module, callback, once == Py_True);
   if (!listener->callback.id) {
     Py_DECREF(listener);
     return nullptr;
   }
   const auto result = revoked.host()->AddEventListener(
-      listener->element, event_type, listener->callback, once == Py_True);
+      listener->element, event_type, listener->callback, once == Py_True,
+      passive == Py_True, capture == Py_True);
   if (!CheckResult(result)) {
     // The wrapper's post-call check can fail after the host installed a
     // listener. Revoke even after a fatal stop, then release Python ownership
@@ -281,15 +432,25 @@ int TraverseHandle(PyObject* self, visitproc visit, void* arg) {
 int TraverseEvent(PyObject* self, visitproc visit, void* arg) {
   auto* event = reinterpret_cast<CallbackEventObject*>(self);
   Py_VISIT(Py_TYPE(self));
-  Py_VISIT(event->type);
+  Py_VISIT(event->owner);
   Py_VISIT(event->current_target);
+  Py_VISIT(event->type);
+  Py_VISIT(event->key);
+  Py_VISIT(event->code);
+  Py_VISIT(event->pointer_type);
+  Py_VISIT(event->value);
   return 0;
 }
 
 int ClearEvent(PyObject* self) {
   auto* event = reinterpret_cast<CallbackEventObject*>(self);
-  Py_CLEAR(event->type);
+  Py_CLEAR(event->owner);
   Py_CLEAR(event->current_target);
+  Py_CLEAR(event->type);
+  Py_CLEAR(event->key);
+  Py_CLEAR(event->code);
+  Py_CLEAR(event->pointer_type);
+  Py_CLEAR(event->value);
   return 0;
 }
 
@@ -302,11 +463,61 @@ void DeleteEvent(PyObject* self) {
 }
 
 PyMemberDef kEventMembers[] = {
-    {"type", Py_T_OBJECT_EX, offsetof(CallbackEventObject, type), Py_READONLY,
-     nullptr},
     {"current_target", Py_T_OBJECT_EX,
      offsetof(CallbackEventObject, current_target), Py_READONLY, nullptr},
+    {"type", Py_T_OBJECT_EX, offsetof(CallbackEventObject, type), Py_READONLY,
+     nullptr},
     {"is_trusted", Py_T_BOOL, offsetof(CallbackEventObject, is_trusted),
+     Py_READONLY, nullptr},
+    {"cancelable", Py_T_BOOL, offsetof(CallbackEventObject, cancelable),
+     Py_READONLY, nullptr},
+    {"bubbles", Py_T_BOOL, offsetof(CallbackEventObject, bubbles), Py_READONLY,
+     nullptr},
+    {"default_prevented", Py_T_BOOL,
+     offsetof(CallbackEventObject, default_prevented), Py_READONLY, nullptr},
+    {"passive", Py_T_BOOL, offsetof(CallbackEventObject, passive), Py_READONLY,
+     nullptr},
+    {"target_is_editable", Py_T_BOOL,
+     offsetof(CallbackEventObject, target_is_editable), Py_READONLY, nullptr},
+    {"target_in_dialog", Py_T_BOOL,
+     offsetof(CallbackEventObject, target_in_dialog), Py_READONLY, nullptr},
+    {"key", Py_T_OBJECT_EX, offsetof(CallbackEventObject, key), Py_READONLY,
+     nullptr},
+    {"code", Py_T_OBJECT_EX, offsetof(CallbackEventObject, code), Py_READONLY,
+     nullptr},
+    {"repeat", Py_T_BOOL, offsetof(CallbackEventObject, repeat), Py_READONLY,
+     nullptr},
+    {"is_composing", Py_T_BOOL, offsetof(CallbackEventObject, is_composing),
+     Py_READONLY, nullptr},
+    {"alt_key", Py_T_BOOL, offsetof(CallbackEventObject, alt_key), Py_READONLY,
+     nullptr},
+    {"ctrl_key", Py_T_BOOL, offsetof(CallbackEventObject, ctrl_key),
+     Py_READONLY, nullptr},
+    {"meta_key", Py_T_BOOL, offsetof(CallbackEventObject, meta_key),
+     Py_READONLY, nullptr},
+    {"shift_key", Py_T_BOOL, offsetof(CallbackEventObject, shift_key),
+     Py_READONLY, nullptr},
+    {"pointer_id", Py_T_INT, offsetof(CallbackEventObject, pointer_id),
+     Py_READONLY, nullptr},
+    {"pointer_type", Py_T_OBJECT_EX,
+     offsetof(CallbackEventObject, pointer_type), Py_READONLY, nullptr},
+    {"button", Py_T_SHORT, offsetof(CallbackEventObject, button), Py_READONLY,
+     nullptr},
+    {"buttons", Py_T_USHORT, offsetof(CallbackEventObject, buttons),
+     Py_READONLY, nullptr},
+    {"client_x", Py_T_DOUBLE, offsetof(CallbackEventObject, client_x),
+     Py_READONLY, nullptr},
+    {"client_y", Py_T_DOUBLE, offsetof(CallbackEventObject, client_y),
+     Py_READONLY, nullptr},
+    {"is_primary", Py_T_BOOL, offsetof(CallbackEventObject, is_primary),
+     Py_READONLY, nullptr},
+    {"value", Py_T_OBJECT_EX, offsetof(CallbackEventObject, value), Py_READONLY,
+     nullptr},
+    {"checked", Py_T_BOOL, offsetof(CallbackEventObject, checked), Py_READONLY,
+     nullptr},
+    {"value_truncated", Py_T_BOOL,
+     offsetof(CallbackEventObject, value_truncated), Py_READONLY, nullptr},
+    {"input_epoch", Py_T_ULONGLONG, offsetof(CallbackEventObject, input_epoch),
      Py_READONLY, nullptr},
     {nullptr}};
 
@@ -315,6 +526,7 @@ PyType_Slot kEventSlots[] = {
     {Py_tp_traverse, reinterpret_cast<void*>(TraverseEvent)},
     {Py_tp_clear, reinterpret_cast<void*>(ClearEvent)},
     {Py_tp_members, kEventMembers},
+    {Py_tp_methods, kEventMethods},
     {0, nullptr}};
 PyType_Spec kEventSpec = {"dom.CallbackEvent", sizeof(CallbackEventObject), 0,
                           Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
@@ -344,33 +556,98 @@ PyType_Spec kFrameSpec = {"animation.FrameHandle", sizeof(FrameHandle), 0,
                               Py_TPFLAGS_DISALLOW_INSTANTIATION,
                           kHandleSlots};
 
+PyType_Spec kDocumentSpec = {"dom.DocumentHandle", sizeof(ElementHandle), 0,
+                             Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+                                 Py_TPFLAGS_IMMUTABLETYPE |
+                                 Py_TPFLAGS_DISALLOW_INSTANTIATION,
+                             kHandleSlots};
+PyType_Spec kWindowSpec = {"dom.WindowHandle", sizeof(ElementHandle), 0,
+                           Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+                               Py_TPFLAGS_IMMUTABLETYPE |
+                               Py_TPFLAGS_DISALLOW_INSTANTIATION,
+                           kHandleSlots};
+struct PageStateObject {
+  PyObject_HEAD char hidden;
+  char has_focus;
+  int width;
+  int height;
+  char reduced_motion;
+  unsigned long long input_epoch;
+};
+PyMemberDef kPageMembers[] = {
+    {"hidden", Py_T_BOOL, offsetof(PageStateObject, hidden), Py_READONLY,
+     nullptr},
+    {"has_focus", Py_T_BOOL, offsetof(PageStateObject, has_focus), Py_READONLY,
+     nullptr},
+    {"width", Py_T_INT, offsetof(PageStateObject, width), Py_READONLY, nullptr},
+    {"height", Py_T_INT, offsetof(PageStateObject, height), Py_READONLY,
+     nullptr},
+    {"reduced_motion", Py_T_BOOL, offsetof(PageStateObject, reduced_motion),
+     Py_READONLY, nullptr},
+    {"input_epoch", Py_T_ULONGLONG, offsetof(PageStateObject, input_epoch),
+     Py_READONLY, nullptr},
+    {nullptr}};
+PyType_Slot kPageSlots[] = {
+    {Py_tp_dealloc, reinterpret_cast<void*>(DeleteHandle)},
+    {Py_tp_traverse, reinterpret_cast<void*>(TraverseHandle)},
+    {Py_tp_members, kPageMembers},
+    {0, nullptr}};
+PyType_Spec kPageSpec = {"dom.PageState", sizeof(PageStateObject), 0,
+                         Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+                             Py_TPFLAGS_IMMUTABLETYPE |
+                             Py_TPFLAGS_DISALLOW_INSTANTIATION,
+                         kPageSlots};
+
+PyObject* GetPageState(PyObject* module, PyObject*) {
+  auto* state = ActiveState(module);
+  if (!state) {
+    return nullptr;
+  }
+  const auto result = state->host->GetPageState();
+  if (!CheckResult(result.status)) {
+    return nullptr;
+  }
+  auto* value = reinterpret_cast<PageStateObject*>(
+      state->page_type->tp_alloc(state->page_type, 0));
+  if (!value) {
+    return nullptr;
+  }
+  value->hidden = result.state.hidden;
+  value->has_focus = result.state.has_focus;
+  value->width = result.state.width;
+  value->height = result.state.height;
+  value->reduced_motion = result.state.reduced_motion;
+  value->input_epoch = result.state.input_epoch;
+  return reinterpret_cast<PyObject*>(value);
+}
+
 int Initialize(PyObject* module) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
-  state->handle_type = reinterpret_cast<PyTypeObject*>(
-      PyType_FromModuleAndSpec(module, &kHandleSpec, nullptr));
-  state->event_type = reinterpret_cast<PyTypeObject*>(
-      PyType_FromModuleAndSpec(module, &kEventSpec, nullptr));
-  state->listener_type = reinterpret_cast<PyTypeObject*>(
-      PyType_FromModuleAndSpec(module, &kListenerSpec, nullptr));
-  state->frame_type = reinterpret_cast<PyTypeObject*>(
-      PyType_FromModuleAndSpec(module, &kFrameSpec, nullptr));
+  auto add = [&](PyTypeObject*& type, PyType_Spec& spec, const char* name) {
+    type = reinterpret_cast<PyTypeObject*>(
+        PyType_FromModuleAndSpec(module, &spec, nullptr));
+    return type &&
+           (!name || PyModule_AddObjectRef(
+                         module, name, reinterpret_cast<PyObject*>(type)) == 0);
+  };
   state->callbacks = PyDict_New();
-  if (!state->handle_type || !state->event_type || !state->listener_type ||
-      !state->frame_type || !state->callbacks ||
-      PyModule_AddObjectRef(module, "ElementHandle",
-                            reinterpret_cast<PyObject*>(state->handle_type)) <
-          0 ||
-      PyModule_AddObjectRef(module, "ListenerHandle",
-                            reinterpret_cast<PyObject*>(state->listener_type)) <
-          0) {
-    return -1;
-  }
-  return PyModule_AddObjectRef(module, "CallbackEvent",
-                               reinterpret_cast<PyObject*>(state->event_type));
+  return state->callbacks &&
+                 add(state->handle_type, kHandleSpec, "ElementHandle") &&
+                 add(state->document_type, kDocumentSpec, "DocumentHandle") &&
+                 add(state->window_type, kWindowSpec, "WindowHandle") &&
+                 add(state->event_type, kEventSpec, "CallbackEvent") &&
+                 add(state->listener_type, kListenerSpec, "ListenerHandle") &&
+                 add(state->frame_type, kFrameSpec, nullptr) &&
+                 add(state->page_type, kPageSpec, "PageState")
+             ? 0
+             : -1;
 }
 
 int Traverse(PyObject* module, visitproc visit, void* arg) {
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  Py_VISIT(state->document_type);
+  Py_VISIT(state->window_type);
+  Py_VISIT(state->page_type);
   Py_VISIT(state->handle_type);
   Py_VISIT(state->event_type);
   Py_VISIT(state->listener_type);
@@ -387,11 +664,19 @@ int Clear(PyObject* module) {
   Py_CLEAR(state->event_type);
   Py_CLEAR(state->listener_type);
   Py_CLEAR(state->frame_type);
+  Py_CLEAR(state->document_type);
+  Py_CLEAR(state->window_type);
+  Py_CLEAR(state->page_type);
   Py_CLEAR(state->handle_type);
   return 0;
 }
 
 PyMethodDef kMethods[] = {
+    {"get_document", GetDocument, METH_NOARGS, nullptr},
+    {"get_window", GetWindow, METH_NOARGS, nullptr},
+    {"get_page_state", GetPageState, METH_NOARGS, nullptr},
+    {"set_pointer_capture", SetPointerCapture, METH_VARARGS, nullptr},
+    {"release_pointer_capture", ReleasePointerCapture, METH_VARARGS, nullptr},
     {"get_element_by_id", GetElementById, METH_VARARGS, nullptr},
     {"set_text", SetText, METH_VARARGS, nullptr},
     {"add_event_listener", reinterpret_cast<PyCFunction>(AddEventListener),
@@ -655,10 +940,33 @@ bool RemoveDomCallback(PyObject* module, CallbackHandle handle) {
 }
 
 PyObject* CreateDomCallbackEvent(PyObject* module, const CallbackEvent& event) {
-  if (event.type != "click" || !event.current_target.document ||
-      !event.current_target.generation || !event.current_target.id) {
+  if (!SupportedEvent(event.current_target.kind, event.type) ||
+      !event.current_target.document || !event.current_target.generation ||
+      !event.current_target.id || !std::isfinite(event.client_x) ||
+      !std::isfinite(event.client_y)) {
     PyErr_SetString(PyExc_ValueError,
-                    "Expected a click event with a valid element handle");
+                    "Expected a supported event with a valid target and finite "
+                    "coordinates");
+    return nullptr;
+  }
+  if (event.type.size() > 16384) {
+    PyErr_SetString(PyExc_ValueError, "Event strings must not exceed 16 KiB");
+    return nullptr;
+  }
+  if (event.key.size() > 16384) {
+    PyErr_SetString(PyExc_ValueError, "Event strings must not exceed 16 KiB");
+    return nullptr;
+  }
+  if (event.code.size() > 16384) {
+    PyErr_SetString(PyExc_ValueError, "Event strings must not exceed 16 KiB");
+    return nullptr;
+  }
+  if (event.pointer_type.size() > 16384) {
+    PyErr_SetString(PyExc_ValueError, "Event strings must not exceed 16 KiB");
+    return nullptr;
+  }
+  if (event.value.size() > 16384) {
+    PyErr_SetString(PyExc_ValueError, "Event strings must not exceed 16 KiB");
     return nullptr;
   }
   auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
@@ -667,10 +975,43 @@ PyObject* CreateDomCallbackEvent(PyObject* module, const CallbackEvent& event) {
   if (!object) {
     return nullptr;
   }
-  object->type = PyUnicode_FromString("click");
+  object->owner = Py_NewRef(module);
   object->current_target = MakeHandle(state, event.current_target);
+  object->type =
+      PyUnicode_DecodeUTF8(event.type.data(), event.type.size(), "strict");
   object->is_trusted = event.is_trusted;
-  if (!object->type || !object->current_target) {
+  object->control_token = event.control_token;
+  object->cancelable = event.cancelable;
+  object->bubbles = event.bubbles;
+  object->default_prevented = event.default_prevented;
+  object->passive = event.passive;
+  object->target_is_editable = event.target_is_editable;
+  object->target_in_dialog = event.target_in_dialog;
+  object->key =
+      PyUnicode_DecodeUTF8(event.key.data(), event.key.size(), "strict");
+  object->code =
+      PyUnicode_DecodeUTF8(event.code.data(), event.code.size(), "strict");
+  object->repeat = event.repeat;
+  object->is_composing = event.is_composing;
+  object->alt_key = event.alt_key;
+  object->ctrl_key = event.ctrl_key;
+  object->meta_key = event.meta_key;
+  object->shift_key = event.shift_key;
+  object->pointer_id = event.pointer_id;
+  object->pointer_type = PyUnicode_DecodeUTF8(
+      event.pointer_type.data(), event.pointer_type.size(), "strict");
+  object->button = event.button;
+  object->buttons = event.buttons;
+  object->client_x = event.client_x;
+  object->client_y = event.client_y;
+  object->is_primary = event.is_primary;
+  object->value =
+      PyUnicode_DecodeUTF8(event.value.data(), event.value.size(), "strict");
+  object->checked = event.checked;
+  object->value_truncated = event.value_truncated;
+  object->input_epoch = event.input_epoch;
+  if (!object->current_target || !object->type || !object->key ||
+      !object->code || !object->pointer_type || !object->value) {
     Py_DECREF(object);
     return nullptr;
   }

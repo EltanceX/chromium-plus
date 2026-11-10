@@ -1,0 +1,12 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_timeline_trigger_options.obj",
+    "originalSha256": "1b5bd9ffd84eec42b2061790e90a0e1633a29b451c853eb03a3a588ca2c6d17a",
+    "size": 1129459,
+    "mtimeNs": 1793050797891619300,
+    "stableAcrossRepeatedReadsAndMmap": true,
+    "scanErrors": [
+      "Invalid CodeView record at 0xc6073 (length 33600, kind 0x17e3)"
+    ]
+  }
+]

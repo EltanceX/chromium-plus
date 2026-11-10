@@ -1,0 +1,13 @@
+{
+  "response": "out\\Debug\\blink_unittests.exe.rsp",
+  "directObjects": 4665,
+  "problems": [
+    {
+      "object": "obj/base/i18n/test_support/locales_for_test.obj",
+      "errors": [
+        "Section 1453: invalid name b'/\\x80[\\xe02\\xe2_\\xe5'",
+        "Section 1724: invalid name b'/ftMsO\\xa9$'"
+      ]
+    }
+  ]
+}

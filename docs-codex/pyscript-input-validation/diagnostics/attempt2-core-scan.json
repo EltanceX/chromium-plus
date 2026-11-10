@@ -1,0 +1,16 @@
+{
+  "response": "blink_core.dll.rsp",
+  "fullDirectStructureScan": true,
+  "libraries": 59,
+  "directObjects": 5040,
+  "archiveMembers": 560,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_timeline_trigger_options.obj",
+      "errors": [
+        "Invalid CodeView record at 0xc6073 (length 33600, kind 0x17e3)"
+      ]
+    }
+  ],
+  "elapsed_seconds": 132.52
+}

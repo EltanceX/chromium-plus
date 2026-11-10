@@ -1,0 +1,7 @@
+Starting build
+Traceback (most recent call last):
+  File "C:\src\src\chrome\test\run_pyscript_event_validation.py", line 147, in main
+    raise RuntimeError('Standard build failed; preserve the log and inputs')
+RuntimeError: Standard build failed; preserve the log and inputs
+
+{"passed": false, "output": "C:\\src\\src\\out\\Debug\\pyscript-input-phase2\\final3"}

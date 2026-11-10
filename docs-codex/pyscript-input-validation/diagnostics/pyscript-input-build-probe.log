@@ -1,0 +1,168 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.3642745s
+load siso config done 13.1624ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:4)
+build start: Ready 3621 Pending 44281
+[0/15159] 34.62s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/14804] 34.62s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/14994] 34.62s S CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[0/14967] 34.62s S CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[0/5716] 34.98s S CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[0/2066] 35.19s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/1534] 35.22s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/165] 35.30s S CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[0/151] 35.30s S CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[0/151] 39.83s F CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[1/151] 39.94s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[2/151] 40.05s F CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[3/151] 40.27s F CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[3/151] 40.27s S LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[4/151] 40.79s F CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[5/151] 40.79s F LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[6/151] 41.63s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[7/151] 41.63s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[7/151] 42.20s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[8/150] 48.46s F CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[9/150] 51.57s E CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+FAILED: 099ca2fe-d950-4c13-843a-acce2bc3b137 "./obj/third_party/blink/renderer/core/core/python_script_controller.obj" CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+err: exit=1
+sccache ..\..\third_party\llvm-build\Release+Asserts\bin\clang-cl.exe /c ../../third_party/blink/renderer/core/html/python_script_controller.cc /Foobj/third_party/blink/renderer/core/core/python_script_controller.obj /nologo /showIncludes "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/VS/include" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/ucrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/um" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/shared" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/winrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/cppwinrt" -D_HAS_NODISCARD -D_CRT_NONSTDC_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS "-DCR_CLANG_REVISION=\"llvmorg-24-init-14453-ge063be79-1\"" -DCOMPONENT_BUILD -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -D_LIBCPP_INSTRUMENTED_WITH_ASAN=0 -DCR_LIBCXX_REVISION=9ba7713d3a0f1e179904c984bb626748b15e57d6 -D__STD_C -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_SCL_SECURE_NO_DEPRECATE -D_ATL_NO_OPENGL -D_WINDOWS -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DPSAPI_VERSION=2 -DWIN32 -D_SECURE_ATL -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DDCHECK_ALWAYS_ON=1 -DUSE_AURA=1 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -D_UNICODE -DUNICODE -DNTDDI_VERSION=NTDDI_WIN11_BR -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -DWINCRYPT_USE_SYMBOL_PREFIX -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DUSING_V8_SHARED -DBLINK_CORE_IMPLEMENTATION=1 -DV8_USE_EXTERNAL_STARTUP_DATA -DCHROMIUM -DLIBYUV_DISABLE_NEON -DLIBYUV_DISABLE_SVE -DLIBYUV_DISABLE_SME -DLIBYUV_DISABLE_LSX -DLIBYUV_DISABLE_LASX -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED "-DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\"" -DSK_USE_PARTITION_ALLOC -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_ENABLE_LEGACY_SHADERCONTEXT -DSK_LEGACY_DESERIAL_IMAGE_PROC -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_PNG_WITH_RUST -DSK_CODEC_ENCODES_PNG -DSK_CODEC_ENCODES_PNG_WITH_RUST -DSK_CODEC_DECODES_BMP_WITH_RUST -DSK_CODEC_DECODES_ICO_WITH_RUST -DSK_CODEC_COLOR_PROFILE_PARSE_WITH_RUST -DSK_EXIF_PARSE_WITH_RUST -DSK_ENABLE_AVX512_OPTS -DSK_CODEC_DECODES_JPEG -DSK_CODEC_ENCODES_JPEG -DSKIA_DLL -DGR_GL_FUNCTION_TYPE=__stdcall -DSK_GAMMA_SRGB -DSK_GAMMA_CONTRAST=1.0 -DSK_GANESH "-DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\"" -DSK_GL -DSK_GRAPHITE -DSK_DAWN -DSKCMS_DLL=1 -DPROTOBUF_MESSAGE_GLOBALS_TEMPORARY_OPTOUT -DGOOGLE_PROTOBUF_NO_RTTI -DPROTOBUF_INTERNAL_BOUNDS_CHECK_MODE_ABORT -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DBLINK_IMPLEMENTATION=1 -DINSIDE_BLINK -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DWEBRTC_ENABLE_SYMBOL_EXPORT -DWEBRTC_EXCLUDE_BUILT_IN_SSL_ROOT_CERTS -DWEBRTC_ENABLE_AVX2 -DRTC_ENABLE_WIN_WGC -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_CHROMIUM_BUILD -DWEBRTC_WIN -DABSL_ALLOCATOR_NOTHROW=1 -DLOGGING_INSIDE_WEBRTC -DWGPU_SHARED_LIBRARY -DUSING_V8_SHARED_PRIVATE -DV8_ARRAY_BUFFER_INTERNAL_FIELD_COUNT=0 -DV8_ARRAY_BUFFER_VIEW_INTERNAL_FIELD_COUNT=0 -DV8_PROMISE_INTERNAL_FIELD_COUNT=0 -DV8_EMBEDDER_DATA_ARRAY_SIZE=5 -DV8_USE_DEFAULT_HASHER_SECRET=true -DV8_ENABLE_CHECKS -DV8_ENABLE_MEMORY_ACCOUNTING_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DV8_DISALLOW_JS_IN_API_INTERRUPTS_IS_CHECKED -DV8_USE_PERFETTO -DV8_USE_PERFETTO_JSON_EXPORT -DV8_SUPPORT_LA57 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_WIN -DCPPGC_ENABLE_API_CHECKS -DCPPGC_SUPPORTS_OBJECT_NAMES -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_ENABLE_LARGER_CAGE -DCPPGC_SLIM_WRITE_BARRIER -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DSKCMS_IMPLEMENTATION=1 -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DLEVELDB_PLATFORM_CHROMIUM=1 -DLEVELDB_SHARED_LIBRARY -DUSE_LIBJPEG_TURBO=1 -DMANGLE_JPEG_NAMES -DWEBP_EXTERN=extern -DUSING_V8_PLATFORM_SHARED -DLIBXSLT_STATIC -DUSE_LIBCXX_MODULES -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -I../../third_party/libyuv/include -I../../third_party/skia -Igen/third_party/skia -I../../third_party/wuffs/src/release/c -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../gpu -I../../third_party/angle/include -I../../third_party/protobuf/src -I../../third_party/protobuf/third_party/utf8_range -I../../third_party/abseil-cpp -I../../base/allocator/partition_allocator/src -Igen/base/allocator/partition_allocator/src -I../../third_party/boringssl/src/include -Igen/net/third_party/quiche/src -I../../third_party/re2/src -I../../third_party/ipcz/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ced/src -I../../third_party/webrtc_overrides -I../../third_party/webrtc -Igen/third_party/webrtc -I../../v8/include -I../../third_party/flatbuffers/src/include -I../../third_party/flatbuffers/src/src -I../../third_party/flatbuffers/src -I../../third_party/flatbuffers/generated -I../../third_party/libwebm/source -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/win -I../../third_party/zlib -I../../third_party/leveldatabase -I../../third_party/leveldatabase/src -I../../third_party/leveldatabase/src/include -I../../third_party/libaom/source/libaom -I../../third_party/libaom/source/config/win/x64 -I../../third_party/libjpeg_turbo/src -I../../third_party/libwebp/src/src -I../../third_party/ots/src/include -I../../third_party/woff2/include -Igen/v8/include -I../../third_party/simdutf -I../../third_party/fp16/src/include -I../../third_party/libxml/src/include -I../../third_party/libxml/win32/include -I../../third_party/libxslt/src -I../../third_party/libxslt/src/libxslt /W4 -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wgnu -Wno-gnu-anonymous-struct -Wno-gnu-conditional-omitted-operand -Wno-gnu-include-next -Wno-gnu-label-as-value -Wno-gnu-redeclared-enum -Wno-gnu-statement-expression -Wno-gnu-zero-variadic-macro-arguments -Wno-zero-length-array -Wthread-safety -Wno-unused-template -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wno-stringop-overread -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-thread-safety-reference-return -Wno-nontrivial-memcall -Wno-uninitialized-const-pointer -Wno-unused-but-set-global -Wno-nonportable-include-path -Wexit-time-destructors -Wshadow /WX -fno-delete-null-pointer-checks /clang:-fno-strict-overflow -fno-ident /clang:-fno-math-errno -fcolor-diagnostics /clang:-fdiagnostics-show-inlining-chain -fmerge-all-constants -fcrash-diagnostics-dir=../clang-crashreports -fno-lifetime-dse -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 /clang:-ffp-contract=off -fcomplete-member-pointers /Gy /FS /bigobj /utf-8 /Zc:twoPhase -ffile-reproducible /D__WRL_ENABLE_FUNCTION_STATICS__ -fmsc-version=1934 /Zc:dllexportInlines- -m64 -msse3 /Brepro -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -Xclang -fmodule-file-home-is-cwd -Xclang -fmodules-cache-path=/not_exist_dummy_dir --warning-suppression-mappings=../../build/config/warning_suppression.txt -ftrivial-auto-var-init=pattern /Od /Ob0 /GF -fsanitize=array-bounds -fsanitize-trap=array-bounds -fsanitize-ignore-for-ubsan-feature=array-bounds -Wno-unsafe-buffer-usage-in-static-sized-array -fsanitize=return -fsanitize-trap=return -fsanitize-ignore-for-ubsan-feature=return -fsanitize=unreachable -fsanitize-trap=unreachable -fsanitize-ignore-for-ubsan-feature=unreachable /guard:cf,nochecks /MDd -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang relax-ctor-checks-for-aggregates -Xclang -add-plugin -Xclang raw-ptr-plugin -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-raw-ptr-plugin -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../third_party/dawn/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../build/config/clang/chrome/test/fuzzing/webidl_fuzzing/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-span-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ref-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang config-path=../../build/config/raw_ptr_plugin_config.yaml -Xclang -plugin-arg-raw-ptr-plugin -Xclang no-special-treatment-for-oilpanized-paths -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-in-blink -DUNSAFE_BUFFERS_BUILD -Wunsafe-buffer-usage -Wno-error=unsafe-buffer-usage -Wno-unsafe-buffer-usage-main-argv -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt /wd4305 /wd4324 /wd4714 /wd4800 -Xclang -plugin-arg-find-bad-constructs -Xclang check-blink-data-member-type -Xclang -add-plugin -Xclang blink-gc-plugin -Wglobal-constructors -Xclang -plugin-arg-find-bad-constructs -Xclang check-layout-object-methods /Z7 -gno-codeview-command-line -mllvm -pick-merged-source-locations -gcodeview-ghash -Xclang -fuse-ctor-homing -Wconversion -Wno-float-conversion -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-implicit-int-conversion -Wshorten-64-to-32 -Wtautological-unsigned-zero-compare /wd4344 /wd4291 -DLIBXML_STATIC= -Wno-invalid-offsetof -Wenum-compare-conditional -Wno-nullability-completeness -Wunique-object-duplication /std:c++23preview -Wno-trigraphs /GR- -I../../third_party/libc++/src/include -fmodules /clang:-fno-implicit-module-maps -fno-implicit-modules -Xclang -fmodules-local-submodule-visibility -Wno-modules-ambiguous-internal-linkage -Wno-modules-import-nested-redundant -Xclang -fmodules-disable-diagnostic-validation -Wno-module-import-in-extern-c /TP -fmodule-map-file=gen/build/modules/module.modulemap -fmodule-file=//build/modules:system=obj/build/modules/system/module.pcm "-fmodule-name=//third_party/blink/renderer/core:core_Private" /Fd"obj/third_party/blink/renderer/core/core_cc.pdb"
+build step: cxx "./obj/third_party/blink/renderer/core/core/python_script_controller.obj"
+stderr:
+../../third_party/blink/renderer/core/html/python_script_controller.cc(567,11): error: call to deleted member function 'addEventListener'
+  567 |   target->addEventListener(listener->type, listener, &options);
+      |   ~~~~~~~~^~~~~~~~~~~~~~~~
+../..\third_party/blink/renderer/core/dom/events/event_target.h(177,8): note: candidate function has been explicitly deleted
+  177 |   bool addEventListener(const AtomicString&,
+      |        ^
+../..\third_party/blink/renderer/core/dom/events/event_target.h(169,8): note: candidate function
+  169 |   bool addEventListener(const AtomicString& event_type,
+      |        ^
+../..\third_party/blink/renderer/core/dom/events/event_target.h(172,8): note: candidate function not viable: no known conversion from 'AddEventListenerOptionsResolved *' to 'AddEventListenerOptionsResolved &' for 3rd argument; remove &
+  172 |   bool addEventListener(const AtomicString& event_type,
+      |        ^
+  173 |                         EventListener*,
+  174 |                         AddEventListenerOptionsResolved&);
+      |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../..\third_party/blink/renderer/core/dom/events/event_target.h(165,8): note: candidate function not viable: no known conversion from 'blink::PythonEventListener *' to 'V8EventListener *' for 2nd argument
+  165 |   bool addEventListener(
+      |        ^
+  166 |       const AtomicString& event_type,
+  167 |       V8EventListener* listener,
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~
+../..\third_party/blink/renderer/core/dom/events/event_target.h(164,8): note: candidate function not viable: requires 2 arguments, but 3 were provided
+  164 |   bool addEventListener(const AtomicString& event_type, V8EventListener*);
+      |        ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../../third_party/blink/renderer/core/html/python_script_controller.cc:5:
+In file included from ../..\third_party/blink/renderer/core/html/python_script_controller.h:8:
+In file included from ../..\base/task/single_thread_task_runner.h:14:
+In file included from ../..\base/task/sequenced_task_runner.h:11:
+In file included from ../..\base/functional/callback.h:19:
+In file included from ../..\base/functional/bind.h:14:
+../..\base/functional/bind_internal.h(1756,11): error: static assertion failed: Capturing lambdas and stateful functors are intentionally not supported. Use a non-capturing lambda or stateless functor (i.e. has no non-static data members) and bind arguments directly.
+ 1756 |           v, "Capturing lambdas and stateful functors are intentionally not "
+      |           ^
+../..\base/functional/bind_internal.h(1754,38): note: while substituting into a lambda expression here
+ 1754 |     static constexpr bool value = [] {
+      |                                      ^
+..\..\third_party\libc++\src\include\__type_traits\conjunction.h(60,64): note: in instantiation of static data member 'base::internal::BindHelper<base::OnceCallback>::IsStateless<base::internal::FunctorTraits<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62) &&>>::value' requested here
+   60 | struct conjunction<_Arg, _Args...> : conditional_t<!bool(_Arg::value), _Arg, conjunction<_Args...>> {};
+      |                                                                ^
+..\..\third_party\libc++\src\include\__type_traits\conjunction.h(60,38): note: in instantiation of template class 'std::conjunction<base::internal::BindHelper<base::OnceCallback>::IsStateless<base::internal::FunctorTraits<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62) &&>>, base::internal::ValidateUnwrappedTypeList<true, false>, base::internal::ParamsCanBeBound<false, std::integer_sequence<unsigned long long>, base::internal::TypeList<>, base::internal::TypeList<>, base::internal::TypeList<>>, base::internal::ValidateBindStateType<false, false, false, (lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>>' requested here
+   60 | struct conjunction<_Arg, _Args...> : conditional_t<!bool(_Arg::value), _Arg, conjunction<_Args...>> {};
+      |                                      ^
+..\..\third_party\libc++\src\include\__type_traits\conjunction.h(64,66): note: in instantiation of template class 'std::conjunction<base::internal::BindHelper<base::OnceCallback>::NotFunctionRef<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>, base::internal::BindHelper<base::OnceCallback>::IsStateless<base::internal::FunctorTraits<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62) &&>>, base::internal::ValidateUnwrappedTypeList<true, false>, base::internal::ParamsCanBeBound<false, std::integer_sequence<unsigned long long>, base::internal::TypeList<>, base::internal::TypeList<>, base::internal::TypeList<>>, base::internal::ValidateBindStateType<false, false, false, (lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>>' requested here
+   64 | _LIBCPP_NO_SPECIALIZATIONS inline constexpr bool conjunction_v = conjunction<_Args...>::value;
+      |                                                                  ^
+../..\base/functional/bind_internal.h(1825,26): note: in instantiation of variable template specialization 'std::conjunction_v<base::internal::BindHelper<base::OnceCallback>::NotFunctionRef<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>, base::internal::BindHelper<base::OnceCallback>::IsStateless<base::internal::FunctorTraits<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62) &&>>, base::internal::ValidateUnwrappedTypeList<true, false>, base::internal::ParamsCanBeBound<false, std::integer_sequence<unsigned long long>, base::internal::TypeList<>, base::internal::TypeList<>, base::internal::TypeList<>>, base::internal::ValidateBindStateType<false, false, false, (lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>>' requested here
+ 1825 |       if constexpr (std::conjunction_v<
+      |                          ^
+../..\base/functional/bind_internal.h(1893,32): note: in instantiation of function template specialization 'base::internal::BindHelper<base::OnceCallback>::BindImpl<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>' requested here
+ 1893 |                       decltype(BindImpl(std::declval<Functor&&>(),
+      |                                ^
+..\..\third_party\libc++\src\include\__type_traits\conjunction.h(64,89): note: in instantiation of static data member 'base::internal::BindHelper<base::OnceCallback>::BindImplWouldSucceed<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>::value' requested here
+   64 | _LIBCPP_NO_SPECIALIZATIONS inline constexpr bool conjunction_v = conjunction<_Args...>::value;
+      |                                                                                         ^
+../..\base/functional/bind_internal.h(1900,24): note: in instantiation of variable template specialization 'std::conjunction_v<base::internal::BindHelper<base::OnceCallback>::OnceCallbackFunctorIsValid<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>, base::internal::BindHelper<base::OnceCallback>::NoBindArgToOnceCallbackIsBasePassed<>, base::internal::BindHelper<base::OnceCallback>::BindImplWouldSucceed<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>>' requested here
+ 1900 |     if constexpr (std::conjunction_v<
+      |                        ^
+../..\base/functional/bind.h(59,46): note: in instantiation of function template specialization 'base::internal::BindHelper<base::OnceCallback>::Bind<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>' requested here
+   59 |   return internal::BindHelper<OnceCallback>::Bind(
+      |                                              ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(915,53): note: in instantiation of function template specialization 'base::BindOnce<(lambda at ../../third_party/blink/renderer/core/html/python_script_controller.cc:915:62)>' requested here
+  915 |   auto invalidate = base::ScopedClosureRunner(base::BindOnce([&] {
+      |                                                     ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(915,21): error: no matching conversion for functional-style cast from 'BindFailedCheckPreviousErrors' to 'base::ScopedClosureRunner'
+  915 |   auto invalidate = base::ScopedClosureRunner(base::BindOnce([&] {
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  916 |     if (input && !delivered && input_epoch_ == epoch_before) {
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  917 |       ++input_epoch_;
+      |       ~~~~~~~~~~~~~~~
+  918 |     }
+      |     ~
+  919 |   }));
+      |   ~~~
+../..\base/functional/callback_helpers.h(146,19): note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'BindFailedCheckPreviousErrors' to 'const ScopedClosureRunner' for 1st argument
+  146 | class BASE_EXPORT ScopedClosureRunner {
+      |                   ^~~~~~~~~~~~~~~~~~~
+../..\base/functional/callback_helpers.h(149,26): note: candidate constructor not viable: no known conversion from 'BindFailedCheckPreviousErrors' to 'OnceClosure' (aka 'OnceCallback<void ()>') for 1st argument
+  149 |   [[nodiscard]] explicit ScopedClosureRunner(OnceClosure closure);
+      |                          ^                   ~~~~~~~~~~~~~~~~~~~
+../..\base/functional/callback_helpers.h(150,3): note: candidate constructor not viable: no known conversion from 'BindFailedCheckPreviousErrors' to 'ScopedClosureRunner' for 1st argument
+  150 |   ScopedClosureRunner(ScopedClosureRunner&& other);
+      |   ^                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../..\base/functional/callback_helpers.h(148,3): note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+  148 |   ScopedClosureRunner();
+      |   ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1007,22): error: declaration shadows a local variable [-Werror,-Wshadow]
+ 1007 |     } else if (auto* e = DynamicTo<HTMLTextAreaElement>(node)) {
+      |                      ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1004,15): note: previous declaration is here
+ 1004 |     if (auto* e = DynamicTo<HTMLInputElement>(node)) {
+      |               ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1008,18): error: no member named 'value' in 'blink::HTMLTextAreaElement'
+ 1008 |       value = e->value();
+      |               ~  ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1009,22): error: declaration shadows a local variable [-Werror,-Wshadow]
+ 1009 |     } else if (auto* e = DynamicTo<HTMLSelectElement>(node)) {
+      |                      ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1007,22): note: previous declaration is here
+ 1007 |     } else if (auto* e = DynamicTo<HTMLTextAreaElement>(node)) {
+      |                      ^
+../../third_party/blink/renderer/core/html/python_script_controller.cc(1010,18): error: no member named 'value' in 'blink::HTMLSelectElement'
+ 1010 |       value = e->value();
+      |               ~  ^
+7 errors generated.
+
+
+[10/150] 1m41.81s - CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+build failed
+
+
+noexec:0 local:10 remote:0 cache:0 skip:47752
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 8339(err:3) / r:293(err:0) 63.24MiB / w:2(err:0) 12.63KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      9(2)     0.00s |█      |    14.22s |   █▄▃ |
+shutdown cloud logging/monitoring done 0s
+
+1m42.58s Build Failure: 10 done, 1 failed, 140 remaining - 0.10/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-190718.2728
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

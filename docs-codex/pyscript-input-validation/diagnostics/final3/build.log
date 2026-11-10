@@ -1,0 +1,149 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1536939s
+load siso config done 10.914ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:65096+ready:0 (node:441061 edge:65112)
+ 1.39s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/17164] 31.95s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/11082] 32.29s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2292] 52.01s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[1/2292] 52.03s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2292] 59.70s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 949b58d9-8eb9-4889-a067-613b8d5c6e8a "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: duplicate symbol: public: class blink::CSSPropertyValue const & __cdecl base::span<class blink::CSSPropertyValue const, -1, class blink::CSSPropertyValue const *>::at(class base::numerics_internal::StrictNumeric<unsigned __int64>) const
+>>> defined at .\..\..\base\containers\span.h:1465
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: auto __cdecl std::__Cr::ranges::__size::__fn::operator()<class blink::BasicHeapVector<1, class blink::CSSPropertyValue, 4> const &>(class blink::BasicHeapVector<1, class blink::CSSPropertyValue, 4> const &) const
+>>> defined at .\..\..\third_party\libc++\src\include\__ranges\size.h:84
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: class blink::CSSPropertyValue const * __cdecl blink::Vector<class blink::CSSPropertyValue, 4, class blink::HeapAllocator>::data(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\vector.h:1512
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: auto (__cdecl * __cdecl `char * __cdecl logging::CheckOpValueStr<enum blink::CSSSelector::MatchType>(enum blink::CSSSelector::MatchType const &)'::`1'::<lambda_1>::operator auto (__cdecl *)(class std::__Cr::basic_ostream<char, struct std::__Cr::char_traits<char>> &, void const *)(void) const)(class std::__Cr::basic_ostream<char, struct std::__Cr::char_traits<char>> &, void const *)
+>>> defined at .\..\..\base\check_op.h:86
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: class scoped_refptr<class blink::StringImpl> & __cdecl scoped_refptr<class blink::StringImpl>::operator=(class scoped_refptr<class blink::StringImpl>)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:304
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: __cdecl scoped_refptr<class blink::StringImpl>::scoped_refptr<class blink::StringImpl>(class scoped_refptr<class blink::StringImpl> &&)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:264
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: void __cdecl scoped_refptr<class blink::StringImpl>::swap(class scoped_refptr<class blink::StringImpl> &)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:317
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: __cdecl scoped_refptr<class blink::StringImpl>::~scoped_refptr<class blink::StringImpl>(void)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:273
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: private: static void __cdecl scoped_refptr<class blink::StringImpl>::Release(class blink::StringImpl *)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:403
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: bool __cdecl blink::StringImpl::IsStatic(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\text\string_impl.h:227
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: unsigned int __cdecl std::__Cr::__cxx_atomic_fetch_add<unsigned int>(struct std::__Cr::__cxx_atomic_base_impl<unsigned int> *, unsigned int, enum std::__Cr::memory_order)
+>>> defined at .\..\..\third_party\libc++\src\include\__atomic\support\c11.h:214
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: __cdecl scoped_refptr<class blink::StringImpl>::scoped_refptr<class blink::StringImpl>(class blink::StringImpl *)
+>>> defined at .\..\..\base\memory\scoped_refptr.h:247
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: void __cdecl blink::StringImpl::AddRef(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\text\string_impl.h:265
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: private: static bool __cdecl blink::internal::BitFieldValue<unsigned int, 8, 8, unsigned int, 0>::is_valid(unsigned int)
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:88
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: <auto> __cdecl `public: static unsigned int __cdecl blink::internal::BitFieldValue<bool, 16, 1, unsigned int, 0>::encode(bool)'::`1'::<lambda_1>::operator()(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:64
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: <auto> __cdecl `public: static unsigned int __cdecl blink::internal::BitFieldValue<bool, 17, 1, unsigned int, 0>::encode(bool)'::`1'::<lambda_1>::operator()(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:64
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: private: static bool __cdecl blink::internal::BitFieldValue<bool, 18, 1, unsigned int, 0>::is_valid(bool)
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:88
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: <auto> __cdecl `public: static unsigned int __cdecl blink::internal::BitFieldValue<bool, 19, 1, unsigned int, 0>::encode(bool)'::`1'::<lambda_1>::operator()(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:64
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: public: <auto> __cdecl `public: static unsigned int __cdecl blink::internal::BitFieldValue<bool, 21, 1, unsigned int, 0>::encode(bool)'::`1'::<lambda_1>::operator()(void) const
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:64
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: duplicate symbol: private: static bool __cdecl blink::internal::BitFieldValue<unsigned int, 22, 2, unsigned int, 0>::is_valid(unsigned int)
+>>> defined at .\..\..\third_party\blink\renderer\platform\wtf\bit_field.h:88
+>>>            obj/third_party/blink/renderer/core/core/core_initializer.obj
+>>> defined at obj/third_party/blink/renderer/core/core/css_variable_parser.obj
+
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[2/2292] 1m05.05s - CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99807
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 997(err:3) / r:766(err:0) 29.97MiB / w:1(err:0) 379.10KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m05.71s Build Failure: 2 done, 1 failed, 2290 remaining - 0.03/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-200019.18212
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

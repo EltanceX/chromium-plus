@@ -1,0 +1,57 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.1411767s
+load siso config done 14.7527ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:55916+ready:0 (node:441061 edge:55927)
+ 1.42s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/52884] 33.39s S CXX obj/net/dns/test_support/dns_test_util.obj
+[0/52529] 33.40s S CXX obj/net/dns/test_support/mock_mdns_client.obj
+[0/29155] 34.08s S CXX obj/services/network/test_support/test_url_loader_factory.obj
+[0/28523] 34.13s S CXX obj/components/services/storage/storage/async_dom_storage_database.obj
+[0/20763] 34.94s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/19804] 35.02s S CXX obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_settings_generated.obj
+[0/2309] 40.68s F CXX obj/net/dns/test_support/mock_mdns_client.obj
+[1/2309] 41.99s F CXX obj/components/services/storage/storage/async_dom_storage_database.obj
+[2/2305] 46.40s F CXX obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_settings_generated.obj
+[3/2305] 48.32s F CXX obj/services/network/test_support/test_url_loader_factory.obj
+[4/2305] 53.56s F CXX obj/net/dns/test_support/dns_test_util.obj
+[5/2296] 1m03.11s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[6/2296] 1m03.14s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[6/2296] 1m17.12s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 987d2a6d-cb6d-4377-bbe7-8e4e6c9f39cc "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/css_shadow_value.obj: unknown file type
+
+
+build failed
+
+
+noexec:0 local:7 remote:0 cache:0 skip:99803
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 2689(err:7) / r:769(err:0) 35.23MiB / w:1(err:0) 379.10KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m17.96s Build Failure: 7 done, 1 failed, 2289 remaining - 0.09/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-194231.17160
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

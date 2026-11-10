@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- Copyright 2026 The Chromium Authors
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>原生 Python 输入状态</title>
+<style>
+  body { font: 18px system-ui; max-width: 820px; margin: 32px auto; padding: 24px; }
+  button, input { font: inherit; padding: 12px; }
+  #pad { width: 300px; height: 100px; touch-action: none; }
+  #result, #last, #page { font: 16px ui-monospace, monospace; }
+  .space { height: 900px; }
+</style>
+<h1>原生 Python 输入状态</h1>
+<p>按住左右方向键或空格；也可按下并拖出触控区。输入框保留原生键盘行为。</p>
+<p id="result">starting</p>
+<p id="last">none</p>
+<p id="page">starting</p>
+<button id="pad">鼠标 / 触摸控制区</button>
+<p><label>原生输入框 <input id="edit" value=""></label></p>
+<p><label><input id="check" type="checkbox"> 表单 change 测试</label></p>
+<p id="form">none</p>
+<div class="space"></div>
+<pyscript nonce="python-input">
+import animation, dom
+
+result = dom.get_element_by_id('result')
+last = dom.get_element_by_id('last')
+page_text = dom.get_element_by_id('page')
+form_text = dom.get_element_by_id('form')
+pad = dom.get_element_by_id('pad')
+document = dom.get_document()
+window = dom.get_window()
+keys = set()
+pointers = set()
+epoch = dom.get_page_state().input_epoch
+last_paint = -1000
+
+def reset(event):
+    keys.clear()
+    pointers.clear()
+
+def key(event):
+    if event.code not in ('ArrowLeft', 'ArrowRight', 'Space'):
+        return
+    if event.type == 'keyup':
+        keys.discard(event.code)
+    elif (not event.target_is_editable and not event.target_in_dialog
+          and not event.is_composing and not event.alt_key
+          and not event.ctrl_key and not event.meta_key):
+        keys.add(event.code)
+        event.prevent_default()
+    else:
+        return
+    dom.set_text(last, event.type + ':' + event.code + ':'
+                 + str(event.repeat) + ':' + str(event.is_trusted))
+
+def pointer(event):
+    if event.type == 'pointerdown':
+        dom.set_pointer_capture(pad, event.pointer_id)
+        pointers.add(event.pointer_id)
+        event.prevent_default()
+    elif event.type in ('pointerup', 'pointercancel', 'lostpointercapture'):
+        pointers.discard(event.pointer_id)
+    dom.set_text(last, event.type + ':' + event.pointer_type + ':'
+                 + str(event.pointer_id) + ':' + str(event.is_trusted))
+
+def form(event):
+    dom.set_text(form_text, event.type + ':' + event.value + ':' + str(event.checked))
+
+def resized(event):
+    page = dom.get_page_state()
+    dom.set_text(page_text, str(page.width) + 'x' + str(page.height) + ':'
+                 + str(page.hidden) + ':' + str(page.has_focus) + ':'
+                 + str(page.reduced_motion))
+
+def frame(timestamp):
+    global epoch, last_paint
+    page = dom.get_page_state()
+    if epoch != page.input_epoch or page.hidden or not page.has_focus:
+        reset(None)
+        epoch = page.input_epoch
+    if timestamp - last_paint >= 100:
+        dom.set_text(result, ','.join(sorted(keys)) + '|' + str(len(pointers)))
+        last_paint = timestamp
+    animation.request_frame(frame)
+
+for name in ('keydown', 'keyup'):
+    dom.add_event_listener(document, name, key)
+dom.add_event_listener(document, 'visibilitychange', reset)
+dom.add_event_listener(window, 'blur', reset)
+dom.add_event_listener(window, 'resize', resized)
+for name in ('pointerdown', 'pointerup', 'pointercancel', 'lostpointercapture'):
+    dom.add_event_listener(pad, name, pointer)
+dom.add_event_listener(dom.get_element_by_id('edit'), 'input', form)
+dom.add_event_listener(dom.get_element_by_id('check'), 'change', form)
+resized(None)
+animation.request_frame(frame)
+</pyscript>
+</html>

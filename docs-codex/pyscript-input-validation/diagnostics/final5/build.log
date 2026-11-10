@@ -1,0 +1,69 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.66937s
+load siso config done 12.8796ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:72580+ready:0 (node:441061 edge:72588)
+ 1.39s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/18979] 34.91s S CXX obj/third_party/blink/renderer/core/core/css_to_style_map.obj
+[0/10405] 35.46s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2292] 57.73s F CXX obj/third_party/blink/renderer/core/core/css_to_style_map.obj
+[1/2292] 57.75s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2292] 1m14.88s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[2/2292] 1m17.63s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: e1226d45-fa90-4933-8dc5-e45d4cade5b0 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: corrupt symbol records in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xD527C847
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xAA905B34
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xA1692978
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xDB3FFF25
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xBDEECCC6
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x22B946AF
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xE7067A05
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: corrupt symbol records in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x61B684F3
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/check_pseudo_has_cache_scope.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x69D301FB
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:99807
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 998(err:2) / r:765(err:0) 42.84MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m18.53s Build Failure: 3 done, 1 failed, 2289 remaining - 0.04/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-200737.7464
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -1,0 +1,872 @@
+[
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/adapter.json",
+    "archive": "final/adapter.json",
+    "sourceSha256": "31c1e62cb1bfb93951869a0eab2af5140a45ad5a07b8a19e4e11a861999a9363",
+    "archiveSha256": "31c1e62cb1bfb93951869a0eab2af5140a45ad5a07b8a19e4e11a861999a9363"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/adapter.log",
+    "archive": "final/adapter.log",
+    "sourceSha256": "3a7b7a86f9beed99884b299ed4f310a73b5c919f0784dea0db4efe0ac9aa0230",
+    "archiveSha256": "05949c36c0ad4b62659b9aeff70852f90895334cf01c7113406e1e990e410ace"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/animation.json",
+    "archive": "final/animation.json",
+    "sourceSha256": "2fd585748a3d7bd3199079affadb7b1d89c89baa7cc7864cbcae12758250c3c8",
+    "archiveSha256": "2fd585748a3d7bd3199079affadb7b1d89c89baa7cc7864cbcae12758250c3c8"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/animation.json.chrome.log",
+    "archive": "final/animation.json.chrome.log",
+    "sourceSha256": "0168c79fa48edaa48979dc9ff51f36ff5fe7b3195e566421465b0f6f6fc4f77b",
+    "archiveSha256": "9f49217bfd8da81b848213f13baa9924f1806e8668b01f553f37fc58e359b1b4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/animation.json.sample.png",
+    "archive": "final/animation.json.sample.png",
+    "sourceSha256": "0cb58a584a9b6cebf39521aa4ef91c7089fa84e6459ec5332b13e24b0755a74e",
+    "archiveSha256": "0cb58a584a9b6cebf39521aa4ef91c7089fa84e6459ec5332b13e24b0755a74e"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/animation.log",
+    "archive": "final/animation.log",
+    "sourceSha256": "9e55e279c4a6e844a2939e1a0f67b2afa3635d7feb23d4378bd63040ae08f05a",
+    "archiveSha256": "9e55e279c4a6e844a2939e1a0f67b2afa3635d7feb23d4378bd63040ae08f05a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/blink.json",
+    "archive": "final/blink.json",
+    "sourceSha256": "252af84038e8988554b0885df6b91b8b08b09e8342ddd07724e4f442d7515be4",
+    "archiveSha256": "252af84038e8988554b0885df6b91b8b08b09e8342ddd07724e4f442d7515be4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/blink.log",
+    "archive": "final/blink.log",
+    "sourceSha256": "957d459d27ef384610cf622c6ccdccbe68ce43759aed954c3a6abb20fe95c2d2",
+    "archiveSha256": "c53d8a03b5097ebaf484d747602d0be0648e6632ce51dda4c932eba38c287a23"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/build.log",
+    "archive": "final/build.log",
+    "sourceSha256": "72afb0c28d33505a3ed69cb2158e58b24807e3069254c37d5e091dc2e2999aae",
+    "archiveSha256": "e7ae4601a4cc0dc93e6320e5d4af09c3a4bef2637783da92aea927a5f7a6f992"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/csp.json",
+    "archive": "final/csp.json",
+    "sourceSha256": "e0b9b771d560a52644490d5d5661dfc2079202b44b646f0fbfb75833d4c5c623",
+    "archiveSha256": "e0b9b771d560a52644490d5d5661dfc2079202b44b646f0fbfb75833d4c5c623"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/csp.log",
+    "archive": "final/csp.log",
+    "sourceSha256": "f5adb0564e02a89e72ea4d6d3d048cbfeda899bea1d85ea161a722bc400c9834",
+    "archiveSha256": "8d35e58d038cf2be2f5d5a1499918ce97a91f39dffbcff2849161235c6990b82"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/dom.json",
+    "archive": "final/dom.json",
+    "sourceSha256": "26699149aa617be8e675a90697ae24335987c4cd11639f1b683312de6c96a5d7",
+    "archiveSha256": "26699149aa617be8e675a90697ae24335987c4cd11639f1b683312de6c96a5d7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/dom.json.chrome.log",
+    "archive": "final/dom.json.chrome.log",
+    "sourceSha256": "17542f21cb607ad0bddd9bd2cf0c318b4e284fdf145d60327c56fc166a84b2cb",
+    "archiveSha256": "2f64448ee9266537cd0ca13e712a6c4223a0b69ba8a5745193558fe7a2c1ac78"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/dom.json.sample.png",
+    "archive": "final/dom.json.sample.png",
+    "sourceSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+    "archiveSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/dom.log",
+    "archive": "final/dom.log",
+    "sourceSha256": "3ff11d908c763673477d385294e75ffc932b2e9e26966867bb50b44f6ffb87d2",
+    "archiveSha256": "3ff11d908c763673477d385294e75ffc932b2e9e26966867bb50b44f6ffb87d2"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/events.json",
+    "archive": "final/events.json",
+    "sourceSha256": "39d9a822c854a4daac953c34ed3e7bfc8a7d29f390e332b11bfdf8608256497f",
+    "archiveSha256": "39d9a822c854a4daac953c34ed3e7bfc8a7d29f390e332b11bfdf8608256497f"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/events.json.chrome.log",
+    "archive": "final/events.json.chrome.log",
+    "sourceSha256": "30d2f74f75843a59652fb72309ba7eeb58843973afce3cc8db01c7d3b8b9fbd6",
+    "archiveSha256": "852cffe58cce9a32a50c7e3deb5fe4958e6901e27ecf4a08459f40f383b03a47"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/events.json.sample.png",
+    "archive": "final/events.json.sample.png",
+    "sourceSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+    "archiveSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/events.log",
+    "archive": "final/events.log",
+    "sourceSha256": "d719591a9095aa9b436798c88bf7b6f1d3fc19dd1536570142cddd8af0ebad5f",
+    "archiveSha256": "d719591a9095aa9b436798c88bf7b6f1d3fc19dd1536570142cddd8af0ebad5f"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/input.json",
+    "archive": "final/input.json",
+    "sourceSha256": "209bfdeef9b391c8e490e4367f0c4dc5f139831a4a90302c3a866945d729f4d4",
+    "archiveSha256": "209bfdeef9b391c8e490e4367f0c4dc5f139831a4a90302c3a866945d729f4d4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/input.json.chrome.log",
+    "archive": "final/input.json.chrome.log",
+    "sourceSha256": "59f9012591916502461f78fdc3c39a030651b27523e7fbc66a0f1f012e49650b",
+    "archiveSha256": "d43d994a7b63a09dad92aeb17f178d8d202eac83641e407a47b038902a7be70b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/input.json.sample.png",
+    "archive": "final/input.json.sample.png",
+    "sourceSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4",
+    "archiveSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/input.log",
+    "archive": "final/input.log",
+    "sourceSha256": "94d8bd19ff11e78b38c6cbed9098b36440e6f150175529f784187b57ab7b1978",
+    "archiveSha256": "94d8bd19ff11e78b38c6cbed9098b36440e6f150175529f784187b57ab7b1978"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json",
+    "archive": "final/parser.json",
+    "sourceSha256": "fb3f058239df3af2a1a5c83a92862091809b00169b20473cde120c4b157d5e45",
+    "archiveSha256": "fb3f058239df3af2a1a5c83a92862091809b00169b20473cde120c4b157d5e45"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.default-off.chrome.log",
+    "archive": "final/parser.json.default-off.chrome.log",
+    "sourceSha256": "ded86dc97378e1ec4390a1f90ac940d38e6f1e34d31cb7de521bd65cc9885234",
+    "archiveSha256": "d705228837d95709c00ec2e08f4a4c1cba7f6ade4ab75d1038462fda04a7e4ed"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.enabled.chrome.log",
+    "archive": "final/parser.json.enabled.chrome.log",
+    "sourceSha256": "724664653c1d55d60b4fc215b0d9fcf342b010c824e9e05419d3195fe3f3dd2c",
+    "archiveSha256": "e1c2fa6253129f01a9e5b23031c3153a14b57296009f47af63b9d6e8c5c872bd"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.malformed-origin.chrome.log",
+    "archive": "final/parser.json.malformed-origin.chrome.log",
+    "sourceSha256": "597d931cab146561f5fa0ac3ac9f975222507040804e0ec13c6446dc07d17a16",
+    "archiveSha256": "0049c88dc443862becb5b1c325d6b69f4fed505a871639b01ced1d15df486be7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.missing-origin.chrome.log",
+    "archive": "final/parser.json.missing-origin.chrome.log",
+    "sourceSha256": "c3bcb3aad465c4402bebe28a0b79627dfab08314de168b143ad22803cbdbcb7e",
+    "archiveSha256": "c1558a8a4a9fc21c492b4b0bf82dc1053dc125bd7c97be82b88dbb9ee852c15c"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.non-loopback-origin.chrome.log",
+    "archive": "final/parser.json.non-loopback-origin.chrome.log",
+    "sourceSha256": "617b5c4c4aac4c548c5d05db758dcd0109f9f6af552bb3a5e0a18303702c57f2",
+    "archiveSha256": "3f64a9ac1a400f389ce9da955cb6ec7396c16a7283b3c0fe1774820efad2b5eb"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.json.wrong-origin.chrome.log",
+    "archive": "final/parser.json.wrong-origin.chrome.log",
+    "sourceSha256": "985adc0c3ffb8ebf8ef064a3849445e43c95f90f19a3736615fe8db6cb33c8ac",
+    "archiveSha256": "374fe02f5b9c1731d7c41fabf86d43f405f5f92af27d2d2d2993732bcc539efa"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/parser.log",
+    "archive": "final/parser.log",
+    "sourceSha256": "4e63735a82607761d73e761039a4ef2a80a61542bc749eba3423d93a938a6e07",
+    "archiveSha256": "4e63735a82607761d73e761039a4ef2a80a61542bc749eba3423d93a938a6e07"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/runtime.json",
+    "archive": "final/runtime.json",
+    "sourceSha256": "858fd9fc485e29fada211f9ecf4ed3bd66d4926e61e1ba8fda43d84cea73cfd2",
+    "archiveSha256": "858fd9fc485e29fada211f9ecf4ed3bd66d4926e61e1ba8fda43d84cea73cfd2"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/runtime.log",
+    "archive": "final/runtime.log",
+    "sourceSha256": "d0bec407555df037f1090c42e57917ba6fcb1196ef847ed3e7ce6a684c85e73f",
+    "archiveSha256": "d057cc5f38f789866413c984c90dbe88dd058b189c60e80ec61be1fd9da8fac6"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json",
+    "archive": "final/settings-browser.json",
+    "sourceSha256": "39ae900db6766f5d63ed58ff2e8588906c47ab3f3f73c43a6da7f545d16e5e46",
+    "archiveSha256": "39ae900db6766f5d63ed58ff2e8588906c47ab3f3f73c43a6da7f545d16e5e46"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json.launch-1.chrome.log",
+    "archive": "final/settings-browser.json.launch-1.chrome.log",
+    "sourceSha256": "7a3bd6a70314c9c378ce46a185aa1644dd9e4b48e7518bc15454bec3bd47652d",
+    "archiveSha256": "59f4d683d6d8c704a45564ad3ffed9a249fdd65729f977bfdf351cb0db714282"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json.launch-2.chrome.log",
+    "archive": "final/settings-browser.json.launch-2.chrome.log",
+    "sourceSha256": "1c0826ad2028ffb75775cc25b9b0fc3601fa81e7605e29db4b1d394803bdec85",
+    "archiveSha256": "44dc50a0c23931e2bbf90a2aa17a6ad2c25f305950415a401dc158002546d3c7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json.launch-3.chrome.log",
+    "archive": "final/settings-browser.json.launch-3.chrome.log",
+    "sourceSha256": "c5abb738da92c1842f478f3ad2f20c51c7b510da048e8c9314d78c200011d67d",
+    "archiveSha256": "d5d9117e7d6f61a6205dec309f73f30f7c7c5b4f8d14b11f22dba1b3fa433121"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json.launch-4.chrome.log",
+    "archive": "final/settings-browser.json.launch-4.chrome.log",
+    "sourceSha256": "3d6ce86ad2ac2e08f1e6aa925d3791f499c495043cf2c71187a280f0030193ff",
+    "archiveSha256": "07850f87b3d5bb67b1043cf4d8ac742cda5d973b20e5f2d34318d9a7c85662b1"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.json.settings.png",
+    "archive": "final/settings-browser.json.settings.png",
+    "sourceSha256": "843e4e1681d3571fad67a08487f80dbf48cba27dbf9af7dbbfa2640f81c50138",
+    "archiveSha256": "843e4e1681d3571fad67a08487f80dbf48cba27dbf9af7dbbfa2640f81c50138"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-browser.log",
+    "archive": "final/settings-browser.log",
+    "sourceSha256": "b63964c18118fad373d3b388f817e62abd27a2641945a6571e27dae488a95b99",
+    "archiveSha256": "b63964c18118fad373d3b388f817e62abd27a2641945a6571e27dae488a95b99"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-unit.json",
+    "archive": "final/settings-unit.json",
+    "sourceSha256": "d990f64e22fde431b326e614a3a85e6f7547773a116363d496f25ad49d445dcc",
+    "archiveSha256": "d990f64e22fde431b326e614a3a85e6f7547773a116363d496f25ad49d445dcc"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/settings-unit.log",
+    "archive": "final/settings-unit.log",
+    "sourceSha256": "6e45173455968f954fefe50830755d75290b3790fae52ae8f88bad8663178507",
+    "archiveSha256": "f9206f131a5716f77a208515fcab58772ba218960a3617618ff99010f43e84c6"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7/summary.json",
+    "archive": "final/summary.json",
+    "sourceSha256": "c2b95d3ed35a6746f98b20633fea0565250e531a5f1dde083b2c2be792d5283c",
+    "archiveSha256": "c2b95d3ed35a6746f98b20633fea0565250e531a5f1dde083b2c2be792d5283c"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/adapter-probe.json",
+    "archive": "diagnostics/adapter-probe.json",
+    "sourceSha256": "4573282c09bdff03b7165ac9b1a667ce09dbed2ad97d76ba7a34166c7651965e",
+    "archiveSha256": "adad3afd6ee287af78a69574f142fd10c96a88848bd00888fe8702389a9eecc7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/adapter-probe.log",
+    "archive": "diagnostics/adapter-probe.log",
+    "sourceSha256": "186df9fc949b427b4eea99c175af5fe15a2e32258556308cf245c90839efba23",
+    "archiveSha256": "4d4ea4d9a3bfd86aae960165b37f4901df37338995a7f0e1e4be8db58ee3811a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt1-core-scan.json",
+    "archive": "diagnostics/attempt1-core-scan.json",
+    "sourceSha256": "fc10333bc14901dd183ef88f18b9049cc5153e7782ba04c5ffc4682ef50ef9f3",
+    "archiveSha256": "2f036437dfebfdabe768e9ea37592419de6fd51aaedd8fd1b142a8f40d0330a7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt1-object-recovery.json",
+    "archive": "diagnostics/attempt1-object-recovery.json",
+    "sourceSha256": "7a3405ec026e4ee44de757bcd75136d1620e31ca7ab7b92f2595583f295c18a8",
+    "archiveSha256": "a6b8b6910803a752767d8f6cacdcbc6ae1a13c7990e4dd31f1159a26316bf3d5"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt1-repair-targets.txt",
+    "archive": "diagnostics/attempt1-repair-targets.txt",
+    "sourceSha256": "943d0744abbb34c5f07cd203c2b247cf2ace43fe8d4308e5edbbda444144b84e",
+    "archiveSha256": "f67aa210e5d18dd2f7631c5d703b38de152e6c163ffe157e50354341cb7ba8a7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt2-core-scan.json",
+    "archive": "diagnostics/attempt2-core-scan.json",
+    "sourceSha256": "2e7da9b8f45fa06367d0a23cde31ccf1cbda5eeafafed1ec41d026f77abcf705",
+    "archiveSha256": "4d6d72317610f500def66865fad91c0d8687ad26acc4b3744f0b1b738534277a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt2-object-recovery.json",
+    "archive": "diagnostics/attempt2-object-recovery.json",
+    "sourceSha256": "126d3dbfb8bbf59a63fda751cfe768552e8812106c37dcf837c19d7ccf100fea",
+    "archiveSha256": "e36c3b869606d352a7bc1dc8cb93588d2557683b4631dcf6d6db5a0cc50f857e"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt2-repair-targets.txt",
+    "archive": "diagnostics/attempt2-repair-targets.txt",
+    "sourceSha256": "783b3fe8801791348a46af7b8331a0a2c5a1c366e33faf6fd5442c5f4171e852",
+    "archiveSha256": "28f68aa5bee6dd281ba5499df6beb6f312e3a5372e17c5664f0275eb56e50e96"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt2-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt2-siso_failed_commands.bat",
+    "sourceSha256": "76f174e834027c4cc70b0b9fcaee479ebfebab6897098b59e95346d838cf1501",
+    "archiveSha256": "191e46853670523e549476425b7a9a8b0ef4d5825983f71b5412256388c1cc37"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt2-type-relations.json",
+    "archive": "diagnostics/attempt2-type-relations.json",
+    "sourceSha256": "b321abee2e5bda9da2412ef7efe859db75c7cf5762f0e2ca32d189008d575718",
+    "archiveSha256": "e2592f6fd7105440ee7e2bc7325b2897e2780ef6e02fb52bcce3e1805524294d"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt3-object-recovery.json",
+    "archive": "diagnostics/attempt3-object-recovery.json",
+    "sourceSha256": "d5352a890b9e4647166a90b389d3c81405c80910cf79355f905d4290acc53f9f",
+    "archiveSha256": "5e23f4a5d172c352a3454a5e33e659679b4c0b74715a6da035b56917ee6a2381"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt3-repair-targets.txt",
+    "archive": "diagnostics/attempt3-repair-targets.txt",
+    "sourceSha256": "b1defd088126351c91c6715a1a4c6dc37445c1c62e9adeffa64877d89deaf240",
+    "archiveSha256": "7c551c1ca03f1747f710f93369c87e8ddf64f88e8dcbf8d17326f2570c6b9060"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt3-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt3-siso_failed_commands.bat",
+    "sourceSha256": "36f8e077f569802348bcc65649442a1c71984f7d4f6b6f983a4ca1b57f8dcc28",
+    "archiveSha256": "b1a022ed94e443e429e318fd7324b706b1966003af1ea453148788fdfec7ac6c"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt4-object-recovery.json",
+    "archive": "diagnostics/attempt4-object-recovery.json",
+    "sourceSha256": "4482c682521c7e362ef1d2efdbaff65f8fdadd68227b51a780cccb825ebdc378",
+    "archiveSha256": "65391430b776fa0d43a5583e9b3c207f782c9bcaeda7467de41648a292d6a9b6"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt4-repair-targets.txt",
+    "archive": "diagnostics/attempt4-repair-targets.txt",
+    "sourceSha256": "07df03392cc2c34a658c42c3c6aa4716f7c6c3a7229eb9ccf6531bc6181e5f24",
+    "archiveSha256": "4bf3bc223a36286602b229451c1d4605f5c51c398e3fd5d13f50c3df5fa51e2f"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt4-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt4-siso_failed_commands.bat",
+    "sourceSha256": "a556fe13fe2e272c4685a354f703c25421b7ee728e3e8ccb39c8d3a0518b0255",
+    "archiveSha256": "cc604915f6fc9eeddd64d933fb263c135ca78cb8fd7e760eb528992fb9053a8a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt5-object-recovery.json",
+    "archive": "diagnostics/attempt5-object-recovery.json",
+    "sourceSha256": "0a340291886b25641d8ea8489f258be637f9a6ae76a11eab9322d3280fb97150",
+    "archiveSha256": "2662af961c7f312865f844b9dcaee9a2e012580dc294f1fdbd1dbd8c681a14f9"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt5-repair-targets.txt",
+    "archive": "diagnostics/attempt5-repair-targets.txt",
+    "sourceSha256": "8651ba6055fa00c4fd569871adf1b1fb59671ee2bf35804452249add1459bbf6",
+    "archiveSha256": "256e857e9fe9100015e01ef1fc9d92895a7835c92ce27e0fda18e6062c0c9cba"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt5-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt5-siso_failed_commands.bat",
+    "sourceSha256": "d960ab8d510e44193abcf694b575961f4c88bc088da9b752ab461d202fcb331e",
+    "archiveSha256": "1908b6f9ca312d64518b6ac40daaaf25aade7c25f3c4499a7793b2ff2f2edf78"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt5-targeted-scan.json",
+    "archive": "diagnostics/attempt5-targeted-scan.json",
+    "sourceSha256": "4b39ada26cef3949ce13c2b0740aaf37bb3cd23827ecaa0be54222ab6658edc2",
+    "archiveSha256": "620e45fcc566868f2a403740e035da3132902e4f4606f3532175935ebc0a745e"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt6-object-recovery.json",
+    "archive": "diagnostics/attempt6-object-recovery.json",
+    "sourceSha256": "cc72b208be9c7129381e2152f6ec98adbaebb0f21a1b89263b993ef948fe23af",
+    "archiveSha256": "b116be0ec331cfb3942f9ab3a1b6445f9690d7007a291c42e833417a69b9eee7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt6-repair-targets.txt",
+    "archive": "diagnostics/attempt6-repair-targets.txt",
+    "sourceSha256": "c46c0dfd90b89ab18f5c5684cd4e27f2b6102f77e7f5a29b288a69813bb0be2e",
+    "archiveSha256": "a25e7a4ec6419974efc9fc82b1333739c7ff20823669f7c1d5ccb729da63c3cb"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt6-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt6-siso_failed_commands.bat",
+    "sourceSha256": "e206b8eae079f9fea2ff5fbe36b2e99ebd5d7ce4629f86a39b06ffdb9f5f84c5",
+    "archiveSha256": "fc172ea35ff4e8dca60f1c85428e4a73b403138c5fd1f1fa6eaff9af22dd52d9"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt6-targeted-scan.json",
+    "archive": "diagnostics/attempt6-targeted-scan.json",
+    "sourceSha256": "c27f55d987699e4bb632bb9bbce486a9d83a8b915e261728fbc7b8875021df99",
+    "archiveSha256": "c27f55d987699e4bb632bb9bbce486a9d83a8b915e261728fbc7b8875021df99"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt7-object-recovery.json",
+    "archive": "diagnostics/attempt7-object-recovery.json",
+    "sourceSha256": "2d7ae3c2c2dc6e78fe50cba236b241108638471eb1c852ea1080e83eb1fe60c0",
+    "archiveSha256": "8df1e50d093352e0373fbd193ace98025cca31dae7598cf7b8c89d31882c5390"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt7-repair-targets.txt",
+    "archive": "diagnostics/attempt7-repair-targets.txt",
+    "sourceSha256": "3d5e11649086f4ec9144db60da02ecb03f1733cb50143b4c27852d5c31ea679b",
+    "archiveSha256": "c7e04b43996c4d87cc7b46db0ae982698abea4cca5bf9e0594ff692afe746898"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt7-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt7-siso_failed_commands.bat",
+    "sourceSha256": "19a02f2dfed9db5c117b46d95e8774335c3ab9e34eb86b89487517c0db2c3e59",
+    "archiveSha256": "ddce9538228362e6138fac43db440ef8c7307b86ba4b1b178387d34d8056ac57"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt7-targeted-scan.json",
+    "archive": "diagnostics/attempt7-targeted-scan.json",
+    "sourceSha256": "eaa834f01377ce28208eebb17e06fabf8d133dc3b6177bcb17a16fd39b0a2fe3",
+    "archiveSha256": "eaa834f01377ce28208eebb17e06fabf8d133dc3b6177bcb17a16fd39b0a2fe3"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt8-object-recovery.json",
+    "archive": "diagnostics/attempt8-object-recovery.json",
+    "sourceSha256": "e70f0eb71ff0820c5cccf0397d67791b2febd496bc02c8b8a70268b9bb0e322d",
+    "archiveSha256": "b5b9fa8090285fb0920c56b6155a0aaf3ee99c2ff02ba8a7854843ebe10004b4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt8-rebuild.log",
+    "archive": "diagnostics/attempt8-rebuild.log",
+    "sourceSha256": "08774290a91cb8264b58cd5843179af0d85a2633ef1a688ad4c30a4b023a4829",
+    "archiveSha256": "5fe7b7dd6eec7e4b096228770df7c2a07bc691e032de650f98c48efefc27d3ac"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt8-section-scan.json",
+    "archive": "diagnostics/attempt8-section-scan.json",
+    "sourceSha256": "c9720582ea232849b8f015e2dcb104eb4b4691bc7fbd1711cfccb7d8dc373406",
+    "archiveSha256": "d7b434f24d741e1c78210d0ace098f3e2316f39125c3965f83ecf80b96c3dd36"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/attempt8-siso_failed_commands.bat",
+    "archive": "diagnostics/attempt8-siso_failed_commands.bat",
+    "sourceSha256": "b6e6f2b193f5e46823163af5496da062d81d496b4963bf0b7c0fa6ae22d482b0",
+    "archiveSha256": "691867134485fa513a0e3908b66cfc2f406f3db70bc184b4c53d2d354ff6b9b5"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/blink-probe.log",
+    "archive": "diagnostics/blink-probe.log",
+    "sourceSha256": "79720edafd99f91705eb09d5a310fe93c2d7b827995a3daae9139ab7cdd457f5",
+    "archiveSha256": "770b0a07930b7dae27c42eebfddf0b3fac40acf3f0e53630b51895ce6c8e4840"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/blink_core.dll-scan.json",
+    "archive": "diagnostics/blink_core.dll-scan.json",
+    "sourceSha256": "364c54c92ae3f7655eb2ab281ccd289c6497914150839f44c551434d2378d4fe",
+    "archiveSha256": "6133d3ecd933696709690c0bf5970a7469c946c662b20cdd6c622500b2fed54a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/blink_unittests.exe-scan.json",
+    "archive": "diagnostics/blink_unittests.exe-scan.json",
+    "sourceSha256": "46f7680d0d7136248b68b6bdcb883e32fd27e562dea5f0cfa5373fe1879b72a3",
+    "archiveSha256": "d32901862db5fd32c6cc612fb855f85e7443367c9934d7477224f472e6f353de"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt3.log",
+    "archive": "diagnostics/build-attempt3.log",
+    "sourceSha256": "b8e234d73f31845b052694b8636db9908ffa1eebfcad20d35f304910da57cfaa",
+    "archiveSha256": "d5d07e5167c727fe87b00ba0c79a7f9ae43c844cace07c02abcfe4d164a1e017"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt4.log",
+    "archive": "diagnostics/build-attempt4.log",
+    "sourceSha256": "29ca7372f49b5b36a378fd29e805b06698e22ecfe9fe431ef68f3cd32ebecc31",
+    "archiveSha256": "519b900f170aa07011469ad3443913ca114dc27472c1378e6cb0a9f55ae42aad"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt5.log",
+    "archive": "diagnostics/build-attempt5.log",
+    "sourceSha256": "733a64c7045f05bf0053210d1a140e2c36478ae5445b3eb1a403055101f05b45",
+    "archiveSha256": "762358cbbc1bd8c790ec93912d150b2c26b434f716345aa1cd17b98e02cf68c8"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt6.log",
+    "archive": "diagnostics/build-attempt6.log",
+    "sourceSha256": "3092dc8c589c1eaed5e4bd787e45d12663b09f85d8a703d977498bdc8294b605",
+    "archiveSha256": "dc3a5ed199ba0b0e45e12bfc27f51aa13547a1117f295c0734c66e207f8d2c7b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt7.log",
+    "archive": "diagnostics/build-attempt7.log",
+    "sourceSha256": "9b700b54ca447ffae4a0f1f2e36853db42c586f9d39e7a6d970f21a90f2f9cc7",
+    "archiveSha256": "5f94b90939b6a5e3910d73486f4a08709fa8496f343dca3b4d1be0219de36f44"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt8.log",
+    "archive": "diagnostics/build-attempt8.log",
+    "sourceSha256": "b1d9649377af81bc17130ffe49d2efd14a768fddb5d5e245c6864710637222b6",
+    "archiveSha256": "db9769549206b8b9b4843290937af0793e420971bec19eafe45c51392f454622"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/build-attempt9.log",
+    "archive": "diagnostics/build-attempt9.log",
+    "sourceSha256": "86f071c27c9ba341e4e2ed7fe2aaaec8c481cc3f6da48491c821a0a7d46be84f",
+    "archiveSha256": "9462da1e581851a7bf42fbbf5909dc60dc1768be653061f0f9e21dff672751e4"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-0.log",
+    "archive": "diagnostics/checkdeps-0.log",
+    "sourceSha256": "2e882b0e6fdc7b66f3574d976ac144a13c0842786b107268ca3f270f9a1a1037",
+    "archiveSha256": "fc268d298071252dfee477d7803af1d4a1c9d8577c6c349d07a8c13f3dfe2556"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-1.log",
+    "archive": "diagnostics/checkdeps-1.log",
+    "sourceSha256": "b926fc4971b0702b4ba9949eac1d72e6626eb6505a5d81cd07a68a67c70027c6",
+    "archiveSha256": "d24f575fe7b0bd6d0b57eae676a7fb57ddde168959e388fdad0bccf5878e3978"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-2.log",
+    "archive": "diagnostics/checkdeps-2.log",
+    "sourceSha256": "c7ee1b7fc81abba61143a60a11b6e052e5db5813686b6a661d2fd7c72955992e",
+    "archiveSha256": "e1897ad48a3df03668f246f30dd027c00b5c19f795542e7b1d9fab744b287485"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-3.log",
+    "archive": "diagnostics/checkdeps-3.log",
+    "sourceSha256": "2ad4fab5e2c0be1899f4ff4392c43334d41adbcb3bf9cf2675ad3d25c9e792bc",
+    "archiveSha256": "0dd1fc77417a9da0b84a07a1d967fd5d48fdf8a643babc892c2d66396928b703"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-4.log",
+    "archive": "diagnostics/checkdeps-4.log",
+    "sourceSha256": "1834b46154d462ddc0be41978acfe5236d85717766cd935f50df5c161eae8472",
+    "archiveSha256": "2968ef0acabb0ac6de53dbef88300520775052bf7cf8b67f0bc859d8def88c3b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/checkdeps-5.log",
+    "archive": "diagnostics/checkdeps-5.log",
+    "sourceSha256": "32d5ee557290d78f0e2fd0653b5f67b06205dff0f77d5bbc351669213e416ceb",
+    "archiveSha256": "e85975c40a122df062dc443b26b9545f32611a9bdc47f5428618b1ed2727ea59"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/clang-format.log",
+    "archive": "diagnostics/clang-format.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/core-scan.log",
+    "archive": "diagnostics/core-scan.log",
+    "sourceSha256": "6936fe4b291db24135d52a02ee43a5e62c2298f7a22e76b0c45c52aad23c6c28",
+    "archiveSha256": "d43877a6481ac0ed194f82dc8c15eae206d7ca14c68f47ba7064d1fe41920d44"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/core-scan2.log",
+    "archive": "diagnostics/core-scan2.log",
+    "sourceSha256": "e5ea3f085a3cd3278ca9e3a1c1c4f32e66033012e62650e762a8df6dfb3cfd46",
+    "archiveSha256": "d3defb969b806849d3c5379956b4c246d0cf81bc80f168260d085bb6a5b3a47a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/core-scan3.log",
+    "archive": "diagnostics/core-scan3.log",
+    "sourceSha256": "b3f4f73a5f821bf08231618b579a71e6d18ea3e886aa956fe9e8972543fe86f4",
+    "archiveSha256": "3f7fca187af2b8495621d3b81c0625af0f068bdce8f50fbe6cb700abba270ccb"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/dependency-check.json",
+    "archive": "diagnostics/dependency-check.json",
+    "sourceSha256": "0589d0c62bb9063d9d1b3af4c16a831c75a60d8850a7ae90134fa05f52021907",
+    "archiveSha256": "0589d0c62bb9063d9d1b3af4c16a831c75a60d8850a7ae90134fa05f52021907"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/dependency-check.log",
+    "archive": "diagnostics/dependency-check.log",
+    "sourceSha256": "f3a231073e681ac0293548bb53f74b1f1e28b3d52f8d5c59e58ddd1888bf2ed6",
+    "archiveSha256": "0589d0c62bb9063d9d1b3af4c16a831c75a60d8850a7ae90134fa05f52021907"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-0.log",
+    "archive": "diagnostics/final-checkdeps-0.log",
+    "sourceSha256": "2e882b0e6fdc7b66f3574d976ac144a13c0842786b107268ca3f270f9a1a1037",
+    "archiveSha256": "fc268d298071252dfee477d7803af1d4a1c9d8577c6c349d07a8c13f3dfe2556"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-1.log",
+    "archive": "diagnostics/final-checkdeps-1.log",
+    "sourceSha256": "b926fc4971b0702b4ba9949eac1d72e6626eb6505a5d81cd07a68a67c70027c6",
+    "archiveSha256": "d24f575fe7b0bd6d0b57eae676a7fb57ddde168959e388fdad0bccf5878e3978"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-2.log",
+    "archive": "diagnostics/final-checkdeps-2.log",
+    "sourceSha256": "c7ee1b7fc81abba61143a60a11b6e052e5db5813686b6a661d2fd7c72955992e",
+    "archiveSha256": "e1897ad48a3df03668f246f30dd027c00b5c19f795542e7b1d9fab744b287485"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-3.log",
+    "archive": "diagnostics/final-checkdeps-3.log",
+    "sourceSha256": "32d5ee557290d78f0e2fd0653b5f67b06205dff0f77d5bbc351669213e416ceb",
+    "archiveSha256": "e85975c40a122df062dc443b26b9545f32611a9bdc47f5428618b1ed2727ea59"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-4.log",
+    "archive": "diagnostics/final-checkdeps-4.log",
+    "sourceSha256": "2ad4fab5e2c0be1899f4ff4392c43334d41adbcb3bf9cf2675ad3d25c9e792bc",
+    "archiveSha256": "0dd1fc77417a9da0b84a07a1d967fd5d48fdf8a643babc892c2d66396928b703"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-checkdeps-5.log",
+    "archive": "diagnostics/final-checkdeps-5.log",
+    "sourceSha256": "1834b46154d462ddc0be41978acfe5236d85717766cd935f50df5c161eae8472",
+    "archiveSha256": "2968ef0acabb0ac6de53dbef88300520775052bf7cf8b67f0bc859d8def88c3b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-clang-format.log",
+    "archive": "diagnostics/final-clang-format.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-object-recovery.json",
+    "archive": "diagnostics/final-object-recovery.json",
+    "sourceSha256": "4d42f166f28eb7570d0907c5830a44e810e4f7d61c4b40b0a58bd5b505710a7e",
+    "archiveSha256": "aedae377d1e2ee5c2b9124f3c7e262c8a43b55440e97af8bd53e39493ed033e0"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-static-checks.json",
+    "archive": "diagnostics/final-static-checks.json",
+    "sourceSha256": "1c9bf1faf6d08b2789f3a3f2ba6f70d64379e393c8cfba6e6bc4645d2e9d44ad",
+    "archiveSha256": "0e7f34087b590fc2efb77d6828096fa6647fbb143369817b7990a8c619608c93"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final-validation.log",
+    "archive": "diagnostics/final-validation.log",
+    "sourceSha256": "157ad9b6eff77735ab0118986260e8ad4eee85e46d0efb67c92ccdc4bbc10dee",
+    "archiveSha256": "9e1dba8865e030ff6d280b3c0d3ab0e536e17b58d0349f94e92ccdd86e0b8703"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final2-validation.log",
+    "archive": "diagnostics/final2-validation.log",
+    "sourceSha256": "aa4b6f01f8073318f9b133e25f9dcdcbe8c823f4c4cc0de1e0bbc6876a01fbb2",
+    "archiveSha256": "e29aaabd8a7b28a3e8d1e4fbb2be0f1597be049d640c188bfaa9867f3ed7288b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final3-validation.log",
+    "archive": "diagnostics/final3-validation.log",
+    "sourceSha256": "1fa63a2b1f2b053dcc203dd1a4480c411bc035f7ec1380c6736fb3f42cefc11c",
+    "archiveSha256": "9c95860bff3c1291612f18e7f2ca5dc7e47c0c2a3cb42ce1e92a0237a8ee66b3"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final4-validation.log",
+    "archive": "diagnostics/final4-validation.log",
+    "sourceSha256": "bddc53fd5d31866bd0e4b9a44b6e1f751da7debd06624a1fcad82c1eb01d9045",
+    "archiveSha256": "33ee79a4c11f4be50f8f43e7bd135af55a91a41ba26845039da50f42d9cb2083"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final5-validation.log",
+    "archive": "diagnostics/final5-validation.log",
+    "sourceSha256": "257fee5131edb1758344e4fe4acb55ca462fcafdbdb73c9bc8f5558f85a356eb",
+    "archiveSha256": "5f3abd516a6bd84f157eb63a76376915fa7ac29732a0fb2e0ddfc5364021896b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final6-validation.log",
+    "archive": "diagnostics/final6-validation.log",
+    "sourceSha256": "4b28b52caceffcf832d9363bef89b5ee6b831ce585333279ef2fe6aab2945760",
+    "archiveSha256": "2743538123c55e3e70fb62179af1047f230d6639f303d9a791d28b99febcb58e"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final7-validation.log",
+    "archive": "diagnostics/final7-validation.log",
+    "sourceSha256": "2e90beced0678cf210e9de3fa913954ca2dc448dec2bb8365eb9d25b7465f441",
+    "archiveSha256": "08bd270dcd89c952c2b1b08f992cf490f12604668e8aaba90e0f9d7facb029f1"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe.json",
+    "archive": "diagnostics/input-probe.json",
+    "sourceSha256": "12cca7279074b85b30d3d8b69c93cf37cbed5c5b6e296438775c0b8900769362",
+    "archiveSha256": "12cca7279074b85b30d3d8b69c93cf37cbed5c5b6e296438775c0b8900769362"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe.json.chrome.log",
+    "archive": "diagnostics/input-probe.json.chrome.log",
+    "sourceSha256": "5d1fe4171599d535ec07090f6ec9f9ccc6f5e12d30d8568ffa3cdb8df8e33c77",
+    "archiveSha256": "ee12bf3ad6556f98ce5ddfd28704659a881becf232802be90d5fb2f7009a2e33"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe.log",
+    "archive": "diagnostics/input-probe.log",
+    "sourceSha256": "65ff7cd8f5089bb385cadd60eaa4f0c98add1863f538714f27c48201bb411d19",
+    "archiveSha256": "880d8bada83dceef6ec4a8b8f5553fe6c053dca5e1abc1d494ce920ed7fed7f8"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe2.json",
+    "archive": "diagnostics/input-probe2.json",
+    "sourceSha256": "e67fe9b5c3fec3d1b0fa45416507c0368e82f9a6af83f0abb5aaf87b9b429274",
+    "archiveSha256": "e67fe9b5c3fec3d1b0fa45416507c0368e82f9a6af83f0abb5aaf87b9b429274"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe2.json.chrome.log",
+    "archive": "diagnostics/input-probe2.json.chrome.log",
+    "sourceSha256": "492ab19b38ce26d51181781f89feb8d2343ee920269fb8553675d63f6ab18a38",
+    "archiveSha256": "f3fb81c51d9b62af8b1174a72d07be9c0c37ec573c2e29e8f83e64c7aad1e63c"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe2.log",
+    "archive": "diagnostics/input-probe2.log",
+    "sourceSha256": "fbab9a354d7be4fb0af047902042f41afcbb7f5d32d79386467332f6ec72ef3b",
+    "archiveSha256": "5d9fce790d7db5c2fd14545111a7d996c0d39220698cc59e624638dbbab49d42"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe3.json",
+    "archive": "diagnostics/input-probe3.json",
+    "sourceSha256": "5032d6767fff17f0740cb1ad1aa08b1d6bce6b7c8fdf3438b28d5d5aabc13a8f",
+    "archiveSha256": "5032d6767fff17f0740cb1ad1aa08b1d6bce6b7c8fdf3438b28d5d5aabc13a8f"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe3.json.chrome.log",
+    "archive": "diagnostics/input-probe3.json.chrome.log",
+    "sourceSha256": "32c78fb4e57fcce94f1fde1530a7d36e9d6c365dfdda7a0fc8fe93b323a8968b",
+    "archiveSha256": "c9fbe3c275d277b4adcd4811959240614fd942d92af26c7485c2a00ff744dfbb"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/input-probe3.log",
+    "archive": "diagnostics/input-probe3.log",
+    "sourceSha256": "813afc8cb8401a6fe446a45b81be2458831a65525c65a14b9649fe5969ed20b0",
+    "archiveSha256": "d7252c46fa66429042c43b646a0610f9a6e66b6c4ef857dbda41c30ab200f226"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/object-recovery-verified.json",
+    "archive": "diagnostics/object-recovery-verified.json",
+    "sourceSha256": "31b194dd3d428b8d936d645dec0e90b23051268d7ed215d4796ec1b772cefc4d",
+    "archiveSha256": "31b194dd3d428b8d936d645dec0e90b23051268d7ed215d4796ec1b772cefc4d"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/pyscript-input-build-probe.log",
+    "archive": "diagnostics/pyscript-input-build-probe.log",
+    "sourceSha256": "92b7c9ad211a0c6f38a2098dc98c4b6d693653aee4f699440a27f5013329750c",
+    "archiveSha256": "d981230f5c36492f4774999bc4f7abeeb55f45c580986acb13436499c63ce778"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/pyscript-input-build-probe2.log",
+    "archive": "diagnostics/pyscript-input-build-probe2.log",
+    "sourceSha256": "36e756e34a1edb2728adc8105bc001e64e46dd4dde162fec895291953c8832c4",
+    "archiveSha256": "81ace35147ccd932fc93c7523b3370796f27073b6e4c552fd2bcf10ffc17ae7c"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/runtime-probe2.json",
+    "archive": "diagnostics/runtime-probe2.json",
+    "sourceSha256": "b1bda9c9be4d45ea2108a1793bacfa0a5ca5b47b90fa3750285e5a2d743d9225",
+    "archiveSha256": "ba27970bb5acb8d118bd30d49538c1142052e53daf0328844960885d97402415"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/runtime-probe2.log",
+    "archive": "diagnostics/runtime-probe2.log",
+    "sourceSha256": "570c729a8f77026c5170ba7aa43c35ec7ad0bd134ecb29dfc4b315980881c2d7",
+    "archiveSha256": "25e1a9bfd21cdf4d937ccdfc193be55dcf2f33445bd80ae9a9a794e8e97f1087"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/siso_failed_commands.bat",
+    "archive": "diagnostics/siso_failed_commands.bat",
+    "sourceSha256": "2bc28976ab1b7c0b02694c79f200f1272bf4f48776e838fc71db97d6280d6629",
+    "archiveSha256": "3ddbebdece2d9e92c05ff4a8f8b36365e0abc493b1469c0e9831d3c449ad137f"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/syntax-pyscript_input_smoke_test.mjs.log",
+    "archive": "diagnostics/syntax-pyscript_input_smoke_test.mjs.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/syntax-pyscript_settings_smoke_test.mjs.log",
+    "archive": "diagnostics/syntax-pyscript_settings_smoke_test.mjs.log",
+    "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archiveSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/unit-input-scan.log",
+    "archive": "diagnostics/unit-input-scan.log",
+    "sourceSha256": "424cb73f43d4369ccc0467ee37395fe03b7f02686970a590a23a3756b6504c96",
+    "archiveSha256": "bbf5d3cd223a78e5e93f8ab8998603c3b446ebb63aac4e1b9a275e89195a87a0"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final/summary.json",
+    "archive": "diagnostics/final/summary.json",
+    "sourceSha256": "1a0e8a859ce5c5d30825fbd798a77af980b57c2b6931825fc2f2e12ed8d55306",
+    "archiveSha256": "1a0e8a859ce5c5d30825fbd798a77af980b57c2b6931825fc2f2e12ed8d55306"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final/build.log",
+    "archive": "diagnostics/final/build.log",
+    "sourceSha256": "503acc96db949f07de1885cc583f7947e49c8b9336a7d75be79b6ca655c0dc85",
+    "archiveSha256": "6b3b233d14bb83251c4369ecbf33eb1dcb7af2b17d80219a77abb7bb191be5ae"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final/events.json",
+    "archive": "diagnostics/final/events.json",
+    "sourceSha256": "f9d230f3eed838d21bb6929a9709864c4e1f968c500361346e4e3d934d7d5d07",
+    "archiveSha256": "f9d230f3eed838d21bb6929a9709864c4e1f968c500361346e4e3d934d7d5d07"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final/events.log",
+    "archive": "diagnostics/final/events.log",
+    "sourceSha256": "d744342c9d1d0ad83c887e1b5b93b99cbeb3394fe0c9bc3a6a8a872cc16e540a",
+    "archiveSha256": "d744342c9d1d0ad83c887e1b5b93b99cbeb3394fe0c9bc3a6a8a872cc16e540a"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final2/summary.json",
+    "archive": "diagnostics/final2/summary.json",
+    "sourceSha256": "3214a512d374cd9eb115bc16685d9135eac585e4d5dd68dd0e2111ee8f9992e5",
+    "archiveSha256": "3214a512d374cd9eb115bc16685d9135eac585e4d5dd68dd0e2111ee8f9992e5"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final2/build.log",
+    "archive": "diagnostics/final2/build.log",
+    "sourceSha256": "30b6274754664887fdf4887156e4def9c5d6ca1a2667075d4fc3f1362ba2fab9",
+    "archiveSha256": "78e1650bbe3245da72885af78f76565dfc5e8f3251bddff2de0f156aeaf0a45e"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final3/summary.json",
+    "archive": "diagnostics/final3/summary.json",
+    "sourceSha256": "b421c062b0cba3ff762b7f34e7458b1d483a01d26baa309183134f477a9db268",
+    "archiveSha256": "b421c062b0cba3ff762b7f34e7458b1d483a01d26baa309183134f477a9db268"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final3/build.log",
+    "archive": "diagnostics/final3/build.log",
+    "sourceSha256": "aae485f8cf53c4727b4015c8c6da30f55a8ffbb7f170de74d82e107c5da39c8a",
+    "archiveSha256": "29057e20f0b58bd3f689af009ba5d9a154f822868f808ec09a59d07837b1ba01"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final4/summary.json",
+    "archive": "diagnostics/final4/summary.json",
+    "sourceSha256": "bf268e935d00033201749a2de54a73e1fbd7f2ebaa2f01e0dcf116ffe74f19b7",
+    "archiveSha256": "bf268e935d00033201749a2de54a73e1fbd7f2ebaa2f01e0dcf116ffe74f19b7"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final4/build.log",
+    "archive": "diagnostics/final4/build.log",
+    "sourceSha256": "78a13253a34cbc51e079648b8a13f0d90d6ecd2e6236807986a82fcd7032192f",
+    "archiveSha256": "64f8b356818255cb5cd928a61f283934e4d78976693f3aa005e9ab16c6075375"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final5/summary.json",
+    "archive": "diagnostics/final5/summary.json",
+    "sourceSha256": "3de786d4f4b76eb9a48f3225d9d4100c138f16e3dfaca90cf4a1d5742265a481",
+    "archiveSha256": "3de786d4f4b76eb9a48f3225d9d4100c138f16e3dfaca90cf4a1d5742265a481"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final5/build.log",
+    "archive": "diagnostics/final5/build.log",
+    "sourceSha256": "137152181cec2b7b935b6085a90ed8c48c835c4c08530d22385c1f1bd6afb786",
+    "archiveSha256": "73aa8131fdcba96a56f39851f1c648aeeb696243cc97ee5a1466b553dd1f96f0"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final6/summary.json",
+    "archive": "diagnostics/final6/summary.json",
+    "sourceSha256": "0c76cba398d9ac4f188290de335182c3fed21bd0c922088a58f980957d9df532",
+    "archiveSha256": "0c76cba398d9ac4f188290de335182c3fed21bd0c922088a58f980957d9df532"
+  },
+  {
+    "source": "out/Debug/pyscript-input-phase2/final6/build.log",
+    "archive": "diagnostics/final6/build.log",
+    "sourceSha256": "edac9cc4f43342daa6662e038557c120078c7a879deb2766d38a3d23b5728c21",
+    "archiveSha256": "97fabc3cfa73e224fcbc7c5df0b8315d18ad3038b59ce80fddbed60bae70ad9d"
+  }
+]

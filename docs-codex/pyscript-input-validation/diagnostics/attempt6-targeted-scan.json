@@ -1,0 +1,11 @@
+{
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_to_style_map.obj",
+      "errors": [
+        "Invalid UTF-8 in COFF string table at file offset 0x843000",
+        "Control byte in COFF string table at file offset 0x843005"
+      ]
+    }
+  ]
+}

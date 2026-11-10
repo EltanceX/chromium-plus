@@ -43,12 +43,18 @@ class TestDomHost final : public DomHost {
   DomResult AddEventListener(DomHandle element,
                              std::string_view type,
                              CallbackHandle callback,
-                             bool once) override {
+                             bool once,
+                             bool passive,
+                             bool capture) override {
     ++adds;
     last_callback = callback;
     last_once = once;
-    EXPECT_EQ("click", type);
-    if (element.document != 7 || element.generation != 1 || element.id != 3) {
+    last_type = type;
+    last_passive = passive;
+    last_capture = capture;
+    if (element.document != 7 || element.generation != 1 ||
+        (element.kind == TargetKind::kElement ? element.id != 3
+                                              : element.id != 1)) {
       return {{}, DomError::kReference, "Stale listener target"};
     }
     listeners.push_back(callback);
@@ -60,7 +66,9 @@ class TestDomHost final : public DomHost {
   DomResult RemoveEventListener(DomHandle element,
                                 CallbackHandle callback) override {
     ++removes;
-    if (element.document != 7 || element.generation != 1 || element.id != 3) {
+    if (element.document != 7 || element.generation != 1 ||
+        (element.kind == TargetKind::kElement ? element.id != 3
+                                              : element.id != 1)) {
       return {{}, DomError::kReference, "Stale listener target"};
     }
     if (listener_failure != DomError::kNone) {
@@ -94,6 +102,34 @@ class TestDomHost final : public DomHost {
       frame = {};
     }
   }
+  DomResult GetEventTarget(TargetKind kind) override {
+    return {{7, 1, 1, kind}};
+  }
+  PageStateResult GetPageState() override {
+    return {{}, {false, true, 800, 600, true, 4}};
+  }
+  DomResult ControlEvent(uint64_t token, EventAction action) override {
+    ++controls;
+    if (!token || token != active_token) {
+      return {{}, DomError::kReference, "Expired event"};
+    }
+    last_action = action;
+    return {};
+  }
+  DomResult SetPointerCapture(DomHandle h, int32_t id, bool capture) override {
+    ++captures;
+    last_pointer = id;
+    last_capture = capture;
+    return {};
+  }
+  std::string last_type;
+  bool last_passive = false;
+  bool last_capture = false;
+  int controls = 0;
+  int captures = 0;
+  int32_t last_pointer = 0;
+  uint64_t active_token = 0;
+  EventAction last_action = EventAction::kPreventDefault;
   CallbackHandle TakeFrame() { return std::exchange(frame, {}); }
   void EraseListener(CallbackHandle callback) {
     std::erase_if(listeners, [&](CallbackHandle value) {
@@ -124,6 +160,225 @@ class TestDomHost final : public DomHost {
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest, TypedInputTargetsOptionsAndPageState) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import dom
+for target, cls, types in (
+    (dom.get_document(), dom.DocumentHandle, ('keydown', 'keyup', 'visibilitychange')),
+    (dom.get_window(), dom.WindowHandle, ('blur', 'focus', 'resize')),
+    (dom.get_element_by_id('x'), dom.ElementHandle,
+     ('input', 'change', 'pointerdown', 'pointerup', 'pointermove', 'pointercancel',
+      'gotpointercapture', 'lostpointercapture'))):
+    assert type(target) is cls
+    for event_type in types:
+        listener = dom.add_event_listener(target, event_type, lambda e: None,
+                                         once=True, passive=True, capture=True)
+        dom.remove_event_listener(listener)
+page = dom.get_page_state()
+assert (page.hidden, page.has_focus, page.width, page.height,
+        page.reduced_motion, page.input_epoch) == (False, True, 800, 600, True, 4)
+for field in ('hidden', 'width', 'input_epoch'):
+    try: setattr(page, field, 0)
+    except AttributeError: pass
+    else: raise AssertionError('mutable page state')
+for cls in (dom.DocumentHandle, dom.WindowHandle, dom.PageState):
+    try: cls()
+    except TypeError: pass
+    else: raise AssertionError('constructible native snapshot')
+for target, kind in ((dom.get_document(), 'click'), (dom.get_window(), 'keydown'),
+                     (dom.get_element_by_id('x'), 'resize')):
+    try: dom.add_event_listener(target, kind, lambda e: None)
+    except ValueError: pass
+    else: raise AssertionError('invalid target/type accepted')
+try: dom.set_text(dom.get_document(), 'forbidden')
+except TypeError: pass
+else: raise AssertionError('document is an element')
+for options in ({'passive': 1}, {'capture': None}, {'once': 1}):
+    try: dom.add_event_listener(dom.get_document(), 'keydown', lambda e: None, **options)
+    except TypeError: pass
+    else: raise AssertionError('non-bool options accepted')
+)PY",
+                                 "input-targets", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(14, host.adds);
+  EXPECT_EQ(14, host.removes);
+  EXPECT_TRUE(host.last_once && host.last_passive && host.last_capture);
+}
+
+TEST(PythonRuntimeTest, InputSnapshotCopiesAllFieldsAndRejectsMutation) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  auto result = context->Execute(R"PY(
+import dom
+saved = None
+def callback(e):
+    global saved
+    assert type(e.current_target) is dom.DocumentHandle
+    assert (e.type, e.is_trusted, e.cancelable, e.bubbles, e.default_prevented,
+            e.passive, e.target_is_editable, e.target_in_dialog) == ('keydown', True, True, True, True, True, True, True)
+    assert (e.key, e.code, e.repeat, e.is_composing, e.alt_key, e.ctrl_key,
+            e.meta_key, e.shift_key) == ('界', 'KeyA', True, True, True, True, True, True)
+    assert (e.pointer_id, e.pointer_type, e.button, e.buttons, e.client_x, e.client_y,
+            e.is_primary, e.value, e.checked, e.value_truncated, e.input_epoch) == (-5, 'pen', -1, 3, 1.5, -2.5, True, '值', True, True, 81)
+    for field in ('type', 'key', 'client_x', 'input_epoch', 'current_target'):
+        try: setattr(e, field, None)
+        except AttributeError: pass
+        else: raise AssertionError('mutable event')
+    assert not hasattr(e, 'control_token')
+    saved = e
+)PY");
+  ASSERT_TRUE(result.success) << result.error;
+  auto handle = context->RegisterCallback("callback").handle;
+  CallbackEvent e;
+  e.type = "keydown";
+  e.current_target = {7, 1, 1, TargetKind::kDocument};
+  e.is_trusted = e.cancelable = e.bubbles = e.default_prevented = e.passive =
+      true;
+  e.target_is_editable = e.target_in_dialog = true;
+  e.key = "界";
+  e.code = "KeyA";
+  e.repeat = e.is_composing = e.alt_key = e.ctrl_key = e.meta_key =
+      e.shift_key = true;
+  e.pointer_id = -5;
+  e.pointer_type = "pen";
+  e.button = -1;
+  e.buttons = 3;
+  e.client_x = 1.5;
+  e.client_y = -2.5;
+  e.is_primary = true;
+  e.value = "值";
+  e.checked = e.value_truncated = true;
+  e.input_epoch = 81;
+  result = context->InvokeCallback(handle, e);
+  EXPECT_TRUE(result.success) << result.error;
+  e.key = "changed";
+  EXPECT_TRUE(context->Execute("assert saved.key == '界'").success);
+}
+
+TEST(PythonRuntimeTest,
+     EventControlUsesTokenAndCannotUseRetainedEventForLaterCall) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  TestDomHost host;
+  ASSERT_TRUE(context
+                  ->Execute(R"PY(
+import dom
+saved = None
+def callback(e):
+    global saved
+    if saved is not None:
+        try: saved.prevent_default()
+        except ReferenceError: pass
+        else: raise AssertionError('old event controlled a later dispatch')
+    e.prevent_default()
+    e.stop_propagation()
+    e.stop_immediate_propagation()
+    saved = e
+)PY",
+                            "token", &host)
+                  .success);
+  auto handle = context->RegisterCallback("callback").handle;
+  auto e = Click();
+  e.control_token = host.active_token = 11;
+  auto result = context->InvokeCallback(handle, e, &host);
+  ASSERT_TRUE(result.success) << result.error;
+  e.control_token = host.active_token = 12;
+  result = context->InvokeCallback(handle, e, &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(7, host.controls);
+  EXPECT_EQ(EventAction::kStopImmediatePropagation, host.last_action);
+  host.active_token = 0;
+  result = context->Execute("saved.prevent_default()", "expired", &host);
+  EXPECT_FALSE(result.success);
+  EXPECT_NE(std::string::npos, result.error.find("ReferenceError"));
+  result = context->Execute("saved.stop_propagation()");
+  EXPECT_FALSE(result.success);
+  EXPECT_NE(std::string::npos, result.error.find("ReferenceError"));
+}
+
+TEST(PythonRuntimeTest, PointerCaptureArgumentsAreStrictAndTyped) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  ASSERT_TRUE(context);
+  auto result = context->Execute(R"PY(
+import dom
+element = dom.get_element_by_id('x')
+dom.set_pointer_capture(element, -2147483648)
+dom.release_pointer_capture(element, 2147483647)
+for pointer in (True, 1.0, '1', None):
+    try: dom.set_pointer_capture(element, pointer)
+    except TypeError: pass
+    else: raise AssertionError('non-int pointer')
+for pointer in (-2147483649, 2147483648, 2**80):
+    try: dom.release_pointer_capture(element, pointer)
+    except (ValueError, OverflowError): pass
+    else: raise AssertionError('oversized pointer')
+try: dom.set_pointer_capture(dom.get_window(), 1)
+except TypeError: pass
+else: raise AssertionError('window capture')
+)PY",
+                                 "pointer", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(2, host.captures);
+  EXPECT_EQ(2147483647, host.last_pointer);
+  EXPECT_FALSE(host.last_capture);
+}
+
+TEST(PythonRuntimeTest, InputSnapshotRejectsInvalidStringsAndCoordinates) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context);
+  ASSERT_TRUE(context->Execute("def callback(e): pass").success);
+  auto h = context->RegisterCallback("callback").handle;
+  for (auto field : {&CallbackEvent::key, &CallbackEvent::code,
+                     &CallbackEvent::value, &CallbackEvent::pointer_type}) {
+    for (auto value : {std::string(16385, 'x'), std::string(1, '\xff')}) {
+      auto e = Click();
+      e.*field = value;
+      EXPECT_FALSE(context->InvokeCallback(h, e).success);
+    }
+  }
+  for (double value : {std::numeric_limits<double>::infinity(),
+                       std::numeric_limits<double>::quiet_NaN()}) {
+    auto e = Click();
+    e.client_x = value;
+    EXPECT_FALSE(context->InvokeCallback(h, e).success);
+  }
+  EXPECT_TRUE(context->InvokeCallback(h, Click()).success);
+}
+
+TEST(PythonRuntimeTest, NewInputOperationsShareTheDomBudget) {
+  for (const char* operation :
+       {"dom.get_document()", "dom.get_window()", "dom.get_page_state()",
+        "dom.set_pointer_capture(element, 1)", "e.prevent_default()"}) {
+    std::string error;
+    base::SimpleTestTickClock clock;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    TestDomHost host;
+    ASSERT_TRUE(context);
+    auto result = context->Execute(
+        std::string("import dom\nelement = dom.get_element_by_id('x')\ndef "
+                    "callback(e):\n    for i in range(129): ") +
+            operation,
+        "meter", &host);
+    ASSERT_TRUE(result.success) << result.error;
+    auto e = Click();
+    e.control_token = host.active_token = 1;
+    result = context->InvokeCallback(
+        context->RegisterCallback("callback").handle, e, &host);
+    EXPECT_FALSE(result.success) << operation;
+    EXPECT_EQ(StopReason::kDomCalls, result.stop_reason) << operation;
+    EXPECT_FALSE(context->Execute("pass").success);
+  }
 }
 
 TEST(PythonRuntimeTest,
@@ -484,7 +739,7 @@ for action, exception in [
     (lambda: dom.add_event_listener(element, 'click', callback, True), TypeError),
     (lambda: dom.add_event_listener(element, 'click', callback, once=1), TypeError),
     (lambda: dom.add_event_listener(element, 'click', callback, once=Truthy()), TypeError),
-    (lambda: dom.add_event_listener(element, 'click', callback, capture=True), TypeError),
+    (lambda: dom.add_event_listener(element, 'click', callback, capture=Truthy()), TypeError),
     (lambda: dom.remove_event_listener(element), TypeError),
     (lambda: dom.remove_event_listener(1), TypeError),
 ]:

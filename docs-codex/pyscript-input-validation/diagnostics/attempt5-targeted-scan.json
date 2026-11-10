@@ -1,0 +1,15 @@
+{
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_variable_parser.obj",
+      "errors": [
+        "Section 410: invalid raw data extent",
+        "Section 410: invalid relocation extent",
+        "Section 411: invalid raw data extent",
+        "Section 411: invalid relocation extent",
+        "Section 412: invalid raw data extent",
+        "Section 412: invalid relocation extent"
+      ]
+    }
+  ]
+}

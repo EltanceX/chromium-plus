@@ -1,0 +1,67 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1635194s
+load siso config done 21.7518ms
+schedule pending:1+ready:0 (node:441061 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441061 edge:6)
+schedule pending:86400+ready:0 (node:441061 edge:86407)
+ 1.20s schedule pending:92865+ready:9234 (node:441061 edge:102099)
+
+build start: Ready 9234 Pending 92865
+[0/19853] 36.33s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/2291] 52.92s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[1/2291] 52.94s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2291] 1m12.58s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 706fa4c1-9a47-4f63-bf8c-cbe3944690d5 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `cppgc::internal::SentinelPointer::operator const void *<const void>` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x28171C which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::use_facet<std::__Cr::ctype<char> >` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816DD which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ctype<char>::widen` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816DE which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::rdbuf` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816DF which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::rdbuf` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816E0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::setstate` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816E1 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_streambuf<char,std::__Cr::char_traits<char> >::pubsync` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x2816E2 which is not a valid function ID record
+lld-link: error: procedure symbol record for `cppgc::internal::WriteBarrier::IsEnabled` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x28171D which is not a valid function ID record
+lld-link: error: procedure symbol record for `cppgc::internal::AtomicEntryFlag::MightBeEntered` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x28171E which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<int,0>::load` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x28171F which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_load<int>` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x281720 which is not a valid function ID record
+lld-link: error: procedure symbol record for `v8::api_internal::TypeCheckLocal<v8::Primitive,v8::Value>` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x2816FE which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<unsigned int,0>::store` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x281719 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_store<unsigned int>` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x28171A which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__clear_padding_if_needed<unsigned int,0>` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x28171B which is not a valid function ID record
+lld-link: error: procedure symbol record for `v8::api_internal::TypeCheckLocal<v8::Promise,v8::Value>` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x2816FE which is not a valid function ID record
+lld-link: error: procedure symbol record for `v8::api_internal::TypeCheckLocal<v8::Context,v8::Value>` in obj/third_party/blink/renderer/core/core/async_iterable.obj refers to PDB item index 0x2816FE which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99808
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 2650(err:2) / r:765(err:0) 9.78MiB / w:1(err:0) 379.10KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m13.40s Build Failure: 2 done, 1 failed, 2289 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261110-192734.1776
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands
