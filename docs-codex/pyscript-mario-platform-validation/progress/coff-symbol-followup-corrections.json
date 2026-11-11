@@ -1,0 +1,9 @@
+{
+  "note": "The earlier unsigned-section correction only validated symbol section numbers. The later complete debug scan confirms malformed debug signatures in this current object. Its bytes differ from the earlier saved backup; both copies are retained. No cause for the change is established.",
+  "object": "obj/services/viz/public/mojom/mojom/layer_context.mojom.obj",
+  "earlierBackupSha256": "fdd25c16ecc000026e560af12a430ff33b1debc53fec872fead3469f2ef28fe4",
+  "malformedSha256": "f126850f8a91b52067c6d5a4ca872ecfa829e44ae2cc9a13d29327efc9778563",
+  "fullDebugScanObjects": 7355,
+  "fullDebugScanProblems": 1,
+  "invalidBuild": "build-async-20 started after a backup assertion failed, then was terminated; not a valid verification run."
+}

@@ -1,0 +1,100 @@
+{
+  "directObjects": 1,
+  "problems": [
+    {
+      "object": "obj/components/signin/internal/identity_manager/identity_manager/gaia_cookie_manager_service.obj",
+      "errors": [
+        {
+          "section": 5158,
+          "name": ".debug$S",
+          "size": 1036,
+          "relocation": 0,
+          "offset": 1347511382,
+          "symbol": 3630930086,
+          "kind": 9333
+        },
+        {
+          "section": 5159,
+          "name": ".debug$S",
+          "size": 908,
+          "relocation": 0,
+          "offset": 1589006813,
+          "symbol": 2265715904,
+          "kind": 24859
+        },
+        {
+          "section": 5160,
+          "name": ".debug$S",
+          "size": 920,
+          "relocation": 0,
+          "offset": 625213127,
+          "symbol": 2051447444,
+          "kind": 49209
+        },
+        {
+          "section": 5161,
+          "name": ".debug$S",
+          "size": 204,
+          "relocation": 0,
+          "offset": 2512863837,
+          "symbol": 3967150107,
+          "kind": 1974
+        },
+        {
+          "section": 5162,
+          "name": ".debug$S",
+          "size": 508,
+          "relocation": 0,
+          "offset": 4177715382,
+          "symbol": 1036274403,
+          "kind": 21328
+        },
+        {
+          "section": 5163,
+          "name": ".debug$S",
+          "size": 472,
+          "relocation": 0,
+          "offset": 3489710548,
+          "symbol": 1983928402,
+          "kind": 33588
+        },
+        {
+          "section": 5164,
+          "name": ".debug$S",
+          "size": 204,
+          "relocation": 0,
+          "offset": 4002374103,
+          "symbol": 2873694443,
+          "kind": 34482
+        },
+        {
+          "section": 5165,
+          "name": ".debug$S",
+          "size": 520,
+          "relocation": 0,
+          "offset": 1900992199,
+          "symbol": 783175306,
+          "kind": 40651
+        },
+        {
+          "section": 5166,
+          "name": ".debug$S",
+          "size": 512,
+          "relocation": 0,
+          "offset": 3573845795,
+          "symbol": 3690444979,
+          "kind": 6857
+        },
+        {
+          "section": 5167,
+          "name": ".debug$S",
+          "size": 472,
+          "relocation": 0,
+          "offset": 2252552192,
+          "symbol": 954455241,
+          "kind": 65211
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:59014",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 620
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 367
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": true,
+      "elapsedMs": 1446,
+      "detail": {
+        "contexts": [
+          {
+            "contextId": "ddc27378-bb09-4f27-abc1-b8d215017a65",
+            "contextType": "realtime",
+            "contextState": "suspended",
+            "callbackBufferSize": 480,
+            "maxOutputChannelCount": 2,
+            "sampleRate": 48000,
+            "renderQuantumSize": 128
+          }
+        ],
+        "nodes": [
+          "AudioDestination",
+          "Oscillator",
+          "Gain",
+          "Oscillator",
+          "Gain"
+        ]
+      }
+    },
+    {
+      "name": "Native audio suspend completes once",
+      "passed": true,
+      "elapsedMs": 321
+    },
+    {
+      "name": "Voice and scheduling rate limits reject additional sound",
+      "passed": true,
+      "elapsedMs": 1842
+    },
+    {
+      "name": "Navigation disposes document audio resources",
+      "passed": true,
+      "elapsedMs": 783
+    },
+    {
+      "name": "Fullscreen rejection caps and consumes notifications exactly once",
+      "passed": true,
+      "elapsedMs": 1598
+    },
+    {
+      "name": "Trusted fullscreen request and native exit complete",
+      "passed": true,
+      "elapsedMs": 698
+    },
+    {
+      "name": "Storage quota failure reaches Python without stopping page",
+      "passed": true,
+      "elapsedMs": 701
+    },
+    {
+      "name": "Terminal score fixture persists highest score and Mario toggles sound",
+      "passed": true,
+      "elapsedMs": 5262
+    },
+    {
+      "name": "Download preserves Python nonce and runs as a self-contained page",
+      "passed": false,
+      "elapsedMs": 30400,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:158:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:390:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:247:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:388:3",
+      "nativeLogs": [],
+      "pageState": {
+        "status": "ready · 分数 0 · 金币 0 · 生命 3 · 剩余 180 秒 · Space / Enter to start",
+        "telemetry": "state:ready|x:96.000|y:460.000|vx:0.000|vy:0.000|coins:0|score:0|lives:3|checkpoint:0|frames:1980|elapsed:0.000|steps:0|keys:0|particles:0",
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:16.000 | lifetime max physics_ms:0.867 build_ms:0.000 submit_ms:0.147 total_ms:4.353 p95_ms:1.046 gap_ms:183.3 steps:0 dropped_s:0.283"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:158:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:390:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:247:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:388:3"
+}

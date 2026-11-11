@@ -47,6 +47,8 @@
 
 阶段六验收正在执行；最终结果、构建故障及限制在完成后补齐。标准目标仍为 chrome、blink_unittests、python_runtime_unittests、python_document_context_unittests、native_python_settings_unittests。
 
+实现已提交为 `2f5ffd4dc9`。当前状态与已完成的探测证据见[验证记录](pyscript-mario-platform-validation/README.md)。沿用此前先交付代码和记录、保留长构建在后台的安排；阶段六尚未标记验收完成。
+
 新增运行时 typed payload/参数/预算/撤权/拒绝测试，Chrome 适配测试，Blink 原生拒绝/资源/销毁测试，宿主侧音效、最高分和异步状态协调测试，以及 `pyscript_browser_smoke_test.mjs` 的真实浏览器测试。浏览器脚本仅为外部 CDP 驱动，不构成页面 JavaScript 依赖；音频图和运行状态验证不能替代扬声器听感验收。持久化用明确声明的终局计分夹具，核心通关仍由既有原版轨迹对照覆盖。
 
 
@@ -67,3 +69,13 @@
 | `browser-async-8` | 原生滑块的 UA shadow root 被导出预检拒绝；最小页面复现后调整 UA 判断，保留 author shadow/template 拒绝。 |
 
 首次适配测试在完整重编译前误将旧 17 项 exe 与新 DLL 混用，ABI 不一致导致崩溃；该次属于无效验证环境，保留 `adapter-initial`，完整构建后的 18 项重新验证。首次全屏对照脚本还遇到默认 GBK 解码失败；以显式 UTF-8 的第二次对照证据为准。这些记录不冒充产品测试结果。
+
+## 本次续作与后台构建
+
+`build-async-18` 已编译并链接导出修复的 modules DLL，但 blink_unittests 链接发现旧 gaia_cookie_manager_service 对象的 CodeView 与重定位损坏。保存原件并定向重建后，`build-async-19` 又报告 layer_context.mojom 对象损坏；完整只读扫描覆盖 7,355 个测试输入，仅检出该对象的异常调试签名。其当前字节与早期 symbol scanner 备份不同，两份均保留，不能据此推断损坏来源。
+
+恢复脚本首次核验备份哈希不匹配时，后续 shell 仍误启动 `build-async-20`，发现后已终止；该次不作为有效验证。之后显式核对退出码，另存当前坏对象，`build-object-22` 禁用该次编译的缓存复用并成功重建。没有用早期备份覆盖当前坏对象，也没有移除正常 Debug/PDB/GHASH 检查。
+
+正常构建随后发现旧依赖日志中 2,399 项 missing-deps 与 4,500 项 stale-deps，故启动较长的标准五目标重编译 `build-async-23`。`build-explain-21` 是只读 dry run，所报 6,954 个计划步骤不能算作实际构建通过。新的完整构建仍在后台进行；恢复清单最终 after 哈希须等重建结束再汇总。
+
+为提前复测，另复制并校验了独立浏览器快照。第一次缺少 Windows 版本程序集 manifest，SideBySide 日志确认后补齐；第二次在 DevTools 端口出现前超时。两次均执行零项功能检查，不能算作导出成功或产品回归失败，也不能替代完整构建后的验证。

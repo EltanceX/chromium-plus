@@ -63,18 +63,23 @@ TEST_F(PythonBrowserBridgeTest, ExportRejectsPathsAndNonHtmlNames) {
 TEST_F(PythonBrowserBridgeTest, ExportRejectsAuthorShadowAndTemplateContent) {
   LocalFrame::NotifyUserActivation(
       &GetFrame(), mojom::blink::UserActivationNotificationType::kTest);
+  ASSERT_TRUE(LocalFrame::HasTransientUserActivation(&GetFrame()));
   auto* bridge = Bridge();
   for (auto mode : {ShadowRootMode::kOpen, ShadowRootMode::kClosed}) {
     SetBodyContent("<div id='host'></div>");
     GetElementById("host")->AttachShadowRootForTesting(mode);
-    EXPECT_EQ(Error::kNotAllowed,
-              bridge->Run({Op::kExportDocument, {}, "game.html"}, nullptr)
-                  .status.error);
+    const auto result =
+        bridge->Run({Op::kExportDocument, {}, "game.html"}, nullptr);
+    EXPECT_EQ(Error::kNotAllowed, result.status.error);
+    EXPECT_EQ("Template and shadow content export is unsupported",
+              result.status.message.Utf8());
   }
   SetBodyContent("<template><p>content</p></template>");
-  EXPECT_EQ(Error::kNotAllowed,
-            bridge->Run({Op::kExportDocument, {}, "game.html"}, nullptr)
-                .status.error);
+  const auto result =
+      bridge->Run({Op::kExportDocument, {}, "game.html"}, nullptr);
+  EXPECT_EQ(Error::kNotAllowed, result.status.error);
+  EXPECT_EQ("Template and shadow content export is unsupported",
+            result.status.message.Utf8());
   bridge->Dispose();
 }
 TEST_F(PythonBrowserBridgeTest, DisposeIsIdempotentAndInvalidatesAllServices) {

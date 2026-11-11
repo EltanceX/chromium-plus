@@ -1,0 +1,85 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3417427s
+load siso config done 12.0348ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:71614+ready:0 (node:441081 edge:71622)
+ 1.36s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/38421] 29.70s S CXX obj/components/signin/internal/identity_manager/identity_manager/gaia_cookie_manager_service.obj
+[0/2393] 39.04s F CXX obj/components/signin/internal/identity_manager/identity_manager/gaia_cookie_manager_service.obj
+[1/2354] 39.04s S LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[1/2354] 39.04s S LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[1/2354] 39.04s S LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[1/2354] 39.04s S LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[1/2354] 42.51s F LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[2/2350] 42.55s F LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[3/2295] 43.04s F LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[4/2241] 43.04s S LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[4/2182] 47.11s F LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[5/2170] 47.54s F LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[6/2137] 47.58s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[6/1791] 1m13.14s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[7/1620] 1m13.14s S LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[7/1072] 1m13.16s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[7/1072] 1m13.18s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[7/1046] 1m19.07s F LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[8/1046] 1m28.18s F LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[9/17] 1m28.45s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[9/17] 2m01.40s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 4afef28d-e480-431f-a699-e3655b40b987 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x7C1FBFD2
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x632653DB
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x579A8BDB
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xD14572EB
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xD33ABC0E
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x956ECE87
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x4F3BE803
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xA1E7CDD7
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xB4A19986
+lld-link: error: some relocations in obj/services/viz/public/mojom/mojom/layer_context.mojom.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x7C1FBFD2
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x632653DB
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[10/17] 2m03.27s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:10 remote:0 cache:0 skip:102092
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1106(err:11) / r:787(err:0) 3.96GiB / w:9(err:0) 1.93MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+2m04.15s Build Failure: 10 done, 1 failed, 7 remaining - 0.08/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-211529.4476
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands
