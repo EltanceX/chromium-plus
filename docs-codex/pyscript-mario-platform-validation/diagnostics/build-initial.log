@@ -1,0 +1,25 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 13.22s S Regenerating ninja files
+[0/2] 51.22s F Regenerating ninja files
+rebuild manifest finished
+50.62s Regenerating ninja files
+
+
+
+loading build.ninja... done 13.0410755s
+load siso config done 2.3289482s
+schedule pending:1+ready:0 (node:441079 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+1m29.11s Schedule Failure: unknown target "obj/third_party/blink/renderer/core/html/html/python_script_controller.obj"
+Did you mean: "python_runtime_unittests" "python_document_context_unittests" "obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj" ?
+
+shutdown cloud logging/monitoring done 0s

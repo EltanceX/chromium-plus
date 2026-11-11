@@ -1,0 +1,1929 @@
+{
+  "directObjects": 4650,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_reference_space_event.obj",
+      "errors": [
+        {
+          "section": 4,
+          "name": ".text",
+          "size": 88,
+          "relocation": 0,
+          "offset": 1811081266,
+          "symbol": 2227780224,
+          "kind": 58866
+        },
+        {
+          "section": 5,
+          "name": ".text",
+          "size": 33,
+          "relocation": 0,
+          "offset": 344133413,
+          "symbol": 2860278459,
+          "kind": 56203
+        },
+        {
+          "section": 6,
+          "name": ".text",
+          "size": 173,
+          "relocation": 0,
+          "offset": 1966480019,
+          "symbol": 4220358912,
+          "kind": 53371
+        },
+        {
+          "section": 7,
+          "name": ".text",
+          "size": 1856,
+          "relocation": 0,
+          "offset": 991316637,
+          "symbol": 1442562443,
+          "kind": 58275
+        },
+        {
+          "section": 8,
+          "name": ".text",
+          "size": 8,
+          "relocation": 0,
+          "offset": 3378409535,
+          "symbol": 1230704242,
+          "kind": 45161
+        },
+        {
+          "section": 9,
+          "name": ".text",
+          "size": 8,
+          "relocation": 0,
+          "offset": 3461761089,
+          "symbol": 2280999040,
+          "kind": 15176
+        },
+        {
+          "section": 10,
+          "name": ".text",
+          "size": 3273,
+          "relocation": 0,
+          "offset": 1432863775,
+          "symbol": 865985072,
+          "kind": 60338
+        },
+        {
+          "section": 11,
+          "name": ".text",
+          "size": 752,
+          "relocation": 0,
+          "offset": 524232432,
+          "symbol": 396761788,
+          "kind": 46716
+        },
+        {
+          "section": 12,
+          "name": ".text",
+          "size": 802,
+          "relocation": 0,
+          "offset": 1368133024,
+          "symbol": 142392920,
+          "kind": 18773
+        },
+        {
+          "section": 13,
+          "name": ".text",
+          "size": 539,
+          "relocation": 0,
+          "offset": 900067211,
+          "symbol": 2942517843,
+          "kind": 5474
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_idbcursor_idbindex_idbobjectstore.obj",
+      "errors": [
+        {
+          "section": 259,
+          "name": ".debug$S",
+          "size": 113244,
+          "relocation": 0,
+          "offset": 134432650,
+          "symbol": 2545052483,
+          "kind": 42159
+        },
+        {
+          "section": 399,
+          "name": ".debug$S",
+          "size": 2836,
+          "relocation": 0,
+          "offset": 3386158463,
+          "symbol": 1385401342,
+          "kind": 9302
+        },
+        {
+          "section": 400,
+          "name": ".debug$S",
+          "size": 300,
+          "relocation": 0,
+          "offset": 1588429644,
+          "symbol": 3901012926,
+          "kind": 43544
+        },
+        {
+          "section": 401,
+          "name": ".debug$S",
+          "size": 840,
+          "relocation": 0,
+          "offset": 1100852228,
+          "symbol": 1210857210,
+          "kind": 23143
+        },
+        {
+          "section": 402,
+          "name": ".debug$S",
+          "size": 428,
+          "relocation": 0,
+          "offset": 401775150,
+          "symbol": 2116829367,
+          "kind": 15549
+        },
+        {
+          "section": 403,
+          "name": ".debug$S",
+          "size": 288,
+          "relocation": 0,
+          "offset": 972225594,
+          "symbol": 649319928,
+          "kind": 13311
+        },
+        {
+          "section": 404,
+          "name": ".debug$S",
+          "size": 828,
+          "relocation": 0,
+          "offset": 1597022135,
+          "symbol": 68141984,
+          "kind": 47606
+        },
+        {
+          "section": 405,
+          "name": ".debug$S",
+          "size": 424,
+          "relocation": 0,
+          "offset": 4103717223,
+          "symbol": 1454049718,
+          "kind": 11867
+        },
+        {
+          "section": 406,
+          "name": ".debug$S",
+          "size": 288,
+          "relocation": 0,
+          "offset": 2372947398,
+          "symbol": 466327255,
+          "kind": 14390
+        },
+        {
+          "section": 407,
+          "name": ".debug$S",
+          "size": 832,
+          "relocation": 0,
+          "offset": 2459186206,
+          "symbol": 807729568,
+          "kind": 58453
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_node_object.obj",
+      "errors": [
+        {
+          "section": 12973,
+          "name": ".debug$S",
+          "size": 588,
+          "relocation": 0,
+          "offset": 2042554412,
+          "symbol": 2612364603,
+          "kind": 2030
+        },
+        {
+          "section": 12974,
+          "name": ".debug$S",
+          "size": 588,
+          "relocation": 0,
+          "offset": 2137137369,
+          "symbol": 2793692351,
+          "kind": 39560
+        },
+        {
+          "section": 12975,
+          "name": ".debug$S",
+          "size": 460,
+          "relocation": 0,
+          "offset": 3186241270,
+          "symbol": 3253523032,
+          "kind": 61882
+        },
+        {
+          "section": 12976,
+          "name": ".debug$S",
+          "size": 540,
+          "relocation": 0,
+          "offset": 169800657,
+          "symbol": 1422819043,
+          "kind": 36601
+        },
+        {
+          "section": 12977,
+          "name": ".debug$S",
+          "size": 428,
+          "relocation": 0,
+          "offset": 2386816333,
+          "symbol": 2895379729,
+          "kind": 39662
+        },
+        {
+          "section": 12978,
+          "name": ".debug$S",
+          "size": 428,
+          "relocation": 0,
+          "offset": 243942621,
+          "symbol": 1905576877,
+          "kind": 19120
+        },
+        {
+          "section": 12979,
+          "name": ".debug$S",
+          "size": 424,
+          "relocation": 0,
+          "offset": 4032265015,
+          "symbol": 3881530886,
+          "kind": 36779
+        },
+        {
+          "section": 12980,
+          "name": ".debug$S",
+          "size": 424,
+          "relocation": 0,
+          "offset": 3853565070,
+          "symbol": 1653613116,
+          "kind": 42187
+        },
+        {
+          "section": 12981,
+          "name": ".debug$S",
+          "size": 776,
+          "relocation": 0,
+          "offset": 2759254592,
+          "symbol": 1092250866,
+          "kind": 22950
+        },
+        {
+          "section": 12982,
+          "name": ".debug$S",
+          "size": 748,
+          "relocation": 0,
+          "offset": 2729655365,
+          "symbol": 353404487,
+          "kind": 9889
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object.obj",
+      "errors": [
+        {
+          "section": 512,
+          "name": ".text",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 513,
+          "name": "\ufffdv\ufffd\t\ufffdK\u000e_",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 514,
+          "name": "V\ufffd\ufffd\ufffd2\ufffd\b\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 515,
+          "name": "\ufffd\ufffdH$\ufffdT\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 516,
+          "name": "\b\ufffd,\ufffd#\ufffd\u001f\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 517,
+          "name": "2\ufffd8\ufffd\ufffd\ufffd5O",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 518,
+          "name": "\ufffd\ufffd(\u001c#\r\u001c\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 519,
+          "name": "\ufffd\ufffd\ufffd\ufffdd\ufffdQ_",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 520,
+          "name": "X\ufffd&i\u001bgD\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 521,
+          "name": "\ufffd\ufffd\ufffdF(\ufffdei",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 522,
+          "name": "\ufffd\ufffdr\u000f\u0013\ufffdu\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 523,
+          "name": "\ufffd\ufffdC\ufffd\ufffd\ufffd\ufffd\u001a",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 524,
+          "name": "\ufffd\ufffd\ufffdXhI\ufffd\t",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 525,
+          "name": "`S\ufffd\ufffd\ufffdbx{",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 526,
+          "name": "O\"\ufffd\ufffd\ufffd9\ufffd\f",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 527,
+          "name": "\ufffd\ufffd\ufffd\u0018m\ufffdm ",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 528,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 529,
+          "name": "\u0012$A`7f5Q",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 530,
+          "name": "s\ufffd^\ufffd\ufffd\ufffdTa",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 531,
+          "name": "\ufffd\ufffd\r\ufffd\ufffd\ufffd\ufffd_",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 532,
+          "name": "4\ufffd\ufffdG\u0018\ufffd\u0001\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 533,
+          "name": "ZH\ufffd# T\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 534,
+          "name": "?!i\ufffd\ufffd.#v",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 535,
+          "name": "i\u001f\ufffdM\ufffd\u0002\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 536,
+          "name": "fZ\ufffdX\ufffdfO:",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 537,
+          "name": "\u0001\u000fP3\ufffd$I\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 538,
+          "name": "-\ufffd\u0015{\ufffd\u000e\u00051",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 539,
+          "name": "\u0015@H\ufffdY\ufffduI",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 540,
+          "name": "#2\ufffd\ufffdm\ufffd\ufffd4",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 541,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd6:\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 542,
+          "name": "9I\ufffd\ufffd\u0005VhD",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 543,
+          "name": "\ufffd\ufffd\ufffd\\\ufffd^\ufffd\r",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 544,
+          "name": "\ufffd\ufffd\ufffd\ufffdz\ufffd)\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 545,
+          "name": "z=q8}f\ufffd6",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 546,
+          "name": "\ufffd\u0004\ufffds.;\u0002\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 547,
+          "name": "\ufffd\u0018\ufffd\ufffd\u0016<.\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 548,
+          "name": "7\ufffd\u0005z\ufffd=u\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 549,
+          "name": "\ufffd\u0007\ufffd\ufffd\ufffd\ufffd\ufffd>",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 550,
+          "name": "\ufffdEh\ufffd\u0001\ufffd\ufffd\u0004",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 551,
+          "name": "\ufffd\ufffd\u0010^\ufffd\ufffd\ufffdS",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 552,
+          "name": "G\ufffd\u0012\ufffd\ufffd(\ufffd\u0010",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 553,
+          "name": "F\ufffd\ufffd\ufffd\ufffd\ufffd\ufffdR",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 554,
+          "name": "\ufffdQLmnR\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 555,
+          "name": "\ufffd.]\ufffd\ufffdow\u0015",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 556,
+          "name": "\ufffd\t\ufffd\ufffd\ufffd\ufffd\u000f\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 557,
+          "name": "\ufffd\ufffd\ufffd\ufffdG\ufffd\ufffd\u000e",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 558,
+          "name": "\u0003IO]CG\"",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 559,
+          "name": "=\ufffd\ufffd\ufffdPm\ufffd#",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 560,
+          "name": "C\ufffdbt\ufffdp\u001e\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 561,
+          "name": "\u0019\ufffd\ufffd~2'\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 562,
+          "name": "\ufffd\ufffd\ufffd\ufffd2\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 563,
+          "name": "\ufffd\u0010\u000e\ufffd\t\ufffd\u000e\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 564,
+          "name": "\ufffd\u00153\ufffdkk\ufffd!",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 565,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd'\u001c",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 566,
+          "name": "\u001c\ufffdZ\r\ufffd*o\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 567,
+          "name": "\ufffd\ufffd\ufffd\ufffdk\ufffd\ufffd^",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 568,
+          "name": "B\ufffd\ufffd\ufffd`x\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 569,
+          "name": "9\ufffd\u0011`%\u001c|\u001f",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 570,
+          "name": "\ufffd\u0013\u0018\ufffd\r\ufffdy~",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 571,
+          "name": "\ufffd\ufffd\ufffd\u0011\ufffd\ufffdP+",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 572,
+          "name": "\ufffd\ufffd\ufffd\u0016\ufffd\ufffd/t",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 573,
+          "name": " FVg\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 574,
+          "name": "\n\u0004\ufffdG\ufffd\ufffd\ufffd\u001e",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 575,
+          "name": "\ufffdt\ufffd\ufffd\ufffdY!\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 576,
+          "name": ";t<\ufffd\ufffd\ufffdX\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 577,
+          "name": "\ufffd\ufffd|!\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 578,
+          "name": "dL\ufffd\ufffd\ufffd\ufffdB\f",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 579,
+          "name": "\ufffd\ufffd\ufffd\t\t\ufffd:v",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 580,
+          "name": "\ufffd\t\ufffd\ufffd\u0013\u000b\ufffd$",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 581,
+          "name": "\ufffdP\u0018\u0019\ufffd(\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 582,
+          "name": "t/\ufffd\ufffdoT\ufffd`",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 583,
+          "name": "G\ufffd]\ufffdGB\u0014\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 584,
+          "name": "\ufffdj&K\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 585,
+          "name": "\bB\ufffd\ufffd\ufffdT\ufffdZ",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 586,
+          "name": "\ufffd,r4A-\\\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 587,
+          "name": "\u0005=d\ufffd\ufffd\u0011w\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 588,
+          "name": "\ufffdK\ufffdZ\ufffd\ufffd\u0000\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 589,
+          "name": "\ufffd\ufffd\ufffd\u0015V+\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 590,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd\u0006p\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 591,
+          "name": "\ufffd\ufffd\ufffdUra\ufffdA",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 592,
+          "name": "L\f;3\ufffd\u0005\ufffdv",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 593,
+          "name": "\ufffdug\ufffd\ufffdh\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 594,
+          "name": "LG\ufffdb\ufffdJ]~",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 595,
+          "name": "\ufffdDoL8:6W",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 596,
+          "name": "o\ufffd\ufffd\ufffdc\ufffd}\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 597,
+          "name": "^t\ufffd]]\ufffd\ufffd5",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 598,
+          "name": "/<\ufffdI\u0005d\ufffd\u0017",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 599,
+          "name": "\u001c\ufffd\ufffd\ufffd\ufffd\"\ufffd(",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 600,
+          "name": "\ufffd\ufffd\ufffd(\u0005\ufffd\ufffdz",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 601,
+          "name": "\ufffd\u0001\ufffds\"\u0001\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 602,
+          "name": "\ufffd\u0018^r)!&\u0015",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 603,
+          "name": "\ufffd\ufffd\ufffd\ufffd&'\ufffdp",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 604,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\r>",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 605,
+          "name": "Z\ufffd`\ufffd1\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 606,
+          "name": "\ufffd\ufffdC@j\ufffdE\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 607,
+          "name": "\ufffd\u0007\ufffd/\ufffd\ufffdw&",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 608,
+          "name": "\ufffd9\ufffd<&\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 609,
+          "name": "\ufffd\ufffd(g*\ufffd\ufffd1",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 610,
+          "name": "lAQ\b\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 611,
+          "name": "'\ufffd\ufffd\ufffd\ufffd\ufffd1J",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 612,
+          "name": "6\t$KJB\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 613,
+          "name": "U\u0014\u001as\ufffdhj\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 614,
+          "name": "+\ufffd+\ufffd\ufffd\u007fq0",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 615,
+          "name": "L\ufffdQ\ufffd\u001d\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 616,
+          "name": "\u0011\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 617,
+          "name": "\ufffdv9 \ufffdg\ufffdy",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 618,
+          "name": "\ufffdb;\ufffd\ufffd\ufffd\ufffd[",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 619,
+          "name": "\ufffd_\u0004\ufffd{[\u0002)",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 620,
+          "name": "%\ufffdybHSC\u0002",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 621,
+          "name": "kd\ufffd\u001d\ufffd7f<",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 622,
+          "name": "\ufffd\ufffdSy\ufffdi\ufffdy",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 623,
+          "name": "\ufffd\ufffd\ufffd\u0010T\ufffd\ufffd$",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 624,
+          "name": "\ufffd\u0004\ufffd\ufffd\ufffd\ufffd{[",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 625,
+          "name": "\n\ufffd\ufffd\ufffd\ufffd+\ufffdA",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 626,
+          "name": "*\ufffd\u0006n\ufffd'\u000f\u001c",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 627,
+          "name": "\ufffd3\ufffd\ufffd\u0010\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 628,
+          "name": "\ufffd\ufffd\u0005\u0018#Hv\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 629,
+          "name": "o\ufffd\ufffd%\ufffd\ufffdw_",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 630,
+          "name": "z\u0011\ufffd>\ufffd\ufffd$\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 631,
+          "name": "\ufffd\ufffd\ufffd\ufffd!\u0006\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 632,
+          "name": "\ufffd\ufffd\ufffdZ\u0002\u0015<s",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 633,
+          "name": "\ufffd\ufffd\u000f\ufffd\ufffd\u0015\ufffd\u001a",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 634,
+          "name": "\ufffd\ufffd{\ufffd\ufffdN\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 635,
+          "name": "\ufffd)\ufffdg\ufffd\ufffd\ufffd*",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 636,
+          "name": "\u0015\ufffd\b\ufffd\ufffdR!^",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 637,
+          "name": "L\ufffd\u0015\ufffd\"\ufffd&\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 638,
+          "name": "-\ufffd_\ufffd\ufffdcg\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 639,
+          "name": "\u0011h\ufffd=\ufffd\ufffd\ufffd.",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 640,
+          "name": "e\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd/",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 641,
+          "name": "\u001bzz\ufffd\ufffd\ufffd\ufffdi",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 642,
+          "name": "\ufffdz%\u0010nl\ufffd]",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 643,
+          "name": "\r\ufffd\ufffd\ufffd;\ufffdR\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 644,
+          "name": "\ufffd!\ufffd\ufffd\ufffd\ufffd/\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 645,
+          "name": "n\ufffd8\ufffd<t\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 646,
+          "name": "\ufffd\ufffd\ufffdtO\ufffd^\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 647,
+          "name": "\ufffd\u0013\ufffd\ufffd~\u0006\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 648,
+          "name": "\ufffd&\ufffdcHJ\ufffd^",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 649,
+          "name": "~^K\ufffd\ufffd\ufffd\u0001\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 650,
+          "name": "Yr\ufffd_\ufffd\ufffd\ufffdC",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 651,
+          "name": "\u001ad\ufffd\ufffd\ufffd\ufffd$?",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 652,
+          "name": "\ufffd\ufffdH\ufffd\ufffd8\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 653,
+          "name": "\ufffd\ufffd\ufffd\u0005\ufffd$\ufffd^",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 654,
+          "name": "\ufffd\ufffdEniy%\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 655,
+          "name": "#\ufffd\ufffd{\u0002U\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 656,
+          "name": "S+\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 657,
+          "name": "\ufffdH\ufffdk\ufffdgT\u0019",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 658,
+          "name": " \ufffd\u007fnwP>\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 659,
+          "name": "\ufffd\ufffd\ufffd.\ufffd\u0010\ufffd_",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 660,
+          "name": "-\ufffd\ufffd<.\ufffdEr",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 661,
+          "name": "I\ufffd\ufffdMs\u0018I\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 662,
+          "name": "\u0018\ufffdI\ufffd-\ufffdy\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 663,
+          "name": "\ufffdeb\ufffd\ufffd\u0005\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 664,
+          "name": "\ufffd\"\ufffd\n\ufffd9\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 665,
+          "name": "d\ufffd\u0014\ufffd\ufffd\ufffdz\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 666,
+          "name": "I\u0011\u0003\ufffdR\ufffdC\u0011",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 667,
+          "name": "_\ufffdY\ufffdI\ufffd\ufffdi",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 668,
+          "name": "\ufffd;{\ufffdw0h\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 669,
+          "name": "\ufffd\ufffd\r\ufffd\ufffd\ufffd9<",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 670,
+          "name": "\u0011\ufffds\ufffdZ\ufffdn%",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 671,
+          "name": "\u0004`J\ufffd\ufffd\u0015ny",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 672,
+          "name": "\u001aA\ufffdy\ufffd\ufffd\ufffd.",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 673,
+          "name": ".\ufffdy\ufffdF\"\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 674,
+          "name": "\ufffd\ufffd\"\ufffd\t\u0000&\u0016",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 675,
+          "name": "\u007f\ufffd\ufffd\"V<\u007f\u007f",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 676,
+          "name": "\ufffd%A\ufffdW\ufffdO\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 677,
+          "name": "\u000e@\ufffd\u001a\ufffd\ufffd\u001c\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 678,
+          "name": "`\ufffd\u001b\ufffd\ufffdV\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 679,
+          "name": "q:N1\u0017\u0003\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 680,
+          "name": "\ufffd\ufffd\ufffd/\ufffd\u0016\u0018\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 681,
+          "name": "u\ufffdr\u0007\ufffd\ufffd\ufffd\u001d",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 682,
+          "name": "\ufffd\ufffd\ufffd\u0019\ufffd\ufffd\ufffdL",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 683,
+          "name": "\ufffdfs\n\ufffd\ufffdhC",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 684,
+          "name": "EaK\u0010;\ufffdC,",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 685,
+          "name": "\ufffdn\ufffd\ufffd8wS&",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 686,
+          "name": "\ufffdh\u000bD\ufffd[\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 687,
+          "name": "- \ufffd\ufffd\ufffdCv\b",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 688,
+          "name": "u\ufffdS\r<EV9",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 689,
+          "name": "\ufffd\ufffdQ\ufffd\"\u000b\u0005\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 690,
+          "name": "\ufffd\u000e@\ufffd\ufffd\r\ufffd\u0002",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 691,
+          "name": "\ufffd\t?\ufffd\ufffd\ufffd\ufffd-",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 692,
+          "name": "\u001c\ufffd\u0011\ufffdL(\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 693,
+          "name": "\ufffd-\u0012\ufffdc^)\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 694,
+          "name": "\u0007\ufffd\u0013\ufffd\ufffd\ufffd\ufffd\u0002",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 695,
+          "name": "XJp,\ufffd\ufffdV\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 696,
+          "name": "\ufffd\ufffd\ufffd?o\u0005#\u001d",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 697,
+          "name": "\u007f\ufffd\u0018\ufffd\ufffd\u0007\\\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 698,
+          "name": "~W\"\ufffd~\ufffd\ufffdf",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 699,
+          "name": "\ufffdX\ufffd\t\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 700,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd:=\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 701,
+          "name": "\ufffdx\ufffd\ufffd\ufffd\u0011\ufffdM",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 702,
+          "name": "$;;\ufffd5\ufffd\ufffde",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 703,
+          "name": "gAa\ufffd\ufffd\ufffd;\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 704,
+          "name": "\ufffd\ufffd0\ufffdZ\ufffdI\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 705,
+          "name": "\ufffd\ufffdk\u0017D\ufffd?;",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 706,
+          "name": "\ufffd\u0010\u001f#o\ufffd\u000e\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 707,
+          "name": "8\u001e\ufffd\ufffd\ufffdD\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 708,
+          "name": "Q\ufffd\ufffd\ufffdZ\ufffd\u0015\u0011",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 709,
+          "name": "\ufffd;B\ufffd\ufffd\ufffd\ufffd\u000b",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 710,
+          "name": "\ufffd\ufffdi\u0007\ufffd\ufffdc\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 711,
+          "name": "\ufffd\u0017<=\ufffd\ufffd\u0012L",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 712,
+          "name": "U/\ufffdZ\ufffd\ufffd\u0004\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 713,
+          "name": "\ufffd\u007f!9\ufffdM\ufffdZ",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 714,
+          "name": "N\ufffd!\ufffd.\ufffd\ufffd#",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 715,
+          "name": "t\u007f)@'6\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 716,
+          "name": "\u0000\ufffd\ufffd\ufffd\ufffd\ufffd\ufffda",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 717,
+          "name": "te\ufffd\ufffd\ufffd@ff",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 718,
+          "name": "6i\ufffd\ufffdt-\ufffdg",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 719,
+          "name": "\ufffd[rd\ufffd\ufffd\u00163",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 720,
+          "name": "\ufffd\ufffd\ufffdBB\ufffd.\u001a",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 721,
+          "name": "\f\ufffd\ufffd'9\ufffdc\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 722,
+          "name": "[Lk>\ufffd4X\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 723,
+          "name": "\ufffd]\ufffdg\u001cF\u0006$",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 724,
+          "name": "\ufffd\ufffd15\ufffd%\u0011d",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 725,
+          "name": "\u000e}\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 726,
+          "name": "\u0002*:3\ufffdW\u0016\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 727,
+          "name": "m\ufffd\ufffdl.\u000b\ufffd\u000f",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 728,
+          "name": "\ufffd\ufffd2\ufffd\ufffdi\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 729,
+          "name": "\ufffdi\ufffd\u0014*Z\ufffd'",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 730,
+          "name": "P\ufffd\ufffd\ufffd(\ufffdV(",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 731,
+          "name": "\ufffdv\ufffd\ufffdF\ufffd~W",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 732,
+          "name": "\u0005\ufffd\ufffdY\ufffdh\ufffd\\",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 733,
+          "name": "\ufffd<xd\u0012\ufffd\b\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 734,
+          "name": "\u0003\b\ufffd\ufffd8V\ufffdZ",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 735,
+          "name": "W&\ufffd;\ufffd\ufffd[\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 736,
+          "name": "\u0003\ufffd\ufffd-\ufffd1\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 737,
+          "name": "\ufffdqWP\u0016\ufffd\u001c\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 738,
+          "name": "\u0004\ufffdr\ufffd\ufffd\u001d\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 739,
+          "name": "\u0016H\ufffd8\ufffds\ufffdG",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 740,
+          "name": "\ty\ufffdwO\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 741,
+          "name": "C\t\ufffdp\ufffd<3\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 742,
+          "name": "\u000e\u001c\ufffd`,'\ufffd\u000e",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 743,
+          "name": "\ufffd\ufffd\ufffdg\ufffdl\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 744,
+          "name": " \u000f\u0015m<\rqm",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 745,
+          "name": "\ufffd\ufffdB\u0014\ufffd\ufffds3",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 746,
+          "name": "\ufffd\u0010\ufffd\u0006H\\\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 747,
+          "name": "x\ufffd\ufffd\ufffd\u0012\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 748,
+          "name": "\ufffd\u0005\ufffd\u001c\ufffd\ufffd\ufffdw",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 749,
+          "name": "M\ufffdw\ufffd3\u0017\ufffdD",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 750,
+          "name": "\ufffd\u0005\ufffd\ufffdM\ufffdj\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 751,
+          "name": "6L74\ufffd\ufffdI\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 752,
+          "name": "x\u0013\u001e\ufffd\ufffd\ufffd\u0018W",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 753,
+          "name": "\ufffd\u0010\ufffd\ufffdU\u0019\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 754,
+          "name": "\ufffd\ufffd#\u0000\ufffde\ufffdS",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 755,
+          "name": "\ufffd\ufffd\ufffd\u001ck\ufffd\u0015\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 756,
+          "name": "S\ufffdJ\ufffdX\ufffd}\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 757,
+          "name": "#\ufffd\ufffdq\ufffd\ufffd\ufffd1",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 758,
+          "name": "\ufffd\u001d\n\ufffdmT\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 759,
+          "name": "\ufffdR\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 760,
+          "name": "\ufffd[\"\u0016\ufffd`\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 761,
+          "name": "\ufffdL\u0010z\ufffd\ufffd\u000e\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 762,
+          "name": "\ufffd/\ufffd\ufffd\ufffdm\ufffdm",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 763,
+          "name": "\ufffd\ufffdlhN\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 764,
+          "name": "\ufffdD}\u001b\u001a\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 765,
+          "name": "\ufffd\ufffd\ufffd\ufffda\u000b\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 766,
+          "name": "\ufffd\ufffd\ufffd\ufffd\ufffd\ufffdI\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 767,
+          "name": "I\ufffd\ufffdUq\u0019\ufffd\b",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 768,
+          "name": "\ufffdP\ufffd\ufffd\ufffd\ufffd\ufffd\"",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 769,
+          "name": "\u001d+\ufffd\ufffd\ufffd\u0006Z\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 770,
+          "name": "\u0006\ufffdc\ufffd\ufffd\u0017\ufffd#",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 771,
+          "name": "\ufffd\n\u000e\ufffd\ufffd\ufffd\ufffd#",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 772,
+          "name": "\ufffdo#\ufffdC\ufffd\u001a\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 773,
+          "name": "e\u0017E\ufffd\ufffd\ufffdv\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 774,
+          "name": "\u0016\ufffd{9\tPmO",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 775,
+          "name": "\ufffd.S\ufffd\ufffd\ufffd\ufffdH",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 776,
+          "name": "\ufffd|>F\ufffd\ufffd\u0018!",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 777,
+          "name": "4\ufffd\ufffdx3\ufffd.}",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 778,
+          "name": "\ufffd-Y\ufffd\u0012\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 779,
+          "name": "7U\ufffd9uI\ufffdO",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 780,
+          "name": "[\ufffd\ufffdy\u0014HCx",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 781,
+          "name": "\u001a\b\ufffdn\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 782,
+          "name": "%z\ufffd\ufffd$\ufffd\u0011x",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 783,
+          "name": "\ufffd\ufffd-\ufffd\ufffdA\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 784,
+          "name": "JI\u001b\n\ufffd\ufffd\u0016e",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 785,
+          "name": "sD\u0005\ufffdV\u001d\ufffdO",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 786,
+          "name": "Yj`\ufffd\u0002}\ufffd\r",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 787,
+          "name": "\n\ufffd>I\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 788,
+          "name": "\ufffd\ufffd\ufffde\ufffd\ufffd\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 789,
+          "name": " l\ufffd.\ufffd\u0004\n\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 790,
+          "name": ";M\ufffd\ufffd\ufffd\ufffd\ufffdx",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 791,
+          "name": "\r\ufffd\ufffd!&j\ufffd3",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 792,
+          "name": "\ufffd\ufffd(\ufffd\ufffd\ufffdL\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 793,
+          "name": "\"\ufffdBsyqyE",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 794,
+          "name": "\ufffd\ufffdFD\u001d\ufffdI\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 795,
+          "name": "5\ufffd\ufffd\ufffd\ufffdb\ufffdK",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 796,
+          "name": "\ufffd\u001c\ufffd\u001a\ufffd9\ufffd\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 797,
+          "name": "\\\u001a\ufffdNM\ufffdN\ufffd",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 798,
+          "name": "\ufffd\ufffd%\ufffd\u0013\ufffd\ufffdu",
+          "error": "relocation table extent"
+        },
+        {
+          "section": 799,
+          "name": "S\u0002\ufffd\u0016.\ufffd\ufffd\ufffd",
+          "size": 1674265982,
+          "relocation": 0,
+          "offset": 353497586,
+          "symbol": 963510275,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_validation_message.obj",
+      "errors": [
+        {
+          "section": 1581,
+          "name": ".debug$S",
+          "size": 228,
+          "relocation": 0,
+          "offset": 1967436445,
+          "symbol": 3046703934,
+          "kind": 24373
+        },
+        {
+          "section": 1582,
+          "name": ".debug$S",
+          "size": 200,
+          "relocation": 0,
+          "offset": 1738391871,
+          "symbol": 39575253,
+          "kind": 51841
+        },
+        {
+          "section": 1583,
+          "name": ".debug$S",
+          "size": 188,
+          "relocation": 0,
+          "offset": 2225601842,
+          "symbol": 383290530,
+          "kind": 45023
+        },
+        {
+          "section": 1584,
+          "name": ".debug$S",
+          "size": 216,
+          "relocation": 0,
+          "offset": 2478879394,
+          "symbol": 3246672847,
+          "kind": 60256
+        },
+        {
+          "section": 1585,
+          "name": ".debug$S",
+          "size": 352,
+          "relocation": 0,
+          "offset": 967530648,
+          "symbol": 310946287,
+          "kind": 22657
+        },
+        {
+          "section": 1586,
+          "name": ".debug$S",
+          "size": 232,
+          "relocation": 0,
+          "offset": 2417022343,
+          "symbol": 175479961,
+          "kind": 13416
+        },
+        {
+          "section": 1587,
+          "name": ".debug$S",
+          "size": 208,
+          "relocation": 0,
+          "offset": 2832423402,
+          "symbol": 3702850231,
+          "kind": 13889
+        },
+        {
+          "section": 1588,
+          "name": ".debug$S",
+          "size": 224,
+          "relocation": 0,
+          "offset": 4011690185,
+          "symbol": 1581860565,
+          "kind": 53514
+        },
+        {
+          "section": 1589,
+          "name": ".debug$S",
+          "size": 220,
+          "relocation": 0,
+          "offset": 4114715704,
+          "symbol": 738836517,
+          "kind": 53765
+        },
+        {
+          "section": 1590,
+          "name": ".debug$S",
+          "size": 212,
+          "relocation": 0,
+          "offset": 1619753378,
+          "symbol": 502169963,
+          "kind": 38322
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/inspector_accessibility_agent.obj",
+      "errors": [
+        {
+          "section": 2736,
+          "name": ".text",
+          "size": 617,
+          "relocation": 0,
+          "offset": 3192550018,
+          "symbol": 2888846657,
+          "kind": 51043
+        },
+        {
+          "section": 2737,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 311873026,
+          "symbol": 2756042376,
+          "kind": 6785
+        },
+        {
+          "section": 2738,
+          "name": ".text",
+          "size": 685,
+          "relocation": 0,
+          "offset": 3423216554,
+          "symbol": 53040942,
+          "kind": 40515
+        },
+        {
+          "section": 2740,
+          "name": ".text",
+          "size": 45,
+          "relocation": 0,
+          "offset": 2292116505,
+          "symbol": 3889341073,
+          "kind": 42122
+        },
+        {
+          "section": 2741,
+          "name": ".text",
+          "size": 122,
+          "relocation": 0,
+          "offset": 2173917884,
+          "symbol": 2469755306,
+          "kind": 55364
+        },
+        {
+          "section": 2742,
+          "name": ".text",
+          "size": 145,
+          "relocation": 0,
+          "offset": 628049912,
+          "symbol": 3874822745,
+          "kind": 3979
+        },
+        {
+          "section": 2743,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 2427797074,
+          "symbol": 3867872332,
+          "kind": 32337
+        },
+        {
+          "section": 2744,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 278949240,
+          "symbol": 3950239911,
+          "kind": 22618
+        },
+        {
+          "section": 2745,
+          "name": ".text",
+          "size": 154,
+          "relocation": 0,
+          "offset": 3472039398,
+          "symbol": 832845506,
+          "kind": 32948
+        },
+        {
+          "section": 2746,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 4268918264,
+          "symbol": 1040061956,
+          "kind": 338
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/properties_per_feature_installer.obj",
+    "before": "bd5f45e9685b3b854e3b7f538692c3658aa4f10c2eb4ac84f2f23043cdd5df45",
+    "reasons": [
+      "link-input-modules.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_worker_navigator.obj",
+    "before": "3ece61f3a1b493de2e9dc012d3f02a0620589047d84f39a5f52881bb45ec5b55",
+    "reasons": [
+      "link-input-modules.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object.obj",
+    "before": "8c798bd0947ae35e4d3415a09cf6e2c19fb7f3effcd1df6385c4602bb7211b85",
+    "reasons": [
+      "link-input-modules.json",
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_reference_space_event.obj",
+    "before": "d04365ed8a8e16123331cae1a3f97d1728631155a0cc067aedb5dcab3983893c",
+    "reasons": [
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_idbcursor_idbindex_idbobjectstore.obj",
+    "before": "a6888c9c2dd5dcb0ec111713dc0de26dd47e947e05c3b20f3bf2b5a1830f1ef7",
+    "reasons": [
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_node_object.obj",
+    "before": "1c1ee5db04964e296c2cf25a9c4f1c2fbc53fcfd9f8600f1fc7dea1644655c2f",
+    "reasons": [
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_validation_message.obj",
+    "before": "ed667eef735e3ec65b07319c6e5cb1ed376106427e7c2b85f1b846fa589d8469",
+    "reasons": [
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/accessibility/accessibility/inspector_accessibility_agent.obj",
+    "before": "9fc06f65cd22fb8d66baa6b9dbfd0079c306132d0fd5aa6fd04fe59bd74986aa",
+    "reasons": [
+      "blink_modules.dll.rsp-relocation-scan.json",
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_lock.obj",
+    "before": "479e77d716cb0b78b352d55435e198a77db087f435b20fd6925c99009d79c220",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_navigator_managed_data.obj",
+    "before": "312306f3f5f85702525938cb102ef6b6645fb1801f49b87039ff2944cb6133e2",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_offline_audio_context.obj",
+    "before": "c38ca205aae6b944df6ea98a79301656a19e1b6a26fe7cb6c51bcb2cfb25fe70",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_manager.obj",
+    "before": "7209bee70df84e79e2c491dd64ee2cd93a3a1d2b41e0e675fa81a10498bb1262",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_shared_worker_global_scope.obj",
+    "before": "830159d99db4e94e57332fb9a44a119c32d74475658bd42fd26b8adb5e24561f",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_speech_synthesis_event.obj",
+    "before": "607ec39cf018d5db43c57b14a4b755766e57ad20fec7fce3eeaaace98574be00",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_usb_connection_event.obj",
+    "before": "c131db46cab1026b0cb9752679382ada9e80b13809d65e112cb26ce306c71178",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_quad_layer.obj",
+    "before": "dfe6e0543817d520663e1519dc76eb78b95ef9ff51ed9d71246edf73f54fafa1",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/ai/ai/summarizer.obj",
+    "before": "32f146c9284c81bb1562171f24d286d6ef7f7cc4e8e53405b3cfa9a780b92bf5",
+    "reasons": [
+      "blink_modules.dll.rsp-debug-scan.json"
+    ]
+  }
+]

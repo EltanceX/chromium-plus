@@ -1,0 +1,1234 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/core/core/longhands_custom.obj",
+    "errors": [
+      {
+        "symbol": 76406,
+        "section": -32768,
+        "sections": 39135
+      },
+      {
+        "symbol": 76408,
+        "section": -32767,
+        "sections": 39135
+      },
+      {
+        "symbol": 76410,
+        "section": -32766,
+        "sections": 39135
+      },
+      {
+        "symbol": 76412,
+        "section": -32765,
+        "sections": 39135
+      },
+      {
+        "symbol": 76414,
+        "section": -32764,
+        "sections": 39135
+      },
+      {
+        "symbol": 76416,
+        "section": -32763,
+        "sections": 39135
+      },
+      {
+        "symbol": 76418,
+        "section": -32762,
+        "sections": 39135
+      },
+      {
+        "symbol": 76420,
+        "section": -32761,
+        "sections": 39135
+      },
+      {
+        "symbol": 76422,
+        "section": -32760,
+        "sections": 39135
+      },
+      {
+        "symbol": 76424,
+        "section": -32759,
+        "sections": 39135
+      }
+    ],
+    "sha256": "70dbf1d9efb2ec53dab1bd8991a17779005db20ad7f7f4ba6697279952096d0e"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/style_engine.obj",
+    "errors": [
+      {
+        "symbol": 76979,
+        "section": -32768,
+        "sections": 42122
+      },
+      {
+        "symbol": 76981,
+        "section": -32767,
+        "sections": 42122
+      },
+      {
+        "symbol": 76983,
+        "section": -32766,
+        "sections": 42122
+      },
+      {
+        "symbol": 76985,
+        "section": -32765,
+        "sections": 42122
+      },
+      {
+        "symbol": 76987,
+        "section": -32764,
+        "sections": 42122
+      },
+      {
+        "symbol": 76989,
+        "section": -32763,
+        "sections": 42122
+      },
+      {
+        "symbol": 76991,
+        "section": -32762,
+        "sections": 42122
+      },
+      {
+        "symbol": 76993,
+        "section": -32761,
+        "sections": 42122
+      },
+      {
+        "symbol": 76995,
+        "section": -32760,
+        "sections": 42122
+      },
+      {
+        "symbol": 76997,
+        "section": -32759,
+        "sections": 42122
+      }
+    ],
+    "sha256": "42671e868e3f1a22b7e36e30460b1a7aaa6b5bd459be24b23eb281b3f8a8197a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_dom_window.obj",
+    "errors": [
+      {
+        "symbol": 58358,
+        "section": -21061,
+        "sections": 31865
+      },
+      {
+        "symbol": 58794,
+        "section": -31072,
+        "sections": 31865
+      },
+      {
+        "symbol": 59004,
+        "section": 32652,
+        "sections": 31865
+      },
+      {
+        "symbol": 59317,
+        "section": -4002,
+        "sections": 31865
+      },
+      {
+        "symbol": 59372,
+        "section": -11188,
+        "sections": 31865
+      },
+      {
+        "symbol": 59604,
+        "section": -24443,
+        "sections": 31865
+      },
+      {
+        "symbol": 59734,
+        "section": -7218,
+        "sections": 31865
+      },
+      {
+        "symbol": 66167,
+        "section": -29867,
+        "sections": 31865
+      },
+      {
+        "symbol": 66454,
+        "section": -19312,
+        "sections": 31865
+      },
+      {
+        "symbol": 66973,
+        "section": -14491,
+        "sections": 31865
+      }
+    ],
+    "sha256": "76419cf2fcc19448d4c4857efc55865dc3e422cea07b05b8035b47bf54d500dc"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_frame.obj",
+    "errors": [
+      {
+        "symbol": 78237,
+        "section": -32768,
+        "sections": 46084
+      },
+      {
+        "symbol": 78239,
+        "section": -32767,
+        "sections": 46084
+      },
+      {
+        "symbol": 78241,
+        "section": -32766,
+        "sections": 46084
+      },
+      {
+        "symbol": 78243,
+        "section": -32765,
+        "sections": 46084
+      },
+      {
+        "symbol": 78245,
+        "section": -32764,
+        "sections": 46084
+      },
+      {
+        "symbol": 78247,
+        "section": -32763,
+        "sections": 46084
+      },
+      {
+        "symbol": 78249,
+        "section": -32762,
+        "sections": 46084
+      },
+      {
+        "symbol": 78251,
+        "section": -32761,
+        "sections": 46084
+      },
+      {
+        "symbol": 78253,
+        "section": -32760,
+        "sections": 46084
+      },
+      {
+        "symbol": 78255,
+        "section": -32759,
+        "sections": 46084
+      }
+    ],
+    "sha256": "f3304ca2dab7275700b61230555f94c210d3d635ba48b359be4c4ff6f0f655bd"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_frame_view.obj",
+    "errors": [
+      {
+        "symbol": 78511,
+        "section": -32768,
+        "sections": 47863
+      },
+      {
+        "symbol": 78513,
+        "section": -32767,
+        "sections": 47863
+      },
+      {
+        "symbol": 78515,
+        "section": -32766,
+        "sections": 47863
+      },
+      {
+        "symbol": 78517,
+        "section": -32765,
+        "sections": 47863
+      },
+      {
+        "symbol": 78519,
+        "section": -32764,
+        "sections": 47863
+      },
+      {
+        "symbol": 78521,
+        "section": -32763,
+        "sections": 47863
+      },
+      {
+        "symbol": 78523,
+        "section": -32762,
+        "sections": 47863
+      },
+      {
+        "symbol": 78525,
+        "section": -32761,
+        "sections": 47863
+      },
+      {
+        "symbol": 78527,
+        "section": -32760,
+        "sections": 47863
+      },
+      {
+        "symbol": 78529,
+        "section": -32759,
+        "sections": 47863
+      }
+    ],
+    "sha256": "c9497dd1e17a2fdab150b1b5f6f6b12b3d43b55e87ee072d857c885ea583031a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/web_frame_widget_impl.obj",
+    "errors": [
+      {
+        "symbol": 76235,
+        "section": -32768,
+        "sections": 39054
+      },
+      {
+        "symbol": 76237,
+        "section": -32767,
+        "sections": 39054
+      },
+      {
+        "symbol": 76239,
+        "section": -32766,
+        "sections": 39054
+      },
+      {
+        "symbol": 76241,
+        "section": -32765,
+        "sections": 39054
+      },
+      {
+        "symbol": 76243,
+        "section": -32764,
+        "sections": 39054
+      },
+      {
+        "symbol": 76245,
+        "section": -32763,
+        "sections": 39054
+      },
+      {
+        "symbol": 76247,
+        "section": -32762,
+        "sections": 39054
+      },
+      {
+        "symbol": 76249,
+        "section": -32761,
+        "sections": 39054
+      },
+      {
+        "symbol": 76251,
+        "section": -32760,
+        "sections": 39054
+      },
+      {
+        "symbol": 76253,
+        "section": -32759,
+        "sections": 39054
+      }
+    ],
+    "sha256": "0860377cd7eff4b937a768fb3c9cb99f11608364c25854881be2dcfbe7c3a420"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/web_local_frame_impl.obj",
+    "errors": [
+      {
+        "symbol": 76531,
+        "section": -32768,
+        "sections": 40282
+      },
+      {
+        "symbol": 76533,
+        "section": -32767,
+        "sections": 40282
+      },
+      {
+        "symbol": 76535,
+        "section": -32766,
+        "sections": 40282
+      },
+      {
+        "symbol": 76537,
+        "section": -32765,
+        "sections": 40282
+      },
+      {
+        "symbol": 76539,
+        "section": -32764,
+        "sections": 40282
+      },
+      {
+        "symbol": 76541,
+        "section": -32763,
+        "sections": 40282
+      },
+      {
+        "symbol": 76543,
+        "section": -32762,
+        "sections": 40282
+      },
+      {
+        "symbol": 76545,
+        "section": -32761,
+        "sections": 40282
+      },
+      {
+        "symbol": 76547,
+        "section": -32760,
+        "sections": 40282
+      },
+      {
+        "symbol": 76549,
+        "section": -32759,
+        "sections": 40282
+      }
+    ],
+    "sha256": "e17b67862daf708b23115008bf47b12001b04d4ce112843bfe27913dd71b2199"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_dom_agent.obj",
+    "errors": [
+      {
+        "symbol": 78319,
+        "section": -32768,
+        "sections": 47307
+      },
+      {
+        "symbol": 78321,
+        "section": -32767,
+        "sections": 47307
+      },
+      {
+        "symbol": 78323,
+        "section": -32766,
+        "sections": 47307
+      },
+      {
+        "symbol": 78325,
+        "section": -32765,
+        "sections": 47307
+      },
+      {
+        "symbol": 78327,
+        "section": -32764,
+        "sections": 47307
+      },
+      {
+        "symbol": 78329,
+        "section": -32763,
+        "sections": 47307
+      },
+      {
+        "symbol": 78331,
+        "section": -32762,
+        "sections": 47307
+      },
+      {
+        "symbol": 78333,
+        "section": -32761,
+        "sections": 47307
+      },
+      {
+        "symbol": 78335,
+        "section": -32760,
+        "sections": 47307
+      },
+      {
+        "symbol": 78337,
+        "section": -32759,
+        "sections": 47307
+      }
+    ],
+    "sha256": "cdd3ff5e575c5d360e89bb915f51f34b419516be25cab7cbffc87a046cbc287d"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_dom_snapshot_agent.obj",
+    "errors": [
+      {
+        "symbol": 75057,
+        "section": -32768,
+        "sections": 35525
+      },
+      {
+        "symbol": 75059,
+        "section": -32767,
+        "sections": 35525
+      },
+      {
+        "symbol": 75061,
+        "section": -32766,
+        "sections": 35525
+      },
+      {
+        "symbol": 75063,
+        "section": -32765,
+        "sections": 35525
+      },
+      {
+        "symbol": 75065,
+        "section": -32764,
+        "sections": 35525
+      },
+      {
+        "symbol": 75067,
+        "section": -32763,
+        "sections": 35525
+      },
+      {
+        "symbol": 75069,
+        "section": -32762,
+        "sections": 35525
+      },
+      {
+        "symbol": 75071,
+        "section": -32761,
+        "sections": 35525
+      },
+      {
+        "symbol": 75073,
+        "section": -32760,
+        "sections": 35525
+      },
+      {
+        "symbol": 75075,
+        "section": -32759,
+        "sections": 35525
+      }
+    ],
+    "sha256": "c619c315908c4401090225869c48312db5a400e00060296c42fc4ad3938f4a2e"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_overlay_agent.obj",
+    "errors": [
+      {
+        "symbol": 76698,
+        "section": -32768,
+        "sections": 40834
+      },
+      {
+        "symbol": 76700,
+        "section": -32767,
+        "sections": 40834
+      },
+      {
+        "symbol": 76702,
+        "section": -32766,
+        "sections": 40834
+      },
+      {
+        "symbol": 76704,
+        "section": -32765,
+        "sections": 40834
+      },
+      {
+        "symbol": 76706,
+        "section": -32764,
+        "sections": 40834
+      },
+      {
+        "symbol": 76708,
+        "section": -32763,
+        "sections": 40834
+      },
+      {
+        "symbol": 76710,
+        "section": -32762,
+        "sections": 40834
+      },
+      {
+        "symbol": 76712,
+        "section": -32761,
+        "sections": 40834
+      },
+      {
+        "symbol": 76714,
+        "section": -32760,
+        "sections": 40834
+      },
+      {
+        "symbol": 76716,
+        "section": -32759,
+        "sections": 40834
+      }
+    ],
+    "sha256": "72c8707a945c79d23f8f1db16da6e0d236d70be65e75f1f69b02fdb0c1ae3826"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_page_agent.obj",
+    "errors": [
+      {
+        "symbol": 75856,
+        "section": -32768,
+        "sections": 38217
+      },
+      {
+        "symbol": 75858,
+        "section": -32767,
+        "sections": 38217
+      },
+      {
+        "symbol": 75860,
+        "section": -32766,
+        "sections": 38217
+      },
+      {
+        "symbol": 75862,
+        "section": -32765,
+        "sections": 38217
+      },
+      {
+        "symbol": 75864,
+        "section": -32764,
+        "sections": 38217
+      },
+      {
+        "symbol": 75866,
+        "section": -32763,
+        "sections": 38217
+      },
+      {
+        "symbol": 75868,
+        "section": -32762,
+        "sections": 38217
+      },
+      {
+        "symbol": 75870,
+        "section": -32761,
+        "sections": 38217
+      },
+      {
+        "symbol": 75872,
+        "section": -32760,
+        "sections": 38217
+      },
+      {
+        "symbol": 75874,
+        "section": -32759,
+        "sections": 38217
+      }
+    ],
+    "sha256": "34305b7162835a3a42a4c9565c298e9a4dfd0e483a4e199887b5bacb4f0fb151"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_style_sheet.obj",
+    "errors": [
+      {
+        "symbol": 74784,
+        "section": -32768,
+        "sections": 34081
+      },
+      {
+        "symbol": 74786,
+        "section": -32767,
+        "sections": 34081
+      },
+      {
+        "symbol": 74788,
+        "section": -32766,
+        "sections": 34081
+      },
+      {
+        "symbol": 74790,
+        "section": -32765,
+        "sections": 34081
+      },
+      {
+        "symbol": 74792,
+        "section": -32764,
+        "sections": 34081
+      },
+      {
+        "symbol": 74794,
+        "section": -32763,
+        "sections": 34081
+      },
+      {
+        "symbol": 74796,
+        "section": -32762,
+        "sections": 34081
+      },
+      {
+        "symbol": 74798,
+        "section": -32761,
+        "sections": 34081
+      },
+      {
+        "symbol": 74800,
+        "section": -32760,
+        "sections": 34081
+      },
+      {
+        "symbol": 74802,
+        "section": -32759,
+        "sections": 34081
+      }
+    ],
+    "sha256": "be6e1b8e8f521371ffb34a2938f5f60204237732e5cdff443ae9a66f201847e1"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/document_loader.obj",
+    "errors": [
+      {
+        "symbol": 76244,
+        "section": -32768,
+        "sections": 39801
+      },
+      {
+        "symbol": 76246,
+        "section": -32767,
+        "sections": 39801
+      },
+      {
+        "symbol": 76248,
+        "section": -32766,
+        "sections": 39801
+      },
+      {
+        "symbol": 76250,
+        "section": -32765,
+        "sections": 39801
+      },
+      {
+        "symbol": 76252,
+        "section": -32764,
+        "sections": 39801
+      },
+      {
+        "symbol": 76254,
+        "section": -32763,
+        "sections": 39801
+      },
+      {
+        "symbol": 76256,
+        "section": -32762,
+        "sections": 39801
+      },
+      {
+        "symbol": 76258,
+        "section": -32761,
+        "sections": 39801
+      },
+      {
+        "symbol": 76260,
+        "section": -32760,
+        "sections": 39801
+      },
+      {
+        "symbol": 76262,
+        "section": -32759,
+        "sections": 39801
+      }
+    ],
+    "sha256": "f6995c07fb17d3f12ea3588d540f96b0dd2794839832fda7b3d06e6a8ba5c9d0"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_generated/longhands.obj",
+    "errors": [
+      {
+        "symbol": 83068,
+        "section": -32768,
+        "sections": 62882
+      },
+      {
+        "symbol": 83070,
+        "section": -32767,
+        "sections": 62882
+      },
+      {
+        "symbol": 83072,
+        "section": -32766,
+        "sections": 62882
+      },
+      {
+        "symbol": 83074,
+        "section": -32765,
+        "sections": 62882
+      },
+      {
+        "symbol": 83076,
+        "section": -32764,
+        "sections": 62882
+      },
+      {
+        "symbol": 83078,
+        "section": -32763,
+        "sections": 62882
+      },
+      {
+        "symbol": 83080,
+        "section": -32762,
+        "sections": 62882
+      },
+      {
+        "symbol": 83082,
+        "section": -32761,
+        "sections": 62882
+      },
+      {
+        "symbol": 83084,
+        "section": -32760,
+        "sections": 62882
+      },
+      {
+        "symbol": 83086,
+        "section": -32759,
+        "sections": 62882
+      }
+    ],
+    "sha256": "c2ab6ed54959a1126b7c6d8a04cd0c7df8f6cbe65595b9364acd9f03b23a9d29"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_hot/element.obj",
+    "errors": [
+      {
+        "symbol": 77918,
+        "section": -32768,
+        "sections": 45247
+      },
+      {
+        "symbol": 77920,
+        "section": -32767,
+        "sections": 45247
+      },
+      {
+        "symbol": 77922,
+        "section": -32766,
+        "sections": 45247
+      },
+      {
+        "symbol": 77924,
+        "section": -32765,
+        "sections": 45247
+      },
+      {
+        "symbol": 77926,
+        "section": -32764,
+        "sections": 45247
+      },
+      {
+        "symbol": 77928,
+        "section": -32763,
+        "sections": 45247
+      },
+      {
+        "symbol": 77930,
+        "section": -32762,
+        "sections": 45247
+      },
+      {
+        "symbol": 77932,
+        "section": -32761,
+        "sections": 45247
+      },
+      {
+        "symbol": 77934,
+        "section": -32760,
+        "sections": 45247
+      },
+      {
+        "symbol": 77936,
+        "section": -32759,
+        "sections": 45247
+      }
+    ],
+    "sha256": "4f707d98608a692a5ec34c851a3a1009ce6539aa479ca4e4aa1d69d244cbab27"
+  },
+  {
+    "object": "obj/third_party/blink/public/mojom/mojom_core_blink/frame.mojom-blink.obj",
+    "errors": [
+      {
+        "symbol": 80398,
+        "section": -32768,
+        "sections": 56980
+      },
+      {
+        "symbol": 80400,
+        "section": -32767,
+        "sections": 56980
+      },
+      {
+        "symbol": 80402,
+        "section": -32766,
+        "sections": 56980
+      },
+      {
+        "symbol": 80404,
+        "section": -32765,
+        "sections": 56980
+      },
+      {
+        "symbol": 80406,
+        "section": -32764,
+        "sections": 56980
+      },
+      {
+        "symbol": 80408,
+        "section": -32763,
+        "sections": 56980
+      },
+      {
+        "symbol": 80410,
+        "section": -32762,
+        "sections": 56980
+      },
+      {
+        "symbol": 80412,
+        "section": -32761,
+        "sections": 56980
+      },
+      {
+        "symbol": 80414,
+        "section": -32760,
+        "sections": 56980
+      },
+      {
+        "symbol": 80416,
+        "section": -32759,
+        "sections": 56980
+      }
+    ],
+    "sha256": "785bda8bdd252c0fc957e661b954b38199b9b55fe96d593c6237a2e510cc7996"
+  },
+  {
+    "object": "obj/third_party/blink/public/mojom/mojom_core_blink/service_worker.mojom-blink.obj",
+    "errors": [
+      {
+        "symbol": 75397,
+        "section": -32768,
+        "sections": 37710
+      },
+      {
+        "symbol": 75399,
+        "section": -32767,
+        "sections": 37710
+      },
+      {
+        "symbol": 75401,
+        "section": -32766,
+        "sections": 37710
+      },
+      {
+        "symbol": 75403,
+        "section": -32765,
+        "sections": 37710
+      },
+      {
+        "symbol": 75405,
+        "section": -32764,
+        "sections": 37710
+      },
+      {
+        "symbol": 75407,
+        "section": -32763,
+        "sections": 37710
+      },
+      {
+        "symbol": 75409,
+        "section": -32762,
+        "sections": 37710
+      },
+      {
+        "symbol": 75411,
+        "section": -32761,
+        "sections": 37710
+      },
+      {
+        "symbol": 75413,
+        "section": -32760,
+        "sections": 37710
+      },
+      {
+        "symbol": 75415,
+        "section": -32759,
+        "sections": 37710
+      }
+    ],
+    "sha256": "b4a3f2e496dd30b528bef5baecb4d955f7a1bb6696984fdcf259fc4e90372a6a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/animation/animation/css_animations.obj",
+    "errors": [
+      {
+        "symbol": 75594,
+        "section": -32768,
+        "sections": 36937
+      },
+      {
+        "symbol": 75596,
+        "section": -32767,
+        "sections": 36937
+      },
+      {
+        "symbol": 75598,
+        "section": -32766,
+        "sections": 36937
+      },
+      {
+        "symbol": 75600,
+        "section": -32765,
+        "sections": 36937
+      },
+      {
+        "symbol": 75602,
+        "section": -32764,
+        "sections": 36937
+      },
+      {
+        "symbol": 75604,
+        "section": -32763,
+        "sections": 36937
+      },
+      {
+        "symbol": 75606,
+        "section": -32762,
+        "sections": 36937
+      },
+      {
+        "symbol": 75608,
+        "section": -32761,
+        "sections": 36937
+      },
+      {
+        "symbol": 75610,
+        "section": -32760,
+        "sections": 36937
+      },
+      {
+        "symbol": 75612,
+        "section": -32759,
+        "sections": 36937
+      }
+    ],
+    "sha256": "04d530e50b1e3cc5ae3f2df75e33a41dbfe678d90cb72a94dcbbe947310a81b9"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/exported/exported/web_dev_tools_agent_impl.obj",
+    "errors": [
+      {
+        "symbol": 76474,
+        "section": -32768,
+        "sections": 39606
+      },
+      {
+        "symbol": 76476,
+        "section": -32767,
+        "sections": 39606
+      },
+      {
+        "symbol": 76478,
+        "section": -32766,
+        "sections": 39606
+      },
+      {
+        "symbol": 76480,
+        "section": -32765,
+        "sections": 39606
+      },
+      {
+        "symbol": 76482,
+        "section": -32764,
+        "sections": 39606
+      },
+      {
+        "symbol": 76484,
+        "section": -32763,
+        "sections": 39606
+      },
+      {
+        "symbol": 76486,
+        "section": -32762,
+        "sections": 39606
+      },
+      {
+        "symbol": 76488,
+        "section": -32761,
+        "sections": 39606
+      },
+      {
+        "symbol": 76490,
+        "section": -32760,
+        "sections": 39606
+      },
+      {
+        "symbol": 76492,
+        "section": -32759,
+        "sections": 39606
+      }
+    ],
+    "sha256": "5ec7c5c6baa8c5024123335368128896fe40482ec7134c78d13e1f36599d9d4b"
+  },
+  {
+    "object": "obj/services/network/public/mojom/mojom/network_service.mojom.obj",
+    "errors": [
+      {
+        "symbol": 74454,
+        "section": -32768,
+        "sections": 34344
+      },
+      {
+        "symbol": 74456,
+        "section": -32767,
+        "sections": 34344
+      },
+      {
+        "symbol": 74458,
+        "section": -32766,
+        "sections": 34344
+      },
+      {
+        "symbol": 74460,
+        "section": -32765,
+        "sections": 34344
+      },
+      {
+        "symbol": 74462,
+        "section": -32764,
+        "sections": 34344
+      },
+      {
+        "symbol": 74464,
+        "section": -32763,
+        "sections": 34344
+      },
+      {
+        "symbol": 74466,
+        "section": -32762,
+        "sections": 34344
+      },
+      {
+        "symbol": 74468,
+        "section": -32761,
+        "sections": 34344
+      },
+      {
+        "symbol": 74470,
+        "section": -32760,
+        "sections": 34344
+      },
+      {
+        "symbol": 74472,
+        "section": -32759,
+        "sections": 34344
+      }
+    ],
+    "sha256": "d925e063217559945ed198ada2fcf496b8b6eef065679713877e503add02743b"
+  },
+  {
+    "object": "obj/services/viz/public/mojom/mojom/layer_context.mojom.obj",
+    "errors": [
+      {
+        "symbol": 74831,
+        "section": -32768,
+        "sections": 35496
+      },
+      {
+        "symbol": 74833,
+        "section": -32767,
+        "sections": 35496
+      },
+      {
+        "symbol": 74835,
+        "section": -32766,
+        "sections": 35496
+      },
+      {
+        "symbol": 74837,
+        "section": -32765,
+        "sections": 35496
+      },
+      {
+        "symbol": 74839,
+        "section": -32764,
+        "sections": 35496
+      },
+      {
+        "symbol": 74841,
+        "section": -32763,
+        "sections": 35496
+      },
+      {
+        "symbol": 74843,
+        "section": -32762,
+        "sections": 35496
+      },
+      {
+        "symbol": 74845,
+        "section": -32761,
+        "sections": 35496
+      },
+      {
+        "symbol": 74847,
+        "section": -32760,
+        "sections": 35496
+      },
+      {
+        "symbol": 74849,
+        "section": -32759,
+        "sections": 35496
+      }
+    ],
+    "sha256": "fdd25c16ecc000026e560af12a430ff33b1debc53fec872fead3469f2ef28fe4"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/probe/instrumentation_probes/core_probes_impl.obj",
+    "errors": [
+      {
+        "symbol": 80897,
+        "section": -32768,
+        "sections": 57221
+      },
+      {
+        "symbol": 80899,
+        "section": -32767,
+        "sections": 57221
+      },
+      {
+        "symbol": 80901,
+        "section": -32766,
+        "sections": 57221
+      },
+      {
+        "symbol": 80903,
+        "section": -32765,
+        "sections": 57221
+      },
+      {
+        "symbol": 80905,
+        "section": -32764,
+        "sections": 57221
+      },
+      {
+        "symbol": 80907,
+        "section": -32763,
+        "sections": 57221
+      },
+      {
+        "symbol": 80909,
+        "section": -32762,
+        "sections": 57221
+      },
+      {
+        "symbol": 80911,
+        "section": -32761,
+        "sections": 57221
+      },
+      {
+        "symbol": 80913,
+        "section": -32760,
+        "sections": 57221
+      },
+      {
+        "symbol": 80915,
+        "section": -32759,
+        "sections": 57221
+      }
+    ],
+    "sha256": "836a3b3b58ed49f37adeb521b8497dcb7dd3ce8b6fec11511852ca3d31315c54"
+  }
+]

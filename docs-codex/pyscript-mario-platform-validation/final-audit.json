@@ -1,0 +1,17 @@
+{
+  "auditedAt": "2026-11-11T22:53:43.570678+00:00",
+  "integrityChecksPassed": true,
+  "unifiedPassed": false,
+  "functionalInputsVerified": 875,
+  "archivedFilesVerified": 315,
+  "documentationLinksVerified": 48,
+  "preservedMcjeInputs": 32,
+  "recoveredObjects": 56,
+  "expectedCases": 456,
+  "executedCases": 454,
+  "passedCases": 453,
+  "failedCases": 1,
+  "notRunCases": 2,
+  "standaloneMarioPassed": 35,
+  "externalOriginalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1"
+}

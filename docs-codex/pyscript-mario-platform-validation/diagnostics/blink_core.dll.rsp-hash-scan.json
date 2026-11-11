@@ -1,0 +1,42 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "sources": [
+    "obj/third_party/blink/renderer/core/core/core_initializer.obj",
+    "obj/third_party/blink/renderer/core/core/python_script_controller.obj"
+  ],
+  "targetHashCount": 5255,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_image_set_value.obj",
+      "errors": [
+        "GHASH count 69344 differs from type count 64268",
+        "GHASH 008b992cd74393ce at type 0xdd32: leaf 0x7cb3 conflicts with 0x1602",
+        "GHASH 2a829efde374570d at type 0xdd34: leaf 0x6172 conflicts with 0x1602",
+        "GHASH e135a6e61c62baec at type 0xdd3a: leaf 0x6573 conflicts with 0x1602",
+        "GHASH 373129fd42b534e7 at type 0xdd3d: leaf 0x0 conflicts with 0x1602",
+        "GHASH 56e67be88291455c at type 0xdd40: leaf 0x6e61 conflicts with 0x1602",
+        "GHASH cee76b8d9eeb3124 at type 0xdd43: leaf 0x6b6e conflicts with 0x1602",
+        "GHASH 13c1872e5cd28c3c at type 0xdd49: leaf 0x0 conflicts with 0x1602"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_paint_value.obj",
+      "errors": [
+        "GHASH count 64560 differs from type count 59464"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_property_value_set.obj",
+      "errors": [
+        "GHASH count 25845 differs from type count 19349",
+        "GHASH 2c03032f15071be5 at type 0x4ebf: leaf 0x1630 conflicts with 0x1602",
+        "GHASH 40ec40ebedc16d77 at type 0x4ec1: leaf 0x5fb0 conflicts with 0x1602",
+        "GHASH 61dd22481e748f48 at type 0x4ec8: leaf 0x1606 conflicts with 0x1602",
+        "GHASH b32ea3f72ade5187 at type 0x4eca: leaf 0x1504 conflicts with 0x1602",
+        "GHASH 8ac20069d5ed83fa at type 0x4ed1: leaf 0x1206 conflicts with 0x1602",
+        "GHASH 00484d02cdc4bcc2 at type 0x4ed3: leaf 0x1009 conflicts with 0x1602",
+        "GHASH e64c34a750d4630f at type 0x4eda: leaf 0x1009 conflicts with 0x1602"
+      ]
+    }
+  ]
+}

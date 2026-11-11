@@ -30,7 +30,7 @@ SUITES = [
     ('adapter', 'python_document_context_unittests', [], 18),
     ('browser-unit', 'blink_unittests', [
         '--gtest_filter=PythonBrowserBridgeTest.*'
-    ], 11),
+    ], 12),
     ('browser-platform', 'pyscript_browser_smoke_test.mjs', [], 15),
     ('canvas-unit', 'blink_unittests', [
         '--gtest_filter=PythonCanvasBatchTest.*:PythonCanvasBridgeTest.*'

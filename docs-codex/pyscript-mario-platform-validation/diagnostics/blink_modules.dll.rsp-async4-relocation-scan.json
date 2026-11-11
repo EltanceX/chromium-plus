@@ -1,0 +1,100 @@
+{
+  "directObjects": 4650,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_text_decoder_stream.obj",
+      "errors": [
+        {
+          "section": 741,
+          "name": ".debug$S",
+          "size": 792,
+          "relocation": 0,
+          "offset": 3021575482,
+          "symbol": 3787886788,
+          "kind": 21158
+        },
+        {
+          "section": 742,
+          "name": ".debug$S",
+          "size": 204,
+          "relocation": 0,
+          "offset": 1510451871,
+          "symbol": 3231034082,
+          "kind": 32547
+        },
+        {
+          "section": 743,
+          "name": ".debug$S",
+          "size": 304,
+          "relocation": 0,
+          "offset": 1194103880,
+          "symbol": 2906956046,
+          "kind": 23254
+        },
+        {
+          "section": 744,
+          "name": ".debug$S",
+          "size": 216,
+          "relocation": 0,
+          "offset": 1555889805,
+          "symbol": 2354790721,
+          "kind": 62701
+        },
+        {
+          "section": 745,
+          "name": ".debug$S",
+          "size": 216,
+          "relocation": 0,
+          "offset": 710272610,
+          "symbol": 1847848387,
+          "kind": 45786
+        },
+        {
+          "section": 746,
+          "name": ".debug$S",
+          "size": 208,
+          "relocation": 0,
+          "offset": 1425010832,
+          "symbol": 2761845885,
+          "kind": 15584
+        },
+        {
+          "section": 747,
+          "name": ".debug$S",
+          "size": 208,
+          "relocation": 0,
+          "offset": 1702799317,
+          "symbol": 4054940288,
+          "kind": 61738
+        },
+        {
+          "section": 748,
+          "name": ".debug$S",
+          "size": 772,
+          "relocation": 0,
+          "offset": 4004615156,
+          "symbol": 743349181,
+          "kind": 46590
+        },
+        {
+          "section": 749,
+          "name": ".debug$S",
+          "size": 228,
+          "relocation": 0,
+          "offset": 3960630667,
+          "symbol": 3403060626,
+          "kind": 46056
+        },
+        {
+          "section": 750,
+          "name": ".debug$S",
+          "size": 252,
+          "relocation": 0,
+          "offset": 941362766,
+          "symbol": 2981109815,
+          "kind": 10155
+        }
+      ]
+    }
+  ]
+}

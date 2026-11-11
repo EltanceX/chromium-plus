@@ -1,0 +1,26 @@
+[16376:5372:1111/200129.984:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[16376:5372:1111/200130.078:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:51130/devtools/browser/c7bd3672-73dd-45b3-8303-c0c5d60bebb7
+[12044:17996:1111/200130.487:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16376:5372:1111/200131.050:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16376:5372:1111/200131.050:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16376:5372:1111/200131.283:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[16376:5372:1111/200131.386:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[12044:17996:1111/200131.592:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[12044:17996:1111/200131.592:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16376:6472:1111/200132.323:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[16376:6472:1111/200132.348:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[12752:3032:1111/200134.673:WARNING:services\audio\sync_reader.cc:154] ASR: No room in socket buffer.: 管道正在被关闭。 (0xE8)
+[16376:5372:1111/200137.784:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.787:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.788:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.788:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.789:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.790:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.791:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200137.792:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59786/pending (0)
+[16376:5372:1111/200139.461:ERROR:content\browser\renderer_host\render_frame_host_impl.cc:9779] Cannot enter fullscreen without a transient activation, orientation change, XR overlay, or delegated capability.
+[12044:17928:1111/200152.109:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, 6EA0...))
+[12044:17928:1111/200152.109:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, 0F4F...))
+[12044:17928:1111/200152.110:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 3), LocalSurfaceId(5, 1, 5636...))

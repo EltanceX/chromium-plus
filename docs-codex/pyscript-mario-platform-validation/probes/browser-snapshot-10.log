@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 0,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\browser-snapshot-10.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:158:9)\n    at async launch (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:191:10)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:291:3"
+}

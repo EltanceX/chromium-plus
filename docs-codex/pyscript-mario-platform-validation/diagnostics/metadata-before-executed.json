@@ -1,0 +1,76 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": [
+        {
+          "elapsed_time_ms": 3337,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+              "line": 118,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\\src\\src\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc:117)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiIKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6UHl0aG9uQnJvd3NlckJyaWRnZVRlc3RfRXhwb3J0Q291bnRzTWV0YWRhdGFCZWZvcmVTZXJpYWxpemluZ19UZXN0OjpUZXN0Qm9keSBbMHg3ZmY3YzAwOTc2MDYrOTQ2XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxtb2R1bGVzXHB5dGhvbl9icm93c2VyX2JyaWRnZV90ZXN0LmNjOjExNykKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjppbnRlcm5hbDo6SGFuZGxlRXhjZXB0aW9uc0luTWV0aG9kSWZTdXBwb3J0ZWQ8dGVzdGluZzo6VGVzdCx2b2lkPiBbMHg3ZmY3YjU4NzM5NDUrNDVdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGdvb2dsZXRlc3Rcc3JjXGdvb2dsZXRlc3Rcc3JjXGd0ZXN0LmNjOjI3MjkpCg==",
+              "summary": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiI=",
+              "type": "failure"
+            },
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+              "line": 118,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\\src\\src\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc:117)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiIKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6UHl0aG9uQnJvd3NlckJyaWRnZVRlc3RfRXhwb3J0Q291bnRzTWV0YWRhdGFCZWZvcmVTZXJpYWxpemluZ19UZXN0OjpUZXN0Qm9keSBbMHg3ZmY3YzAwOTc2MDYrOTQ2XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxtb2R1bGVzXHB5dGhvbl9icm93c2VyX2JyaWRnZV90ZXN0LmNjOjExNykKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjppbnRlcm5hbDo6SGFuZGxlRXhjZXB0aW9uc0luTWV0aG9kSWZTdXBwb3J0ZWQ8dGVzdGluZzo6VGVzdCx2b2lkPiBbMHg3ZmY3YjU4NzM5NDUrNDVdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGdvb2dsZXRlc3Rcc3JjXGdvb2dsZXRlc3Rcc3JjXGd0ZXN0LmNjOjI3MjkpCg==",
+              "summary": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiI=",
+              "type": "failure"
+            },
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+              "line": 118,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\\src\\src\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc:117)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiIKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6UHl0aG9uQnJvd3NlckJyaWRnZVRlc3RfRXhwb3J0Q291bnRzTWV0YWRhdGFCZWZvcmVTZXJpYWxpemluZ19UZXN0OjpUZXN0Qm9keSBbMHg3ZmY3YzAwOTc2MDYrOTQ2XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxtb2R1bGVzXHB5dGhvbl9icm93c2VyX2JyaWRnZV90ZXN0LmNjOjExNykKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjppbnRlcm5hbDo6SGFuZGxlRXhjZXB0aW9uc0luTWV0aG9kSWZTdXBwb3J0ZWQ8dGVzdGluZzo6VGVzdCx2b2lkPiBbMHg3ZmY3YjU4NzM5NDUrNDVdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGdvb2dsZXRlc3Rcc3JjXGdvb2dsZXRlc3Rcc3JjXGd0ZXN0LmNjOjI3MjkpCg==",
+              "summary": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiI=",
+              "type": "failure"
+            },
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+              "line": 118,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\\src\\src\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc:117)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiIKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6UHl0aG9uQnJvd3NlckJyaWRnZVRlc3RfRXhwb3J0Q291bnRzTWV0YWRhdGFCZWZvcmVTZXJpYWxpemluZ19UZXN0OjpUZXN0Qm9keSBbMHg3ZmY3YzAwOTc2MDYrOTQ2XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxibGlua1xyZW5kZXJlclxtb2R1bGVzXHB5dGhvbl9icm93c2VyX2JyaWRnZV90ZXN0LmNjOjExNykKCWJsaW5rX3VuaXR0ZXN0cyF0ZXN0aW5nOjppbnRlcm5hbDo6SGFuZGxlRXhjZXB0aW9uc0luTWV0aG9kSWZTdXBwb3J0ZWQ8dGVzdGluZzo6VGVzdCx2b2lkPiBbMHg3ZmY3YjU4NzM5NDUrNDVdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGdvb2dsZXRlc3Rcc3JjXGdvb2dsZXRlc3Rcc3JjXGd0ZXN0LmNjOjI3MjkpCg==",
+              "summary": "Expected equality of these values:\n  \"Document exceeds the export source limit\"\n  result.status.message.Utf8()\n    Which is: \"HTML export exceeds 1 MiB\"",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogICJEb2N1bWVudCBleGNlZWRzIHRoZSBleHBvcnQgc291cmNlIGxpbWl0IgogIHJlc3VsdC5zdGF0dXMubWVzc2FnZS5VdGY4KCkKICAgIFdoaWNoIGlzOiAiSFRNTCBleHBvcnQgZXhjZWVkcyAxIE1pQiI=",
+              "type": "failure"
+            }
+          ],
+          "status": "FAILURE",
+          "thread_id": 2416,
+          "timestamp": "2026-11-11T22:34:05.287Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 90
+    }
+  },
+  "rawSourceSha256": "68be3cb537898cafd0b66c51244e8796d4ae88693f708727757672ca20746bdf"
+}

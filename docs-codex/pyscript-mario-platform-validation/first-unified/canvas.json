@@ -1,0 +1,156 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:53300",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Native rectangles transforms alpha and clear produce expected pixels",
+      "passed": true,
+      "elapsedMs": 433,
+      "detail": {
+        "statistics": "{'commands': 50, 'bytes': 6501, 'pixels': 62314, 'native_ms': 23.0}",
+        "alpha": [
+          0,
+          127,
+          128,
+          255
+        ]
+      }
+    },
+    {
+      "name": "Paths arcs ellipses dashes gradients and text use native Canvas",
+      "passed": true,
+      "elapsedMs": 29,
+      "detail": {
+        "left": [
+          234,
+          0,
+          21,
+          255
+        ],
+        "right": [
+          21,
+          0,
+          234,
+          255
+        ],
+        "textPixels": 173
+      }
+    },
+    {
+      "name": "Invalid trailing command rejects the whole batch before drawing",
+      "passed": true,
+      "elapsedMs": 331
+    },
+    {
+      "name": "Successful submission replaces pixels and resets state and sealed batches can be reused",
+      "passed": true,
+      "elapsedMs": 307
+    },
+    {
+      "name": "Cache copy smoothing self-copy and released sources obey preflight",
+      "passed": true,
+      "elapsedMs": 452,
+      "detail": {
+        "statistics": "{'commands': 2, 'bytes': 256, 'pixels': 32772, 'native_ms': 3.0}"
+      }
+    },
+    {
+      "name": "Native resize changes dimensions and expires old context versions",
+      "passed": true,
+      "elapsedMs": 352
+    },
+    {
+      "name": "External dimension changes require reacquiring a new handle",
+      "passed": true,
+      "elapsedMs": 364
+    },
+    {
+      "name": "Resource count release and reused slot versions are bounded",
+      "passed": true,
+      "elapsedMs": 308
+    },
+    {
+      "name": "Aggregate surface pixels and individual dimensions are bounded",
+      "passed": true,
+      "elapsedMs": 327
+    },
+    {
+      "name": "Gradients cannot cross batches or exceed stop limits",
+      "passed": true,
+      "elapsedMs": 285
+    },
+    {
+      "name": "Native arguments styles strings and stack underflow are validated",
+      "passed": true,
+      "elapsedMs": 252
+    },
+    {
+      "name": "Canvas handle expires for detached node",
+      "passed": true,
+      "elapsedMs": 306
+    },
+    {
+      "name": "Canvas handle expires for adopted node",
+      "passed": true,
+      "elapsedMs": 309
+    },
+    {
+      "name": "Canvas handle expires for shadow tree",
+      "passed": true,
+      "elapsedMs": 308
+    },
+    {
+      "name": "Canvas handle expires for customized attribute",
+      "passed": true,
+      "elapsedMs": 286
+    },
+    {
+      "name": "Python does not take over an existing JavaScript context",
+      "passed": true,
+      "elapsedMs": 315
+    },
+    {
+      "name": "A canvas tainted by external JavaScript expires the Python handle",
+      "passed": true,
+      "elapsedMs": 344
+    },
+    {
+      "name": "Drawing budget latches a fatal stop even when Python catches the error",
+      "passed": true,
+      "elapsedMs": 261
+    },
+    {
+      "name": "Python-only layered scene animates with measured batch costs",
+      "passed": true,
+      "elapsedMs": 929,
+      "detail": {
+        "state": "frames:34:x:80",
+        "statistics": "commands:7 bytes:903 pixels:679124 native_ms:1.0",
+        "screenshot": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\final-1\\canvas.json.sample.png"
+      }
+    },
+    {
+      "name": "Trusted keyboard input moves the Python sprite",
+      "passed": true,
+      "elapsedMs": 241
+    },
+    {
+      "name": "Freeze and resume keep a bounded drawing frame",
+      "passed": true,
+      "elapsedMs": 958
+    },
+    {
+      "name": "Navigation and reload create fresh Python canvas resources",
+      "passed": true,
+      "elapsedMs": 1052
+    },
+    {
+      "name": "Browser closes normally with cached surfaces and a pending frame",
+      "passed": true,
+      "elapsedMs": 600
+    }
+  ],
+  "passed": true
+}

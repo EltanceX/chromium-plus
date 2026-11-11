@@ -1,0 +1,1892 @@
+[
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\adapter.json",
+    "path": "final\\adapter.json",
+    "originalSha256": "3c5fa3fccf4b916be82e7890942f15f06ed2fe1654e8b40e4c0babfe00ba6a6b",
+    "archivedSha256": "3c5fa3fccf4b916be82e7890942f15f06ed2fe1654e8b40e4c0babfe00ba6a6b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\adapter.log",
+    "path": "final\\adapter.log",
+    "originalSha256": "27765fec6b1cfb4746f91c51a042b437ee9582adcacbf3164b37139ed9121d6f",
+    "archivedSha256": "e0a3e76a5d543e04414c4b5152e9b9600874cd40305bdf8e7e15d6a81121e345"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\animation.json",
+    "path": "final\\animation.json",
+    "originalSha256": "f84c12dd8695985d9d05bcf3b55d587189666e206ad8c9b2392134abf04a5075",
+    "archivedSha256": "f84c12dd8695985d9d05bcf3b55d587189666e206ad8c9b2392134abf04a5075"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\animation.json.chrome.log",
+    "path": "final\\animation.json.chrome.log",
+    "originalSha256": "1a7cd5c520f1ca13dea4e17850ff117cd0fd1806ab5e86c398bb24f376002a54",
+    "archivedSha256": "6c9eba4ac7133e5ae4e518822ef9b31565092c1502dafedb0a06a326c6ee9ce4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\animation.json.sample.png",
+    "path": "final\\animation.json.sample.png",
+    "originalSha256": "012c03b8e48b86bebe30b9ee82315f431848a4d91848f1af5d5195242cc0db93",
+    "archivedSha256": "012c03b8e48b86bebe30b9ee82315f431848a4d91848f1af5d5195242cc0db93"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\animation.log",
+    "path": "final\\animation.log",
+    "originalSha256": "3898616b1669b2d2287d74c1fce821918765708a10a5d7f7a72a2e1729d714b6",
+    "archivedSha256": "3898616b1669b2d2287d74c1fce821918765708a10a5d7f7a72a2e1729d714b6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\blink.json",
+    "path": "final\\blink.json",
+    "originalSha256": "31e68cfa8cb356d85e469a99875f7ce972f2101318d9ef71f0ba313d446b8426",
+    "archivedSha256": "31e68cfa8cb356d85e469a99875f7ce972f2101318d9ef71f0ba313d446b8426"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\blink.log",
+    "path": "final\\blink.log",
+    "originalSha256": "b17a33414cbdb65f768efb51fee3449bb72793dc19c9ae370e24fd72268abb19",
+    "archivedSha256": "dd6bb5d58c1bc55f854aee84fd7c04bbaefff90e37431dff4eda0d0a627ea070"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-platform.json",
+    "path": "final\\browser-platform.json",
+    "originalSha256": "8c569536acbd89c6f3b470ad01fb54ebbce68b27c3a148338bb374b43dde251e",
+    "archivedSha256": "8c569536acbd89c6f3b470ad01fb54ebbce68b27c3a148338bb374b43dde251e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-platform.json.chrome.log",
+    "path": "final\\browser-platform.json.chrome.log",
+    "originalSha256": "e932698ef14de79c75059bce9fed59919dd135f9ccac06e94f3aa0ff79fcba4e",
+    "archivedSha256": "43a81117b26aea2fb59dc4eb047bbc5b5c2780bf4a15d588f3baeac656e7c970"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-platform.json.platform.png",
+    "path": "final\\browser-platform.json.platform.png",
+    "originalSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6",
+    "archivedSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-platform.log",
+    "path": "final\\browser-platform.log",
+    "originalSha256": "a340219b3a5f1601901308a782cf48df3a8cb88792ccdee4d69db4d8812c339e",
+    "archivedSha256": "a340219b3a5f1601901308a782cf48df3a8cb88792ccdee4d69db4d8812c339e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-unit.json",
+    "path": "final\\browser-unit.json",
+    "originalSha256": "89d58e7ee9f26cf00c8bf5ea955f2ee1cd634006d79b1bb2fc897a080896468a",
+    "archivedSha256": "89d58e7ee9f26cf00c8bf5ea955f2ee1cd634006d79b1bb2fc897a080896468a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\browser-unit.log",
+    "path": "final\\browser-unit.log",
+    "originalSha256": "88a072c229819a53f71490a53f3aabaca3ad9694aa69e33392999921a7cc9821",
+    "archivedSha256": "1a46737cd2b005c12ab70d4a26f14c5c06dbd544651ab3c32e5950f7fcfb89f2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\build.log",
+    "path": "final\\build.log",
+    "originalSha256": "2dff1fa4d2c3e34b454645fd1c9e9525f135b8eafaeddeb748ece4d56f5aa4f0",
+    "archivedSha256": "e25f43f175d6ea223a054f15b8dd33fb2271b27d825d9d326807a704f4de7825"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas-native.json",
+    "path": "final\\canvas-native.json",
+    "originalSha256": "2434da5d086964e3fcdddcea5ad66440152b9305085a56b82242a7159c421e6d",
+    "archivedSha256": "2434da5d086964e3fcdddcea5ad66440152b9305085a56b82242a7159c421e6d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas-native.log",
+    "path": "final\\canvas-native.log",
+    "originalSha256": "d5bbbf6b87577f1c4e703cb2e8b9b59f0d7c94a748505a1360022bd460a25efc",
+    "archivedSha256": "2243a2d69c833a36757c77071e86ef8af6e94c0026f55b19ac21d372e961c03d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas-unit.json",
+    "path": "final\\canvas-unit.json",
+    "originalSha256": "5598ed3c99dc478f26787de7b6a29be57c4cc20de0cdd4cf46144ce924ad249d",
+    "archivedSha256": "5598ed3c99dc478f26787de7b6a29be57c4cc20de0cdd4cf46144ce924ad249d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas-unit.log",
+    "path": "final\\canvas-unit.log",
+    "originalSha256": "0578a36c695481fdb6b5f499d0ed707290e90fef57f0883bb892c4d3e1f33742",
+    "archivedSha256": "a39e9f05e6ca86b657df4549ab6b63b71d3c4fa5c66841c018e27198e5c5f073"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas.json",
+    "path": "final\\canvas.json",
+    "originalSha256": "d04f2e3d1d5364e22268bb4107ee1769dc81382266c4e37223e94b4797cdf0e0",
+    "archivedSha256": "d04f2e3d1d5364e22268bb4107ee1769dc81382266c4e37223e94b4797cdf0e0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas.json.chrome.log",
+    "path": "final\\canvas.json.chrome.log",
+    "originalSha256": "56f2adb99e18307584fe4d0f03b488cf1a44985dbd5b59d4ceac8f1609243e06",
+    "archivedSha256": "d2dbf82e48d75d3f87e0c36e63e22a58f52c719e3a030f15a6eaa8bd3efe37e1"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas.json.sample.png",
+    "path": "final\\canvas.json.sample.png",
+    "originalSha256": "f348d26b74d139fcfeab4d3e1f3b180b45803a21501eaf7bbaaa555ebfacc1c4",
+    "archivedSha256": "f348d26b74d139fcfeab4d3e1f3b180b45803a21501eaf7bbaaa555ebfacc1c4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\canvas.log",
+    "path": "final\\canvas.log",
+    "originalSha256": "4c077de9e598023cc591890de49f6ff07411cfcbe5b5575d943b05c7e1f804b8",
+    "archivedSha256": "4c077de9e598023cc591890de49f6ff07411cfcbe5b5575d943b05c7e1f804b8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\csp.json",
+    "path": "final\\csp.json",
+    "originalSha256": "60184b4bf059a6a71c70345076e87fd912d0cbafe3b324ae6ab2f7c201036a03",
+    "archivedSha256": "60184b4bf059a6a71c70345076e87fd912d0cbafe3b324ae6ab2f7c201036a03"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\csp.log",
+    "path": "final\\csp.log",
+    "originalSha256": "9d9bb67ad7e4b0f5776204c153f483065a9b54342080420a4c5632b4903e022e",
+    "archivedSha256": "d2294f4965720781609412ba2be9acf48fb29d6b98bf144b5365cb398c6f4ffe"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\dom.json",
+    "path": "final\\dom.json",
+    "originalSha256": "0ce44f0425c522e5f793843569a118710ed423df83b41cc8cb395860664775ed",
+    "archivedSha256": "0ce44f0425c522e5f793843569a118710ed423df83b41cc8cb395860664775ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\dom.json.chrome.log",
+    "path": "final\\dom.json.chrome.log",
+    "originalSha256": "e1500d855d41bc41c4deb09447093e0b4cc86f02bc0e1e705f6b5ca52069b0c5",
+    "archivedSha256": "e88a7556b81a7040d3f5c58e9cb6c909b24d4da973a7fcbd4e4dac840818ec97"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\dom.json.sample.png",
+    "path": "final\\dom.json.sample.png",
+    "originalSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+    "archivedSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\dom.log",
+    "path": "final\\dom.log",
+    "originalSha256": "e20d2ec9de5634ac45a77678c7edfbbb31f9d999a6ff81c5f0776647044469fc",
+    "archivedSha256": "e20d2ec9de5634ac45a77678c7edfbbb31f9d999a6ff81c5f0776647044469fc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\events.json",
+    "path": "final\\events.json",
+    "originalSha256": "11af0b32185fb931e018411d66ef4534c96183e0e0b3091852db7097325ad1d6",
+    "archivedSha256": "11af0b32185fb931e018411d66ef4534c96183e0e0b3091852db7097325ad1d6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\events.json.chrome.log",
+    "path": "final\\events.json.chrome.log",
+    "originalSha256": "8eae0de75bea3642903ff8313b5f4ff1c59ac643032dddd04a47177b518b6194",
+    "archivedSha256": "3c64038063a6d1e148bca8e0592dee8f9c97528aa263d0e79be020fa6b6d0026"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\events.json.sample.png",
+    "path": "final\\events.json.sample.png",
+    "originalSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+    "archivedSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\events.log",
+    "path": "final\\events.log",
+    "originalSha256": "7e70be8888684e27ab633e117c0c3eaf439a2a996c698cbcf4947e912859fc7b",
+    "archivedSha256": "7e70be8888684e27ab633e117c0c3eaf439a2a996c698cbcf4947e912859fc7b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\input.json",
+    "path": "final\\input.json",
+    "originalSha256": "aa977c5a78d8ff155b9b4242c7d447f34a3a5886595c8c7c46d0a356f4b3a4e5",
+    "archivedSha256": "aa977c5a78d8ff155b9b4242c7d447f34a3a5886595c8c7c46d0a356f4b3a4e5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\input.json.chrome.log",
+    "path": "final\\input.json.chrome.log",
+    "originalSha256": "a7ae54a91d53d22992cc56c5bf612d84f7dd24dd4cb1fec9dc0dd4ed7706c734",
+    "archivedSha256": "015454c10f0f4636528dc5f2909c236665a4558775d6bfded736dcea5edd59be"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\input.json.sample.png",
+    "path": "final\\input.json.sample.png",
+    "originalSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4",
+    "archivedSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\input.log",
+    "path": "final\\input.log",
+    "originalSha256": "d4ec10ba60150442659473dce6416173df96f38574a9ecdd8f2086d2b30b4440",
+    "archivedSha256": "d4ec10ba60150442659473dce6416173df96f38574a9ecdd8f2086d2b30b4440"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario-logic.json",
+    "path": "final\\mario-logic.json",
+    "originalSha256": "f32ba0e4746c927688d83026971dddb173efc3b844b14f60e49b061077dc89df",
+    "archivedSha256": "eb149b021f1386aa6f9156ffb2e312ce9ab76762f8ac9a1391c822bebb16d224"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario-logic.log",
+    "path": "final\\mario-logic.log",
+    "originalSha256": "7597de1d3bc3bf4c24cf0227b5157148a82eebfd7eadf625dec1b5e084b28169",
+    "archivedSha256": "90de03d753dd4f8f13ae8d16e7c0b1dffc7804081652db9fb4c0edbe5bb72f46"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario-source.log",
+    "path": "final\\mario-source.log",
+    "originalSha256": "da2a2127df8d8c9f8a4aa574321c1f4194bdad5d6ebbbc9ebacc184f1d370462",
+    "archivedSha256": "75e1b7cc3c4bfe6c34b4114cf632ee8ec1d4aafecfe0d5a4f75a3af28c509d7e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json",
+    "path": "final\\mario.json",
+    "originalSha256": "0d03720f84ff39661367882743acef374c30cd4d11b40261dae0a6085d68ee85",
+    "archivedSha256": "0d03720f84ff39661367882743acef374c30cd4d11b40261dae0a6085d68ee85"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.chrome.log",
+    "path": "final\\mario.json.chrome.log",
+    "originalSha256": "5baf5001b1329b2d64725276efed7c5d507108e37fd63316813fad6172a7bf48",
+    "archivedSha256": "74f586a260a215248f3ee0efcce53ea195ca1032e4abed1abec7d22fbc318211"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.dialog.png",
+    "path": "final\\mario.json.dialog.png",
+    "originalSha256": "9d709a32c49a224169b3be066c15b18cdec8354305c0ad146871cdd7d59caf82",
+    "archivedSha256": "9d709a32c49a224169b3be066c15b18cdec8354305c0ad146871cdd7d59caf82"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.failure.png",
+    "path": "final\\mario.json.failure.png",
+    "originalSha256": "a60c6ee1db6d163e80016e03df5e1d0603318cf4bb6fd66f5955be91c788622f",
+    "archivedSha256": "a60c6ee1db6d163e80016e03df5e1d0603318cf4bb6fd66f5955be91c788622f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.narrow.png",
+    "path": "final\\mario.json.narrow.png",
+    "originalSha256": "b662da11099ec71e956dfa8cf48328aed900f339933d8bfb595e9b3ce358092e",
+    "archivedSha256": "b662da11099ec71e956dfa8cf48328aed900f339933d8bfb595e9b3ce358092e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.playing.png",
+    "path": "final\\mario.json.playing.png",
+    "originalSha256": "a2fdb75a49152441e915a3c4e1a73e31871bec5b51c3b22a1cab8b33f03ab3a9",
+    "archivedSha256": "a2fdb75a49152441e915a3c4e1a73e31871bec5b51c3b22a1cab8b33f03ab3a9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.ready.png",
+    "path": "final\\mario.json.ready.png",
+    "originalSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73",
+    "archivedSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.json.state.png",
+    "path": "final\\mario.json.state.png",
+    "originalSha256": "bc41e8b177cc670744303e9032e9390a11037e6eeef82614dc003e2bd0bfa424",
+    "archivedSha256": "bc41e8b177cc670744303e9032e9390a11037e6eeef82614dc003e2bd0bfa424"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\mario.log",
+    "path": "final\\mario.log",
+    "originalSha256": "ec1b289f9d0e6fb2672024b733b93253f5ca518500a586e3c290e419f35c088d",
+    "archivedSha256": "ec1b289f9d0e6fb2672024b733b93253f5ca518500a586e3c290e419f35c088d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json",
+    "path": "final\\parser.json",
+    "originalSha256": "9292db5dad3ef1f8bce16992e602cb25222e25a0dae2c341328e3de93be57658",
+    "archivedSha256": "9292db5dad3ef1f8bce16992e602cb25222e25a0dae2c341328e3de93be57658"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.default-off.chrome.log",
+    "path": "final\\parser.json.default-off.chrome.log",
+    "originalSha256": "0dd8d181504afab4b9f5d52fbc02f6a92449c7b502e21e9213072b4b168ccdfa",
+    "archivedSha256": "380f38cb1db6b0775b3c4ac3c3b15b53158f35f183a45eb8201e813006074b45"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.enabled.chrome.log",
+    "path": "final\\parser.json.enabled.chrome.log",
+    "originalSha256": "8082337aee5e2028f0100a4670accf1ccfbfc6ff475ef771de874e1678fd89ee",
+    "archivedSha256": "83ed7e05174003426d314236d7bfbcb6f20fcea8f0b83bfb4dd3304fe040438a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.malformed-origin.chrome.log",
+    "path": "final\\parser.json.malformed-origin.chrome.log",
+    "originalSha256": "8633418b78a315703637a41b7dd5e9605391531f759b9772e618971d3bf3cf34",
+    "archivedSha256": "25e26fb54e0da32123d9fcc73f4301e25eb684e7116703b182d22aa24dfe3970"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.missing-origin.chrome.log",
+    "path": "final\\parser.json.missing-origin.chrome.log",
+    "originalSha256": "ea5bee7e0711d12e2e3b5cabd2d0683668a8dc6979daae9ce67ae297aa6b8bf7",
+    "archivedSha256": "073e5d98666c4e6c5f7165610de2ff049a98c1fabd9237cf3bdebb8254338b93"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.non-loopback-origin.chrome.log",
+    "path": "final\\parser.json.non-loopback-origin.chrome.log",
+    "originalSha256": "1e046557e05c53f5a34f7e690ab4b5886af351c5e782ac22c0d31db928d0d764",
+    "archivedSha256": "87408488df4df8fe2a8ab71fb81af2298c1d3e772ce3f26616088d5bed62c019"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.json.wrong-origin.chrome.log",
+    "path": "final\\parser.json.wrong-origin.chrome.log",
+    "originalSha256": "9b689601613caa4f85cea5d37f0cada82fd59f311e5d8defbbf371de33f24d7a",
+    "archivedSha256": "9c42ffd5fe2f3912675a418158f41947e898138372c13ee626361d2351ef7d3a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\parser.log",
+    "path": "final\\parser.log",
+    "originalSha256": "ce4bab049abf2c6f7d1ede81fd584d845c73bd2573f79958f48380a4ef682d11",
+    "archivedSha256": "ce4bab049abf2c6f7d1ede81fd584d845c73bd2573f79958f48380a4ef682d11"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\runtime.json",
+    "path": "final\\runtime.json",
+    "originalSha256": "3ad065127168c1ef1c2ebcf4132fb97c531e5f0c9c44877e3140be1691167c12",
+    "archivedSha256": "3ad065127168c1ef1c2ebcf4132fb97c531e5f0c9c44877e3140be1691167c12"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\runtime.log",
+    "path": "final\\runtime.log",
+    "originalSha256": "a0ff2c32bd6c44776bdf3db71b4b1b02b11ddeba7239097b149773c7482156ba",
+    "archivedSha256": "be6c3477fa545f4616694cd4a89fcb6635741ad858cf39bdc7212912c54d1336"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json",
+    "path": "final\\settings-browser.json",
+    "originalSha256": "1f36297ab4efc80bf48b4c4ff1be2a1b55467abfb22146dc543cc63d4c6df03d",
+    "archivedSha256": "1f36297ab4efc80bf48b4c4ff1be2a1b55467abfb22146dc543cc63d4c6df03d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json.launch-1.chrome.log",
+    "path": "final\\settings-browser.json.launch-1.chrome.log",
+    "originalSha256": "9d8232e4a0344f22aab37203a094604c2508f414694d5254324bd1922832b5b7",
+    "archivedSha256": "67456f1a6bca94c9fb4fd0cca787f16550bd3027edc4230e36057d1aed9ded89"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json.launch-2.chrome.log",
+    "path": "final\\settings-browser.json.launch-2.chrome.log",
+    "originalSha256": "09046e27c6f5793898286bd33911e4161d8c1609f6f5d73cd5d0f6229042330c",
+    "archivedSha256": "2be1c2762a83c3ef7a68afcb9dc70b7ff9c73eff007754917b3e87902c35f482"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json.launch-3.chrome.log",
+    "path": "final\\settings-browser.json.launch-3.chrome.log",
+    "originalSha256": "ba680720366334240ba0148351985edc4f8493da1e5575ed87ed9e07c67fc487",
+    "archivedSha256": "b063a626e6d45b444ce4a88807b44091dd5a73c8195bfc9d77246426370dadb5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json.launch-4.chrome.log",
+    "path": "final\\settings-browser.json.launch-4.chrome.log",
+    "originalSha256": "5b23bd0d5b6a3aeae27fea4c0ad6a192ab2f891f2aca815e5fc5c604dd8aec89",
+    "archivedSha256": "625098333485a974908be09000f7916bbbec65401f9c49691f090b86dcbbe4ed"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.json.settings.png",
+    "path": "final\\settings-browser.json.settings.png",
+    "originalSha256": "666d19ae054fee3e730a766dd5dd608c94bc83130cbcd6be98f4cdbcaec542bd",
+    "archivedSha256": "666d19ae054fee3e730a766dd5dd608c94bc83130cbcd6be98f4cdbcaec542bd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-browser.log",
+    "path": "final\\settings-browser.log",
+    "originalSha256": "06726377e72f17bb794d110783dcc248d9a7fc78d226b4b228d49fd2ba5e50b0",
+    "archivedSha256": "06726377e72f17bb794d110783dcc248d9a7fc78d226b4b228d49fd2ba5e50b0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-unit.json",
+    "path": "final\\settings-unit.json",
+    "originalSha256": "de810446c1a8ce716b9ea9c766c4e78926a2dc2d186049d7fe549d5a32a196c3",
+    "archivedSha256": "de810446c1a8ce716b9ea9c766c4e78926a2dc2d186049d7fe549d5a32a196c3"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\settings-unit.log",
+    "path": "final\\settings-unit.log",
+    "originalSha256": "2177f27f0ebe51ebf43a3891517c4c4a5c1e78fb1c3fda5f1a2e686e2ce98e1b",
+    "archivedSha256": "a17f80df157445991568f61af07cc1d2e194e4a35e4a262ea69508ce22a150aa"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2\\summary.json",
+    "path": "final\\summary.json",
+    "originalSha256": "4debb501fb38959157e35ff840a5bf3aefeb787f7885facf7d93fc2734b0778b",
+    "archivedSha256": "4debb501fb38959157e35ff840a5bf3aefeb787f7885facf7d93fc2734b0778b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\archive-scan.json",
+    "path": "diagnostics\\archive-scan.json",
+    "originalSha256": "5b6b0f829c104eb2dad2043415d4ecb93e0a310cbd9a9ec048cda60f1ff174f0",
+    "archivedSha256": "bfc570a0a809d4b04411fe143de652a0398ccf47a9ba590c73bbf2c6bcf5d328"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\async-object-recovery.json",
+    "path": "diagnostics\\async-object-recovery.json",
+    "originalSha256": "32416dfbaec019e3e4231e8f2a4ce957aaf3f8636f1ec93f77e63059bb09a4bd",
+    "archivedSha256": "bc1e1d0929cce8664c2af22a5c6209b79e84caf12cfc32c2f09b6008616698bf"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core-failure-1.rsp",
+    "path": "diagnostics\\blink_core-failure-1.rsp",
+    "originalSha256": "d748efa864a318777bb7edde16f978d523ca8e9a185bfea609d6bf1f5f7b1111",
+    "archivedSha256": "fc687bb59fba77cab978f230d7fcf6c58f0f3ecf54368e060a6feb8535234390"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-all-debug-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-all-debug-scan.json",
+    "originalSha256": "4bff98f02b9481a4fa0c2f6632ff55c0d45abb91710fee61a2c90d3b2f77c96c",
+    "archivedSha256": "76569af70adc8d5b8a9e7a41dc5ba04044ea0ad77f3a8f40571d3b6135bb66f0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-async3-debug-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-async3-debug-scan.json",
+    "originalSha256": "a5397925f3c97befcbc08d790b00e07114d062bee37e60de3d853fc310bd6d3f",
+    "archivedSha256": "81d40530eb81f0a907bee8d7564a2b677886494867597fae4fa0492ce88b12f6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-async3-relocation-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-async3-relocation-scan.json",
+    "originalSha256": "5358b1e9b5ffadd29b940c7ce31ee5eebfda8500821925bb05ec65c9661362d2",
+    "archivedSha256": "d059462e3f2721eeaed6a206b69477a8e9c914566f2eccc5636c0c4c3c00156d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-debug-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-debug-scan.json",
+    "originalSha256": "a105ca572afe945bdcde5a568db313f5967043a2f0f22c6cf4479568e280bcb8",
+    "archivedSha256": "5cd9ec10de655ad08498ba732d94037ac2c8270aa5fab49d8f901f2fd18c522c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-hash-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-hash-scan.json",
+    "originalSha256": "d3950b622e97bbd76ff273a08b7562fe082acae868101f9848f71d0778bf4684",
+    "archivedSha256": "770572034e2478f2a2226a64fa624ef33462620dbd6aac0f915ececab36cc946"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_core.dll.rsp-relocation-scan.json",
+    "path": "diagnostics\\blink_core.dll.rsp-relocation-scan.json",
+    "originalSha256": "edfa99517dca1b2b4967cf0a8ca9d9057f66216e5862fe65c3f852eb917e3057",
+    "archivedSha256": "4f1852b5215e4c83bcb9346c21a22ace60e35e407a21ef42d726324efb1e510d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-all-debug-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-all-debug-scan.json",
+    "originalSha256": "32df9c0c4fb9157b72fa0526b4b1afbf3bb71786f5ecfc19e6a733245a97f9be",
+    "archivedSha256": "8578046779f4affc6cc7ff285a6ec0aff91766018a735340adedc60f7a861e79"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-async16-all-debug-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-async16-all-debug-scan.json",
+    "originalSha256": "1869f56c12e08f352d7985af80f3af6a3c2428960d2ec16fda632676a6867c78",
+    "archivedSha256": "826798138fe88a95063bf3a03c826e9140ead1695196dc6ddcbc6c9cac338171"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-async4-debug-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-async4-debug-scan.json",
+    "originalSha256": "2749e14ca79d9f34721fce79fe9e628aabbffbd81bddef5af66aa46d1952e1ed",
+    "archivedSha256": "2720a7d6e6cf7e8cf099439a442fcf2c147bdfd3ae92ac3b213e71ba74e91872"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-async4-relocation-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-async4-relocation-scan.json",
+    "originalSha256": "9adc67a30d2efb88a59276629efc89bb68d013cfaf2d6ea48bcdc51669697df7",
+    "archivedSha256": "6e9cea6ada598151e406079c2218d7b1a4d8066c1d49e4e298d3321c89bffbe6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-debug-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-debug-scan.json",
+    "originalSha256": "afbcf4edb6913a310b0525d57212e22863502b28cfdb28b2f5ac5bb5e2ae7420",
+    "archivedSha256": "9f08881f14af1fb36f4e550c6a4cd58e6bc97c7cdb742c38b19b5b2e4dc078e7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-hash-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-hash-scan.json",
+    "originalSha256": "0b4095493f4eb9ea6c2ac045019db8b17232279eedbc456f107b7c347440eb2e",
+    "archivedSha256": "d09115f0df5f839b9363107f1b2f72b7012369dc7da58b6cf9d711e7d19aee16"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_modules.dll.rsp-relocation-scan.json",
+    "path": "diagnostics\\blink_modules.dll.rsp-relocation-scan.json",
+    "originalSha256": "6d002e78fa930e486288ecff278c94bbf92f6956b976af8d6b36c8ebca07d0da",
+    "archivedSha256": "6d06f0dac7b141f624c3f69dee2bb8f88698d1d3c36e4bfae84775411a3379ec"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_unittests.exe.rsp-all-debug-scan.json",
+    "path": "diagnostics\\blink_unittests.exe.rsp-all-debug-scan.json",
+    "originalSha256": "48a7a08361a3e9ac7fe4ede48705c10e6fa1471d1533deece4ff5343f375f645",
+    "archivedSha256": "7bcc79debf6a8c2e3ca9241538b98a6556c8bd23b425e90f20a63005e8c8a34d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink_unittests.exe.rsp-hash-scan.json",
+    "path": "diagnostics\\blink_unittests.exe.rsp-hash-scan.json",
+    "originalSha256": "dcec48250b422e6db7fc7a0aae5be2feeb90357f751f5084d480c624e43f5bff",
+    "archivedSha256": "4cea9c160969794dbdf024c0edab08190dddf4547b94290554c4e16c74fe5202"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-1.log",
+    "path": "diagnostics\\build-async-1.log",
+    "originalSha256": "a088f3e544723c6ee037b1766bc68f4ae0133b19c7a234246b6dc30341d0e0c8",
+    "archivedSha256": "ee21ce80751688a359a2b69b8d800a7faa9a6ce91467ce2e1de293633061b13a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-10.log",
+    "path": "diagnostics\\build-async-10.log",
+    "originalSha256": "a19e804c0e4d38de12a95eac9f882afbeb764e0c57ae61190992775055274529",
+    "archivedSha256": "8c0e84037b368cae8fe0d930d361e42c37dda2ec8a9a73566b57c071700fe82a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-11.log",
+    "path": "diagnostics\\build-async-11.log",
+    "originalSha256": "33c82a716b84769722f5e714dd643beac502a5ffe65935c4458c3a17d87f8b3f",
+    "archivedSha256": "56e0848fd2b324757e910f289cf3eaba66ccc2e97a535189eac55b1ee1ef7805"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-12.log",
+    "path": "diagnostics\\build-async-12.log",
+    "originalSha256": "6e57d41764a81c29a7349a8dbd6299aabf893b704f78ff2a9ecc6ba470e99c12",
+    "archivedSha256": "83225fcf80f35938c68502dcf6af669533877aac751a0eefea4a3eec36a7a5bb"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-13.log",
+    "path": "diagnostics\\build-async-13.log",
+    "originalSha256": "dc493d4fd4830c0c3121e9d87dfe5ef5a6f15aa5efb5d005ec6242c090db965e",
+    "archivedSha256": "45266d2de50ce420ac2f3f6c71045811d936ed1c2fcc7669754a0643a08d2b00"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-14.log",
+    "path": "diagnostics\\build-async-14.log",
+    "originalSha256": "60da94068675b9d8cc2c1fa26d6a2fdd67f5ab4e776e01f44d2256d6f4cf4a24",
+    "archivedSha256": "58ab002311ea426f3ca3f2899eae2b628f67998372ad3d5f9072b2e5d87f2e6b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-15.log",
+    "path": "diagnostics\\build-async-15.log",
+    "originalSha256": "449170346339174d524a5701dbe79edf5d660cd3a675ec4b7bc0c11fac2203dd",
+    "archivedSha256": "9f15da93fe12acbb72ec588718dea8ed33807efde74e54c877fa59ff94e4df87"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-16.log",
+    "path": "diagnostics\\build-async-16.log",
+    "originalSha256": "e2f8a8d97393b046d62aee87b61bfcc0fc7ddb6e1b02574de1b6c827b67d853f",
+    "archivedSha256": "0a4459b1bb63baafb4dae846099eba03ba1feffc57714608b259d2b8ddcdb179"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-17.log",
+    "path": "diagnostics\\build-async-17.log",
+    "originalSha256": "114ff1fe0587aee9e5f81bc6b293eefdc8f267403c7044ccf7b992975ebb2491",
+    "archivedSha256": "f91cd99019661235765258cfca9a6ff727c60df369ad18196316ce601386bf95"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-18.log",
+    "path": "diagnostics\\build-async-18.log",
+    "originalSha256": "b6ace1fb625e903a900d8c04e9e4301e0f4dd47ac795fd0c3e8ce83a51571bca",
+    "archivedSha256": "864aae6dc989b44e4112fc1a5aced2aaf7dc69a7173d3fa1c29d35e98940ea18"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-19.log",
+    "path": "diagnostics\\build-async-19.log",
+    "originalSha256": "d4b723fb26bb40822985dcff7f0896d0df4c5085cd7256ce34aec11811188042",
+    "archivedSha256": "963f47705b22d7731bbbea37a604a5bfda98142dd8bbfe6ff646ef7c12f84ba0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-2.log",
+    "path": "diagnostics\\build-async-2.log",
+    "originalSha256": "1fdbb0660fe54e4c7c9fe163b699db4a340c4f185b16e2ad5f7fd73992826563",
+    "archivedSha256": "8c7e3d04f70d50912099c48c35c740ee327419792ecb42fbe956fa4a20c4d870"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-20.log",
+    "path": "diagnostics\\build-async-20.log",
+    "originalSha256": "f6cf3c12b226730ade18ef74c5fcba80804a1ed953b476efb39da85159350d59",
+    "archivedSha256": "9ab2891b3a733010765d6f84e353f348ad0b241faddf6ac42aa9f8f5ed909a46"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-23.log",
+    "path": "diagnostics\\build-async-23.log",
+    "originalSha256": "6421d5530714de10792deda8cfc4cc74b45016e7d27c87e73d916dbbf82957ad",
+    "archivedSha256": "26c629a0baef28431301ee69e69366962ff71c21d0a644f329a5604fd25a37cc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-3.log",
+    "path": "diagnostics\\build-async-3.log",
+    "originalSha256": "4dbf1ec5e82bf9f652bf1749dce030225984810adc966ec6d1d58350ee2ce501",
+    "archivedSha256": "2af8290b851db42f65412225094187b8e25543664bdd60a32f4d2d0709b406db"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-4.log",
+    "path": "diagnostics\\build-async-4.log",
+    "originalSha256": "c358f40becca46452c077cbb05f57c477689ca263074f9171a17784c7bc73997",
+    "archivedSha256": "5c0bcf8caa6dafbe92420e56db5881a470e274f83be76a91e8067b93cc2c8e2a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-5.log",
+    "path": "diagnostics\\build-async-5.log",
+    "originalSha256": "d21fdb9c98ea28d95eddbb292aae61f75b6aa63a32bbd71b176e0141d4eb235e",
+    "archivedSha256": "f1a8a47375e007b421e1101929994303ad4e3a0141237a6ed1c7685ae1b17136"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-6.log",
+    "path": "diagnostics\\build-async-6.log",
+    "originalSha256": "7e944d9d24875272ea8f476c139fec8ffc63644f10d97575d584a718ff73e90e",
+    "archivedSha256": "c7c6a14c51e59bc713c8d1f03855975d68ffa9476d681eece3d3c9e16c76b813"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-7.log",
+    "path": "diagnostics\\build-async-7.log",
+    "originalSha256": "f9de528355eaf53e48490881194662a9c706e84a13c0b06cb71c5fffbca5e2c5",
+    "archivedSha256": "dd831034b6358bbf8a8be4134af119c7d8a5fb033f9256d23dd27819e425a78b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-8.log",
+    "path": "diagnostics\\build-async-8.log",
+    "originalSha256": "8cd34b1a4b584f2eb231badb3a538841a34231571fbee9e7c4be1433ddc3d65e",
+    "archivedSha256": "90c1101b5095f96592184c0188d94c706e11b01b63e930fd5ee5bd2ef0f60873"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-async-9.log",
+    "path": "diagnostics\\build-async-9.log",
+    "originalSha256": "e7f8055bb6c750457b4d172799be9aa7afb44b39f841c197638a4aa98ea0d415",
+    "archivedSha256": "b0987a60bb1338e3d0d7ddb45c0f9c9facc96ec0545a709f1ff2589e14f06353"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-1.log",
+    "path": "diagnostics\\build-full-1.log",
+    "originalSha256": "b1202fe6a2b9bb1e9510899ede64f4403d3b7be12285fb7357fe7eed667dbf00",
+    "archivedSha256": "331534eafc9c24e03f2215ca0cc5c8f1fbca245968488e839faea85b20ab5c17"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-2.log",
+    "path": "diagnostics\\build-full-2.log",
+    "originalSha256": "320e0defb4dcad9d1bc9e67a75f5c411e18c4982073c0e3a25ba9d94ea5b4c3d",
+    "archivedSha256": "b22c8eef437cd61dd5b6aad0030b07a21d93adea47eb3ec202d0a5021d03d1e5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-3.log",
+    "path": "diagnostics\\build-full-3.log",
+    "originalSha256": "0626c35df9b7fc8254a481a0409017c8e7e0286b5a86d77d1bfa5e95021fb3e6",
+    "archivedSha256": "f1f27190c51498d6e902f9c69944259524011ad0baea81666a5680858154e5c5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-4.log",
+    "path": "diagnostics\\build-full-4.log",
+    "originalSha256": "6b6dc2c41a3afff47e0257803a4b030aadc4d0811392b8e35122c5e53e29f382",
+    "archivedSha256": "95a56b5826af01f39d9e55683d1ee523d42435ec7bf0df9fc46710e8374a87bc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-5.log",
+    "path": "diagnostics\\build-full-5.log",
+    "originalSha256": "d5db7ff9bbdd3a398292a0c7d860df303f27f51bb89d107b7ac93e3ccb592200",
+    "archivedSha256": "928e752250f2456b34fd63b2fe61973300acf49e6891f56187edde3cb2c4046e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-full-6.log",
+    "path": "diagnostics\\build-full-6.log",
+    "originalSha256": "bfb71fda77d890ba547c51c3d26b8e6a1370a389ed67e6b6abe6051d0ccdf77b",
+    "archivedSha256": "79d38ae45415fe6f1e1c75879f177eb652c1845ec54e96050229cdcdd83c5775"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-initial.log",
+    "path": "diagnostics\\build-initial.log",
+    "originalSha256": "067dd5561d782ed8207ebf3aec6323848cde324727dbe6dda4b09b3d88170e80",
+    "archivedSha256": "5ecba65048a46af5ae0e6342a10e135a5274fe7906d5a84eab25b65f4d64b9f6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-metadata-fix-25.log",
+    "path": "diagnostics\\build-metadata-fix-25.log",
+    "originalSha256": "927ade1b5c78d7510b76d71c358cebda658afedb56bae2610ac5f0765b9b0de6",
+    "archivedSha256": "e3441f958371800c8849d52cc88d4d9a2c3a9aa3c533c5df813159f4df1e1f28"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-metadata-fix-27.log",
+    "path": "diagnostics\\build-metadata-fix-27.log",
+    "originalSha256": "84972e00d3b62efe3862d4e689bc0eba87698082a358435635efe2157c762346",
+    "archivedSha256": "460dcf8260241744c536eb6ab31930c88543b31419480d41fe5f66c6594e7e4c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-metadata-objects-26.log",
+    "path": "diagnostics\\build-metadata-objects-26.log",
+    "originalSha256": "ad2e66f9d60ea8357996f4c55e8d215831c66c0b9999f073a56aea1217adba40",
+    "archivedSha256": "f878bafdecee6d0cffd1797fdcf4441c6394c46fc24b3026647fc69b7742cc43"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-metadata-test-24.log",
+    "path": "diagnostics\\build-metadata-test-24.log",
+    "originalSha256": "271e5a32caa0d315ad9ddc647e6ceda39fa1a51445f294090e275d22b92a2127",
+    "archivedSha256": "836946265748e8349d7fb829b02553480765e1f9416066567e7b67513f6c5b6c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-native-1.log",
+    "path": "diagnostics\\build-native-1.log",
+    "originalSha256": "89ba0e044a28836741373f2a24341723a73538375f23d2f77b6a54dc266a8670",
+    "archivedSha256": "573888c6fe1cfb31eaa17073244e4c51ee33831a215e87a53b2b8a80b8b38e04"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-native-2.log",
+    "path": "diagnostics\\build-native-2.log",
+    "originalSha256": "dd8ad3fd19b9635fb71c004cc2a1507317836a7891b80f6dd3f36afec1571c96",
+    "archivedSha256": "16633d7ce9742c2c4c32a0eef3066c17aa692b7666e654bf5459bda3a7a5bfaf"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-native-3.log",
+    "path": "diagnostics\\build-native-3.log",
+    "originalSha256": "3985228990bf2336b2935e91a8c259e11478408b2bdfe57dc521755377ea4449",
+    "archivedSha256": "afe24ab53f0f86afd661502389440ae3cb4e1c9cc4dbec9f93c5e67b39519e35"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-object-22.log",
+    "path": "diagnostics\\build-object-22.log",
+    "originalSha256": "0aed00fe6f35518db6f8bd8b9762361303411e9de86bc9ceb9a1a9ad46e817fb",
+    "archivedSha256": "f8b3bb186dc8fa25b0fabb5160853bb45180ed88574a2be28e9682e74ecb1b28"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\chrome-scan-corrections.json",
+    "path": "diagnostics\\chrome-scan-corrections.json",
+    "originalSha256": "967a1c555022fee7645530dac49b1cf3cfdcf8e06a312bf48f448bfe08be088e",
+    "archivedSha256": "3c4caaee2bd92bf01e1be2e820e63619b817e2ada9cef4821f7deb1afc03855a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\chrome.dll.rsp-all-debug-scan.json",
+    "path": "diagnostics\\chrome.dll.rsp-all-debug-scan.json",
+    "originalSha256": "4ac03c244eca63a012061c9a1abfb355cec9192885f071c2c6f8e9b8905d77b0",
+    "archivedSha256": "eaead740ee518d62d173718a223a9fa4eeca282f8a73f101324cd30a6587768f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\coff-symbol-corrected.json",
+    "path": "diagnostics\\coff-symbol-corrected.json",
+    "originalSha256": "a12d2427e7345ea3359049fb17b0e0c793350f5951664359abddb39664b67b8c",
+    "archivedSha256": "a7661951a842a9714a5d48f24650828fa3d2baa3c16b8d714f0d8685d52e534a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\coff-symbol-scan.json",
+    "path": "diagnostics\\coff-symbol-scan.json",
+    "originalSha256": "f6e35221341ed449868080f8b83bc3ba0a130a76dc8250e807f45cab5f7b7a1c",
+    "archivedSha256": "d7b854ee3e291c3d38dffacecc0712de4b5c64369fa6cf4a5b628de74b258309"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\content.dll.rsp-all-debug-scan.json",
+    "path": "diagnostics\\content.dll.rsp-all-debug-scan.json",
+    "originalSha256": "5eb5f8c728df3d4b390bae860279a2f96805375ba0e97ae0e241ace8c2725901",
+    "archivedSha256": "648e9766e778dba778aac8ceae3273f6d7b5550405375ad8da49ea59165f7422"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\content.dll.rsp-hash-scan.json",
+    "path": "diagnostics\\content.dll.rsp-hash-scan.json",
+    "originalSha256": "f60b3630623d5a02041bcfe1213c30152fe921b8ef3ce565936e81a71820340d",
+    "archivedSha256": "cc0083087be9ea0ed1815e004b6c1ff2b5588faec8526e22e9a318f5b4791fb7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\content.dll.rsp-relocation-scan.json",
+    "path": "diagnostics\\content.dll.rsp-relocation-scan.json",
+    "originalSha256": "335cb85e0ebc4f7cc8de2aee0b32ac8d0d89c488e270cce0fa12192b942ca896",
+    "archivedSha256": "df2ebe092530060698ae23e6f73de6a737d155efbcbf9731ca1cb28aa22313e9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\core-section-scan.json",
+    "path": "diagnostics\\core-section-scan.json",
+    "originalSha256": "a105ca572afe945bdcde5a568db313f5967043a2f0f22c6cf4479568e280bcb8",
+    "archivedSha256": "5cd9ec10de655ad08498ba732d94037ac2c8270aa5fab49d8f901f2fd18c522c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-link-failure-2.rsp",
+    "path": "diagnostics\\export-link-failure-2.rsp",
+    "originalSha256": "a11ab2a25a74bcbd95db64820603c94519d62745209b6e6557e3c2d277eab688",
+    "archivedSha256": "925a762d422d1b93713589f3e5ab882fe10910c8074485efb592f2912e0b2fb2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-link-failure.rsp",
+    "path": "diagnostics\\export-link-failure.rsp",
+    "originalSha256": "a11ab2a25a74bcbd95db64820603c94519d62745209b6e6557e3c2d277eab688",
+    "archivedSha256": "925a762d422d1b93713589f3e5ab882fe10910c8074485efb592f2912e0b2fb2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-object-probe.rsp-debug-scan.json",
+    "path": "diagnostics\\export-object-probe.rsp-debug-scan.json",
+    "originalSha256": "0352e60a55ce0ae8190275119128af8be2e67f35714bc533716d714e8025e263",
+    "archivedSha256": "3113077ebc99ef9f82597f26f50f2b3fc702e69134885f84e76cffeddc58fd05"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-object-probe.rsp-relocation-scan.json",
+    "path": "diagnostics\\export-object-probe.rsp-relocation-scan.json",
+    "originalSha256": "54afb22970863816cb2441cc0ba9549b9af96ccfbd6cb116cc9d4dda761fd337",
+    "archivedSha256": "5d3b7bbd05ba991cff29b8f3b0f3d1a5ef759763dbfc52ad28bd855531f068e0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-object-recovery.json",
+    "path": "diagnostics\\export-object-recovery.json",
+    "originalSha256": "0ad7898ffc3f7ebade296dd92efb7d1c8f3d597871a10484087de0edb4bd8b4e",
+    "archivedSha256": "72675c116efbbac301edbe267a7fb4b108cbe45d545a5e1ae7c132c3a81bc1d7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-adapter-async5.json",
+    "path": "diagnostics\\link-input-adapter-async5.json",
+    "originalSha256": "64d3d0aa165314a8787db2ac3be575c15c5473aa79375960b8a5eeb68dfb8b29",
+    "archivedSha256": "1ed922e9e57c11cbeaae6a026aaa7cc06075c74b76042ab7e014034400051d74"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-async-2.json",
+    "path": "diagnostics\\link-input-async-2.json",
+    "originalSha256": "b1e8b7f37f7d66283ffd9134ba13cd2316694ba1ab43092ac04a6b5f1d9ea952",
+    "archivedSha256": "41f84bc2b0886692c3936b87d337b7230030e1159803304b034ff60c89782504"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-modules-async10.json",
+    "path": "diagnostics\\link-input-modules-async10.json",
+    "originalSha256": "1b72c672472f108f518598d56c9bdc9fcccea96f45a61f2accf638ed64d3aa0a",
+    "archivedSha256": "6db3fdf8a1fc2301360456b84cec0cc123245042dd450170f4d6f6f9f93848d9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-modules-async4.json",
+    "path": "diagnostics\\link-input-modules-async4.json",
+    "originalSha256": "dcbcf36c9b85e4b6c8bbb08429abc53cf679b21d3476cb3c58b782aeccbfca11",
+    "archivedSha256": "a914d311954bf34c8f273c15fa378e13d7a4994f6fbf41c999df756cd064743c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-modules.json",
+    "path": "diagnostics\\link-input-modules.json",
+    "originalSha256": "5a2813b6ec9d0531a9acd8dc1037e6d316070702c5bbbabf57c3dbebae9d48b6",
+    "archivedSha256": "4a78003932c80ff955361e301920fb18b7197b064599adf9d275968e144aa05a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\link-input-scan.json",
+    "path": "diagnostics\\link-input-scan.json",
+    "originalSha256": "7722ca8c1b11187b4465501835bf0a357604f39da2027cfa4bbd604055f0519c",
+    "archivedSha256": "cc778a89714f22e88e0b9b40fba1c2165d70ee88442bb2366b351f67e2d893c2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-link-failure.rsp",
+    "path": "diagnostics\\metadata-link-failure.rsp",
+    "originalSha256": "b3930b61196d6afb0a2ef52a2590a64a88e55fd6b1bcae8c44a24d2bde3a1c74",
+    "archivedSha256": "486a5be995111c770b563c0b78c79e0d3e789ff8d366a1d5c16ca05501c0e13c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-module-failure.rsp-debug-scan.json",
+    "path": "diagnostics\\metadata-module-failure.rsp-debug-scan.json",
+    "originalSha256": "46c9c7730b0ac99391ff4bbfb367816ee06c01e8b4b72d068f5e99bee35e194a",
+    "archivedSha256": "8ad44c35291d6dd3483517d6b7d656814147ba51eb22c34c066cc09d4da41c16"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-module-failure.rsp-hash-scan.json",
+    "path": "diagnostics\\metadata-module-failure.rsp-hash-scan.json",
+    "originalSha256": "ab161b34ffb180c19b535212b2177afb6adaf98b5876af6549de66b38c9e277d",
+    "archivedSha256": "c187950f4b96bb3dd07b361c40c7d9a7904c1f532a18030553c23c4c89667a78"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-object-recovery.json",
+    "path": "diagnostics\\metadata-object-recovery.json",
+    "originalSha256": "03b6bca913c2d1b20d087e5265bbeee3fc42ed248ba8282c479948e68bf5c0c2",
+    "archivedSha256": "4dccfa51381e2ae1831b12ccae536d13965fa74e3208537783953477a459762d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\module-object-recovery.json",
+    "path": "diagnostics\\module-object-recovery.json",
+    "originalSha256": "436371f69115892d6e5b00197656e13271537f25acdc85227cf0667e357e68d0",
+    "archivedSha256": "21e79aaf131bc4b7a4420aa888eca8a03b0a2380d993cedf71b3a15f1aa42c2b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\object-recovery.json",
+    "path": "diagnostics\\object-recovery.json",
+    "originalSha256": "9498347a380cb8a4cbe21f820acb6fc8f2d0f425932419dbaec82eaf3aefc947",
+    "archivedSha256": "cd484d0fe776a454418db5ebc2a2f78f53eb567ca873ca1887080a0127718ce8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_all_debug.py",
+    "path": "diagnostics\\scan_all_debug.py",
+    "originalSha256": "714990b5191ed9bebf747abe4eac489ac3d995ae33d53e2e6264cab5ea107bf4",
+    "archivedSha256": "714990b5191ed9bebf747abe4eac489ac3d995ae33d53e2e6264cab5ea107bf4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_archives.py",
+    "path": "diagnostics\\scan_archives.py",
+    "originalSha256": "e609dca163169e6f33bd0777c221670473e3e3760b4021d89cdfd8cc03f0595b",
+    "archivedSha256": "b1bac477e73a929b8c8c2c6676d5390e8a3614b5e6271bd9d3bd38be6b3f335d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_debug.py",
+    "path": "diagnostics\\scan_debug.py",
+    "originalSha256": "a2f61cc3bd9cacfaa11469d682a3490f8f3023ccdaa8c753ee19e9be21e2edd1",
+    "archivedSha256": "6887636c24cb13d6a5559794519b49016242d72064b2925944068fb5c372ecf1"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_hashes.py",
+    "path": "diagnostics\\scan_hashes.py",
+    "originalSha256": "ec7119a262d4f2789e7a9a93f0e99c91bf980c715c9be7e115ab449c6d161979",
+    "archivedSha256": "647a382e436584636d1ef814943750664629f792bd38d71c3dcac713b4e1e289"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_link_inputs.py",
+    "path": "diagnostics\\scan_link_inputs.py",
+    "originalSha256": "9c319b06ca09c3f4c4fdd877ae53ecfbbb9e82d29c6962844a61ceb2cd7ee4be",
+    "archivedSha256": "8d1e4bd5037b076b6fdb20bed11cff44e3eb5ec48432b4b4ba8cc40839558d40"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_module_inputs.py",
+    "path": "diagnostics\\scan_module_inputs.py",
+    "originalSha256": "7881e30e563d0314ff841fd502026c735cf4a1ec35e80a5831c5f136265491b5",
+    "archivedSha256": "f34baf8404fe4b4eaaa491714cd5dcc900ef5c8536503676f6b5ea38372b5f94"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_relocations.py",
+    "path": "diagnostics\\scan_relocations.py",
+    "originalSha256": "8302fb2cdd78fbceb8ffb442a08a10ee4010e0459dcf71b2f2b0652289f28511",
+    "archivedSha256": "874ef79e2f585709a8025968a9a11a25f6c3e9d1c90b26ba4137141f02ee5695"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\scan_sections.py",
+    "path": "diagnostics\\scan_sections.py",
+    "originalSha256": "5e6423ea636de25ce853109663861b547e3fb447ca028571e0588497e289ef64",
+    "archivedSha256": "5c1cd3ddebb5f674f3344074a421bf643ca7938e7dc0afae5e2f0e22bf281406"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\adapter.json",
+    "path": "first-unified\\adapter.json",
+    "originalSha256": "b5ecc4a5e91ad97c45ab1598a3295465daad9d106d852cb2306f71aab9f55b8a",
+    "archivedSha256": "b5ecc4a5e91ad97c45ab1598a3295465daad9d106d852cb2306f71aab9f55b8a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\adapter.log",
+    "path": "first-unified\\adapter.log",
+    "originalSha256": "2498e8f517d2e61dc1ba0cdbccc55fa97af5de508d4b0f28f21f4b809ea1279e",
+    "archivedSha256": "1fb984c32180088ad61a6240db767c3626a56c4c8ffe94639b97631ec758747a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\animation.json",
+    "path": "first-unified\\animation.json",
+    "originalSha256": "1060640dd677b51470e50d9703bc21a91413c1080af442647dd69c8f66b78326",
+    "archivedSha256": "1060640dd677b51470e50d9703bc21a91413c1080af442647dd69c8f66b78326"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\animation.json.chrome.log",
+    "path": "first-unified\\animation.json.chrome.log",
+    "originalSha256": "675b590973f4953fd0f7a95fee078ade3504e6fa5c9e7ff5675e5eddc2bf9888",
+    "archivedSha256": "c432100632afc4e2599e8be8e74decc73e378781f3d30d41716d9c8cfedffbd8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\animation.json.sample.png",
+    "path": "first-unified\\animation.json.sample.png",
+    "originalSha256": "a3d08399ef143e4794465cfcc03e82a1f001c60f6d5ad52daedf19c9f15225f2",
+    "archivedSha256": "a3d08399ef143e4794465cfcc03e82a1f001c60f6d5ad52daedf19c9f15225f2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\animation.log",
+    "path": "first-unified\\animation.log",
+    "originalSha256": "a989511cc44099955b9e32aa872f3fd067bbc5cd6bd2de14a3969f13b9e988de",
+    "archivedSha256": "a989511cc44099955b9e32aa872f3fd067bbc5cd6bd2de14a3969f13b9e988de"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\blink.json",
+    "path": "first-unified\\blink.json",
+    "originalSha256": "6db342aa415360d0ab433a69f2b22468606531f9686e619a4b56c815427677ff",
+    "archivedSha256": "6db342aa415360d0ab433a69f2b22468606531f9686e619a4b56c815427677ff"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\blink.log",
+    "path": "first-unified\\blink.log",
+    "originalSha256": "6236408920c1756c4807b7002bfaae72b1417172685aee92e37910247aad6313",
+    "archivedSha256": "08b6df7cc21aca10919da8589a5e05b6f0d1c0ad8ae30df34885d60b8f200b05"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-platform.json",
+    "path": "first-unified\\browser-platform.json",
+    "originalSha256": "d40952f9d5a189382c0fead5c1467a4022eb8eae1aa2b6cf8f306e7469ed1cd1",
+    "archivedSha256": "d40952f9d5a189382c0fead5c1467a4022eb8eae1aa2b6cf8f306e7469ed1cd1"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-platform.json.chrome.log",
+    "path": "first-unified\\browser-platform.json.chrome.log",
+    "originalSha256": "115e97e9efc38852fe8de59fca70cd1d128f3ff97d24b1b48400818959c5f5a7",
+    "archivedSha256": "492309fa301d96e5d3c84489d5b264f29ae4f5a9df05c10daf2ab4bef0f83275"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-platform.json.platform.png",
+    "path": "first-unified\\browser-platform.json.platform.png",
+    "originalSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6",
+    "archivedSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-platform.log",
+    "path": "first-unified\\browser-platform.log",
+    "originalSha256": "2277c5aec1552cbb9f69b53c2560e10dc5d0bc1e5324541bd78a81d5b3b35be2",
+    "archivedSha256": "2277c5aec1552cbb9f69b53c2560e10dc5d0bc1e5324541bd78a81d5b3b35be2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-unit.json",
+    "path": "first-unified\\browser-unit.json",
+    "originalSha256": "b9dfed7db02fc77284f79ddf04ac75142de696fc2dbc4c8e21b3514ffd2d34dc",
+    "archivedSha256": "b9dfed7db02fc77284f79ddf04ac75142de696fc2dbc4c8e21b3514ffd2d34dc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\browser-unit.log",
+    "path": "first-unified\\browser-unit.log",
+    "originalSha256": "f46377114e5b379d67c9a0916d88ca21acbac96cc1ec54b84be74c3aa6ddc4dd",
+    "archivedSha256": "6a62498ff3b2fae8005d568b6fe5b26a051c436c97aaaae1ff6b48a31e492114"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\build.log",
+    "path": "first-unified\\build.log",
+    "originalSha256": "631ab373ad8d24b0ac69b084596b6ee1e683fcc26cde8b236d179b72f6e026d6",
+    "archivedSha256": "0f30ef6c6076f2e97927df7e9457de3c85d6714f1c8e304bce9add13375eb2dc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas-native.json",
+    "path": "first-unified\\canvas-native.json",
+    "originalSha256": "e572490dd8a7e43992cda41bea1a085417dcc4aded78d8321a1c383027aff1d7",
+    "archivedSha256": "e572490dd8a7e43992cda41bea1a085417dcc4aded78d8321a1c383027aff1d7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas-native.log",
+    "path": "first-unified\\canvas-native.log",
+    "originalSha256": "84a958fc3b50fc3cecadc635e52ebade9c2b5831dff2ea415387bc038b6a583a",
+    "archivedSha256": "81f8ef019c66931dd4e4be1908d612fc4be87147aac8cd23ae3e0c8d0e45c4ea"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas-unit.json",
+    "path": "first-unified\\canvas-unit.json",
+    "originalSha256": "a1dd4fe8056342f8b381ae9936e302b85d471ad07769cd2f4ce6dcef43d2d6bc",
+    "archivedSha256": "a1dd4fe8056342f8b381ae9936e302b85d471ad07769cd2f4ce6dcef43d2d6bc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas-unit.log",
+    "path": "first-unified\\canvas-unit.log",
+    "originalSha256": "5845c2ac89a4b19e127a051018e48d961b8f92a9b1b201941feca3d411f83ecb",
+    "archivedSha256": "b70a4f82c4419d197defabca4adc7561eba4b5899b750cbbe9418dc9db511ebb"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas.json",
+    "path": "first-unified\\canvas.json",
+    "originalSha256": "9e2f56909b0acc92e66516ce7e9b05874ede8d87bf7c913adeb3427a9df6d8ea",
+    "archivedSha256": "9e2f56909b0acc92e66516ce7e9b05874ede8d87bf7c913adeb3427a9df6d8ea"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas.json.chrome.log",
+    "path": "first-unified\\canvas.json.chrome.log",
+    "originalSha256": "d3b8e4325d91fd4578ed51657e2e316569295c3d46cc9931efac0d9fc1fd5852",
+    "archivedSha256": "a493ecb3808b612c713ed862901f5785eb8aa7ccd0178f8ae38b7cc444f709e4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas.json.sample.png",
+    "path": "first-unified\\canvas.json.sample.png",
+    "originalSha256": "482314f6d4fd532897a113d8bbfd315161f3595213b5aeebabeab9b95417fdd4",
+    "archivedSha256": "482314f6d4fd532897a113d8bbfd315161f3595213b5aeebabeab9b95417fdd4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\canvas.log",
+    "path": "first-unified\\canvas.log",
+    "originalSha256": "e1cc269ad496fade9e7ec90064148b60abbba011c03539c36426aaaa55462db6",
+    "archivedSha256": "e1cc269ad496fade9e7ec90064148b60abbba011c03539c36426aaaa55462db6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\csp.json",
+    "path": "first-unified\\csp.json",
+    "originalSha256": "596dca209fb417eb52f0fed63ad1ccb6ef972aaefd5cdf66ae3db68b31afd964",
+    "archivedSha256": "596dca209fb417eb52f0fed63ad1ccb6ef972aaefd5cdf66ae3db68b31afd964"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\csp.log",
+    "path": "first-unified\\csp.log",
+    "originalSha256": "ea237724c56be93327a189d926f5a4be86b658eae8ea15fd190ec0ac10bd4d0c",
+    "archivedSha256": "c75b9d89615133b48143428026862ce078243e795d8e27b5892e87edffee4562"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\dom.json",
+    "path": "first-unified\\dom.json",
+    "originalSha256": "dfd687251dcd28cc329c8f5f2530b0f7e4fb3b314c0c7c1f694c1c0fec805e37",
+    "archivedSha256": "dfd687251dcd28cc329c8f5f2530b0f7e4fb3b314c0c7c1f694c1c0fec805e37"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\dom.json.chrome.log",
+    "path": "first-unified\\dom.json.chrome.log",
+    "originalSha256": "4c1170fa947adaea26d7a73d64e6ac7af37d705c6f94b71efa5387828d9568b5",
+    "archivedSha256": "fdfe10459669d397f3603e1eec3119c098a61407f5e959ed7cbb14594d8ee7bf"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\dom.json.sample.png",
+    "path": "first-unified\\dom.json.sample.png",
+    "originalSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d",
+    "archivedSha256": "58edc25bfce3eb59528e6730c3e2d4c313a3c6f3d705fe1195e834d63e78307d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\dom.log",
+    "path": "first-unified\\dom.log",
+    "originalSha256": "023afeab8d8dc17a6a444242d2f7f8cdd1c38ddecc11f94f4282852193f03896",
+    "archivedSha256": "023afeab8d8dc17a6a444242d2f7f8cdd1c38ddecc11f94f4282852193f03896"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\events.json",
+    "path": "first-unified\\events.json",
+    "originalSha256": "0a9de4930b1c1bfcc048e3e4f893b8b3a5b41c02003a071f49d52be847325d1b",
+    "archivedSha256": "0a9de4930b1c1bfcc048e3e4f893b8b3a5b41c02003a071f49d52be847325d1b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\events.json.chrome.log",
+    "path": "first-unified\\events.json.chrome.log",
+    "originalSha256": "7ab8881fe9f8deb3fbf251e76042a0b857a17d80d0d45f36650630b7956b598b",
+    "archivedSha256": "d66037218b0cb699f9daab4c1d775ab795cd4fab4c19e895a50e5f5c812bee7f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\events.json.sample.png",
+    "path": "first-unified\\events.json.sample.png",
+    "originalSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00",
+    "archivedSha256": "8c3840ddc1d250ce20f06eea8201d103cecd7ba516b17441d59c0ad97d868e00"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\events.log",
+    "path": "first-unified\\events.log",
+    "originalSha256": "dded081c726d66a7dbfd1caca49f5c44db7f4df33113314143229c3245375ce6",
+    "archivedSha256": "dded081c726d66a7dbfd1caca49f5c44db7f4df33113314143229c3245375ce6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\input.json",
+    "path": "first-unified\\input.json",
+    "originalSha256": "b7067407afa4e2873005fbe7f1d7b32923cc8565d4792218dba9db6bd4654843",
+    "archivedSha256": "b7067407afa4e2873005fbe7f1d7b32923cc8565d4792218dba9db6bd4654843"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\input.json.chrome.log",
+    "path": "first-unified\\input.json.chrome.log",
+    "originalSha256": "b4c82810fabb1df06fdd89e427fe2bf68a5782805f5d3796fd7a25c1e1077454",
+    "archivedSha256": "4507b52977858629677e5adf171d91daafa50ec729b3aab4fee20db7a8af2018"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\input.json.sample.png",
+    "path": "first-unified\\input.json.sample.png",
+    "originalSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4",
+    "archivedSha256": "d321c9f8f6b2baf94e6421a06bb603d09ccdbb45735e82d2d4f115349889cdf4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\input.log",
+    "path": "first-unified\\input.log",
+    "originalSha256": "1d29b5823964c4177bbe0207ea6c1269b1ca482b84fb15640c3302fbb0e4c4a4",
+    "archivedSha256": "1d29b5823964c4177bbe0207ea6c1269b1ca482b84fb15640c3302fbb0e4c4a4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario-logic.json",
+    "path": "first-unified\\mario-logic.json",
+    "originalSha256": "f32ba0e4746c927688d83026971dddb173efc3b844b14f60e49b061077dc89df",
+    "archivedSha256": "eb149b021f1386aa6f9156ffb2e312ce9ab76762f8ac9a1391c822bebb16d224"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario-logic.log",
+    "path": "first-unified\\mario-logic.log",
+    "originalSha256": "7de18cc0b65bb03c9cc1908779b536e0fa2f3e61347051e4de80e4bc8d3209b4",
+    "archivedSha256": "e42be1b8c4d29942d649b9a9e4e92c165fe283ad0c44b3037b7e9b0ca11acf2e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario-source.log",
+    "path": "first-unified\\mario-source.log",
+    "originalSha256": "da2a2127df8d8c9f8a4aa574321c1f4194bdad5d6ebbbc9ebacc184f1d370462",
+    "archivedSha256": "75e1b7cc3c4bfe6c34b4114cf632ee8ec1d4aafecfe0d5a4f75a3af28c509d7e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.json",
+    "path": "first-unified\\mario.json",
+    "originalSha256": "7c89b348cd8606f3aeaf2f60402dacea1d6b064bd7f248f3cdd7a9ca0dd7b841",
+    "archivedSha256": "7c89b348cd8606f3aeaf2f60402dacea1d6b064bd7f248f3cdd7a9ca0dd7b841"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.json.chrome.log",
+    "path": "first-unified\\mario.json.chrome.log",
+    "originalSha256": "e0d45c94e13b7a2d5bd9ca772184d9e88e9ec3f1c4ce22c3800fa6d4c725f1c7",
+    "archivedSha256": "a087a4439195ddd5e8297a14966a9021560eeff5c9c42f0309689619f8f30f88"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.json.failure.png",
+    "path": "first-unified\\mario.json.failure.png",
+    "originalSha256": "7d74e5975f16b875e56e2afc42a552ea8403a05f074109c027abcd77fcfc9986",
+    "archivedSha256": "7d74e5975f16b875e56e2afc42a552ea8403a05f074109c027abcd77fcfc9986"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.json.playing.png",
+    "path": "first-unified\\mario.json.playing.png",
+    "originalSha256": "b14a6e0471e3267a53b4bce151de502e3119b1b8616eae29e974ef69be49da99",
+    "archivedSha256": "b14a6e0471e3267a53b4bce151de502e3119b1b8616eae29e974ef69be49da99"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.json.ready.png",
+    "path": "first-unified\\mario.json.ready.png",
+    "originalSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73",
+    "archivedSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\mario.log",
+    "path": "first-unified\\mario.log",
+    "originalSha256": "f153636f14bd0a8e291b4ccf097e09bc91e99946de7cfb1ad714cd2dc6f36e5d",
+    "archivedSha256": "f153636f14bd0a8e291b4ccf097e09bc91e99946de7cfb1ad714cd2dc6f36e5d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json",
+    "path": "first-unified\\parser.json",
+    "originalSha256": "0e329fd0c05f49ce222dab5bb9881446a121af938bae2142b35a67353ebd3f88",
+    "archivedSha256": "0e329fd0c05f49ce222dab5bb9881446a121af938bae2142b35a67353ebd3f88"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.default-off.chrome.log",
+    "path": "first-unified\\parser.json.default-off.chrome.log",
+    "originalSha256": "0e71ac8df7fb05233b752540b2330699d37c00faa80d84f13f21e677d14e1972",
+    "archivedSha256": "53b298e2f8c60efbdc9fd81113933f3fa770e7b00ec3f9d0c23fa0473261eadd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.enabled.chrome.log",
+    "path": "first-unified\\parser.json.enabled.chrome.log",
+    "originalSha256": "930f0b841aec7ffd8fffe246a9e0ad7158e8b8f82338fc90f41c1e4958207451",
+    "archivedSha256": "298699c4eca485e3348d49e9d4f536b06f23e41a7ae0a2806a73807161b9bf79"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.malformed-origin.chrome.log",
+    "path": "first-unified\\parser.json.malformed-origin.chrome.log",
+    "originalSha256": "58b09cd5ea677709e34d0ec20d36099be04f451b70bab587110a314d0b3743bd",
+    "archivedSha256": "7ecdf16fefef0aada049017e0ceaa74074e65482457aed7886d1fa28de82dd40"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.missing-origin.chrome.log",
+    "path": "first-unified\\parser.json.missing-origin.chrome.log",
+    "originalSha256": "6461321962f199527ad72daff9730b5d62238001861397b30d0786a50c6a0407",
+    "archivedSha256": "8376e32571f509226730f3c3a20fae7d0d1044c35e4470521b80dd60d3effd1d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.non-loopback-origin.chrome.log",
+    "path": "first-unified\\parser.json.non-loopback-origin.chrome.log",
+    "originalSha256": "5328cd69dc32f8af1de7d31d7740b1d5e5e8b47a7624b78032514d0f0bb790ce",
+    "archivedSha256": "11e3e8707efe8adb9b9d7e7aaf4048c4b1c9907314bef4ed5bac660e003d4a6a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.json.wrong-origin.chrome.log",
+    "path": "first-unified\\parser.json.wrong-origin.chrome.log",
+    "originalSha256": "490b3acbf646e068429f2a55387f86f455d10fa45d2c58ee0985ed455291097f",
+    "archivedSha256": "b66c58947cab1911042e449422ce783ec5f9f435344978edde975cc28958be90"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\parser.log",
+    "path": "first-unified\\parser.log",
+    "originalSha256": "3a8c01b4ffc3eb797c56dff6a19aa482848cf12bf22ba32db27f93d78594f214",
+    "archivedSha256": "3a8c01b4ffc3eb797c56dff6a19aa482848cf12bf22ba32db27f93d78594f214"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\runtime.json",
+    "path": "first-unified\\runtime.json",
+    "originalSha256": "c7c3308b980edd1ff1c95f662a4af88d05fbf8156def14c014002adedf9ce738",
+    "archivedSha256": "c7c3308b980edd1ff1c95f662a4af88d05fbf8156def14c014002adedf9ce738"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\runtime.log",
+    "path": "first-unified\\runtime.log",
+    "originalSha256": "27384e305a9fe8f112bc1f7bb1113abfceafbe4249b1948ba1b10c30dcf4d06e",
+    "archivedSha256": "d13ce6e53d4c284873233e5b8ccb37368c94406162e555daa17f27bb1ef108fa"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json",
+    "path": "first-unified\\settings-browser.json",
+    "originalSha256": "dbfe333cb3f51894f273100db970a86802f9be917c6a367b5b503603ee497169",
+    "archivedSha256": "dbfe333cb3f51894f273100db970a86802f9be917c6a367b5b503603ee497169"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json.launch-1.chrome.log",
+    "path": "first-unified\\settings-browser.json.launch-1.chrome.log",
+    "originalSha256": "1d7ab142c02b8c2ffae156b2e870712f3ab5d4cfdf9589b1ed2cdfce30e447ae",
+    "archivedSha256": "b62116740eef1246beaed48b8bd2c2b1ce412b469a58f64c1aa137822c055535"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json.launch-2.chrome.log",
+    "path": "first-unified\\settings-browser.json.launch-2.chrome.log",
+    "originalSha256": "cbe506240f87693b8616096411b9a9a78540f869e3451cc0eab4b3c27bf9b44e",
+    "archivedSha256": "ca2e06d11db9539955a096917770015b1538fb66ade68eee1de2b5ec1b683966"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json.launch-3.chrome.log",
+    "path": "first-unified\\settings-browser.json.launch-3.chrome.log",
+    "originalSha256": "e6473dcd863bdbd3a205212067ab714c4a5863e9c9f1049ff797ffb4132fa884",
+    "archivedSha256": "b3b28cd048475c53f811aea00895f0881c2efe480179f47d52344d7baeef549c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json.launch-4.chrome.log",
+    "path": "first-unified\\settings-browser.json.launch-4.chrome.log",
+    "originalSha256": "684293b0e837cbf9f910e73012a86ef9fb18b761309c8900c9e96276f3ba9fd8",
+    "archivedSha256": "bf4507dd8fe8898c8f205e5f9f11ccda5291189d796ceab52ca6634d7084db9e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.json.settings.png",
+    "path": "first-unified\\settings-browser.json.settings.png",
+    "originalSha256": "56d09a31ddc5162efa323bad56bbe4b157c1cb172d49664550ed87c12bca13f8",
+    "archivedSha256": "56d09a31ddc5162efa323bad56bbe4b157c1cb172d49664550ed87c12bca13f8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-browser.log",
+    "path": "first-unified\\settings-browser.log",
+    "originalSha256": "31dc3e1debe5b03311d77c4eb8e1b82e1a578cba359bdb420e0188e3591bafb4",
+    "archivedSha256": "31dc3e1debe5b03311d77c4eb8e1b82e1a578cba359bdb420e0188e3591bafb4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-unit.json",
+    "path": "first-unified\\settings-unit.json",
+    "originalSha256": "6423c8e9038001c909f89b7553a44e192c47a4600cb9552bdb3cb8e7a916ee8b",
+    "archivedSha256": "6423c8e9038001c909f89b7553a44e192c47a4600cb9552bdb3cb8e7a916ee8b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\settings-unit.log",
+    "path": "first-unified\\settings-unit.log",
+    "originalSha256": "2523aa2eb19329382f68a9176ee5f470f1290de1a25750076a66eb797d123626",
+    "archivedSha256": "cce3e41a5fc29d06728b46ea957ad5b126b29b0fcbbee9b848b5b64b5b8a226a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1\\summary.json",
+    "path": "first-unified\\summary.json",
+    "originalSha256": "9cfa78058fd2c099d07b0f5656a74814489f0733d8c2f3b0f343f7b7c48a1438",
+    "archivedSha256": "9cfa78058fd2c099d07b0f5656a74814489f0733d8c2f3b0f343f7b7c48a1438"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\adapter-initial.log",
+    "path": "diagnostics\\adapter-initial.log",
+    "originalSha256": "579ebaf4f7c7d962e4fd5381d4c91ad8cf0c5a1e57ebb61544b30ecf10586dfe",
+    "archivedSha256": "cba300f81b8d8d8d900b2951052f50f5237378881791778c5adbe3ff35d803c9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\adapter-initial.json",
+    "path": "diagnostics\\adapter-initial.json",
+    "originalSha256": "a0c10d6870c20cbeac58b79bc1cd9b63c365799b3f38940335c794608ab2b6a7",
+    "archivedSha256": "ce4539dc8dc2bacc87811817b20fd2421081ad3fe5ebccdaebf46c0616af4e1a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\adapter-built.log",
+    "path": "diagnostics\\adapter-built.log",
+    "originalSha256": "3e931d0f395123e09ff1e557ff8eddd1eb44ec370f59bb12eb0639c8536998f3",
+    "archivedSha256": "316bba92d730870b769f85d4fdc3d6ee2f52dccfcbc9ccfb914699d2f9b33803"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\adapter-built.json",
+    "path": "diagnostics\\adapter-built.json",
+    "originalSha256": "09b7cdd242c59c904c6de47aa3dc88d037cf793efe152b90800a7f88cfcea447",
+    "archivedSha256": "be47adf222fea09d8d14ccac6ffdbc66c441ee231bca426c10860115c1fc3397"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\runtime-initial.log",
+    "path": "diagnostics\\runtime-initial.log",
+    "originalSha256": "a43646f32d85b4a1c3a9aab044dee56fa6c067314f8855a3bf896ea36065a8cc",
+    "archivedSha256": "af08f59bf9a0aadb86703997f0e095d64227d32108476e26a97ccc24d1ae3e8f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\runtime-initial.json",
+    "path": "diagnostics\\runtime-initial.json",
+    "originalSha256": "8347f1e424a86873dc9ff4db95414a792eb568d01a7d0db24fb35a523006fa75",
+    "archivedSha256": "701ce462634d5b6c79192e6d0d1a388fb52e49d44a6d0dc09b8bb60d197707bd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink-browser-initial.log",
+    "path": "diagnostics\\blink-browser-initial.log",
+    "originalSha256": "9373cdb1bc3a754915c960c10c402af70ed0d155b58dd70949f00664dc4c5030",
+    "archivedSha256": "66abafe9604e72732e98a4a18f8255660087d4894f34b6cb78349de4983877c9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\static-checks.json",
+    "path": "diagnostics\\static-checks.json",
+    "originalSha256": "ae31e03a6eb3162ef240211701d6505c54ea4476385668f8c3923d01c7a67628",
+    "archivedSha256": "a12ece30b8c0af50fc1429c9e8541af315effd3deccf5a843a9c12ed3e831f36"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\fullscreen-control2.log",
+    "path": "diagnostics\\fullscreen-control2.log",
+    "originalSha256": "33520317652a4fee2c9d57b92ea2d2f8ae9418880f330da3c56a6f96f311f3e4",
+    "archivedSha256": "b036f5e6a4825089ab0593c35b36efddefaaebc012eb4eee2e761f20ab5b00cd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\fullscreen-control2.json.chrome.log",
+    "path": "diagnostics\\fullscreen-control2.json.chrome.log",
+    "originalSha256": "1e929d924b04978495b6c6a61c73cf0ba52c41f73fa6e2eff6f1286753371291",
+    "archivedSha256": "089331c77907891d3eeaedd182b32a087ebce7f9bd208535a8199dd44653af4b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\probe_fullscreen.mjs",
+    "path": "diagnostics\\probe_fullscreen.mjs",
+    "originalSha256": "89c30927526bfa83cb6c200deed421b77f9e66588e1322bd78570ea4997a13bf",
+    "archivedSha256": "81e1f50d1f811a408821212f3119995ea4ed9a187b289e65bf94b3002ceeacb2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-before.json",
+    "path": "diagnostics\\export-before.json",
+    "originalSha256": "00928040d364917c08254736e88d232892d805865282fa4cbd33e8c45a4f0979",
+    "archivedSha256": "00928040d364917c08254736e88d232892d805865282fa4cbd33e8c45a4f0979"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-before.log",
+    "path": "diagnostics\\export-before.log",
+    "originalSha256": "1dd7f59d7ba7abb3b3a2d2aad174610262645fc91252b797ff9fbacb4bd55515",
+    "archivedSha256": "32e516a44e5457b6f752ed924ad4bda659e493522374fecb70d0dd85a67d725e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\export-before.json.chrome.log",
+    "path": "diagnostics\\export-before.json.chrome.log",
+    "originalSha256": "784c2022360843027ce267e4199ecd5ad61dac66529a662a01164036f0f077d6",
+    "archivedSha256": "e3426fbceae50db950ff5b4ebd247f4281b32ed8b43017436611627c5abe252e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\probe_export.mjs",
+    "path": "diagnostics\\probe_export.mjs",
+    "originalSha256": "c72e0fdb8c3b0ba332b03f40cd074fc5e7c1a0f404a3c3d65b1a2779b8bc62c0",
+    "archivedSha256": "7b322b5dd6a042d64788cdb22a430f3a60bb1e11ceaf40859a3e013ec568d899"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\static_checks.py",
+    "path": "diagnostics\\static_checks.py",
+    "originalSha256": "ca7b0fe7b5e034a232306c4a500e2a0d29469442ad54a6a590da2fa46e00a6f1",
+    "archivedSha256": "ca7b0fe7b5e034a232306c4a500e2a0d29469442ad54a6a590da2fa46e00a6f1"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\summarize_recovery.py",
+    "path": "diagnostics\\summarize_recovery.py",
+    "originalSha256": "4edaa4ff8d6f183939d70557081caee23b3c02539a53e4066053d5c8d32f44d6",
+    "archivedSha256": "4edaa4ff8d6f183939d70557081caee23b3c02539a53e4066053d5c8d32f44d6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\archive_results.py",
+    "path": "diagnostics\\archive_results.py",
+    "originalSha256": "48161376fdcd947af29b38efc680b09bb7523e508639d5fff9d49fb160050806",
+    "archivedSha256": "48161376fdcd947af29b38efc680b09bb7523e508639d5fff9d49fb160050806"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final_audit.py",
+    "path": "diagnostics\\final_audit.py",
+    "originalSha256": "75c51a89d8303342adbf200bed7387cba8afde8aabdc33dbb37b93576314b578",
+    "archivedSha256": "8f19cce0aca5f777a662f97d658836c8f19bd9b876adb654e090efe83aafab66"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\coff-symbol-followup-corrections.json",
+    "path": "diagnostics\\coff-symbol-followup-corrections.json",
+    "originalSha256": "13043f86c5b61d967ea9ab3d0855e0758e7220ab0fec8ab79df4b787b44b7a86",
+    "archivedSha256": "7ea857ff7a40c76235dffd269f7dc1641f8c46f772b2dcfdad8c96c48ffae6dc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\build-dependency-explanation.json",
+    "path": "diagnostics\\build-dependency-explanation.json",
+    "originalSha256": "b299b21a0bd5b1ff184000409d265647c9a8461c62519b8c783db5b8786116b7",
+    "archivedSha256": "10c00897c2ab3c59df112b8c3f8d73f71b706ca9831c0bb33839700b96ee2f09"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\blink-browser-after-build.log",
+    "path": "diagnostics\\blink-browser-after-build.log",
+    "originalSha256": "89482ea301ba11838087bc365d9be2156665fa8a8054802f98918ee1b3c0c2a7",
+    "archivedSha256": "27ba62aea4b43bbb2d3bfdae9e91f47030aef9bc23dfb055eac86e8531b1a9e4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-1-driver.log",
+    "path": "diagnostics\\final-1-driver.log",
+    "originalSha256": "71225863060836b5fe421beb014b0752c0d8fa25248256fb8174c2119feb0063",
+    "archivedSha256": "cb26561b3f2659d3699a38b75aacb244d85b34940830bc19a74d94a47b1e9f05"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\final-2-driver.log",
+    "path": "diagnostics\\final-2-driver.log",
+    "originalSha256": "e88cedc10428c5898e3e2cb65afb63659c0624639f8428081bd774aa8c1e1371",
+    "archivedSha256": "1d3d9a798e745ec6248fcb88ce1fb4fb50e1d140047db392bd0dd85a989e8f59"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-before.log",
+    "path": "diagnostics\\metadata-before.log",
+    "originalSha256": "a35d7f377ccf26f9287c0314c17f650cc9984d2383601de7b5ded43516032ea2",
+    "archivedSha256": "9c6944ad25ec47058fed0aeeb19e67a6560017d8c826f191d7a6a5e8da812721"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-before-executed.json",
+    "path": "diagnostics\\metadata-before-executed.json",
+    "originalSha256": "e1414c06b127c801efbc025ef524f974379c108db32373a5df97ce5750ad2660",
+    "archivedSha256": "519ffb8c4755a8b7face6a7f11e59b54961a4ba6516d89e5aa5a912271e910a2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-after.log",
+    "path": "diagnostics\\metadata-after.log",
+    "originalSha256": "22244de480db5ea596bfd4bfd8ebff77199984bf81c5d6831a4ff03222b27c6d",
+    "archivedSha256": "2c8b2996ecf82affdfe709e010e8272570134989e9dce3892eadf02b4cc662f3"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\metadata-after-executed.json",
+    "path": "diagnostics\\metadata-after-executed.json",
+    "originalSha256": "4bca9540d13be6f1a9139f6c2c5605103b27498bcd8cd9d1bf9670ecaf527fa6",
+    "archivedSha256": "02b68bb2f98199064c3d7ebc3e8f6acbd7fc8644a0eff23d18b2330e7e11cef6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-after-build-11.json",
+    "path": "probes\\browser-after-build-11.json",
+    "originalSha256": "58417656d4982eda222fb583308d8839ec9d83621d8e087411f6e040f03da8c5",
+    "archivedSha256": "58417656d4982eda222fb583308d8839ec9d83621d8e087411f6e040f03da8c5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-after-build-11.json.chrome.log",
+    "path": "probes\\browser-after-build-11.json.chrome.log",
+    "originalSha256": "cb28a944c0f6e8d42ad6ef8a62894e3633ea90c6162cf05d51c9d1c1d8fa441a",
+    "archivedSha256": "356e449f6a49a4055c9a05c5967adc04f3e5eb116e4d10403271a6ffb5609530"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-after-build-11.json.platform.png",
+    "path": "probes\\browser-after-build-11.json.platform.png",
+    "originalSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6",
+    "archivedSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-after-build-11.log",
+    "path": "probes\\browser-after-build-11.log",
+    "originalSha256": "c37a226c79c8847563c5fdf0b14afb4fc52aad9427f05e5519223bf699bb26b8",
+    "archivedSha256": "3c6b1aae5924d31a0c21a7677c368fb060f1c4a2baa65a404f8b98d4d574ee1f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-1.json",
+    "path": "probes\\browser-async-1.json",
+    "originalSha256": "a0dbfda897dd66829c7b04c13eb9e41337aec4376f89890bdf7ae1ad45c83a67",
+    "archivedSha256": "a0dbfda897dd66829c7b04c13eb9e41337aec4376f89890bdf7ae1ad45c83a67"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-1.json.chrome.log",
+    "path": "probes\\browser-async-1.json.chrome.log",
+    "originalSha256": "e66d7c7728b90161caab49e5743ada70f92582f03b6b1dac616c03fe48199767",
+    "archivedSha256": "4b33d05735355eaacab0e3abc7e89b97cf61d4fcbdb1e8dabce6253cc90f5674"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-1.json.failure.png",
+    "path": "probes\\browser-async-1.json.failure.png",
+    "originalSha256": "69fcc3e3523eb74c960c2ef3f2674727ddf75393b65b747ee2557cfa6622c6a7",
+    "archivedSha256": "69fcc3e3523eb74c960c2ef3f2674727ddf75393b65b747ee2557cfa6622c6a7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-1.log",
+    "path": "probes\\browser-async-1.log",
+    "originalSha256": "e3c0691af1291268c1e1f09a18a3d307adde03ec7f8ca1c4aa85a712fd1ea8dd",
+    "archivedSha256": "70d714d02e545f9af08b418c61b9523ab634e0399a0b62d865003e5b548540e7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-2.json",
+    "path": "probes\\browser-async-2.json",
+    "originalSha256": "cfd850c1d013f5ebcdddc8f7d6365b5651ffac67dc8ec95e0a01585098ae4ff0",
+    "archivedSha256": "cfd850c1d013f5ebcdddc8f7d6365b5651ffac67dc8ec95e0a01585098ae4ff0"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-2.json.chrome.log",
+    "path": "probes\\browser-async-2.json.chrome.log",
+    "originalSha256": "f519cf9c011add2b2044f5660e11e7dd3fb17a89306b5ccac02db725a95f3f5a",
+    "archivedSha256": "590f2a9d7810cf77975efb7455a6ce4a904107c5abe936543ceddfa36ad6ac1e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-2.json.failure.png",
+    "path": "probes\\browser-async-2.json.failure.png",
+    "originalSha256": "80017583f657890f08f5c32a0be2d4aecd44f5ddffb768d66a577924dc36c2a6",
+    "archivedSha256": "80017583f657890f08f5c32a0be2d4aecd44f5ddffb768d66a577924dc36c2a6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-2.log",
+    "path": "probes\\browser-async-2.log",
+    "originalSha256": "80d49a69a2b6a7abe5f2c4188c04ce2550adfa1d7a8b72ba8c1ae31a4921f0b6",
+    "archivedSha256": "70a09ca1defcc951208c4f4cc63753d13381726c6ca7b2621ea6877fd841327f"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-3.json",
+    "path": "probes\\browser-async-3.json",
+    "originalSha256": "e5330691a029784f590d43501912017ecb6bcca40f828854fbf13b6b5383fded",
+    "archivedSha256": "e5330691a029784f590d43501912017ecb6bcca40f828854fbf13b6b5383fded"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-3.json.chrome.log",
+    "path": "probes\\browser-async-3.json.chrome.log",
+    "originalSha256": "5a04678f2bba8de809455b0e7fd25e7d263f147f99a0ac8cb66a41e515721a7d",
+    "archivedSha256": "8c265054e46898ac8b2ca3d80b06bf305ff86dd2c5fcd9b8895f7ced355ca22c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-3.json.failure.png",
+    "path": "probes\\browser-async-3.json.failure.png",
+    "originalSha256": "2c121fe2cb660093aabd0b8172ca39f2d01d2bfdcb3430aaf3fc2fdd0ba03f11",
+    "archivedSha256": "2c121fe2cb660093aabd0b8172ca39f2d01d2bfdcb3430aaf3fc2fdd0ba03f11"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-3.log",
+    "path": "probes\\browser-async-3.log",
+    "originalSha256": "7d1b0877159fba04083efa4eeedd917627654eb8479d21d9e850f6f63dbe62ea",
+    "archivedSha256": "70944d36fd59d6a60b8105e3bdcdd072934e206ecd1fbe2e056d0780594837dc"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-4.json",
+    "path": "probes\\browser-async-4.json",
+    "originalSha256": "197bac7b26ef6f5acd2727b9f84f9c0a681705949b8bdd5251cec172a7be7223",
+    "archivedSha256": "197bac7b26ef6f5acd2727b9f84f9c0a681705949b8bdd5251cec172a7be7223"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-4.json.chrome.log",
+    "path": "probes\\browser-async-4.json.chrome.log",
+    "originalSha256": "c263e84bda7439217b1ba4fbdadf1aab657aa90d6dca6bde0c8887daceb1c78c",
+    "archivedSha256": "8ad948e6c2386ca73172f9df21607d8cb4441d872ed49ee1905889f3d0048e7e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-4.log",
+    "path": "probes\\browser-async-4.log",
+    "originalSha256": "df755cabc8784e9df5f3f794418f139008ea9c45823dac68b0de9e2cf04e6458",
+    "archivedSha256": "80cea9cabd2230ebb014109e9757320f1c303f1a96dcd90a6c9d9c0c4ffe6935"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-5.json",
+    "path": "probes\\browser-async-5.json",
+    "originalSha256": "5ed4c7f4bb4847e8068d99f5601c5d765a77c954dd17407556d1d107c937aeb1",
+    "archivedSha256": "5ed4c7f4bb4847e8068d99f5601c5d765a77c954dd17407556d1d107c937aeb1"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-5.json.chrome.log",
+    "path": "probes\\browser-async-5.json.chrome.log",
+    "originalSha256": "497988cdb2a7d700757ecb9afca5d4232b7ec9ee4e45c706a1e6e58e452fbfa3",
+    "archivedSha256": "0ab03968378c4d0c4e4966a8a03de89de17fd98ef76c2e84e185ffeaf2dec9e6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-5.json.failure.png",
+    "path": "probes\\browser-async-5.json.failure.png",
+    "originalSha256": "4800949fdeaf0001d9e94b3ee5c0db7435cf4464d6db3f890208c74effad5cdf",
+    "archivedSha256": "4800949fdeaf0001d9e94b3ee5c0db7435cf4464d6db3f890208c74effad5cdf"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-5.log",
+    "path": "probes\\browser-async-5.log",
+    "originalSha256": "6ce96367889166ad41a0c164ddab621b2c94f85f344f441bce0eee24b81a9da1",
+    "archivedSha256": "1583ab670aa7ecca891785dbfd8a049a9b4b9c92e38d789a1da8bebffd243168"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-6.json",
+    "path": "probes\\browser-async-6.json",
+    "originalSha256": "11249c76fc05505d929497a5ec1e8a082044f79eab638aba25c8290852dda194",
+    "archivedSha256": "11249c76fc05505d929497a5ec1e8a082044f79eab638aba25c8290852dda194"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-6.json.chrome.log",
+    "path": "probes\\browser-async-6.json.chrome.log",
+    "originalSha256": "ea1d003993b6cb1c8227fb0b6ee8232b794ca1dd351257617bce8d75c427abce",
+    "archivedSha256": "f25217e3265b40e9bd9a13d8718d85e8134620052ea266a72141c6198e329a31"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-6.json.failure.png",
+    "path": "probes\\browser-async-6.json.failure.png",
+    "originalSha256": "935a79c93482580a46938ff4a9a6cdf31e570c8384676ba68cbe6ccba3295d94",
+    "archivedSha256": "935a79c93482580a46938ff4a9a6cdf31e570c8384676ba68cbe6ccba3295d94"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-6.log",
+    "path": "probes\\browser-async-6.log",
+    "originalSha256": "dbb071f70ce8f5ba87f1aaf653c9273e11cc99dd8d87232b2242ef489751bfd3",
+    "archivedSha256": "acb6cbfc46e98ed54f4e13acfe1463d2a19514e93b750baa193761f3207433e4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-7.json",
+    "path": "probes\\browser-async-7.json",
+    "originalSha256": "1527c64c41709dfe99282289bc06108a5b123ecaaa9686389796e0fd8bcaeb80",
+    "archivedSha256": "1527c64c41709dfe99282289bc06108a5b123ecaaa9686389796e0fd8bcaeb80"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-7.json.chrome.log",
+    "path": "probes\\browser-async-7.json.chrome.log",
+    "originalSha256": "76d4bfbf827a67d979409fa28ed032b87f61af9d4ed39d657123d629343341bc",
+    "archivedSha256": "94a59d5d8a6a93ffc53ce60e4e4feab2949169a3d6706f2fe3f1d454d295c5d5"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-7.json.failure.png",
+    "path": "probes\\browser-async-7.json.failure.png",
+    "originalSha256": "bc208bba6e56d8b667d9530f8f176e890080682e1c78b7d914c52cec875aab3d",
+    "archivedSha256": "bc208bba6e56d8b667d9530f8f176e890080682e1c78b7d914c52cec875aab3d"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-7.log",
+    "path": "probes\\browser-async-7.log",
+    "originalSha256": "5fe693dae22b66335db7419045e73078529dbfdcbbd12b1c9533182adbe25d2a",
+    "archivedSha256": "c44437dac44d30c092758c144b02ae0befac07958c3ed8f326fc084d7964c43c"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-8.json",
+    "path": "probes\\browser-async-8.json",
+    "originalSha256": "6e8d601c409c7644cdfb28c8eb2c351fe95500a2a4bd2fb3f282f892adfc072b",
+    "archivedSha256": "6e8d601c409c7644cdfb28c8eb2c351fe95500a2a4bd2fb3f282f892adfc072b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-8.json.chrome.log",
+    "path": "probes\\browser-async-8.json.chrome.log",
+    "originalSha256": "59cfe918cfaf97a3aeb6f99dc2701f5a5cd2fbdc89ff1f576f5818ec522857b3",
+    "archivedSha256": "380a518825c64493bab22d75e272b3c6477e61d2ca444526cb019cb43198df06"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-8.json.failure.png",
+    "path": "probes\\browser-async-8.json.failure.png",
+    "originalSha256": "5da1b9eb1923480d2b5c72c7292937a10f3b8ace65444dd9eb9f8f1c67c1ed4e",
+    "archivedSha256": "5da1b9eb1923480d2b5c72c7292937a10f3b8ace65444dd9eb9f8f1c67c1ed4e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-8.json.platform.png",
+    "path": "probes\\browser-async-8.json.platform.png",
+    "originalSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6",
+    "archivedSha256": "035cb3740ab9800e5f2093f6e90f0cc99049fef26433aed746ae0104f36cecd6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-async-8.log",
+    "path": "probes\\browser-async-8.log",
+    "originalSha256": "5679ed0ccb4a8eeb09b8bdbacfa9177abe3a1ffeecb315eb1e4f6d9da246bb35",
+    "archivedSha256": "07975165927d36ab720efbd186f0b85330580416c41929dc94afedaa4d60ace2"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-first.json",
+    "path": "probes\\browser-first.json",
+    "originalSha256": "f8cd02ecd50a835a803f5ad21080df20e0770e38f0ac98d6a099cc51f8a1bfb8",
+    "archivedSha256": "f8cd02ecd50a835a803f5ad21080df20e0770e38f0ac98d6a099cc51f8a1bfb8"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-first.json.chrome.log",
+    "path": "probes\\browser-first.json.chrome.log",
+    "originalSha256": "24b47b36b7bde1d3f2d311d9ab9e540e359c0883b17c9b185975fba11418bef0",
+    "archivedSha256": "48f014caf919273b48493794792085992243143094a6429258cfb7816ac00f3a"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-first.json.failure.png",
+    "path": "probes\\browser-first.json.failure.png",
+    "originalSha256": "69fcc3e3523eb74c960c2ef3f2674727ddf75393b65b747ee2557cfa6622c6a7",
+    "archivedSha256": "69fcc3e3523eb74c960c2ef3f2674727ddf75393b65b747ee2557cfa6622c6a7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-first.log",
+    "path": "probes\\browser-first.log",
+    "originalSha256": "991548732a1b66a5dcc5c885501eb6dddc225809ca2c82bc628e536e68a6f1b8",
+    "archivedSha256": "c61ea58661253757778596b1b0a8ade3d87121e485073e3bb9fcb56bb2a094a3"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-10.json",
+    "path": "probes\\browser-snapshot-10.json",
+    "originalSha256": "3115855d1ef9f9b8d2b161f8f238fd1769eb1fead63a5f6801d9f9f62c78b0e9",
+    "archivedSha256": "3115855d1ef9f9b8d2b161f8f238fd1769eb1fead63a5f6801d9f9f62c78b0e9"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-10.json.chrome.log",
+    "path": "probes\\browser-snapshot-10.json.chrome.log",
+    "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archivedSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-10.log",
+    "path": "probes\\browser-snapshot-10.log",
+    "originalSha256": "8775c6b7f9856a35b1dba5b254fdce994f0689b1b39188881cdb704c5c8ee52a",
+    "archivedSha256": "193f9f2079c8bce67cdf6f1ab4d0004de68080f8e30650a5a71a1e4e882b2eb4"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-9.json",
+    "path": "probes\\browser-snapshot-9.json",
+    "originalSha256": "fb0bad8e63d1e9523ce379a1cdf85ef73a7b5437be6417466b100853fd425bbe",
+    "archivedSha256": "fb0bad8e63d1e9523ce379a1cdf85ef73a7b5437be6417466b100853fd425bbe"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-9.json.chrome.log",
+    "path": "probes\\browser-snapshot-9.json.chrome.log",
+    "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "archivedSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-9.log",
+    "path": "probes\\browser-snapshot-9.log",
+    "originalSha256": "217d529a6ee0f9b0d9bd82fb29e0fc3fba038765defcc78a0ac71777343085f6",
+    "archivedSha256": "cfa8897bcfc7b3d1f93761a664f487dd947cacd3ea5125bcf850ee7098260e11"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-manifest-2.json",
+    "path": "probes\\browser-snapshot-manifest-2.json",
+    "originalSha256": "6557eda7a56519599df9573e42a12d4fc297c6373288746a5798ee2c19f3c182",
+    "archivedSha256": "6c14e81a6c929ab7a95fc453e6306404f508a89f3a39db5d21e3ca63db292d17"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\browser-snapshot-manifest.json",
+    "path": "probes\\browser-snapshot-manifest.json",
+    "originalSha256": "c0e240ff35562dc3d9d4e426775e189c2c85dd9f879ce83fb1b388d47d1f294e",
+    "archivedSha256": "0407f0ddeef3224b2f15cd3ae1ae6f7c61a9fac7a815b223d5f71bf8d1a5706e"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json",
+    "path": "probes\\mario-after-build-2.json",
+    "originalSha256": "c5473004ad3fec7085118d17d1bfa72608fdb16d907fbe1fdd7c08f63bf6d43b",
+    "archivedSha256": "c5473004ad3fec7085118d17d1bfa72608fdb16d907fbe1fdd7c08f63bf6d43b"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.chrome.log",
+    "path": "probes\\mario-after-build-2.json.chrome.log",
+    "originalSha256": "ddfacf0e28fccb90d521b33dda0bf35a29d37edbbfd00830a3b9d96ed453a5ed",
+    "archivedSha256": "95230858618ae5e061fc284f480f7d57547ea06d9613d38771b6cc72796faef6"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.dialog.png",
+    "path": "probes\\mario-after-build-2.json.dialog.png",
+    "originalSha256": "9d709a32c49a224169b3be066c15b18cdec8354305c0ad146871cdd7d59caf82",
+    "archivedSha256": "9d709a32c49a224169b3be066c15b18cdec8354305c0ad146871cdd7d59caf82"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.failure.png",
+    "path": "probes\\mario-after-build-2.json.failure.png",
+    "originalSha256": "3c62686d931befe951d4cb53131bb45d3558a3b6de7461b29348789c17dff375",
+    "archivedSha256": "3c62686d931befe951d4cb53131bb45d3558a3b6de7461b29348789c17dff375"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.playing.png",
+    "path": "probes\\mario-after-build-2.json.playing.png",
+    "originalSha256": "24ac09853c45b4aba99bc6cd507497087fcc109504b9b2e2b7f529ccda6b1f21",
+    "archivedSha256": "24ac09853c45b4aba99bc6cd507497087fcc109504b9b2e2b7f529ccda6b1f21"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.ready.png",
+    "path": "probes\\mario-after-build-2.json.ready.png",
+    "originalSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73",
+    "archivedSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json.state.png",
+    "path": "probes\\mario-after-build-2.json.state.png",
+    "originalSha256": "01ab61cf0f76c08b531a5e6d49ab7b8d7940668f615e8f1892b49aa21075efcd",
+    "archivedSha256": "01ab61cf0f76c08b531a5e6d49ab7b8d7940668f615e8f1892b49aa21075efcd"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.log",
+    "path": "probes\\mario-after-build-2.log",
+    "originalSha256": "740ffcbb8b2b3b12ef2cc7591766ae018e340826d524007e8c62d81fcb5957f0",
+    "archivedSha256": "3c81d5592b32938858f60b17ccdf095667cdca9bd151d244f9f386b1a4da0c73"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json",
+    "path": "probes\\mario-autofocus-3.json",
+    "originalSha256": "49cb2b89fe85d9adec637f31a3e3b2f4c30adf6a18ee665243e633a4eae57933",
+    "archivedSha256": "49cb2b89fe85d9adec637f31a3e3b2f4c30adf6a18ee665243e633a4eae57933"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.chrome.log",
+    "path": "probes\\mario-autofocus-3.json.chrome.log",
+    "originalSha256": "6f4743660768bb2297c00882f3119d8451857dee3726933d77d0b6bc4703006f",
+    "archivedSha256": "d1830d56ca5abea49afbc8d1b29dc8a9e4a4587e8989adcb6b08a5239bf4c0d7"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.dialog.png",
+    "path": "probes\\mario-autofocus-3.json.dialog.png",
+    "originalSha256": "a0f335bed835e44d33a9ca3fd7b2147f7cd943ba8c3e61ab7b52172ef531bffa",
+    "archivedSha256": "a0f335bed835e44d33a9ca3fd7b2147f7cd943ba8c3e61ab7b52172ef531bffa"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.narrow.png",
+    "path": "probes\\mario-autofocus-3.json.narrow.png",
+    "originalSha256": "55fab88ea63705bab61fb10af2508d14e4c6f2f2609069fe5030296c2133fe35",
+    "archivedSha256": "55fab88ea63705bab61fb10af2508d14e4c6f2f2609069fe5030296c2133fe35"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.playing.png",
+    "path": "probes\\mario-autofocus-3.json.playing.png",
+    "originalSha256": "cdc2bb24ff99c10ca0cce98b4ed2aa0ed12d92eeb41a8ef7d6ccee54cf4e7315",
+    "archivedSha256": "cdc2bb24ff99c10ca0cce98b4ed2aa0ed12d92eeb41a8ef7d6ccee54cf4e7315"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.ready.png",
+    "path": "probes\\mario-autofocus-3.json.ready.png",
+    "originalSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73",
+    "archivedSha256": "e92d4b53406d8875f237806b26f804a34588159ca0c832f9dc212f0ca85b5f73"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.state.png",
+    "path": "probes\\mario-autofocus-3.json.state.png",
+    "originalSha256": "c38a4133c2b5a787b01ee6047ec74434720588cb4ba5ca2a2ea6f92ab33842be",
+    "archivedSha256": "c38a4133c2b5a787b01ee6047ec74434720588cb4ba5ca2a2ea6f92ab33842be"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.json.won.png",
+    "path": "probes\\mario-autofocus-3.json.won.png",
+    "originalSha256": "f38798ae8f61abfbb39cff9c9700c3256adf6818f4b243798cbd67cf45f2e530",
+    "archivedSha256": "f38798ae8f61abfbb39cff9c9700c3256adf6818f4b243798cbd67cf45f2e530"
+  },
+  {
+    "source": "out\\Debug\\pyscript-mario-phase6\\mario-autofocus-3.log",
+    "path": "probes\\mario-autofocus-3.log",
+    "originalSha256": "c89d08a2edf3c208af0361e277b2d652df3fcb17387e1d376ebf99f3c25dadd4",
+    "archivedSha256": "bf586ef87431c3579c81dd51cbe12b352c0f88bcfd24ab4efc1f42fbfabae453"
+  }
+]

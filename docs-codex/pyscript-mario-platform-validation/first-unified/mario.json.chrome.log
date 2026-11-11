@@ -1,0 +1,26 @@
+[12752:16968:1112/062338.356:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[12752:16968:1112/062338.435:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:57329/devtools/browser/fb0de477-112b-4c33-827f-e152df528833
+[18996:17656:1112/062338.762:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[12752:16968:1112/062339.277:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062339.278:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062339.496:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[12752:16968:1112/062339.599:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[18996:17656:1112/062339.817:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[18996:17656:1112/062339.817:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[12752:8340:1112/062340.453:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[12752:8340:1112/062340.476:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[12752:16968:1112/062341.375:INFO:CONSOLE:1] "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently", source:  (1)
+[12752:16968:1112/062343.287:INFO:CONSOLE:1426] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:57327/sample (1426)
+[12752:16968:1112/062351.543:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062351.543:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062351.823:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062351.824:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[12752:16968:1112/062358.584:INFO:CONSOLE:1] "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently", source:  (1)
+[18996:9296:1112/062400.269:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, C2B3...))
+[18996:9296:1112/062400.269:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, DB96...))
+[18996:9296:1112/062400.269:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 3), LocalSurfaceId(6, 1, 8180...))
+[18996:9296:1112/062400.269:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 3), LocalSurfaceId(5, 1, 8180...))
+[12752:16968:1112/062402.526:INFO:CONSOLE:1426] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:57327/sample (1426)
+[12752:16968:1112/062407.424:INFO:CONSOLE:1426] "[pyscript callback 30] Python callback exceeded the 50 ms cooperative execution budget", source: http://127.0.0.1:57327/sample (1426)

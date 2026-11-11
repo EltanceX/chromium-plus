@@ -1,0 +1,122 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:55299",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 815
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 472
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": true,
+      "elapsedMs": 1622,
+      "detail": {
+        "contexts": [
+          {
+            "contextId": "422abc0c-27c3-47fd-ac1b-eff38eb51e02",
+            "contextType": "realtime",
+            "contextState": "suspended",
+            "callbackBufferSize": 480,
+            "maxOutputChannelCount": 2,
+            "sampleRate": 48000,
+            "renderQuantumSize": 128
+          }
+        ],
+        "nodes": [
+          "AudioDestination",
+          "Oscillator",
+          "Gain",
+          "Oscillator",
+          "Gain"
+        ]
+      }
+    },
+    {
+      "name": "Native audio suspend completes once",
+      "passed": true,
+      "elapsedMs": 378
+    },
+    {
+      "name": "Voice and scheduling rate limits reject additional sound",
+      "passed": true,
+      "elapsedMs": 1943
+    },
+    {
+      "name": "Navigation disposes document audio resources",
+      "passed": true,
+      "elapsedMs": 1060
+    },
+    {
+      "name": "Fullscreen rejection caps and consumes notifications exactly once",
+      "passed": true,
+      "elapsedMs": 1884
+    },
+    {
+      "name": "Trusted fullscreen request and native exit complete",
+      "passed": true,
+      "elapsedMs": 1041
+    },
+    {
+      "name": "Storage quota failure reaches Python without stopping page",
+      "passed": true,
+      "elapsedMs": 836
+    },
+    {
+      "name": "Terminal score fixture persists highest score and Mario toggles sound",
+      "passed": true,
+      "elapsedMs": 16067
+    },
+    {
+      "name": "Download preserves Python nonce and runs as a self-contained page",
+      "passed": true,
+      "elapsedMs": 1636,
+      "detail": {
+        "bytes": 68955,
+        "blocks": 12,
+        "noncePreserved": true,
+        "reloaded": true
+      }
+    },
+    {
+      "name": "Stored score survives normal browser process restart",
+      "passed": true,
+      "elapsedMs": 7976
+    },
+    {
+      "name": "Fatal Python stop closes scheduled audio and frame work",
+      "passed": true,
+      "elapsedMs": 1682,
+      "detail": {
+        "nativeErrors": [
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript frame 17] Python animation frame exceeded the 16 ms cooperative execution budget",
+            "timestamp": 1794435582795.889,
+            "url": "http://127.0.0.1:55299/fatal",
+            "lineNumber": 6
+          }
+        ]
+      }
+    },
+    {
+      "name": "Storage content setting denial leaves Mario playable",
+      "passed": true,
+      "elapsedMs": 5769
+    },
+    {
+      "name": "Browser closes with native platform and frame resources",
+      "passed": true,
+      "elapsedMs": 577
+    }
+  ],
+  "passed": true
+}

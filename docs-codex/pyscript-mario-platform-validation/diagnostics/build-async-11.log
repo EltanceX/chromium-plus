@@ -1,0 +1,66 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.9264625s
+load siso config done 10.8842ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:59894+ready:0 (node:441081 edge:59912)
+ 1.48s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/18075] 38.50s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_storage_event.obj
+[0/2166] 47.50s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_storage_event.obj
+[1/2165] 47.53s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[1/2165] 1m05.51s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: a4184e4f-5a78-47a7-977e-ec70327a70d7 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x6E75E318
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x593193BF
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x2C1EF68B
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x6227F9AC
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x31644913
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x189B25BD
+lld-link: error: some relocations in obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_subtle_crypto.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xDC7A6744
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x6E75E318
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x593193BF
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x2C1EF68B
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x6227F9AC
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x31644913
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x189B25BD
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xDC7A6744
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99944
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 990(err:2) / r:763(err:0) 4.87MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m06.36s Build Failure: 2 done, 1 failed, 2163 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-193337.2068
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

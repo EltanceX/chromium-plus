@@ -1,0 +1,56 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.6070056s
+load siso config done 14.2435ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:68074+ready:0 (node:441081 edge:68084)
+ 1.32s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/16453] 32.53s S CXX obj/third_party/blink/renderer/core/core/css_paint_value.obj
+[0/16438] 32.53s S CXX obj/third_party/blink/renderer/core/core/css_image_set_value.obj
+[0/16408] 32.53s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/16349] 32.54s S CXX obj/third_party/blink/renderer/core/core/css_property_value_set.obj
+[0/2294] 46.47s F CXX obj/third_party/blink/renderer/core/core/css_property_value_set.obj
+[1/2294] 57.02s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[2/2294] 58.65s F CXX obj/third_party/blink/renderer/core/core/css_paint_value.obj
+[3/2294] 1m02.54s F CXX obj/third_party/blink/renderer/core/core/css_image_set_value.obj
+[4/2294] 1m02.56s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[4/2209] 1m26.85s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[5/2169] 1m26.89s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[5/2169] 1m34.86s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 11f43cde-e6fd-478a-85b7-ceefd68d3ba4 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: ignoring section .debug$T with unrecognized magic 0xFE4B2683
+lld-link: error: ignoring section .debug$T with unrecognized magic 0x8E202AE4
+
+
+build failed
+
+
+noexec:0 local:6 remote:0 cache:0 skip:99940
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 3488(err:5) / r:770(err:0) 1.83GiB / w:1(err:0) 392.09KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m36.25s Build Failure: 6 done, 1 failed, 2163 remaining - 0.06/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-204356.14236
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

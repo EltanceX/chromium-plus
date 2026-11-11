@@ -1,0 +1,37 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:52471",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 711
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 387
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": false,
+      "elapsedMs": 31132,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:298:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:296:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Python callback exceeded the 50 ms cooperative execution budget",
+          "timestamp": 1794392364988.189,
+          "url": "http://127.0.0.1:52471/api",
+          "lineNumber": 6
+        }
+      ],
+      "pageState": {}
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:298:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:296:3"
+}

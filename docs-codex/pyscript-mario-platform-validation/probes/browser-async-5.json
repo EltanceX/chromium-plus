@@ -1,0 +1,76 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:59786",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 438
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 380
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": true,
+      "elapsedMs": 1346,
+      "detail": {
+        "contexts": [
+          {
+            "contextId": "52f1aa6a-fec3-43b9-b037-f1874fee17d3",
+            "contextType": "realtime",
+            "contextState": "suspended",
+            "callbackBufferSize": 480,
+            "maxOutputChannelCount": 2,
+            "sampleRate": 48000,
+            "renderQuantumSize": 128
+          }
+        ],
+        "nodes": [
+          "AudioDestination",
+          "Oscillator",
+          "Gain",
+          "Oscillator",
+          "Gain"
+        ]
+      }
+    },
+    {
+      "name": "Native audio suspend completes once",
+      "passed": true,
+      "elapsedMs": 302
+    },
+    {
+      "name": "Voice and scheduling rate limits reject additional sound",
+      "passed": true,
+      "elapsedMs": 1874
+    },
+    {
+      "name": "Navigation disposes document audio resources",
+      "passed": true,
+      "elapsedMs": 739
+    },
+    {
+      "name": "Fullscreen rejection caps and consumes notifications exactly once",
+      "passed": true,
+      "elapsedMs": 1572
+    },
+    {
+      "name": "Trusted fullscreen request and native exit complete",
+      "passed": false,
+      "elapsedMs": 30502,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:156:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:347:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:244:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:345:3",
+      "nativeLogs": [],
+      "pageState": {
+        "result": "api-ready",
+        "completion": "fullscreen:False:closed:False"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:156:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:347:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:244:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:345:3"
+}

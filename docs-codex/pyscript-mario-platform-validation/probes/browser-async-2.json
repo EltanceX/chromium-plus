@@ -1,0 +1,31 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:55445",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 415
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 360
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": false,
+      "elapsedMs": 1668,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(nodes.some(e=>e.params.node.nodeType==='OscillatorNode'))\n\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:302:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:296:3",
+      "nativeLogs": [],
+      "pageState": {
+        "result": "api-ready",
+        "completion": "audio:True:running:False"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(nodes.some(e=>e.params.node.nodeType==='OscillatorNode'))\n\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:302:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:296:3"
+}

@@ -1,0 +1,59 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4313708s
+load siso config done 12.9233ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:85611+ready:0 (node:441081 edge:85627)
+ 1.36s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/19076] 31.34s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_multicast_controller.obj
+[0/17837] 31.39s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_data_transfer_item.obj
+[0/17519] 31.41s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_text_decoder_stream.obj
+[0/2168] 35.59s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_text_decoder_stream.obj
+[1/2168] 36.06s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_data_transfer_item.obj
+[2/2168] 37.72s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_multicast_controller.obj
+[3/2167] 37.77s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[3/2165] 58.25s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[4/2165] 58.25s S LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[4/2159] 59.92s F LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[5/2142] 59.93s S LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[5/2142] 59.93s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[5/2142] 59.95s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[5/2142] 1m01.90s E LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+FAILED: 12afa13f-62d3-4cbc-bbc7-b22f4fff6136 "./python_document_context_unittests.exe" LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./python_document_context_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./python_document_context_unittests.exe.pdb" "@./python_document_context_unittests.exe.rsp"
+build step: link "./python_document_context_unittests.exe"
+stderr:
+lld-link: error: getSectionName failed: #8029: invalid section name
+
+
+[6/2142] 1m01.98s - LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[6/2142] 1m02.05s - LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+build failed
+
+
+noexec:0 local:6 remote:0 cache:0 skip:99967
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1043(err:8) / r:773(err:0) 1.60GiB / w:4(err:0) 568.23KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m03.61s Build Failure: 6 done, 1 failed, 2136 remaining - 0.09/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-185223.3408
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

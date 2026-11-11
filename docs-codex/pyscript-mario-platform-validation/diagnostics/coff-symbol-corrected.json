@@ -1,0 +1,160 @@
+[
+  {
+    "object": "obj/services/network/public/mojom/mojom/network_service.mojom.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "d925e063217559945ed198ada2fcf496b8b6eef065679713877e503add02743b"
+  },
+  {
+    "object": "obj/services/viz/public/mojom/mojom/layer_context.mojom.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "fdd25c16ecc000026e560af12a430ff33b1debc53fec872fead3469f2ef28fe4"
+  },
+  {
+    "object": "obj/third_party/blink/public/mojom/mojom_core_blink/frame.mojom-blink.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "785bda8bdd252c0fc957e661b954b38199b9b55fe96d593c6237a2e510cc7996"
+  },
+  {
+    "object": "obj/third_party/blink/public/mojom/mojom_core_blink/service_worker.mojom-blink.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "b4a3f2e496dd30b528bef5baecb4d955f7a1bb6696984fdcf259fc4e90372a6a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/document_loader.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "f6995c07fb17d3f12ea3588d540f96b0dd2794839832fda7b3d06e6a8ba5c9d0"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_dom_agent.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "cdd3ff5e575c5d360e89bb915f51f34b419516be25cab7cbffc87a046cbc287d"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_dom_snapshot_agent.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "c619c315908c4401090225869c48312db5a400e00060296c42fc4ad3938f4a2e"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_overlay_agent.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "72c8707a945c79d23f8f1db16da6e0d236d70be65e75f1f69b02fdb0c1ae3826"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_page_agent.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "34305b7162835a3a42a4c9565c298e9a4dfd0e483a4e199887b5bacb4f0fb151"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/inspector_style_sheet.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "be6e1b8e8f521371ffb34a2938f5f60204237732e5cdff443ae9a66f201847e1"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_dom_window.obj",
+    "errors": [
+      {
+        "symbol": 58358,
+        "section": 44475,
+        "sections": 31865
+      },
+      {
+        "symbol": 58794,
+        "section": 34464,
+        "sections": 31865
+      },
+      {
+        "symbol": 59004,
+        "section": 32652,
+        "sections": 31865
+      },
+      {
+        "symbol": 59317,
+        "section": 61534,
+        "sections": 31865
+      },
+      {
+        "symbol": 59372,
+        "section": 54348,
+        "sections": 31865
+      }
+    ],
+    "action": "retained-for-rebuild",
+    "sha256": "76419cf2fcc19448d4c4857efc55865dc3e422cea07b05b8035b47bf54d500dc"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_frame.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "f3304ca2dab7275700b61230555f94c210d3d635ba48b359be4c4ff6f0f655bd"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/local_frame_view.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "c9497dd1e17a2fdab150b1b5f6f6b12b3d43b55e87ee072d857c885ea583031a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/longhands_custom.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "70dbf1d9efb2ec53dab1bd8991a17779005db20ad7f7f4ba6697279952096d0e"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/style_engine.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "42671e868e3f1a22b7e36e30460b1a7aaa6b5bd459be24b23eb281b3f8a8197a"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/web_frame_widget_impl.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "0860377cd7eff4b937a768fb3c9cb99f11608364c25854881be2dcfbe7c3a420"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/web_local_frame_impl.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "e17b67862daf708b23115008bf47b12001b04d4ce112843bfe27913dd71b2199"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_generated/longhands.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "c2ab6ed54959a1126b7c6d8a04cd0c7df8f6cbe65595b9364acd9f03b23a9d29"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core_hot/element.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "4f707d98608a692a5ec34c851a3a1009ce6539aa479ca4e4aa1d69d244cbab27"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/animation/animation/css_animations.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "04d530e50b1e3cc5ae3f2df75e33a41dbfe678d90cb72a94dcbbe947310a81b9"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/exported/exported/web_dev_tools_agent_impl.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "5ec7c5c6baa8c5024123335368128896fe40482ec7134c78d13e1f36599d9d4b"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/probe/instrumentation_probes/core_probes_impl.obj",
+    "errors": [],
+    "action": "restored-healthy-unsigned-section",
+    "sha256": "836a3b3b58ed49f37adeb521b8497dcb7dd3ce8b6fec11511852ca3d31315c54"
+  }
+]

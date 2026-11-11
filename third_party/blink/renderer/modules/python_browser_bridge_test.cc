@@ -3,15 +3,20 @@
 // found in the LICENSE file.
 
 #include <limits>
+#include <string>
 
 #include "base/functional/bind.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/blink/renderer/core/dom/document.h"
+#include "third_party/blink/renderer/core/dom/document_type.h"
+#include "third_party/blink/renderer/core/dom/dom_implementation.h"
 #include "third_party/blink/renderer/core/dom/element.h"
+#include "third_party/blink/renderer/core/dom/processing_instruction.h"
 #include "third_party/blink/renderer/core/dom/shadow_root.h"
 #include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/testing/page_test_base.h"
 #include "third_party/blink/renderer/modules/python_browser_bridge_impl.h"
+#include "third_party/blink/renderer/platform/bindings/exception_state.h"
 
 namespace blink {
 namespace {
@@ -80,6 +85,39 @@ TEST_F(PythonBrowserBridgeTest, ExportRejectsAuthorShadowAndTemplateContent) {
   EXPECT_EQ(Error::kNotAllowed, result.status.error);
   EXPECT_EQ("Template and shadow content export is unsupported",
             result.status.message.Utf8());
+  bridge->Dispose();
+}
+TEST_F(PythonBrowserBridgeTest, ExportCountsMetadataBeforeSerializing) {
+  LocalFrame::NotifyUserActivation(
+      &GetFrame(), mojom::blink::UserActivationNotificationType::kTest);
+  ASSERT_TRUE(LocalFrame::HasTransientUserActivation(&GetFrame()));
+  auto* bridge = Bridge();
+  const String large = String::FromUtf8(std::string(1024 * 1024, 'x'));
+  if (GetDocument().doctype()) {
+    GetDocument().doctype()->remove();
+  }
+  for (unsigned field = 0; field < 4; ++field) {
+    DummyExceptionStateForTesting exception;
+    Node* metadata = nullptr;
+    if (field < 3) {
+      metadata = GetDocument().implementation().createDocumentType(
+          AtomicString(field == 0 ? large : String("html")),
+          field == 1 ? large : String(), field == 2 ? large : String(),
+          exception);
+    } else {
+      metadata =
+          GetDocument().createProcessingInstruction(large, "", exception);
+    }
+    ASSERT_FALSE(exception.HadException());
+    ASSERT_TRUE(metadata);
+    GetDocument().InsertBefore(metadata, GetDocument().documentElement());
+    const auto result =
+        bridge->Run({Op::kExportDocument, {}, "game.html"}, nullptr);
+    EXPECT_EQ(Error::kLimit, result.status.error);
+    EXPECT_EQ("Document exceeds the export source limit",
+              result.status.message.Utf8());
+    metadata->remove();
+  }
   bridge->Dispose();
 }
 TEST_F(PythonBrowserBridgeTest, DisposeIsIdempotentAndInvalidatesAllServices) {

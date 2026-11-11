@@ -1,0 +1,37 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.9203612s
+load siso config done 12.731ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:71401+ready:0 (node:441081 edge:71409)
+ 1.30s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/14902] 39.14s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/2165] 59.02s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[1/2165] 59.04s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[1/2163] 1m17.02s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[2/2137] 1m17.02s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[2/38] 1m20.00s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+build finished
+
+
+noexec:0 local:3 remote:0 cache:0 skip:102106
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 3468(err:2) / r:768(err:0) 1.55GiB / w:1(err:0) 392.09KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m20.75s Build Succeeded: 3 steps - 0.04/s

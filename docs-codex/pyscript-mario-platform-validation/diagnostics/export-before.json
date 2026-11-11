@@ -1,0 +1,9 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:52596",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [],
+  "observed": "PermissionError:Template and shadow content export is unsupported",
+  "passed": true
+}

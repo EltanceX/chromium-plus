@@ -1,0 +1,120 @@
+[
+  {
+    "object": "obj/third_party/blink/renderer/modules/animationworklet/animationworklet/worklet_animation.obj",
+    "beforeSha256": "ede733bd1858d6a237e31ad798a6e36ce6175c93bd26f1fab0c431116cbf918e",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\metadata-object-backups\\obj\\third_party\\blink\\renderer\\modules\\animationworklet\\animationworklet\\worklet_animation.obj",
+    "reasons": [
+      "Invalid CodeView type at 0x590002: length 32294, kind 0x3722",
+      "Invalid CodeView type extent 0x590002 != 0xab4c46",
+      "Invalid procedure ID 0x1a17f at 0x164db2, type kind out of range",
+      "Invalid procedure ID 0x1a186 at 0x164f9a, type kind out of range",
+      "Invalid procedure ID 0x1a187 at 0x1650b2, type kind out of range",
+      "Invalid procedure ID 0x1a197 at 0x1651da, type kind out of range",
+      "Invalid procedure ID 0x1a19e at 0x1653c2, type kind out of range",
+      "Invalid procedure ID 0x1a19f at 0x1654da, type kind out of range",
+      "Invalid procedure ID 0x1a1af at 0x165602, type kind out of range",
+      "Invalid procedure ID 0x1a1b6 at 0x1657fa, type kind out of range",
+      "Invalid procedure ID 0x1a1b7 at 0x165922, type kind out of range",
+      "Invalid procedure ID 0x1a1c7 at 0x165a56, type kind out of range",
+      "Invalid procedure ID 0x1a1ce at 0x165c42, type kind out of range",
+      "Invalid procedure ID 0x1a1cf at 0x165d5e, type kind out of range",
+      "Invalid procedure ID 0x1a1df at 0x165e86, type kind out of range",
+      "Invalid procedure ID 0x1a1f0 at 0x1660c2, type kind out of range"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/app_banner/app_banner/before_install_prompt_event.obj",
+    "beforeSha256": "07375d0bade5246556bf1fa9b5e0a12cc91f734a3e85449c721cb78fcbcb11a4",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\metadata-object-backups\\obj\\third_party\\blink\\renderer\\modules\\app_banner\\app_banner\\before_install_prompt_event.obj",
+    "reasons": [
+      "Invalid CodeView type at 0x340023: length 45532, kind 0x471c",
+      "Invalid CodeView type extent 0x340023 != 0x5d306f",
+      "Invalid procedure ID 0xd205 at 0xe150b, type kind out of range",
+      "Invalid procedure ID 0xd20c at 0xe16f3, type kind out of range",
+      "Invalid procedure ID 0xd20d at 0xe180b, type kind out of range",
+      "Invalid procedure ID 0xd21d at 0xe1933, type kind out of range",
+      "Invalid procedure ID 0xd224 at 0xe1b1b, type kind out of range",
+      "Invalid procedure ID 0xd225 at 0xe1c33, type kind out of range",
+      "Invalid procedure ID 0xd235 at 0xe1d5b, type kind out of range",
+      "Invalid procedure ID 0xd23c at 0xe1f53, type kind out of range",
+      "Invalid procedure ID 0xd23d at 0xe207b, type kind out of range",
+      "Invalid procedure ID 0xd24d at 0xe21af, type kind out of range",
+      "Invalid procedure ID 0xd254 at 0xe239b, type kind out of range",
+      "Invalid procedure ID 0xd255 at 0xe24b7, type kind out of range",
+      "Invalid procedure ID 0xd266 at 0xe25df, type kind out of range",
+      "Invalid procedure ID 0xd277 at 0xe281b, type kind out of range"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/background_sync/background_sync/periodic_sync_manager.obj",
+    "beforeSha256": "dbed9854913c7b07c9bcad921a16831e3e85ea648444f41e0eb142ddea0f3edd",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\metadata-object-backups\\obj\\third_party\\blink\\renderer\\modules\\background_sync\\background_sync\\periodic_sync_manager.obj",
+    "reasons": [
+      "Invalid UTF8 string table at 0x415002"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/bluetooth/bluetooth/bluetooth.obj",
+    "beforeSha256": "5db64a5a4e9cf6d62fb82be63931209d566bb513f35502fc232b8a33a43fc307",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\metadata-object-backups\\obj\\third_party\\blink\\renderer\\modules\\bluetooth\\bluetooth\\bluetooth.obj",
+    "reasons": [
+      "Invalid CodeView symbol record at 0x343fff: length 25870, kind 0x1d44",
+      "Invalid CodeView symbol subsection 0x344037: kind 0xac98e903, size 1606913642",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature",
+      "b'.debug$S' invalid signature"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/modules/canvas/canvas/canvas_pattern.obj",
+    "beforeSha256": "5341a97e01e3c7891a816b9e3b15bd0b8ff9deadb81b1d7b301ce9cab8a2329f",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\metadata-object-backups\\obj\\third_party\\blink\\renderer\\modules\\canvas\\canvas\\canvas_pattern.obj",
+    "reasons": [
+      "Invalid CodeView type at 0x59097: length 13470, kind 0xfc21",
+      "Invalid CodeView type extent 0x59097 != 0xb2643",
+      "Invalid procedure ID 0x409b at 0x12ac9, type kind out of range",
+      "Invalid procedure ID 0x409c at 0x12c69, type kind out of range",
+      "Invalid procedure ID 0x40a1 at 0x12d59, type kind out of range",
+      "Invalid procedure ID 0x40a2 at 0x12e7d, type kind out of range",
+      "Invalid procedure ID 0x40a4 at 0x12fad, type kind out of range",
+      "Invalid procedure ID 0x40a5 at 0x130e1, type kind out of range",
+      "Invalid procedure ID 0x40a7 at 0x131e5, type kind out of range",
+      "Invalid procedure ID 0x40a9 at 0x133d1, type kind out of range",
+      "Invalid procedure ID 0x40ab at 0x13535, type kind out of range",
+      "Invalid procedure ID 0x40ad at 0x1367d, type kind out of range",
+      "Invalid procedure ID 0x40af at 0x13781, type kind out of range",
+      "Invalid procedure ID 0x40b0 at 0x138a1, type kind out of range",
+      "Invalid procedure ID 0x418d at 0x13a71, type kind out of range",
+      "Invalid procedure ID 0x418f at 0x13b75, type kind out of range"
+    ]
+  }
+]

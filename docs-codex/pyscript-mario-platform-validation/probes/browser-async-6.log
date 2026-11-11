@@ -1,0 +1,14 @@
+PASS Typed storage and real activation gating
+PASS Synthetic click cannot unlock audio or export
+PASS Native audio resumes and schedules oscillator and gain nodes
+PASS Native audio suspend completes once
+PASS Voice and scheduling rate limits reject additional sound
+PASS Navigation disposes document audio resources
+PASS Fullscreen rejection caps and consumes notifications exactly once
+PASS Trusted fullscreen request and native exit complete
+{
+  "passed": false,
+  "cases": 9,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\browser-async-6.json",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'quota-ready'\n- 'quota-denied'\n         ^\n\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:363:41\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:244:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:360:3"
+}

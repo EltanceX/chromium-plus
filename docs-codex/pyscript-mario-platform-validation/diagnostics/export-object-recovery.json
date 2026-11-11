@@ -1,0 +1,21 @@
+[
+  {
+    "object": "obj/components/signin/internal/identity_manager/identity_manager/gaia_cookie_manager_service.obj",
+    "beforeSha256": "b03936d70726c3bd23f12e1138a931f8e508d29533abe20ed011b3c46ddb9689",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\obj\\components\\signin\\internal\\identity_manager\\identity_manager\\gaia_cookie_manager_service.obj",
+    "reasons": [
+      "build-async-18.log",
+      "export-object-probe.rsp-debug-scan.json",
+      "export-object-probe.rsp-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj/services/viz/public/mojom/mojom/layer_context.mojom.obj",
+    "beforeSha256": "f126850f8a91b52067c6d5a4ca872ecfa829e44ae2cc9a13d29327efc9778563",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\export-object-backups\\obj\\services\\viz\\public\\mojom\\mojom\\layer_context.mojom.obj",
+    "reasons": [
+      "build-async-19.log",
+      "blink_unittests.exe.rsp-all-debug-scan.json"
+    ]
+  }
+]

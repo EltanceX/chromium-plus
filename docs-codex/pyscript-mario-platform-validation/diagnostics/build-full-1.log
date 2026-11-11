@@ -1,0 +1,69 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3379188s
+load siso config done 12.497ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:72918+ready:0 (node:441081 edge:72928)
+ 1.54s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/24193] 30.85s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/22912] 30.96s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/18630] 31.18s S CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_bridge_impl.obj
+[0/18180] 31.20s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/18096] 31.21s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/17667] 31.23s S CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[0/12564] 31.67s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/11351] 31.85s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[0/10667] 31.97s S CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[0/10483] 31.99s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[0/10263] 32.00s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/2302] 36.05s F CXX obj/chrome/renderer/renderer/python_script_runner.obj
+[1/2302] 36.73s F CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[2/2302] 59.85s F CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_bridge_impl.obj
+[3/2302] 1m01.96s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[4/2302] 1m02.37s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[5/2302] 1m12.45s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[6/2302] 1m15.42s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[7/2302] 1m23.10s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[8/2302] 1m26.47s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[9/2302] 1m45.20s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[10/2302] 1m50.61s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[11/2301] 1m50.63s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[11/2301] 1m58.01s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 82eaf13d-15d5-4173-a11b-4d9351e18ee8 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/local_dom_window.obj: ΎmN\x01�Z� should not refer to non-existent section 44475
+
+
+build failed
+
+
+noexec:0 local:12 remote:0 cache:0 skip:99808
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 12751(err:3) / r:784(err:0) 209.24MiB / w:1(err:0) 379.23KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14     11(0)     0.00s |█      |    39.72s |   ▃█▃ |
+shutdown cloud logging/monitoring done 0s
+
+1m59.86s Build Failure: 12 done, 1 failed, 2289 remaining - 0.10/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-171435.9304
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

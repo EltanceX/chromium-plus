@@ -1,0 +1,952 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload:PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript:PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics:PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors:PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed:PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes:PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls:PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface:PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime:PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ControlsPreserveUnicodeNulFlagsAndTypedPayload_Test::TestBody [0x7ff6c4762db8+b8] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:247)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes
+[1111/181005.895:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls
+[1111/181005.897:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[1111/181005.897:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[1111/181005.897:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[1/17] PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload (CRASHED)
+[2/17] PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript (SKIPPED)
+[3/17] PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics (SKIPPED)
+[4/17] PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors (SKIPPED)
+[5/17] PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed (SKIPPED)
+[6/17] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (SKIPPED)
+[7/17] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls (SKIPPED)
+[8/17] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (SKIPPED)
+[9/17] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (SKIPPED)
+[10/17] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (SKIPPED)
+Note: Google Test filter = PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations:PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation:PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover:PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock:PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted:PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption:PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ConvertsHostErrorsAndRollsBackInstallations_Test::TestBody [0x7ff6c478042d+13d] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:503)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption
+[1111/181006.572:ERROR:base\test\launcher\test_launcher.cc:1330] no test result for PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[11/17] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (CRASHED)
+[12/17] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (SKIPPED)
+[13/17] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (SKIPPED)
+[14/17] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (SKIPPED)
+[15/17] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (SKIPPED)
+[16/17] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (SKIPPED)
+[17/17] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (SKIPPED)
+Retrying 17 tests (retry #0)
+Note: Google Test filter = PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ControlsPreserveUnicodeNulFlagsAndTypedPayload_Test::TestBody [0x7ff6c4762db8+b8] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:247)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[18/34] PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript
+Received fatal exception EXCEPTION_BREAKPOINT
+	blink_platform_wtf!base::numerics_internal::CheckOnFailure::HandleFailure<unsigned int> [0x7ff90990daf0+0] (C:\src\src\base\numerics\safe_conversions_impl.h:87)
+	blink_platform_wtf!base::numerics_internal::checked_cast<unsigned int,base::numerics_internal::CheckOnFailure,unsigned long long> [0x7ff90990f879+29] (C:\src\src\base\numerics\safe_conversions.h:108)
+	blink_platform_wtf!blink::String::FromUtf8 [0x7ff909a067a9+59] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.cc:371)
+	blink_platform!blink::String::FromUtf8 [0x7ff8c4b95063+53] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.h:92)
+	blink_platform!blink::WebString::FromUtf8 [0x7ff8c4bed7fa+4a] (C:\src\src\third_party\blink\renderer\platform\exported\web_string.cc:85)
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c4789369+89] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ControlsMapNativeDenialsWithoutExecutingScript_Test::TestBody [0x7ff6c4776f83+c3] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:272)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[19/34] PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics
+Received fatal exception EXCEPTION_BREAKPOINT
+	blink_platform_wtf!base::numerics_internal::CheckOnFailure::HandleFailure<unsigned int> [0x7ff90990daf0+0] (C:\src\src\base\numerics\safe_conversions_impl.h:87)
+	blink_platform_wtf!base::numerics_internal::checked_cast<unsigned int,base::numerics_internal::CheckOnFailure,unsigned long long> [0x7ff90990f879+29] (C:\src\src\base\numerics\safe_conversions.h:108)
+	blink_platform_wtf!blink::String::FromUtf8 [0x7ff909a067a9+59] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.cc:371)
+	blink_platform!blink::String::FromUtf8 [0x7ff8c4b95063+53] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.h:92)
+	blink_platform!blink::WebString::FromUtf8 [0x7ff8c4bed7fa+4a] (C:\src\src\third_party\blink\renderer\platform\exported\web_string.cc:85)
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c4789369+89] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CanvasPreservesTypedPayloadsVersionsAndMetrics_Test::TestBody [0x7ff6c4777308+b8] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:297)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[20/34] PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::ResizeCanvas [0x7ff6c478a3c1+71] (C:\src\src\chrome\renderer\python_document_context.cc:198)
+	python_runtime!native_python::BudgetedDomHost::CreateCanvasSurface [0x7ff9171e9dbd+15d] (C:\src\src\components\python_runtime\python_execution_budget.cc:404)
+	python_runtime!native_python::`anonymous namespace'::CreateSurface [0x7ff9171d5afb+ab] (C:\src\src\components\python_runtime\python_canvas_module.cc:171)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CanvasMapsRecoverableNativeErrors_Test::TestBody [0x7ff6c477a493+133] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:337)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[21/34] PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::ResizeCanvas [0x7ff6c478a3c1+71] (C:\src\src\chrome\renderer\python_document_context.cc:198)
+	python_runtime!native_python::BudgetedDomHost::CreateCanvasSurface [0x7ff9171e9dbd+15d] (C:\src\src\components\python_runtime\python_execution_budget.cc:404)
+	python_runtime!native_python::`anonymous namespace'::CreateSurface [0x7ff9171d5afb+ab] (C:\src\src\components\python_runtime\python_canvas_module.cc:171)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CanvasDrawingStopCannotBeCaughtAndResumed_Test::TestBody [0x7ff6c477aa03+c3] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:353)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[22/34] PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes
+..\..\chrome\renderer\python_document_context_unittest.cc(376): error: Value of: result.success
+  Actual: false
+Expected: true
+Traceback (most recent call last):
+  File adapter.py, line 4, in <module>
+AssertionError:
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_InputTargetsPageStateAndCaptureKeepTheirTypes_Test::TestBody [0x7ff6c477afce+1be] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:376)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\chrome\renderer\python_document_context_unittest.cc(377): error: Expected equality of these values:
+  "resize"
+  host.last_type
+    Which is: ""
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_InputTargetsPageStateAndCaptureKeepTheirTypes_Test::TestBody [0x7ff6c477b0cc+2bc] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:377)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\chrome\renderer\python_document_context_unittest.cc(378): error: Value of: host.last_once && host.last_passive
+  Actual: false
+Expected: true
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_InputTargetsPageStateAndCaptureKeepTheirTypes_Test::TestBody [0x7ff6c477b1f1+3e1] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:378)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\chrome\renderer\python_document_context_unittest.cc(379): error: Expected equality of these values:
+  -25
+  host.last_pointer
+    Which is: 0
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_InputTargetsPageStateAndCaptureKeepTheirTypes_Test::TestBody [0x7ff6c477b2ed+4dd] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:379)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\chrome\renderer\python_document_context_unittest.cc(381): error: Expected equality of these values:
+  2
+  host.removes
+    Which is: 0
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_InputTargetsPageStateAndCaptureKeepTheirTypes_Test::TestBody [0x7ff6c477b4ce+6be] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:381)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (531 ms)
+[----------] 1 test from PythonDocumentContextTest (534 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (535 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes
+
+ 1 FAILED TEST
+[23/34] PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (531 ms)
+Note: Google Test filter = PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls
+[24/34] PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ForwardsListenerAndSnapshotAcrossThePublicInterface_Test::TestBody [0x7ff6c477cf82+c2] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:442)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[25/34] PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ForwardsOnceConsumptionToRuntime_Test::TestBody [0x7ff6c477e7ff+13f] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:466)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[26/34] PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent_Test::TestBody [0x7ff6c477f169+109] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:479)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[27/34] PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ConvertsHostErrorsAndRollsBackInstallations_Test::TestBody [0x7ff6c478042d+13d] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:503)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[28/34] PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_RejectsNestedInvocationAndRevokesOnHostInactivation_Test::TestBody [0x7ff6c47816ee+fe] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:539)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[29/34] PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CallbackCanRemoveItselfAndOrdinaryExceptionsRecover_Test::TestBody [0x7ff6c47825f8+b8] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:563)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[30/34] PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock
+[       OK ] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (52 ms)
+[----------] 1 test from PythonDocumentContextTest (53 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (54 ms total)
+[  PASSED  ] 1 test.
+[31/34] PythonDocumentContextTest.ReporterCanStopTheSourceBatchBeforeTheNextBlock (52 ms)
+Note: Google Test filter = PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted
+Received fatal exception EXCEPTION_BREAKPOINT
+	blink_platform_wtf!base::numerics_internal::CheckOnFailure::HandleFailure<unsigned int> [0x7ff90990daf0+0] (C:\src\src\base\numerics\safe_conversions_impl.h:87)
+	blink_platform_wtf!base::numerics_internal::checked_cast<unsigned int,base::numerics_internal::CheckOnFailure,unsigned long long> [0x7ff90990f879+29] (C:\src\src\base\numerics\safe_conversions.h:108)
+	blink_platform_wtf!blink::String::FromUtf8 [0x7ff909a067a9+59] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.cc:371)
+	blink_platform!blink::String::FromUtf8 [0x7ff8c4b95063+53] (C:\src\src\third_party\blink\renderer\platform\wtf\text\wtf_string.h:92)
+	blink_platform!blink::WebString::FromUtf8 [0x7ff8c4bed7fa+4a] (C:\src\src\third_party\blink\renderer\platform\exported\web_string.cc:85)
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c4789369+89] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_CallbackWindowRefusalIsNonfatalAndConverted_Test::TestBody [0x7ff6c4783d4e+be] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:597)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[32/34] PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	python_document_context_unittes!`anonymous namespace'::ChromeDomHost::SetText [0x7ff6c478933c+5c] (C:\src\src\chrome\renderer\python_document_context.cc:110)
+	python_runtime!native_python::BudgetedDomHost::GetElementById [0x7ff9171e85a3+103] (C:\src\src\components\python_runtime\python_execution_budget.cc:280)
+	python_runtime!native_python::`anonymous namespace'::GetElementById [0x7ff9171e2408+128] (C:\src\src\components\python_runtime\python_dom_module.cc:178)
+	python_runtime!cfunction_call [0x7ff9172fe298+258] (C:\src\src\third_party\cpython\src\Objects\methodobject.c:552)
+	python_runtime!_PyObject_MakeTpCall [0x7ff917281ad0+220] (C:\src\src\third_party\cpython\src\Objects\call.c:242)
+	python_runtime!_PyObject_VectorcallTstate [0x7ff9172814c6+176] (C:\src\src\third_party\cpython\src\Include\internal\pycore_call.h:166)
+	python_runtime!PyObject_Vectorcall [0x7ff917282963+63] (C:\src\src\third_party\cpython\src\Objects\call.c:327)
+	python_runtime!_PyEval_EvalFrameDefault [0x7ff9174a88f8+11348] (C:\src\src\third_party\cpython\src\Python\generated_cases.c.h:813)
+	python_runtime!PyEval_EvalCode [0x7ff9174971ed+11d] (C:\src\src\third_party\cpython\src\Python\ceval.c:604)
+	python_runtime!native_python::PythonContext::Execute::<lambda_1>::operator() [0x7ff9171f7464+244] (C:\src\src\components\python_runtime\python_runtime.cc:576)
+	python_runtime!std::__Cr::__invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f7210+20] (C:\src\src\third_party\libc++\src\include\__type_traits\invoke.h:90)
+	python_runtime!std::__Cr::invoke<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,native_python::DomHost *> [0x7ff9171f71dd+1d] (C:\src\src\third_party\libc++\src\include\__functional\invoke.h:29)
+	python_runtime!absl::functional_internal::InvokeObject<const `lambda at ..\..\components\python_runtime\python_runtime.cc:566:31' &,_object *,native_python::DomHost *> [0x7ff9171f717c+2c] (C:\src\src\third_party\abseil-cpp\absl\functional\internal\function_ref.h:75)
+	python_runtime!absl::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171f709a+3a] (C:\src\src\third_party\abseil-cpp\absl\functional\function_ref.h:165)
+	python_runtime!base::FunctionRef<_object *(native_python::DomHost *)>::operator() [0x7ff9171eff9d+1d] (C:\src\src\base\functional\function_ref.h:123)
+	python_runtime!native_python::PythonContext::Impl::Run [0x7ff9171efa4c+38c] (C:\src\src\components\python_runtime\python_runtime.cc:429)
+	python_runtime!native_python::PythonContext::Execute [0x7ff9171f279e+1ee] (C:\src\src\components\python_runtime\python_runtime.cc:566)
+	python_document_context_unittes!`anonymous namespace'::ChromePythonDocumentContext::Run [0x7ff6c478807e+26e] (C:\src\src\chrome\renderer\python_document_context.cc:273)
+	python_document_context_unittes!`anonymous namespace'::RunSource [0x7ff6c4763a8a+18a] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:209)
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_ForwardsAnimationTimestampAndOneShotConsumption_Test::TestBody [0x7ff6c4784b8e+be] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:622)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::Test::Run [0x7ff6c542b8b3+93] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2753)
+	python_document_context_unittes!testing::TestInfo::Run [0x7ff6c542c4d7+117] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2895)
+	python_document_context_unittes!testing::TestSuite::Run [0x7ff6c542d52b+19b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:3072)
+	python_document_context_unittes!testing::internal::UnitTestImpl::RunAllTests [0x7ff6c543a4f9+589] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:6063)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl,bool> [0x7ff6c5439f5b+4b] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+	python_document_context_unittes!testing::UnitTest::Run [0x7ff6c5439d81+141] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:5602)
+	python_document_context_unittes!RUN_ALL_TESTS [0x7ff6c6619bc1+11] (C:\src\src\third_party\googletest\src\googletest\include\gtest\gtest.h:2337)
+	python_document_context_unittes!base::TestSuite::RunAllTests [0x7ff6c6619b9e+e] (C:\src\src\base\test\test_suite.cc:680)
+	python_document_context_unittes!base::TestSuite::Run [0x7ff6c6617d79+b9] (C:\src\src\base\test\test_suite.cc:440)
+	python_document_context_unittes!base::internal::DecayedFunctorTraits<int (base::TestSuite::*)(),base::TestSuite *>::Invoke<int (base::TestSuite::*)(),base::TestSuite *> [0x7ff6c478725a+1a] (C:\src\src\base\functional\bind_internal.h:740)
+	python_document_context_unittes!base::internal::InvokeHelper<0,base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,int,0>::MakeItSo<int (base::TestSuite::*)(),std::__Cr::tuple<base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDang [0x7ff6c478720b+4b] (C:\src\src\base\functional\bind_internal.h:932)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47871b2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	python_document_context_unittes!base::internal::Invoker<base::internal::FunctorTraits<int (base::TestSuite::*&&)(),base::TestSuite *>,base::internal::BindState<1,1,0,int (base::TestSuite::*)(),base::internal::UnretainedWrapper<base::TestSuite,base::unretained_traits::MayNotDangle,0> >,i [0x7ff6c47870ff+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	python_document_context_unittes!base::OnceCallback<int ()>::Run [0x7ff6c6612562+b2] (C:\src\src\base\functional\callback.h:155)
+	python_document_context_unittes!base::`anonymous namespace'::RunTestSuite [0x7ff6c66116e3+1c3] (C:\src\src\base\test\launcher\unit_test_launcher.cc:189)
+	python_document_context_unittes!base::`anonymous namespace'::LaunchUnitTestsInternal [0x7ff6c660f5e4+184] (C:\src\src\base\test\launcher\unit_test_launcher.cc:272)
+	python_document_context_unittes!base::LaunchUnitTests [0x7ff6c660f337+177] (C:\src\src\base\test\launcher\unit_test_launcher.cc:337)
+	python_document_context_unittes!main [0x7ff6c4786f28+c8] (C:\src\src\chrome\renderer\run_python_document_context_unittests.cc:13)
+	python_document_context_unittes!invoke_main [0x7ff6c6be7dd9+39] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:79)
+	python_document_context_unittes!__scrt_common_main_seh [0x7ff6c6be7f12+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	python_document_context_unittes!__scrt_common_main [0x7ff6c6be7f9e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	python_document_context_unittes!mainCRTStartup [0x7ff6c6be7fbe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_main.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+[33/34] PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (CRASHED)
+Note: Google Test filter = PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonDocumentContextTest
+[ RUN      ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+..\..\chrome\renderer\python_document_context_unittest.cc(657): error: Value of: result.success
+  Actual: false
+Expected: true
+Traceback (most recent call last):
+  File adapter.py, line 4, in <module>
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x86 in position 3: invalid start byte
+Stack trace:
+	python_document_context_unittes!`anonymous namespace'::PythonDocumentContextTest_AnimationCancelAndErrorsUsePublicHostContract_Test::TestBody [0x7ff6c478602e+1be] (C:\src\src\chrome\renderer\python_document_context_unittest.cc:657)
+	python_document_context_unittes!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff6c542b935+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (395 ms)
+[----------] 1 test from PythonDocumentContextTest (396 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (397 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract
+
+ 1 FAILED TEST
+[34/34] PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (395 ms)
+2 tests failed:
+    PythonDocumentContextTest.AnimationCancelAndErrorsUsePublicHostContract (..\..\chrome\renderer\python_document_context_unittest.cc:648)
+    PythonDocumentContextTest.InputTargetsPageStateAndCaptureKeepTheirTypes (..\..\chrome\renderer\python_document_context_unittest.cc:358)
+14 tests crashed:
+    PythonDocumentContextTest.CallbackCanRemoveItselfAndOrdinaryExceptionsRecover (..\..\chrome\renderer\python_document_context_unittest.cc:548)
+    PythonDocumentContextTest.CallbackHandlesAreIsolatedAndNativeRemovalIsIdempotent (..\..\chrome\renderer\python_document_context_unittest.cc:475)
+    PythonDocumentContextTest.CallbackWindowRefusalIsNonfatalAndConverted (..\..\chrome\renderer\python_document_context_unittest.cc:594)
+    PythonDocumentContextTest.CanvasDrawingStopCannotBeCaughtAndResumed (..\..\chrome\renderer\python_document_context_unittest.cc:343)
+    PythonDocumentContextTest.CanvasMapsRecoverableNativeErrors (..\..\chrome\renderer\python_document_context_unittest.cc:321)
+    PythonDocumentContextTest.CanvasPreservesTypedPayloadsVersionsAndMetrics (..\..\chrome\renderer\python_document_context_unittest.cc:276)
+    PythonDocumentContextTest.ControlsMapNativeDenialsWithoutExecutingScript (..\..\chrome\renderer\python_document_context_unittest.cc:260)
+    PythonDocumentContextTest.ControlsPreserveUnicodeNulFlagsAndTypedPayload (..\..\chrome\renderer\python_document_context_unittest.cc:233)
+    PythonDocumentContextTest.ConvertsHostErrorsAndRollsBackInstallations (..\..\chrome\renderer\python_document_context_unittest.cc:494)
+    PythonDocumentContextTest.ForwardsAnimationTimestampAndOneShotConsumption (..\..\chrome\renderer\python_document_context_unittest.cc:619)
+    PythonDocumentContextTest.ForwardsFullInputSnapshotAndEventControls (..\..\chrome\renderer\python_document_context_unittest.cc:384)
+    PythonDocumentContextTest.ForwardsListenerAndSnapshotAcrossThePublicInterface (..\..\chrome\renderer\python_document_context_unittest.cc:438)
+    PythonDocumentContextTest.ForwardsOnceConsumptionToRuntime (..\..\chrome\renderer\python_document_context_unittest.cc:461)
+    PythonDocumentContextTest.RejectsNestedInvocationAndRevokesOnHostInactivation (..\..\chrome\renderer\python_document_context_unittest.cc:529)
+Tests took 21 seconds.

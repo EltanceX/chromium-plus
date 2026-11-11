@@ -1,0 +1,8 @@
+PASS Typed storage and real activation gating
+PASS Synthetic click cannot unlock audio or export
+{
+  "passed": false,
+  "cases": 3,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\browser-first.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:151:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:298:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:296:3"
+}

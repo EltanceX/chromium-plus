@@ -1,0 +1,69 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3572455s
+load siso config done 10.987ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:78894+ready:0 (node:441081 edge:78904)
+ 1.23s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/13073] 32.89s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/10640] 33.00s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2292] 1m09.84s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[1/2292] 1m09.87s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2292] 1m28.55s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[2/2292] 1m32.72s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 755aea58-c4e8-495f-b085-aac08517b9f0 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `blink::Node::GetPseudoIdForStyling` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF6C which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::GetElementType` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF6D which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsScrollMarkerPseudoElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF6F which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsScrollButtonPseudoElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF71 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsIndexedPseudoElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF72 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsMediaControlElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF74 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsVTTElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF78 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsAttributeNode` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF79 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsFrameOwnerElement` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF7B which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::IsPictureInPictureInterstitial` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF7D which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::CanContainRangeEndPoint` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF7E which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::ChildTypeAllowed` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF82 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::Node::LegacyPreActivationBehavior` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF83 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ContainerNode::ChildrenCanHaveStyle` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DF85 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::String::IsNull` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DFBB which is not a valid function ID record
+lld-link: error: procedure symbol record for `scoped_refptr<blink::StringImpl>::operator bool` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4DFBC which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::span<blink::CSSPropertyValue,18446744073709551615,blink::CSSPropertyValue *>::data` in obj/third_party/blink/renderer/core/core/core_initializer.obj refers to PDB item index 0x4E077 which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:99817
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 7839(err:2) / r:766(err:0) 30.91MiB / w:1(err:0) 379.23KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m33.58s Build Failure: 3 done, 1 failed, 2289 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-203528.8832
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

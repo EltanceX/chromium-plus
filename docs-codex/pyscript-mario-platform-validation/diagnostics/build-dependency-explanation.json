@@ -1,0 +1,20 @@
+{
+  "rawPath": "out\\Debug\\pyscript-mario-phase6\\build-explain-21.log",
+  "rawSha256": "b2b4a2c32ac9be953b1001c0a39265b55681b4db95f7abb96da16257c3f72516",
+  "categories": {
+    "missing-deps": 2399,
+    "stale-deps": 4500,
+    "other": 55
+  },
+  "examples": [
+    "deps for obj/content/test/web_ui_mojo_test_resources/web_ui_mojo_test_resources_map.obj missing-deps: failed to load deps: missing deps in depfile/depslog: failed to lookup deps log obj/content/test/web_ui_mojo_test_resources/web_ui_mojo_test_resources_map.obj: deps not found",
+    "deps for obj/third_party/win_virtual_display/controller/controller/display_driver_controller.obj missing-deps: failed to load deps: missing deps in depfile/depslog: failed to lookup deps log obj/third_party/win_virtual_display/controller/controller/display_driver_controller.obj: deps not found",
+    "deps for obj/third_party/cpython/core/pystate.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/pystate.obj\" newer than log: fs=2026-11-11 00:11:15.2265323 +0800 CST depslog=2026-11-08 12:30:31.8962288 +0800 CST",
+    "deps for obj/third_party/cpython/core/_abc.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/_abc.obj\" newer than log: fs=2026-11-11 00:10:59.856955 +0800 CST depslog=2026-11-08 12:30:45.8449435 +0800 CST",
+    "deps for obj/third_party/cpython/core/pytime.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/pytime.obj\" newer than log: fs=2026-11-11 00:11:08.2880869 +0800 CST depslog=2026-11-08 12:30:25.2368297 +0800 CST",
+    "deps for obj/third_party/cpython/core/dynamic_annotations.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/dynamic_annotations.obj\" newer than log: fs=2026-11-11 00:10:34.1077111 +0800 CST depslog=2026-11-08 12:30:23.3169906 +0800 CST",
+    "deps for obj/third_party/cpython/core/brc.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/brc.obj\" newer than log: fs=2026-11-11 00:10:41.9842013 +0800 CST depslog=2026-11-08 12:30:47.996372 +0800 CST",
+    "deps for obj/third_party/cpython/core/perf_trampoline.obj stale-deps: failed to load deps: stale deps in depslog: output mtime \"obj/third_party/cpython/core/perf_trampoline.obj\" newer than log: fs=2026-11-11 00:10:56.7082479 +0800 CST depslog=2026-11-08 12:30:34.2181062 +0800 CST"
+  ],
+  "note": "Dry run is diagnostic only; the log reports 6954 planned steps, not an executed build."
+}

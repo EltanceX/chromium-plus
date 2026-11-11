@@ -1,0 +1,17 @@
+{
+  "objects": 5828,
+  "thinArchives": 59,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_storage_event.obj",
+      "errors": [
+        "invalid section string table at 810",
+        "invalid section string table at 968",
+        "invalid section string table at 997",
+        "invalid section string table at 1053",
+        "invalid section string table at 1097"
+      ],
+      "sha256": "afe12b80263dddeca63105d0600896a6c99d79ba38ae7f147536f51a69663a12"
+    }
+  ]
+}

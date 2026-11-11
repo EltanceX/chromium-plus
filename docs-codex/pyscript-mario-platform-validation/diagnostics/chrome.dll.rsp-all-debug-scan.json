@@ -1,0 +1,30 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\chrome.dll.rsp",
+  "directObjects": 17654,
+  "problems": [
+    {
+      "object": "obj\\chrome\\browser\\preloading\\prefetch\\search_prefetch\\impl\\search_prefetch_keep_alive_request_tracker.obj",
+      "errors": [
+        "unrecognized COFF/bitcode header"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\lzma_sdk\\lzma_sdk\\7zCrc.obj",
+      "errors": [
+        "section 3 extends beyond object"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\lzma_sdk\\lzma_sdk_xz\\XzCrc64.obj",
+      "errors": [
+        "section 3 extends beyond object"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\unrar\\unrar\\crc.obj",
+      "errors": [
+        "section 3 extends beyond object"
+      ]
+    }
+  ]
+}

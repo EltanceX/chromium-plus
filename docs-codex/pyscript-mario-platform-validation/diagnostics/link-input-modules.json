@@ -1,0 +1,31 @@
+{
+  "objects": 5828,
+  "thinArchives": 59,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\properties_per_feature_installer.obj",
+      "errors": [
+        "invalid section string table at 192"
+      ],
+      "sha256": "bd5f45e9685b3b854e3b7f538692c3658aa4f10c2eb4ac84f2f23043cdd5df45"
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_worker_navigator.obj",
+      "errors": [
+        "invalid section string table at 583"
+      ],
+      "sha256": "3ece61f3a1b493de2e9dc012d3f02a0620589047d84f39a5f52881bb45ec5b55"
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\modules\\accessibility\\accessibility\\ax_object.obj",
+      "errors": [
+        "invalid section string table at 598",
+        "invalid section string table at 971",
+        "invalid section string table at 1104",
+        "invalid section string table at 1285",
+        "invalid section string table at 1311"
+      ],
+      "sha256": "8c798bd0947ae35e4d3415a09cf6e2c19fb7f3effcd1df6385c4602bb7211b85"
+    }
+  ]
+}

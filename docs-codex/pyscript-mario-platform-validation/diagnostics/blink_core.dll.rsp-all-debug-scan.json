@@ -1,0 +1,69 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5471,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\core\\core\\css_image_set_value.obj",
+      "errors": [
+        "Invalid CodeView type at 0x6d6ffe: length 18, kind 0x7cb3",
+        "Invalid CodeView type extent 0x6d6ffe != 0x85ee72",
+        "Invalid procedure ID 0xdd32 at 0x206700, type kind out of range",
+        "Invalid procedure ID 0xdd34 at 0x206868, type kind out of range",
+        "Invalid procedure ID 0xdd3a at 0x206da4, type kind out of range",
+        "Invalid procedure ID 0xdd3d at 0x206f10, type kind out of range",
+        "Invalid procedure ID 0xdd40 at 0x20745c, type kind out of range",
+        "Invalid procedure ID 0xdd43 at 0x2079a8, type kind out of range",
+        "Invalid procedure ID 0xdd49 at 0x207ef8, type kind out of range",
+        "Invalid procedure ID 0xdd5e at 0x2080fc, type kind out of range",
+        "Invalid procedure ID 0xdd61 at 0x208268, type kind out of range",
+        "Invalid procedure ID 0xdd64 at 0x2083d8, type kind out of range",
+        "Invalid procedure ID 0xdd66 at 0x208570, type kind out of range",
+        "Invalid procedure ID 0xdd6a at 0x208aa4, type kind out of range",
+        "Invalid procedure ID 0xdd6d at 0x208c00, type kind out of range",
+        "Invalid procedure ID 0xdd6f at 0x208d7c, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\core\\core\\css_paint_value.obj",
+      "errors": [
+        "Invalid CodeView type at 0x780055: length 8241, kind 0x680f",
+        "Invalid CodeView type extent 0x780055 != 0x82bc3d",
+        "Invalid procedure ID 0xf851 at 0x30d2d5, type kind out of range",
+        "Invalid procedure ID 0xf855 at 0x30d3f9, type kind out of range",
+        "Invalid procedure ID 0xf857 at 0x30d53d, type kind out of range",
+        "Invalid procedure ID 0xf859 at 0x30d689, type kind out of range",
+        "Invalid procedure ID 0xf85b at 0x30d7d5, type kind out of range",
+        "Invalid procedure ID 0xf85d at 0x30d911, type kind out of range",
+        "Invalid procedure ID 0xf860 at 0x30da4d, type kind out of range",
+        "Invalid procedure ID 0xf862 at 0x30db91, type kind out of range",
+        "Invalid procedure ID 0xf865 at 0x30dcdd, type kind out of range",
+        "Invalid procedure ID 0xf866 at 0x30ddf1, type kind out of range",
+        "Invalid procedure ID 0xf86a at 0x30df0d, type kind out of range",
+        "Invalid procedure ID 0xf86c at 0x30e049, type kind out of range",
+        "Invalid procedure ID 0xf86e at 0x30e18d, type kind out of range",
+        "Invalid procedure ID 0xf870 at 0x30e2d1, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\core\\core\\css_property_value_set.obj",
+      "errors": [
+        "Invalid CodeView type at 0x240072: length 38350, kind 0xe256",
+        "Invalid CodeView type extent 0x240072 != 0x2b587a",
+        "Invalid procedure ID 0x4ebf at 0xefb8a, type kind out of range",
+        "Invalid procedure ID 0x4ec1 at 0xefcc6, type kind out of range",
+        "Invalid procedure ID 0x4ec8 at 0xefdf6, type kind out of range",
+        "Invalid procedure ID 0x4eca at 0xeff32, type kind out of range",
+        "Invalid procedure ID 0x4ed1 at 0xf005a, type kind out of range",
+        "Invalid procedure ID 0x4ed3 at 0xf018e, type kind out of range",
+        "Invalid procedure ID 0x4eda at 0xf02b6, type kind out of range",
+        "Invalid procedure ID 0x4edc at 0xf03ea, type kind out of range",
+        "Invalid procedure ID 0x4ee3 at 0xf0512, type kind out of range",
+        "Invalid procedure ID 0x4ee5 at 0xf0646, type kind out of range",
+        "Invalid procedure ID 0x4eec at 0xf076e, type kind out of range",
+        "Invalid procedure ID 0x4eee at 0xf08a2, type kind out of range",
+        "Invalid procedure ID 0x4ef5 at 0xf09ca, type kind out of range",
+        "Invalid procedure ID 0x4ef7 at 0xf0afe, type kind out of range"
+      ]
+    }
+  ]
+}

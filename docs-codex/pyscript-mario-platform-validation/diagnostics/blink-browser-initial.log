@@ -1,0 +1,32 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation:PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling:PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames:PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices:PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from PythonBrowserBridgeTest
+[ RUN      ] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation
+[       OK ] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation (1322 ms)
+[ RUN      ] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling
+[       OK ] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling (285 ms)
+[ RUN      ] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames
+[       OK ] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames (268 ms)
+[ RUN      ] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices
+[       OK ] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices (198 ms)
+[ RUN      ] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries
+[       OK ] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries (196 ms)
+[----------] 5 tests from PythonBrowserBridgeTest (2279 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (2772 ms total)
+[  PASSED  ] 5 tests.
+[1/5] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation (1322 ms)
+[2/5] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling (285 ms)
+[3/5] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames (268 ms)
+[4/5] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices (198 ms)
+[5/5] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries (196 ms)
+SUCCESS: all tests passed.
+Tests took 5 seconds.

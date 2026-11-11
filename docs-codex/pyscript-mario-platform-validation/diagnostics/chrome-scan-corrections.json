@@ -1,0 +1,29 @@
+[
+  {
+    "object": "obj\\third_party\\lzma_sdk\\lzma_sdk\\7zCrc.obj",
+    "section": ".bss",
+    "rawSize": 12352,
+    "rawPointer": 0,
+    "flags": "0xc0700080",
+    "action": "preserved-uninitialized-section-not-corruption",
+    "sha256": "3801be21a6b5d0d4461984f49396cef2667cd32771ea7c54f86d1e46c6b347fa"
+  },
+  {
+    "object": "obj\\third_party\\lzma_sdk\\lzma_sdk_xz\\XzCrc64.obj",
+    "section": ".bss",
+    "rawSize": 24576,
+    "rawPointer": 0,
+    "flags": "0xc0700080",
+    "action": "preserved-uninitialized-section-not-corruption",
+    "sha256": "5aa1724160d2ed38e5e711f433b175dce0c6d179dc856ab4194901725756a91a"
+  },
+  {
+    "object": "obj\\third_party\\unrar\\unrar\\crc.obj",
+    "section": ".bss",
+    "rawSize": 16400,
+    "rawPointer": 0,
+    "flags": "0xc0500080",
+    "action": "preserved-uninitialized-section-not-corruption",
+    "sha256": "cc5cdffad19fd8d597a2c46ef03b55e178ed1deaafacda0cffccd9b0812bcb62"
+  }
+]

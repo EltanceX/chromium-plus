@@ -1,0 +1,108 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3805061s
+load siso config done 13.3967ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:71518+ready:0 (node:441081 edge:71526)
+ 1.29s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/19340] 30.71s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/18951] 30.74s S CXX obj/third_party/blink/renderer/core/core/python_browser_bridge.obj
+[0/18746] 30.75s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_worker_navigator.obj
+[0/18732] 30.75s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_idbcursor_idbindex_idbobjectstore.obj
+[0/18577] 30.76s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_manager.obj
+[0/18434] 30.77s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/properties_per_feature_installer.obj
+[0/18313] 30.78s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_offline_audio_context.obj
+[0/18008] 30.79s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_navigator_managed_data.obj
+[0/17810] 30.80s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_usb_connection_event.obj
+[0/17789] 30.80s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_reference_space_event.obj
+[0/17723] 30.80s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_speech_synthesis_event.obj
+[0/17278] 30.83s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_shared_worker_global_scope.obj
+[0/17082] 30.84s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_lock.obj
+[0/16724] 30.86s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_quad_layer.obj
+[0/16071] 30.90s S CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/inspector_accessibility_agent.obj
+[0/16056] 30.91s S CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_validation_message.obj
+[0/16037] 30.91s S CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object.obj
+[0/16034] 30.91s S CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_node_object.obj
+[0/15160] 30.97s S CXX obj/third_party/blink/renderer/modules/ai/ai/summarizer.obj
+[0/15128] 30.97s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/15087] 30.98s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/10009] 31.39s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[0/2312] 43.38s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/properties_per_feature_installer.obj
+[1/2312] 45.14s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_lock.obj
+[2/2312] 45.86s F CXX obj/third_party/blink/renderer/core/core/python_browser_bridge.obj
+[3/2312] 46.39s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_offline_audio_context.obj
+[4/2312] 46.54s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_manager.obj
+[5/2312] 46.97s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_navigator_managed_data.obj
+[6/2312] 47.13s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_speech_synthesis_event.obj
+[7/2312] 47.52s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_usb_connection_event.obj
+[8/2312] 49.97s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_quad_layer.obj
+[9/2312] 50.81s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_union_idbcursor_idbindex_idbobjectstore.obj
+[10/2312] 51.25s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_xr_reference_space_event.obj
+[11/2312] 1m08.60s F CXX obj/third_party/blink/renderer/modules/ai/ai/summarizer.obj
+[12/2312] 1m09.76s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_shared_worker_global_scope.obj
+[13/2312] 1m20.71s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[14/2312] 1m21.77s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[15/2312] 1m26.50s F CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_validation_message.obj
+[16/2312] 1m27.31s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_worker_navigator.obj
+[17/2312] 1m30.16s F CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/inspector_accessibility_agent.obj
+[18/2312] 1m34.21s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[19/2312] 1m34.24s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[19/2312] 1m57.66s F CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_object.obj
+[20/2312] 1m59.90s F CXX obj/third_party/blink/renderer/modules/accessibility/accessibility/ax_node_object.obj
+[21/2312] 2m17.35s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[22/2286] 2m37.70s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[23/2187] 2m37.72s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[23/2185] 3m02.59s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[24/2185] 3m02.59s S LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[24/2178] 3m03.05s F LINK(DLL) blink_controller.dll blink_controller.dll.lib blink_controller.dll.pdb
+[25/2162] 3m03.06s S LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[25/2162] 3m03.06s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[25/2162] 3m03.07s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[25/2162] 3m06.51s F LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[26/2161] 3m06.51s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[26/2160] 3m11.16s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[27/2160] 3m14.09s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[28/1887] 3m27.41s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[28/1801] 3m27.41s S LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[28/1689] 3m27.41s S LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[28/1686] 3m27.41s S LINK(DLL) ui_web_dialogs.dll ui_web_dialogs.dll.lib ui_web_dialogs.dll.pdb
+[29/1133] 3m27.44s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[29/1133] 3m27.45s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[29/1128] 3m32.18s F LINK(DLL) ui_web_dialogs.dll ui_web_dialogs.dll.lib ui_web_dialogs.dll.pdb
+[30/1128] 3m32.19s S LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[30/1104] 3m32.65s F LINK(DLL) browser_ui_views.dll browser_ui_views.dll.lib browser_ui_views.dll.pdb
+[31/1104] 3m32.91s F LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[32/1104] 3m32.91s S LIB obj/chrome/renderer/renderer.lib
+[32/1104] 3m33.36s F LIB obj/chrome/renderer/renderer.lib
+[33/1088] 3m36.17s F LINK(DLL) ui_views_controls_webview.dll ui_views_controls_webview.dll.lib ui_views_controls_webview.dll.pdb
+[34/1059] 3m45.69s F LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[35/43] 3m45.79s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[35/42] 4m27.70s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[36/42] 5m31.90s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:37 remote:0 cache:0 skip:102072
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 14152(err:31) / r:825(err:0) 14.99GiB / w:13(err:0) 2.83MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14     23(0)     5.10s |█   ▅  |    32.78s |  ▂▂█▃ |
+   pool=link/3     13(0)     0.80s |█ ▂▃   |    24.31s |  ▃█▆▄ |
+shutdown cloud logging/monitoring done 0s
+
+5m32.71s Build Succeeded: 37 steps - 0.11/s

@@ -1,0 +1,57 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PythonBrowserBridgeTest
+[ RUN      ] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing
+..\..\third_party\blink\renderer\modules\python_browser_bridge_test.cc(118): error: Expected equality of these values:
+  "Document exceeds the export source limit"
+  result.status.message.Utf8()
+    Which is: "HTML export exceeds 1 MiB"
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\src\src\third_party\blink\renderer\modules\python_browser_bridge_test.cc:117)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\third_party\blink\renderer\modules\python_browser_bridge_test.cc(118): error: Expected equality of these values:
+  "Document exceeds the export source limit"
+  result.status.message.Utf8()
+    Which is: "HTML export exceeds 1 MiB"
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\src\src\third_party\blink\renderer\modules\python_browser_bridge_test.cc:117)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\third_party\blink\renderer\modules\python_browser_bridge_test.cc(118): error: Expected equality of these values:
+  "Document exceeds the export source limit"
+  result.status.message.Utf8()
+    Which is: "HTML export exceeds 1 MiB"
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\src\src\third_party\blink\renderer\modules\python_browser_bridge_test.cc:117)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\third_party\blink\renderer\modules\python_browser_bridge_test.cc(118): error: Expected equality of these values:
+  "Document exceeds the export source limit"
+  result.status.message.Utf8()
+    Which is: "HTML export exceeds 1 MiB"
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::PythonBrowserBridgeTest_ExportCountsMetadataBeforeSerializing_Test::TestBody [0x7ff7c0097606+946] (C:\src\src\third_party\blink\renderer\modules\python_browser_bridge_test.cc:117)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7b5873945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing (3337 ms)
+[----------] 1 test from PythonBrowserBridgeTest (3339 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3472 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing
+
+ 1 FAILED TEST
+[1/1] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing (3337 ms)
+1 test failed:
+    PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing (..\..\third_party\blink\renderer\modules\python_browser_bridge_test.cc:90)
+Tests took 6 seconds.

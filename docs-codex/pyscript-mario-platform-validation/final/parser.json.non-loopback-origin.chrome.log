@@ -1,0 +1,13 @@
+[11704:18396:1112/064813.704:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[11704:18396:1112/064813.781:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:62233/devtools/browser/b9c21a76-15cd-49b5-8511-70629437a45b
+[7300:13352:1112/064814.101:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11704:18396:1112/064814.612:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[11704:18396:1112/064814.612:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[11704:18396:1112/064814.841:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[11704:18396:1112/064814.936:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[7300:13352:1112/064815.149:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[7300:13352:1112/064815.149:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11704:17804:1112/064815.804:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[11704:17804:1112/064815.827:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected

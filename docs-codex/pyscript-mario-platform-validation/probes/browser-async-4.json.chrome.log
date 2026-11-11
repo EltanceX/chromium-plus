@@ -1,0 +1,204 @@
+[16020:6820:1111/195105.952:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[16020:6820:1111/195106.050:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:52914/devtools/browser/fd372724-99d5-4cdc-bbba-90567aaf7501
+[5592:12400:1111/195106.640:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16020:6820:1111/195107.623:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16020:6820:1111/195107.623:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16020:6820:1111/195108.085:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[16020:6820:1111/195108.223:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[16020:10688:1111/195108.871:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[16020:10688:1111/195108.910:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[5592:12400:1111/195108.931:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[5592:12400:1111/195108.931:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[5592:16748:1111/195128.862:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, 294C...))
+[5592:16748:1111/195128.862:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, 3D7E...))
+[5592:16748:1111/195128.862:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 3), LocalSurfaceId(5, 1, 03C7...))
+[5040:6136:1111/195114.378:FATAL:third_party\blink\renderer\modules\webaudio\audio_context.cc:723] DCHECK failed: hardware_context_count != 0u (0 vs. 0).
+	base!base::debug::CollectStackTrace [0x7ff920f7fc56+36] (C:\src\src\base\debug\stack_trace_win.cc:395)
+	base!base::debug::StackTrace::StackTrace [0x7ff920f1d889+a9] (C:\src\src\base\debug\stack_trace.cc:282)
+	base!base::debug::StackTrace::StackTrace [0x7ff920f1d7b5+25] (C:\src\src\base\debug\stack_trace.cc:276)
+	base!logging::LogMessage::Flush [0x7ff920b0cfa9+b9] (C:\src\src\base\logging.cc:710)
+	base!logging::LogMessage::~LogMessage [0x7ff920b0ced2+22] (C:\src\src\base\logging.cc:699)
+	base!logging::`anonymous namespace'::DCheckLogMessage::~DCheckLogMessage [0x7ff920a7708f+4f] (C:\src\src\base\check.cc:182)
+	base!logging::`anonymous namespace'::DCheckLogMessage::~DCheckLogMessage [0x7ff920a77019+29] (C:\src\src\base\check.cc:178)
+	base!std::__Cr::default_delete<logging::LogMessage>::operator() [0x7ff920a771ed+2d] (C:\src\src\third_party\libc++\src\include\__memory\unique_ptr.h:74)
+	base!std::__Cr::unique_ptr<logging::LogMessage,std::__Cr::default_delete<logging::LogMessage> >::reset [0x7ff920a75edf+3f] (C:\src\src\third_party\libc++\src\include\__memory\unique_ptr.h:264)
+	base!logging::CheckError::~CheckError [0x7ff920a75e6a+3a] (C:\src\src\base\check.cc:354)
+	blink_modules!blink::AudioContext::Uninitialize [0x7ff866fdb36a+7a] (C:\src\src\third_party\blink\renderer\modules\webaudio\audio_context.cc:724)
+	blink_modules!blink::AudioContext::ContextDestroyed [0x7ff866fe60bd+2d] (C:\src\src\third_party\blink\renderer\modules\webaudio\audio_context.cc:1587)
+	blink_platform!blink::ContextLifecycleObserver::NotifyContextDestroyed [0x7ff86dced9e9+69] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_observer.cc:46)
+	blink_platform!blink::ContextLifecycleNotifier::NotifyContextDestroyed::<lambda_2>::operator() [0x7ff86dce90e8+18] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:37)
+	blink_platform!blink::HeapObserverList<blink::ContextLifecycleObserver>::ForEachObserver<`lambda at ..\..\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:36:30'> [0x7ff86dcde1e4+474] (C:\src\src\third_party\blink\renderer\platform\heap_observer_list.h:110)
+	blink_platform!blink::ContextLifecycleNotifier::NotifyContextDestroyed [0x7ff86dcddcfd+4d] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:36)
+	blink_core!blink::ExecutionContext::NotifyContextDestroyed [0x7ff877d99548+18] (C:\src\src\third_party\blink\renderer\core\execution_context\execution_context.cc:173)
+	blink_core!blink::LocalDOMWindow::FrameDestroyed [0x7ff8781bdcf4+534] (C:\src\src\third_party\blink\renderer\core\frame\local_dom_window.cc:1142)
+	blink_core!blink::LocalFrame::DetachImpl [0x7ff87820eb0c+3fc] (C:\src\src\third_party\blink\renderer\core\frame\local_frame.cc:789)
+	blink_core!blink::Frame::Detach [0x7ff87812ce90+250] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:123)
+	blink_core!blink::Frame::SwapImpl [0x7ff878139d68+d28] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:868)
+	blink_core!blink::Frame::Swap [0x7ff878138ffc+7c] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:803)
+	blink_core!blink::WebFrame::Swap [0x7ff8785e1fc5+25] (C:\src\src\third_party\blink\renderer\core\frame\web_frame.cc:36)
+	content!content::RenderFrameImpl::SwapIn [0x7ff8ab2e933f+ef] (C:\src\src\content\renderer\render_frame_impl.cc:5643)
+	blink_core!blink::LocalFrame::SwapIn [0x7ff878237cee+36e] (C:\src\src\third_party\blink\renderer\core\frame\local_frame.cc:3306)
+	blink_core!blink::FrameLoader::CommitNavigation [0x7ff87a75fed9+4f89] (C:\src\src\third_party\blink\renderer\core\loader\frame_loader.cc:1293)
+	blink_core!blink::WebLocalFrameImpl::CommitNavigation [0x7ff87867543f+33f] (C:\src\src\third_party\blink\renderer\core\frame\web_local_frame_impl.cc:2895)
+	content!content::RenderFrameImpl::CommitNavigationWithParams [0x7ff8ab2d0a36+bd6] (C:\src\src\content\renderer\render_frame_impl.cc:3122)
+	content!base::internal::DecayedFunctorTraits<void (content::RenderFrameImpl::*)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBundle,std::__Cr::def [0x7ff8ab30d2ad+2fd] (C:\src\src\base\functional\bind_internal.h:740)
+	content!base::internal::InvokeHelper<1,base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFa [0x7ff8ab30cf23+2c3] (C:\src\src\base\functional\bind_internal.h:956)
+	content!base::internal::Invoker<base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBu [0x7ff8ab30cc4c+2c] (C:\src\src\base\functional\bind_internal.h:1069)
+	content!base::internal::Invoker<base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBu [0x7ff8ab30c959+39] (C:\src\src\base\functional\bind_internal.h:982)
+	content!base::OnceCallback<void (std::__Cr::unique_ptr<blink::WebNavigationParams,std::__Cr::default_delete<blink::WebNavigationParams> >)>::Run [0x7ff8ab2d0ff1+c1] (C:\src\src\base\functional\callback.h:156)
+	content!content::RenderFrameImpl::CommitNavigation [0x7ff8ab2cd5a4+18e4] (C:\src\src\content\renderer\render_frame_impl.cc:2966)
+	content!content::NavigationClient::CommitNavigation [0x7ff8ab2b6ac7+587] (C:\src\src\content\renderer\navigation_client.cc:88)
+	content!content::mojom::NavigationClientStubDispatch::AcceptWithResponder [0x7ff8a576a652+d52] (C:\src\src\out\Debug\gen\content\common\navigation_client.mojom.cc:1795)
+	content!content::mojom::NavigationClientStub<mojo::RawPtrImplRefTraits<content::mojom::NavigationClient> >::AcceptWithResponder [0x7ff8ab2ba2f8+88] (C:\src\src\out\Debug\gen\content\common\navigation_client.mojom.h:184)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleValidatedMessage [0x7ff920996e9a+4fa] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:939)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleIncomingMessageThunk::Accept [0x7ff920996994+24] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:287)
+	mojo_public_cpp_bindings!mojo::MessageDispatcher::Accept [0x7ff9209b496e+fe] (C:\src\src\mojo\public\cpp\bindings\lib\message_dispatcher.cc:44)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleIncomingMessage [0x7ff92099a849+b9] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:646)
+	ipc!IPC::ChannelAssociatedGroupController::AcceptOnEndpointThread [0x7ff916fd02ef+23f] (C:\src\src\ipc\ipc_mojo_bootstrap.cc:1197)
+	ipc!base::internal::DecayedFunctorTraits<void (IPC::ChannelAssociatedGroupController::*)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous namespace'::ScopedU [0x7ff916fd3025+95] (C:\src\src\base\functional\bind_internal.h:740)
+	ipc!base::internal::InvokeHelper<0,base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`ano [0x7ff916fd2f67+97] (C:\src\src\base\functional\bind_internal.h:932)
+	ipc!base::internal::Invoker<base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous  [0x7ff916fd2ec2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	ipc!base::internal::Invoker<base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous  [0x7ff916fd2e0f+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	base!base::OnceCallback<void ()>::Run [0x7ff920a626e1+b1] (C:\src\src\base\functional\callback.h:156)
+	base!base::TaskAnnotator::RunTaskImpl [0x7ff920d4e78b+22b] (C:\src\src\base\task\common\task_annotator.cc:229)
+	base!base::TaskAnnotator::RunTask<`lambda at ..\..\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:478:11'> [0x7ff920ddcbd3+83] (C:\src\src\base\task\common\task_annotator.h:115)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl [0x7ff920ddc35d+86d] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:485)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWork [0x7ff920ddb7c0+170] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:339)
+	base!base::MessagePumpDefault::Run [0x7ff920b5beb2+b2] (C:\src\src\base\message_loop\message_pump_default.cc:67)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run [0x7ff920ddd468+288] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:657)
+	base!base::RunLoop::Run [0x7ff920c89c39+2d9] (C:\src\src\base\run_loop.cc:135)
+	content!content::RendererMain [0x7ff8ab379167+7e7] (C:\src\src\content\renderer\renderer_main.cc:350)
+	content!content::RunOtherNamedProcessTypeMain [0x7ff8ab613ef8+2e8] (C:\src\src\content\app\content_main_runner_impl.cc:820)
+	content!content::ContentMainRunnerImpl::Run [0x7ff8ab615e6d+54d] (C:\src\src\content\app\content_main_runner_impl.cc:1244)
+	content!content::RunContentProcess [0x7ff8ab612406+2a6] (C:\src\src\content\app\content_main.cc:337)
+	content!content::ContentMain [0x7ff8ab612751+51] (C:\src\src\content\app\content_main.cc:350)
+	chrome!ChromeMain [0x7ff8c0b7192b+4fb] (C:\src\src\chrome\app\chrome_main.cc:224)
+	chrome!MainDllLoader::Launch [0x7ff7e66d7d0a+34a] (C:\src\src\chrome\app\main_dll_loader_win.cc:317)
+	chrome!wWinMain [0x7ff7e66d199d+68d] (C:\src\src\chrome\app\chrome_exe_main_win.cc:379)
+	chrome!invoke_main [0x7ff7e6b0e832+32] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:123)
+	chrome!__scrt_common_main_seh [0x7ff7e6b0e972+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	chrome!__scrt_common_main [0x7ff7e6b0e9fe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	chrome!wWinMainCRTStartup [0x7ff7e6b0ea1e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_wwinmain.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]
+Task trace:
+	ipc!IPC::ChannelAssociatedGroupController::Accept [0x7ff916fbf89d+51d] (C:\src\src\ipc\ipc_mojo_bootstrap.cc:1135)
+Crash keys:
+  "devtools_present" = "true"
+  "view-count" = "2"
+  "loaded-origin-0" = "http://127.0.0.1:63566"
+  "web-frame-count" = "1"
+  "top-origin" = "null"
+  "url-chunk" = "http://127.0.0.1:63566/other"
+  "renderer_foreground" = "true"
+  "v8_ro_space_firstpage_address" = "0x31400000000"
+  "v8_isolate_address" = "0x1b2261af000"
+  "chrome-trace-id" = "10672142453544059775"
+  "reentry_guard_tls_slot" = "unused"
+  "switch-22" = "--mojo-platform-channel-handle=4196"
+  "switch-21" = "--trace-process-track-uuid=2084110489816928365"
+  "switch-20" = "--pseudonymization-salt-handle=2064,i,5106642386621353152,106182"
+  "switch-19" = "--variations-seed-version"
+  "switch-18" = "--field-trial-handle=2060,i,11266902340571424960,141981073113595"
+  "switch-17" = "--gpu-channel-request-start-time-ticks=445171723000"
+  "switch-16" = "--renderer-client-id=6"
+  "switch-15" = "--enable-main-frame-before-activation"
+  "switch-14" = "--num-raster-threads=4"
+  "switch-13" = "--device-scale-factor=1.25"
+  "switch-12" = "--lang=zh-CN"
+  "switch-11" = "--video-capture-use-gpu-memory-buffer"
+  "switch-10" = "--enable-blink-features=PythonScript"
+  "switch-9" = "--disable-gpu-compositing"
+  "switch-8" = "--remote-debugging-port=0"
+  "switch-7" = "--force-high-res-timeticks=disabled"
+  "switch-6" = "--no-pre-read-main-dll"
+  "switch-5" = "--enable-blink-features=PythonScript"
+  "switch-4" = "--native-python-allowed-origin=http://127.0.0.1:63566"
+  "switch-3" = "--user-data-dir=C:\Users\ELTANC~1\AppData\Local\Temp\pyscript-br"
+  "switch-2" = "--noerrdialogs"
+  "switch-1" = "--gpu-client-id=6"
+  "num-switches" = "26"
+  "commandline-disabled-feature-1" = "PaintHolding"
+  "LocaleDataPakExists-found_attrs" = "32"
+  "LocaleDataPakExists-found_path" = "C:\src\src\out\Debug\locales\zh-CN.pak"
+
+Received fatal exception EXCEPTION_BREAKPOINT
+	base!base::debug::BreakDebuggerAsyncSafe [0x7ff920f77aa5+25] (C:\src\src\base\debug\debugger_win.cc:23)
+	base!base::debug::BreakDebugger [0x7ff920aa7539+9] (C:\src\src\base\debug\debugger.cc:45)
+	chrome!logging::`anonymous namespace'::SilentRuntimeAssertHandler [0x7ff8d0f4f6ed+1d] (C:\src\src\chrome\common\logging_chrome.cc:100)
+	chrome!base::internal::DecayedFunctorTraits<void (*)(const char *, int, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >)>::Invoke<void (*const &)(const char *, int, std::__Cr::bas [0x7ff8d0f4fa31+81] (C:\src\src\base\functional\bind_internal.h:673)
+	chrome!base::internal::InvokeHelper<0,base::internal::FunctorTraits<void (*const &)(const char *, int, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >)>,void>::MakeItSo<void (*con [0x7ff8d0f4f9a1+81] (C:\src\src\base\functional\bind_internal.h:932)
+	chrome!base::internal::Invoker<base::internal::FunctorTraits<void (*const &)(const char *, int, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >)>,base::internal::BindState<0,1,0,v [0x7ff8d0f4f916+66] (C:\src\src\base\functional\bind_internal.h:1069)
+	chrome!base::internal::Invoker<base::internal::FunctorTraits<void (*const &)(const char *, int, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >)>,base::internal::BindState<0,1,0,v [0x7ff8d0f4f80b+7b] (C:\src\src\base\functional\bind_internal.h:989)
+	base!base::RepeatingCallback<void (const char *, int, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char,std::__Cr::char_traits<char> >)>::Run [0x7ff920b0df48+118] (C:\src\src\base\functional\callback.h:347)
+	base!logging::LogMessage::HandleFatal [0x7ff920b0dd36+186] (C:\src\src\base\logging.cc:995)
+	base!logging::LogMessage::Flush::<lambda_1>::operator() [0x7ff920b1b0cb+3b] (C:\src\src\base\logging.cc:745)
+	base!absl::cleanup_internal::Storage<`lambda at ..\..\base\logging.cc:743:40'>::InvokeCallback [0x7ff920b1b03b+1b] (C:\src\src\third_party\abseil-cpp\absl\cleanup\internal\cleanup.h:87)
+	base!absl::Cleanup<absl::cleanup_internal::Tag,`lambda at ..\..\base\logging.cc:743:40'>::~Cleanup [0x7ff920b0d7b8+28] (C:\src\src\third_party\abseil-cpp\absl\cleanup\cleanup.h:111)
+	base!logging::LogMessage::Flush [0x7ff920b0d342+452] (C:\src\src\base\logging.cc:893)
+	base!logging::LogMessage::~LogMessage [0x7ff920b0ced2+22] (C:\src\src\base\logging.cc:699)
+	base!logging::`anonymous namespace'::DCheckLogMessage::~DCheckLogMessage [0x7ff920a7708f+4f] (C:\src\src\base\check.cc:182)
+	base!logging::`anonymous namespace'::DCheckLogMessage::~DCheckLogMessage [0x7ff920a77019+29] (C:\src\src\base\check.cc:178)
+	base!std::__Cr::default_delete<logging::LogMessage>::operator() [0x7ff920a771ed+2d] (C:\src\src\third_party\libc++\src\include\__memory\unique_ptr.h:74)
+	base!std::__Cr::unique_ptr<logging::LogMessage,std::__Cr::default_delete<logging::LogMessage> >::reset [0x7ff920a75edf+3f] (C:\src\src\third_party\libc++\src\include\__memory\unique_ptr.h:264)
+	base!logging::CheckError::~CheckError [0x7ff920a75e6a+3a] (C:\src\src\base\check.cc:354)
+	blink_modules!blink::AudioContext::Uninitialize [0x7ff866fdb36a+7a] (C:\src\src\third_party\blink\renderer\modules\webaudio\audio_context.cc:724)
+	blink_modules!blink::AudioContext::ContextDestroyed [0x7ff866fe60bd+2d] (C:\src\src\third_party\blink\renderer\modules\webaudio\audio_context.cc:1587)
+	blink_platform!blink::ContextLifecycleObserver::NotifyContextDestroyed [0x7ff86dced9e9+69] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_observer.cc:46)
+	blink_platform!blink::ContextLifecycleNotifier::NotifyContextDestroyed::<lambda_2>::operator() [0x7ff86dce90e8+18] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:37)
+	blink_platform!blink::HeapObserverList<blink::ContextLifecycleObserver>::ForEachObserver<`lambda at ..\..\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:36:30'> [0x7ff86dcde1e4+474] (C:\src\src\third_party\blink\renderer\platform\heap_observer_list.h:110)
+	blink_platform!blink::ContextLifecycleNotifier::NotifyContextDestroyed [0x7ff86dcddcfd+4d] (C:\src\src\third_party\blink\renderer\platform\context_lifecycle_notifier.cc:36)
+	blink_core!blink::ExecutionContext::NotifyContextDestroyed [0x7ff877d99548+18] (C:\src\src\third_party\blink\renderer\core\execution_context\execution_context.cc:173)
+	blink_core!blink::LocalDOMWindow::FrameDestroyed [0x7ff8781bdcf4+534] (C:\src\src\third_party\blink\renderer\core\frame\local_dom_window.cc:1142)
+	blink_core!blink::LocalFrame::DetachImpl [0x7ff87820eb0c+3fc] (C:\src\src\third_party\blink\renderer\core\frame\local_frame.cc:789)
+	blink_core!blink::Frame::Detach [0x7ff87812ce90+250] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:123)
+	blink_core!blink::Frame::SwapImpl [0x7ff878139d68+d28] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:868)
+	blink_core!blink::Frame::Swap [0x7ff878138ffc+7c] (C:\src\src\third_party\blink\renderer\core\frame\frame.cc:803)
+	blink_core!blink::WebFrame::Swap [0x7ff8785e1fc5+25] (C:\src\src\third_party\blink\renderer\core\frame\web_frame.cc:36)
+	content!content::RenderFrameImpl::SwapIn [0x7ff8ab2e933f+ef] (C:\src\src\content\renderer\render_frame_impl.cc:5643)
+	blink_core!blink::LocalFrame::SwapIn [0x7ff878237cee+36e] (C:\src\src\third_party\blink\renderer\core\frame\local_frame.cc:3306)
+	blink_core!blink::FrameLoader::CommitNavigation [0x7ff87a75fed9+4f89] (C:\src\src\third_party\blink\renderer\core\loader\frame_loader.cc:1293)
+	blink_core!blink::WebLocalFrameImpl::CommitNavigation [0x7ff87867543f+33f] (C:\src\src\third_party\blink\renderer\core\frame\web_local_frame_impl.cc:2895)
+	content!content::RenderFrameImpl::CommitNavigationWithParams [0x7ff8ab2d0a36+bd6] (C:\src\src\content\renderer\render_frame_impl.cc:3122)
+	content!base::internal::DecayedFunctorTraits<void (content::RenderFrameImpl::*)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBundle,std::__Cr::def [0x7ff8ab30d2ad+2fd] (C:\src\src\base\functional\bind_internal.h:740)
+	content!base::internal::InvokeHelper<1,base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFa [0x7ff8ab30cf23+2c3] (C:\src\src\base\functional\bind_internal.h:956)
+	content!base::internal::Invoker<base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBu [0x7ff8ab30cc4c+2c] (C:\src\src\base\functional\bind_internal.h:1069)
+	content!base::internal::Invoker<base::internal::FunctorTraits<void (content::RenderFrameImpl::*&&)(mojo::StructPtr<blink::mojom::CommonNavigationParams>, mojo::StructPtr<blink::mojom::CommitNavigationParams>, std::__Cr::unique_ptr<blink::PendingURLLoaderFactoryBu [0x7ff8ab30c959+39] (C:\src\src\base\functional\bind_internal.h:982)
+	content!base::OnceCallback<void (std::__Cr::unique_ptr<blink::WebNavigationParams,std::__Cr::default_delete<blink::WebNavigationParams> >)>::Run [0x7ff8ab2d0ff1+c1] (C:\src\src\base\functional\callback.h:156)
+	content!content::RenderFrameImpl::CommitNavigation [0x7ff8ab2cd5a4+18e4] (C:\src\src\content\renderer\render_frame_impl.cc:2966)
+	content!content::NavigationClient::CommitNavigation [0x7ff8ab2b6ac7+587] (C:\src\src\content\renderer\navigation_client.cc:88)
+	content!content::mojom::NavigationClientStubDispatch::AcceptWithResponder [0x7ff8a576a652+d52] (C:\src\src\out\Debug\gen\content\common\navigation_client.mojom.cc:1795)
+	content!content::mojom::NavigationClientStub<mojo::RawPtrImplRefTraits<content::mojom::NavigationClient> >::AcceptWithResponder [0x7ff8ab2ba2f8+88] (C:\src\src\out\Debug\gen\content\common\navigation_client.mojom.h:184)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleValidatedMessage [0x7ff920996e9a+4fa] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:939)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleIncomingMessageThunk::Accept [0x7ff920996994+24] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:287)
+	mojo_public_cpp_bindings!mojo::MessageDispatcher::Accept [0x7ff9209b496e+fe] (C:\src\src\mojo\public\cpp\bindings\lib\message_dispatcher.cc:44)
+	mojo_public_cpp_bindings!mojo::InterfaceEndpointClient::HandleIncomingMessage [0x7ff92099a849+b9] (C:\src\src\mojo\public\cpp\bindings\lib\interface_endpoint_client.cc:646)
+	ipc!IPC::ChannelAssociatedGroupController::AcceptOnEndpointThread [0x7ff916fd02ef+23f] (C:\src\src\ipc\ipc_mojo_bootstrap.cc:1197)
+	ipc!base::internal::DecayedFunctorTraits<void (IPC::ChannelAssociatedGroupController::*)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous namespace'::ScopedU [0x7ff916fd3025+95] (C:\src\src\base\functional\bind_internal.h:740)
+	ipc!base::internal::InvokeHelper<0,base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`ano [0x7ff916fd2f67+97] (C:\src\src\base\functional\bind_internal.h:932)
+	ipc!base::internal::Invoker<base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous  [0x7ff916fd2ec2+22] (C:\src\src\base\functional\bind_internal.h:1069)
+	ipc!base::internal::Invoker<base::internal::FunctorTraits<void (IPC::ChannelAssociatedGroupController::*&&)(mojo::Message, IPC::`anonymous namespace'::ScopedUrgentMessageNotification),IPC::ChannelAssociatedGroupController *&&,mojo::Message &&,IPC::`anonymous  [0x7ff916fd2e0f+2f] (C:\src\src\base\functional\bind_internal.h:982)
+	base!base::OnceCallback<void ()>::Run [0x7ff920a626e1+b1] (C:\src\src\base\functional\callback.h:156)
+	base!base::TaskAnnotator::RunTaskImpl [0x7ff920d4e78b+22b] (C:\src\src\base\task\common\task_annotator.cc:229)
+	base!base::TaskAnnotator::RunTask<`lambda at ..\..\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:478:11'> [0x7ff920ddcbd3+83] (C:\src\src\base\task\common\task_annotator.h:115)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl [0x7ff920ddc35d+86d] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:485)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWork [0x7ff920ddb7c0+170] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:339)
+	base!base::MessagePumpDefault::Run [0x7ff920b5beb2+b2] (C:\src\src\base\message_loop\message_pump_default.cc:67)
+	base!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run [0x7ff920ddd468+288] (C:\src\src\base\task\sequence_manager\thread_controller_with_message_pump_impl.cc:657)
+	base!base::RunLoop::Run [0x7ff920c89c39+2d9] (C:\src\src\base\run_loop.cc:135)
+	content!content::RendererMain [0x7ff8ab379167+7e7] (C:\src\src\content\renderer\renderer_main.cc:350)
+	content!content::RunOtherNamedProcessTypeMain [0x7ff8ab613ef8+2e8] (C:\src\src\content\app\content_main_runner_impl.cc:820)
+	content!content::ContentMainRunnerImpl::Run [0x7ff8ab615e6d+54d] (C:\src\src\content\app\content_main_runner_impl.cc:1244)
+	content!content::RunContentProcess [0x7ff8ab612406+2a6] (C:\src\src\content\app\content_main.cc:337)
+	content!content::ContentMain [0x7ff8ab612751+51] (C:\src\src\content\app\content_main.cc:350)
+	chrome!ChromeMain [0x7ff8c0b7192b+4fb] (C:\src\src\chrome\app\chrome_main.cc:224)
+	chrome!MainDllLoader::Launch [0x7ff7e66d7d0a+34a] (C:\src\src\chrome\app\main_dll_loader_win.cc:317)
+	chrome!wWinMain [0x7ff7e66d199d+68d] (C:\src\src\chrome\app\chrome_exe_main_win.cc:379)
+	chrome!invoke_main [0x7ff7e6b0e832+32] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:123)
+	chrome!__scrt_common_main_seh [0x7ff7e6b0e972+132] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	chrome!__scrt_common_main [0x7ff7e6b0e9fe+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:331)
+	chrome!wWinMainCRTStartup [0x7ff7e6b0ea1e+e] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_wwinmain.cpp:17)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]

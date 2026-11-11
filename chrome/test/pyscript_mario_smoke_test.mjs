@@ -450,6 +450,7 @@ try {
     await key('keyDown','ArrowRight','ArrowRight',39);
     await trustedClick('guideButton');
     assert.equal(await evaluate('document.getElementById("guideDialog").matches(":modal")'),true);
+    assert.equal(await evaluate('document.activeElement.id'),'guideClose');
     await waitFor(async () => (await state()).state==='paused' && (await state()).keys==='0');
     const dialogImage=await send('Page.captureScreenshot',{format:'png'});
     fs.writeFileSync(`${output}.dialog.png`,Buffer.from(dialogImage.data,'base64'));
@@ -463,6 +464,7 @@ try {
   await check('Native Escape closes dialogs without resuming or restarting the game', async () => {
     await trustedClick('keysButton');
     assert.equal(await evaluate('document.getElementById("keysDialog").open'),true);
+    assert.equal(await evaluate('document.activeElement.id'),'keysClose');
     await key('keyDown','KeyR','r',82); await key('keyUp','KeyR','r',82);
     await key('keyDown','Escape','Escape',27); await key('keyUp','Escape','Escape',27);
     await waitFor(async () => !await evaluate('document.getElementById("keysDialog").open'));

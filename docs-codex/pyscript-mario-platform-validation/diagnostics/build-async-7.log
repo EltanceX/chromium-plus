@@ -1,0 +1,87 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.4646337s
+load siso config done 11.393ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:57057+ready:0 (node:441081 edge:57064)
+ 1.45s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/25099] 31.72s S CXX obj/content/browser/browser/cross_origin_storage_registry.obj
+[0/24728] 31.75s S CXX obj/content/browser/browser/cache_storage.obj
+[0/24496] 31.77s S CXX obj/content/browser/browser/eye_dropper_chooser_impl.obj
+[0/24019] 31.81s S CXX obj/content/browser/browser/file_system_access_file_writer_impl.obj
+[0/13525] 32.61s S CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_impl.obj
+[0/13428] 32.61s S CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_dependency_factory.obj
+[0/8192] 33.15s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[0/2147] 34.23s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[1/2146] 38.83s F CXX obj/content/browser/browser/cross_origin_storage_registry.obj
+[2/2146] 45.50s F CXX obj/content/browser/browser/file_system_access_file_writer_impl.obj
+[3/2146] 50.97s F CXX obj/content/browser/browser/cache_storage.obj
+[4/2146] 58.52s F CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_dependency_factory.obj
+[5/2146] 1m04.29s F CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_impl.obj
+[6/2145] 1m04.29s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[6/2145] 1m06.88s F CXX obj/content/browser/browser/eye_dropper_chooser_impl.obj
+[7/2140] 1m06.90s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[7/2139] 1m11.51s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[8/2118] 1m27.19s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[9/1531] 1m27.20s S LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[9/19] 1m27.22s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[9/19] 1m34.51s F LINK(DLL) components_surface_embed_renderer.dll components_surface_embed_renderer.dll.lib components_surface_embed_renderer.dll.pdb
+[10/18] 1m34.59s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[10/18] 1m53.24s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 3f6505d1-4f74-49e2-b95f-8eacabe31e61 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `testing::internal::GetTypeId<blink::bindings::`anonymous namespace'::V8ExternalMemoryAccounterTest>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF51 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_string<0>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF52 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::CodeLocation::CodeLocation` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF54 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D28A which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D28C which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::TestFactoryBase::~TestFactoryBase` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D28C which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::Test::Setup` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D293 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::operator bool` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF9D which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::failure_message` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF9E which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::Message::~Message` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CF9F which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::AssertionResult::~AssertionResult` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23CFA0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::PrintToString<int>` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D92B which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_stringstream<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::basic_stringstream` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D65F which is not a valid function ID record
+lld-link: error: procedure symbol record for `testing::internal::UniversalTersePrinter<int>::Print` in obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj refers to PDB item index 0x23D92D which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[11/18] 1m54.43s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:11 remote:0 cache:0 skip:102091
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1079(err:8) / r:780(err:0) 2.51GiB / w:3(err:0) 1.43MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m55.19s Build Failure: 11 done, 1 failed, 7 remaining - 0.10/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-190338.9928
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

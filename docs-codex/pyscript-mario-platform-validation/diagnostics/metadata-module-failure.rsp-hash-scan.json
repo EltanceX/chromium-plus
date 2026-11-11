@@ -1,0 +1,28 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\metadata-module-failure.rsp",
+  "sources": [
+    "obj/third_party/blink/renderer/modules/modules/modules_initializer.obj",
+    "obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj"
+  ],
+  "targetHashCount": 3514,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/modules/animationworklet/animationworklet/worklet_animation.obj",
+      "errors": [
+        "GHASH count 109523 differs from type count 68019"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/app_banner/app_banner/before_install_prompt_event.obj",
+      "errors": [
+        "GHASH count 55033 differs from type count 44041"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/canvas/canvas/canvas_pattern.obj",
+      "errors": [
+        "GHASH count 13188 differs from type count 8276"
+      ]
+    }
+  ]
+}

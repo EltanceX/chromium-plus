@@ -1,0 +1,53 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2120765s
+load siso config done 12.1999ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:64075+ready:0 (node:441081 edge:64091)
+ 1.36s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/18775] 32.57s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_video_frame.obj
+[0/16554] 32.71s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_digital_credential_request_options.obj
+[0/16334] 32.73s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_install_params.obj
+[0/16002] 32.77s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker.obj
+[0/15807] 32.79s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_handler_response.obj
+[0/15684] 32.80s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_rtp_receiver.obj
+[0/15603] 32.81s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_transport_ice_event.obj
+[0/15597] 32.81s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_ml_prelu_support_limits.obj
+[0/2173] 38.03s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_ml_prelu_support_limits.obj
+[1/2173] 38.07s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_digital_credential_request_options.obj
+[2/2173] 38.10s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_handler_response.obj
+[2/2173] 38.10s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_install_params.obj
+[4/2173] 38.61s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_transport_ice_event.obj
+[5/2173] 43.29s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker.obj
+[6/2173] 56.86s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_rtp_receiver.obj
+[7/2173] 58.37s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_video_frame.obj
+[8/2172] 58.38s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[8/2170] 1m20.56s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[9/2144] 1m20.56s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[9/45] 1m25.27s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[10/18] 1m25.29s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[10/11] 2m01.66s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:11 remote:0 cache:0 skip:102098
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1075(err:10) / r:776(err:0) 3.91GiB / w:1(err:0) 396.87KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+2m02.64s Build Succeeded: 11 steps - 0.09/s

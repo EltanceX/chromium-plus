@@ -14,7 +14,9 @@
 #include "third_party/blink/renderer/bindings/modules/v8/v8_audio_context_options.h"
 #include "third_party/blink/renderer/core/dom/attribute.h"
 #include "third_party/blink/renderer/core/dom/document.h"
+#include "third_party/blink/renderer/core/dom/document_type.h"
 #include "third_party/blink/renderer/core/dom/node_traversal.h"
+#include "third_party/blink/renderer/core/dom/processing_instruction.h"
 #include "third_party/blink/renderer/core/dom/shadow_root.h"
 #include "third_party/blink/renderer/core/editing/serializers/markup_accumulator.h"
 #include "third_party/blink/renderer/core/fileapi/blob.h"
@@ -327,6 +329,13 @@ Result PythonBrowserBridgeImpl::Export(const String& filename) {
       for (const auto& a : e->Attributes()) {
         units += a.GetName().ToString().length() + a.Value().length() + 4;
       }
+    } else if (auto* type = DynamicTo<DocumentType>(n)) {
+      // These fields are absent from nodeValue(), but are emitted by the
+      // serializer. Count them before allocating the document markup.
+      units += type->name().length() + type->publicId().length() +
+               type->systemId().length() + 32;
+    } else if (auto* instruction = DynamicTo<ProcessingInstruction>(n)) {
+      units += instruction->target().length() + 5;
     }
     if (units > 128 * 1024) {
       return Limit("Document exceeds the export source limit");

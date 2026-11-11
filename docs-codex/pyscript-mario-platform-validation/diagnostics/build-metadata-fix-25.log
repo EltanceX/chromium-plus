@@ -1,0 +1,67 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 8.9071764s
+load siso config done 12.2401ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:70248+ready:0 (node:441081 edge:70263)
+ 1.32s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/14308] 31.77s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/2165] 56.09s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[1/2165] 56.10s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[1/2165] 1m07.40s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 8e6ba363-bddc-44d0-ba22-5669ac8fa546 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: procedure symbol record for `base::internal::FeatureParamTraits<unsigned long long>::ToCacheStorageType` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC2D90 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::UseCounter::Count` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC4A24 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::GetStringWithTypeName<blink::EventFactoryBase>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC3644 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::GetStringWithTypeName<blink::CanvasRenderingContextFactory>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC3644 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AtomicRefCount::Increment` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC335B which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckGTImpl<int,int,`lambda at ..\..\base\memory\ref_counted.h:228:5'>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC335D which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckNEImpl<int,int,`lambda at ..\..\base\memory\ref_counted.h:229:5'>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC335F which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AtomicRefCount::Increment` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC3360 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::subtle::RefCountedThreadSafeBase::ReleaseImpl::<lambda_1>::operator()` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC3576 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::AtomicRefCount::Decrement` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC357A which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<unsigned int,0>::load` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC318F which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_load<unsigned int>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0xC3190 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::String::String` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC2DB6 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::String::operator=` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC2F22 which is not a valid function ID record
+lld-link: error: procedure symbol record for `scoped_refptr<base::SingleThreadTaskRunner>::~scoped_refptr` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC49FB which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ScriptState::ContextIsValid` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC4EE0 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ScriptState::Scope::~Scope` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC4EDE which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::ClampedNumeric<long long>::ClampedNumeric<long long>` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC3426 which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::saturated_cast<long long,base::numerics_internal::SaturationDefaultLimits,long long>` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC341D which is not a valid function ID record
+lld-link: error: procedure symbol record for `base::numerics_internal::SaturateFastOp<long long,long long>::Do` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0xC341F which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99944
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 3453(err:2) / r:764(err:0) 10.38MiB / w:1(err:0) 392.09KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m08.21s Build Failure: 2 done, 1 failed, 2163 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261112-063505.13424
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

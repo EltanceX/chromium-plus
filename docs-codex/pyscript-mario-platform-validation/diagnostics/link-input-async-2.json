@@ -1,0 +1,13 @@
+{
+  "objects": 5471,
+  "thinArchives": 58,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\core\\core\\post_message_helper.obj",
+      "errors": [
+        "invalid section string table at 1133"
+      ],
+      "sha256": "5b0ade698b7cf18cd708ad18d6774225677be8172c5fae5be163de4bc0ea47a3"
+    }
+  ]
+}

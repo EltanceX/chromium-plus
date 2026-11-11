@@ -1,0 +1,31 @@
+[11388:576:1111/202752.579:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[11388:576:1111/202752.676:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:59002/devtools/browser/6df02f52-e1cd-4803-b1d5-0ca4ff8ddda5
+[11276:14640:1111/202753.060:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11388:576:1111/202753.570:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[11388:576:1111/202753.570:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[11388:576:1111/202753.808:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[11388:576:1111/202753.914:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[11276:14640:1111/202754.133:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11276:14640:1111/202754.133:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[11388:16080:1111/202754.823:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[11388:16080:1111/202754.851:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[11388:576:1111/202800.170:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.171:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.172:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.172:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.173:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.174:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.217:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202800.218:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59001/pending (0)
+[11388:576:1111/202804.387:INFO:CONSOLE:1434] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:59001/win (1434)
+[11388:576:1111/202805.095:INFO:CONSOLE:1430] "[pyscript frame 82] Traceback (most recent call last):
+  File http://127.0.0.1:59001/sample#pyscript-4, line 203, in frame
+  File http://127.0.0.1:59001/sample#pyscript-5, line 97, in flushUI
+  File http://127.0.0.1:59001/sample#pyscript-5, line 73, in applyUI
+PermissionError: Unsupported UI operation or attribute", source: http://127.0.0.1:59001/sample (1430)
+[11388:2864:1111/202807.704:ERROR:components\system_cpu\cpu_probe_win.cc:134] PdhGetFormattedCounterValue failed: Error (0x13D) while retrieving error. (0x800007D6)
+[11276:15096:1111/202814.590:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, 0889...))
+[11276:15096:1111/202814.590:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, D8B5...))
+[11276:15096:1111/202814.590:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 3), LocalSurfaceId(5, 1, 66FC...))

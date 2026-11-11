@@ -1,0 +1,38 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1953629s
+load siso config done 10.4656ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 517 Pending 9757
+[0/5] 27.15s S CXX obj/third_party/blink/renderer/modules/bluetooth/bluetooth/bluetooth.obj
+[0/5] 27.15s S CXX obj/third_party/blink/renderer/modules/app_banner/app_banner/before_install_prompt_event.obj
+[0/5] 27.15s S CXX obj/third_party/blink/renderer/modules/background_sync/background_sync/periodic_sync_manager.obj
+[0/5] 27.15s S CXX obj/third_party/blink/renderer/modules/animationworklet/animationworklet/worklet_animation.obj
+[0/5] 27.16s S CXX obj/third_party/blink/renderer/modules/canvas/canvas/canvas_pattern.obj
+[0/5] 31.95s F CXX obj/third_party/blink/renderer/modules/canvas/canvas/canvas_pattern.obj
+[1/5] 37.82s F CXX obj/third_party/blink/renderer/modules/background_sync/background_sync/periodic_sync_manager.obj
+[2/5] 41.72s F CXX obj/third_party/blink/renderer/modules/app_banner/app_banner/before_install_prompt_event.obj
+[3/5] 45.00s F CXX obj/third_party/blink/renderer/modules/bluetooth/bluetooth/bluetooth.obj
+[4/5] 57.70s F CXX obj/third_party/blink/renderer/modules/animationworklet/animationworklet/worklet_animation.obj
+build finished
+
+
+noexec:0 local:5 remote:0 cache:0 skip:10269
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 363(err:10) / r:89(err:0) 39.88MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+58.35s Build Succeeded: 5 steps - 0.09/s

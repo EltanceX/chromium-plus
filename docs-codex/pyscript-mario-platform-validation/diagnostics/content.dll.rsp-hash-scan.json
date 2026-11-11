@@ -1,0 +1,13 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\content.dll.rsp",
+  "sources": [],
+  "targetHashCount": 0,
+  "problems": [
+    {
+      "object": "obj\\content\\browser\\browser\\file_system_access_file_writer_impl.obj",
+      "errors": [
+        "GHASH count 16089 differs from type count 2630"
+      ]
+    }
+  ]
+}

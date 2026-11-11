@@ -282,7 +282,7 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段六：合成音效、最高分、全屏与导出
 
-状态：功能代码已接入，标准构建与统一验收正在进行。接口、限制、探测修正见[阶段六记录](pyscript-mario-phase6.md)，当前验证边界见[验收证据](pyscript-mario-platform-validation/README.md)。尚未标记本阶段完成。
+状态：功能和标准五目标构建已完成，平台专项 15 项、独立 Mario 35 项通过。最新统一验收 453 项通过、1 项失败、2 项因提前停止未执行；Debug 整关数值回放仍会触发 16 ms 帧预算，因此尚未标记全部验收完成。接口、修复与实际结果见[阶段六记录](pyscript-mario-phase6.md)及[验收证据](pyscript-mario-platform-validation/README.md)。
 
 1. 实现音调调度子集和音频上下文生命周期，迁移 jump / coin / bump / stomp / hurt / checkpoint / start / win。
 2. 实现同源存储与异常路径，保存最高分并验证重启 / 刷新后的读取。
@@ -293,6 +293,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 完成标准：原项目全部外围功能由 Python 控制；权限拒绝或存储 / 音频失败时仍可继续游玩，旧文档资源和完成通知不能泄漏到新文档。
 
 ### 阶段七：完整构建、真实浏览器、性能与记录
+
+当前待办：先定位并处理 Debug 间歇单帧停止，再完成 Release/GPU、长时真实游玩和扬声器听感。阶段六最新统一结果保持 `passed=false`；既有独立成功不能替换失败记录。
 
 1. 顺序运行标准目标构建、所有新增能力单测及受影响回归，按实际新增数量更新验收编排器。
 2. 建立独立 Python 马里奥浏览器脚本，以真实输入覆盖核心玩法与全部外围功能。
@@ -310,7 +312,7 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 ```powershell
 autoninja -C out/Debug chrome blink_unittests python_runtime_unittests python_document_context_unittests native_python_settings_unittests
 
-# 当前入口覆盖 click、动画帧、输入、Canvas 及 Mario 核心；后续随实现维护。
+# 当前入口覆盖 click、动画帧、输入、Canvas、Mario 页面及平台能力。
 python chrome/test/run_pyscript_event_validation.py
 ```
 
@@ -336,4 +338,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一至五已完成原生帧调度、连续输入、批量 Canvas 2D、纯 Python 核心关卡及完整控件/教学页面交互。阶段六功能代码已接入；先完成当前标准构建、导出复测及统一验收，再进入阶段七的 Release/GPU、长期真实游玩和性能验证。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一至五已完成原生帧调度、连续输入、批量 Canvas 2D、纯 Python 核心关卡及完整控件/教学页面交互。阶段六功能、标准构建和平台专项已完成，导出重载与正常重启持久化已有实际证据；最新统一运行保留整关回放的一次 16 ms 帧停止，尚未全绿。下一步优先处理这一稳定性问题，再完成阶段七的 Release/GPU、长期真实游玩、听感和性能验证。每个关键部分继续保留独立样例、回归和可审阅的提交边界。

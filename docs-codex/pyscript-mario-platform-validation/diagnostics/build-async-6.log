@@ -1,0 +1,73 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4606459s
+load siso config done 11.2795ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:60646+ready:0 (node:441081 edge:60666)
+ 1.49s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/14795] 31.24s S CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_dependency_factory.obj
+[0/14716] 31.25s S CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_impl.obj
+[0/8851] 31.71s S LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[0/8851] 31.77s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[0/2139] 35.94s F LINK v8_context_snapshot_generator.exe v8_context_snapshot_generator.exe.pdb
+[0/2139] 35.94s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[1/2139] 38.10s E LINK(DLL) content.dll content.dll.lib content.dll.pdb
+FAILED: c568f6bb-14fc-4618-8625-6a80dbb4f260 "./content.dll" LINK(DLL) content.dll content.dll.lib content.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./content.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./content.dll.lib" /DLL "/PDB:./content.dll.pdb" "@./content.dll.rsp"
+build step: solink "./content.dll"
+stderr:
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xE6E2BCBA
+lld-link: error: �� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: Xk\x14����+[fH%um��\x07��6�3�q�w-/\x07�\x0e(���a{XS�E�\x13�_ٌj�\x1a?S���H\x1d��f)�\x0e�9�(�/��\�%�ӫ\�~�2d76�rx����8�JLb0�r�k����t�l\x12%&�p���\x1d�� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: �g�\x07�4(\x12�,��\x03|\x11R\x12�\x1eꅿ�T_0� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: ׎\x04�1\x1a߾Y��I�\x10�\x05�Fk� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: _���?�� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: ^s��a%�px���|��ϙ���mW�ߍ��Y�|���\x04vϝH>iZг�l\x13���\x17�H�j�O����'��A\x0eಟ�U]6\x0f��\x12	�N�(c��\x08\x03���{t\x1d�=X��� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: :\x02�r\x0cU���w{� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: j�\x13��v\x17�����n is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: ����i?�=�[�iѠ��\���·\x10%�\x0f��\x18��\x1d���Ȇ is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: ��H,9��j�d[d�w��\x1a���X{?�\x126�\x14��2��2:\x16 is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: \x04=�~c�7�\x19 is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: 2d�\x169`�cU�� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: j is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: ,}�B�6�s�,�\x01�#\x03��mwc�z>JʕA�\x19�o�ũc is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: b(y�+Y��K��L�+G�kD\x15	�\x1a�52�\x18d�k�\x13�<`\x16$钂�X�'$���e�BM�L�\x03���\x0cG-̌�e�S;��EE��\x12m�Q�{\x1d\x1d��w�(\x0c�O���\x17��Զ�^!����ʓtG\x15Q����r���Nm�4O���\x0e�\x03X���\x04�b݀�'�����ꙇ<X|+�ď�\x17���y%�k��Q�<��\x16^G��T\x04<q\x13��� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: �䭿K��~\x0fR�F��/r5!�^�Va�� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: �hΥ�4q�2�-�%�FF�h�k���)Ǝ�w�\x1e\x03��h\x15���NS)�)9��h�\x14��Ñ!��ݪ\x06@\x13�\x0e����7f\�\x18XsG�b��d��6 S�n��״�9f�/X\x0e��S\x15�E�\x06	N'\x13\x14���.�O�\x13�9\x0f\x0e��\x11��\x01�5�c�v\x13��\x1f is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: r���0\x07�\x1fL��a-����� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: �� is not allowed in .drectve (obj/content/browser/browser/eye_dropper_chooser_impl.obj)
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[2/2139] 45.62s - ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[2/2139] 58.22s - CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_dependency_factory.obj
+[2/2139] 1m00.53s - CXX obj/third_party/blink/renderer/modules/peerconnection/test_support/mock_peer_connection_impl.obj
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99970
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1003(err:5) / r:764(err:0) 200.12MiB / w:2(err:0) 449.29KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m01.28s Build Failure: 2 done, 1 failed, 2137 remaining - 0.03/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-185534.18884
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

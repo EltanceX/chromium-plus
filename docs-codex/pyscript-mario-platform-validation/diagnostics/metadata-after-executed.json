@@ -1,0 +1,31 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": [
+        {
+          "elapsed_time_ms": 276,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 2016,
+          "timestamp": "2026-11-11T22:41:18.798Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 90
+    }
+  },
+  "rawSourceSha256": "7f4e72a16e6054a6ea4fb038ae70819c8094b90f5d9c8d960f12ee06a3c5f378"
+}

@@ -1,0 +1,43 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.7651792s
+load siso config done 12.6403ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:83152+ready:0 (node:441081 edge:83162)
+ 1.30s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/11784] 31.85s S CXX obj/third_party/blink/renderer/core/unit_tests/node_annotation_selector_test.obj
+[0/10622] 31.98s S CXX obj/third_party/blink/renderer/core/unit_tests/css_style_sheet_test.obj
+[0/7380] 32.11s S CXX obj/chrome/browser/preloading/prefetch/search_prefetch/impl/search_prefetch_keep_alive_request_tracker.obj
+[0/16] 39.34s F CXX obj/chrome/browser/preloading/prefetch/search_prefetch/impl/search_prefetch_keep_alive_request_tracker.obj
+[1/14] 39.40s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[1/14] 1m14.46s F CXX obj/third_party/blink/renderer/core/unit_tests/css_style_sheet_test.obj
+[2/14] 1m15.91s F CXX obj/third_party/blink/renderer/core/unit_tests/node_annotation_selector_test.obj
+[3/11] 1m15.94s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/10] 3m21.76s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[4/5] 3m53.61s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:5 remote:0 cache:0 skip:102104
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1027(err:2) / r:772(err:0) 7.36GiB / w:0(err:0) 0B
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      2(0)     0.00s |▆      |  2m39.43s |     ▆ |
+shutdown cloud logging/monitoring done 0s
+
+3m54.95s Build Succeeded: 5 steps - 0.02/s

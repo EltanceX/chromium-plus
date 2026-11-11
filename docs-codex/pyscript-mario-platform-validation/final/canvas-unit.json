@@ -1,0 +1,336 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.536Z"
+        }
+      ],
+      "PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.532Z"
+        }
+      ],
+      "PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent": [
+        {
+          "elapsed_time_ms": 3,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.219Z"
+        }
+      ],
+      "PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.226Z"
+        }
+      ],
+      "PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.225Z"
+        }
+      ],
+      "PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.226Z"
+        }
+      ],
+      "PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.218Z"
+        }
+      ],
+      "PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork": [
+        {
+          "elapsed_time_ms": 2,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.533Z"
+        }
+      ],
+      "PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.532Z"
+        }
+      ],
+      "PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.532Z"
+        }
+      ],
+      "PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.225Z"
+        }
+      ],
+      "PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.533Z"
+        }
+      ],
+      "PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.225Z"
+        }
+      ],
+      "PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.224Z"
+        }
+      ],
+      "PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent": [
+        {
+          "elapsed_time_ms": 0,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:16.226Z"
+        }
+      ],
+      "PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire": [
+        {
+          "elapsed_time_ms": 113,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.298Z"
+        }
+      ],
+      "PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles": [
+        {
+          "elapsed_time_ms": 152,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.030Z"
+        }
+      ],
+      "PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState": [
+        {
+          "elapsed_time_ms": 118,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.412Z"
+        }
+      ],
+      "PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState": [
+        {
+          "elapsed_time_ms": 113,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 14748,
+          "timestamp": "2026-11-11T22:43:15.183Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 176
+    },
+    "PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 114
+    },
+    "PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 212
+    },
+    "PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 279
+    },
+    "PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 249
+    },
+    "PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 321
+    },
+    "PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 187
+    },
+    "PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 164
+    },
+    "PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 140
+    },
+    "PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 127
+    },
+    "PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 261
+    },
+    "PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 155
+    },
+    "PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 237
+    },
+    "PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 221
+    },
+    "PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 297
+    },
+    "PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 91
+    },
+    "PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 58
+    },
+    "PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 104
+    },
+    "PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\python_canvas_batch_test.cc",
+      "line": 78
+    }
+  }
+}

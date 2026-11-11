@@ -1,0 +1,217 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation": [
+        {
+          "elapsed_time_ms": 144,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:37.873Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget": [
+        {
+          "elapsed_time_ms": 122,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:39.126Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization": [
+        {
+          "elapsed_time_ms": 119,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.890Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation": [
+        {
+          "elapsed_time_ms": 115,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:39.010Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices": [
+        {
+          "elapsed_time_ms": 120,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.650Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce": [
+        {
+          "elapsed_time_ms": 148,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:39.985Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": [
+        {
+          "elapsed_time_ms": 247,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.402Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent": [
+        {
+          "elapsed_time_ms": 145,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.256Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames": [
+        {
+          "elapsed_time_ms": 119,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.136Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling": [
+        {
+          "elapsed_time_ms": 117,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.018Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes": [
+        {
+          "elapsed_time_ms": 122,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:40.134Z"
+        }
+      ],
+      "PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries": [
+        {
+          "elapsed_time_ms": 118,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 9828,
+          "timestamp": "2026-11-11T22:42:38.771Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 34
+    },
+    "PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 158
+    },
+    "PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 140
+    },
+    "PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 150
+    },
+    "PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 123
+    },
+    "PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 174
+    },
+    "PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 90
+    },
+    "PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 68
+    },
+    "PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 59
+    },
+    "PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 45
+    },
+    "PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 189
+    },
+    "PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\python_browser_bridge_test.cc",
+      "line": 132
+    }
+  }
+}

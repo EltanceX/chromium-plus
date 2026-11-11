@@ -1,0 +1,70 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:57386",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 455
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 328
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": true,
+      "elapsedMs": 1513,
+      "detail": {
+        "contexts": [
+          {
+            "contextId": "30dff86a-ae02-4e6f-aae2-d763fa495db2",
+            "contextType": "realtime",
+            "contextState": "suspended",
+            "callbackBufferSize": 480,
+            "maxOutputChannelCount": 2,
+            "sampleRate": 48000,
+            "renderQuantumSize": 128
+          }
+        ],
+        "nodes": [
+          "AudioDestination",
+          "Oscillator",
+          "Gain",
+          "Oscillator",
+          "Gain"
+        ]
+      }
+    },
+    {
+      "name": "Native audio suspend completes once",
+      "passed": true,
+      "elapsedMs": 345
+    },
+    {
+      "name": "Voice and scheduling rate limits reject additional sound",
+      "passed": false,
+      "elapsedMs": 31765,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:150:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:317:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:313:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 5] Python callback exceeded the 50 ms cooperative execution budget",
+          "timestamp": 1794397644480.681,
+          "url": "http://127.0.0.1:57386/api",
+          "lineNumber": 6
+        }
+      ],
+      "pageState": {
+        "result": "api-ready",
+        "completion": "audio:True:running:False"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:150:9)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:317:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:238:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:313:3"
+}

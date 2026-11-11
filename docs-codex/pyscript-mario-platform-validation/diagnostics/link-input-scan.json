@@ -1,0 +1,13 @@
+{
+  "objects": 5471,
+  "thinArchives": 58,
+  "problems": [
+    {
+      "object": "obj\\services\\network\\public\\mojom\\mojom\\mdns_responder.mojom.obj",
+      "errors": [
+        "invalid section string table at 651"
+      ],
+      "sha256": "d5fff11126705b4349dfbae9293aed7a6a9fe0b64f861a61046bcf1542aedd39"
+    }
+  ]
+}

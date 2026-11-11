@@ -1,0 +1,22 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_modules.dll.rsp",
+  "sources": [
+    "obj/third_party/blink/renderer/modules/modules/modules_initializer.obj",
+    "obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj"
+  ],
+  "targetHashCount": 3496,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_data_transfer_item.obj",
+      "errors": [
+        "GHASH count 17431 differs from type count 15807"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_multicast_controller.obj",
+      "errors": [
+        "GHASH count 16180 differs from type count 9184"
+      ]
+    }
+  ]
+}

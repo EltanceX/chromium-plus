@@ -1,0 +1,57 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.1357312s
+load siso config done 10.8323ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:64836+ready:0 (node:441081 edge:64851)
+ 1.37s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/20746] 35.66s S CXX obj/third_party/blink/renderer/core/core/local_frame.obj
+[0/16191] 35.98s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/11083] 36.41s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/10917] 36.44s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[0/2294] 57.06s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[1/2294] 57.66s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[2/2294] 1m44.32s F CXX obj/third_party/blink/renderer/core/core/local_frame.obj
+[3/2294] 1m44.34s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[3/2294] 1m45.18s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[4/2262] 2m13.88s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[5/2169] 2m13.89s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[5/2169] 2m18.37s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: a907b833-d7b2-4395-b565-745398a7bdc8 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: getSectionName failed: #583: string table empty
+
+
+build failed
+
+
+noexec:0 local:6 remote:0 cache:0 skip:99940
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 7924(err:3) / r:772(err:0) 1.92GiB / w:1(err:0) 392.09KiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      4(0)     0.00s |▇      |    44.32s |    ▆▆ |
+
+2m19.05s Build Failure: 6 done, 1 failed, 2163 remaining - 0.04/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-180059.16280
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

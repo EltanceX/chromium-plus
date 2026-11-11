@@ -1,0 +1,195 @@
+{
+  "directObjects": 6601,
+  "problems": [
+    {
+      "object": "obj\\content\\browser\\browser\\eye_dropper_chooser_impl.obj",
+      "errors": [
+        {
+          "section": 17,
+          "name": ".text",
+          "size": 143,
+          "relocation": 0,
+          "offset": 3262619655,
+          "symbol": 3009546220,
+          "kind": 26488
+        },
+        {
+          "section": 20,
+          "name": ".text",
+          "size": 241,
+          "relocation": 0,
+          "offset": 1355043102,
+          "symbol": 1376937390,
+          "kind": 9793
+        },
+        {
+          "section": 21,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 2054124838,
+          "symbol": 532379827,
+          "kind": 30838
+        },
+        {
+          "section": 22,
+          "name": ".text",
+          "size": 32,
+          "relocation": 0,
+          "offset": 3711618705,
+          "symbol": 3547400488,
+          "kind": 23275
+        },
+        {
+          "section": 23,
+          "name": ".text",
+          "size": 35,
+          "relocation": 0,
+          "offset": 2040454534,
+          "symbol": 1008401744,
+          "kind": 56947
+        },
+        {
+          "section": 24,
+          "name": ".text",
+          "size": 26,
+          "relocation": 0,
+          "offset": 64923397,
+          "symbol": 3680872613,
+          "kind": 31246
+        },
+        {
+          "section": 25,
+          "name": ".text",
+          "size": 252,
+          "relocation": 0,
+          "offset": 1157688890,
+          "symbol": 713778308,
+          "kind": 25923
+        },
+        {
+          "section": 26,
+          "name": ".text",
+          "size": 45,
+          "relocation": 0,
+          "offset": 407850849,
+          "symbol": 2342130833,
+          "kind": 45021
+        },
+        {
+          "section": 27,
+          "name": ".text",
+          "size": 434,
+          "relocation": 0,
+          "offset": 3808191389,
+          "symbol": 3561932466,
+          "kind": 24504
+        },
+        {
+          "section": 28,
+          "name": ".text",
+          "size": 21,
+          "relocation": 0,
+          "offset": 1931739392,
+          "symbol": 2737620221,
+          "kind": 36216
+        }
+      ]
+    },
+    {
+      "object": "obj\\content\\browser\\browser\\file_system_access_file_writer_impl.obj",
+      "errors": [
+        {
+          "section": 3779,
+          "name": ".debug$S",
+          "size": 1440,
+          "relocation": 0,
+          "offset": 789495063,
+          "symbol": 1262412164,
+          "kind": 20607
+        },
+        {
+          "section": 3780,
+          "name": ".debug$S",
+          "size": 1332,
+          "relocation": 0,
+          "offset": 2754565128,
+          "symbol": 461362396,
+          "kind": 33646
+        },
+        {
+          "section": 3781,
+          "name": ".debug$S",
+          "size": 1984,
+          "relocation": 0,
+          "offset": 2133686327,
+          "symbol": 2451776114,
+          "kind": 8509
+        },
+        {
+          "section": 3782,
+          "name": ".debug$S",
+          "size": 1412,
+          "relocation": 0,
+          "offset": 1386095326,
+          "symbol": 1949987947,
+          "kind": 31859
+        },
+        {
+          "section": 3783,
+          "name": ".debug$S",
+          "size": 1416,
+          "relocation": 0,
+          "offset": 2130021170,
+          "symbol": 756040051,
+          "kind": 38753
+        },
+        {
+          "section": 3784,
+          "name": ".debug$S",
+          "size": 564,
+          "relocation": 0,
+          "offset": 119646674,
+          "symbol": 2805504861,
+          "kind": 57448
+        },
+        {
+          "section": 3785,
+          "name": ".debug$S",
+          "size": 364,
+          "relocation": 0,
+          "offset": 488028999,
+          "symbol": 1730800276,
+          "kind": 25505
+        },
+        {
+          "section": 3786,
+          "name": ".debug$S",
+          "size": 564,
+          "relocation": 0,
+          "offset": 3138233473,
+          "symbol": 663187700,
+          "kind": 36565
+        },
+        {
+          "section": 3787,
+          "name": ".debug$S",
+          "size": 304,
+          "relocation": 0,
+          "offset": 3146181731,
+          "symbol": 1410943601,
+          "kind": 44873
+        },
+        {
+          "section": 3788,
+          "name": ".debug$S",
+          "size": 564,
+          "relocation": 0,
+          "offset": 2398188340,
+          "symbol": 329166811,
+          "kind": 15976
+        }
+      ]
+    }
+  ]
+}

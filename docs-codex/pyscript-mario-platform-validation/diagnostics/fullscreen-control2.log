@@ -1,0 +1,2 @@
+{"front":false,"before":{"focus":false,"active":false},"after":{"focus":true,"active":false,"result":"TypeError:not granted"}}
+{"front":true,"before":{"focus":true,"active":false},"after":{"focus":true,"active":false,"fullscreen":"stage","result":"native-success"}}

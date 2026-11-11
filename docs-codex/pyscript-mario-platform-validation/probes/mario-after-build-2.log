@@ -1,0 +1,23 @@
+PASS Typed native controls retain values flags literal text and bounded styles
+PASS Grouped rectangles preserve native pixels costs and atomic rejection
+PASS Python-only game initializes under nonce CSP and existing sandbox
+PASS Trusted start movement and variable jump use native Python callbacks
+PASS Pause clears held controls and stops world time
+PASS Restart is repeatable without allocating more native surfaces
+PASS Pointer capture moves and releasing stops the player
+PASS Hidden and frozen page clears input and resets the time baseline
+PASS Movement buttons support native keyboard hold release and focus cleanup
+PASS Native range keyboard actions update Python parameters without game shortcuts
+PASS Collision checkbox changes native Canvas pixels and remains keyboard accessible
+PASS Reset restores all native values checkboxes and Python output labels
+PASS Tabs use native focus roving tabindex arrows Home and End
+PASS All eight Python lessons wrap and flow cards select the explanation tab
+PASS Learning dialog pauses clears input selects a lesson and restores focus
+PASS Native Escape closes dialogs without resuming or restarting the game
+PASS State HUD progress and bounded event log follow native gameplay
+{
+  "passed": false,
+  "cases": 18,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\mario-after-build-2.json",
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript callback 30] Python callback exceeded the 50 ms cooperative execution budget\",\"timestamp\":1794436085297.544,\"url\":\"http://127.0.0.1:57206/sample\",\"lineNumber\":1425}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:497:11\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:490:3"
+}

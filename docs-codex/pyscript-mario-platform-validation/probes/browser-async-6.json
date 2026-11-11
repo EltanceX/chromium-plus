@@ -1,0 +1,90 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:56288",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Typed storage and real activation gating",
+      "passed": true,
+      "elapsedMs": 724
+    },
+    {
+      "name": "Synthetic click cannot unlock audio or export",
+      "passed": true,
+      "elapsedMs": 1939
+    },
+    {
+      "name": "Native audio resumes and schedules oscillator and gain nodes",
+      "passed": true,
+      "elapsedMs": 1705,
+      "detail": {
+        "contexts": [
+          {
+            "contextId": "90c32462-1d51-4e8a-a24b-65d5c33660f2",
+            "contextType": "realtime",
+            "contextState": "suspended",
+            "callbackBufferSize": 480,
+            "maxOutputChannelCount": 2,
+            "sampleRate": 48000,
+            "renderQuantumSize": 128
+          }
+        ],
+        "nodes": [
+          "AudioDestination",
+          "Oscillator",
+          "Gain",
+          "Oscillator",
+          "Gain"
+        ]
+      }
+    },
+    {
+      "name": "Native audio suspend completes once",
+      "passed": true,
+      "elapsedMs": 458
+    },
+    {
+      "name": "Voice and scheduling rate limits reject additional sound",
+      "passed": true,
+      "elapsedMs": 2172
+    },
+    {
+      "name": "Navigation disposes document audio resources",
+      "passed": true,
+      "elapsedMs": 1141
+    },
+    {
+      "name": "Fullscreen rejection caps and consumes notifications exactly once",
+      "passed": true,
+      "elapsedMs": 2003
+    },
+    {
+      "name": "Trusted fullscreen request and native exit complete",
+      "passed": true,
+      "elapsedMs": 956
+    },
+    {
+      "name": "Storage quota failure reaches Python without stopping page",
+      "passed": false,
+      "elapsedMs": 935,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'quota-ready'\n- 'quota-denied'\n         ^\n\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:363:41\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:244:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:360:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 1] Traceback (most recent call last):\n  File http://127.0.0.1:56288/quota#pyscript-1, line 9, in write\n  File http://127.0.0.1:56288/quota#pyscript-1, line 7, in expect\nAssertionError: expected PermissionError",
+          "timestamp": 1794399148698.851,
+          "url": "http://127.0.0.1:56288/quota",
+          "lineNumber": 6
+        }
+      ],
+      "pageState": {
+        "result": "quota-ready",
+        "completion": ""
+      }
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'quota-ready'\n- 'quota-denied'\n         ^\n\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:363:41\n    at async check (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:244:20)\n    at async file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:360:3"
+}

@@ -1,0 +1,248 @@
+[
+  {
+    "object": "obj\\third_party\\blink\\renderer\\core\\core\\post_message_helper.obj",
+    "errors": [
+      "invalid section string table at 1133"
+    ],
+    "sha256": "5b0ade698b7cf18cd708ad18d6774225677be8172c5fae5be163de4bc0ea47a3",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async2-post_message_helper.obj",
+    "beforeSha256": "5b0ade698b7cf18cd708ad18d6774225677be8172c5fae5be163de4bc0ea47a3"
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/resize_observer_controller.obj",
+    "beforeSha256": "e603f02f901c9eab8e71abc9c27a7a9c794287fa5434d860ec9c6a5385ac95f1",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async3-resize_observer_controller.obj",
+    "reasons": [
+      "blink_core.dll.rsp-async3-debug-scan.json",
+      "blink_core.dll.rsp-async3-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_keyframes_rule.obj",
+    "beforeSha256": "f14782c7ce442e017c21f56d631cec6c00333eb0b88fc2b9ad3ffce2a5f0f74e",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async3-css_keyframes_rule.obj",
+    "reasons": [
+      "blink_core.dll.rsp-async3-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_data_transfer_item.obj",
+    "beforeSha256": "baf44509b8b3dee8d97690d64a3175d356312b2d31679bedf4a0b36a91db00a9",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async4-v8_data_transfer_item.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async4-debug-scan.json",
+      "blink_modules.dll.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_text_decoder_stream.obj",
+    "beforeSha256": "4cf5a9ac3f7ddce40451051cf0de79ffdb571f9eac0c234138a9e2c0888a12bd",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async4-v8_text_decoder_stream.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async4-debug-scan.json",
+      "blink_modules.dll.rsp-async4-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_multicast_controller.obj",
+    "beforeSha256": "ad20ffee1acce895d1e01818c4978e364139511c336fd38a8a1da86aef7b5b54",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async4-v8_multicast_controller.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async4-debug-scan.json",
+      "blink_modules.dll.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\third_party\\blink\\renderer\\modules\\peerconnection\\test_support\\mock_peer_connection_dependency_factory.obj",
+    "beforeSha256": "698ae4af4e9db9aac0cc122d0b7d8025ffd7c454a9766d196d466f9f9001f8ce",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async5-mock_peer_connection_dependency_factory.obj",
+    "reasons": [
+      "link-input-adapter-async5.json"
+    ]
+  },
+  {
+    "object": "obj\\third_party\\blink\\renderer\\modules\\peerconnection\\test_support\\mock_peer_connection_impl.obj",
+    "beforeSha256": "eb27e2c2f5206fe03c47674b4cf9baadbe4a0d5564bb5f6b19bbbdc033189c3a",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async5-mock_peer_connection_impl.obj",
+    "reasons": [
+      "link-input-adapter-async5.json"
+    ]
+  },
+  {
+    "object": "obj\\content\\browser\\browser\\cache_storage.obj",
+    "beforeSha256": "61fbbd363035ee4f6f97ad67030e353532fa5c439fbfaf4d3e377d2f85a46dcc",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async6-cache_storage.obj",
+    "reasons": [
+      "content.dll.rsp-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\content\\browser\\browser\\cross_origin_storage_registry.obj",
+    "beforeSha256": "b827c70afba9e9ea75c659d52e8f892158a9c995c3a63169667966fce63b7f3f",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async6-cross_origin_storage_registry.obj",
+    "reasons": [
+      "content.dll.rsp-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\content\\browser\\browser\\eye_dropper_chooser_impl.obj",
+    "beforeSha256": "9717dce4ab8e4f82af036f718f8a0c0c3a0da7916238a7fbcd5596c9eecf875e",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async6-eye_dropper_chooser_impl.obj",
+    "reasons": [
+      "content.dll.rsp-all-debug-scan.json",
+      "content.dll.rsp-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\content\\browser\\browser\\file_system_access_file_writer_impl.obj",
+    "beforeSha256": "6cd4473ef0cf463c635481b1d2d4617ac87c3578eaae89384cde7ab0dc9f95d5",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async6-file_system_access_file_writer_impl.obj",
+    "reasons": [
+      "content.dll.rsp-all-debug-scan.json",
+      "content.dll.rsp-hash-scan.json",
+      "content.dll.rsp-relocation-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/css_attr_type_test.obj",
+    "beforeSha256": "d2a90ba1bc49274a0c9514786cbef3d5422b1fc3f4deba4d4807dcffcd8340aa",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async7-css_attr_type_test.obj",
+    "reasons": [
+      "blink_unittests.exe.rsp-all-debug-scan.json",
+      "blink_unittests.exe.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/css_style_sheet_test.obj",
+    "beforeSha256": "5156b9824b9c06507ed9e899b35d831159e313780d55239d30c331ca41afb36b",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async7-css_style_sheet_test.obj",
+    "reasons": [
+      "blink_unittests.exe.rsp-all-debug-scan.json",
+      "blink_unittests.exe.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/unit_tests/node_annotation_selector_test.obj",
+    "beforeSha256": "4b2935005872b2a8e90b9cb68fb5900f5ebc91c06b8c65b0bfc7492fe16cbdbc",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async7-node_annotation_selector_test.obj",
+    "reasons": [
+      "blink_unittests.exe.rsp-all-debug-scan.json",
+      "blink_unittests.exe.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\chrome\\browser\\preloading\\prefetch\\search_prefetch\\impl\\search_prefetch_keep_alive_request_tracker.obj",
+    "beforeSha256": "887f3237938252ab83026ff6ffce468b188b7ddf052b32f6bd722804adeb2523",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async8-search_prefetch_keep_alive_request_tracker.obj",
+    "reasons": [
+      "chrome.dll.rsp-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_storage_event.obj",
+    "beforeSha256": "afe12b80263dddeca63105d0600896a6c99d79ba38ae7f147536f51a69663a12",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async10-v8_storage_event.obj",
+    "reasons": [
+      "link-input-modules-async10.json"
+    ]
+  },
+  {
+    "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_subtle_crypto.obj",
+    "beforeSha256": "bde84cae87672db2c234b685319f1c5731cbe2cea04222974d24832bf748d66b",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async11-v8_subtle_crypto.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_image_set_value.obj",
+    "beforeSha256": "3ac5ff787270bfd4d12903ccb1cca101d8ed217a1ed082b7b48da2d3debaf1cc",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async15-css_image_set_value.obj",
+    "reasons": [
+      "blink_core.dll.rsp-all-debug-scan.json",
+      "blink_core.dll.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_paint_value.obj",
+    "beforeSha256": "e1b74be9aac591ea0ae561017be071bd82552de1d4809429bfa060de16ea8989",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async15-css_paint_value.obj",
+    "reasons": [
+      "blink_core.dll.rsp-all-debug-scan.json",
+      "blink_core.dll.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/core/core/css_property_value_set.obj",
+    "beforeSha256": "468be98c01cbb53cc68ef4164aa95c34430e9b3f39322b488bf67633a65c6384",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async15-css_property_value_set.obj",
+    "reasons": [
+      "blink_core.dll.rsp-all-debug-scan.json",
+      "blink_core.dll.rsp-hash-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_digital_credential_request_options.obj",
+    "beforeSha256": "ed5c784ea3a54c7a459f9978a739cbe6e1e052ef65aa4dad68600b6f70f9558b",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_digital_credential_request_options.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_install_params.obj",
+    "beforeSha256": "89e2f826e65fafd4c83d67b9568305d45b1cf7ce850bf5efc235b18618608b1c",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_install_params.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_ml_prelu_support_limits.obj",
+    "beforeSha256": "3414cd0d945e14e688392c31188a1cae4ad5dcf63a9658917ffc04034677f43c",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_ml_prelu_support_limits.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_payment_handler_response.obj",
+    "beforeSha256": "83be68b5e534f718714c4134276b4be0a70edad7895e1543a4296f5e6c9f022f",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_payment_handler_response.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_rtp_receiver.obj",
+    "beforeSha256": "809e59596d3c80c15dd72ff65345e2c4f87cb4afacc0bb2487c93d15292e14ef",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_rtc_rtp_receiver.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_rtc_transport_ice_event.obj",
+    "beforeSha256": "9ed609af4de70961abd9179ecc19e70a04358e8518f2963246933dde6b4a32c8",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_rtc_transport_ice_event.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_service_worker.obj",
+    "beforeSha256": "6c401aadc19b4c87776e6674109c13e32e89880ceba837ceb4c478f45f316684",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_service_worker.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  },
+  {
+    "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_video_frame.obj",
+    "beforeSha256": "166c134e292910cf2c52573e1bc54fc3ad6d3158d9aed1ef091b2a6054782b24",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\object-backups\\async16-v8_video_frame.obj",
+    "reasons": [
+      "blink_modules.dll.rsp-async16-all-debug-scan.json"
+    ]
+  }
+]

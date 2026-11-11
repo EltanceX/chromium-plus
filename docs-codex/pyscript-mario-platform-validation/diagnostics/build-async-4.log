@@ -1,0 +1,71 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4879454s
+load siso config done 11.4452ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:57095+ready:0 (node:441081 edge:57101)
+ 1.49s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/21042] 31.05s S CXX obj/third_party/blink/renderer/core/core/resize_observer_controller.obj
+[0/20800] 31.06s S CXX obj/third_party/blink/renderer/core/core/css_keyframes_rule.obj
+[0/2292] 41.26s F CXX obj/third_party/blink/renderer/core/core/css_keyframes_rule.obj
+[1/2292] 43.76s F CXX obj/third_party/blink/renderer/core/core/resize_observer_controller.obj
+[2/2292] 43.78s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2279] 1m05.70s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[3/2167] 1m05.73s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[3/2167] 1m15.65s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 7756a559-1a3d-429c-80f9-c2dae20f165a "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `blink::String::~String` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91F00 which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckNoreturnError::CheckError` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x9201B which is not a valid function ID record
+lld-link: error: procedure symbol record for `scoped_refptr<blink::StringImpl>::~scoped_refptr` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91FB9 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::StringImpl::IsStatic` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91FBE which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_base<unsigned int,0>::compare_exchange_weak` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91FC3 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_compare_exchange_weak<unsigned int>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91FC8 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_string<char,std::__Cr::char_traits<char>,std::__Cr::allocator<char> >::__is_long` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91E05 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__cxx_atomic_load<unsigned short>` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x91FEB which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_gcc_order` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x92007 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::String::String` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0x91FD8 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ExceptionState::~ExceptionState::<lambda_1>::operator()` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0x92026 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::numeric_limits<unsigned int>::max` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0x92019 which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::CheckNoreturnError::CheckError` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0x9201B which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::StringImpl::AddRef::<lambda_1>::operator()` in obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj refers to PDB item index 0x9201C which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:4 remote:0 cache:0 skip:99942
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1013(err:4) / r:769(err:0) 1.87GiB / w:1(err:0) 392.09KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m16.27s Build Failure: 4 done, 1 failed, 2163 remaining - 0.05/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-184532.11440
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

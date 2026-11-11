@@ -1,0 +1,32 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_unittests.exe.rsp",
+  "directObjects": 7355,
+  "problems": [
+    {
+      "object": "obj\\services\\viz\\public\\mojom\\mojom\\layer_context.mojom.obj",
+      "errors": [
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature"
+      ]
+    }
+  ]
+}

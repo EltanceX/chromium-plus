@@ -1,0 +1,73 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.501004s
+load siso config done 11.5112ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:74109+ready:0 (node:441081 edge:74119)
+ 1.33s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/19805] 30.97s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/19417] 31.00s S CXX obj/third_party/blink/renderer/core/core/post_message_helper.obj
+[0/12534] 31.31s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/11175] 31.40s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[0/2294] 49.91s F CXX obj/third_party/blink/renderer/core/core/post_message_helper.obj
+[1/2294] 56.63s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[2/2294] 56.73s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[3/2294] 1m05.48s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[4/2294] 1m05.50s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[4/2294] 1m20.08s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 39a4784b-c663-4762-9d4b-647b7c5b1597 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x8E743A24
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x343DBB2F
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xEFCB174
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x70174ED9
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x57B83B56
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x5C7CC5D9
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0xB9CCB74B
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x7DC37D1F
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x3C7F5862
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: ignoring section .debug$S with unrecognized magic 0x1D5FFE88
+lld-link: error: some relocations in obj/third_party/blink/renderer/core/core/resize_observer_controller.obj are not sorted
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:5 remote:0 cache:0 skip:99815
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 8104(err:2) / r:769(err:0) 31.06MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m20.82s Build Failure: 5 done, 1 failed, 2289 remaining - 0.06/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-184023.11128
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -1,0 +1,155 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3822475s
+load siso config done 21.0673ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:67994+ready:0 (node:441081 edge:68004)
+ 1.33s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/42160] 31.77s S CXX obj/services/network/public/mojom/mojom/mdns_responder.mojom.obj
+[0/16217] 32.97s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/15740] 33.00s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/4458] 37.87s F CXX obj/services/network/public/mojom/mojom/mdns_responder.mojom.obj
+[1/4410] 37.87s S LINK(DLL) components_certificate_transparency.dll components_certificate_transparency.dll.lib components_certificate_transparency.dll.pdb
+[1/4410] 37.87s S LINK(DLL) network_cpp.dll network_cpp.dll.lib network_cpp.dll.pdb
+[1/4410] 37.87s S LINK(DLL) services_device_fingerprint.dll services_device_fingerprint.dll.lib services_device_fingerprint.dll.pdb
+[1/4410] 37.87s S LINK(DLL) device_service_binder_overrides.dll device_service_binder_overrides.dll.lib device_service_binder_overrides.dll.pdb
+[1/4410] 37.87s S LINK(DLL) geolocation_service.dll geolocation_service.dll.lib geolocation_service.dll.pdb
+[1/4410] 37.87s S LINK(DLL) audio_public_cpp.dll audio_public_cpp.dll.lib audio_public_cpp.dll.pdb
+[1/4410] 37.87s S LINK(DLL) media_mojo_services.dll media_mojo_services.dll.lib media_mojo_services.dll.pdb
+[1/4410] 37.87s S LINK(DLL) services_audio_testing_api_support.dll services_audio_testing_api_support.dll.lib services_audio_testing_api_support.dll.pdb
+[1/4410] 37.87s S LINK(DLL) media_capture_mojom_video_capture_mojom_support.dll media_capture_mojom_video_capture_mojom_support.dll.lib media_capture_mojom_video_capture_mojom_support.dll.pdb
+[1/4410] 40.13s F LINK(DLL) services_device_fingerprint.dll services_device_fingerprint.dll.lib services_device_fingerprint.dll.pdb
+[2/4352] 40.19s F LINK(DLL) network_cpp.dll network_cpp.dll.lib network_cpp.dll.pdb
+[2/4352] 40.19s S LINK(DLL) google_apis.dll google_apis.dll.lib google_apis.dll.pdb
+[3/4352] 40.19s S LINK(DLL) services_cert_verifier_cert_net_url_loader.dll services_cert_verifier_cert_net_url_loader.dll.lib services_cert_verifier_cert_net_url_loader.dll.pdb
+[3/4341] 40.31s F LINK(DLL) device_service_binder_overrides.dll device_service_binder_overrides.dll.lib device_service_binder_overrides.dll.pdb
+[4/4341] 42.81s F LINK(DLL) components_certificate_transparency.dll components_certificate_transparency.dll.lib components_certificate_transparency.dll.pdb
+[5/4341] 42.95s F LINK(DLL) google_apis.dll google_apis.dll.lib google_apis.dll.pdb
+[6/4324] 42.96s S LINK(DLL) google_apis_gcm.dll google_apis_gcm.dll.lib google_apis_gcm.dll.pdb
+[6/4290] 42.97s S LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[6/4265] 42.98s S LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[6/4264] 42.98s S LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[6/4254] 43.56s F LINK(DLL) media_capture_mojom_video_capture_mojom_support.dll media_capture_mojom_video_capture_mojom_support.dll.lib media_capture_mojom_video_capture_mojom_support.dll.pdb
+[7/4254] 43.57s S LINK(DLL) media_capture_capture_lib.dll media_capture_capture_lib.dll.lib media_capture_capture_lib.dll.pdb
+[7/4253] 45.92s F LINK(DLL) services_cert_verifier_cert_net_url_loader.dll services_cert_verifier_cert_net_url_loader.dll.lib services_cert_verifier_cert_net_url_loader.dll.pdb
+[8/4251] 46.17s F LINK(DLL) google_apis_gcm.dll google_apis_gcm.dll.lib google_apis_gcm.dll.pdb
+[9/4246] 46.17s S LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[9/4246] 47.37s F LINK(DLL) media_mojo_services.dll media_mojo_services.dll.lib media_mojo_services.dll.pdb
+[10/4230] 49.47s F LINK(DLL) media_capture_capture_lib.dll media_capture_capture_lib.dll.lib media_capture_capture_lib.dll.pdb
+[11/4226] 49.48s S LINK(DLL) blink_common.dll blink_common.dll.lib blink_common.dll.pdb
+[11/4218] 50.81s F LINK(DLL) device_fido.dll device_fido.dll.lib device_fido.dll.pdb
+[12/4176] 51.69s F LINK(DLL) policy_component.dll policy_component.dll.lib policy_component.dll.pdb
+[13/4176] 51.69s S LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[13/4175] 52.78s F LINK(DLL) audio_public_cpp.dll audio_public_cpp.dll.lib audio_public_cpp.dll.pdb
+[14/4174] 56.88s F LINK(DLL) services_audio_testing_api_support.dll services_audio_testing_api_support.dll.lib services_audio_testing_api_support.dll.pdb
+[15/4174] 58.14s F LINK(DLL) components_manta.dll components_manta.dll.lib components_manta.dll.pdb
+[16/4171] 59.74s F LINK(DLL) geolocation_service.dll geolocation_service.dll.lib geolocation_service.dll.pdb
+[17/4170] 1m01.04s F LINK(DLL) components_proxy_config.dll components_proxy_config.dll.lib components_proxy_config.dll.pdb
+[18/4170] 1m02.65s F LINK(DLL) components_drive.dll components_drive.dll.lib components_drive.dll.pdb
+[19/4159] 1m02.72s F LINK(DLL) blink_common.dll blink_common.dll.lib blink_common.dll.pdb
+[20/4032] 1m02.73s S LINK(DLL) blink_platform_wtf.dll blink_platform_wtf.dll.lib blink_platform_wtf.dll.pdb
+[20/4032] 1m02.73s S LINK(DLL) services_network_network_service.dll services_network_network_service.dll.lib services_network_network_service.dll.pdb
+[20/4032] 1m03.73s F CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[21/4016] 1m05.82s F LINK(DLL) blink_platform_wtf.dll blink_platform_wtf.dll.lib blink_platform_wtf.dll.pdb
+[22/4010] 1m05.82s S LINK(DLL) mojo_public_cpp_bindings_wtf_support.dll mojo_public_cpp_bindings_wtf_support.dll.lib mojo_public_cpp_bindings_wtf_support.dll.pdb
+[22/4010] 1m05.82s S LINK(DLL) storage_common.dll storage_common.dll.lib storage_common.dll.pdb
+[22/4010] 1m05.82s S LINK(DLL) gamepad_mojom.dll gamepad_mojom.dll.lib gamepad_mojom.dll.pdb
+[22/4010] 1m05.82s S LINK(DLL) image_decoders.dll image_decoders.dll.lib image_decoders.dll.pdb
+[22/4010] 1m05.82s S LINK(DLL) components_input.dll components_input.dll.lib components_input.dll.pdb
+[22/4010] 1m05.83s S LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[22/4003] 1m06.44s F LINK(DLL) services_network_network_service.dll services_network_network_service.dll.lib services_network_network_service.dll.pdb
+[23/4003] 1m06.45s S LINK(DLL) components_mirroring_service_mirroring_service.dll components_mirroring_service_mirroring_service.dll.lib components_mirroring_service_mirroring_service.dll.pdb
+[23/3991] 1m08.86s F LINK(DLL) mojo_public_cpp_bindings_wtf_support.dll mojo_public_cpp_bindings_wtf_support.dll.lib mojo_public_cpp_bindings_wtf_support.dll.pdb
+[24/3860] 1m08.86s S LINK(DLL) gamepad_mojom_blink.dll gamepad_mojom_blink.dll.lib gamepad_mojom_blink.dll.pdb
+[24/3849] 1m08.91s F LINK(DLL) storage_common.dll storage_common.dll.lib storage_common.dll.pdb
+[25/3849] 1m08.91s S LINK(DLL) storage_browser.dll storage_browser.dll.lib storage_browser.dll.pdb
+[25/3848] 1m10.04s F LINK(DLL) components_input.dll components_input.dll.lib components_input.dll.pdb
+[26/3848] 1m10.05s S LINK(DLL) components_viz_host.dll components_viz_host.dll.lib components_viz_host.dll.pdb
+[26/3848] 1m12.03s F LINK(DLL) gamepad_mojom_blink.dll gamepad_mojom_blink.dll.lib gamepad_mojom_blink.dll.pdb
+[27/3847] 1m12.10s F LINK(DLL) gamepad_mojom.dll gamepad_mojom.dll.lib gamepad_mojom.dll.pdb
+[28/3846] 1m12.10s S LINK(DLL) device_vr_isolated_xr_service_mojo_bindings.dll device_vr_isolated_xr_service_mojo_bindings.dll.lib device_vr_isolated_xr_service_mojo_bindings.dll.pdb
+[28/3846] 1m12.10s S LINK(DLL) device_gamepad.dll device_gamepad.dll.lib device_gamepad.dll.pdb
+[28/3845] 1m12.94s F LINK(DLL) storage_browser.dll storage_browser.dll.lib storage_browser.dll.pdb
+[29/3803] 1m12.95s S LINK(DLL) components_download_public_common_public.dll components_download_public_common_public.dll.lib components_download_public_common_public.dll.pdb
+[29/3802] 1m16.04s F LINK(DLL) device_vr_isolated_xr_service_mojo_bindings.dll device_vr_isolated_xr_service_mojo_bindings.dll.lib device_vr_isolated_xr_service_mojo_bindings.dll.pdb
+[30/3802] 1m16.05s S LINK(DLL) vr_public_cpp.dll vr_public_cpp.dll.lib vr_public_cpp.dll.pdb
+[30/3802] 1m16.12s F LINK(DLL) components_viz_host.dll components_viz_host.dll.lib components_viz_host.dll.pdb
+[31/3802] 1m16.13s S LINK(DLL) ui_compositor.dll ui_compositor.dll.lib ui_compositor.dll.pdb
+[31/3802] 1m17.01s F LINK(DLL) image_decoders.dll image_decoders.dll.lib image_decoders.dll.pdb
+[32/3802] 1m17.03s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[32/3802] 1m23.02s F LINK(DLL) vr_public_cpp.dll vr_public_cpp.dll.lib vr_public_cpp.dll.pdb
+[33/3800] 1m23.03s S LINK(DLL) device_vr.dll device_vr.dll.lib device_vr.dll.pdb
+[33/3800] 1m23.33s F LINK(DLL) ui_compositor.dll ui_compositor.dll.lib ui_compositor.dll.pdb
+[34/3788] 1m23.34s S LINK(DLL) components_capture_mode.dll components_capture_mode.dll.lib components_capture_mode.dll.pdb
+[34/3680] 1m26.25s S LINK(DLL) components_viz_service.dll components_viz_service.dll.lib components_viz_service.dll.pdb
+[34/3680] 1m26.84s F LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[35/3680] 1m30.27s F LINK(DLL) device_gamepad.dll device_gamepad.dll.lib device_gamepad.dll.pdb
+[36/3679] 1m31.84s F LINK(DLL) device_vr.dll device_vr.dll.lib device_vr.dll.pdb
+[37/3676] 1m35.90s F LINK(DLL) components_download_public_common_public.dll components_download_public_common_public.dll.lib components_download_public_common_public.dll.pdb
+[38/3671] 1m39.92s F LINK(DLL) components_viz_service.dll components_viz_service.dll.lib components_viz_service.dll.pdb
+[39/3667] 1m42.41s F LINK(DLL) components_mirroring_service_mirroring_service.dll components_mirroring_service_mirroring_service.dll.lib components_mirroring_service_mirroring_service.dll.pdb
+[40/3666] 1m44.00s F LINK(DLL) components_capture_mode.dll components_capture_mode.dll.lib components_capture_mode.dll.pdb
+[41/3657] 1m46.67s F LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[42/2896] 1m46.78s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[42/2450] 1m46.84s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[42/2334] 2m08.04s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[43/2334] 2m14.13s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_browser_bridge_test.obj
+[44/2334] 2m21.90s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: ddf43e5c-d139-41b5-ba64-b16169f0e99e "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: relocation points beyond the end of its parent section
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:45 remote:0 cache:0 skip:99775
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 10268(err:42) / r:888(err:0) 9.07GiB / w:40(err:0) 2.75MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14      4(0)     0.00s |▇      |    39.34s |   ▄▆▄ |
+
+2m22.66s Build Failure: 45 done, 1 failed, 2289 remaining - 0.32/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-175154.11932
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

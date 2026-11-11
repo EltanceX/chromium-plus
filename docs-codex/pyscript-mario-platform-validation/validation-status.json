@@ -1,0 +1,18 @@
+{
+  "featureImplementationComplete": true,
+  "standardBuildComplete": true,
+  "stageComplete": false,
+  "unifiedPassed": false,
+  "sourceUnchanged": true,
+  "functionalInputFiles": 875,
+  "expectedCases": 456,
+  "passedCases": 453,
+  "executedCases": 454,
+  "failedSuites": [
+    "mario"
+  ],
+  "remainingIssue": "Debug full-level-route stopped at frame 2340: 16 ms budget",
+  "finalRun": "final/summary.json",
+  "standaloneMario": "probes/mario-autofocus-3.json",
+  "standaloneMarioPassed": true
+}

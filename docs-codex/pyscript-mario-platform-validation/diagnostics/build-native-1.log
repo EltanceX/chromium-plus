@@ -1,0 +1,108 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.5107611s
+load siso config done 12.2171ms
+schedule pending:1+ready:0 (node:441079 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441079 edge:4)
+build start: Ready 3621 Pending 44289
+[0/16860] 29.10s S CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[0/16462] 29.10s S CXX obj/components/python_runtime/python_runtime/python_canvas_module.obj
+[0/16426] 29.10s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/16394] 29.10s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/16380] 29.11s S CXX obj/components/python_runtime/python_runtime/python_browser_module.obj
+[0/15466] 29.13s S CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[0/6100] 29.49s S CXX obj/third_party/blink/renderer/core/core/python_canvas_bridge.obj
+[0/5695] 29.53s S CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[0/5683] 29.53s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/5554] 29.54s S CXX obj/third_party/blink/renderer/core/core/python_browser_bridge.obj
+[0/1589] 29.76s S CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_batch.obj
+[0/1573] 29.76s S CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_bridge_impl.obj
+[0/1134] 29.80s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/1105] 29.80s S CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[0/1063] 29.80s S CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[0/976] 29.81s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/875] 29.83s S CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[0/159] 35.30s F CXX obj/third_party/blink/renderer/core/core/python_canvas_bridge.obj
+[1/159] 35.61s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[2/159] 36.15s E CXX obj/components/python_runtime/python_runtime/python_browser_module.obj
+FAILED: 78a131a6-7f27-4358-b51a-3548af097e2d "./obj/components/python_runtime/python_runtime/python_browser_module.obj" CXX obj/components/python_runtime/python_runtime/python_browser_module.obj
+err: exit=1
+sccache ..\..\third_party\llvm-build\Release+Asserts\bin\clang-cl.exe /c ../../components/python_runtime/python_browser_module.cc /Foobj/components/python_runtime/python_runtime/python_browser_module.obj /nologo /showIncludes "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/include" "-imsvc../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Auxiliary/VS/include" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/ucrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/um" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/shared" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/winrt" "-imsvc../../../../Program Files (x86)/Windows Kits/10/include/10.0.28000.0/cppwinrt" -DIS_PYTHON_RUNTIME_IMPL -D_HAS_NODISCARD -D_CRT_NONSTDC_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS "-DCR_CLANG_REVISION=\"llvmorg-24-init-14453-ge063be79-1\"" -DCOMPONENT_BUILD -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -D_LIBCPP_INSTRUMENTED_WITH_ASAN=0 -DCR_LIBCXX_REVISION=9ba7713d3a0f1e179904c984bb626748b15e57d6 -D__STD_C -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_SCL_SECURE_NO_DEPRECATE -D_ATL_NO_OPENGL -D_WINDOWS -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DPSAPI_VERSION=2 -DWIN32 -D_SECURE_ATL -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DDCHECK_ALWAYS_ON=1 -DUSE_AURA=1 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -D_UNICODE -DUNICODE -DNTDDI_VERSION=NTDDI_WIN11_BR -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -DWINCRYPT_USE_SYMBOL_PREFIX -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DBORINGSSL_SHARED_LIBRARY -DPROTOBUF_MESSAGE_GLOBALS_TEMPORARY_OPTOUT -DPy_NO_ENABLE_SHARED -DUSE_LIBCXX_MODULES -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../base/allocator/partition_allocator/src -Igen/base/allocator/partition_allocator/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -I../../third_party/protobuf/third_party/utf8_range -Igen/third_party/cpython/config -I../../third_party/cpython/src/Include /W4 -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wgnu -Wno-gnu-anonymous-struct -Wno-gnu-conditional-omitted-operand -Wno-gnu-include-next -Wno-gnu-label-as-value -Wno-gnu-redeclared-enum -Wno-gnu-statement-expression -Wno-gnu-zero-variadic-macro-arguments -Wno-zero-length-array -Wthread-safety -Wno-unused-template -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wno-stringop-overread -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-thread-safety-reference-return -Wno-nontrivial-memcall -Wno-uninitialized-const-pointer -Wno-unused-but-set-global -Wno-nonportable-include-path -Wexit-time-destructors -Wshadow /WX -fno-delete-null-pointer-checks /clang:-fno-strict-overflow -fno-ident /clang:-fno-math-errno -fcolor-diagnostics /clang:-fdiagnostics-show-inlining-chain -fmerge-all-constants -fcrash-diagnostics-dir=../clang-crashreports -fno-lifetime-dse -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 /clang:-ffp-contract=off -fcomplete-member-pointers /Gy /FS /bigobj /utf-8 /Zc:twoPhase -ffile-reproducible /D__WRL_ENABLE_FUNCTION_STATICS__ -fmsc-version=1934 /Zc:dllexportInlines- -m64 -msse3 /Brepro -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -Xclang -fmodule-file-home-is-cwd -Xclang -fmodules-cache-path=/not_exist_dummy_dir --warning-suppression-mappings=../../build/config/warning_suppression.txt -ftrivial-auto-var-init=pattern /Od /Ob0 /GF /Z7 -gno-codeview-command-line -mllvm -pick-merged-source-locations -gcodeview-ghash -Xclang -fuse-ctor-homing -fsanitize=array-bounds -fsanitize-trap=array-bounds -fsanitize-ignore-for-ubsan-feature=array-bounds -Wno-unsafe-buffer-usage-in-static-sized-array -fsanitize=return -fsanitize-trap=return -fsanitize-ignore-for-ubsan-feature=return -fsanitize=unreachable -fsanitize-trap=unreachable -fsanitize-ignore-for-ubsan-feature=unreachable /guard:cf,nochecks /MDd -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang relax-ctor-checks-for-aggregates -Xclang -add-plugin -Xclang raw-ptr-plugin -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-raw-ptr-plugin -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../third_party/dawn/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang raw-ptr-exclude-path=../../build/config/clang/chrome/test/fuzzing/webidl_fuzzing/ -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-span-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ref-fields -Xclang -plugin-arg-raw-ptr-plugin -Xclang config-path=../../build/config/raw_ptr_plugin_config.yaml -Xclang -plugin-arg-raw-ptr-plugin -Xclang no-special-treatment-for-oilpanized-paths -Xclang -plugin-arg-raw-ptr-plugin -Xclang check-raw-ptr-in-blink -DUNSAFE_BUFFERS_BUILD -Wunsafe-buffer-usage -Wno-error=unsafe-buffer-usage -Wno-unsafe-buffer-usage-main-argv -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -Wno-invalid-offsetof -Wenum-compare-conditional -Wno-nullability-completeness -Wunique-object-duplication /std:c++23preview -Wno-trigraphs /GR- -I../../third_party/libc++/src/include -fmodules /clang:-fno-implicit-module-maps -fno-implicit-modules -Xclang -fmodules-local-submodule-visibility -Wno-modules-ambiguous-internal-linkage -Wno-modules-import-nested-redundant -Xclang -fmodules-disable-diagnostic-validation -Wno-module-import-in-extern-c /TP -fmodule-map-file=gen/build/modules/module.modulemap -fmodule-file=//build/modules:system=obj/build/modules/system/module.pcm "-fmodule-name=//components/python_runtime:python_runtime_Private" /Fd"obj/components/python_runtime/python_runtime_cc.pdb"
+build step: cxx "./obj/components/python_runtime/python_runtime/python_browser_module.obj"
+stderr:
+../../components/python_runtime/python_browser_module.cc(118,47): error: unsafe buffer access [-Werror,-Wunsafe-buffer-usage]
+  118 |     PyObject* item = PyList_Check(sequence) ? PyList_GET_ITEM(sequence, i)
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../third_party/cpython/src/Include\cpython/listobject.h(40,37): note: expanded from macro 'PyList_GET_ITEM'
+   40 | #define PyList_GET_ITEM(op, index) (_PyList_CAST(op)->ob_item[(index)])
+      |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+../../third_party/cpython/src/Include\cpython/listobject.h(26,5): note: expanded from macro '_PyList_CAST'
+   26 |     (assert(PyList_Check(op)), _Py_CAST(PyListObject*, (op)))
+      |     ^
+../../components/python_runtime/python_browser_module.cc(118,47): note: See //docs/unsafe_buffers.md for help.
+../../third_party/cpython/src/Include\cpython/listobject.h(40,37): note: expanded from macro 'PyList_GET_ITEM'
+   40 | #define PyList_GET_ITEM(op, index) (_PyList_CAST(op)->ob_item[(index)])
+      |                                     ^
+../../third_party/cpython/src/Include\cpython/listobject.h(26,5): note: expanded from macro '_PyList_CAST'
+   26 |     (assert(PyList_Check(op)), _Py_CAST(PyListObject*, (op)))
+      |     ^
+../../components/python_runtime/python_browser_module.cc(119,47): error: unsafe buffer access [-Werror,-Wunsafe-buffer-usage]
+  119 |                                             : PyTuple_GET_ITEM(sequence, i);
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../third_party/cpython/src/Include\cpython/tupleobject.h(27,38): note: expanded from macro 'PyTuple_GET_ITEM'
+   27 | #define PyTuple_GET_ITEM(op, index) (_PyTuple_CAST(op)->ob_item[(index)])
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../../third_party/cpython/src/Include\cpython/tupleobject.h(17,5): note: expanded from macro '_PyTuple_CAST'
+   17 |     (assert(PyTuple_Check(op)), _Py_CAST(PyTupleObject*, (op)))
+      |     ^
+../../components/python_runtime/python_browser_module.cc(119,47): note: See //docs/unsafe_buffers.md for help.
+../../third_party/cpython/src/Include\cpython/tupleobject.h(27,38): note: expanded from macro 'PyTuple_GET_ITEM'
+   27 | #define PyTuple_GET_ITEM(op, index) (_PyTuple_CAST(op)->ob_item[(index)])
+      |                                      ^
+../../third_party/cpython/src/Include\cpython/tupleobject.h(17,5): note: expanded from macro '_PyTuple_CAST'
+   17 |     (assert(PyTuple_Check(op)), _Py_CAST(PyTupleObject*, (op)))
+      |     ^
+2 errors generated.
+
+
+[3/159] 36.16s F CXX obj/third_party/blink/renderer/core/core/python_browser_bridge.obj
+[4/159] 36.16s F CXX obj/components/python_runtime/python_runtime/python_canvas_module.obj
+[5/159] 36.17s - CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[5/159] 36.64s - CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[5/159] 36.65s - CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[5/159] 36.77s - CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[5/159] 36.77s - CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_batch.obj
+[5/159] 37.85s - CXX obj/chrome/renderer/python_document_context_unittests/python_document_context_unittest.obj
+[5/159] 38.73s - CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[5/159] 47.00s - CXX obj/third_party/blink/renderer/core/core/html_py_script_element.obj
+[5/159] 54.76s - CXX obj/third_party/blink/renderer/modules/modules/python_browser_bridge_impl.obj
+[5/159] 55.98s - CXX obj/third_party/blink/renderer/modules/canvas/canvas/python_canvas_bridge_impl.obj
+[5/159] 1m11.16s - CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[5/159] 1m44.76s - CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+build failed
+
+
+noexec:0 local:5 remote:0 cache:0 skip:47751
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 15096(err:4) / r:284(err:0) 2.52MiB / w:0(err:0) 0B
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+  localexec/14    17(13)     0.96s |█  ▃   |    14.82s | ▂ █▄▂ |
+
+1m45.54s Build Failure: 5 done, 1 failed, 154 remaining - 0.05/s
+ 1 steps failed: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-170138.18124
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

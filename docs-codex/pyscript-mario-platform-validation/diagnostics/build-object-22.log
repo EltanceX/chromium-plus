@@ -1,0 +1,30 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3286962s
+load siso config done 12.9162ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:7)
+build start: Ready 329 Pending 4395
+[0/1] 27.54s S CXX obj/services/viz/public/mojom/mojom/layer_context.mojom.obj
+[0/1] 41.28s F CXX obj/services/viz/public/mojom/mojom/layer_context.mojom.obj
+build finished
+
+
+noexec:0 local:1 remote:0 cache:0 skip:4723
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 291(err:2) / r:65(err:0) 15.28MiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+42.08s Build Succeeded: 1 steps - 0.02/s

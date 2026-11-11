@@ -1,0 +1,366 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:61644",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Typed native controls retain values flags literal text and bounded styles",
+      "passed": true,
+      "elapsedMs": 402
+    },
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 349
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": true,
+      "elapsedMs": 1365,
+      "detail": {
+        "state": {
+          "state": "ready",
+          "x": "96.000",
+          "y": "460.000",
+          "vx": "0.000",
+          "vy": "0.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "13",
+          "elapsed": "0.000",
+          "steps": "0",
+          "keys": "0",
+          "particles": "0"
+        },
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:21.000 | lifetime max physics_ms:0.905 build_ms:0.000 submit_ms:0.038 total_ms:3.632 p95_ms:2.862 gap_ms:66.6 steps:0 dropped_s:0.033"
+      }
+    },
+    {
+      "name": "Trusted start movement and variable jump use native Python callbacks",
+      "passed": true,
+      "elapsedMs": 2655,
+      "detail": {
+        "state": {
+          "state": "playing",
+          "x": "264.889",
+          "y": "357.233",
+          "vx": "66.667",
+          "vy": "62.667",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "105",
+          "elapsed": "0.792",
+          "steps": "1",
+          "keys": "0",
+          "particles": "5"
+        },
+        "metrics": "commands:34 bytes:4431 pixels:3192648 native_ms:2.000 | lifetime max physics_ms:4.437 build_ms:1.673 submit_ms:2.796 total_ms:5.560 p95_ms:5.060 gap_ms:66.6 steps:2 dropped_s:1.491"
+      }
+    },
+    {
+      "name": "Pause clears held controls and stops world time",
+      "passed": true,
+      "elapsedMs": 621,
+      "detail": {
+        "before": {
+          "state": "paused",
+          "x": "266.000",
+          "y": "365.411",
+          "vx": "0.000",
+          "vy": "169.333",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "115",
+          "elapsed": "0.858",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        },
+        "after": {
+          "state": "paused",
+          "x": "266.000",
+          "y": "365.411",
+          "vx": "0.000",
+          "vy": "169.333",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "139",
+          "elapsed": "0.858",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        }
+      }
+    },
+    {
+      "name": "Restart is repeatable without allocating more native surfaces",
+      "passed": true,
+      "elapsedMs": 1652
+    },
+    {
+      "name": "Pointer capture moves and releasing stops the player",
+      "passed": true,
+      "elapsedMs": 1211
+    },
+    {
+      "name": "Hidden and frozen page clears input and resets the time baseline",
+      "passed": true,
+      "elapsedMs": 1574
+    },
+    {
+      "name": "Movement buttons support native keyboard hold release and focus cleanup",
+      "passed": true,
+      "elapsedMs": 3138
+    },
+    {
+      "name": "Native range keyboard actions update Python parameters without game shortcuts",
+      "passed": true,
+      "elapsedMs": 1411
+    },
+    {
+      "name": "Collision checkbox changes native Canvas pixels and remains keyboard accessible",
+      "passed": true,
+      "elapsedMs": 282
+    },
+    {
+      "name": "Reset restores all native values checkboxes and Python output labels",
+      "passed": true,
+      "elapsedMs": 3502
+    },
+    {
+      "name": "Tabs use native focus roving tabindex arrows Home and End",
+      "passed": true,
+      "elapsedMs": 765
+    },
+    {
+      "name": "All eight Python lessons wrap and flow cards select the explanation tab",
+      "passed": true,
+      "elapsedMs": 2703
+    },
+    {
+      "name": "Learning dialog pauses clears input selects a lesson and restores focus",
+      "passed": true,
+      "elapsedMs": 1365
+    },
+    {
+      "name": "Native Escape closes dialogs without resuming or restarting the game",
+      "passed": true,
+      "elapsedMs": 589
+    },
+    {
+      "name": "State HUD progress and bounded event log follow native gameplay",
+      "passed": true,
+      "elapsedMs": 2602
+    },
+    {
+      "name": "Narrow resize uses 790 logical pixels and reduced motion stays interactive",
+      "passed": true,
+      "elapsedMs": 1331
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: acceleration-brake",
+      "passed": true,
+      "elapsedMs": 3345,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 4,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: long-jump",
+      "passed": true,
+      "elapsedMs": 2949,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 4,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: short-jump",
+      "passed": true,
+      "elapsedMs": 2933,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: question-once",
+      "passed": true,
+      "elapsedMs": 3234,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 3,
+        "final": "playing:200:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: collect-coin",
+      "passed": true,
+      "elapsedMs": 623,
+      "detail": {
+        "steps": 2,
+        "checkpoints": 2,
+        "final": "playing:100:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: stomp",
+      "passed": true,
+      "elapsedMs": 765,
+      "detail": {
+        "steps": 12,
+        "checkpoints": 2,
+        "final": "playing:400:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: side-hit-respawn",
+      "passed": true,
+      "elapsedMs": 3278,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: pit-respawn",
+      "passed": true,
+      "elapsedMs": 3643,
+      "detail": {
+        "steps": 170,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: checkpoint-respawn",
+      "passed": true,
+      "elapsedMs": 3455,
+      "detail": {
+        "steps": 170,
+        "checkpoints": 3,
+        "final": "playing:500:True"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: last-life",
+      "passed": true,
+      "elapsedMs": 3104,
+      "detail": {
+        "steps": 150,
+        "checkpoints": 2,
+        "final": "over:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: timeout-reset",
+      "passed": true,
+      "elapsedMs": 2981,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 2,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: finish",
+      "passed": true,
+      "elapsedMs": 3641,
+      "detail": {
+        "steps": 180,
+        "checkpoints": 3,
+        "final": "won:2300:True"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: coyote",
+      "passed": true,
+      "elapsedMs": 1543,
+      "detail": {
+        "steps": 50,
+        "checkpoints": 3,
+        "final": "playing:100:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: jump-buffer",
+      "passed": true,
+      "elapsedMs": 1143,
+      "detail": {
+        "steps": 30,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: full-level-route",
+      "passed": false,
+      "elapsedMs": 42517,
+      "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 2340] Python animation frame exceeded the 16 ms cooperative execution budget\",\"timestamp\":1794437193339.152,\"url\":\"http://127.0.0.1:61644/oracle/full-level-route\",\"lineNumber\":1424}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:511:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:509:5",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 2] ORACLE 1 {'game': {'state': 'playing', 'score': 0, 'coins': 0, 'lives': 3, 'remaining': 179.99166666666667, 'camera': 0.0, 'checkpoint': False, 'elapsed': 0.008333333333333333, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 96.15277777777777, 'y': 460, 'w': 28, 'h': 44, 'vx': 18.333333333333332, 'vy': 0, 'facing': 1, 'onGround': True, 'coyote': 0.1, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [], 'enemies': [{'x': 759.5416666666666, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1360.4583333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 2079.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 2340.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 3469.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4060.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 4869.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 5480.458333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 6039.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}], 'particles': [], 'particleCount': 0, 'floatTexts': [], 'rng': 1296126537}\n",
+          "timestamp": 1794437151787.152,
+          "url": "http://127.0.0.1:61644/oracle/full-level-route",
+          "lineNumber": 1424
+        },
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 602] ORACLE 600 {'game': {'state': 'playing', 'score': 0, 'coins': 0, 'lives': 3, 'remaining': 175.00000000000455, 'camera': 1076.6000000008746, 'checkpoint': False, 'elapsed': 5.000000000000038, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 1479.3333333333253, 'y': 331.16666666666663, 'w': 28, 'h': 44, 'vx': 280, 'vy': 53.33333333333344, 'facing': 1, 'onGround': False, 'coyote': 0, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [], 'enemies': [{'x': 484.9999999999806, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1556.6249999999675, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1805.0000000000298, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 2309.2916666666565, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 3194.999999999909, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4329.041666666524, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4595.000000000182, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 5693.124999999859, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 6046.874999999995, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}], 'particles': [{'x': 1392.8749672540923, 'y': 483.9506511319946, 'vx': 23.510554691310972, 'vy': 36.810173102965, 'life': 0.1728611553631097, 'color': '#ece7c0', 'size': 6.254635069519281}, {'x': 1375.731585234147, 'y': 443.2743773515076, 'vx': -20.2597823808901, 'vy': -67.04414293232084, 'life': 0.33662817838679404, 'color': '#ece7c0', 'size': 3.4339070599526167}], 'particleCount': 5, 'floatTexts': [], 'rng': 735363453}\n",
+          "timestamp": 1794437161788.152,
+          "url": "http://127.0.0.1:61644/oracle/full-level-route",
+          "lineNumber": 1424
+        },
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 1203] ORACLE 1200 {'game': {'state': 'playing', 'score': 1200, 'coins': 6, 'lives': 3, 'remaining': 170.0000000000091, 'camera': 2476.6000000000267, 'checkpoint': False, 'elapsed': 10.000000000000073, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 2879.3333333333608, 'y': 406.8333333333333, 'w': 28, 'h': 44, 'vx': 280, 'vy': -513.3333333333329, 'facing': 1, 'onGround': False, 'coyote': 0, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [5, 6, 7, 9, 10, 11], 'enemies': [{'x': 209.99999999998911, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1539.2083333333037, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': False, 'squish': 0}, {'x': 2026.3749999999932, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 2170.874999999944, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': False, 'squish': 0}, {'x': 3228.4583333332534, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 4054.0416666666642, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4708.20833333344, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 5418.125000000041, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 6090.416666666633, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}], 'particles': [{'x': 2862.9436470571914, 'y': 488.2077507658331, 'vx': -51.523850285448134, 'vy': -150.27908255454784, 'life': 0.5424260500430443, 'color': '#ece7c0', 'size': 6.152738878503442}, {'x': 2873.8600038547365, 'y': 495.56772430199715, 'vx': 67.56367841502652, 'vy': -69.98846216003095, 'life': 0.5942713435816892, 'color': '#ece7c0', 'size': 6.821008810773492}], 'particleCount': 5, 'floatTexts': [], 'rng': 2589724128}\n",
+          "timestamp": 1794437171805.152,
+          "url": "http://127.0.0.1:61644/oracle/full-level-route",
+          "lineNumber": 1424
+        },
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 1804] ORACLE 1800 {'game': {'state': 'playing', 'score': 2800, 'coins': 17, 'lives': 3, 'remaining': 165.00000000001364, 'camera': 3876.600000000084, 'checkpoint': True, 'elapsed': 14.999999999999789, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 4279.333333333416, 'y': 355.0, 'w': 28, 'h': 44, 'vx': 280, 'vy': 193.33333333333343, 'facing': 1, 'onGround': False, 'coyote': 0, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [5, 6, 7, 9, 10, 11, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28], 'enemies': [{'x': 69.2916666666547, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 1539.2083333333037, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': False, 'squish': 0}, {'x': 2301.375000000073, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 2170.874999999944, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': False, 'squish': 0}, {'x': 3503.4583333333444, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 3964.6666666666347, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 4983.208333333258, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 5384.66666666673, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 5996.458333333362, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}], 'particles': [{'x': 4184.637856144242, 'y': 443.3564788314008, 'vx': 24.245936025399715, 'vy': -47.35730471042937, 'life': 0.2136962006334213, 'color': '#ece7c0', 'size': 4.553069634363055}, {'x': 4161.9475957463155, 'y': 483.45497069585446, 'vx': -29.142911969684064, 'vy': 46.99208791181448, 'life': 0.32925282848300447, 'color': '#ece7c0', 'size': 4.654687372967601}], 'particleCount': 11, 'floatTexts': [{'x': 4311, 'y': 350.73333333333335, 'text': '+100', 'color': '#fff6c5', 'life': 0.8666666666666668}], 'rng': 2955796598}\n",
+          "timestamp": 1794437182073.152,
+          "url": "http://127.0.0.1:61644/oracle/full-level-route",
+          "lineNumber": 1424
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 2340] Python animation frame exceeded the 16 ms cooperative execution budget",
+          "timestamp": 1794437193339.152,
+          "url": "http://127.0.0.1:61644/oracle/full-level-route",
+          "lineNumber": 1424
+        }
+      ],
+      "pageState": {
+        "status": "正在初始化 Python…",
+        "telemetry": "等待状态数据",
+        "metrics": "等待绘制数据"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 2340] Python animation frame exceeded the 16 ms cooperative execution budget\",\"timestamp\":1794437193339.152,\"url\":\"http://127.0.0.1:61644/oracle/full-level-route\",\"lineNumber\":1424}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:511:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:509:5"
+}

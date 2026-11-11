@@ -1,0 +1,37 @@
+[17500:4980:1111/205724.340:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[17500:4980:1111/205724.603:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+[2660:12368:1111/205724.834:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+
+DevTools listening on ws://127.0.0.1:59016/devtools/browser/191d464d-39c0-490e-84d6-03a9e81764b8
+[17500:4980:1111/205726.038:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[17500:4980:1111/205726.038:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[17500:4980:1111/205726.317:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[17500:4980:1111/205726.423:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[2660:12368:1111/205726.743:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[2660:12368:1111/205726.745:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[17500:15824:1111/205727.487:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[17500:15824:1111/205727.520:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[2956:6612:1111/205730.103:WARNING:services\audio\sync_reader.cc:154] ASR: No room in socket buffer.: 管道正在被关闭。 (0xE8)
+[17500:4980:1111/205733.214:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.216:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.217:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.218:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.219:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.219:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.220:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205733.265:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:59014/pending (0)
+[17500:4980:1111/205737.075:INFO:CONSOLE:1434] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:59014/win (1434)
+[2956:5328:1111/205738.937:WARNING:services\audio\sync_reader.cc:154] ASR: No room in socket buffer.: 管道正在被关闭。 (0xE8)
+[2660:16188:1111/205739.748:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205739.795:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205739.841:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205739.906:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205739.958:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205739.999:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205740.033:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205740.075:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205740.105:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205740.172:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205740.229:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[2660:16188:1111/205747.054:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, CE1C...))
+[2660:16188:1111/205747.056:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, F75F...))

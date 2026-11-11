@@ -1,0 +1,195 @@
+{
+  "directObjects": 5042,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/css_keyframes_rule.obj",
+      "errors": [
+        {
+          "section": 874,
+          "name": ".text",
+          "size": 134,
+          "relocation": 0,
+          "offset": 2380798299,
+          "symbol": 2262864828,
+          "kind": 37680
+        },
+        {
+          "section": 875,
+          "name": ".text",
+          "size": 152,
+          "relocation": 0,
+          "offset": 34463199,
+          "symbol": 3194032139,
+          "kind": 2075
+        },
+        {
+          "section": 876,
+          "name": ".text",
+          "size": 25,
+          "relocation": 0,
+          "offset": 2986480480,
+          "symbol": 4049350170,
+          "kind": 31780
+        },
+        {
+          "section": 877,
+          "name": ".text",
+          "size": 34,
+          "relocation": 0,
+          "offset": 1794565713,
+          "symbol": 1441852109,
+          "kind": 64734
+        },
+        {
+          "section": 878,
+          "name": ".text",
+          "size": 34,
+          "relocation": 0,
+          "offset": 1812976732,
+          "symbol": 1415085457,
+          "kind": 26296
+        },
+        {
+          "section": 879,
+          "name": ".text",
+          "size": 36,
+          "relocation": 0,
+          "offset": 485686857,
+          "symbol": 4059305218,
+          "kind": 29080
+        },
+        {
+          "section": 881,
+          "name": ".text",
+          "size": 156,
+          "relocation": 0,
+          "offset": 783686647,
+          "symbol": 3760759268,
+          "kind": 10361
+        },
+        {
+          "section": 882,
+          "name": ".text",
+          "size": 145,
+          "relocation": 0,
+          "offset": 3995732287,
+          "symbol": 1964283019,
+          "kind": 35920
+        },
+        {
+          "section": 883,
+          "name": ".text",
+          "size": 25,
+          "relocation": 0,
+          "offset": 1123607059,
+          "symbol": 539033530,
+          "kind": 31418
+        },
+        {
+          "section": 884,
+          "name": ".text",
+          "size": 33,
+          "relocation": 0,
+          "offset": 4172696797,
+          "symbol": 1620873446,
+          "kind": 54925
+        }
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/core/resize_observer_controller.obj",
+      "errors": [
+        {
+          "section": 3269,
+          "name": ".debug$S",
+          "size": 260,
+          "relocation": 0,
+          "offset": 1008519239,
+          "symbol": 3323527181,
+          "kind": 58676
+        },
+        {
+          "section": 3270,
+          "name": ".debug$S",
+          "size": 868,
+          "relocation": 0,
+          "offset": 129972815,
+          "symbol": 1289694729,
+          "kind": 35047
+        },
+        {
+          "section": 3271,
+          "name": ".debug$S",
+          "size": 260,
+          "relocation": 0,
+          "offset": 2152067175,
+          "symbol": 3144808760,
+          "kind": 4826
+        },
+        {
+          "section": 3272,
+          "name": ".debug$S",
+          "size": 1120,
+          "relocation": 0,
+          "offset": 2036562998,
+          "symbol": 3522784760,
+          "kind": 50113
+        },
+        {
+          "section": 3273,
+          "name": ".debug$S",
+          "size": 252,
+          "relocation": 0,
+          "offset": 3153985130,
+          "symbol": 174565737,
+          "kind": 58652
+        },
+        {
+          "section": 3274,
+          "name": ".debug$S",
+          "size": 192,
+          "relocation": 0,
+          "offset": 1368582930,
+          "symbol": 2542571038,
+          "kind": 32081
+        },
+        {
+          "section": 3275,
+          "name": ".debug$S",
+          "size": 196,
+          "relocation": 0,
+          "offset": 55681339,
+          "symbol": 881706875,
+          "kind": 7775
+        },
+        {
+          "section": 3276,
+          "name": ".debug$S",
+          "size": 256,
+          "relocation": 0,
+          "offset": 2731483822,
+          "symbol": 3204513033,
+          "kind": 56594
+        },
+        {
+          "section": 3277,
+          "name": ".debug$S",
+          "size": 256,
+          "relocation": 0,
+          "offset": 1869511659,
+          "symbol": 692936117,
+          "kind": 49011
+        },
+        {
+          "section": 3278,
+          "name": ".debug$S",
+          "size": 200,
+          "relocation": 0,
+          "offset": 307363967,
+          "symbol": 2589549389,
+          "kind": 11936
+        }
+      ]
+    }
+  ]
+}

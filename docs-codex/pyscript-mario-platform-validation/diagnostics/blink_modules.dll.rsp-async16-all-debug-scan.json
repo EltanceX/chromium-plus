@@ -1,0 +1,167 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_modules.dll.rsp",
+  "directObjects": 5828,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_digital_credential_request_options.obj",
+      "errors": [
+        "b'.debug$T' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "Invalid procedure ID 0x2b15 at 0x3d5be, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_install_params.obj",
+      "errors": [
+        "Invalid CodeView type at 0xae281: length 4576, kind 0x2c81",
+        "Invalid CodeView type extent 0xae281 != 0xaece9"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_ml_prelu_support_limits.obj",
+      "errors": [
+        "Invalid CodeView type at 0x54032: length 7635, kind 0xcdd1",
+        "Invalid CodeView type extent 0x54032 != 0xcce1e",
+        "Invalid procedure ID 0x291d at 0x25e2e, type kind out of range",
+        "Invalid procedure ID 0x2928 at 0x266ee, type kind out of range",
+        "Invalid procedure ID 0x2929 at 0x268f2, type kind out of range",
+        "Invalid procedure ID 0x292b at 0x269f6, type kind out of range",
+        "Invalid procedure ID 0x3143 at 0x278f6, type kind out of range",
+        "Invalid procedure ID 0x3145 at 0x279f6, type kind out of range",
+        "Invalid procedure ID 0x3149 at 0x27dee, type kind out of range",
+        "Invalid procedure ID 0x314b at 0x27efa, type kind out of range",
+        "Invalid procedure ID 0x314c at 0x2832a, type kind out of range",
+        "Invalid procedure ID 0x314f at 0x2848a, type kind out of range",
+        "Invalid procedure ID 0x3153 at 0x289c2, type kind out of range",
+        "Invalid procedure ID 0x3155 at 0x28afa, type kind out of range",
+        "Invalid procedure ID 0x3176 at 0x28cce, type kind out of range",
+        "Invalid procedure ID 0x3180 at 0x28eb2, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_payment_handler_response.obj",
+      "errors": [
+        "Invalid CodeView type at 0xc0869: length 43429, kind 0x2eea",
+        "Invalid CodeView type extent 0xc0869 != 0x1091e1",
+        "Invalid procedure ID 0x332c at 0x3d241, type kind out of range",
+        "Invalid procedure ID 0x332e at 0x3d341, type kind out of range",
+        "Invalid procedure ID 0x3332 at 0x3d561, type kind out of range",
+        "Invalid procedure ID 0x3334 at 0x3d66d, type kind out of range",
+        "Invalid procedure ID 0x3336 at 0x3d76d, type kind out of range",
+        "Invalid procedure ID 0x3337 at 0x3d861, type kind out of range",
+        "Invalid procedure ID 0x3338 at 0x3dab9, type kind out of range",
+        "Invalid procedure ID 0x333a at 0x3dc25, type kind out of range",
+        "Invalid procedure ID 0x333b at 0x3dd35, type kind out of range",
+        "Invalid procedure ID 0x333c at 0x3de59, type kind out of range",
+        "Invalid procedure ID 0x333d at 0x3dfc5, type kind out of range",
+        "Invalid procedure ID 0x333e at 0x3e0e9, type kind out of range",
+        "Invalid procedure ID 0x333f at 0x3e23d, type kind out of range",
+        "Invalid procedure ID 0x3340 at 0x3e369, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_rtc_rtp_receiver.obj",
+      "errors": [
+        "b'.debug$T' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "b'.debug$S' invalid signature",
+        "Invalid procedure ID 0x4ddb at 0x4cd53, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_rtc_transport_ice_event.obj",
+      "errors": [
+        "Invalid CodeView type at 0xc8188: length 3351, kind 0x9f4d",
+        "Invalid CodeView type extent 0xc8188 != 0x147510",
+        "Invalid procedure ID 0x39b5 at 0x29fe0, type kind out of range",
+        "Invalid procedure ID 0x39da at 0x2a0f8, type kind out of range",
+        "Invalid procedure ID 0x39db at 0x2a208, type kind out of range",
+        "Invalid procedure ID 0x39dc at 0x2a2fc, type kind out of range",
+        "Invalid procedure ID 0x39f4 at 0x2afe4, type kind out of range",
+        "Invalid procedure ID 0x39f5 at 0x2b0b0, type kind out of range",
+        "Invalid procedure ID 0x39f6 at 0x2b18c, type kind out of range",
+        "Invalid procedure ID 0x3aae at 0x2ba1c, type kind out of range",
+        "Invalid procedure ID 0x3ab5 at 0x2c068, type kind out of range",
+        "Invalid procedure ID 0x3ab9 at 0x2c6b4, type kind out of range",
+        "Invalid procedure ID 0x3abb at 0x2c868, type kind out of range",
+        "Invalid procedure ID 0x3ac0 at 0x2ccd4, type kind out of range",
+        "Invalid procedure ID 0x3ac5 at 0x2d3d8, type kind out of range",
+        "Invalid procedure ID 0x3ac8 at 0x2d558, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_service_worker.obj",
+      "errors": [
+        "Invalid CodeView type at 0xe00fe: length 33118, kind 0x23a",
+        "Invalid CodeView type extent 0xe00fe != 0x1d221a",
+        "Invalid procedure ID 0x40bf at 0x4de42, type kind out of range",
+        "Invalid procedure ID 0x40e4 at 0x4dfa2, type kind out of range",
+        "Invalid procedure ID 0x40e5 at 0x4e0b6, type kind out of range",
+        "Invalid procedure ID 0x40e6 at 0x4e1d2, type kind out of range",
+        "Invalid procedure ID 0x40e7 at 0x4e2c2, type kind out of range",
+        "Invalid procedure ID 0x40ee at 0x4efa2, type kind out of range",
+        "Invalid procedure ID 0x4201 at 0x4f75a, type kind out of range",
+        "Invalid procedure ID 0x4202 at 0x4f82a, type kind out of range",
+        "Invalid procedure ID 0x4203 at 0x4f8fe, type kind out of range",
+        "Invalid procedure ID 0x4209 at 0x50412, type kind out of range",
+        "Invalid procedure ID 0x420d at 0x50a56, type kind out of range",
+        "Invalid procedure ID 0x424e at 0x51096, type kind out of range",
+        "Invalid procedure ID 0x4250 at 0x516de, type kind out of range",
+        "Invalid procedure ID 0x4257 at 0x52792, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\bindings\\modules\\v8\\v8\\v8_video_frame.obj",
+      "errors": [
+        "Invalid UTF8 string table at 0x700000"
+      ]
+    }
+  ]
+}

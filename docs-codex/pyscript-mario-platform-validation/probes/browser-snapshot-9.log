@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 0,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase6\\browser-snapshot-9.json",
+  "error": "Error: spawn UNKNOWN\n    at ChildProcess.spawn (node:internal/child_process:487:11)\n    at spawn (node:child_process:813:9)\n    at launch (file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:183:11)\n    at file:///C:/src/src/chrome/test/pyscript_browser_smoke_test.mjs:291:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+}

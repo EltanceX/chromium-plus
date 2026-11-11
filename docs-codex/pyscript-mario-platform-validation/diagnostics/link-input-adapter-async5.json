@@ -1,0 +1,38 @@
+{
+  "objects": 2148,
+  "thinArchives": 75,
+  "problems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\modules\\peerconnection\\test_support\\mock_peer_connection_dependency_factory.obj",
+      "errors": [
+        "invalid section string table at 8029",
+        "invalid section string table at 8140",
+        "invalid section string table at 8278",
+        "invalid section string table at 8284",
+        "invalid section string table at 8324",
+        "invalid section string table at 8636",
+        "invalid section string table at 9760",
+        "invalid section string table at 9953",
+        "invalid section string table at 10203",
+        "invalid section string table at 10226"
+      ],
+      "sha256": "698ae4af4e9db9aac0cc122d0b7d8025ffd7c454a9766d196d466f9f9001f8ce"
+    },
+    {
+      "object": "obj\\third_party\\blink\\renderer\\modules\\peerconnection\\test_support\\mock_peer_connection_impl.obj",
+      "errors": [
+        "invalid section string table at 12573",
+        "invalid section string table at 12715",
+        "invalid section string table at 13144",
+        "invalid section string table at 13366",
+        "invalid section string table at 13426",
+        "invalid section string table at 13476",
+        "invalid section string table at 13757",
+        "invalid section string table at 14160",
+        "invalid section string table at 14346",
+        "invalid section string table at 14436"
+      ],
+      "sha256": "eb27e2c2f5206fe03c47674b4cf9baadbe4a0d5564bb5f6b19bbbdc033189c3a"
+    }
+  ]
+}

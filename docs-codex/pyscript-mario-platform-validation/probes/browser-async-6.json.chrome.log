@@ -1,0 +1,27 @@
+[10868:6840:1111/201213.641:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[10868:6840:1111/201213.745:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:53623/devtools/browser/e53ab8f9-67a7-4690-b989-184786c81c0d
+[5924:3928:1111/201214.149:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[10868:6840:1111/201215.077:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[10868:6840:1111/201215.079:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[10868:6840:1111/201215.420:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[10868:6840:1111/201215.565:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[5924:3928:1111/201216.384:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[5924:3928:1111/201216.384:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[10868:6448:1111/201217.369:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[10868:6448:1111/201217.459:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[13844:14068:1111/201221.418:WARNING:services\audio\sync_reader.cc:154] ASR: No room in socket buffer.: 管道正在被关闭。 (0xE8)
+[13844:10824:1111/201223.987:WARNING:services\audio\sync_reader.cc:154] ASR: No room in socket buffer.: 管道正在被关闭。 (0xE8)
+[10868:6840:1111/201225.464:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.466:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.467:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.468:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.469:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.551:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.553:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201225.555:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:56288/pending (0)
+[10868:6840:1111/201228.698:INFO:CONSOLE:7] "[pyscript callback 1] Traceback (most recent call last):
+  File http://127.0.0.1:56288/quota#pyscript-1, line 9, in write
+  File http://127.0.0.1:56288/quota#pyscript-1, line 7, in expect
+AssertionError: expected PermissionError", source: http://127.0.0.1:56288/quota (7)

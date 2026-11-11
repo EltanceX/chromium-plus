@@ -1,0 +1,69 @@
+[14656:19264:1112/061901.824:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[14656:19264:1112/061902.027:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:55315/devtools/browser/5e656da1-a905-4707-893e-6671269e89fc
+[18516:7504:1112/061902.660:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[14656:19264:1112/061903.844:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[14656:19264:1112/061903.844:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[14656:19264:1112/061904.202:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[14656:19264:1112/061904.324:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[18516:7504:1112/061904.622:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[18516:7504:1112/061904.622:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[14656:12632:1112/061905.702:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[14656:12632:1112/061905.751:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[14656:19264:1112/061912.640:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.642:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.644:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.644:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.646:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.646:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.648:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[14656:19264:1112/061912.648:INFO:CONSOLE:0] "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.", source: http://127.0.0.1:55299/pending (0)
+[18516:6308:1112/061925.220:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 10), LocalSurfaceId(3, 1, 6E83...))
+[18516:6308:1112/061925.220:ERROR:components\viz\service\surfaces\surface_manager.cc:481] Old/orphaned temporary reference to SurfaceId(FrameSinkId[](6, 13), LocalSurfaceId(3, 1, 9220...))
+[14656:19264:1112/061927.447:INFO:CONSOLE:1434] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:55299/win (1434)
+[18516:6308:1112/061930.373:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.406:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.456:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.506:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.541:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.606:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.640:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.689:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.722:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.772:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.807:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.841:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.889:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[18516:6308:1112/061930.923:ERROR:cc\layers\texture_layer_impl.cc:86] Software compositor has gpu resource in TextureLayer
+[14656:19264:1112/061932.623:INFO:CONSOLE:1430] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:55299/sample (1430)
+[14656:19264:1112/061933.486:INFO:CONSOLE:1427] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:55299/exported (1427)
+[14420:5192:1112/061933.882:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 3 TIMES
+[6032:9728:1112/061933.886:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 2 TIMES
+[1332:16520:1112/061936.082:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[1332:16520:1112/061936.231:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:55197/devtools/browser/601e385d-d226-4f56-ab05-36259da0f48a
+[16376:7032:1112/061937.335:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[1332:16520:1112/061937.637:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[1332:16520:1112/061937.637:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[1332:16520:1112/061938.080:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[16376:7032:1112/061938.342:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16376:7032:1112/061938.342:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[1332:16520:1112/061941.757:INFO:CONSOLE:1430] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:55299/sample (1430)
+[1332:16520:1112/061942.799:INFO:CONSOLE:7] "[pyscript frame 17] Python animation frame exceeded the 16 ms cooperative execution budget", source: http://127.0.0.1:55299/fatal (7)
+[13008:8132:1112/061943.510:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 3 TIMES
+[18676:6476:1112/061943.513:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 2 TIMES
+[14504:18332:1112/061944.841:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[14504:18332:1112/061944.930:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:56178/devtools/browser/a948daa7-facc-4203-a1fc-ed011ab491eb
+[16572:13332:1112/061945.378:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[14504:18332:1112/061945.986:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[14504:18332:1112/061945.986:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[14504:18332:1112/061946.294:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[16572:13332:1112/061946.479:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[16572:13332:1112/061946.479:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[14504:18332:1112/061948.842:INFO:CONSOLE:1426] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:55299/sample (1426)
+[12860:7052:1112/061949.297:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 3 TIMES
+[12524:10844:1112/061949.343:ERROR:content\renderer\render_process_impl.cc:220] WebFrame LEAKED 2 TIMES
