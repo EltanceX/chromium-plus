@@ -1,0 +1,176 @@
+[
+  {
+    "path": "obj/third_party/blink/renderer/core/core/css_initial_value.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\css_initial_value.obj",
+    "before": "2092d6f730c8f3e822b72ed3427791f2761a1d717d0ac485efbe2e88d1634da1",
+    "after": "39b9730be73dec5f9d67cbebf3085a7c83ee0156ee2ee94d133a504f2c8914be",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/css_selector_watch.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\css_selector_watch.obj",
+    "before": "7bf96134a8ae3809604c4364b1d8cb114d310dc1d6f23c2e99de5363150756bb",
+    "after": "b7fd57436122ed213387c8dd186f1e559cf8babc48a4addf88b799381516ff98",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/apply_block_element_command.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\apply_block_element_command.obj",
+    "before": "0f5207572c27c35df2737fa0cd82e63c9b69bbb2a8933c549db4bf6c9b541acc",
+    "reason": "CodeView scan",
+    "after": "615a9b9943f2ea58537aa8bdd4dae9f33ca58b16aeba6b9492e4ad52052311e7",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/unique_font_selector.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\unique_font_selector.obj",
+    "before": "7256e09d68758d59a39e6a47dd54e918b84745047ad45410bad56c9ea8bd9792",
+    "reason": "CodeView scan",
+    "after": "41cdde9f230427284f8253c65991e4ad2d4837c30f8be52af5acc4e9f8f39200",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/html_selected_content_element.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\html_selected_content_element.obj",
+    "before": "01571d7c01615a1a23cccffd9b16df43ac926723852dbafbe8de5ff84d28c1ee",
+    "reason": "CodeView scan",
+    "after": "9eaedaee76f94ae8656b4a96d72b049deec3828ef8f145061093f66adadb1b52",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/modulator.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\modulator.obj",
+    "before": "bf605b9f33eb19a38d3fd111171540abc9254f8b46d68d7b13234937155bd13b",
+    "reason": "CodeView scan",
+    "after": "bc252fe5f0d61305efd665af80989bcee45831b37e95998a4a8657dd277458c7",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/performance_timing.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\performance_timing.obj",
+    "before": "a0ebcb701583a9df887138503c8404a871b6b83504c9427971700d263542790c",
+    "reason": "CodeView scan",
+    "after": "28343a7595e51a4103e3f54befbcf4dac755d27a3650db6dd340bc7027b2dc27",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/file_input_type.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\file_input_type.obj",
+    "before": "1389f222c29192a02ba60d41d1265e5eebb5752e561b0c69709f3faf41555def",
+    "reason": "lld-link invalid xdata section",
+    "after": "5baa964f0ffbf5c8cdc8357ab45f8c8efe6bdfc1a9d996b89f353e2453a2f15c",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/viewport_style_resolver.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\viewport_style_resolver.obj",
+    "before": "26b78b81deef1cf19ad8ea01c58383f77b154fa5e8c3e3916ef4f512aeaa9703",
+    "reason": "Relocation scan",
+    "after": "f21aa62e2f39aad740b93dd7b8fbbf33d1b5405de8bab1cc024cc25400705412",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_semantic_embedder.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\v8_semantic_embedder.obj",
+    "before": "3a45bcefb2dc956350604550be9c2ac9c824def2ed128cd3cf4a1a80260a2d20",
+    "reason": "Modules CodeView and GHASH scan",
+    "after": "26d0876b40b74a64a8fce1f9e752daa99a4e3e64ddd8c848dffdc1af6c64caa4",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_web_print_job.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\v8_web_print_job.obj",
+    "before": "b97c64ac51bf482a98adf61c173e8db008d44c06113941dab2b63990a2b3de21",
+    "reason": "Modules CodeView and GHASH scan",
+    "after": "a9b8993fe735e90a90daaf728f80eacf4bb2772cc65219e50f06ed6df3588ea2",
+    "changed": true
+  },
+  {
+    "path": "obj/base/test/test_support.lib",
+    "before": "d128a551e2d9740bfe659ecc1234ffdd29492d0f9d22c1010026b4006a21015b",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\test_support.lib",
+    "reason": "Thin archive symbol index resolves constructors to unrelated members",
+    "after": "fe8cdfcf5c2b6beb150f97ee51ad34fc5c54e695cd114a9fe32704ac9c344fb8",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/measure_memory_controller.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\measure_memory_controller.obj",
+    "before": "ed561c3e619a309a3c9d8a1478aee23117bc67333ff99f3c02486d13be2b74c4",
+    "reason": "New section-name error after core relink; section scan",
+    "after": "2250cc5b685e2522eeeb9f51305239707523bcb3ff94e3eeabe1c7d461e0d2d4",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/counter_style.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\counter_style.obj",
+    "before": "e56d4c1df8b610a80d7dc473073258391e5ff304a64d4f14223872eace6038b3",
+    "reason": "Second core debug/string-table scan",
+    "after": "49bb551fd3aff2ea4ec7a61049cfac0cb6232247dc91474801cbb1fc756c2387",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/core/interaction_effects_monitor.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\interaction_effects_monitor.obj",
+    "before": "9e25d4b5874437607b193a9ce9229d525a45c9fb855407bd199c2d85e0850c5b",
+    "reason": "Second core debug/string-table scan",
+    "after": "a7f1b828d4f50a76090a3b8cd7b1e2e8a6a720ab0252a1528a812e2a7479fa85",
+    "changed": true
+  },
+  {
+    "path": "obj/components/web_package/mojom_mapped_types/integrity_block_attributes.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\integrity_block_attributes.obj",
+    "before": "639193647408ee26b7795ee608c7d412676e3e15edd03148aee1c96ba41d8bad",
+    "reason": "Blink test link unrecognized debug magic",
+    "after": "b18512a7a80883b8c6138cae358c67c3e3936007b1410f8279592c6230597c91",
+    "changed": true
+  },
+  {
+    "path": "obj/components/services/storage/storage/service_worker_storage.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\service_worker_storage.obj",
+    "before": "1abbce0aff788584a0a7df748830a34b971faa4258d501ee3c7537a0c663aeb5",
+    "reason": "Content link corrupt symbol records and full debug scan",
+    "after": "a3e25c8a81ff269dc6adcbbf8c7e21d2f2cb12accec095732efe38c3d5141bd9",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/tflite/tflite_kernels/mirror_pad.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\mirror_pad.obj",
+    "before": "5819737a58d21bb6928d1401698c11c992065525c810735096c77b94709d440b",
+    "reason": "lld-link invalid section association 39393 in isolated web apps DLL",
+    "after": "ee3a6a436dda929bd4469f91e53c8ffc5a4e2b3d03ba853c4d8396caca1ced9e",
+    "changed": true
+  },
+  {
+    "path": "obj/services/network/test_support/test_url_loader_factory.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\test_url_loader_factory.obj",
+    "before": "fb90f11965d084d648d37755ed503dda717eb6c92aa615721fcf5c84ddcbcff0",
+    "reason": "lld-link garbled undefined symbols in test_url_loader_factory.obj",
+    "after": "cb4111c6da1b8c39df6de89e1bedf1a906e88d724fec21d6f2e3cc4fcbc31ad0",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/unit_tests/css_font_face_src_value_test.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\css_font_face_src_value_test.obj",
+    "before": "d597c36b819aecdc99fbaf170b919d9ffc04c5dfe3a6049f740140e43541b8af",
+    "reason": "Full Blink test CodeView and GHASH scan after first unified build failure",
+    "after": "dc6c7ccb0840d49ac50070fc928031dda005744bf3757e5e06db91b0c7bdf093",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/core/unit_tests/scroll_button_pseudo_element_test.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\scroll_button_pseudo_element_test.obj",
+    "before": "83b2f5f81d1789591def94de86f599fd52347658392fbadc75f28d6a34ac773d",
+    "reason": "Full Blink test CodeView and GHASH scan after first unified build failure",
+    "after": "5f04bf533965097afc144228a7316008f4ea7f0f2b87996865f59e3517087768",
+    "changed": true
+  },
+  {
+    "path": "obj/third_party/blink/renderer/modules/unit_tests/video_track_adapter_unittest.obj",
+    "backup": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\object-backups\\video_track_adapter_unittest.obj",
+    "before": "6fafcad244013ebdf0372227aaabbd2ab11238f634d18dce491648c8cdf942f9",
+    "reason": "Full Blink test CodeView and GHASH scan after first unified build failure",
+    "after": "36ce223c71616d69296b9008c0d95dcb28c73d7f34c9cba1154f151c4962b679",
+    "changed": true
+  }
+]

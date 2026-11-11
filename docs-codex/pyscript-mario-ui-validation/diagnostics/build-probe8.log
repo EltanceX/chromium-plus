@@ -1,0 +1,49 @@
+ninja: Entering directory `out/Debug'
+
+offline mode
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 8.8583962s
+load siso config done 12.0605ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:84441+ready:0 (node:441073 edge:84451)
+ 1.20s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/20753] 36.06s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/9800] 36.66s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2292] 1m11.18s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[1/2292] 1m11.21s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2292] 1m26.90s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: bfe6607f-cf13-423a-a38d-9d6e14b6d984 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: getSectionName failed: #2542: invalid section name
+
+
+[2/2292] 1m28.58s - CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99813
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 6726(err:2) / r:764(err:0) 14.28MiB / w:1(err:0) 379.16KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m29.79s Build Failure: 2 done, 1 failed, 2290 remaining - 0.02/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-144808.2628
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

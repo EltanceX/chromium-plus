@@ -1,0 +1,48 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_modules.dll.rsp",
+  "directObjects": 4649,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_semantic_embedder.obj",
+      "errors": [
+        "Invalid CodeView type at 0xe6356: length 9132, kind 0xdde3",
+        "Invalid CodeView type extent 0xe6356 != 0x19905a",
+        "Invalid procedure ID 0x3865 at 0x2f0c6, type kind out of range",
+        "Invalid procedure ID 0x388a at 0x2f226, type kind out of range",
+        "Invalid procedure ID 0x388b at 0x2f336, type kind out of range",
+        "Invalid procedure ID 0x388c at 0x2f44e, type kind out of range",
+        "Invalid procedure ID 0x3893 at 0x2fe46, type kind out of range",
+        "Invalid procedure ID 0x3894 at 0x2ff1e, type kind out of range",
+        "Invalid procedure ID 0x394c at 0x307aa, type kind out of range",
+        "Invalid procedure ID 0x3950 at 0x30f7a, type kind out of range",
+        "Invalid procedure ID 0x3a66 at 0x33b4e, type kind out of range",
+        "Invalid procedure ID 0x3a82 at 0x35662, type kind out of range",
+        "Invalid procedure ID 0x3aa1 at 0x37172, type kind out of range",
+        "Invalid procedure ID 0x3aa3 at 0x37326, type kind out of range",
+        "Invalid procedure ID 0x3aa8 at 0x3773e, type kind out of range",
+        "Invalid procedure ID 0x3aa9 at 0x3788a, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_web_print_job.obj",
+      "errors": [
+        "Invalid CodeView type at 0x52009: length 26496, kind 0xe3cc",
+        "Invalid CodeView type extent 0x52009 != 0x14bafd",
+        "Invalid procedure ID 0x3794 at 0x22625, type kind out of range",
+        "Invalid procedure ID 0x37b9 at 0x227d1, type kind out of range",
+        "Invalid procedure ID 0x37ba at 0x228dd, type kind out of range",
+        "Invalid procedure ID 0x37bb at 0x229c9, type kind out of range",
+        "Invalid procedure ID 0x37d2 at 0x236a9, type kind out of range",
+        "Invalid procedure ID 0x37d3 at 0x23779, type kind out of range",
+        "Invalid procedure ID 0x37d4 at 0x23849, type kind out of range",
+        "Invalid procedure ID 0x38db at 0x24359, type kind out of range",
+        "Invalid procedure ID 0x38e0 at 0x24a8d, type kind out of range",
+        "Invalid procedure ID 0x38e7 at 0x25c31, type kind out of range",
+        "Invalid procedure ID 0x38e9 at 0x25de5, type kind out of range",
+        "Invalid procedure ID 0x38eb at 0x265e9, type kind out of range",
+        "Invalid procedure ID 0x38ef at 0x26ccd, type kind out of range",
+        "Invalid procedure ID 0x38f1 at 0x26e81, type kind out of range"
+      ]
+    }
+  ]
+}

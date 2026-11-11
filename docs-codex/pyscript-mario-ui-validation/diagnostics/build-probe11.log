@@ -1,0 +1,49 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.0013113s
+load siso config done 11.2843ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:75464+ready:0 (node:441073 edge:75477)
+ 1.26s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/52736] 30.66s S CXX obj/components/web_package/mojom_mapped_types/integrity_block_attributes.obj
+[0/2244] 33.48s F CXX obj/components/web_package/mojom_mapped_types/integrity_block_attributes.obj
+[1/2236] 33.48s S LINK(DLL) services_network_network_service.dll services_network_network_service.dll.lib services_network_network_service.dll.pdb
+[1/2232] 37.08s F LINK(DLL) services_network_network_service.dll services_network_network_service.dll.lib services_network_network_service.dll.pdb
+[2/2133] 37.11s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[2/2133] 1m00.16s E LINK(DLL) content.dll content.dll.lib content.dll.pdb
+FAILED: b0c2c77c-2074-4243-ba70-79228449a150 "./content.dll" LINK(DLL) content.dll content.dll.lib content.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./content.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./content.dll.lib" /DLL "/PDB:./content.dll.pdb" "@./content.dll.rsp"
+build step: solink "./content.dll"
+stderr:
+lld-link: error: corrupt symbol records in obj/components/services/storage/storage/service_worker_storage.obj
+
+
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:99972
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1007(err:4) / r:766(err:0) 280.42MiB / w:2(err:0) 439.40KiB
+
+
+
+1m02.21s Build Failure: 3 done, 1 failed, 2130 remaining - 0.05/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-151258.12284
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

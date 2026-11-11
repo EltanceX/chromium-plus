@@ -1,0 +1,62 @@
+[
+  {
+    "object": "out\\Debug\\obj\\base\\test\\test_support\\null_task_runner.obj",
+    "definitions": [
+      {
+        "symbol": "??0NullTaskRunner@base@@QEAA@XZ",
+        "section": 4,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "??1NullTaskRunner@base@@MEAA@XZ",
+        "section": 6,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "?PostDelayedTask@NullTaskRunner@base@@UEAA_NAEBVLocation@2@V?$OnceCallback@$$A6AXXZ@2@VTimeDelta@2@@Z",
+        "section": 8,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "?PostNonNestableDelayedTask@NullTaskRunner@base@@UEAA_NAEBVLocation@2@V?$OnceCallback@$$A6AXXZ@2@VTimeDelta@2@@Z",
+        "section": 10,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "?RunsTasksInCurrentSequence@NullTaskRunner@base@@UEBA_NXZ",
+        "section": 11,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "??_GNullTaskRunner@base@@MEAAPEAXI@Z",
+        "section": 16,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "??_7NullTaskRunner@base@@6B@",
+        "section": 18,
+        "inLibraryIndex": true
+      }
+    ]
+  },
+  {
+    "object": "out\\Debug\\obj\\base\\test\\test_support\\scoped_command_line.obj",
+    "definitions": [
+      {
+        "symbol": "??0ScopedCommandLine@test@base@@QEAA@XZ",
+        "section": 4,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "??1ScopedCommandLine@test@base@@QEAA@XZ",
+        "section": 5,
+        "inLibraryIndex": true
+      },
+      {
+        "symbol": "?GetProcessCommandLine@ScopedCommandLine@test@base@@QEAAPEAVCommandLine@3@XZ",
+        "section": 6,
+        "inLibraryIndex": true
+      }
+    ]
+  }
+]

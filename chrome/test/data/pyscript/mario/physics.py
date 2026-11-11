@@ -32,6 +32,8 @@ def loseLife(reason):
     shake = 0 if reducedMotion else 0.22
     clearInput()
     message = reason
+    logEvent('loseLife: '+reason)
+    showToast(reason)
 
 
 def winGame():
@@ -41,6 +43,7 @@ def winGame():
     game.best = max(game.best, game.score)
     clearInput()
     message = 'Finished! Space to play again.'
+    logEvent('winGame: '+str(game.score))
 
 
 def updateEnemies(dt):
@@ -80,6 +83,7 @@ def updatePlayer(dt):
     player.invincible = max(0, player.invincible-dt)
     if player.jumpBuffer > 0 and player.coyote > 0:
         player.vy, player.onGround, player.coyote, player.jumpBuffer = -settings.jump, False, 0, 0
+        logEvent('jump: vy = '+str(round(player.vy)))
         burst(player.x+player.w/2, player.y+player.h, '#ece7c0', 5)
     gravity = settings.gravity
     if not input.jump and player.vy < 0:
@@ -113,6 +117,7 @@ def updatePlayer(dt):
             coin.collected = True
             game.coins += 1
             game.score += 100
+            logEvent('coin: +100')
             burst(coin.x+11, coin.y+14, '#ffde6b', 6)
             addText(coin.x+11, coin.y, '+100', '#fff6c5')
     for enemy in enemies:
@@ -124,6 +129,7 @@ def updatePlayer(dt):
             player.vy = -490 if input.jump else -340
             player.onGround = False
             game.score += 300
+            logEvent('stomp: +300')
             burst(enemy.x+17, enemy.y+20, '#e3bc80', 7)
             addText(enemy.x+17, enemy.y-12, '+300', '#fff8da')
         elif player.invincible <= 0:
@@ -135,6 +141,8 @@ def updatePlayer(dt):
     if not game.checkpoint and player.x >= CHECKPOINT_X:
         game.checkpoint = True
         game.score += 500
+        showToast('已抵达中途检查点。')
+        logEvent('checkpoint: +500')
         burst(CHECKPOINT_X, GROUND-75, '#ffd58a', 20)
     if player.x+player.w >= FLAG_X:
         winGame()
@@ -211,7 +219,7 @@ class FixedClock:
             self.accumulator = 0
             return raw, 0
         visualTime += dt
-        self.accumulator += dt
+        self.accumulator += dt*(0.45 if settings.slow else 1)
         limit = min(MAX_STEPS, int((self.accumulator+1e-12)/STEP))
         count = 0
         started = self.work_clock() if limit and self.work_quota_ms is not None else 0

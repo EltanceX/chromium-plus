@@ -1,0 +1,69 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1409257s
+load siso config done 11.9783ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:78493+ready:0 (node:441073 edge:78503)
+ 1.27s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/18593] 30.19s S CXX obj/third_party/blink/renderer/core/core/viewport_style_resolver.obj
+[0/2291] 48.30s F CXX obj/third_party/blink/renderer/core/core/viewport_style_resolver.obj
+[1/2291] 48.31s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2261] 1m14.38s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2166] 1m14.40s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[2/2166] 1m26.17s E LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+FAILED: 45a22be3-5ac3-421c-8d39-51f10592dfd2 "./blink_modules.dll" LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_modules.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_modules.dll.lib" /DLL "/PDB:./blink_modules.dll.pdb" "@./blink_modules.dll.rsp"
+build step: solink "./blink_modules.dll"
+stderr:
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: The CodeView record is corrupted.
+lld-link: error: procedure symbol record for `std::__Cr::numeric_limits<int>::max` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x86065 which is not a valid function ID record
+lld-link: error: procedure symbol record for `v8::SourceLocation::SourceLocation` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FF7 which is not a valid function ID record
+lld-link: error: procedure symbol record for `scoped_refptr<blink::StringImpl>::Release` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FB9 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::StringImpl::Release::<lambda_1>::operator()` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FC5 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_failure_order` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FC9 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ThreadStateStorage::allocation_handle` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FD7 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::atomic_ref<unsigned short>::atomic_ref` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x85FFC which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_ref_base<unsigned short>::store` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x86000 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__to_gcc_order` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x86003 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__atomic_ref_base<unsigned short>::__clear_padding` in obj/third_party/blink/renderer/modules/modules/modules_initializer.obj refers to PDB item index 0x86004 which is not a valid function ID record
+lld-link: error: procedure symbol record for `blink::ScriptState::From::<lambda_2>::operator()` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85EA6 which is not a valid function ID record
+lld-link: error: procedure symbol record for `logging::LogMessageFatal::LogMessage` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85EAC which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::__pad_and_output<char,std::__Cr::char_traits<char> >` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85EC5 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::fill` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85EC6 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::ios_base::flags` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85EC7 which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::setstate` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85ECA which is not a valid function ID record
+lld-link: error: procedure symbol record for `std::__Cr::basic_ios<char,std::__Cr::char_traits<char> >::good` in obj/third_party/blink/renderer/modules/modules/serialized_script_value_for_modules_factory.obj refers to PDB item index 0x85ECC which is not a valid function ID record
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:99939
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1005(err:3) / r:768(err:0) 4.94GiB / w:1(err:0) 392.02KiB
+
+
+
+1m27.37s Build Failure: 3 done, 1 failed, 2163 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-141333.2860
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

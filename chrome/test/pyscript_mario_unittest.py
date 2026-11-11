@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 """Deterministic physics comparison with the original JavaScript oracle."""
+import ast
 import json
 import sys
 from pathlib import Path
@@ -63,6 +64,28 @@ def run_scenario(scenario):
 
 
 class MarioCoreTest(unittest.TestCase):
+  def test_all_eight_lessons_are_valid_python(self):
+    tree = ast.parse((ROOT / 'ui.py').read_text(encoding='utf-8'))
+    assignment = next(n for n in tree.body if isinstance(n, ast.Assign)
+                      and any(isinstance(t, ast.Name) and t.id == 'lessons'
+                              for t in n.targets))
+    lessons = ast.literal_eval(assignment.value)
+    self.assertEqual(len(lessons), 8)
+    for name, title, source, explanation, exercise in lessons:
+      with self.subTest(lesson=name):
+        self.assertTrue(title and explanation and exercise)
+        compile(source, 'lesson:'+name, 'exec')
+
+  def test_slow_motion_scales_fixed_physics_and_timer(self):
+    s = core()
+    s['startGame']()
+    s['settings'].slow = True
+    clock = s['FixedClock']()
+    for n in range(121):
+      clock.advance(n*1000/120)
+    self.assertAlmostEqual(s['game'].elapsed, 0.45)
+    self.assertAlmostEqual(s['game'].remaining, 179.55)
+
   def test_fixed_clock_clamps_and_limits_steps(self):
     s = core()
     s['startGame']()

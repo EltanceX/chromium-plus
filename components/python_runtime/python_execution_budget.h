@@ -91,6 +91,8 @@ class BudgetedDomHost final : public DomHost {
   bool CanBuildCanvas() const override;
   DomResult GetElementById(std::string_view id) override;
   DomResult SetText(DomHandle handle, std::string_view text) override;
+  ControlStateResult GetControlState(DomHandle) override;
+  DomResult UpdateElement(DomHandle, const ElementUpdate&) override;
   DomResult AddEventListener(DomHandle,
                              std::string_view,
                              CallbackHandle,

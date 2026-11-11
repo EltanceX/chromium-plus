@@ -3,7 +3,7 @@
 - 整理日期：2026-11-10（Asia/Shanghai）。
 - 浏览器实现基线：`ed9a245bf1e2d6913029eaf733865776ecde6e3a`。
 - 参考项目：`C:\VD\Projects\mario\index.html`；源文件 SHA-256：`53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1`。
-- 当前状态（2026-11-11 更新）：阶段一至四已完成。阶段四交付纯 Python 核心关卡、静态 math 和原版轨迹对照，见[核心迁移记录](pyscript-mario-phase4.md)；历史验收见[Canvas 实现记录](pyscript-canvas-phase3.md)、[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段五至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
+- 当前状态（2026-11-11 更新）：阶段一至五已完成。阶段五交付类型化控件、完整教学面板及页面交互，415 项统一验收见[页面交互记录](pyscript-mario-phase5.md)。阶段四交付纯 Python 核心关卡、静态 math 和原版轨迹对照，见[核心迁移记录](pyscript-mario-phase4.md)；历史验收见[Canvas 实现记录](pyscript-canvas-phase3.md)、[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段六至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
 - 目标平台：首先延续 Windows x64 Debug 的原生 CPython 路线，再以 Windows x64 Release 验证性能。
 - 前置成果：[原生 Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM](pyscript-phase3-document-context-dom.md)、[解释器设置与页面模式](pyscript-settings-and-page-permissions.md)、[click 方案](pyscript-click-events-implementation.md)、[交互预算与清理](pyscript-event-phase4-budgets-and-cleanup.md)、[click 最终验收](pyscript-event-phase5-build-and-browser-validation.md)。
 
@@ -48,7 +48,7 @@
 | 能力 | 当前实现 | 本轮需要 |
 | --- | --- | --- |
 | Python 文档上下文 | 持久 globals、独立子解释器、原生 callable 注册表 | 复用，并区分初始化 / 输入 / 帧 / 原生完成通知入口 |
-| DOM | `get_element_by_id`；普通无元素子节点的 p / div / span 文本写入 | 类型明确的控件读写、显示状态、class、属性和焦点 |
+| DOM | 类型化控件快照/修改、叶子文本、显示/禁用、class、安全属性、数值进度、焦点/滚动及原生 dialog | 平台能力继续按阶段六实施，接口边界见阶段五记录 |
 | 事件 | 普通 HTML 元素 click / input / change / 指针，Document 键盘与可见性，Window 焦点与 resize；once / passive / capture / 移除 | 后续游戏接入及完整控件交互 |
 | 事件对象 | 按类别只读快照、同步派发控制令牌、指针捕获、页面状态与输入复位代数已实现 | 后续游戏输入状态维护与端到端验证 |
 | 动画 | `animation.request_frame` / `cancel_frame`，原生帧、时间戳、单待执行请求与共享预算已实现 | 后续游戏接入、dt 基准与性能验证 |
@@ -270,6 +270,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段五：控件、教学面板与完整页面交互
 
+状态：已完成。原生接口、异步合并 UI、焦点/模态路由、35 项 Mario 专项及 415 项统一验收见[阶段五记录](pyscript-mario-phase5.md)。没有修改原生预算；复杂页面写入分帧，滚动和焦点等待布局完成。
+
 1. 实现有类型控件读写、class、属性、必要样式、焦点和 dialog 操作。
 2. 迁移三项参数滑块、慢动作、碰撞框、状态面板和恢复默认。
 3. 迁移课程、tab 键盘导航、对话框、事件日志、提示和无障碍状态。
@@ -332,4 +334,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一至四已完成原生帧调度、连续输入状态、批量 Canvas 2D 及纯 Python 核心关卡。推荐下一步进入**阶段五：控件、教学面板与完整页面交互**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一至五已完成原生帧调度、连续输入、批量 Canvas 2D、纯 Python 核心关卡及完整控件/教学页面交互。推荐下一步进入**阶段六：合成音效、最高分、全屏与导出**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。

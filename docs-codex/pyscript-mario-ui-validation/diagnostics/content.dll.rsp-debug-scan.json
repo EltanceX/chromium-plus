@@ -1,0 +1,12 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\content.dll.rsp",
+  "directObjects": 4840,
+  "problems": [
+    {
+      "object": "obj/components/services/storage/storage/service_worker_storage.obj",
+      "errors": [
+        "Invalid CodeView symbol record at 0x17814c: length 25255, kind 0x29fd"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+PASS Typed native controls retain values flags literal text and bounded styles
+PASS Grouped rectangles preserve native pixels costs and atomic rejection
+{
+  "passed": false,
+  "cases": 3,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\browser-probe5.json",
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python document exceeded the 250 ms cooperative execution budget\",\"timestamp\":1794381697497.476,\"url\":\"http://127.0.0.1:53458/sample\",\"lineNumber\":1207}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:229:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:301:3"
+}

@@ -27,7 +27,7 @@ const reference = JSON.parse(fs.readFileSync('chrome/test/data/pyscript/mario/re
 const literal = value => value === null ? 'None' : typeof value === 'boolean' ? (value ? 'True' : 'False') :
     Array.isArray(value) ? '['+value.map(literal).join(',')+']' : typeof value === 'object' ?
     '{'+Object.entries(value).map(([k,v]) => literal(k)+':'+literal(v)).join(',')+'}' : JSON.stringify(value);
-const boot = sample.indexOf('<!-- boot.py -->');
+  const boot = sample.indexOf('<!-- initUI() -->');
 assert.ok(boot > 0);
 function fixture(scenario) {
   const expected = scenario.expected;
@@ -81,11 +81,42 @@ animation.request_frame(replay)
 `;
   // Each fixture retains the same CSP and native budgets as the real sample.
   assert.ok(Buffer.byteLength(program) <= 65536);
-  return sample.slice(0, boot)+`<pyscript nonce="python-mario">${program}</pyscript></html>`;
+  return sample.slice(0, boot).replace('<div id="gameOverlay"', '<div hidden id="gameOverlay"')+
+      `<pyscript nonce="python-mario">${program}</pyscript></html>`;
 }
 const server = http.createServer((request, response) => {
   const scenario = reference.scenarios.find(s => '/oracle/'+s.name === request.url);
-  const body = request.url === '/rectangles' ? `<!doctype html><canvas id="game" width="32" height="16"></canvas><p id="status"></p>
+  const body = request.url === '/controls' ? `<!doctype html>
+<input id="range" type="range" min="160" max="420"><input id="box" type="checkbox">
+<input id="file" type="file"><div id="custom" is="x-ui"></div><div id="panel"></div>
+<button id="button">button</button><code id="literal"></code><p id="status"></p>
+<pyscript>
+import dom
+r, c, p = [dom.get_element_by_id(x) for x in ('range','box','panel')]
+dom.set_value(r, '999')
+assert dom.get_control_state(r)['value'] == '420'
+dom.set_checked(c, True)
+assert dom.get_control_state(c)['checked']
+dom.set_hidden(p, True)
+assert dom.get_control_state(p)['hidden']
+dom.toggle_class(p, 'selected', True)
+dom.set_attribute(p, 'aria-label', '中文')
+dom.set_progress(p, 37.5)
+dom.set_disabled(dom.get_element_by_id('button'), True)
+dom.set_text(dom.get_element_by_id('literal'), '<b>literal</b>')
+for name in ('onclick','style','href','src','is','id'):
+    try: dom.set_attribute(p, name, 'x')
+    except PermissionError: pass
+    else: raise AssertionError('unsafe attribute')
+for id in ('file','custom'):
+    try: dom.set_value(dom.get_element_by_id(id), 'x')
+    except PermissionError: pass
+    else: raise AssertionError('unsafe control')
+try: dom.toggle_class(p, 'two tokens', True)
+except PermissionError: pass
+else: raise AssertionError('invalid token')
+dom.set_text(dom.get_element_by_id('status'), 'controls-ok')
+</pyscript>` : request.url === '/rectangles' ? `<!doctype html><canvas id="game" width="32" height="16"></canvas><p id="status"></p>
 <pyscript>
 import canvas, dom
 c = canvas.get_context_2d(dom.get_element_by_id('game'))
@@ -205,6 +236,8 @@ async function check(name, callback) {
     report.cases.push({name, passed: true, elapsedMs: Date.now() - start, detail});
     console.log(`PASS ${name}`);
   } catch (error) {
+    const failure = await send('Page.captureScreenshot',{format:'png'}).catch(() => null);
+    if (failure) fs.writeFileSync(`${output}.failure.png`,Buffer.from(failure.data,'base64'));
     report.cases.push({name, passed: false, elapsedMs: Date.now() - start,
       error: String(error.stack ?? error), nativeLogs: nativeLogs(), pageState: await evaluate("({status:document.getElementById('status')?.textContent,telemetry:document.getElementById('telemetry')?.textContent,metrics:document.getElementById('metrics')?.textContent})").catch(() => null)});
     throw error;
@@ -216,6 +249,13 @@ async function key(type, code, keyValue, virtualKey, extra = {}) {
   await send('Input.dispatchKeyEvent', {type, code, key: keyValue,
     windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey, ...extra});
 }
+async function focusByTab(id) {
+  for (let n=0;n<30;n++) {
+    if (await evaluate('document.activeElement.id') === id) return;
+    await key('keyDown','Tab','Tab',9); await key('keyUp','Tab','Tab',9);
+  }
+  assert.fail('Native Tab did not reach '+id);
+}
 const pixel = (x, y) => evaluate(`Array.from(document.getElementById('game').getContext('2d').getImageData(${x},${y},1,1).data)`);
 async function healthy(route, expected) {
   await navigate(route);
@@ -223,17 +263,34 @@ async function healthy(route, expected) {
   assert.deepEqual(errors(), []);
 }
 const state = async () => Object.fromEntries((await read('telemetry')).split('|').map(x => x.split(':')));
+let lastTrustedClick = 0;
 async function trustedClick(id) {
+  // Use a human input cadence. The unchanged shared window deliberately drops
+  // events under pressure; functional UI checks must not send 30 clicks/second.
+  await delay(Math.max(0,120-(Date.now()-lastTrustedClick)));
+  await evaluate(`document.getElementById(${JSON.stringify(id)}).scrollIntoView({block:'center',behavior:'instant'})`);
   await evaluate(`globalThis.__nativeClick=null;document.getElementById(${JSON.stringify(id)}).addEventListener('click',e=>globalThis.__nativeClick={id:e.currentTarget.id,trusted:e.isTrusted},{once:true})`);
   const rect = await evaluate(`(() => {const r=document.getElementById(${JSON.stringify(id)}).getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);
   await send('Input.dispatchMouseEvent',{...rect,type:'mouseMoved',buttons:0});
   for (const type of ['mousePressed', 'mouseReleased']) await send('Input.dispatchMouseEvent',
       {...rect, type, button: 'left', buttons:type === 'mousePressed' ? 1 : 0, clickCount: 1});
+  lastTrustedClick = Date.now();
   assert.deepEqual(await evaluate('globalThis.__nativeClick'),{id,trusted:true});
 }
 try {
   await launch();
   await send('Emulation.setDeviceMetricsOverride', {width:1120,height:900,deviceScaleFactor:1,mobile:false});
+  await check('Typed native controls retain values flags literal text and bounded styles', async () => {
+    await navigate('/controls');
+    assert.equal(await read('status'), 'controls-ok');
+    assert.deepEqual(await evaluate(`(() => {const p=document.getElementById('panel');return {
+      selected:p.classList.contains('selected'),label:p.getAttribute('aria-label'),
+      width:p.style.width,disabled:document.getElementById('button').disabled,
+      literal:document.getElementById('literal').textContent,
+      children:document.getElementById('literal').children.length}})()`),
+      {selected:true,label:'中文',width:'37.5%',disabled:true,literal:'<b>literal</b>',children:0});
+    assert.deepEqual(errors(), []);
+  });
   await check('Grouped rectangles preserve native pixels costs and atomic rejection', async () => {
     await navigate('/rectangles');
     assert.equal(await read('status'), '4:520');
@@ -253,9 +310,7 @@ try {
   });
   await check('Trusted start movement and variable jump use native Python callbacks', async () => {
     await trustedClick('start');
-    // Focus the canvas area so Space is a game key rather than a button click.
-    await send('Input.dispatchMouseEvent', {type:'mousePressed',x:500,y:200,button:'left',buttons:1,clickCount:1});
-    await send('Input.dispatchMouseEvent', {type:'mouseReleased',x:500,y:200,button:'left',buttons:0,clickCount:1});
+    assert.equal(await evaluate('document.activeElement.id'),'game');
     await waitFor(async () => (await state()).state === 'playing');
     await key('keyDown', 'ArrowRight', 'ArrowRight', 39);
     await waitFor(async () => +(await state()).x > 180);
@@ -302,6 +357,151 @@ try {
     const paused=await state(); await delay(400); assert.equal((await state()).elapsed,paused.elapsed);
     await key('keyUp','ArrowRight','ArrowRight',39);
     assert.deepEqual(errors(), []);
+  });
+  await check('Movement buttons support native keyboard hold release and focus cleanup', async () => {
+    await trustedClick('start');
+    await waitFor(async () => (await state()).state === 'playing');
+    await focusByTab('right');
+    await key('keyDown','Enter','Enter',13);
+    await waitFor(async () => +(await state()).x > 180);
+    await key('keyUp','Enter','Enter',13);
+    await waitFor(async () => (await state()).keys === '0' && Math.abs(+(await state()).vx) < 1);
+    await focusByTab('jump');
+    await key('keyDown','Space',' ',32);
+    await waitFor(async () => +(await state()).y < 400);
+    await key('keyUp','Space',' ',32);
+    await key('keyDown','Enter','Enter',13);
+    await trustedClick('game');
+    assert.equal(await evaluate('document.activeElement.id'),'game');
+    await waitFor(async () => (await state()).keys === '0');
+    await key('keyUp','Enter','Enter',13);
+    assert.deepEqual(errors(), []);
+  });
+  await check('Native range keyboard actions update Python parameters without game shortcuts', async () => {
+    await navigate('/sample'); await send('Page.bringToFront');
+    await waitFor(async () => (await state()).state === 'ready' && (await read('lessonCode')).includes('dom.'));
+    for (const [name, code, value] of [['speed','End','420'],['jump','End','860'],['gravity','Home','1100']]) {
+      await trustedClick(name+'Range');
+      await key('keyDown',code,code,code === 'End' ? 35 : 36);
+      await key('keyUp',code,code,code === 'End' ? 35 : 36);
+      await waitFor(async () => (await read(name+'Value')) === value);
+      assert.equal(await evaluate(`document.getElementById('${name}Range').value`),value);
+    }
+    assert.equal((await state()).state,'ready'); assert.equal((await state()).keys,'0');
+  });
+  await check('Collision checkbox changes native Canvas pixels and remains keyboard accessible', async () => {
+    await trustedClick('hitboxToggle');
+    await waitFor(async () => JSON.stringify(await pixel(96,470)) === '[223,91,81,255]');
+    await key('keyDown','Space',' ',32); await key('keyUp','Space',' ',32);
+    await waitFor(async () => !await evaluate('document.getElementById("hitboxToggle").checked'));
+    await waitFor(async () => JSON.stringify(await pixel(96,470)) !== '[223,91,81,255]');
+    assert.equal((await state()).state,'ready');
+  });
+  await check('Reset restores all native values checkboxes and Python output labels', async () => {
+    await trustedClick('slowToggle');
+    await trustedClick('hitboxToggle');
+    await trustedClick('resetParams');
+    assert.deepEqual(await evaluate(`['speed','jump','gravity'].map(n=>[
+      document.getElementById(n+'Range').value,document.getElementById(n+'Value').textContent])`),
+      [['280','280'],['660','660'],['1600','1600']]);
+    assert.deepEqual(await evaluate(`['slowToggle','hitboxToggle'].map(id=>document.getElementById(id).checked)`),[false,false]);
+    await waitFor(async () => !(await evaluate('document.getElementById("toast").hidden')));
+    await waitFor(async () => await evaluate('document.getElementById("toast").hidden'),10000);
+  });
+  await check('Tabs use native focus roving tabindex arrows Home and End', async () => {
+    await trustedClick('tabExperiment');
+    for (const [code, selected, vk] of [['ArrowRight','State',39],['End','Explain',35],['Home','Experiment',36]]) {
+      await key('keyDown',code,code,vk); await key('keyUp',code,code,vk);
+      await waitFor(async () => await evaluate('document.activeElement.id')==='tab'+selected);
+      assert.deepEqual(await evaluate(`['Experiment','State','Explain'].map(n=>{
+        const b=document.getElementById('tab'+n);return [b.getAttribute('aria-selected'),b.tabIndex,
+          document.getElementById('panel'+n).hidden]})`),
+        ['Experiment','State','Explain'].map(n=>n===selected?['true',0,false]:['false',-1,true]));
+      assert.equal(await evaluate('document.activeElement.id'),'tab'+selected);
+    }
+    assert.equal((await state()).keys,'0');
+  });
+  await check('All eight Python lessons wrap and flow cards select the explanation tab', async () => {
+    const snippets=['def key(event):','player = Record(','if (player.jumpBuffer','for i in range(count):',
+      'def overlaps','def speed_input','player.vy +=','game.best = max('];
+    const codes=new Set();
+    for(let i=0;i<8;i++) {
+      await waitFor(async () => (await read('lessonCode')).includes(snippets[i]));
+      assert.equal(await read('lessonIndex'),String(i+1).padStart(2,'0')+' / 08');
+      const code=await read('lessonCode'); assert.ok(code.length>20); assert.ok(!/const |function |addEventListener/.test(code));
+      codes.add(code);
+      await trustedClick('nextLesson');
+    }
+    assert.equal(codes.size,8);
+    await waitFor(async () => (await read('lessonIndex'))==='01 / 08');
+    assert.equal(await read('lessonIndex'),'01 / 08');
+    await trustedClick('previousLesson'); await waitFor(async () => (await read('lessonIndex'))==='08 / 08');
+    for(const [i, lesson] of [0,2,1,6].entries()) {
+      await trustedClick('flow'+i);
+      await waitFor(async () => (await read('lessonIndex'))===String(lesson+1).padStart(2,'0')+' / 08' &&
+          await evaluate('document.activeElement.id')==='tabExplain');
+      assert.equal(await read('lessonIndex'),String(lesson+1).padStart(2,'0')+' / 08');
+      assert.equal(await evaluate('document.getElementById("tabExplain").getAttribute("aria-selected")'),'true');
+      assert.equal(await evaluate('document.querySelectorAll(".flow .selected").length'),1);
+    }
+  });
+  await check('Learning dialog pauses clears input selects a lesson and restores focus', async () => {
+    await trustedClick('start'); await waitFor(async () => (await state()).state==='playing');
+    await key('keyDown','ArrowRight','ArrowRight',39);
+    await trustedClick('guideButton');
+    assert.equal(await evaluate('document.getElementById("guideDialog").matches(":modal")'),true);
+    await waitFor(async () => (await state()).state==='paused' && (await state()).keys==='0');
+    const dialogImage=await send('Page.captureScreenshot',{format:'png'});
+    fs.writeFileSync(`${output}.dialog.png`,Buffer.from(dialogImage.data,'base64'));
+    await trustedClick('map7');
+    assert.equal(await evaluate('document.getElementById("guideDialog").open'),false);
+    await waitFor(async () => (await read('lessonIndex'))==='08 / 08' &&
+        await evaluate('document.activeElement.id')==='tabExplain');
+    assert.equal(await evaluate('document.activeElement.id'),'tabExplain');
+    await key('keyUp','ArrowRight','ArrowRight',39);
+  });
+  await check('Native Escape closes dialogs without resuming or restarting the game', async () => {
+    await trustedClick('keysButton');
+    assert.equal(await evaluate('document.getElementById("keysDialog").open'),true);
+    await key('keyDown','KeyR','r',82); await key('keyUp','KeyR','r',82);
+    await key('keyDown','Escape','Escape',27); await key('keyUp','Escape','Escape',27);
+    await waitFor(async () => !await evaluate('document.getElementById("keysDialog").open'));
+    assert.equal(await evaluate('document.activeElement.id'),'keysButton');
+    assert.equal((await state()).state,'paused');
+    await trustedClick('keysButton');
+    assert.equal(await evaluate('document.getElementById("keysDialog").open'),true);
+    await trustedClick('keysClose');
+    assert.equal(await evaluate('document.getElementById("keysDialog").open'),false);
+  });
+  await check('State HUD progress and bounded event log follow native gameplay', async () => {
+    await trustedClick('tabState');
+    await trustedClick('start'); await waitFor(async () => (await state()).state==='playing');
+    await key('keyDown','ArrowRight','ArrowRight',39);
+    await waitFor(async () => +(await read('dataX'))>180 && +(await evaluate('document.getElementById("progressTrack").getAttribute("aria-valuenow")'))>0);
+    await key('keyUp','ArrowRight','ArrowRight',39);
+    await trustedClick('pause');
+    await waitFor(async () => (await read('stateValue'))==='paused');
+    assert.equal(await evaluate('document.querySelectorAll(".event-log li").length'),3);
+    assert.match(await read('event0'),/game.state/);
+    assert.match(await evaluate('document.getElementById("progressFill").style.width'),/^[0-9.]+%$/);
+    const screenshot=await send('Page.captureScreenshot',{format:'png'});
+    fs.writeFileSync(`${output}.state.png`,Buffer.from(screenshot.data,'base64'));
+  });
+  await check('Narrow resize uses 790 logical pixels and reduced motion stays interactive', async () => {
+    await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+    await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
+    await waitFor(async () => await evaluate('document.getElementById("game").width')===790);
+    assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
+    await trustedClick('playNav'); assert.equal(await evaluate('document.activeElement.id'),'game');
+    await trustedClick('guideButton'); await trustedClick('map0');
+    await waitFor(async () => await evaluate('document.activeElement.id')==='tabExplain');
+    assert.equal(await evaluate('document.activeElement.id'),'tabExplain');
+    const screenshot=await send('Page.captureScreenshot',{format:'png'});
+    fs.writeFileSync(`${output}.narrow.png`,Buffer.from(screenshot.data,'base64'));
+    await send('Emulation.setDeviceMetricsOverride',{width:1120,height:900,deviceScaleFactor:1,mobile:false});
+    await send('Emulation.setEmulatedMedia',{features:[]});
+    await waitFor(async () => await evaluate('document.getElementById("game").width')===1120);
+    assert.deepEqual(errors(),[]);
   });
   for (const scenario of reference.scenarios) {
     await check('Embedded original-JavaScript oracle: '+scenario.name, async () => {

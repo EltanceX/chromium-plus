@@ -25,9 +25,9 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 71),
-    ('mario-logic', 'pyscript_mario_unittest.py', [], 19),
-    ('adapter', 'python_document_context_unittests', [], 15),
+    ('runtime', 'python_runtime_unittests', [], 75),
+    ('mario-logic', 'pyscript_mario_unittest.py', [], 21),
+    ('adapter', 'python_document_context_unittests', [], 17),
     ('canvas-unit', 'blink_unittests', [
         '--gtest_filter=PythonCanvasBatchTest.*:PythonCanvasBridgeTest.*'
     ], 19),
@@ -36,7 +36,7 @@ SUITES = [
         'CanvasRenderingContext2DAPITest.LineDashStateSave'
     ], 2),
     ('blink', 'blink_unittests', ['--gtest_filter=HTMLPyScriptElementTest.*'],
-     74),
+     78),
     ('csp', 'blink_unittests', [
         '--gtest_filter=ContentSecurityPolicyTest.'
         'NonceSinglePolicy:ContentSecurityPolicyTest.'
@@ -47,7 +47,7 @@ SUITES = [
     ('events', 'pyscript_event_smoke_test.mjs', [], 34),
     ('input', 'pyscript_input_smoke_test.mjs', [], 25),
     ('canvas', 'pyscript_canvas_smoke_test.mjs', [], 23),
-    ('mario', 'pyscript_mario_smoke_test.mjs', [], 24),
+    ('mario', 'pyscript_mario_smoke_test.mjs', [], 35),
     ('animation', 'pyscript_animation_smoke_test.mjs', [], 19),
     ('dom', 'pyscript_dom_smoke_test.mjs', [], 17),
     ('parser', 'pyscript_smoke_test.mjs', [], 27),

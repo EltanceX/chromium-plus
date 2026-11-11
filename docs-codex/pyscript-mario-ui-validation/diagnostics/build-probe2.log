@@ -1,0 +1,61 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2340458s
+load siso config done 12.3216ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:71699+ready:0 (node:441073 edge:71707)
+ 1.48s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/35789] 30.57s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/22536] 31.11s S CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[0/21661] 31.22s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/16438] 31.64s S CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[0/9973] 32.15s S CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[0/9899] 32.17s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/9580] 32.22s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/2301] 33.60s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[1/2301] 33.60s S LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[1/2301] 34.19s F LINK(DLL) python_runtime.dll python_runtime.dll.lib python_runtime.dll.pdb
+[2/2299] 1m00.82s F CXX obj/third_party/blink/renderer/modules/unit_tests/python_canvas_batch_test.obj
+[3/2299] 1m04.17s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[4/2299] 1m08.60s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[5/2299] 1m10.16s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[6/2299] 1m23.35s F CXX obj/third_party/blink/renderer/modules/modules/modules_initializer.obj
+[7/2299] 1m27.94s F CXX obj/third_party/blink/renderer/core/core_hot/document.obj
+[8/2298] 1m27.96s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[8/2298] 1m34.54s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: ad09119e-0550-44b7-b320-b86fdaf59115 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: getSectionName failed: #1099: invalid section name
+
+
+build failed
+
+
+noexec:0 local:9 remote:0 cache:0 skip:99807
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1307(err:4) / r:780(err:0) 215.41MiB / w:2(err:0) 388.33KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m35.89s Build Failure: 9 done, 1 failed, 2289 remaining - 0.09/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-133700.1040
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

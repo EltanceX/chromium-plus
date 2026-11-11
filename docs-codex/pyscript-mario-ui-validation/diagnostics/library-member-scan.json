@@ -1,0 +1,22 @@
+[
+  {
+    "symbol": "??0ScopedCommandLine@test@base@@QEAA@XZ",
+    "offset": 6394914,
+    "member": "test_support/scoped_block_tests_writing_to_special_dirs.obj/"
+  },
+  {
+    "symbol": "??1ScopedCommandLine@test@base@@QEAA@XZ",
+    "offset": 6394914,
+    "member": "test_support/scoped_block_tests_writing_to_special_dirs.obj/"
+  },
+  {
+    "symbol": "?GetProcessCommandLine@ScopedCommandLine@test@base@@QEAAPEAVCommandLine@3@XZ",
+    "offset": 6394914,
+    "member": "test_support/scoped_block_tests_writing_to_special_dirs.obj/"
+  },
+  {
+    "symbol": "??0NullTaskRunner@base@@QEAA@XZ",
+    "offset": 6395514,
+    "member": "test_support/move_only_int.obj/"
+  }
+]

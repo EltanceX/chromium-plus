@@ -1,0 +1,66 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:54679",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Typed native controls retain values flags literal text and bounded styles",
+      "passed": true,
+      "elapsedMs": 571
+    },
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 422
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": true,
+      "elapsedMs": 1644,
+      "detail": {
+        "state": {
+          "state": "ready",
+          "x": "96.000",
+          "y": "460.000",
+          "vx": "0.000",
+          "vy": "0.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "9",
+          "elapsed": "0.000",
+          "steps": "0",
+          "keys": "0",
+          "particles": "0"
+        },
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:30.000 | lifetime max physics_ms:0.538 build_ms:0.000 submit_ms:0.068 total_ms:3.638 p95_ms:2.250 gap_ms:99.9 steps:0 dropped_s:0.100"
+      }
+    },
+    {
+      "name": "Trusted start movement and variable jump use native Python callbacks",
+      "passed": false,
+      "elapsedMs": 30404,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:148:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:297:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "warning",
+          "text": "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.",
+          "timestamp": 1794379400364.499,
+          "url": "http://127.0.0.1:54679/sample",
+          "lineNumber": 1191
+        }
+      ],
+      "pageState": {
+        "status": "paused · 分数 0 · 金币 0 · 生命 3 · 剩余 180 秒 · Go right! Hold jump for a higher jump.",
+        "telemetry": "state:paused|x:96.000|y:460.000|vx:0.000|vy:0.000|coins:0|score:0|lives:3|checkpoint:0|frames:1816|elapsed:0.000|steps:0|keys:0|particles:0",
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:3.000 | lifetime max physics_ms:0.584 build_ms:1.462 submit_ms:2.819 total_ms:4.223 p95_ms:0.840 gap_ms:99.9 steps:0 dropped_s:0.133"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:148:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:297:3"
+}

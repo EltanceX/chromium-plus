@@ -1,0 +1,5 @@
+{
+  "object": "out\\Debug\\obj\\third_party\\blink\\renderer\\core\\core\\counter_style.obj",
+  "offset": "0x454000",
+  "error": "'utf-8' codec can't decode byte 0x8a in position 41479: invalid start byte"
+}

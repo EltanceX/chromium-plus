@@ -1,0 +1,59 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.0421535s
+load siso config done 13.165ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:52619+ready:0 (node:441073 edge:52624)
+schedule pending:77890+ready:0 (node:441073 edge:77900)
+schedule pending:97613+ready:0 (node:441073 edge:97624)
+ 3.29s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/20823] 32.04s S CXX obj/third_party/blink/renderer/core/core/modulator.obj
+[0/19947] 32.10s S CXX obj/third_party/blink/renderer/core/core/performance_timing.obj
+[0/19633] 32.13s S CXX obj/third_party/blink/renderer/core/core/html_selected_content_element.obj
+[0/19585] 32.13s S CXX obj/third_party/blink/renderer/core/core/unique_font_selector.obj
+[0/19286] 32.16s S CXX obj/third_party/blink/renderer/core/core/apply_block_element_command.obj
+[0/18802] 32.21s S CXX obj/third_party/blink/renderer/core/core/file_input_type.obj
+[0/2296] 44.10s F CXX obj/third_party/blink/renderer/core/core/unique_font_selector.obj
+[1/2296] 50.22s F CXX obj/third_party/blink/renderer/core/core/html_selected_content_element.obj
+[2/2296] 1m05.57s F CXX obj/third_party/blink/renderer/core/core/apply_block_element_command.obj
+[3/2296] 1m06.42s F CXX obj/third_party/blink/renderer/core/core/modulator.obj
+[4/2296] 1m10.81s F CXX obj/third_party/blink/renderer/core/core/file_input_type.obj
+[5/2296] 1m14.33s F CXX obj/third_party/blink/renderer/core/core/performance_timing.obj
+[6/2296] 1m14.34s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[6/2296] 1m40.38s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 422e8b90-153b-44d9-944f-eace0486acf6 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: relocation points beyond the end of its parent section
+
+
+build failed
+
+
+noexec:0 local:7 remote:0 cache:0 skip:99809
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1030(err:7) / r:768(err:0) 34.83MiB / w:0(err:0) 0B
+
+
+
+1m41.76s Build Failure: 7 done, 1 failed, 2289 remaining - 0.07/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-140613.15344
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -277,6 +277,26 @@ DomResult BudgetedDomHost::SetText(DomHandle handle, std::string_view text) {
   return FinishCall(budget_->host()->SetText(handle, text));
 }
 
+ControlStateResult BudgetedDomHost::GetControlState(DomHandle handle) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->GetControlState(handle);
+  result.status = FinishCall(result.status);
+  if (result.status.error != DomError::kNone) {
+    return {result.status};
+  }
+  return result;
+}
+
+DomResult BudgetedDomHost::UpdateElement(DomHandle handle,
+                                         const ElementUpdate& update) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{}, DomError::kStopped, budget_->Message()};
+  }
+  return FinishCall(budget_->host()->UpdateElement(handle, update));
+}
+
 DomResult BudgetedDomHost::AddEventListener(DomHandle element,
                                             std::string_view type,
                                             CallbackHandle callback,

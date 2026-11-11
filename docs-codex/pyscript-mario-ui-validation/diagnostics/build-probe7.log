@@ -1,0 +1,45 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 11.3800857s
+load siso config done 13.7103ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:73415+ready:0 (node:441073 edge:73424)
+ 1.33s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/31326] 35.16s S LIB obj/base/test/test_support.lib
+[0/22934] 35.64s F LIB obj/base/test/test_support.lib
+[1/22211] 35.76s S LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[1/21987] 35.78s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[1/7455] 37.80s F LINK native_python_settings_unittests.exe native_python_settings_unittests.exe.pdb
+[2/5485] 37.94s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[3/2136] 38.26s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[3/13] 38.31s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/13] 38.43s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[3/12] 50.77s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[4/11] 1m48.06s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[5/10] 4m34.66s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:6 remote:0 cache:0 skip:102099
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1055(err:7) / r:774(err:0) 7.83GiB / w:5(err:0) 1.08MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      5(0)     0.00s |▇      |  1m04.23s |   ▆▄▆ |
+
+4m35.48s Build Succeeded: 6 steps - 0.02/s
+shutdown cloud logging/monitoring done 0s

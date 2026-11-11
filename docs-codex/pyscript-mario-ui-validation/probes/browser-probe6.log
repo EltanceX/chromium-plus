@@ -1,0 +1,20 @@
+PASS Typed native controls retain values flags literal text and bounded styles
+PASS Grouped rectangles preserve native pixels costs and atomic rejection
+PASS Python-only game initializes under nonce CSP and existing sandbox
+PASS Trusted start movement and variable jump use native Python callbacks
+PASS Pause clears held controls and stops world time
+PASS Restart is repeatable without allocating more native surfaces
+PASS Pointer capture moves and releasing stops the player
+PASS Hidden and frozen page clears input and resets the time baseline
+PASS Movement buttons support native keyboard hold release and focus cleanup
+PASS Native range keyboard actions update Python parameters without game shortcuts
+PASS Collision checkbox changes native Canvas pixels and remains keyboard accessible
+PASS Reset restores all native values checkboxes and Python output labels
+PASS Tabs use native focus roving tabindex arrows Home and End
+PASS All eight Python lessons wrap and flow cards select the explanation tab
+{
+  "passed": false,
+  "cases": 15,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\browser-probe6.json",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'guideButton'\n- 'tabExplain'\n\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:447:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:438:3"
+}

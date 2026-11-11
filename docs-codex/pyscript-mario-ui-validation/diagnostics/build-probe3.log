@@ -1,0 +1,53 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1921155s
+load siso config done 12.2356ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:65108+ready:0 (node:441073 edge:65124)
+ 1.37s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/35096] 31.21s S CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/19142] 31.80s S CXX obj/third_party/blink/renderer/core/core/css_initial_value.obj
+[0/18838] 31.82s S CXX obj/third_party/blink/renderer/core/core/css_selector_watch.obj
+[0/2295] 37.17s F CXX obj/components/python_runtime/python_runtime_unittests/python_runtime_unittest.obj
+[0/2295] 37.17s S LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[1/2294] 38.28s F LINK python_runtime_unittests.exe python_runtime_unittests.exe.pdb
+[2/2294] 43.77s F CXX obj/third_party/blink/renderer/core/core/css_initial_value.obj
+[3/2294] 49.96s F CXX obj/third_party/blink/renderer/core/core/css_selector_watch.obj
+[4/2294] 49.97s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[4/2294] 56.32s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: dd06ef36-149c-4f44-b2f2-c2ab8c98ffa8 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/file_input_type.obj: .xdata should not refer to non-existent section 18947
+
+
+build failed
+
+
+noexec:0 local:5 remote:0 cache:0 skip:99811
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1220(err:4) / r:768(err:0) 46.85MiB / w:1(err:0) 3.57KiB
+
+
+
+57.00s Build Failure: 5 done, 1 failed, 2289 remaining - 0.09/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-135303.18852
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

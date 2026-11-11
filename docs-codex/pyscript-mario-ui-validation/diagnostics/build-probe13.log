@@ -1,0 +1,114 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.7514203s
+load siso config done 11.9459ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:57858+ready:0 (node:441073 edge:57874)
+ 1.54s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/56734] 33.47s S CXX obj/third_party/tflite/tflite_kernels/mirror_pad.obj
+[0/4471] 37.92s F CXX obj/third_party/tflite/tflite_kernels/mirror_pad.obj
+[1/4471] 37.92s S LIB obj/third_party/tflite/tflite_kernels.lib
+[1/4470] 38.01s F LIB obj/third_party/tflite/tflite_kernels.lib
+[2/4462] 38.02s S LINK(DLL) third_party_webrtc_overrides_webrtc_component.dll third_party_webrtc_overrides_webrtc_component.dll.lib third_party_webrtc_overrides_webrtc_component.dll.pdb
+[2/4459] 43.03s F LINK(DLL) third_party_webrtc_overrides_webrtc_component.dll third_party_webrtc_overrides_webrtc_component.dll.lib third_party_webrtc_overrides_webrtc_component.dll.pdb
+[3/4163] 43.04s S LINK(DLL) components_language_detection_core.dll components_language_detection_core.dll.lib components_language_detection_core.dll.pdb
+[3/4163] 43.04s S LINK(DLL) media_webrtc.dll media_webrtc.dll.lib media_webrtc.dll.pdb
+[3/3781] 43.07s S LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[3/3674] 44.99s F LINK(DLL) components_language_detection_core.dll components_language_detection_core.dll.lib components_language_detection_core.dll.pdb
+[4/3646] 45.00s S LINK(DLL) services_on_device_model_ml_ml_no_internal.dll services_on_device_model_ml_ml_no_internal.dll.lib services_on_device_model_ml_ml_no_internal.dll.pdb
+[4/3645] 45.26s F LINK(DLL) media_webrtc.dll media_webrtc.dll.lib media_webrtc.dll.pdb
+[5/3645] 45.28s S LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[5/3645] 49.32s F LINK(DLL) services_on_device_model_ml_ml_no_internal.dll services_on_device_model_ml_ml_no_internal.dll.lib services_on_device_model_ml_ml_no_internal.dll.pdb
+[6/3644] 49.32s S LINK(DLL) services_on_device_model_on_device_model_service.dll services_on_device_model_on_device_model_service.dll.lib services_on_device_model_on_device_model_service.dll.pdb
+[6/3642] 49.53s F LINK(DLL) services_webnn_webnn_service.dll services_webnn_webnn_service.dll.lib services_webnn_webnn_service.dll.pdb
+[7/3631] 51.32s F LINK(DLL) services_on_device_model_on_device_model_service.dll services_on_device_model_on_device_model_service.dll.lib services_on_device_model_on_device_model_service.dll.pdb
+[8/3621] 59.60s F LINK(DLL) blink_platform.dll blink_platform.dll.lib blink_platform.dll.pdb
+[9/2144] 59.79s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[9/2142] 59.80s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[9/2142] 1m04.07s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[10/2137] 1m22.36s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[11/1049] 1m22.38s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[11/1049] 1m22.39s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[11/1049] 1m31.83s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 582e4513-cdd0-4e24-b5b2-271a738eda46 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: undefined symbol: RU�����U�(531K���Nyu1�{
+�����f�xx]��n�U���h���7�ڦө��A'}�F~yd
+
+!I��0�����ȉh
+>>> referenced by .\..\..\mojo\public\cpp\bindings\struct_ptr.h:64
+>>>               obj/services/network/test_support/test_url_loader_factory.obj:(?��D
+JKC�rXT���N�
+Ҋ��_{//?��Ls�on���3�C��{ːY��7;ʲ)�6J
+�S�4a:�%���Kq�3f�t��T+�r7�w��G�Y^=)
+
+lld-link: error: undefined symbol: �jPC�����.h>�B2Gn�V
+p���r���?v�s"���0��
+>>> referenced by .\..\..\mojo\public\cpp\bindings\struct_ptr.h:64
+>>>               obj/services/network/test_support/test_url_loader_factory.obj:(c��y)ಷ�����2��˶p;.��dI��q��
+�ñ/>�K�����̭w�(4��WՐǉ�Z8
+��L�T�iC�o�$�vK6-�:<4��'�1�}��
+0�75e"�F���Ay:SQ�B�,�w
+���i�E��:逺$�g:bZ��
+�C�1��{^s�YQeX�;�	K��ȂBe��)D
+ִ��:A���G���
+��~t/W���I�d�8ި^��/�`�ۑhjsZ(Ч�$$!�/7̡������,����	Po�J�/���X��8�oC�ђ�@���j�>�2��:��5̲�Ú
+vFL�`�އ)`��#*�7ɳ�
+b�ݼ�֫'���2�
+'���|��X�3�
+�Ag�D�s␏�ǐ�7A�>^�Xiۜ
+/
+�8.��[=Y\���m���7u��
+OĖB7�`�Rh�-]A�о1����Y�F]Mh�h]N����V��7����[�:8}�r-�ע��~�
+���Ñ|v���f���G�/���/8����r��
+��Bv��BS;�3�w.[�W=U�Ri��ޚ3�$�ᾫQ�Y�~blXV:;��@X�j���D,e��<wi񛨟 e�cD���[�	�)�
+�ޚ��NPSJ��ٓUKxIo�6����a���0
+�v�54�
+}S��
+�R�9o��͖V��
+w�uc�թueH�
+�q��Mt�i�'J�H|՛t6��h,
+��W�^{��v�Ň.A�u��3�"�p�|�{�h��8�¾�޸�t�.0�oj��W��e�1m�I�+B�M�v��y���X�1o@�j�ł;7�
+i�\P�`Iim��GL]4o�~\>6ݧ��r[��! �e����Цp�c�����9����p�hG�����
+�����;���>��.�}����I�\8�X���&�"��w�v\��GnפWk<�0�Ú�'�z��qǕgJˍ�`~��&�A4�ئ�=��e��~b
+�����eszCEG�
+�'��-��5���"�7a�.���L/O��z�>Rh��ڊ��
+4o�2��z���Ͷ"�	�%��דI:s�M�!�&�/U�n2��9�
+� y���
+y�y����@���w(а������ړ�\�$��gE�cM�����<����$D
+槁G�L���S�!K�����2!�ĥKzM�
+���)
+
+
+[12/1049] 1m31.84s - LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+build failed
+
+
+noexec:0 local:12 remote:0 cache:0 skip:101056
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1131(err:12) / r:789(err:0) 4.03GiB / w:10(err:0) 1.93MiB
+
+
+shutdown cloud logging/monitoring done 531.6µs
+
+1m34.07s Build Failure: 12 done, 1 failed, 1037 remaining - 0.13/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-153930.13516
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

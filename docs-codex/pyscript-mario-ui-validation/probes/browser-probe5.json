@@ -1,0 +1,42 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:53458",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Typed native controls retain values flags literal text and bounded styles",
+      "passed": true,
+      "elapsedMs": 439
+    },
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 356
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": false,
+      "elapsedMs": 1134,
+      "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python document exceeded the 250 ms cooperative execution budget\",\"timestamp\":1794381697497.476,\"url\":\"http://127.0.0.1:53458/sample\",\"lineNumber\":1207}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:229:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:301:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python document exceeded the 250 ms cooperative execution budget",
+          "timestamp": 1794381697497.476,
+          "url": "http://127.0.0.1:53458/sample",
+          "lineNumber": 1207
+        }
+      ],
+      "pageState": {
+        "status": "正在初始化 Python…",
+        "telemetry": "等待状态数据",
+        "metrics": "等待绘制数据"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python document exceeded the 250 ms cooperative execution budget\",\"timestamp\":1794381697497.476,\"url\":\"http://127.0.0.1:53458/sample\",\"lineNumber\":1207}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:143:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:229:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:301:3"
+}

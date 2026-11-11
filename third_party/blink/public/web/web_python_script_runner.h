@@ -123,6 +123,38 @@ struct WebPythonCanvasResult {
   WebPythonCanvasStatistics statistics;
 };
 
+enum class WebPythonElementAction {
+  kValue,
+  kChecked,
+  kHidden,
+  kDisabled,
+  kClass,
+  kAttribute,
+  kTabIndex,
+  kProgress,
+  kFocus,
+  kShowModal,
+  kCloseDialog,
+  kScrollIntoView
+};
+
+struct WebPythonElementUpdate {
+  WebPythonElementAction action;
+  WebString name;
+  WebString value;
+  bool enabled = false;
+  double number = 0;
+};
+
+struct WebPythonControlStateResult {
+  WebPythonDomResult status;
+  WebString value;
+  bool checked = false;
+  bool hidden = false;
+  bool disabled = false;
+  bool open = false;
+};
+
 // Borrowed during synchronous Run and callbacks only. Values crossing this
 // boundary never contain Nodes or Python objects.
 class WebPythonDomHost {
@@ -131,6 +163,13 @@ class WebPythonDomHost {
   virtual bool IsActive() const = 0;
   virtual WebPythonDomResult GetElementById(const WebString&) = 0;
   virtual WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) = 0;
+  virtual WebPythonControlStateResult GetControlState(WebPythonDomHandle) {
+    return {{{}, WebPythonDomError::kNotAllowed, "Controls are unavailable"}};
+  }
+  virtual WebPythonDomResult UpdateElement(WebPythonDomHandle,
+                                           const WebPythonElementUpdate&) {
+    return {{}, WebPythonDomError::kNotAllowed, "Controls are unavailable"};
+  }
   virtual WebPythonDomResult AddEventListener(WebPythonDomHandle,
                                               const WebString& type,
                                               WebPythonCallbackHandle,

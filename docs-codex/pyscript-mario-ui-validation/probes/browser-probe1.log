@@ -1,0 +1,9 @@
+PASS Typed native controls retain values flags literal text and bounded styles
+PASS Grouped rectangles preserve native pixels costs and atomic rejection
+PASS Python-only game initializes under nonce CSP and existing sandbox
+{
+  "passed": false,
+  "cases": 4,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\browser-probe1.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:148:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:302:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:297:3"
+}

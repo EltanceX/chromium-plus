@@ -51,6 +51,9 @@ class PythonScriptController final
   bool IsActive() const override;
   WebPythonDomResult GetElementById(const WebString&) override;
   WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) override;
+  WebPythonControlStateResult GetControlState(WebPythonDomHandle) override;
+  WebPythonDomResult UpdateElement(WebPythonDomHandle,
+                                   const WebPythonElementUpdate&) override;
   WebPythonDomResult AddEventListener(WebPythonDomHandle,
                                       const WebString&,
                                       WebPythonCallbackHandle,

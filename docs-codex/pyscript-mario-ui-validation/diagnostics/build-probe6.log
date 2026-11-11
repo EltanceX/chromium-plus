@@ -1,0 +1,81 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.0960687s
+load siso config done 11.1203ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:57737+ready:0 (node:441073 edge:57750)
+ 1.44s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/26525] 29.73s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_semantic_embedder.obj
+[0/25975] 29.76s S CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_web_print_job.obj
+[0/2167] 37.27s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_semantic_embedder.obj
+[1/2167] 38.93s F CXX obj/third_party/blink/renderer/bindings/modules/v8/v8/v8_web_print_job.obj
+[2/2166] 38.97s S LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[2/2153] 1m01.61s F LINK(DLL) blink_modules.dll blink_modules.dll.lib blink_modules.dll.pdb
+[3/2138] 1m01.62s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[3/2138] 1m01.62s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[3/41] 1m09.08s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[4/32] 1m09.08s S LIB obj/chrome/renderer/renderer.lib
+[4/15] 1m09.12s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[4/15] 1m09.65s F LIB obj/chrome/renderer/renderer.lib
+[5/15] 1m09.74s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[5/14] 1m11.44s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[6/14] 1m27.31s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: 7dce6c9a-c3e9-40f1-88c0-83f092e2dab4 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: undefined symbol: public: __cdecl base::NullTaskRunner::NullTaskRunner(void)
+>>> referenced by .\..\..\base\memory\scoped_refptr.h:151
+>>>               obj/third_party/blink/renderer/core/unit_tests/image_bitmap_test.obj:(class scoped_refptr<class base::NullTaskRunner> __cdecl base::MakeRefCounted<class base::NullTaskRunner>(void))
+>>> referenced by obj/third_party/blink/renderer/core/unit_tests/blink_transferable_message_mojom_traits_test.obj
+>>> referenced by obj/third_party/blink/renderer/core/unit_tests/script_runner_test.obj
+
+lld-link: error: undefined symbol: public: __cdecl base::test::ScopedCommandLine::ScopedCommandLine(void)
+>>> referenced by .\..\..\third_party\blink\renderer\core\loader\base_fetch_context_test.cc:362
+>>>               obj/third_party/blink/renderer/core/unit_tests/base_fetch_context_test.obj:(public: virtual void __cdecl blink::BaseFetchContextTest_CanRequestSVGImage_Test::TestBody(void))
+>>> referenced by .\..\..\third_party\blink\renderer\modules\payments\payments_validators_test.cc:396
+>>>               obj/third_party/blink/renderer/modules/unit_tests/payments_validators_test.obj:(private: virtual void __cdecl blink::`anonymous namespace'::PaymentMethodValidatorTest_IsValidPaymentMethodSafelisted_Test::TestBody(void))
+
+lld-link: error: undefined symbol: public: class base::CommandLine * __cdecl base::test::ScopedCommandLine::GetProcessCommandLine(void)
+>>> referenced by .\..\..\third_party\blink\renderer\core\loader\base_fetch_context_test.cc:381
+>>>               obj/third_party/blink/renderer/core/unit_tests/base_fetch_context_test.obj:(public: virtual void __cdecl blink::BaseFetchContextTest_CanRequestSVGImage_Test::TestBody(void))
+>>> referenced by .\..\..\third_party\blink\renderer\modules\payments\payments_validators_test.cc:397
+>>>               obj/third_party/blink/renderer/modules/unit_tests/payments_validators_test.obj:(private: virtual void __cdecl blink::`anonymous namespace'::PaymentMethodValidatorTest_IsValidPaymentMethodSafelisted_Test::TestBody(void))
+
+lld-link: error: undefined symbol: public: __cdecl base::test::ScopedCommandLine::~ScopedCommandLine(void)
+>>> referenced by .\..\..\third_party\blink\renderer\core\loader\base_fetch_context_test.cc:387
+>>>               obj/third_party/blink/renderer/core/unit_tests/base_fetch_context_test.obj:(public: virtual void __cdecl blink::BaseFetchContextTest_CanRequestSVGImage_Test::TestBody(void))
+>>> referenced by .\..\..\third_party\blink\renderer\modules\payments\payments_validators_test.cc:406
+>>>               obj/third_party/blink/renderer/modules/unit_tests/payments_validators_test.obj:(private: virtual void __cdecl blink::`anonymous namespace'::PaymentMethodValidatorTest_IsValidPaymentMethodSafelisted_Test::TestBody(void))
+
+
+[7/14] 1m28.83s - LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build failed
+
+
+noexec:0 local:7 remote:0 cache:0 skip:102091
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1045(err:7) / r:771(err:0) 1.99GiB / w:4(err:0) 1.46MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m29.52s Build Failure: 7 done, 1 failed, 7 remaining - 0.08/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-143049.12044
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

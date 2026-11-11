@@ -3,12 +3,13 @@
 # found in the LICENSE file.
 """Native input only; no JavaScript execution or event attributes."""
 held, pointers = set(), {}
+buttonHeld = set()
 epoch = dom.get_page_state().input_epoch
 LEFT, RIGHT, JUMP = ('ArrowLeft', 'KeyA'), ('ArrowRight', 'KeyD'), ('Space', 'ArrowUp', 'KeyW')
 
 
 def syncInput():
-    active = set(pointers.values())
+    active = set(pointers.values()) | {control for control, code in buttonHeld}
     input.left = bool(held.intersection(LEFT)) or 'left' in active
     input.right = bool(held.intersection(RIGHT)) or 'right' in active
     input.jump = bool(held.intersection(JUMP)) or 'jump' in active
@@ -17,6 +18,7 @@ def syncInput():
 def resetInput():
     held.clear()
     pointers.clear()
+    buttonHeld.clear()
     clearInput()
 
 
@@ -36,6 +38,7 @@ def key(event):
     if event.repeat:
         return
     if event.code in JUMP:
+        logEvent('keydown: '+event.code)
         pressJump()
     elif event.code == 'Enter' and game.state in ('ready', 'over', 'won'):
         restart(None)
@@ -64,10 +67,25 @@ def pointer(control):
     return receive
 
 
+def buttonKey(control):
+    def receive(event):
+        if event.code not in ('Space', 'Enter'): return
+        event.prevent_default()
+        event.stop_propagation()
+        if event.type == 'keydown':
+            buttonHeld.add((control, event.code))
+            if control == 'jump' and not event.repeat: pressJump()
+        else:
+            buttonHeld.discard((control, event.code))
+        syncInput()
+    return receive
+
+
 def pageChanged(event):
     global epoch, reducedMotion
     page = dom.get_page_state()
     reducedMotion = page.reduced_motion
+    if uiReady: resizeUI(page)
     if page.input_epoch != epoch or page.hidden or not page.has_focus:
         resetInput()
         clock.reset()
@@ -80,12 +98,18 @@ def restart(event):
     resetInput()
     startGame()
     clock.reset()
+    if uiReady:
+        dom.focus(node('game'))
+        syncOverlay()
 
 
 def pause(event):
     togglePause()
     resetInput()
     clock.reset()
+    if uiReady:
+        dom.focus(node('game'))
+        syncOverlay()
 
 
 def installControls():
@@ -100,6 +124,8 @@ def installControls():
         callback = pointer(control)
         for name in ('pointerdown', 'pointerup', 'pointercancel', 'lostpointercapture'):
             dom.add_event_listener(element, name, callback)
+        for name in ('keydown', 'keyup'):
+            dom.add_event_listener(element, name, buttonKey(control))
     for name, callback in (('start', restart), ('pause', pause)):
         dom.add_event_listener(dom.get_element_by_id(name), 'click', callback)
 
@@ -157,7 +183,7 @@ def frame(timestamp):
         telemetryText = ('state:%s|x:%.3f|y:%.3f|vx:%.3f|vy:%.3f|coins:%d|score:%d|lives:%d|checkpoint:%d|frames:%d|elapsed:%.3f|steps:%d|keys:%d|particles:%d' %
                      (game.state, player.x, player.y, player.vx, player.vy, game.coins,
                       game.score, game.lives, game.checkpoint, frameCount, game.elapsed,
-                      steps, len(held)+len(pointers), len(particles)))
+                      steps, len(held)+len(pointers)+len(buttonHeld), len(particles)))
         metricsText = ('commands:%d bytes:%d pixels:%d native_ms:%.3f | lifetime max physics_ms:%.3f build_ms:%.3f submit_ms:%.3f total_ms:%.3f p95_ms:%.3f gap_ms:%.1f steps:%d dropped_s:%.3f' %
                      (stats['commands'], stats['bytes'], stats['pixels'], stats['native_ms'],
                       maxima[0], maxima[1], maxima[2], maxima[3], p95, maxima[4], maxima[5], clock.dropped))
@@ -165,8 +191,11 @@ def frame(timestamp):
         lastHud = timestamp
     # One DOM write per callback; full HUD preparation and writes are bounded.
     if pendingUI:
-        node, text = pendingUI.pop(0)
-        dom.set_text(node, text)
+        handle, text = pendingUI.pop(0)
+        dom.set_text(handle, text)
+    if uiReady:
+        uiTick(timestamp)
+        flushUI(started)
     # Include HUD work in the recorded total; the next HUD reports this sample.
     timings[-1] = (timings[-1][0], timings[-1][1], timings[-1][2],
                    (time.perf_counter()-started)*1000, raw*1000, steps)

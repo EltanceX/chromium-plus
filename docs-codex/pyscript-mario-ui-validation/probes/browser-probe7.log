@@ -1,0 +1,40 @@
+PASS Typed native controls retain values flags literal text and bounded styles
+PASS Grouped rectangles preserve native pixels costs and atomic rejection
+PASS Python-only game initializes under nonce CSP and existing sandbox
+PASS Trusted start movement and variable jump use native Python callbacks
+PASS Pause clears held controls and stops world time
+PASS Restart is repeatable without allocating more native surfaces
+PASS Pointer capture moves and releasing stops the player
+PASS Hidden and frozen page clears input and resets the time baseline
+PASS Movement buttons support native keyboard hold release and focus cleanup
+PASS Native range keyboard actions update Python parameters without game shortcuts
+PASS Collision checkbox changes native Canvas pixels and remains keyboard accessible
+PASS Reset restores all native values checkboxes and Python output labels
+PASS Tabs use native focus roving tabindex arrows Home and End
+PASS All eight Python lessons wrap and flow cards select the explanation tab
+PASS Learning dialog pauses clears input selects a lesson and restores focus
+PASS Native Escape closes dialogs without resuming or restarting the game
+PASS State HUD progress and bounded event log follow native gameplay
+PASS Narrow resize uses 790 logical pixels and reduced motion stays interactive
+PASS Embedded original-JavaScript oracle: acceleration-brake
+PASS Embedded original-JavaScript oracle: long-jump
+PASS Embedded original-JavaScript oracle: short-jump
+PASS Embedded original-JavaScript oracle: question-once
+PASS Embedded original-JavaScript oracle: collect-coin
+PASS Embedded original-JavaScript oracle: stomp
+PASS Embedded original-JavaScript oracle: side-hit-respawn
+PASS Embedded original-JavaScript oracle: pit-respawn
+PASS Embedded original-JavaScript oracle: checkpoint-respawn
+PASS Embedded original-JavaScript oracle: last-life
+PASS Embedded original-JavaScript oracle: timeout-reset
+PASS Embedded original-JavaScript oracle: finish
+PASS Embedded original-JavaScript oracle: coyote
+PASS Embedded original-JavaScript oracle: jump-buffer
+PASS Embedded original-JavaScript oracle: full-level-route
+PASS Navigation and reload discard prior game callbacks and resources
+PASS Game closes normally with a pending native animation frame
+{
+  "passed": true,
+  "cases": 35,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase5\\browser-probe7.json"
+}

@@ -1,0 +1,55 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3925428s
+load siso config done 11.3187ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:68225+ready:0 (node:441073 edge:68235)
+ 1.32s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/20771] 30.59s S CXX obj/third_party/blink/renderer/core/core/interaction_effects_monitor.obj
+[0/18773] 30.75s S CXX obj/third_party/blink/renderer/core/core/counter_style.obj
+[0/11684] 31.15s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2293] 44.43s F CXX obj/third_party/blink/renderer/core/core/counter_style.obj
+[1/2293] 47.89s F CXX obj/third_party/blink/renderer/core/core/interaction_effects_monitor.obj
+[2/2293] 47.90s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2293] 1m12.43s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[3/2282] 1m15.46s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[4/2139] 1m15.48s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[4/40] 1m18.52s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[5/13] 1m18.53s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[5/7] 1m29.97s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: e5971a9e-523e-42d2-9d47-9d58499a92cd "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: ignoring section .debug$T with unrecognized magic 0xACB2F144
+
+
+build failed
+
+
+noexec:0 local:6 remote:0 cache:0 skip:102098
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1025(err:4) / r:770(err:0) 1.84GiB / w:1(err:0) 396.79KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m30.78s Build Failure: 6 done, 1 failed, 1 remaining - 0.07/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-150142.14440
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

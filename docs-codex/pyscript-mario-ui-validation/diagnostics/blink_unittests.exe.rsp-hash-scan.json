@@ -1,0 +1,28 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_unittests.exe.rsp",
+  "sources": [
+    "obj/third_party/blink/renderer/controller/blink_unittests_sources/v8_external_memory_accounter_test.obj"
+  ],
+  "targetHashCount": 247,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/css_font_face_src_value_test.obj",
+      "errors": [
+        "GHASH count 91127 differs from type count 75188"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/scroll_button_pseudo_element_test.obj",
+      "errors": [
+        "GHASH count 42114 differs from type count 40172",
+        "GHASH 1c460f38afae1eb0 at type 0xab38: leaf 0x1009 conflicts with 0x1601"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/video_track_adapter_unittest.obj",
+      "errors": [
+        "GHASH count 45656 differs from type count 15397"
+      ]
+    }
+  ]
+}

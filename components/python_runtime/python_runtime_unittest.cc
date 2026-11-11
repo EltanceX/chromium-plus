@@ -63,6 +63,24 @@ class TestDomHost final : public DomHost {
     }
     return {{}, listener_failure, "Listener installation failed"};
   }
+  ControlStateResult GetControlState(DomHandle) override {
+    ++control_calls;
+    if (on_control) {
+      on_control();
+    }
+    return {{{}, failure, "control failure"}, "660", true, false, true, false};
+  }
+  DomResult UpdateElement(DomHandle h, const ElementUpdate& update) override {
+    ++control_calls;
+    last_update = update;
+    if (on_control) {
+      on_control();
+    }
+    return {{}, failure, "control failure"};
+  }
+  int control_calls = 0;
+  ElementUpdate last_update{ElementAction::kHidden};
+  std::function<void()> on_control;
   DomResult RemoveEventListener(DomHandle element,
                                 CallbackHandle callback) override {
     ++removes;
@@ -191,6 +209,117 @@ class TestDomHost final : public DomHost {
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest, TypedControlsPassSnapshotsAndExplicitOperations) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  const auto result = context->Execute(R"PY(
+import dom
+h = dom.get_element_by_id('control')
+s = dom.get_control_state(h)
+assert s == dict(value='660', checked=True, hidden=False, disabled=True, open=False)
+s['checked'] = False
+assert dom.get_control_state(h)['checked'] is True
+dom.set_value(h, '280')
+dom.set_checked(h, False)
+dom.set_hidden(h, True)
+dom.set_disabled(h, False)
+dom.toggle_class(h, 'selected', True)
+dom.set_attribute(h, 'aria-selected', 'true')
+dom.set_tab_index(h, -1)
+dom.focus(h)
+dom.show_modal(h)
+dom.close_dialog(h)
+dom.scroll_into_view(h)
+dom.set_progress(h, 37.5)
+)PY",
+                                       "controls.py", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  EXPECT_EQ(14, host.control_calls);
+  EXPECT_EQ(ElementAction::kProgress, host.last_update.action);
+  EXPECT_EQ(37.5, host.last_update.number);
+}
+
+TEST(PythonRuntimeTest, ControlArgumentsDoNotInvokeConversionHooks) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  const auto result = context->Execute(R"PY(
+import dom
+h = dom.get_element_by_id('control')
+class Evil:
+    def __bool__(self): raise AssertionError('bool hook')
+    def __float__(self): raise AssertionError('float hook')
+    def __str__(self): raise AssertionError('str hook')
+calls = [(dom.set_checked, (h, 1)), (dom.set_hidden, (h, Evil())),
+         (dom.set_value, (h, Evil())), (dom.set_value, (h, 'x'*16385)),
+         (dom.set_attribute, (h, 'title', Evil())),
+         (dom.toggle_class, (h, 'selected', Evil())),
+         (dom.set_progress, (h, Evil())), (dom.set_progress, (h, True)),
+         (dom.set_progress, (h, float('nan'))), (dom.set_progress, (h, 101)),
+         (dom.set_tab_index, (h, 1)), (dom.set_tab_index, (h, float('inf'))),
+         (dom.focus, (None,)), (dom.set_value, (dom.get_document(), 'x'))]
+for f, args in calls:
+    try: f(*args)
+    except (TypeError, ValueError): pass
+    else: raise AssertionError('invalid control argument accepted')
+)PY",
+                                       "controls.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+  EXPECT_EQ(0, host.control_calls);
+}
+
+TEST(PythonRuntimeTest, ControlReadsAndWritesShareFatalDomBudget) {
+  for (const bool read : {false, true}) {
+    std::string error;
+    auto context = PythonContext::Create(&error);
+    TestDomHost host;
+    auto result = context->Execute(
+        std::string("import dom\nh=dom.get_element_by_id('c')\nfor i in "
+                    "range(1024):\n    ") +
+            (read ? "dom.get_control_state(h)" : "dom.set_hidden(h, False)"),
+        "controls.py", &host);
+    EXPECT_EQ(StopReason::kDomCalls, result.stop_reason);
+    EXPECT_EQ(1023, host.control_calls);
+    EXPECT_FALSE(context->Execute("pass", "later.py", &host).success);
+  }
+}
+
+TEST(PythonRuntimeTest, ControlPostCallTimeAndRevocationLatchStop) {
+  for (const bool timeout : {false, true}) {
+    std::string error;
+    base::SimpleTestTickClock clock;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    TestDomHost host;
+    ASSERT_TRUE(context
+                    ->Execute(R"PY(
+import dom
+h=dom.get_element_by_id('c')
+def change(e):
+    try: dom.set_hidden(h, False)
+    except Exception: pass
+    try: dom.get_control_state(h)
+    except Exception: pass
+)PY",
+                              "controls.py", &host)
+                    .success);
+    auto callback = context->RegisterCallback("change");
+    ASSERT_TRUE(callback.result.success);
+    host.on_control = [&] {
+      if (timeout) {
+        clock.Advance(base::Milliseconds(50));
+      } else {
+        host.active = false;
+      }
+    };
+    const auto result =
+        context->InvokeCallback(callback.handle, Click(), &host);
+    EXPECT_EQ(timeout ? StopReason::kBlockTime : StopReason::kInactive,
+              result.stop_reason);
+    EXPECT_EQ(1, host.control_calls);
+  }
 }
 
 TEST(PythonRuntimeTest, CanvasBatchTypedCommandsGradientsAndMetrics) {
@@ -1408,12 +1537,16 @@ callback = lambda event: None
   const auto valid = context->RegisterCallback("callback");
   ASSERT_TRUE(valid.result.success);
   auto invalid_event = Click();
-  invalid_event.type = "keydown";
+  invalid_event.type = "wheel";
   EXPECT_FALSE(context->InvokeCallback(valid.handle, invalid_event).success);
   invalid_event = Click();
   invalid_event.current_target = {};
   EXPECT_FALSE(context->InvokeCallback(valid.handle, invalid_event).success);
   EXPECT_TRUE(context->InvokeCallback(valid.handle, Click()).success);
+  auto key = Click();
+  key.type = "keydown";
+  key.code = "ArrowRight";
+  EXPECT_TRUE(context->InvokeCallback(valid.handle, key).success);
 }
 
 TEST(PythonRuntimeTest,

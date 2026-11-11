@@ -208,14 +208,16 @@ PyObject* SetText(PyObject* module, PyObject* args) {
 
 bool SupportedEvent(TargetKind kind, std::string_view type) {
   if (kind == TargetKind::kDocument) {
-    return type == "keydown" || type == "keyup" || type == "visibilitychange";
+    return type == "keydown" || type == "keyup" || type == "visibilitychange" ||
+           type == "focusin";
   }
   if (kind == TargetKind::kWindow) {
     return type == "blur" || type == "focus" || type == "resize";
   }
   return kind == TargetKind::kElement &&
-         (type == "click" || type == "input" || type == "change" ||
-          type == "pointerdown" || type == "pointerup" ||
+         (type == "keydown" || type == "keyup" || type == "close" ||
+          type == "cancel" || type == "click" || type == "input" ||
+          type == "change" || type == "pointerdown" || type == "pointerup" ||
           type == "pointermove" || type == "pointercancel" ||
           type == "gotpointercapture" || type == "lostpointercapture");
 }
@@ -672,7 +674,129 @@ int Clear(PyObject* module) {
   return 0;
 }
 
+PyObject* GetControlState(PyObject* module, PyObject* node) {
+  DomHandle handle{};
+  if (!ReadDomElementHandle(module, node, &handle)) {
+    return nullptr;
+  }
+  auto* state = ActiveState(module);
+  if (!state) {
+    return nullptr;
+  }
+  const auto result = state->host->GetControlState(handle);
+  if (!CheckResult(result.status)) {
+    return nullptr;
+  }
+  if (result.value.size() > kStringLimit) {
+    PyErr_SetString(PyExc_ValueError, "Control value exceeds 16 KiB UTF-8");
+    return nullptr;
+  }
+  return Py_BuildValue("{s:s#,s:O,s:O,s:O,s:O}", "value", result.value.data(),
+                       static_cast<Py_ssize_t>(result.value.size()), "checked",
+                       result.checked ? Py_True : Py_False, "hidden",
+                       result.hidden ? Py_True : Py_False, "disabled",
+                       result.disabled ? Py_True : Py_False, "open",
+                       result.open ? Py_True : Py_False);
+}
+
+// Each public function has a fixed shape; never call str/bool/float hooks.
+PyObject* UpdateElement(PyObject* module,
+                        PyObject* args,
+                        ElementAction action,
+                        char shape) {
+  PyObject *node, *first = nullptr, *second = nullptr;
+  const char* format = shape == '0'                   ? "O"
+                       : shape == 'c' || shape == 'a' ? "OOO"
+                                                      : "OO";
+  if (!PyArg_ParseTuple(args, format, &node, &first, &second)) {
+    return nullptr;
+  }
+  DomHandle handle{};
+  if (!ReadDomElementHandle(module, node, &handle)) {
+    return nullptr;
+  }
+  ElementUpdate update{action};
+  auto text = [&](PyObject* object, std::string& target) {
+    std::string_view value;
+    if (!StringArgument(object, &value)) {
+      return false;
+    }
+    target.assign(value);
+    return true;
+  };
+  if (shape == 's' && !text(first, update.value)) {
+    return nullptr;
+  }
+  if ((shape == 'c' || shape == 'a') && !text(first, update.name)) {
+    return nullptr;
+  }
+  if (shape == 'a' && !text(second, update.value)) {
+    return nullptr;
+  }
+  if (shape == 'b' || shape == 'c') {
+    PyObject* flag = shape == 'b' ? first : second;
+    if (!PyBool_Check(flag)) {
+      PyErr_SetString(PyExc_TypeError, "Expected an exact bool");
+      return nullptr;
+    }
+    update.enabled = flag == Py_True;
+  }
+  if (shape == 'n') {
+    if (!PyFloat_CheckExact(first) && !PyLong_CheckExact(first)) {
+      PyErr_SetString(PyExc_TypeError, "Expected an exact int or float");
+      return nullptr;
+    }
+    update.number = PyFloat_AsDouble(first);
+    if (PyErr_Occurred()) {
+      return nullptr;
+    }
+    if (!std::isfinite(update.number) ||
+        (action == ElementAction::kProgress
+             ? update.number < 0 || update.number > 100
+             : update.number != -1 && update.number != 0)) {
+      PyErr_SetString(PyExc_ValueError, "Invalid progress or tab index");
+      return nullptr;
+    }
+  }
+  auto* state = ActiveState(module);
+  if (!state || !CheckResult(state->host->UpdateElement(handle, update))) {
+    return nullptr;
+  }
+  Py_RETURN_NONE;
+}
+
+#define ELEMENT_METHOD(name, action, shape)                           \
+  PyObject* name(PyObject* module, PyObject* args) {                  \
+    return UpdateElement(module, args, ElementAction::action, shape); \
+  }
+ELEMENT_METHOD(SetValue, kValue, 's')
+ELEMENT_METHOD(SetChecked, kChecked, 'b')
+ELEMENT_METHOD(SetHidden, kHidden, 'b')
+ELEMENT_METHOD(SetDisabled, kDisabled, 'b')
+ELEMENT_METHOD(ToggleClass, kClass, 'c')
+ELEMENT_METHOD(SetAttribute, kAttribute, 'a')
+ELEMENT_METHOD(SetTabIndex, kTabIndex, 'n')
+ELEMENT_METHOD(SetProgress, kProgress, 'n')
+ELEMENT_METHOD(Focus, kFocus, '0')
+ELEMENT_METHOD(ShowModal, kShowModal, '0')
+ELEMENT_METHOD(CloseDialog, kCloseDialog, '0')
+ELEMENT_METHOD(ScrollIntoView, kScrollIntoView, '0')
+#undef ELEMENT_METHOD
+
 PyMethodDef kMethods[] = {
+    {"get_control_state", GetControlState, METH_O, nullptr},
+    {"set_value", SetValue, METH_VARARGS, nullptr},
+    {"set_checked", SetChecked, METH_VARARGS, nullptr},
+    {"set_hidden", SetHidden, METH_VARARGS, nullptr},
+    {"set_disabled", SetDisabled, METH_VARARGS, nullptr},
+    {"toggle_class", ToggleClass, METH_VARARGS, nullptr},
+    {"set_attribute", SetAttribute, METH_VARARGS, nullptr},
+    {"set_tab_index", SetTabIndex, METH_VARARGS, nullptr},
+    {"set_progress", SetProgress, METH_VARARGS, nullptr},
+    {"focus", Focus, METH_VARARGS, nullptr},
+    {"show_modal", ShowModal, METH_VARARGS, nullptr},
+    {"close_dialog", CloseDialog, METH_VARARGS, nullptr},
+    {"scroll_into_view", ScrollIntoView, METH_VARARGS, nullptr},
     {"get_document", GetDocument, METH_NOARGS, nullptr},
     {"get_window", GetWindow, METH_NOARGS, nullptr},
     {"get_page_state", GetPageState, METH_NOARGS, nullptr},

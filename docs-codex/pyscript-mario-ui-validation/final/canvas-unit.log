@@ -1,0 +1,86 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles:PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState:PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire:PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState:PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text:PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads:PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles:PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32:PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork:PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded
+[==========] Running 10 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from PythonCanvasBridgeTest
+[ RUN      ] PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles
+[       OK ] PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles (421 ms)
+[ RUN      ] PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState
+[       OK ] PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState (115 ms)
+[ RUN      ] PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire
+[       OK ] PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire (122 ms)
+[ RUN      ] PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState
+[       OK ] PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState (121 ms)
+[----------] 4 tests from PythonCanvasBridgeTest (783 ms total)
+
+[----------] 6 tests from PythonCanvasBatchTest
+[ RUN      ] PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text
+[       OK ] PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text (0 ms)
+[ RUN      ] PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads
+[       OK ] PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads (0 ms)
+[ RUN      ] PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles
+[       OK ] PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles (0 ms)
+[ RUN      ] PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32
+[       OK ] PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32 (0 ms)
+[ RUN      ] PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork
+[       OK ] PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork (2 ms)
+[ RUN      ] PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded
+[       OK ] PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded (0 ms)
+[----------] 6 tests from PythonCanvasBatchTest (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 2 test suites ran. (986 ms total)
+[  PASSED  ] 10 tests.
+[1/19] PythonCanvasBridgeTest.IdentityVersionAndDisposeRevokeHandles (421 ms)
+[2/19] PythonCanvasBridgeTest.InvalidBatchDoesNotResetNativeContextState (115 ms)
+[3/19] PythonCanvasBridgeTest.DetachedCanvasAndOldResourceSlotExpire (122 ms)
+[4/19] PythonCanvasBridgeTest.InactiveSubmissionDoesNotResetNativeState (121 ms)
+[5/19] PythonCanvasBatchTest.ChargesResetRectanglesTransformsAndUtf8Text (0 ms)
+[6/19] PythonCanvasBatchTest.RejectsUnknownCommandsAndNonFinitePayloads (0 ms)
+[7/19] PythonCanvasBatchTest.RejectsInvalidColorsAndOutOfRangeStyles (0 ms)
+[8/19] PythonCanvasBatchTest.StateStackMustBalanceAndNeverExceed32 (0 ms)
+[9/19] PythonCanvasBatchTest.PathBoundsAndRepeatedFillsChargeActualWork (2 ms)
+[10/19] PythonCanvasBatchTest.ArcEllipseDirectionsAndTransformsAreBounded (0 ms)
+Note: Google Test filter = PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops:PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent:PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits:PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid:PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry:PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers:PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent:PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent:PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely
+[==========] Running 9 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 9 tests from PythonCanvasBatchTest
+[ RUN      ] PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops
+[       OK ] PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops (0 ms)
+[ RUN      ] PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent
+[       OK ] PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent (4 ms)
+[ RUN      ] PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits
+[       OK ] PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits (0 ms)
+[ RUN      ] PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid
+[       OK ] PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid (0 ms)
+[ RUN      ] PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry
+[       OK ] PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry (0 ms)
+[ RUN      ] PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers
+[       OK ] PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers (0 ms)
+[ RUN      ] PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent
+[       OK ] PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent (0 ms)
+[ RUN      ] PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent
+[       OK ] PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent (0 ms)
+[ RUN      ] PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely
+[       OK ] PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely (0 ms)
+[----------] 9 tests from PythonCanvasBatchTest (13 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test suite ran. (83 ms total)
+[  PASSED  ] 9 tests.
+[11/19] PythonCanvasBatchTest.GradientsAreLocalOrderedAndHave16Stops (0 ms)
+[12/19] PythonCanvasBatchTest.CommandAndByteBoundsAreIndependent (4 ms)
+[13/19] PythonCanvasBatchTest.TextAndDashPayloadsHaveTheirOwnLimits (0 ms)
+[14/19] PythonCanvasBatchTest.SurfaceHandlesAndDimensionsMustBeValid (0 ms)
+[15/19] PythonCanvasBatchTest.ExecutionLimitIsFatalAndSurvivesBeginAndTimeExpiry (0 ms)
+[16/19] PythonCanvasBatchTest.SlidingWindowRejectsWithoutChargingAndRecovers (0 ms)
+[17/19] PythonCanvasBatchTest.ExecutionCommandDataAndPathWorkLimitsAreIndependent (0 ms)
+[18/19] PythonCanvasBatchTest.WindowCommandDataAndWorkLimitsAreIndependent (0 ms)
+[19/19] PythonCanvasBatchTest.FullLedgerMergesConservativelyAndExpiresSafely (0 ms)
+SUCCESS: all tests passed.
+Tests took 3 seconds.

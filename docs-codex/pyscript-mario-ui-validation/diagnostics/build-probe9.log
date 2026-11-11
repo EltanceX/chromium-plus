@@ -1,0 +1,276 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 8.9162609s
+load siso config done 11.5383ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:71366+ready:0 (node:441073 edge:71374)
+ 1.44s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/20711] 30.08s S CXX obj/third_party/blink/renderer/core/core/measure_memory_controller.obj
+[0/10498] 30.69s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/2292] 54.43s F CXX obj/third_party/blink/renderer/core/core/measure_memory_controller.obj
+[1/2292] 54.45s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2292] 1m02.54s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 90472fef-e03d-4835-90bf-2f3256f3e80b "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: <root>: undefined symbol: public: class blink::AtomicString __cdecl blink::CounterStyle::GetName(void) const
+lld-link: error: <root>: undefined symbol: public: class blink::AtomicString __cdecl blink::CounterStyle::GetEffectiveSymbolMarkerName(void) const
+lld-link: error: <root>: undefined symbol: public: enum blink::CounterStyleSpeakAs __cdecl blink::CounterStyle::EffectiveSpeakAs(void) const
+lld-link: error: <root>: undefined symbol: public: void __cdecl blink::CounterStyle::Trace(class cppgc::Visitor *) const
+lld-link: error: undefined symbol: +E
+�ALW^�"+震(/Q&�}�mX������
+���
+��9#�7s��Ue�q$n���%n".�aФ�#<g�L��&3B��:t���r�8��6�>F��m��d �<��W"����C���fO���R�(#����{�F��%���EP�[�<��O�
+��g��{;pXD��*N����*�mk�!�QL�}�
+�^�z�
+�*ԿT���{�
+�	��zc���v��*�?�\�
+ĉ?O�@-WF�Js
+*<q���w����}����-
+��]��mx5���愽�
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:995
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(�.~H�X�?�������b���&�;�]:u��oDǹ��폊�e��
+�̮��{Ȱ�⅑0=�U7�)4���%�ː@Sg���?v"�:����F�Ni
+L~�� @�΢� ����I)
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:995
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(�.~H�X�?�������b���&�;�]:u��oDǹ��폊�e��
+�̮��{Ȱ�⅑0=�U7�)4���%�ː@Sg���?v"�:����F�Ni
+L~�� @�΢� ����I)
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:995
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(�.~H�X�?�������b���&�;�]:u��oDǹ��폊�e��
+�̮��{Ȱ�⅑0=�U7�)4���%�ː@Sg���?v"�:����F�Ni
+L~�� @�΢� ����I)
+>>> referenced 428 more times
+
+lld-link: error: undefined symbol: S�C!��n����\�����kbTL�ך.�D���
+��iieu/���C�`��{(Bx�a�=z�F�׫;u���f�
+���	�F�髨P_ɦ��(���q?�p�Ӹ'i(�=
+쇇�뽝 ҤP�z�F
+�Y��N��,6x��
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:993
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(�ZƔ�������۴`���t�ǎ�2H���b�)��C5��Er:zL�'۷�K�*?��g�)�Ma?.�³Ys�m� n���l��(�߅�Cl
+�ʚ��7
+�t�W\!�ٙ#)g
+�+5+�l��V~L3(
+6R!���Z�d:�X3Y)
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:1003
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(���Q��C�Ғ
+Z�צ
+�����9K_�(f�����<C�YQ:�*y�#2���
+�o7�ȃ
+�m�ĳH��|u�]���הݔ
+����n���Asj#��
+��d�ư�M��1��
+J/��
+H����!��"���P��*�F$V��b����%zV�4.�\��|���ZTQ�		��b%�T��i͸�(5
+)
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\css_selector.h:1008
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(�J�m
+8������/{.�;�`�'��uj���}M�(/�UW�~����Yw
+"����
+�C��K��YL�;ͨ�&���u���HW�u����ζa�-��d��A�j"���՘���/�����6�ڜ�����8����m��l4����dj�اW)��9��t�l���c�.���IH�~��'`��)��{�%a1ԁ׏7�A���N�CM��ѹ	B
+9��jLk\�Ə��Z�@�bG��e���<:��N��Ԑ&TY��u�_������A��"5����
+��
+�H*
+;��^�0Аz�`
+c-�"�����մv%�޺��L�q�*�4-��[���݋�D�9q��1����R3�.�L�G�3VD�9�s
+�S�V�q�����-)پ�<M���ߦђ��eg�Н)
+>>> referenced 134 more times
+
+lld-link: error: undefined symbol: ��e��Y﫶�'�Q�����YG� 4�s
+9<@�%5�+}bӶ�=����d�ty\����/
+n�%��g��	agEV�M"�P�(�Z
+x��g�N��w�,����{`c,F_2Z!�]t�3�GF�(:�%�^��,��ƨ�Ň�K��3D���ὒ@���2*=�6>x�.�}�=�.~H�X�?�������b���&�;�]:u��oDǹ��폊�e��
+�̮��{Ȱ�⅑0=�U7�)4���%�ː@Sg���?v"�:����F�Ni
+L~�� @�΢� ����I
+>>> referenced by obj/third_party/blink/renderer/core/core/counter_style.obj
+
+lld-link: error: undefined symbol: .��?jW�+b�Q(
+�t���q�}���0�E�6U�3TUW� �}��Q�v����s�D[6>9�U��]cI��!��k�F��E��pU2
+���:j3�i�x�c�4|!�ǒIH=$SL
+G�׭�=P��:p��i�맪'�#h�c��,��̰,
+>>> referenced by obj/third_party/blink/renderer/core/core/counter_style.obj
+
+lld-link: error: undefined symbol: ��c
+�t��c~�cdR��ç=�<*NWY6�|8�=G�2̾|d >��=�����-��$l��6dt��(�
+�d0��.|��V��
+��n�"m؀���6<�q�
+>>> referenced by .\..\..\base\check.h:144
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(����~jj$��ɰ�f2�.�.�a���O��T��2���n�$���-r� ��+I��m��
+J�spr�Y����vnI���B$'g�
+]�%�9�BTuC�߱6n]���6���R��)
+
+lld-link: error: undefined symbol: !�\0M7���[�t�sK�VD
+���w-a]�5�B?�v���
+Ȓ��6&J �|�G�p�k��c
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:656
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: static enum blink::CounterStyleSystem __cdecl blink::CounterStyle::ToCounterStyleSystemEnum(class blink::CSSValue const *))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:673
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(enum blink::CounterStyleSpeakAs __cdecl blink::ToCounterStyleSpeakAsEnum(class blink::CSSIdentifierValue const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:941
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(private: bool __cdecl blink::CounterStyle::RangeContains(int) const)
+>>> referenced 4 more times
+
+lld-link: error: undefined symbol: bMΧ����+ʶ
+�e�3� ՝�ؘ��L®�Ow
+ǘƵ�z�r���1���j��m��C���緗��If#S�C!��n����\�����kbTL�ך.�D���
+��iieu/���C�`��{(Bx�a�=z�F�׫;u���f�
+���	�F�髨P_ɦ��(���q?�p�Ӹ'i(�=
+쇇�뽝 ҤP�z�F
+�Y��N��,6x��
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:689
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(qd=�ðmU���rW�İ:�5Y�ՎV��AJ���ީ։�����d��_�?�/��o$��ڨ��.$D�	��j%�a_����dC�{�Ͼ�
+�
+OL�nl���&�AQ��N�M�D�����p�q&Č�w�s��H?��o{>	o_?��r+27�"�ٔ1��gf��l�)>�l���@�4��^ܖ�Vi�r��ZƔ�������۴`���t�ǎ�2H���b�)��C5��Er:zL�'۷�K�*?��g�)�Ma?.�³Ys�m� n���l��(�߅�Cl
+�ʚ��7
+�t�W\!�ٙ#)g
+�+5+�l��V~L3(
+6R!���Z�d:�X3Y)
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:744
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(
+v�`�R3
+�W1Y�(�@��C�QMN2hn��ُ<�~Cd�Iфz�Z
+�[3�5!��}�y�W5��W�lHP�ɰ�V���u�D��B&�x�F?U
+�y�u��I��h���m��~��K} �(6
+
+n�
+�GJ�viq��kL�����[��
+QaK4�:�aT
+#��5hA�IE��t6� �{��Y��v9jnUC9	f�F�lS���m�dx��C���+�
+��h�ϰ�8�A�~�Uo�
+�E�q������5p&�)�
+�L
+A�o@�D��Z���
+/������=��5�3���E6�F�a�=X7�_��N��,�ݏ�O�Ew� y�Iٓ��~a6��z%v�c�|�����ol��-8�_�yԔ�ɜ>7�(�^�)
+�w�ޜH
+�y����
+��z=�Մ�ӂ�ĉ�<�dL�R���,jt���c�]YN�O*u5H�$����\کJ|�
+�c���"76�P�1�S��l{��]&�=��U('�U3}�U{��%��Ƿ�X�:��~=U���
+�j��ܸA�1MI�z�(o�w�#?�Β�����n�6"�*f�62 ��p���pA�)Sg%�-��
+sa��)
+>>> referenced by .\..\..\base\containers\span.h:1473
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(��@"�[��=FS�b�ߗ"?%`���¤��1ɢ��7}�2�I5Dk�:
+γ��T�@�!@Y:XN���.e�P���p�g���\�呃;
+�&�o`�g_n*��DiI3b�>��zX�^@;Uq���6�(
+>�A�,1@J=�JI� �m�jZ�����|���i�^s�]
+
+*
+ 1m$��ɕԡ;�W6{T'<�)�ϱ=���
+��K�
+�N.:4o�x�A��sY���������粦#.��o40�
+dnl!H�E��w#Y�7�8ș��X�:@U��Z9b�V�W{r����
+�C�R
+�)
+>>> referenced 32 more times
+
+lld-link: error: undefined symbol: ���Y?�΀���~�G
+;�Κ�Q�'���KJ�_�Q]^F�Q�e)��=	^�,.�'���8��
+�p����栂�G�?2�&
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:769
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+
+lld-link: error: undefined symbol: ��
+�p����栂�G�?2�&
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:783
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:866
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: undefined symbol: ��xس����R�¸
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:789
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+
+lld-link: error: undefined symbol: ����C{/
+
+QHd���_x<T
+]h�~��rk\$�
+WQ(���m)P��!sG�1�"��`+���xس����R�¸
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:800
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+
+lld-link: error: undefined symbol: S�zk�@�5�t-�)
+�w���+7b�6������yt�!�×�qq���{�	�cQ!ϥ�~�
+� E/��!v���w72�O�ٔ2u�����Ǐ��LCn<Z�>]t7������B+��ZVQ�¹9�
+�L����53���w~Պ��2Z�WW����[��rM}U��}&�"�j	�3���
+d���һ�wە����w�>NL9�+,/Φ
+5QФ�.`�{n�_8=�d�b�������(7$h���5Y��`����6��b�т��'aKk��ӵ��
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:808
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:876
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: undefined symbol: 9�
+�L����53���w~Պ��2Z�WW����[��rM}U��}&�"�j	�3���
+d���һ�wە����w�>NL9�+,/Φ
+5QФ�.`�{n�_8=�d�b�������(7$h���5Y��`����6��b�т��'aKk��ӵ��
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:817
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:881
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: undefined symbol:
+� E/��!v���w72�O�ٔ2u�����Ǐ��LCn<Z�>]t7������B+��ZVQ�¹9�
+�L����53���w~Պ��2Z�WW����[��rM}U��}&�"�j	�3���
+d���һ�wە����w�>NL9�+,/Φ
+5QФ�.`�{n�_8=�d�b�������(7$h���5Y��`����6��b�т��'aKk��ӵ��
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:824
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:886
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: undefined symbol: �zV��~�;��HGA�R�bp^L��ʌ�'x=O�M3�p��Io@�˵'��<�	�����I����C{/
+
+QHd���_x<T
+]h�~��rk\$�
+WQ(���m)P��!sG�1�"��`+���xس����R�¸
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:836
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:890
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: undefined symbol: �˪*
+m�z�����̙N�_����V�gz��n���_J�j���z�b��
+,�ې]�8�ID�zV��~�;��HGA�R�bp^L��ʌ�'x=O�M3�p��Io@�˵'��<�	�����I����C{/
+
+QHd���_x<T
+]h�~��rk\$�
+WQ(���m)P��!sG�1�"��`+���xس����R�¸
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:839
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: __cdecl blink::CounterStyle::CounterStyle(class blink::CascadeLayered<class blink::StyleRuleCounterStyle const> const &))
+>>> referenced by .\..\..\third_party\blink\renderer\core\css\counter_style.cc:893
+>>>               obj/third_party/blink/renderer/core/core/counter_style.obj:(public: void __cdecl blink::CounterStyle::ResolveExtends(class blink::CounterStyle &))
+
+lld-link: error: too many errors emitted, stopping now (use /errorlimit:0 to see all errors)
+
+
+[2/2292] 1m08.47s - CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99813
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 993(err:2) / r:765(err:0) 23.57MiB / w:0(err:0) 0B
+
+
+
+1m09.72s Build Failure: 2 done, 1 failed, 2290 remaining - 0.03/s
+ 1 steps failed: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-145354.2748
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

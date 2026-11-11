@@ -32,6 +32,14 @@ bool DomHost::CanBuildCanvas() const {
   return IsActive();
 }
 
+ControlStateResult DomHost::GetControlState(DomHandle) {
+  return {{{}, DomError::kNotAllowed, "Controls are unavailable"}};
+}
+
+DomResult DomHost::UpdateElement(DomHandle, const ElementUpdate&) {
+  return {{}, DomError::kNotAllowed, "Controls are unavailable"};
+}
+
 DomResult DomHost::RequestFrame(CallbackHandle) {
   return {{}, DomError::kNotAllowed, "Animation frames are not supported"};
 }

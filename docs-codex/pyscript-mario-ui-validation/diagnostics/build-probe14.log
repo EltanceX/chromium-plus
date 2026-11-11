@@ -1,0 +1,41 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4323765s
+load siso config done 12.3656ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:89164+ready:0 (node:441073 edge:89172)
+ 1.18s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/28635] 30.43s S CXX obj/services/network/test_support/test_url_loader_factory.obj
+[0/4899] 31.79s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[0/1067] 41.16s F CXX obj/services/network/test_support/test_url_loader_factory.obj
+[1/1039] 41.20s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[1/1034] 42.23s F LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[2/10] 42.34s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[2/10] 1m56.74s F LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/9] 4m27.74s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+build finished
+
+
+noexec:0 local:4 remote:0 cache:0 skip:102101
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1029(err:4) / r:772(err:0) 8.32GiB / w:2(err:0) 1.22MiB
+
+
+ resource/capa used(err)  wait-avg |   s m |  serv-avg |   s m |
+   pool=link/3      3(0)     0.00s |▇      |  1m42.90s |    ▄▆ |
+
+4m28.76s Build Succeeded: 4 steps - 0.01/s
+shutdown cloud logging/monitoring done 0s

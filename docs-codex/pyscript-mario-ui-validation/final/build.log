@@ -1,0 +1,39 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2000425s
+load siso config done 12.6419ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:70644+ready:0 (node:441073 edge:70664)
+ 1.30s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/10922] 34.43s S CXX obj/third_party/blink/renderer/core/unit_tests/css_font_face_src_value_test.obj
+[0/10850] 34.44s S CXX obj/third_party/blink/renderer/core/unit_tests/scroll_button_pseudo_element_test.obj
+[0/9514] 34.55s S CXX obj/third_party/blink/renderer/modules/unit_tests/video_track_adapter_unittest.obj
+[0/8] 49.69s F CXX obj/third_party/blink/renderer/modules/unit_tests/video_track_adapter_unittest.obj
+[1/8] 53.54s F CXX obj/third_party/blink/renderer/core/unit_tests/scroll_button_pseudo_element_test.obj
+[2/8] 1m09.78s F CXX obj/third_party/blink/renderer/core/unit_tests/css_font_face_src_value_test.obj
+[3/5] 1m09.80s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[3/4] 1m38.01s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:4 remote:0 cache:0 skip:102101
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1016(err:4) / r:767(err:0) 2.37GiB / w:0(err:0) 0B
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m39.21s Build Succeeded: 4 steps - 0.04/s

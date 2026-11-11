@@ -37,6 +37,24 @@ class TestHost final : public WebPythonDomHost {
     value = text.Utf8();
     return {};
   }
+  blink::WebPythonControlStateResult GetControlState(
+      WebPythonDomHandle h) override {
+    CheckTarget(h);
+    return {{{}, control_failure, "control failure"},
+            WebString::FromUtf8(std::string("a\0\xe4\xb8\xad", 5)),
+            true,
+            false,
+            true,
+            true};
+  }
+  WebPythonDomResult UpdateElement(
+      WebPythonDomHandle h,
+      const blink::WebPythonElementUpdate& update) override {
+    CheckTarget(h);
+    element_updates.push_back(update);
+    return {{}, control_failure, "control failure"};
+  }
+  std::vector<blink::WebPythonElementUpdate> element_updates;
   WebPythonDomResult AddEventListener(WebPythonDomHandle element,
                                       const WebString& type,
                                       WebPythonCallbackHandle callback,
@@ -210,6 +228,49 @@ def callback(event):
     print(count, event.is_trusted)
 listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=False)
 )PY";
+
+TEST(PythonDocumentContextTest,
+     ControlsPreserveUnicodeNulFlagsAndTypedPayload) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import dom
+h=dom.get_element_by_id('c')
+s=dom.get_control_state(h)
+assert s == dict(value='a\0中', checked=True, hidden=False, disabled=True, open=True)
+dom.set_attribute(h, 'aria-label', '中文')
+dom.toggle_class(h, 'active', True)
+dom.set_progress(h, 37.5)
+dom.show_modal(h)
+dom.close_dialog(h)
+)PY");
+  ASSERT_TRUE(result.success) << result.error.Utf8();
+  ASSERT_EQ(5u, host.element_updates.size());
+  EXPECT_EQ("aria-label", host.element_updates[0].name.Utf8());
+  EXPECT_EQ("中文", host.element_updates[0].value.Utf8());
+  EXPECT_EQ(blink::WebPythonElementAction::kClass,
+            host.element_updates[1].action);
+  EXPECT_TRUE(host.element_updates[1].enabled);
+  EXPECT_EQ(37.5, host.element_updates[2].number);
+  EXPECT_EQ(blink::WebPythonElementAction::kCloseDialog,
+            host.element_updates[4].action);
+}
+
+TEST(PythonDocumentContextTest,
+     ControlsMapNativeDenialsWithoutExecutingScript) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  host.control_failure = WebPythonDomError::kNotAllowed;
+  auto result = RunSource(*context, host, R"PY(
+import dom
+h=dom.get_element_by_id('c')
+for f, args in ((dom.get_control_state,(h,)), (dom.set_value,(h,'x'))):
+    try: f(*args)
+    except PermissionError: pass
+    else: raise AssertionError('native denial lost')
+)PY");
+  EXPECT_TRUE(result.success) << result.error.Utf8();
+}
 
 TEST(PythonDocumentContextTest,
      CanvasPreservesTypedPayloadsVersionsAndMetrics) {

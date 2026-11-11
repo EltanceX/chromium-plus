@@ -15,9 +15,14 @@
 #include "third_party/blink/public/platform/task_type.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
+#include "third_party/blink/renderer/bindings/core/v8/v8_focus_options.h"
+#include "third_party/blink/renderer/bindings/core/v8/v8_scroll_into_view_options.h"
+#include "third_party/blink/renderer/core/css/css_primitive_value.h"
 #include "third_party/blink/renderer/core/css/media_values.h"
+#include "third_party/blink/renderer/core/css/properties/css_property.h"
 #include "third_party/blink/renderer/core/dom/document.h"
 #include "third_party/blink/renderer/core/dom/document_parser.h"
+#include "third_party/blink/renderer/core/dom/dom_token_list.h"
 #include "third_party/blink/renderer/core/dom/element.h"
 #include "third_party/blink/renderer/core/dom/events/add_event_listener_options_resolved.h"
 #include "third_party/blink/renderer/core/dom/events/event.h"
@@ -33,6 +38,7 @@
 #include "third_party/blink/renderer/core/frame/local_frame.h"
 #include "third_party/blink/renderer/core/frame/local_frame_view.h"
 #include "third_party/blink/renderer/core/html/canvas/html_canvas_element.h"
+#include "third_party/blink/renderer/core/html/forms/html_form_control_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_input_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_select_element.h"
 #include "third_party/blink/renderer/core/html/forms/html_text_area_element.h"
@@ -194,6 +200,37 @@ namespace {
 WebPythonScriptRunner* g_runner = nullptr;
 bool g_python_running = false;
 uint64_t g_next_document_id = 0;
+
+bool IsPythonUiElement(Element* element) {
+  if (!element ||
+      element->GetCustomElementState() != CustomElementState::kUncustomized ||
+      element->FastHasAttribute(html_names::kIsAttr)) {
+    return false;
+  }
+  for (const auto* tag : {&html_names::kDivTag,      &html_names::kSpanTag,
+                          &html_names::kPTag,        &html_names::kButtonTag,
+                          &html_names::kInputTag,    &html_names::kSelectTag,
+                          &html_names::kTextareaTag, &html_names::kDialogTag,
+                          &html_names::kCanvasTag,   &html_names::kCodeTag,
+                          &html_names::kPreTag,      &html_names::kOutputTag,
+                          &html_names::kH1Tag,       &html_names::kH2Tag,
+                          &html_names::kH3Tag,       &html_names::kH4Tag,
+                          &html_names::kLiTag,       &html_names::kUlTag,
+                          &html_names::kSectionTag,  &html_names::kAsideTag,
+                          &html_names::kMainTag,     &html_names::kHeaderTag,
+                          &html_names::kFooterTag,   &html_names::kNavTag,
+                          &html_names::kStrongTag,   &html_names::kLabelTag}) {
+    if (element->HasTagName(*tag)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool IsPythonValueInput(HTMLInputElement* input) {
+  return input && (input->type() == "range" || input->type() == "text" ||
+                   input->type() == "number");
+}
 
 void DestroyContextWhenSafe(
     WebPythonScriptContext* context,
@@ -567,13 +604,21 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
   }
   if ((!element->HasTagName(html_names::kPTag) &&
        !element->HasTagName(html_names::kDivTag) &&
-       !element->HasTagName(html_names::kSpanTag)) ||
+       !element->HasTagName(html_names::kSpanTag) &&
+       !element->HasTagName(html_names::kCodeTag) &&
+       !element->HasTagName(html_names::kPreTag) &&
+       !element->HasTagName(html_names::kOutputTag) &&
+       !element->HasTagName(html_names::kButtonTag) &&
+       !element->HasTagName(html_names::kLiTag) &&
+       !element->HasTagName(html_names::kH1Tag) &&
+       !element->HasTagName(html_names::kH2Tag) &&
+       !element->HasTagName(html_names::kH3Tag)) ||
       element->GetCustomElementState() != CustomElementState::kUncustomized ||
       element->FastHasAttribute(html_names::kIsAttr) ||
       element->firstElementChild()) {
     return {{},
             WebPythonDomError::kNotAllowed,
-            "set_text requires an ordinary p, div or span without element "
+            "set_text requires an approved native text element without element "
             "children"};
   }
   if (value.length() > 16384 || value.Utf8().size() > 16384) {
@@ -593,6 +638,194 @@ WebPythonDomResult PythonScriptController::SetText(WebPythonDomHandle handle,
              : WebPythonDomResult{{},
                                   WebPythonDomError::kReference,
                                   "The document changed during the DOM call"};
+}
+
+WebPythonControlStateResult PythonScriptController::GetControlState(
+    WebPythonDomHandle handle) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  auto* element = ResolveElement(handle);
+  if (!element) {
+    return {{{}, WebPythonDomError::kReference, "Expired control handle"}};
+  }
+  if (!IsPythonUiElement(element)) {
+    return {
+        {{}, WebPythonDomError::kNotAllowed, "Expected a native UI element"}};
+  }
+  String value;
+  bool checked = false;
+  if (auto* input = DynamicTo<HTMLInputElement>(element)) {
+    if (input->type() == "checkbox") {
+      checked = input->Checked();
+    } else if (IsPythonValueInput(input)) {
+      value = input->Value();
+    } else {
+      return {{{}, WebPythonDomError::kNotAllowed, "Unsupported input type"}};
+    }
+  } else if (auto* textarea = DynamicTo<HTMLTextAreaElement>(element)) {
+    value = textarea->Value();
+  } else if (auto* select = DynamicTo<HTMLSelectElement>(element)) {
+    value = select->Value();
+  }
+  if (value.length() > 16384 || value.Utf8().size() > 16384) {
+    return {
+        {{}, WebPythonDomError::kLimit, "Control value exceeds 16 KiB UTF-8"}};
+  }
+  auto* control = DynamicTo<HTMLFormControlElement>(element);
+  auto* dialog = DynamicTo<HTMLDialogElement>(element);
+  return {{},
+          value,
+          checked,
+          element->FastHasAttribute(html_names::kHiddenAttr),
+          control && control->IsDisabledFormControl(),
+          dialog && dialog->IsOpen()};
+}
+
+WebPythonDomResult PythonScriptController::UpdateElement(
+    WebPythonDomHandle handle,
+    const WebPythonElementUpdate& update) {
+  auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return status;
+  }
+  auto* element = ResolveElement(handle);
+  if (!element) {
+    return {{}, WebPythonDomError::kReference, "Expired UI handle"};
+  }
+  if (!IsPythonUiElement(element)) {
+    return {{}, WebPythonDomError::kNotAllowed, "Expected a native UI element"};
+  }
+  if (update.name.length() > 64 || update.name.Utf8().size() > 64 ||
+      update.value.length() > 16384 || update.value.Utf8().size() > 16384) {
+    return {{}, WebPythonDomError::kLimit, "UI string limit exceeded"};
+  }
+  auto denied = [] {
+    return WebPythonDomResult{{},
+                              WebPythonDomError::kNotAllowed,
+                              "Unsupported UI operation or attribute"};
+  };
+  auto* input = DynamicTo<HTMLInputElement>(element);
+  switch (update.action) {
+    case WebPythonElementAction::kValue:
+      if (IsPythonValueInput(input)) {
+        input->SetValue(update.value);
+      } else if (auto* textarea = DynamicTo<HTMLTextAreaElement>(element)) {
+        textarea->SetValue(update.value);
+      } else if (auto* select = DynamicTo<HTMLSelectElement>(element)) {
+        select->SelectOptionByValue(update.value);
+      } else {
+        return denied();
+      }
+      break;
+    case WebPythonElementAction::kChecked:
+      if (!input || input->type() != "checkbox") {
+        return denied();
+      }
+      input->SetChecked(update.enabled);
+      break;
+    case WebPythonElementAction::kHidden:
+      element->SetBooleanAttribute(html_names::kHiddenAttr, update.enabled);
+      break;
+    case WebPythonElementAction::kDisabled:
+      if (!IsA<HTMLFormControlElement>(element)) {
+        return denied();
+      }
+      element->SetBooleanAttribute(html_names::kDisabledAttr, update.enabled);
+      break;
+    case WebPythonElementAction::kClass: {
+      const auto token = update.name.Utf8();
+      if (token.empty() || token.find_first_not_of(
+                               "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU"
+                               "VWXYZ0123456789_-") != std::string::npos) {
+        return denied();
+      }
+      if (update.enabled &&
+          !element->classList().contains(AtomicString(update.name)) &&
+          element->classList().length() >= 64) {
+        return {{}, WebPythonDomError::kLimit, "At most 64 UI classes"};
+      }
+      if (update.enabled) {
+        element->classList().Add(AtomicString(update.name));
+      } else {
+        element->classList().Remove(AtomicString(update.name));
+      }
+      break;
+    }
+    case WebPythonElementAction::kAttribute: {
+      const QualifiedName* attr = nullptr;
+      for (const auto* candidate :
+           {&html_names::kAriaLabelAttr, &html_names::kAriaSelectedAttr,
+            &html_names::kAriaExpandedAttr, &html_names::kAriaValuenowAttr,
+            &html_names::kTitleAttr}) {
+        if (String(update.name) == candidate->LocalName()) {
+          attr = candidate;
+        }
+      }
+      if (!attr) {
+        return denied();
+      }
+      element->setAttribute(*attr, AtomicString(update.value));
+      break;
+    }
+    case WebPythonElementAction::kTabIndex:
+      if (update.number != -1 && update.number != 0) {
+        return denied();
+      }
+      element->setTabIndex(static_cast<int>(update.number));
+      break;
+    case WebPythonElementAction::kProgress:
+      if (!element->HasTagName(html_names::kDivTag) ||
+          !std::isfinite(update.number) || update.number < 0 ||
+          update.number > 100) {
+        return denied();
+      }
+      element->SetInlineStyleProperty(CSSPropertyID::kWidth, update.number,
+                                      CSSPrimitiveValue::UnitType::kPercentage);
+      break;
+    case WebPythonElementAction::kFocus: {
+      auto* options = FocusOptions::Create();
+      options->setPreventScroll(true);
+      element->Focus(options);
+      break;
+    }
+    case WebPythonElementAction::kShowModal:
+    case WebPythonElementAction::kCloseDialog: {
+      auto* dialog = DynamicTo<HTMLDialogElement>(element);
+      if (!dialog) {
+        return denied();
+      }
+      ExceptionState exception(nullptr);
+      if (update.action == WebPythonElementAction::kShowModal) {
+        dialog->showModal(exception);
+      } else {
+        dialog->close();
+      }
+      if (exception.HadException()) {
+        return {{}, WebPythonDomError::kState, "Dialog operation failed"};
+      }
+      break;
+    }
+    case WebPythonElementAction::kScrollIntoView: {
+      auto* options = ScrollIntoViewOptions::Create();
+      auto* media = MediaValues::CreateDynamicIfFrameExists(
+          GetSupplementable()->GetFrame());
+      options->setBehavior(media && media->PrefersReducedMotion()
+                               ? V8ScrollBehavior::Enum::kInstant
+                               : V8ScrollBehavior::Enum::kSmooth);
+      options->setBlock(V8ScrollLogicalPosition::Enum::kNearest);
+      element->scrollIntoViewWithOptions(options);
+      break;
+    }
+    default:
+      return denied();
+  }
+  return IsActive()
+             ? WebPythonDomResult{}
+             : WebPythonDomResult{{},
+                                  WebPythonDomError::kReference,
+                                  "Document changed during UI operation"};
 }
 
 WebPythonDomResult PythonScriptController::AddEventListener(
@@ -626,11 +859,13 @@ WebPythonDomResult PythonScriptController::AddEventListener(
   const bool supported =
       handle.kind == WebPythonTargetKind::kDocument
           ? (event_type == "keydown" || event_type == "keyup" ||
-             event_type == "visibilitychange")
+             event_type == "visibilitychange" || event_type == "focusin")
       : handle.kind == WebPythonTargetKind::kWindow
           ? (event_type == "blur" || event_type == "focus" ||
              event_type == "resize")
-          : (event_type == "click" || event_type == "input" ||
+          : (event_type == "keydown" || event_type == "keyup" ||
+             event_type == "close" || event_type == "cancel" ||
+             event_type == "click" || event_type == "input" ||
              event_type == "change" || event_type == "pointerdown" ||
              event_type == "pointerup" || event_type == "pointermove" ||
              event_type == "pointercancel" ||
@@ -640,6 +875,11 @@ WebPythonDomResult PythonScriptController::AddEventListener(
     return {{},
             WebPythonDomError::kNotAllowed,
             "Unsupported event type for target"};
+  }
+  if ((event_type == "close" || event_type == "cancel") &&
+      (!target->ToNode() || !IsA<HTMLDialogElement>(target->ToNode()))) {
+    return {
+        {}, WebPythonDomError::kNotAllowed, "Expected a native dialog target"};
   }
   if (!current_source_ || !callback.context || !callback.id) {
     return {{}, WebPythonDomError::kState, "No active Python callback source"};
@@ -781,7 +1021,7 @@ WebPythonPageStateResult PythonScriptController::GetPageState() {
   auto* frame = document.GetFrame();
   auto* view = document.View();
   auto size = view ? view->Size() : gfx::Size();
-  // Do not force layout during an 8 ms Python frame or initial parsing.
+  // Do not force layout during a Python frame or initial parsing.
   // Report the viewport currently published by the native frame view.
   auto* media = MediaValues::CreateDynamicIfFrameExists(document.GetFrame());
   return {{},
@@ -1029,7 +1269,13 @@ void PythonScriptController::DispatchEvent(PythonEventListener& listener,
   // is queued; a later frame can observe the epoch even when keyup was lost.
   const bool input = event.type() != event_type_names::kClick &&
                      event.type() != event_type_names::kResize &&
-                     event.type() != event_type_names::kFocus;
+                     event.type() != event_type_names::kFocus &&
+                     event.type() != event_type_names::kFocusin &&
+                     event.type() != event_type_names::kClose &&
+                     event.type() != event_type_names::kCancel;
+  // Native UI operations may synchronously notify focus/modal listeners while
+  // Python is already running. Skipping those notifications loses no held
+  // key/pointer transition and must not invalidate the caller's input epoch.
   absl::Cleanup invalidate = [&] {
     if (input && !delivered && input_epoch_ == epoch_before) {
       ++input_epoch_;

@@ -195,11 +195,20 @@ def draw():
     for x, checkpoint in ((CHECKPOINT_X, True), (FLAG_X, False)):
         if left-80 < x < right:
             drawFlag(b, x, checkpoint)
+    if settings.hitboxes:
+        b.line_width(2)
+        for color, objects in (('#df5b51', [player]), ('#4787bc', solids),
+                               ('#d49b27', [c for c in coins if not c.collected]),
+                               ('#ad68a0', [e for e in enemies if e.alive])):
+            b.stroke_style(color)
+            for item in objects:
+                if left-100 < item.x < right:
+                    b.stroke_rect(item.x, item.y, item.w, item.h)
     b.restore()
     b.font(18, 'monospace', True); b.fill_style('#355a4a')
     b.fill_text('SCORE %06d  COINS %02d  LIVES %d  TIME %03d' %
                 (game.score, game.coins, game.lives, math.ceil(game.remaining)), 24, 30)
-    if game.state in ('ready', 'paused', 'over', 'won'):
+    if not uiReady and game.state in ('ready', 'paused', 'over', 'won'):
         b.fill_style('#193629bb'); b.fill_rect(280, 180, 560, 135)
         b.fill_style('#fff7d2'); b.text_align('center'); b.font(28, 'monospace', True)
         b.fill_text(game.state.upper(), WIDTH/2, 228)

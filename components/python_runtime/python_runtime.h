@@ -128,6 +128,38 @@ struct CanvasResult {
   CanvasStatistics statistics;
 };
 
+enum class ElementAction {
+  kValue,
+  kChecked,
+  kHidden,
+  kDisabled,
+  kClass,
+  kAttribute,
+  kTabIndex,
+  kProgress,
+  kFocus,
+  kShowModal,
+  kCloseDialog,
+  kScrollIntoView
+};
+
+struct ElementUpdate {
+  ElementAction action;
+  std::string name;
+  std::string value;
+  bool enabled = false;
+  double number = 0;
+};
+
+struct ControlStateResult {
+  DomResult status;
+  std::string value;
+  bool checked = false;
+  bool hidden = false;
+  bool disabled = false;
+  bool open = false;
+};
+
 // Borrowed only during synchronous execution. No Python object contains a
 // node pointer or retains this host between calls or during finalization.
 class PYTHON_RUNTIME_EXPORT DomHost {
@@ -140,6 +172,8 @@ class PYTHON_RUNTIME_EXPORT DomHost {
   virtual bool CanBuildCanvas() const;
   virtual DomResult GetElementById(std::string_view id) = 0;
   virtual DomResult SetText(DomHandle, std::string_view text) = 0;
+  virtual ControlStateResult GetControlState(DomHandle);
+  virtual DomResult UpdateElement(DomHandle, const ElementUpdate&);
   virtual DomResult AddEventListener(DomHandle,
                                      std::string_view type,
                                      CallbackHandle,

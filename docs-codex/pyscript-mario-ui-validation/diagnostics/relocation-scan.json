@@ -1,0 +1,100 @@
+{
+  "directObjects": 5041,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/viewport_style_resolver.obj",
+      "errors": [
+        {
+          "section": 202,
+          "name": ".text",
+          "size": 150,
+          "relocation": 0,
+          "offset": 2333688366,
+          "symbol": 2343118184,
+          "kind": 64103
+        },
+        {
+          "section": 203,
+          "name": ".text",
+          "size": 106,
+          "relocation": 0,
+          "offset": 2960041137,
+          "symbol": 3236397933,
+          "kind": 53985
+        },
+        {
+          "section": 204,
+          "name": ".text",
+          "size": 26,
+          "relocation": 0,
+          "offset": 1763730407,
+          "symbol": 3892042070,
+          "kind": 27892
+        },
+        {
+          "section": 205,
+          "name": ".text",
+          "size": 872,
+          "relocation": 0,
+          "offset": 1849133934,
+          "symbol": 17828694,
+          "kind": 3854
+        },
+        {
+          "section": 206,
+          "name": ".text",
+          "size": 287,
+          "relocation": 0,
+          "offset": 2585517177,
+          "symbol": 618490314,
+          "kind": 43727
+        },
+        {
+          "section": 207,
+          "name": ".text",
+          "size": 169,
+          "relocation": 0,
+          "offset": 2181183608,
+          "symbol": 306650364,
+          "kind": 52047
+        },
+        {
+          "section": 208,
+          "name": ".text",
+          "size": 169,
+          "relocation": 0,
+          "offset": 2346631847,
+          "symbol": 172665419,
+          "kind": 15819
+        },
+        {
+          "section": 209,
+          "name": ".text",
+          "size": 28,
+          "relocation": 0,
+          "offset": 898908962,
+          "symbol": 3018843258,
+          "kind": 40833
+        },
+        {
+          "section": 210,
+          "name": ".text",
+          "size": 114,
+          "relocation": 0,
+          "offset": 3865401501,
+          "symbol": 98912893,
+          "kind": 62284
+        },
+        {
+          "section": 211,
+          "name": ".text",
+          "size": 60,
+          "relocation": 0,
+          "offset": 3663108719,
+          "symbol": 627945021,
+          "kind": 39964
+        }
+      ]
+    }
+  ]
+}

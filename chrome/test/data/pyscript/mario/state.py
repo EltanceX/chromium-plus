@@ -33,7 +33,7 @@ class ReplayRandom:
         return self.state / 4294967296
 
 
-settings = Record(speed=280, jump=660, gravity=1600)
+settings = Record(speed=280, jump=660, gravity=1600, hitboxes=False, slow=False)
 input = Record(left=False, right=False, jump=False)
 player = Record(x=96, y=460, w=28, h=44, vx=0, vy=0, facing=1,
                 onGround=True, coyote=0, jumpBuffer=0, invincible=0)
@@ -51,6 +51,15 @@ shake, visualTime = 0, 0
 reducedMotion = False
 rng = ReplayRandom()
 message = 'Space / Enter to start'
+uiReady = False
+
+
+def logEvent(text):
+    pass  # The UI block installs bounded logging; host logic runs without DOM.
+
+
+def showToast(text):
+    pass
 
 
 def clearInput():

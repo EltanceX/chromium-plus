@@ -1,0 +1,51 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.4551284s
+load siso config done 12.342ms
+schedule pending:1+ready:0 (node:441073 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441073 edge:6)
+schedule pending:66447+ready:0 (node:441073 edge:66455)
+ 1.34s schedule pending:92871+ready:9234 (node:441073 edge:102105)
+
+build start: Ready 9234 Pending 92871
+[0/28228] 33.64s S CXX obj/components/services/storage/storage/service_worker_storage.obj
+[0/2140] 48.71s F CXX obj/components/services/storage/storage/service_worker_storage.obj
+[1/2132] 48.75s S LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[1/2114] 1m14.26s F LINK(DLL) content.dll content.dll.lib content.dll.pdb
+[2/1040] 1m14.28s S LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+[2/1040] 1m14.28s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[2/1040] 1m18.21s E LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+FAILED: 51c6d9fd-71f5-4260-b8b5-32922e394190 "./components_webapps_isolated_web_apps.dll" LINK(DLL) components_webapps_isolated_web_apps.dll components_webapps_isolated_web_apps.dll.lib components_webapps_isolated_web_apps.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./components_webapps_isolated_web_apps.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./components_webapps_isolated_web_apps.dll.lib" /DLL "/PDB:./components_webapps_isolated_web_apps.dll.pdb" "@./components_webapps_isolated_web_apps.dll.rsp"
+build step: solink "./components_webapps_isolated_web_apps.dll"
+stderr:
+lld-link: error: obj/third_party/tflite\tflite_kernels/mirror_pad.obj: $!�߻/ should not refer to non-existent section 39393
+
+
+[3/1040] 1m18.56s - LINK blink_unittests.exe blink_unittests.exe.pdb
+build failed
+
+
+noexec:0 local:3 remote:0 cache:0 skip:101065
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1006(err:3) / r:768(err:0) 5.00GiB / w:1(err:0) 265.60KiB
+
+
+
+1m19.44s Build Failure: 3 done, 1 failed, 1037 remaining - 0.04/s
+ 1 steps failed: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261111-153416.5688
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands
+shutdown cloud logging/monitoring done 0s

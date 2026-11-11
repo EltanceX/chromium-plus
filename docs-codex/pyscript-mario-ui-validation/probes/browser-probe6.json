@@ -1,0 +1,182 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:51769",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Typed native controls retain values flags literal text and bounded styles",
+      "passed": true,
+      "elapsedMs": 448
+    },
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 355
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": true,
+      "elapsedMs": 1559,
+      "detail": {
+        "state": {
+          "state": "ready",
+          "x": "96.000",
+          "y": "460.000",
+          "vx": "0.000",
+          "vy": "0.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "11",
+          "elapsed": "0.000",
+          "steps": "0",
+          "keys": "0",
+          "particles": "0"
+        },
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:24.000 | lifetime max physics_ms:0.516 build_ms:0.000 submit_ms:0.090 total_ms:3.524 p95_ms:3.392 gap_ms:200.1 steps:0 dropped_s:0.183"
+      }
+    },
+    {
+      "name": "Trusted start movement and variable jump use native Python callbacks",
+      "passed": true,
+      "elapsedMs": 3400,
+      "detail": {
+        "state": {
+          "state": "playing",
+          "x": "271.333",
+          "y": "356.300",
+          "vx": "80.000",
+          "vy": "36.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "125",
+          "elapsed": "0.842",
+          "steps": "1",
+          "keys": "0",
+          "particles": "5"
+        },
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:2.000 | lifetime max physics_ms:9.222 build_ms:1.409 submit_ms:2.357 total_ms:10.161 p95_ms:5.705 gap_ms:200.1 steps:2 dropped_s:2.458"
+      }
+    },
+    {
+      "name": "Pause clears held controls and stops world time",
+      "passed": true,
+      "elapsedMs": 678,
+      "detail": {
+        "before": {
+          "state": "paused",
+          "x": "273.000",
+          "y": "362.700",
+          "vx": "0.000",
+          "vy": "142.667",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "136",
+          "elapsed": "0.908",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        },
+        "after": {
+          "state": "paused",
+          "x": "273.000",
+          "y": "362.700",
+          "vx": "0.000",
+          "vy": "142.667",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "160",
+          "elapsed": "0.908",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        }
+      }
+    },
+    {
+      "name": "Restart is repeatable without allocating more native surfaces",
+      "passed": true,
+      "elapsedMs": 1744
+    },
+    {
+      "name": "Pointer capture moves and releasing stops the player",
+      "passed": true,
+      "elapsedMs": 1276
+    },
+    {
+      "name": "Hidden and frozen page clears input and resets the time baseline",
+      "passed": true,
+      "elapsedMs": 1578
+    },
+    {
+      "name": "Movement buttons support native keyboard hold release and focus cleanup",
+      "passed": true,
+      "elapsedMs": 3154
+    },
+    {
+      "name": "Native range keyboard actions update Python parameters without game shortcuts",
+      "passed": true,
+      "elapsedMs": 1329
+    },
+    {
+      "name": "Collision checkbox changes native Canvas pixels and remains keyboard accessible",
+      "passed": true,
+      "elapsedMs": 258
+    },
+    {
+      "name": "Reset restores all native values checkboxes and Python output labels",
+      "passed": true,
+      "elapsedMs": 3669
+    },
+    {
+      "name": "Tabs use native focus roving tabindex arrows Home and End",
+      "passed": true,
+      "elapsedMs": 780
+    },
+    {
+      "name": "All eight Python lessons wrap and flow cards select the explanation tab",
+      "passed": true,
+      "elapsedMs": 2517
+    },
+    {
+      "name": "Learning dialog pauses clears input selects a lesson and restores focus",
+      "passed": false,
+      "elapsedMs": 1229,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'guideButton'\n- 'tabExplain'\n\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:447:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:438:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "warning",
+          "text": "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.",
+          "timestamp": 1794381901477.465,
+          "url": "http://127.0.0.1:51769/sample",
+          "lineNumber": 1194
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript callback 29] Python callback exceeded the 50 ms cooperative execution budget",
+          "timestamp": 1794381905474.465,
+          "url": "http://127.0.0.1:51769/sample",
+          "lineNumber": 1194
+        }
+      ],
+      "pageState": {
+        "status": "paused · 分数 0 · 金币 0 · 生命 3 · 剩余 180 秒 · Go right! Hold jump for a higher jump.",
+        "telemetry": "state:paused|x:97.986|y:460.000|vx:55.000|vy:0.000|coins:0|score:0|lives:3|checkpoint:0|frames:429|elapsed:0.117|steps:0|keys:0|particles:0",
+        "metrics": "commands:28 bytes:3656 pixels:3191920 native_ms:3.000 | lifetime max physics_ms:3.216 build_ms:2.804 submit_ms:3.681 total_ms:7.096 p95_ms:5.456 gap_ms:300.0 steps:2 dropped_s:0.642"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'guideButton'\n- 'tabExplain'\n\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:447:12\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:235:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:438:3"
+}

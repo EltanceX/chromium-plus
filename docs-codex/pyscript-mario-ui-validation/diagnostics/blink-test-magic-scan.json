@@ -1,0 +1,315 @@
+{
+  "directObjects": 4666,
+  "problems": [
+    {
+      "object": "obj/components/web_package/mojom_mapped_types/integrity_block_attributes.obj",
+      "errors": [
+        {
+          "section": 144,
+          "name": ".debug$T",
+          "signature": "44f1b2ac"
+        },
+        {
+          "section": 346,
+          "name": ".debug$S",
+          "signature": "0e6c03e9"
+        },
+        {
+          "section": 347,
+          "name": ".debug$S",
+          "signature": "5ac1b484"
+        },
+        {
+          "section": 348,
+          "name": ".debug$S",
+          "signature": "af951f3c"
+        },
+        {
+          "section": 349,
+          "name": ".debug$S",
+          "signature": "f4a3d32d"
+        },
+        {
+          "section": 350,
+          "name": ".debug$S",
+          "signature": "a1b7c9d7"
+        },
+        {
+          "section": 351,
+          "name": ".debug$S",
+          "signature": "3072ecb9"
+        },
+        {
+          "section": 352,
+          "name": ".debug$S",
+          "signature": "b82c9d30"
+        },
+        {
+          "section": 353,
+          "name": ".debug$S",
+          "signature": "4cf5e8c6"
+        },
+        {
+          "section": 354,
+          "name": ".debug$S",
+          "signature": "cf4f71e7"
+        },
+        {
+          "section": 355,
+          "name": ".debug$S",
+          "signature": "dab1defb"
+        },
+        {
+          "section": 356,
+          "name": ".debug$S",
+          "signature": "618d5c76"
+        },
+        {
+          "section": 357,
+          "name": ".debug$S",
+          "signature": "b57a8eb4"
+        },
+        {
+          "section": 358,
+          "name": ".debug$S",
+          "signature": "f7f94d2e"
+        },
+        {
+          "section": 359,
+          "name": ".debug$S",
+          "signature": "de6c9c74"
+        },
+        {
+          "section": 360,
+          "name": ".debug$S",
+          "signature": "9546d4a8"
+        },
+        {
+          "section": 361,
+          "name": ".debug$S",
+          "signature": "fb466961"
+        },
+        {
+          "section": 362,
+          "name": ".debug$S",
+          "signature": "e8085030"
+        },
+        {
+          "section": 363,
+          "name": ".debug$S",
+          "signature": "442060b3"
+        },
+        {
+          "section": 364,
+          "name": ".debug$S",
+          "signature": "730ba70d"
+        },
+        {
+          "section": 365,
+          "name": ".debug$S",
+          "signature": "dba6ffb1"
+        },
+        {
+          "section": 366,
+          "name": ".debug$S",
+          "signature": "33951eba"
+        },
+        {
+          "section": 367,
+          "name": ".debug$S",
+          "signature": "590fa503"
+        },
+        {
+          "section": 368,
+          "name": ".debug$S",
+          "signature": "6b461e1f"
+        },
+        {
+          "section": 369,
+          "name": ".debug$S",
+          "signature": "e6e525bb"
+        },
+        {
+          "section": 370,
+          "name": ".debug$S",
+          "signature": "d2368567"
+        },
+        {
+          "section": 371,
+          "name": ".debug$S",
+          "signature": "98838b27"
+        },
+        {
+          "section": 372,
+          "name": ".debug$S",
+          "signature": "3979956e"
+        },
+        {
+          "section": 373,
+          "name": ".debug$S",
+          "signature": "8a4bed3d"
+        },
+        {
+          "section": 374,
+          "name": ".debug$S",
+          "signature": "4754867a"
+        },
+        {
+          "section": 375,
+          "name": ".debug$S",
+          "signature": "ca866016"
+        },
+        {
+          "section": 376,
+          "name": ".debug$S",
+          "signature": "eaf729a1"
+        },
+        {
+          "section": 377,
+          "name": ".debug$S",
+          "signature": "9de45320"
+        },
+        {
+          "section": 378,
+          "name": ".debug$S",
+          "signature": "1e8953a3"
+        },
+        {
+          "section": 379,
+          "name": ".debug$S",
+          "signature": "3702d518"
+        },
+        {
+          "section": 380,
+          "name": ".debug$S",
+          "signature": "f721724a"
+        },
+        {
+          "section": 381,
+          "name": ".debug$S",
+          "signature": "3f027857"
+        },
+        {
+          "section": 382,
+          "name": ".debug$S",
+          "signature": "d5a908ad"
+        },
+        {
+          "section": 383,
+          "name": ".debug$S",
+          "signature": "39bb451e"
+        },
+        {
+          "section": 384,
+          "name": ".debug$S",
+          "signature": "42a7a3aa"
+        },
+        {
+          "section": 385,
+          "name": ".debug$S",
+          "signature": "7e92a043"
+        },
+        {
+          "section": 386,
+          "name": ".debug$S",
+          "signature": "f04ae4fc"
+        },
+        {
+          "section": 387,
+          "name": ".debug$S",
+          "signature": "c3994e1a"
+        },
+        {
+          "section": 388,
+          "name": ".debug$S",
+          "signature": "7c61f84a"
+        },
+        {
+          "section": 389,
+          "name": ".debug$S",
+          "signature": "b00b377e"
+        },
+        {
+          "section": 390,
+          "name": ".debug$S",
+          "signature": "e9dad731"
+        },
+        {
+          "section": 391,
+          "name": ".debug$S",
+          "signature": "6d142b7e"
+        },
+        {
+          "section": 392,
+          "name": ".debug$S",
+          "signature": "2917bc23"
+        },
+        {
+          "section": 393,
+          "name": ".debug$S",
+          "signature": "c28bdeef"
+        },
+        {
+          "section": 394,
+          "name": ".debug$S",
+          "signature": "3f7895fa"
+        },
+        {
+          "section": 395,
+          "name": ".debug$S",
+          "signature": "df5666f9"
+        },
+        {
+          "section": 396,
+          "name": ".debug$S",
+          "signature": "2e37517f"
+        },
+        {
+          "section": 397,
+          "name": ".debug$S",
+          "signature": "e511ad79"
+        },
+        {
+          "section": 398,
+          "name": ".debug$S",
+          "signature": "fc58a788"
+        },
+        {
+          "section": 399,
+          "name": ".debug$S",
+          "signature": "6ce4ad96"
+        },
+        {
+          "section": 400,
+          "name": ".debug$S",
+          "signature": "98cae039"
+        },
+        {
+          "section": 401,
+          "name": ".debug$S",
+          "signature": "e1b71046"
+        },
+        {
+          "section": 402,
+          "name": ".debug$S",
+          "signature": "d3156528"
+        },
+        {
+          "section": 403,
+          "name": ".debug$S",
+          "signature": "21ebea4b"
+        },
+        {
+          "section": 404,
+          "name": ".debug$S",
+          "signature": "52bcac74"
+        },
+        {
+          "section": 405,
+          "name": ".debug$S",
+          "signature": "35b73908"
+        }
+      ]
+    }
+  ]
+}

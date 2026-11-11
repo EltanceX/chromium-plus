@@ -111,6 +111,23 @@ class ChromeDomHost final : public native_python::DomHost {
         host_->SetText(ToWeb(handle), blink::WebString::FromUtf8(text)));
   }
 
+  native_python::ControlStateResult GetControlState(
+      native_python::DomHandle handle) override {
+    const auto r = host_->GetControlState(ToWeb(handle));
+    return {Convert(r.status), r.value.Utf8(), r.checked,
+            r.hidden,          r.disabled,     r.open};
+  }
+  native_python::DomResult UpdateElement(
+      native_python::DomHandle handle,
+      const native_python::ElementUpdate& update) override {
+    return Convert(host_->UpdateElement(
+        ToWeb(handle),
+        {static_cast<blink::WebPythonElementAction>(update.action),
+         blink::WebString::FromUtf8(update.name),
+         blink::WebString::FromUtf8(update.value), update.enabled,
+         update.number}));
+  }
+
   native_python::DomResult AddEventListener(
       native_python::DomHandle element,
       std::string_view type,

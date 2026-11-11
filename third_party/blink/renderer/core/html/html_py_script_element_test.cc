@@ -832,6 +832,167 @@ TEST_F(HTMLPyScriptElementTest, DomBridgeWritesOnlyPlainTextAndFindsLightDom) {
     <pyscript>bridge</pyscript>)HTML");
 }
 
+TEST_F(HTMLPyScriptElementTest, ControlsPreserveNativeValuesAndSafeAttributes) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto range = host.GetElementById("range").handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.UpdateElement(range, {WebPythonElementAction::kValue, {}, "999"})
+            .error);
+    EXPECT_EQ("420", host.GetControlState(range).value);
+    auto box = host.GetElementById("box").handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(
+                      box, {WebPythonElementAction::kChecked, {}, {}, true})
+                  .error);
+    EXPECT_TRUE(host.GetControlState(box).checked);
+    auto panel = host.GetElementById("panel").handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(
+                      panel, {WebPythonElementAction::kHidden, {}, {}, true})
+                  .error);
+    EXPECT_TRUE(host.GetControlState(panel).hidden);
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.UpdateElement(
+                panel, {WebPythonElementAction::kClass, "selected", {}, true})
+            .error);
+    EXPECT_EQ("selected",
+              GetElementById("panel")->getAttribute(html_names::kClassAttr));
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(panel, {WebPythonElementAction::kAttribute,
+                                         "aria-selected", "true"})
+                  .error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.SetText(host.GetElementById("code").handle,
+                           "<script>literal</script>")
+                  .error);
+    EXPECT_EQ("<script>literal</script>",
+              GetElementById("code")->textContent());
+  });
+  Load(
+      "<input id=range type=range min=160 max=420 value=280><input id=box "
+      "type=checkbox>"
+      "<div id=panel></div><code id=code></code><pyscript>controls</pyscript>");
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ControlsRejectUnsafeNamesTypesAndExpiredHandles) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto panel = host.GetElementById("panel").handle;
+    for (const char* name :
+         {"onclick", "src", "href", "style", "is", "id", "innerHTML"}) {
+      EXPECT_EQ(WebPythonDomError::kNotAllowed,
+                host.UpdateElement(panel, {WebPythonElementAction::kAttribute,
+                                           WebString::FromUtf8(name), "x"})
+                    .error);
+    }
+    EXPECT_EQ(
+        WebPythonDomError::kNotAllowed,
+        host.UpdateElement(
+                panel, {WebPythonElementAction::kClass, "two tokens", {}, true})
+            .error);
+    EXPECT_EQ(
+        WebPythonDomError::kNotAllowed,
+        host.UpdateElement(
+                panel, {WebPythonElementAction::kProgress, {}, {}, false, 101})
+            .error);
+    for (const char* id : {"file", "password"}) {
+      auto h = host.GetElementById(WebString::FromUtf8(id)).handle;
+      EXPECT_EQ(WebPythonDomError::kNotAllowed,
+                host.GetControlState(h).status.error);
+      EXPECT_EQ(WebPythonDomError::kNotAllowed,
+                host.UpdateElement(h, {WebPythonElementAction::kValue, {}, "x"})
+                    .error);
+    }
+    EXPECT_EQ(
+        WebPythonDomError::kNotAllowed,
+        host.UpdateElement(host.GetElementById("custom").handle,
+                           {WebPythonElementAction::kHidden, {}, {}, true})
+            .error);
+    ++panel.generation;
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.GetControlState(panel).status.error);
+    EXPECT_EQ(WebPythonDomError::kReference,
+              host.UpdateElement(
+                      panel, {WebPythonElementAction::kHidden, {}, {}, true})
+                  .error);
+    panel = host.GetElementById("panel").handle;
+    GetElementById("panel")->remove();
+    EXPECT_EQ(
+        WebPythonDomError::kReference,
+        host.UpdateElement(panel, {WebPythonElementAction::kFocus}).error);
+  });
+  Load(
+      "<div id=panel></div><input id=file type=file><input id=password "
+      "type=password>"
+      "<div id=custom is=x-ui></div><pyscript>controls</pyscript>");
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       ControlsUseNativeModalStateAndDisabledSemantics) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto dialog = host.GetElementById("dialog").handle;
+    EXPECT_EQ(
+        WebPythonDomError::kNone,
+        host.UpdateElement(dialog, {WebPythonElementAction::kShowModal}).error);
+    EXPECT_TRUE(host.GetControlState(dialog).open);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(dialog, {WebPythonElementAction::kCloseDialog})
+                  .error);
+    EXPECT_FALSE(host.GetControlState(dialog).open);
+    auto button = host.GetElementById("button").handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(
+                      button, {WebPythonElementAction::kDisabled, {}, {}, true})
+                  .error);
+    EXPECT_TRUE(host.GetControlState(button).disabled);
+  });
+  Load(
+      "<dialog id=dialog><button>close</button></dialog><button "
+      "id=button>play</button>"
+      "<pyscript>controls</pyscript>");
+}
+
+TEST_F(HTMLPyScriptElementTest,
+       SkippedUiNotificationsDoNotInvalidateHeldInput) {
+  runner_.on_run = base::BindLambdaForTesting([&] {
+    auto& host = *runner_.host;
+    auto doc = host.GetEventTarget(WebPythonTargetKind::kDocument).handle;
+    auto button = host.GetElementById("button").handle;
+    auto dialog = host.GetElementById("dialog").handle;
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(button, "click", {1, 1}, false).error);
+    EXPECT_EQ(WebPythonDomError::kNone,
+              host.AddEventListener(doc, "focusin", {1, 2}, false).error);
+    uint64_t callback_id = 3;
+    for (const char* type : {"close", "cancel"}) {
+      EXPECT_EQ(WebPythonDomError::kNone,
+                host.AddEventListener(dialog, WebString::FromUtf8(type),
+                                      {1, callback_id++}, false)
+                    .error);
+    }
+  });
+  Load(
+      "<body><button id=button>play</button><dialog id=dialog></dialog>"
+      "<pyscript>notifications</pyscript>");
+  runner_.on_click = base::BindLambdaForTesting([&] {
+    const auto before = runner_.host->GetPageState().state.input_epoch;
+    GetElementById("button")->DispatchEvent(
+        *Event::CreateBubble(event_type_names::kFocusin));
+    for (const auto& type :
+         {event_type_names::kClose, event_type_names::kCancel}) {
+      GetElementById("dialog")->DispatchEvent(*Event::CreateBubble(type));
+    }
+    EXPECT_EQ(before, runner_.host->GetPageState().state.input_epoch);
+  });
+  Click();
+  EXPECT_EQ((std::vector<uint64_t>{1}), runner_.invoked);
+}
+
 TEST_F(HTMLPyScriptElementTest, DomBridgeRejectsCodeCustomAndContainerTargets) {
   runner_.on_run = base::BindLambdaForTesting([&] {
     auto& host = *runner_.host;

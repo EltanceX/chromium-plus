@@ -1,0 +1,69 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_unittests.exe.rsp",
+  "directObjects": 4666,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/css_font_face_src_value_test.obj",
+      "errors": [
+        "Invalid CodeView type at 0x16f161: length 5886, kind 0xe849",
+        "Invalid CodeView type extent 0x16f161 != 0x76058d",
+        "Invalid procedure ID 0x165c1 at 0xb4e81, type kind out of range",
+        "Invalid procedure ID 0x165c3 at 0xb4f85, type kind out of range",
+        "Invalid procedure ID 0x165c4 at 0xb50b5, type kind out of range",
+        "Invalid procedure ID 0x165e0 at 0xb51b9, type kind out of range",
+        "Invalid procedure ID 0x165e5 at 0xb52cd, type kind out of range",
+        "Invalid procedure ID 0x165e7 at 0xb544d, type kind out of range",
+        "Invalid procedure ID 0x165e9 at 0xb5551, type kind out of range",
+        "Invalid procedure ID 0x165ec at 0xb5695, type kind out of range",
+        "Invalid procedure ID 0x165ef at 0xb579d, type kind out of range",
+        "Invalid procedure ID 0x165f0 at 0xb58b5, type kind out of range",
+        "Invalid procedure ID 0x165f2 at 0xb59c5, type kind out of range",
+        "Invalid procedure ID 0x165f3 at 0xb5b39, type kind out of range",
+        "Invalid procedure ID 0x165f4 at 0xb5c8d, type kind out of range",
+        "Invalid procedure ID 0x165f4 at 0xb5e25, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/core/unit_tests/scroll_button_pseudo_element_test.obj",
+      "errors": [
+        "Invalid CodeView type at 0x125f1e: length 40013, kind 0xaf7e",
+        "Invalid CodeView type extent 0x125f1e != 0x39e012",
+        "Invalid procedure ID 0xac50 at 0x5fb22, type kind out of range",
+        "Invalid procedure ID 0xac57 at 0x5fd0a, type kind out of range",
+        "Invalid procedure ID 0xac58 at 0x5fe22, type kind out of range",
+        "Invalid procedure ID 0xac68 at 0x5ff4a, type kind out of range",
+        "Invalid procedure ID 0xac6f at 0x60132, type kind out of range",
+        "Invalid procedure ID 0xac70 at 0x6024a, type kind out of range",
+        "Invalid procedure ID 0xac80 at 0x60372, type kind out of range",
+        "Invalid procedure ID 0xac87 at 0x6056a, type kind out of range",
+        "Invalid procedure ID 0xac88 at 0x60692, type kind out of range",
+        "Invalid procedure ID 0xac98 at 0x607c6, type kind out of range",
+        "Invalid procedure ID 0xac9f at 0x609b2, type kind out of range",
+        "Invalid procedure ID 0xaca0 at 0x60ace, type kind out of range",
+        "Invalid procedure ID 0xacb0 at 0x60bf6, type kind out of range",
+        "Invalid procedure ID 0xacc1 at 0x60e32, type kind out of range"
+      ]
+    },
+    {
+      "object": "obj/third_party/blink/renderer/modules/unit_tests/video_track_adapter_unittest.obj",
+      "errors": [
+        "Invalid CodeView type at 0x50202d: length 9874, kind 0xf4f7",
+        "Invalid CodeView type extent 0x50202d != 0x763039",
+        "Invalid procedure ID 0x56d2 at 0x2129b9, type kind out of range",
+        "Invalid procedure ID 0x56dc at 0x212ee1, type kind out of range",
+        "Invalid procedure ID 0x56de at 0x213099, type kind out of range",
+        "Invalid procedure ID 0x56e0 at 0x2131a9, type kind out of range",
+        "Invalid procedure ID 0x56e3 at 0x2133a5, type kind out of range",
+        "Invalid procedure ID 0x56e4 at 0x2134ed, type kind out of range",
+        "Invalid procedure ID 0x56e5 at 0x21366d, type kind out of range",
+        "Invalid procedure ID 0x56ea at 0x2137d1, type kind out of range",
+        "Invalid procedure ID 0x56eb at 0x21393d, type kind out of range",
+        "Invalid procedure ID 0x56f0 at 0x213b89, type kind out of range",
+        "Invalid procedure ID 0x56f2 at 0x213c81, type kind out of range",
+        "Invalid procedure ID 0x56f7 at 0x213dbd, type kind out of range",
+        "Invalid procedure ID 0x56f8 at 0x213f29, type kind out of range",
+        "Invalid procedure ID 0x56f9 at 0x21404d, type kind out of range"
+      ]
+    }
+  ]
+}
