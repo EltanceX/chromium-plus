@@ -19,6 +19,11 @@ SHA-256 hashes are recorded in source_manifest.json. Build inputs are derived
 from the upstream PCbuild/_freeze_module.vcxproj. Upstream tests, tools and
 unused extension sources are not part of the subset.
 
+mathmodule.c is also statically selected, with its upstream clinic and internal
+headers. It uses the existing PSF license and Windows CRT math functions; it adds
+no runtime DLL discovery, disk stdlib, site-packages, or random module. Game
+replay uses a separately documented seeded xorshift32 in the Python sample.
+
 GN builds a private static core inside one python_runtime.dll, and a separate
 build-time freezer using the same pinned compiler. Frozen bootstrapping and
 encoding modules are enumerated in frozen_modules.json; no on-disk stdlib is
@@ -27,6 +32,10 @@ embedded_getpath.c replaces path discovery with a strict explicit-path check;
 builtin_modules.c defines the selected built-in table. embedded_buildinfo.c
 supplies deterministic build metadata; sys._vpath is empty. Upstream source files
 are not patched. Host build Python never generates target-version bytecode.
+
+The private interpreter core uses optimize_speed even in a Chromium Debug build.
+Symbols and normal compiler/linker diagnostics remain enabled. The embedding
+and Chromium targets retain their selected build mode and execution budgets.
 
 embedded_bootstrap_hash.c redirects CPython's BCryptGenRandom calls through
 embedded_entropy.cc to base::RandBytes, whose Windows ProcessPrng path works in

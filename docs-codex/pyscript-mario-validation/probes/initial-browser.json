@@ -1,0 +1,27 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:57544",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": false,
+      "elapsedMs": 30954,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:108:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:226:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:195:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:224:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python document exceeded the 250 ms cooperative execution budget",
+          "timestamp": 1794325711269.467,
+          "url": "http://127.0.0.1:57544/sample",
+          "lineNumber": 778
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:108:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:226:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:195:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:224:3"
+}

@@ -42,7 +42,7 @@ def main():
                    for item in project.findall('.//m:ClCompile[@Include]', ns)]
         sources += ['Modules/_abc.c', 'Modules/_codecsmodule.c',
                     'Modules/_weakref.c', 'Modules/_threadmodule.c',
-                    'Python/dynload_stub.c']
+                    'Python/dynload_stub.c', 'Modules/mathmodule.c']
         files = set(sources) | set(FROZEN.values()) | {
             'LICENSE', 'Doc/license.rst', 'PC/pyconfig.h.in',
             'PCbuild/_freeze_module.vcxproj'}

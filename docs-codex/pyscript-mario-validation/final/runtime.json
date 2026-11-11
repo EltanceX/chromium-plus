@@ -1,0 +1,1220 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython": [
+        {
+          "elapsed_time_ms": 125,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.538Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationAndInputShareTotalTimeAndOutputWindows": [
+        {
+          "elapsed_time_ms": 56,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.245Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationFatalLimitsLatchAcrossAllEntryKinds": [
+        {
+          "elapsed_time_ms": 47,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.302Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationInstallationRollbackAndCancellationRevokeCapabilities": [
+        {
+          "elapsed_time_ms": 60,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.071Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationKindAndTimestampValidationDoNotConsumeRequest": [
+        {
+          "elapsed_time_ms": 46,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.024Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationRequestsAreOpaqueBoundedAndConsumedBeforeCall": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.010Z"
+        }
+      ],
+      "PythonRuntimeTest.AnimationWindowUsesSixteenMillisecondReservationAndFrameSubquota": [
+        {
+          "elapsed_time_ms": 21,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.133Z"
+        }
+      ],
+      "PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals": [
+        {
+          "elapsed_time_ms": 21,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.691Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries": [
+        {
+          "elapsed_time_ms": 91,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.032Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom": [
+        {
+          "elapsed_time_ms": 18,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.401Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackDomWindowReservesAndInitializationIsSeparate": [
+        {
+          "elapsed_time_ms": 24,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.182Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks": [
+        {
+          "elapsed_time_ms": 32,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.916Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackErrorsChargeWindowAndFiftyMillisecondsIsFatal": [
+        {
+          "elapsed_time_ms": 19,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.262Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.864Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts": [
+        {
+          "elapsed_time_ms": 61,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.749Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackOutputWindowSkipsWithoutConsumingOnceAndRecovers": [
+        {
+          "elapsed_time_ms": 21,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.160Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.832Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds": [
+        {
+          "elapsed_time_ms": 19,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.811Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies": [
+        {
+          "elapsed_time_ms": 16,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.848Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom": [
+        {
+          "elapsed_time_ms": 17,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.898Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbackSingleEntryLimitsAreFatalAcrossWindowExpiry": [
+        {
+          "elapsed_time_ms": 54,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.207Z"
+        }
+      ],
+      "PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots": [
+        {
+          "elapsed_time_ms": 19,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.728Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasBatchTypedCommandsGradientsAndMetrics": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.665Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasBuildersAndCommandMemoryAreBoundedAndCollectible": [
+        {
+          "elapsed_time_ms": 22,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.749Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasDrawingLimitLatchesDespitePythonCatch": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.772Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasFinalizersCannotUseNativeHost": [
+        {
+          "elapsed_time_ms": 12,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.799Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasRectangleGroupsCannotSubmitAfterStopOrRevocation": [
+        {
+          "elapsed_time_ms": 24,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.724Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasRectangleGroupsExpandToMeteredCommands": [
+        {
+          "elapsed_time_ms": 11,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.695Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasRectangleGroupsRejectAtomicallyAndStayBounded": [
+        {
+          "elapsed_time_ms": 16,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.707Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasRejectsForgedHandlesAndReentrantArgumentConversions": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.681Z"
+        }
+      ],
+      "PythonRuntimeTest.CanvasWindowPressureIsRecoverableAndChargesDomCalls": [
+        {
+          "elapsed_time_ms": 12,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.786Z"
+        }
+      ],
+      "PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.088Z"
+        }
+      ],
+      "PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer": [
+        {
+          "elapsed_time_ms": 61,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.248Z"
+        }
+      ],
+      "PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput": [
+        {
+          "elapsed_time_ms": 45,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.713Z"
+        }
+      ],
+      "PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop": [
+        {
+          "elapsed_time_ms": 129,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.817Z"
+        }
+      ],
+      "PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded": [
+        {
+          "elapsed_time_ms": 19,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.947Z"
+        }
+      ],
+      "PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary": [
+        {
+          "elapsed_time_ms": 28,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.104Z"
+        }
+      ],
+      "PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers": [
+        {
+          "elapsed_time_ms": 21,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.648Z"
+        }
+      ],
+      "PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal": [
+        {
+          "elapsed_time_ms": 29,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.435Z"
+        }
+      ],
+      "PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings": [
+        {
+          "elapsed_time_ms": 14,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.420Z"
+        }
+      ],
+      "PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors": [
+        {
+          "elapsed_time_ms": 69,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.551Z"
+        }
+      ],
+      "PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost": [
+        {
+          "elapsed_time_ms": 24,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.622Z"
+        }
+      ],
+      "PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct": [
+        {
+          "elapsed_time_ms": 23,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.547Z"
+        }
+      ],
+      "PythonRuntimeTest.EventControlUsesTokenAndCannotUseRetainedEventForLaterCall": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.898Z"
+        }
+      ],
+      "PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop": [
+        {
+          "elapsed_time_ms": 113,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.133Z"
+        }
+      ],
+      "PythonRuntimeTest.FatalCallbackStillAllowsIndependentBudgetedCleanup": [
+        {
+          "elapsed_time_ms": 117,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.282Z"
+        }
+      ],
+      "PythonRuntimeTest.FixedDiagnosticSelfTest": [
+        {
+          "elapsed_time_ms": 60,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 7,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.697Z"
+        }
+      ],
+      "PythonRuntimeTest.InitializationAndEventTimeAreSeparateAndStopsLatch": [
+        {
+          "elapsed_time_ms": 32,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 4,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.124Z"
+        }
+      ],
+      "PythonRuntimeTest.InputSnapshotCopiesAllFieldsAndRejectsMutation": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.884Z"
+        }
+      ],
+      "PythonRuntimeTest.InputSnapshotRejectsInvalidStringsAndCoordinates": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.926Z"
+        }
+      ],
+      "PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated": [
+        {
+          "elapsed_time_ms": 22,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.415Z"
+        }
+      ],
+      "PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides": [
+        {
+          "elapsed_time_ms": 41,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.439Z"
+        }
+      ],
+      "PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission": [
+        {
+          "elapsed_time_ms": 40,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.481Z"
+        }
+      ],
+      "PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability": [
+        {
+          "elapsed_time_ms": 49,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.677Z"
+        }
+      ],
+      "PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry": [
+        {
+          "elapsed_time_ms": 24,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.522Z"
+        }
+      ],
+      "PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock": [
+        {
+          "elapsed_time_ms": 19,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.670Z"
+        }
+      ],
+      "PythonRuntimeTest.NewInputOperationsShareTheDomBudget": [
+        {
+          "elapsed_time_ms": 69,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.940Z"
+        }
+      ],
+      "PythonRuntimeTest.OnceConsumptionReleasesCallableEvenAfterException": [
+        {
+          "elapsed_time_ms": 40,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.351Z"
+        }
+      ],
+      "PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget": [
+        {
+          "elapsed_time_ms": 67,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.020Z"
+        }
+      ],
+      "PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate": [
+        {
+          "elapsed_time_ms": 29,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.787Z"
+        }
+      ],
+      "PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded": [
+        {
+          "elapsed_time_ms": 16,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.336Z"
+        }
+      ],
+      "PythonRuntimeTest.PointerCaptureArgumentsAreStrictAndTyped": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.913Z"
+        }
+      ],
+      "PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.570Z"
+        }
+      ],
+      "PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles": [
+        {
+          "elapsed_time_ms": 22,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 2,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.392Z"
+        }
+      ],
+      "PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked": [
+        {
+          "elapsed_time_ms": 17,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 3,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:38.880Z"
+        }
+      ],
+      "PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts": [
+        {
+          "elapsed_time_ms": 272,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.366Z"
+        }
+      ],
+      "PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover": [
+        {
+          "elapsed_time_ms": 26,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 5,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:39.759Z"
+        }
+      ],
+      "PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext": [
+        {
+          "elapsed_time_ms": 13,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.352Z"
+        }
+      ],
+      "PythonRuntimeTest.StaticMathWorksInIsolatedSubinterpreters": [
+        {
+          "elapsed_time_ms": 25,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.310Z"
+        }
+      ],
+      "PythonRuntimeTest.SubinterpretersCannotCreateThreads": [
+        {
+          "elapsed_time_ms": 15,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 6,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:40.639Z"
+        }
+      ],
+      "PythonRuntimeTest.TypedInputTargetsOptionsAndPageState": [
+        {
+          "elapsed_time_ms": 28,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 1,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 4188,
+          "timestamp": "2026-11-11T01:15:37.855Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "PythonRuntimeDeathTest.CallbackEntryRejectsOtherThreadsBeforeUsingPython": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1901
+    },
+    "PythonRuntimeTest.AnimationAndInputShareTotalTimeAndOutputWindows": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 856
+    },
+    "PythonRuntimeTest.AnimationFatalLimitsLatchAcrossAllEntryKinds": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 896
+    },
+    "PythonRuntimeTest.AnimationInstallationRollbackAndCancellationRevokeCapabilities": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 765
+    },
+    "PythonRuntimeTest.AnimationKindAndTimestampValidationDoNotConsumeRequest": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 738
+    },
+    "PythonRuntimeTest.AnimationRequestsAreOpaqueBoundedAndConsumedBeforeCall": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 684
+    },
+    "PythonRuntimeTest.AnimationWindowUsesSixteenMillisecondReservationAndFrameSubquota": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 819
+    },
+    "PythonRuntimeTest.CalculationUnicodeAndPersistentGlobals": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2098
+    },
+    "PythonRuntimeTest.CallbackBudgetStopsLoopsAndCannotBeResetByOtherEntries": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1617
+    },
+    "PythonRuntimeTest.CallbackCyclesParticipateInGcAndTeardownRevokesDom": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1855
+    },
+    "PythonRuntimeTest.CallbackDomWindowReservesAndInitializationIsSeparate": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1733
+    },
+    "PythonRuntimeTest.CallbackEntriesShareReentryAndInactiveHostChecks": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1584
+    },
+    "PythonRuntimeTest.CallbackErrorsChargeWindowAndFiftyMillisecondsIsFatal": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1796
+    },
+    "PythonRuntimeTest.CallbackExceptionsKeepTracebacksAndPermitLaterCalls": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1462
+    },
+    "PythonRuntimeTest.CallbackHandlesRejectOtherAndDestroyedContexts": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1317
+    },
+    "PythonRuntimeTest.CallbackOutputWindowSkipsWithoutConsumingOnceAndRecovers": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1698
+    },
+    "PythonRuntimeTest.CallbackRegistrationValidatesNamesAndSyncCallables": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1374
+    },
+    "PythonRuntimeTest.CallbackRegistryIsBoundedAndNeverReusesRemovedIds": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1348
+    },
+    "PythonRuntimeTest.CallbackRejectsDeferredResultsWithoutRunningTheirBodies": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1420
+    },
+    "PythonRuntimeTest.CallbackResultAndExceptionCleanupCannotUseDom": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1531
+    },
+    "PythonRuntimeTest.CallbackSingleEntryLimitsAreFatalAcrossWindowExpiry": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1766
+    },
+    "PythonRuntimeTest.CallbacksCaptureClosuresAndUseReadOnlyEventSnapshots": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1253
+    },
+    "PythonRuntimeTest.CanvasBatchTypedCommandsGradientsAndMetrics": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 196
+    },
+    "PythonRuntimeTest.CanvasBuildersAndCommandMemoryAreBoundedAndCollectible": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 379
+    },
+    "PythonRuntimeTest.CanvasDrawingLimitLatchesDespitePythonCatch": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 407
+    },
+    "PythonRuntimeTest.CanvasFinalizersCannotUseNativeHost": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 445
+    },
+    "PythonRuntimeTest.CanvasRectangleGroupsCannotSubmitAfterStopOrRevocation": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 339
+    },
+    "PythonRuntimeTest.CanvasRectangleGroupsExpandToMeteredCommands": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 279
+    },
+    "PythonRuntimeTest.CanvasRectangleGroupsRejectAtomicallyAndStayBounded": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 304
+    },
+    "PythonRuntimeTest.CanvasRejectsForgedHandlesAndReentrantArgumentConversions": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 240
+    },
+    "PythonRuntimeTest.CanvasWindowPressureIsRecoverableAndChargesDomCalls": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 424
+    },
+    "PythonRuntimeTest.CatchingOutputFailureCannotRestoreDomOrLaterExecution": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2217
+    },
+    "PythonRuntimeTest.CleanupCooperativelyInterruptsAPlainPythonFinalizer": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2285
+    },
+    "PythonRuntimeTest.ContextsSeparateGlobalsModulesAndOutput": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2108
+    },
+    "PythonRuntimeTest.CooperativeBudgetInterruptsPurePythonAndLatchesStop": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2152
+    },
+    "PythonRuntimeTest.DocumentTimeIsCumulativeButIdleTimeIsExcluded": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2168
+    },
+    "PythonRuntimeTest.DomBudgetAndNavigationStopAtNativeBoundary": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2244
+    },
+    "PythonRuntimeTest.DomCapabilityIsRevokedBeforeDiagnosticsAndFinalizers": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2050
+    },
+    "PythonRuntimeTest.DomHandlesPersistAndModulesAreInterpreterLocal": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1964
+    },
+    "PythonRuntimeTest.DomModuleUsesOpaqueHandlesAndStrictStrings": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1934
+    },
+    "PythonRuntimeTest.DomRejectsInactiveHostsAndConvertsHostErrors": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1986
+    },
+    "PythonRuntimeTest.DomUtf8BoundsAndSurrogatesDoNotReachHost": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2018
+    },
+    "PythonRuntimeTest.DroppedListenerHandlesDoNotCancelAndDuplicatesAreDistinct": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1161
+    },
+    "PythonRuntimeTest.EventControlUsesTokenAndCannotUseRetainedEventForLaterCall": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 565
+    },
+    "PythonRuntimeTest.ExceptionFormattingCannotRunAnUnboundedPythonLoop": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2269
+    },
+    "PythonRuntimeTest.FatalCallbackStillAllowsIndependentBudgetedCleanup": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1827
+    },
+    "PythonRuntimeTest.FixedDiagnosticSelfTest": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2400
+    },
+    "PythonRuntimeTest.InitializationAndEventTimeAreSeparateAndStopsLatch": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1640
+    },
+    "PythonRuntimeTest.InputSnapshotCopiesAllFieldsAndRejectsMutation": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 513
+    },
+    "PythonRuntimeTest.InputSnapshotRejectsInvalidStringsAndCoordinates": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 635
+    },
+    "PythonRuntimeTest.ListenerArgumentsAndModuleIdentityAreValidated": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1018
+    },
+    "PythonRuntimeTest.ListenerInstallationFailuresRollbackBothSides": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1072
+    },
+    "PythonRuntimeTest.ListenerPostInstallStopsStillRollbackWithoutAdmission": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1105
+    },
+    "PythonRuntimeTest.ListenerReleaseAndDiagnosticsHaveNoDomCapability": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1218
+    },
+    "PythonRuntimeTest.ListenerRemovalFailureKeepsCallbackUntilSuccessfulRetry": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1134
+    },
+    "PythonRuntimeTest.NestedEntryFromDomHostIsRejectedWithoutGilDeadlock": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2083
+    },
+    "PythonRuntimeTest.NewInputOperationsShareTheDomBudget": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 658
+    },
+    "PythonRuntimeTest.OnceConsumptionReleasesCallableEvenAfterException": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 931
+    },
+    "PythonRuntimeTest.OutputAndDiagnosticsShareTheDocumentBudget": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2189
+    },
+    "PythonRuntimeTest.OutputIsBoundedAndStderrIsSeparate": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2138
+    },
+    "PythonRuntimeTest.PathsEnvironmentAndDynamicModulesAreExcluded": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2339
+    },
+    "PythonRuntimeTest.PointerCaptureArgumentsAreStrictAndTyped": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 606
+    },
+    "PythonRuntimeTest.PythonCallbackCanRemoveItselfAndRegisterAnother": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1189
+    },
+    "PythonRuntimeTest.PythonListenersRetainClosuresAndHaveOpaqueHandles": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 967
+    },
+    "PythonRuntimeTest.RemovingCurrentCallbackRetainsItUntilDomIsRevoked": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 1491
+    },
+    "PythonRuntimeTest.RepeatedDestructionAndOutOfOrderContexts": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2364
+    },
+    "PythonRuntimeTest.RuntimeAndSyntaxErrorsHaveSourceAndRecover": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2122
+    },
+    "PythonRuntimeTest.SourceBoundariesAreRejectedWithoutPoisoningContext": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2354
+    },
+    "PythonRuntimeTest.StaticMathWorksInIsolatedSubinterpreters": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2309
+    },
+    "PythonRuntimeTest.SubinterpretersCannotCreateThreads": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 2389
+    },
+    "PythonRuntimeTest.TypedInputTargetsOptionsAndPageState": {
+      "file": "..\\..\\components\\python_runtime\\python_runtime_unittest.cc",
+      "line": 464
+    }
+  }
+}

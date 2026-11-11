@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "__main__.MarioCoreTest.test_fixed_clock_clamps_and_limits_steps",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_pause_and_rate_independence",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_physics_work_quota_drops_backlog",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_random_vector_and_visual_pool",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_acceleration_brake",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_checkpoint_respawn",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_collect_coin",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_coyote",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_finish",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_full_level_route",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_jump_buffer",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_last_life",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_long_jump",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_pit_respawn",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_question_once",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_short_jump",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_side_hit_respawn",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_stomp",
+      "passed": true
+    },
+    {
+      "name": "__main__.MarioCoreTest.test_reference_timeout_reset",
+      "passed": true
+    }
+  ]
+}

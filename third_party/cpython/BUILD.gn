@@ -72,9 +72,17 @@ source_set("core") {
     ":entropy",
   ]
   public_configs = [ ":headers" ]
-  configs -= [ "//build/config/compiler:chromium_code" ]
+
+  # The interpreter hot loop must remain usable under the bounded page frame
+  # budget in Debug. Keep symbols, DCHECKs and the normal linker diagnostics;
+  # optimize this private third-party VM without changing Chromium's build mode.
+  configs -= [
+    "//build/config/compiler:chromium_code",
+    "//build/config/compiler:default_optimization",
+  ]
   configs += [
     "//build/config/compiler:no_chromium_code",
+    "//build/config/compiler:optimize_speed",
     ":core_config",
   ]
   check_includes = false

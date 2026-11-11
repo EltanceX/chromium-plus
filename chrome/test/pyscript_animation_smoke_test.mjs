@@ -75,12 +75,12 @@ def tick(timestamp):
 animation.request_frame(tick)
 `)],
   ...[
-    ['/timeout', 'while True: pass', /8 ms cooperative execution budget/],
-    // Debug native bridge work can exhaust 8 ms before reaching call 129.
+    ['/timeout', 'while True: pass', /16 ms cooperative execution budget/],
+    // Debug native bridge work can exhaust 16 ms before reaching call 129.
     // Exact call-count boundaries are checked with an injected clock and in
     // Blink unit tests. This browser case requires the first fatal guard.
     ['/dom-stop', 'list(map(animation.cancel_frame, [request] * 129))',
-      /128 DOM call budget|8 ms cooperative execution budget/],
+      /128 DOM call budget|16 ms cooperative execution budget/],
     ['/output-stop', "print('x' * 4097)", /output was truncated at 4 KiB/],
     ['/diagnostic-stop', "raise ValueError('x' * 5000)", /output was truncated at 4 KiB/],
   ].map(([route, statement, expected]) => [route, {...makePage(`

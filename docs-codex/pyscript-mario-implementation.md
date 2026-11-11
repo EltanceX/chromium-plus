@@ -3,7 +3,7 @@
 - 整理日期：2026-11-10（Asia/Shanghai）。
 - 浏览器实现基线：`ed9a245bf1e2d6913029eaf733865776ecde6e3a`。
 - 参考项目：`C:\VD\Projects\mario\index.html`；源文件 SHA-256：`53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1`。
-- 当前状态：阶段一至三已完成。阶段三通过标准构建、188 项单测和 157 项浏览器测试，见[Canvas 实现记录](pyscript-canvas-phase3.md)；历史验收见[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段四至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
+- 当前状态（2026-11-11 更新）：阶段一至四已完成。阶段四交付纯 Python 核心关卡、静态 math 和原版轨迹对照，见[核心迁移记录](pyscript-mario-phase4.md)；历史验收见[Canvas 实现记录](pyscript-canvas-phase3.md)、[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段五至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
 - 目标平台：首先延续 Windows x64 Debug 的原生 CPython 路线，再以 Windows x64 Release 验证性能。
 - 前置成果：[原生 Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM](pyscript-phase3-document-context-dom.md)、[解释器设置与页面模式](pyscript-settings-and-page-permissions.md)、[click 方案](pyscript-click-events-implementation.md)、[交互预算与清理](pyscript-event-phase4-budgets-and-cleanup.md)、[click 最终验收](pyscript-event-phase5-build-and-browser-validation.md)。
 
@@ -54,7 +54,7 @@
 | 动画 | `animation.request_frame` / `cancel_frame`，原生帧、时间戳、单待执行请求与共享预算已实现 | 后续游戏接入、dt 基准与性能验证 |
 | Canvas | 批量 Canvas 2D 子集、受限缓存表面、完整画面替换和绘图额度已实现 | 后续完整游戏接入与性能验证 |
 | 音频 / 存储 | 尚无 Python 绑定 | 为游戏所需子集建立原生接口与资源计量 |
-| Python 模块 | CPython 3.13.18，有限内建及冻结模块 | 按需静态加入数学与随机数依赖；不假定 math / random 已可导入 |
+| Python 模块 | CPython 3.13.18，有限内建及冻结模块，阶段四已静态加入 math | 游戏使用固定种子的 xorshift32；标准 random 尚不可用，不依赖开发机模块 |
 | 生命周期 | 导航、open、失活、GC、安全任务清理；BFCache 排除、prerender 拒绝 | 新的帧、画布、音频与原生完成回调纳入相同撤销体系 |
 
 既有 click 基线实际通过 117 项单测、90 项浏览器测试。这些是旧能力的验收结果，不能直接作为本文新增能力已经通过的证据。
@@ -98,7 +98,7 @@ HTML / CSS + 内联 <pyscript>
 
 ### 4.1 API 与调度语义
 
-建议接口，尚未实现：
+阶段一已实现的接口：
 
 ```python
 import animation
@@ -129,20 +129,20 @@ frame_handle = animation.request_frame(frame)
 
 已有初始化额度和 click 单次额度保持其语义：初始化每块 100 ms、累计 250 ms；click 每次 50 ms、128 次 DOM、4 KiB 输出；最近一秒事件额度为 250 ms、1,024 次 DOM、16 KiB 输出。不能通过引入动画入口清除既有停止原因。
 
-建议阶段一将以下数值作为**起始试验值**写入显式常量和可注入时钟测试，待阶段四 / 七的真实游戏数据再评估：
+阶段一使用以下**起始试验值**，阶段四根据 Debug 游戏数据将单帧上限从 8 ms 调整为 16 ms，并同步准入预留、设置说明及边界测试。其余时间额度不变；阶段七继续评估 Release 和长期游玩：
 
 | 时间类别 | 建议起始值 | 说明 |
 | --- | --- | --- |
-| 单次 Python 帧 | 8 ms，协作式 | 用于保护主线程，不是承诺每帧允许持续耗尽 |
+| 单次 Python 帧 | 阶段一 8 ms；当前 16 ms，协作式 | 用于保护主线程，不是承诺每帧允许持续耗尽 |
 | 最近一秒 Python 帧子额度 | 200 ms | 帧压力时延后至合格刷新周期 |
 | 最近一秒输入、帧及其他交互总额度 | 250 ms | 统一结算，单独子额度不能叠加成无限总额度 |
 | 初始化与清理 | 沿用既有独立额度 | 不因帧循环重置，也不计入帧间空闲 |
 
 准入分别预留实际入口的完整单次上限，不使用 click 的 50 ms 预留作为帧准入条件。时间窗和恢复继续使用单调时钟，按实际耗时结算；多个回调不能扩大文档总额度。
 
-DOM 调用和 Python 输出继续受文档统一窗口约束，帧初版沿用每次 128 次 DOM、4 KiB 输出的上限，并与其他交互共享每秒 1,024 次 DOM、16 KiB 输出，不能“每帧重置整文档额度”。Canvas 另按绘图操作、数据和资源计费；原生校验 / 提交耗时也应纳入对应计量。8 / 200 / 250 ms 是未验证的初始策略，修改时必须同步设置说明、设计记录和测试，不静默放宽限制。
+DOM 调用和 Python 输出继续受文档统一窗口约束，帧初版沿用每次 128 次 DOM、4 KiB 输出的上限，并与其他交互共享每秒 1,024 次 DOM、16 KiB 输出，不能“每帧重置整文档额度”。Canvas 另按绘图操作、数据和资源计费；原生校验 / 提交耗时也应纳入对应计量。8 / 200 / 250 ms 是原始试验策略，当前为 16 / 200 / 250 ms；修改时必须同步设置说明、设计记录和测试，不静默放宽限制。16 ms 下也记录过一次间歇超限，不能据此保证 Debug 或繁忙机器上的持续稳定性，详见阶段四记录。
 
-窗口压力采用延后、合并和必要的降频；真正的单次致命超限继续锁存停止并撤销资源。50 ms click 保护及 8 ms 帧保护仍为协作式，不能硬中断任意 C 操作或承诺整个 Renderer 的 CPU / 内存硬隔离。
+窗口压力采用延后、合并和必要的降频；真正的单次致命超限继续锁存停止并撤销资源。50 ms click 保护及当前 16 ms 帧保护仍为协作式，不能硬中断任意 C 操作或承诺整个 Renderer 的 CPU / 内存硬隔离。
 
 ## 5. 输入事件与页面控制
 
@@ -257,6 +257,8 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段四：数学依赖与核心玩法迁移
 
+状态：已完成。静态 `math`、种子随机、纯 Python 核心关卡、15 条原版数值轨迹（含从默认起点整关）、实际输入及导航验证见[阶段四记录](pyscript-mario-phase4.md)。本阶段调整单帧上限为 16 ms，保留 200/250 ms 窗口；软物理额度、绘图简化及 Debug 间歇停止的边界均有记录。
+
 1. 静态补齐必要数学 / 随机数依赖，建立固定种子测试入口。
 2. 拆分 Python 状态、关卡、输入、物理、绘图和启动代码，保留原项目对照。
 3. 迁移 `1/120` 秒物理步长、dt 上限、每帧补算步数上限及后台恢复基准。
@@ -304,7 +306,7 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 ```powershell
 autoninja -C out/Debug chrome blink_unittests python_runtime_unittests python_document_context_unittests native_python_settings_unittests
 
-# 当前入口覆盖 click 与阶段一动画帧；后续 suite 和计数需随实现维护。
+# 当前入口覆盖 click、动画帧、输入、Canvas 及 Mario 核心；后续随实现维护。
 python chrome/test/run_pyscript_event_validation.py
 ```
 
@@ -330,4 +332,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一至三已完成原生帧调度、连续输入状态及批量 Canvas 2D。推荐下一步进入**阶段四：数学依赖与核心玩法迁移**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一至四已完成原生帧调度、连续输入状态、批量 Canvas 2D 及纯 Python 核心关卡。推荐下一步进入**阶段五：控件、教学面板与完整页面交互**。每个关键部分继续保留独立样例、回归和可审阅的提交边界。

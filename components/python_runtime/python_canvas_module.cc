@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include <cmath>
+#include <iterator>
 #include <memory>
 #include <string>
 #include <utility>
@@ -239,7 +240,8 @@ void DeleteGradient(PyObject* self) {
 }
 BatchData* Mutable(PyObject* self) {
   auto* b = reinterpret_cast<Batch*>(self);
-  if (!b->owner || !b->data || !Host(b->owner)) {
+  auto* state = b->owner ? ModuleState(b->owner) : nullptr;
+  if (!state || !b->data || !state->dom || !CanBuildCanvas(state->dom)) {
     if (!PyErr_Occurred()) {
       PyErr_SetString(PyExc_ReferenceError, "Canvas batch is inactive");
     }
@@ -316,6 +318,73 @@ NUMERIC(Rotate, Rotate, 1)
 NUMERIC(LineWidth, LineWidth, 1)
 NUMERIC(Alpha, Alpha, 1)
 #undef NUMERIC
+
+// Exact containers and primitives only: parsing cannot invoke page Python.
+// Expand to ordinary commands so Blink preflight and all drawing costs remain
+// identical to individual fill_style/fill_rect calls.
+PyObject* FillRects(PyObject* self, PyObject* rows) {
+  auto* data = Mutable(self);
+  if (!data) {
+    return nullptr;
+  }
+  if (!PyList_CheckExact(rows) && !PyTuple_CheckExact(rows)) {
+    PyErr_SetString(PyExc_TypeError, "fill_rects expects a list or tuple");
+    return nullptr;
+  }
+  const Py_ssize_t count = PySequence_Size(rows);
+  if (count >
+      static_cast<Py_ssize_t>((kBatchCommands - data->commands.size()) / 2)) {
+    PyErr_SetString(PyExc_ValueError, "Canvas batch exceeds 4096 commands");
+    return nullptr;
+  }
+  std::vector<CanvasCommand> parsed;
+  parsed.reserve(count * 2);
+  size_t bytes = 0;
+  for (Py_ssize_t i = 0; i < count; ++i) {
+    // Keep long native builders inside the existing cooperative checks.
+    if ((i & 63) == 0 && !Mutable(self)) {
+      return nullptr;
+    }
+    auto* row = PyList_CheckExact(rows) ? PyList_GetItem(rows, i)
+                                        : PyTuple_GetItem(rows, i);
+    if (!PyTuple_CheckExact(row) || PyTuple_GET_SIZE(row) != 5) {
+      PyErr_SetString(PyExc_TypeError, "Expected (x, y, width, height, color)");
+      return nullptr;
+    }
+    CanvasCommand color;
+    color.op = CanvasOp::kFillColor;
+    if (!Text(PyTuple_GetItem(row, 4), &color.text, 9)) {
+      return nullptr;
+    }
+    if (!HexColor(color.text)) {
+      PyErr_SetString(PyExc_ValueError, "Expected a hex color");
+      return nullptr;
+    }
+    CanvasCommand rectangle;
+    rectangle.op = CanvasOp::kFillRect;
+    for (int j = 0; j < 4; ++j) {
+      if (!Number(PyTuple_GetItem(row, j), &rectangle.args[j])) {
+        return nullptr;
+      }
+    }
+    bytes += 256 + color.text.size();
+    if (bytes > kBatchBytes - data->bytes) {
+      PyErr_SetString(PyExc_ValueError, "Canvas batch exceeds 512 KiB");
+      return nullptr;
+    }
+    parsed.push_back(std::move(color));
+    parsed.push_back(std::move(rectangle));
+  }
+  if (!Mutable(self)) {
+    return nullptr;
+  }
+  data->commands.insert(data->commands.end(),
+                        std::make_move_iterator(parsed.begin()),
+                        std::make_move_iterator(parsed.end()));
+  data->bytes += bytes;
+  Py_RETURN_NONE;
+}
+
 PyObject* Arc(PyObject* s, PyObject* a) {
   return Numeric(s, a, CanvasOp::kArc, 5, true);
 }
@@ -545,6 +614,7 @@ PyObject* Submit(PyObject* m, PyObject* args) {
 PyMethodDef kBatchMethods[] = {
     {"clear_rect", ClearRect, METH_VARARGS, nullptr},
     {"fill_rect", FillRect, METH_VARARGS, nullptr},
+    {"fill_rects", FillRects, METH_O, nullptr},
     {"stroke_rect", StrokeRect, METH_VARARGS, nullptr},
     {"begin_path", BeginPath, METH_VARARGS, nullptr},
     {"close_path", ClosePath, METH_VARARGS, nullptr},

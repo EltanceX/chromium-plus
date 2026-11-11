@@ -508,6 +508,7 @@
   "Modules/getbuildinfo.c": "0da696d7d7b47ef6a310ed8f199ce71998f1a3a6d3a31010a7079b637e5b22ce",
   "Modules/getpath_noop.c": "fbb96eb387d07b4461f6529c806a5a2b2c1707b4a7a90e93a50549636815458e",
   "Modules/hashlib.h": "2a1c6c324e7e1959bc819fbf20f2727b4cb5d7f9f35057940fc03dbffc46db1a",
+  "Modules/mathmodule.c": "e9370d6380c154d620ab7d5b54727aedb6c19e786156974445b965d1dd9a233a",
   "Modules/posixmodule.c": "510bf73656d2087b63b6e2b23e54693f07ec764074688a7ab9afb0fea6253057",
   "Modules/posixmodule.h": "089c58df65194724e960af9946ae01307e216adbe1a6d77381a217380d3c8df4",
   "Modules/rotatingtree.h": "645023f7766b0eadc05fba7693a47d0edbe46fb5352e0bfa4ec0c5d22dd56c0c",

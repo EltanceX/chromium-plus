@@ -17,6 +17,7 @@ cpython_core_sources = [
   "src/Modules/faulthandler.c",
   "src/Modules/gcmodule.c",
   "src/Modules/getbuildinfo.c",
+  "src/Modules/mathmodule.c",
   "src/Modules/posixmodule.c",
   "src/Modules/signalmodule.c",
   "src/Modules/timemodule.c",

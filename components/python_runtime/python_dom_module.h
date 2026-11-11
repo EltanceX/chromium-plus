@@ -14,6 +14,7 @@ class DomHost;
 PyMODINIT_FUNC InitDomModule();
 PyMODINIT_FUNC InitCanvasModule();
 DomHost* ActiveDomHost(PyObject* dom_module);
+bool CanBuildCanvas(PyObject* dom_module);
 bool ReadDomElementHandle(PyObject* dom_module, PyObject*, DomHandle*);
 bool CheckDomResult(const DomResult&);
 PyMODINIT_FUNC InitAnimationModule();

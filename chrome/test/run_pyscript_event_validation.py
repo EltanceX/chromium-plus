@@ -25,7 +25,8 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 67),
+    ('runtime', 'python_runtime_unittests', [], 71),
+    ('mario-logic', 'pyscript_mario_unittest.py', [], 19),
     ('adapter', 'python_document_context_unittests', [], 15),
     ('canvas-unit', 'blink_unittests', [
         '--gtest_filter=PythonCanvasBatchTest.*:PythonCanvasBridgeTest.*'
@@ -46,6 +47,7 @@ SUITES = [
     ('events', 'pyscript_event_smoke_test.mjs', [], 34),
     ('input', 'pyscript_input_smoke_test.mjs', [], 25),
     ('canvas', 'pyscript_canvas_smoke_test.mjs', [], 23),
+    ('mario', 'pyscript_mario_smoke_test.mjs', [], 24),
     ('animation', 'pyscript_animation_smoke_test.mjs', [], 19),
     ('dom', 'pyscript_dom_smoke_test.mjs', [], 17),
     ('parser', 'pyscript_smoke_test.mjs', [], 27),
@@ -94,6 +96,7 @@ def main():
       'ls-files', '--cached', '--others', '--exclude-standard',
       'components/python_runtime', 'chrome/renderer/python*',
       'chrome/test/pyscript*', 'chrome/test/run_pyscript_event_validation.py',
+      'chrome/test/build_pyscript_mario.py', 'third_party/cpython',
       'chrome/test/data/pyscript', 'chrome/common/native_python*',
       'chrome/browser/native_python',
       'chrome/browser/resources/settings/kernel_debug_page',
@@ -154,6 +157,10 @@ def main():
 
   save()
   try:
+    record['marioSourceCheck'] = run('mario-source',
+        [sys.executable, str(repo / 'chrome/test/build_pyscript_mario.py'), '--check'])
+    if record['marioSourceCheck']['exitCode'] != 0:
+      raise RuntimeError('Generated Mario sample is stale')
     build_command = [autoninja, '-C', str(build), *TARGETS]
     if windows:
       build_command = [os.environ['COMSPEC'], '/d', '/c', *build_command]
@@ -173,12 +180,14 @@ def main():
     save()
     for name, target, switches, expected in SUITES:
       browser = target.endswith('.mjs')
+      script = browser or target.endswith('.py')
       result_file = output / (name + '.json')
       command = ([
-          node,
-          str(repo / 'chrome/test' / target), '--chrome-binary=' +
-          str(build / ('chrome' + suffix)), '--output=' + str(result_file)
-      ] if browser else [
+          node if browser else sys.executable,
+          str(repo / 'chrome/test' / target),
+          *(['--chrome-binary=' + str(build / ('chrome' + suffix))] if browser else []),
+          '--output=' + str(result_file)
+      ] if script else [
           str(build / (target + suffix)), *switches, '--test-launcher-jobs=1',
           '--test-launcher-summary-output=' + str(result_file)
       ])
@@ -187,12 +196,13 @@ def main():
       if result_file.exists():
         check['rawResultSha256'] = sha256(result_file)
         data = json.loads(result_file.read_text(encoding='utf-8'))
-        if browser:
+        if script:
           cases = data['cases']
           check.update(total=len(cases),
                        passed=sum(c.get('passed') is True for c in cases),
-                       suitePassed=data.get('passed') is True,
-                       sandboxDisabled=data.get('sandboxDisabled'))
+                       suitePassed=data.get('passed') is True)
+          if browser:
+            check['sandboxDisabled'] = data.get('sandboxDisabled')
         else:
           cases = [
               attempts for iteration in data['per_iteration_data']

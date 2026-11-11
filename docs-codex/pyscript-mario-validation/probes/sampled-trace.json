@@ -1,0 +1,147 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:49660",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 388
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": true,
+      "elapsedMs": 1059,
+      "detail": {
+        "state": {
+          "state": "ready",
+          "x": "96.000",
+          "y": "460.000",
+          "vx": "0.000",
+          "vy": "0.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "8",
+          "elapsed": "0.000",
+          "steps": "0",
+          "keys": "0",
+          "particles": "0"
+        },
+        "metrics": "commands:36 bytes:4760 pixels:4632652 native_ms:43.000 | lifetime max physics_ms:0.384 build_ms:0.000 submit_ms:0.083 total_ms:0.465 p95_ms:1.053 gap_ms:216.6 steps:0 dropped_s:0.167"
+      }
+    },
+    {
+      "name": "Trusted start movement and variable jump use native Python callbacks",
+      "passed": true,
+      "elapsedMs": 2416,
+      "detail": {
+        "state": {
+          "state": "playing",
+          "x": "286.667",
+          "y": "364.667",
+          "vx": "40.000",
+          "vy": "40.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "122",
+          "elapsed": "0.933",
+          "steps": "1",
+          "keys": "0",
+          "particles": "5"
+        },
+        "metrics": "commands:34 bytes:4431 pixels:3192392 native_ms:2.000 | lifetime max physics_ms:4.999 build_ms:1.999 submit_ms:2.812 total_ms:5.709 p95_ms:4.856 gap_ms:216.6 steps:2 dropped_s:1.533"
+      }
+    },
+    {
+      "name": "Pause clears held controls and stops world time",
+      "passed": true,
+      "elapsedMs": 649,
+      "detail": {
+        "before": {
+          "state": "paused",
+          "x": "287.000",
+          "y": "366.333",
+          "vx": "0.000",
+          "vy": "80.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "136",
+          "elapsed": "0.958",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        },
+        "after": {
+          "state": "paused",
+          "x": "287.000",
+          "y": "366.333",
+          "vx": "0.000",
+          "vy": "80.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "151",
+          "elapsed": "0.958",
+          "steps": "0",
+          "keys": "0",
+          "particles": "5"
+        }
+      }
+    },
+    {
+      "name": "Restart is repeatable without allocating more native surfaces",
+      "passed": true,
+      "elapsedMs": 1438
+    },
+    {
+      "name": "Pointer capture moves and releasing stops the player",
+      "passed": true,
+      "elapsedMs": 1006
+    },
+    {
+      "name": "Hidden and frozen page clears input and resets the time baseline",
+      "passed": true,
+      "elapsedMs": 1549
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: acceleration-brake",
+      "passed": false,
+      "elapsedMs": 344,
+      "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 2] Python animation frame exceeded the 8 ms cooperative execution budget\",\"timestamp\":1794328642544.44,\"url\":\"http://127.0.0.1:49660/oracle/acceleration-brake\",\"lineNumber\":824}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:104:87)\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:301:13\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:196:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:299:5",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 1] ORACLE 1 {'game': {'state': 'playing', 'score': 0, 'coins': 0, 'lives': 3, 'remaining': 179.99166666666667, 'camera': 0.0, 'checkpoint': False, 'elapsed': 0.008333333333333333, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 96.15277777777777, 'y': 460, 'w': 28, 'h': 44, 'vx': 18.333333333333332, 'vy': 0, 'facing': 1, 'onGround': True, 'coyote': 0.1, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [], 'enemies': [{'x': 759.5416666666666, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1360.4583333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 2079.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 2340.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 3469.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4060.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 4869.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 5480.458333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 6039.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}], 'particles': [], 'particleCount': 0, 'floatTexts': [], 'rng': 1296126537}\n",
+          "timestamp": 1794328642473.44,
+          "url": "http://127.0.0.1:49660/oracle/acceleration-brake",
+          "lineNumber": 824
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 2] Python animation frame exceeded the 8 ms cooperative execution budget",
+          "timestamp": 1794328642544.44,
+          "url": "http://127.0.0.1:49660/oracle/acceleration-brake",
+          "lineNumber": 824
+        }
+      ],
+      "pageState": {
+        "status": "正在初始化 Python…",
+        "telemetry": "等待状态数据",
+        "metrics": "等待绘制数据"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 2] Python animation frame exceeded the 8 ms cooperative execution budget\",\"timestamp\":1794328642544.44,\"url\":\"http://127.0.0.1:49660/oracle/acceleration-brake\",\"lineNumber\":824}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:104:87)\n    at file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:301:13\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:196:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:299:5"
+}

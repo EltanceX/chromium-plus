@@ -212,7 +212,7 @@ try {
     const budgetText = await browser.evaluate(`${findPage}.shadowRoot.textContent`);
     assert.match(budgetText, /初始化预算：单块约 100 ms/);
     assert.match(budgetText, /每回调约 50 ms、输出 4 KiB、DOM 调用 128 次/);
-    assert.match(budgetText, /动画帧预算：每帧约 8 ms/);
+    assert.match(budgetText, /动画帧预算：每帧约 16 ms/);
     assert.match(budgetText, /Canvas：每批最多 4096 条命令、512 KiB/);
     assert.match(budgetText, /最多 8 个表面、单边 2048、合计 8 Mi 像素/);
     assert.match(budgetText, /最近 1 秒帧执行累计约 200 ms/);

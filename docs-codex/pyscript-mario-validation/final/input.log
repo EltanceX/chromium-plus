@@ -1,0 +1,30 @@
+PASS Python-only sample handles held keys, repeat and keyup
+PASS Control keys prevent native scrolling synchronously
+PASS Editable input keeps native typing and default space behavior
+PASS Real checkbox change reports checked and value snapshots
+PASS Keyboard snapshots preserve modifiers, repeat and trust
+PASS Contenteditable and open dialogs are identified without node exposure
+PASS Script-created keyboard events remain untrusted and preserve composition
+PASS Closed shadow controls conservatively retain native keyboard behavior
+PASS Native button space activation remains accessible
+PASS Real mouse capture delivers pointerup outside the element
+PASS Explicit capture release emits native lostpointercapture
+PASS Real touch cancellation clears held pointer state
+PASS Synthetic pointer IDs cannot acquire native capture
+PASS Retained event token expires in the next event and animation frame
+PASS Passive=false respects native checkbox default behavior
+PASS Passive=true respects native checkbox default behavior
+PASS Capture and bubble ordering, stop propagation and immediate stop
+PASS Read-only page state follows resize and reduced-motion emulation
+PASS Native blur clears held keys while Python callbacks lack focus
+PASS Hidden/frozen page clears input and resumes without stuck keys
+PASS Shared window pressure drops keyup and epoch clears stale held state
+PASS Fatal input limit revokes global listeners and owned pointer capture
+PASS Navigation while a pointer is captured leaves the next document clean
+PASS Cleanup preserves capture transferred to a different native owner
+PASS Browser closes normally with input listeners and a pending frame
+{
+  "passed": true,
+  "cases": 25,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-phase4\\final-2\\input.json"
+}

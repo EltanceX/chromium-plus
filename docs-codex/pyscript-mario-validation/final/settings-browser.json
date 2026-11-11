@@ -1,0 +1,278 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "sandboxDisabled": false,
+  "chromeArgs": [
+    "--enable-features=NativePythonRuntimeSelfTest"
+  ],
+  "cases": [
+    {
+      "name": "settings page defaults and invalid origin validation",
+      "passed": true,
+      "elapsedMs": 8241,
+      "detail": {
+        "defaults": {
+          "activeAllowedOrigin": "",
+          "activeEnabled": false,
+          "activeUnrestricted": false,
+          "allowedOrigin": "",
+          "commandLineOverride": false,
+          "enabled": false,
+          "restartRequired": false,
+          "supported": true,
+          "unrestricted": false
+        },
+        "saved": {
+          "activeAllowedOrigin": "",
+          "activeEnabled": false,
+          "activeUnrestricted": false,
+          "allowedOrigin": "http://127.0.0.1:55845",
+          "commandLineOverride": false,
+          "enabled": true,
+          "restartRequired": true,
+          "supported": true,
+          "unrestricted": false
+        }
+      }
+    },
+    {
+      "name": "restricted settings survive browser restart and enable Python",
+      "passed": true,
+      "elapsedMs": 5132,
+      "detail": {
+        "activeAllowedOrigin": "http://127.0.0.1:55845",
+        "activeEnabled": true,
+        "activeUnrestricted": false,
+        "allowedOrigin": "http://127.0.0.1:55845",
+        "commandLineOverride": false,
+        "enabled": true,
+        "restartRequired": false,
+        "supported": true,
+        "unrestricted": false
+      }
+    },
+    {
+      "name": "restricted mode still enforces CSP and exact origin",
+      "passed": true,
+      "elapsedMs": 1136
+    },
+    {
+      "name": "unrestricted choice is saved without changing active renderers",
+      "passed": true,
+      "elapsedMs": 4911,
+      "detail": {
+        "activeAllowedOrigin": "http://127.0.0.1:55845",
+        "activeEnabled": true,
+        "activeUnrestricted": false,
+        "allowedOrigin": "http://127.0.0.1:55845",
+        "commandLineOverride": false,
+        "enabled": true,
+        "restartRequired": true,
+        "supported": true,
+        "unrestricted": true
+      }
+    },
+    {
+      "name": "unrestricted mode bypasses CSP sandbox and origin gates after restart",
+      "passed": true,
+      "elapsedMs": 6354,
+      "detail": {
+        "activeAllowedOrigin": "http://127.0.0.1:55845",
+        "activeEnabled": true,
+        "activeUnrestricted": true,
+        "allowedOrigin": "http://127.0.0.1:55845",
+        "commandLineOverride": false,
+        "enabled": true,
+        "restartRequired": false,
+        "supported": true,
+        "unrestricted": true
+      }
+    },
+    {
+      "name": "file and opaque data HTML can execute with the explicit override",
+      "passed": true,
+      "elapsedMs": 1114
+    },
+    {
+      "name": "ordinary iframe and srcdoc have independent Python contexts",
+      "passed": true,
+      "elapsedMs": 703,
+      "detail": [
+        "Python settings 42",
+        "Python settings 42"
+      ]
+    },
+    {
+      "name": "page JavaScript setting does not block the Python override",
+      "passed": true,
+      "elapsedMs": 354
+    },
+    {
+      "name": "execution budgets still stop later blocks in unrestricted mode",
+      "passed": true,
+      "elapsedMs": 301,
+      "detail": [
+        "[pyscript] Python block exceeded the 100 ms cooperative execution budget"
+      ]
+    },
+    {
+      "name": "unrestricted Python renderers retain restricted sandbox tokens",
+      "passed": true,
+      "elapsedMs": 1,
+      "detail": [
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 60,
+          "initialization_ms": 16,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 94,
+          "initialization_ms": 27,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 90,
+          "initialization_ms": 26,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 63,
+          "initialization_ms": 19,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 71,
+          "initialization_ms": 19,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 77,
+          "initialization_ms": 21,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 60,
+          "initialization_ms": 17,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 59,
+          "initialization_ms": 17,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 53,
+          "initialization_ms": 15,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        },
+        {
+          "context_cleanup": true,
+          "elapsed_ms": 71,
+          "initialization_ms": 16,
+          "isolated_contexts": true,
+          "output_truncated": true,
+          "passed": true,
+          "sandboxed": true,
+          "stdout": "Python 世界 42\n",
+          "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+          "version": "3.13.18"
+        }
+      ]
+    },
+    {
+      "name": "settings form reports active mode and saved disable requires restart",
+      "passed": true,
+      "elapsedMs": 6866,
+      "detail": {
+        "activeAllowedOrigin": "http://127.0.0.1:55845",
+        "activeEnabled": true,
+        "activeUnrestricted": true,
+        "allowedOrigin": "http://127.0.0.1:55845",
+        "commandLineOverride": false,
+        "enabled": false,
+        "restartRequired": true,
+        "supported": true,
+        "unrestricted": true
+      }
+    },
+    {
+      "name": "disabling persists and does not leak enabled switches on relaunch",
+      "passed": true,
+      "elapsedMs": 5391,
+      "detail": {
+        "activeAllowedOrigin": "http://127.0.0.1:55845",
+        "activeEnabled": false,
+        "activeUnrestricted": false,
+        "allowedOrigin": "http://127.0.0.1:55845",
+        "commandLineOverride": false,
+        "enabled": false,
+        "restartRequired": false,
+        "supported": true,
+        "unrestricted": true
+      }
+    }
+  ],
+  "passed": true
+}

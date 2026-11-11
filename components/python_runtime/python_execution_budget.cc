@@ -17,7 +17,7 @@ constexpr base::TimeDelta kBlockTime = base::Milliseconds(100);
 constexpr base::TimeDelta kDocumentTime = base::Milliseconds(250);
 constexpr base::TimeDelta kCleanupTime = base::Milliseconds(50);
 constexpr base::TimeDelta kCallbackTime = base::Milliseconds(50);
-constexpr base::TimeDelta kFrameTime = base::Milliseconds(8);
+constexpr base::TimeDelta kFrameTime = base::Milliseconds(16);
 constexpr base::TimeDelta kFrameWindowTime = base::Milliseconds(200);
 constexpr base::TimeDelta kEventWindow = base::Seconds(1);
 constexpr size_t kCallbackDomCalls = 128;
@@ -116,6 +116,13 @@ void ExecutionBudget::Stop(StopReason reason) {
 }
 
 bool ExecutionBudget::Check() {
+  if (mode_ == Mode::kExecute && host_ && !host_->IsActive()) {
+    Stop(StopReason::kInactive);
+  }
+  return CheckTime();
+}
+
+bool ExecutionBudget::CheckTime() {
   if (mode_ == Mode::kIdle) {
     return false;
   }
@@ -123,9 +130,6 @@ bool ExecutionBudget::Check() {
   if (mode_ == Mode::kCleanup) {
     cleanup_exhausted_ |= duration >= kCleanupTime;
     return !cleanup_exhausted_;
-  }
-  if (host_ && !host_->IsActive()) {
-    Stop(StopReason::kInactive);
   }
   if (!IsCallback() && elapsed_ + duration >= kDocumentTime) {
     Stop(StopReason::kDocumentTime);
@@ -143,7 +147,8 @@ const char* ExecutionBudget::Message() const {
       return "Python execution context is inactive";
     case StopReason::kBlockTime:
       if (stopped_kind_ == ExecutionKind::kAnimationFrame) {
-        return "Python animation frame exceeded the 8 ms cooperative execution "
+        return "Python animation frame exceeded the 16 ms cooperative "
+               "execution "
                "budget";
       }
       return stopped_kind_ != ExecutionKind::kInitialization
@@ -170,8 +175,8 @@ const char* ExecutionBudget::Message() const {
   }
 }
 
-bool ExecutionBudget::RaiseIfStopped() {
-  if (Check()) {
+bool ExecutionBudget::RaiseIfStopped(bool check_host) {
+  if (check_host ? Check() : CheckTime()) {
     return false;
   }
   const bool timeout = mode_ == Mode::kCleanup ||
@@ -185,10 +190,12 @@ bool ExecutionBudget::RaiseIfStopped() {
 }
 
 bool ExecutionBudget::TraceCheckpoint(int event) {
-  // Bound overhead in tight loops; bridges and output always check separately.
-  return (event == PyTrace_CALL || event == PyTrace_RETURN ||
-          (++trace_events_ & 63) == 0) &&
-         RaiseIfStopped();
+  // Retain the time/latched-stop check on every function call and return.
+  // Sample the more expensive page policy at most 64 trace events apart,
+  // counting calls/returns too. Bridges, entry and finish still check it fully.
+  const bool policy = (++trace_events_ & 63) == 0;
+  return (policy || event == PyTrace_CALL || event == PyTrace_RETURN) &&
+         RaiseIfStopped(policy);
 }
 
 bool ExecutionBudget::ConsumeOutput(size_t bytes) {
@@ -237,6 +244,10 @@ BudgetedDomHost::BudgetedDomHost(ExecutionBudget& budget) : budget_(budget) {}
 
 bool BudgetedDomHost::IsActive() const {
   return budget_->executing() && budget_->Check() && budget_->host();
+}
+
+bool BudgetedDomHost::CanBuildCanvas() const {
+  return budget_->executing() && budget_->CheckTime() && budget_->host();
 }
 
 DomResult BudgetedDomHost::FinishCall(DomResult result) {

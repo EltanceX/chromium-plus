@@ -276,6 +276,105 @@ else: raise AssertionError('foreign gradient accepted')
   EXPECT_EQ(0, host.canvas_calls);
 }
 
+TEST(PythonRuntimeTest, CanvasRectangleGroupsExpandToMeteredCommands) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas
+c = canvas.create_surface(10, 10)
+b = canvas.batch()
+b.fill_rects([(1, 2, 3, 4, '#f00'), (5, 6, 7, 8, '#00ff0080')])
+stats = canvas.submit(c, b)
+assert stats['commands'] == 4
+try: b.fill_rects([])
+except RuntimeError: pass
+else: raise AssertionError('sealed group was modified')
+)PY",
+                                 "rectangles.py", &host);
+  ASSERT_TRUE(result.success) << result.error;
+  ASSERT_EQ(4u, host.canvas_commands.size());
+  EXPECT_EQ(CanvasOp::kFillColor, host.canvas_commands[0].op);
+  EXPECT_EQ(CanvasOp::kFillRect, host.canvas_commands[1].op);
+  EXPECT_EQ(3, host.canvas_commands[1].args[2]);
+  EXPECT_EQ("#00ff0080", host.canvas_commands[2].text);
+}
+
+TEST(PythonRuntimeTest, CanvasRectangleGroupsRejectAtomicallyAndStayBounded) {
+  std::string error;
+  base::SimpleTestTickClock clock;
+  auto context = PythonContext::CreateForTesting(&error, &clock);
+  TestDomHost host;
+  auto result = context->Execute(R"PY(
+import canvas
+c = canvas.create_surface(10, 10)
+b = canvas.batch()
+good = (0, 0, 1, 1, '#fff')
+class Evil:
+    def __iter__(self): raise AssertionError('iteration ran')
+    def __float__(self): raise AssertionError('conversion ran')
+for rows in (Evil(), [good, (0, 0, 1, 1, 'red')], [good, (True, 0, 1, 1, '#fff')],
+             [good, (Evil(), 0, 1, 1, '#fff')], [good, (float('nan'), 0, 1, 1, '#fff')],
+             [good, [0, 0, 1, 1, '#fff']], [good] * 2049):
+    try: b.fill_rects(rows)
+    except (TypeError, ValueError): pass
+    else: raise AssertionError('invalid group accepted')
+assert canvas.submit(c, b)['commands'] == 0
+b = canvas.batch()
+b.fill_rects([good] * 1900)
+try: b.fill_rects([good] * 200)
+except ValueError: pass
+else: raise AssertionError('aggregate commands exceeded')
+try: b.fill_rects([good] * 120)
+except ValueError: pass
+else: raise AssertionError('aggregate bytes exceeded')
+assert canvas.submit(c, b)['commands'] == 3800
+)PY",
+                                 "rectangles.py", &host);
+  EXPECT_TRUE(result.success) << result.error;
+}
+
+TEST(PythonRuntimeTest,
+     CanvasRectangleGroupsCannotSubmitAfterStopOrRevocation) {
+  for (const bool timeout : {false, true}) {
+    std::string error;
+    base::SimpleTestTickClock clock;
+    auto context = PythonContext::CreateForTesting(&error, &clock);
+    TestDomHost host;
+    ASSERT_TRUE(context
+                    ->Execute(R"PY(
+import canvas, dom
+c = canvas.create_surface(10, 10)
+b = canvas.batch()
+def draw(timestamp):
+    b.fill_rects([(0, 0, 10, 10, '#f00')])
+    try: dom.get_element_by_id('x')
+    except Exception: pass
+    try: canvas.submit(c, b)
+    except Exception: pass
+)PY",
+                              "rectangles.py", &host)
+                    .success);
+    const auto callback =
+        context->RegisterCallback("draw", ExecutionKind::kAnimationFrame);
+    ASSERT_TRUE(callback.result.success);
+    host.on_get = [&] {
+      if (timeout) {
+        clock.Advance(base::Milliseconds(16));
+      } else {
+        host.active = false;
+      }
+    };
+    const int calls = host.canvas_calls;
+    const auto result = context->InvokeFrameCallback(callback.handle, 1, &host);
+    EXPECT_FALSE(result.success);
+    EXPECT_EQ(timeout ? StopReason::kBlockTime : StopReason::kInactive,
+              result.stop_reason);
+    EXPECT_EQ(calls, host.canvas_calls);
+  }
+}
+
 TEST(PythonRuntimeTest,
      CanvasBuildersAndCommandMemoryAreBoundedAndCollectible) {
   std::string error;
@@ -717,7 +816,7 @@ animation.cancel_frame(request)
 }
 
 TEST(PythonRuntimeTest,
-     AnimationWindowUsesEightMillisecondReservationAndFrameSubquota) {
+     AnimationWindowUsesSixteenMillisecondReservationAndFrameSubquota) {
   base::SimpleTestTickClock clock;
   std::string error;
   auto context = PythonContext::CreateForTesting(&error, &clock);
@@ -728,8 +827,8 @@ TEST(PythonRuntimeTest,
           ->Execute("import dom\ndef tick(t): dom.get_element_by_id('x')\ndef "
                     "click(e): dom.get_element_by_id('x')")
           .success);
-  host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
-  for (int i = 0; i < 28; ++i) {
+  host.on_get = [&] { clock.Advance(base::Milliseconds(15)); };
+  for (int i = 0; i < 13; ++i) {
     auto callback =
         context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
     ASSERT_TRUE(callback.result.success);
@@ -749,7 +848,7 @@ TEST(PythonRuntimeTest,
   EXPECT_TRUE(context->InvokeCallback(click.handle, Click(), &host).success);
   EXPECT_FALSE(context->CanInvokeFrameCallback());
   clock.Advance(base::Milliseconds(1001));
-  host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
+  host.on_get = [&] { clock.Advance(base::Milliseconds(15)); };
   EXPECT_TRUE(context->CanInvokeFrameCallback());
   EXPECT_TRUE(context->InvokeFrameCallback(pending.handle, 100, &host).success);
 }
@@ -772,7 +871,7 @@ TEST(PythonRuntimeTest, AnimationAndInputShareTotalTimeAndOutputWindows) {
             .success);
     auto click = context->RegisterCallback("click");
     ASSERT_TRUE(click.result.success);
-    host.on_get = [&] { clock.Advance(base::Milliseconds(40)); };
+    host.on_get = [&] { clock.Advance(base::Milliseconds(38)); };
     for (int i = 0; i < (output ? 5 : 6); ++i) {
       ASSERT_TRUE(
           context->InvokeCallback(click.handle, Click(), &host).success);
@@ -782,7 +881,7 @@ TEST(PythonRuntimeTest, AnimationAndInputShareTotalTimeAndOutputWindows) {
     ASSERT_TRUE(frame.result.success);
     EXPECT_EQ(!output, context->CanInvokeFrameCallback());
     if (!output) {
-      host.on_get = [&] { clock.Advance(base::Milliseconds(7)); };
+      host.on_get = [&] { clock.Advance(base::Milliseconds(11)); };
       EXPECT_TRUE(context->InvokeFrameCallback(frame.handle, 1, &host).success);
       frame = context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
       EXPECT_FALSE(context->CanInvokeFrameCallback());
@@ -811,7 +910,7 @@ TEST(PythonRuntimeTest, AnimationFatalLimitsLatchAcrossAllEntryKinds) {
         context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
     ASSERT_TRUE(frame.result.success);
     if (scenario == 0) {
-      host.on_get = [&] { clock.Advance(base::Milliseconds(8)); };
+      host.on_get = [&] { clock.Advance(base::Milliseconds(16)); };
     }
     auto result = context->InvokeFrameCallback(frame.handle, 1, &host);
     EXPECT_EQ(scenario == 0   ? StopReason::kBlockTime
@@ -819,7 +918,7 @@ TEST(PythonRuntimeTest, AnimationFatalLimitsLatchAcrossAllEntryKinds) {
                               : StopReason::kDomCalls,
               result.stop_reason);
     if (scenario == 0) {
-      EXPECT_NE(std::string::npos, result.error.find("8 ms"));
+      EXPECT_NE(std::string::npos, result.error.find("16 ms"));
     }
     clock.Advance(base::Seconds(2));
     EXPECT_FALSE(context->CanInvokeFrameCallback());
@@ -2205,6 +2304,36 @@ value.cycle = value
   EXPECT_EQ(before.live_contexts, after.live_contexts);
   EXPECT_EQ(before.cleanup_budget_exhaustions + 1,
             after.cleanup_budget_exhaustions);
+}
+
+TEST(PythonRuntimeTest, StaticMathWorksInIsolatedSubinterpreters) {
+  std::string error;
+  auto first = PythonContext::Create(&error);
+  auto second = PythonContext::Create(&error);
+  ASSERT_TRUE(first && second) << error;
+  auto result = first->Execute(R"PY(
+import math, sys
+assert math.__spec__.origin == 'built-in'
+assert abs(math.sin(math.pi / 2) - 1) < 1e-15
+assert math.cos(0) == 1 and math.ceil(2.1) == 3 and math.floor(-2.1) == -3
+assert math.sqrt(9) == 3 and math.hypot(3, 4) == 5
+assert math.isfinite(1) and not math.isfinite(float('inf'))
+try:
+    math.sqrt(-1)
+except ValueError:
+    pass
+else:
+    raise AssertionError('math domain error was lost')
+math.document_marker = 42
+assert not sys.path
+)PY");
+  EXPECT_TRUE(result.success) << result.error;
+  result = second->Execute(
+      "import math\nassert not hasattr(math, 'document_marker')\n"
+      "assert math.sin(0) == 0\n");
+  EXPECT_TRUE(result.success) << result.error;
+  first.reset();
+  EXPECT_TRUE(second->Execute("assert math.ceil(math.pi) == 4").success);
 }
 
 TEST(PythonRuntimeTest, PathsEnvironmentAndDynamicModulesAreExcluded) {

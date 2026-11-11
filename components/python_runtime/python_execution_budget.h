@@ -32,8 +32,9 @@ class ExecutionBudget {
   void Finish();
   void BeginCleanup();
   bool Check();
+  bool CheckTime();
   void Stop(StopReason reason);
-  bool RaiseIfStopped();
+  bool RaiseIfStopped(bool check_host = true);
   bool TraceCheckpoint(int event);
   bool ConsumeOutput(size_t bytes);
   bool ConsumeDomCall();
@@ -87,6 +88,7 @@ class BudgetedDomHost final : public DomHost {
  public:
   explicit BudgetedDomHost(ExecutionBudget& budget);
   bool IsActive() const override;
+  bool CanBuildCanvas() const override;
   DomResult GetElementById(std::string_view id) override;
   DomResult SetText(DomHandle handle, std::string_view text) override;
   DomResult AddEventListener(DomHandle,

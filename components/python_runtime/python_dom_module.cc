@@ -1023,6 +1023,14 @@ DomHost* ActiveDomHost(PyObject* module) {
   auto* state = ActiveState(module);
   return state ? state->host : nullptr;
 }
+bool CanBuildCanvas(PyObject* module) {
+  auto* state = static_cast<ModuleState*>(PyModule_GetState(module));
+  if (!state || !state->host || !state->host->CanBuildCanvas()) {
+    PyErr_SetString(PyExc_ReferenceError, "Canvas builder is inactive");
+    return false;
+  }
+  return true;
+}
 bool ReadDomElementHandle(PyObject* module,
                           PyObject* object,
                           DomHandle* value) {

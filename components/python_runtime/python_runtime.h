@@ -134,6 +134,10 @@ class PYTHON_RUNTIME_EXPORT DomHost {
  public:
   virtual ~DomHost() = default;
   virtual bool IsActive() const = 0;
+  // Pure command data has no DOM effects. Embedders may defer full page policy
+  // checks to submit, but must retain execution/time/stop checks while
+  // building.
+  virtual bool CanBuildCanvas() const;
   virtual DomResult GetElementById(std::string_view id) = 0;
   virtual DomResult SetText(DomHandle, std::string_view text) = 0;
   virtual DomResult AddEventListener(DomHandle,

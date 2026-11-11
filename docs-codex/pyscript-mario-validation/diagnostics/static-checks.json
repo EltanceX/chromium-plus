@@ -1,0 +1,152 @@
+{
+  "recordedAt": "2026-11-11T01:17:29.330995+00:00",
+  "checks": {
+    "clang-format": {
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "clang-format.bat",
+        "--dry-run",
+        "--Werror",
+        "chrome/renderer/python_script_runner.cc",
+        "components/python_runtime/python_canvas_module.cc",
+        "components/python_runtime/python_dom_module.cc",
+        "components/python_runtime/python_dom_module.h",
+        "components/python_runtime/python_execution_budget.cc",
+        "components/python_runtime/python_execution_budget.h",
+        "components/python_runtime/python_runtime.cc",
+        "components/python_runtime/python_runtime.h",
+        "components/python_runtime/python_runtime_unittest.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 1.16
+    },
+    "gn-format": {
+      "command": [
+        "buildtools/win/gn.exe",
+        "format",
+        "--dry-run",
+        "third_party/cpython/BUILD.gn",
+        "third_party/cpython/sources.gni"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.03
+    },
+    "syntax-pyscript_mario_smoke_test.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_mario_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.19
+    },
+    "syntax-pyscript_mario_reference.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_mario_reference.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.22
+    },
+    "syntax-pyscript_animation_smoke_test.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_animation_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.16
+    },
+    "syntax-pyscript_settings_smoke_test.mjs": {
+      "command": [
+        "node",
+        "--check",
+        "chrome/test/pyscript_settings_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.16
+    },
+    "syntax-python": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "py_compile",
+        "chrome/test/build_pyscript_mario.py",
+        "chrome/test/pyscript_mario_unittest.py",
+        "chrome/test/run_pyscript_event_validation.py",
+        "third_party/cpython/import_source.py",
+        "chrome\\test\\data\\pyscript\\mario\\boot.py",
+        "chrome\\test\\data\\pyscript\\mario\\controls.py",
+        "chrome\\test\\data\\pyscript\\mario\\drawing.py",
+        "chrome\\test\\data\\pyscript\\mario\\physics.py",
+        "chrome\\test\\data\\pyscript\\mario\\state.py"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.3
+    },
+    "generated-page": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "chrome/test/build_pyscript_mario.py",
+        "--check"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.17
+    },
+    "checkdeps-0": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "buildtools/checkdeps/checkdeps.py",
+        "components/python_runtime"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 6.95
+    },
+    "checkdeps-1": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "buildtools/checkdeps/checkdeps.py",
+        "chrome/renderer/python_script_runner.cc"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 3.89
+    },
+    "diff-check": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "components/python_runtime",
+        "chrome/renderer/python_script_runner.cc",
+        "chrome/test/pyscript_animation_smoke_test.mjs",
+        "chrome/test/pyscript_settings_smoke_test.mjs",
+        "chrome/test/run_pyscript_event_validation.py",
+        "chrome/browser/resources/settings/kernel_debug_page",
+        "third_party/cpython"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 0.25
+    },
+    "upstream-source-manifest": {
+      "passed": true,
+      "files": 776,
+      "mismatches": []
+    }
+  },
+  "passed": true
+}

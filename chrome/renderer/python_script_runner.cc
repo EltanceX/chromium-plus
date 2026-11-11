@@ -19,7 +19,9 @@ class ChromePythonScriptRunner final : public blink::WebPythonScriptRunner {
   ChromePythonScriptRunner()
       : allowed_origin_(ParseNativePythonAllowedOrigin(
             base::CommandLine::ForCurrentProcess()->GetSwitchValueASCII(
-                switches::kNativePythonAllowedOrigin))) {}
+                switches::kNativePythonAllowedOrigin))),
+        unrestricted_pages_(base::CommandLine::ForCurrentProcess()->HasSwitch(
+            kNativePythonUnrestrictedPages)) {}
 
   bool IsOriginAllowed(const blink::WebSecurityOrigin& origin) const override {
     return allowed_origin_ && !origin.IsOpaque() &&
@@ -27,8 +29,9 @@ class ChromePythonScriptRunner final : public blink::WebPythonScriptRunner {
   }
 
   bool AllowsUnrestrictedPages() const override {
-    return base::CommandLine::ForCurrentProcess()->HasSwitch(
-        kNativePythonUnrestrictedPages);
+    // Renderer switches are immutable. This is also used by the cooperative
+    // trace hook and every native Canvas command; avoid reparsing the switch.
+    return unrestricted_pages_;
   }
 
   std::unique_ptr<blink::WebPythonScriptContext> CreateContext() override {
@@ -37,6 +40,7 @@ class ChromePythonScriptRunner final : public blink::WebPythonScriptRunner {
 
  private:
   const std::optional<url::Origin> allowed_origin_;
+  const bool unrestricted_pages_;
 };
 
 }  // namespace

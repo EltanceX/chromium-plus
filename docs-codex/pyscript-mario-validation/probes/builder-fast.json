@@ -1,0 +1,27 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:60852",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "cases": [
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": false,
+      "elapsedMs": 1019,
+      "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python document exceeded the 250 ms cooperative execution budget\",\"timestamp\":1794326832384.796,\"url\":\"http://127.0.0.1:60852/sample\",\"lineNumber\":791}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:93:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:179:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:215:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:185:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:214:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript] Python document exceeded the 250 ms cooperative execution budget",
+          "timestamp": 1794326832384.796,
+          "url": "http://127.0.0.1:60852/sample",
+          "lineNumber": 791
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python document exceeded the 250 ms cooperative execution budget\",\"timestamp\":1794326832384.796,\"url\":\"http://127.0.0.1:60852/sample\",\"lineNumber\":791}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:93:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:179:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:215:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:185:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:214:3"
+}

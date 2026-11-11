@@ -28,6 +28,10 @@ namespace native_python {
 
 BASE_FEATURE(kNativePythonRuntimeSelfTest, base::FEATURE_DISABLED_BY_DEFAULT);
 
+bool DomHost::CanBuildCanvas() const {
+  return IsActive();
+}
+
 DomResult DomHost::RequestFrame(CallbackHandle) {
   return {{}, DomError::kNotAllowed, "Animation frames are not supported"};
 }

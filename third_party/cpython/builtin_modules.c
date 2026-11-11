@@ -21,6 +21,7 @@
   V(faulthandler, PyInit_faulthandler) \
   V(gc, PyInit_gc) \
   V(marshal, PyMarshal_Init) \
+  V(math, PyInit_math) \
   V(nt, PyInit_nt) \
   V(winreg, PyInit_winreg) \
   V(time, PyInit_time)
