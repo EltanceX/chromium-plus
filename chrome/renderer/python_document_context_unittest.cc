@@ -27,6 +27,12 @@ using blink::WebString;
 class TestHost final : public WebPythonDomHost {
  public:
   bool IsActive() const override { return active; }
+  blink::WebPythonBrowserResult Browser(
+      const blink::WebPythonBrowserRequest& r) override {
+    browser_requests.push_back(r);
+    return {{}, "中文", 77, true};
+  }
+  std::vector<blink::WebPythonBrowserRequest> browser_requests;
   WebPythonDomResult GetElementById(const WebString& id) override {
     return id.Utf8() == "missing" ? WebPythonDomResult{}
                                   : WebPythonDomResult{target};
@@ -228,6 +234,29 @@ def callback(event):
     print(count, event.is_trusted)
 listener = dom.add_event_listener(dom.get_element_by_id('button'), 'click', callback, once=False)
 )PY";
+
+TEST(PythonDocumentContextTest, BrowserPreservesTypedPayloadsAndResults) {
+  auto context = CreatePythonDocumentContext();
+  TestHost host;
+  auto result = RunSource(*context, host, R"PY(
+import browser, dom
+browser.storage_set('成绩', '5170')
+assert browser.storage_get('成绩') == '中文'
+browser.play_tones([('triangle', 220, 620, .15, .07, .09)])
+assert browser.request_fullscreen(dom.get_element_by_id('stage')) == 77
+assert browser.poll() == (77, True, '中文')
+)PY");
+  ASSERT_TRUE(result.success) << result.error.Utf8();
+  ASSERT_EQ(5u, host.browser_requests.size());
+  EXPECT_EQ(blink::WebPythonBrowserOp::kStorageSet,
+            host.browser_requests[0].op);
+  EXPECT_EQ("成绩", host.browser_requests[0].key.Utf8());
+  EXPECT_EQ("5170", host.browser_requests[0].value.Utf8());
+  ASSERT_EQ(1u, host.browser_requests[2].tones.size());
+  EXPECT_EQ("triangle", host.browser_requests[2].tones[0].wave.Utf8());
+  EXPECT_EQ(.07, host.browser_requests[2].tones[0].delay);
+  EXPECT_EQ(host.target.document, host.browser_requests[3].element.document);
+}
 
 TEST(PythonDocumentContextTest,
      ControlsPreserveUnicodeNulFlagsAndTypedPayload) {

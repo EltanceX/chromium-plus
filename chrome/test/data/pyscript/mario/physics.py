@@ -17,8 +17,11 @@ def hitBlock(block):
         block.used = True
         game.coins += 1
         game.score += 200
+        playSound('coin')
         burst(block.x+24, block.y-12, '#f8d458', 8)
         addText(block.x+24, block.y-15, '+200', '#fff7d2')
+    else:
+        playSound('bump')
 
 
 def loseLife(reason):
@@ -34,6 +37,8 @@ def loseLife(reason):
     message = reason
     logEvent('loseLife: '+reason)
     showToast(reason)
+    resetSound()
+    playSound('hurt')
 
 
 def winGame():
@@ -41,6 +46,9 @@ def winGame():
     game.state, game.finishTime = 'won', 0
     game.score += math.ceil(game.remaining)*10
     game.best = max(game.best, game.score)
+    persistBest()
+    resetSound()
+    playSound('win')
     clearInput()
     message = 'Finished! Space to play again.'
     logEvent('winGame: '+str(game.score))
@@ -84,6 +92,7 @@ def updatePlayer(dt):
     if player.jumpBuffer > 0 and player.coyote > 0:
         player.vy, player.onGround, player.coyote, player.jumpBuffer = -settings.jump, False, 0, 0
         logEvent('jump: vy = '+str(round(player.vy)))
+        playSound('jump')
         burst(player.x+player.w/2, player.y+player.h, '#ece7c0', 5)
     gravity = settings.gravity
     if not input.jump and player.vy < 0:
@@ -118,6 +127,7 @@ def updatePlayer(dt):
             game.coins += 1
             game.score += 100
             logEvent('coin: +100')
+            playSound('coin')
             burst(coin.x+11, coin.y+14, '#ffde6b', 6)
             addText(coin.x+11, coin.y, '+100', '#fff6c5')
     for enemy in enemies:
@@ -130,6 +140,7 @@ def updatePlayer(dt):
             player.onGround = False
             game.score += 300
             logEvent('stomp: +300')
+            playSound('stomp')
             burst(enemy.x+17, enemy.y+20, '#e3bc80', 7)
             addText(enemy.x+17, enemy.y-12, '+300', '#fff8da')
         elif player.invincible <= 0:
@@ -143,6 +154,7 @@ def updatePlayer(dt):
         game.score += 500
         showToast('已抵达中途检查点。')
         logEvent('checkpoint: +500')
+        playSound('checkpoint')
         burst(CHECKPOINT_X, GROUND-75, '#ffd58a', 20)
     if player.x+player.w >= FLAG_X:
         winGame()

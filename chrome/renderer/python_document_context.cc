@@ -102,6 +102,22 @@ class ChromeDomHost final : public native_python::DomHost {
  public:
   explicit ChromeDomHost(blink::WebPythonDomHost& host) : host_(host) {}
   bool IsActive() const override { return host_->IsActive(); }
+  native_python::BrowserResult Browser(
+      const native_python::BrowserRequest& request) override {
+    blink::WebPythonBrowserRequest converted{
+        static_cast<blink::WebPythonBrowserOp>(request.op),
+        ToWeb(request.element),
+        blink::WebString::FromUtf8(request.key),
+        blink::WebString::FromUtf8(request.value),
+        {}};
+    for (const auto& t : request.tones) {
+      converted.tones.push_back({blink::WebString::FromUtf8(t.wave),
+                                 t.frequency, t.end_frequency, t.duration,
+                                 t.delay, t.volume});
+    }
+    const auto r = host_->Browser(converted);
+    return {Convert(r.status), r.value.Utf8(), r.id, r.flag};
+  }
   native_python::DomResult GetElementById(std::string_view id) override {
     return Convert(host_->GetElementById(blink::WebString::FromUtf8(id)));
   }

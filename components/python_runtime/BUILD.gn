@@ -8,6 +8,8 @@ assert(is_win && current_cpu == "x64")
 
 shared_library("python_runtime") {
   sources = [
+    "python_browser_module.cc",
+    "python_browser_types.h",
     "python_canvas_module.cc",
     "python_canvas_types.h",
     "python_dom_module.cc",

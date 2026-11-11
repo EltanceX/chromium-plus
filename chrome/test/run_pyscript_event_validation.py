@@ -25,9 +25,13 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 75),
-    ('mario-logic', 'pyscript_mario_unittest.py', [], 21),
-    ('adapter', 'python_document_context_unittests', [], 17),
+    ('runtime', 'python_runtime_unittests', [], 80),
+    ('mario-logic', 'pyscript_mario_unittest.py', [], 29),
+    ('adapter', 'python_document_context_unittests', [], 18),
+    ('browser-unit', 'blink_unittests', [
+        '--gtest_filter=PythonBrowserBridgeTest.*'
+    ], 11),
+    ('browser-platform', 'pyscript_browser_smoke_test.mjs', [], 15),
     ('canvas-unit', 'blink_unittests', [
         '--gtest_filter=PythonCanvasBatchTest.*:PythonCanvasBridgeTest.*'
     ], 19),
@@ -103,6 +107,8 @@ def main():
       'third_party/blink/public/web/web_python*',
       'third_party/blink/renderer/core/html/*py*script*',
       'third_party/blink/renderer/core/html/python_canvas*',
+      'third_party/blink/renderer/core/html/python_browser*',
+      'third_party/blink/renderer/modules/python_browser*',
       'third_party/blink/renderer/modules/canvas/canvas2d/python_canvas*',
       'third_party/blink/renderer/modules/canvas/canvas2d/canvas_2d_recorder_context.h',
       'third_party/blink/renderer/modules/modules_initializer.cc',

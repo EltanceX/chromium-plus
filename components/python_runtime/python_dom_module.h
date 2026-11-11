@@ -13,6 +13,7 @@ namespace native_python {
 class DomHost;
 PyMODINIT_FUNC InitDomModule();
 PyMODINIT_FUNC InitCanvasModule();
+PyMODINIT_FUNC InitBrowserModule();
 DomHost* ActiveDomHost(PyObject* dom_module);
 bool CanBuildCanvas(PyObject* dom_module);
 bool ReadDomElementHandle(PyObject* dom_module, PyObject*, DomHandle*);

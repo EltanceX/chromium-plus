@@ -423,7 +423,7 @@ try {
   });
   await check('All eight Python lessons wrap and flow cards select the explanation tab', async () => {
     const snippets=['def key(event):','player = Record(','if (player.jumpBuffer','for i in range(count):',
-      'def overlaps','def speed_input','player.vy +=','game.best = max('];
+      'def overlaps','def speed_input','player.vy +=','browser.storage_set('];
     const codes=new Set();
     for(let i=0;i<8;i++) {
       await waitFor(async () => (await read('lessonCode')).includes(snippets[i]));

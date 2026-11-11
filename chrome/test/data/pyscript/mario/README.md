@@ -8,13 +8,14 @@ python chrome/test/build_pyscript_mario.py --check
 python chrome/test/pyscript_mario_unittest.py -v
 ```
 
-输出为上级目录的 `mario.html`。页面仅有有序内联 `<pyscript>`，共 11 块，每块最多 64 KiB，共享当前文档 globals；没有外链 Python 加载器、`exec`、JavaScript 或事件属性。
+输出为上级目录的 `mario.html`。页面仅有有序内联 `<pyscript>`，共 12 块，每块最多 64 KiB，共享当前文档 globals；没有外链 Python 加载器、`exec`、JavaScript 或事件属性。
 
 - `state.py`：原版常量、7040 像素关卡、角色/游戏状态、固定种子随机效果。
 - `physics.py`：原版默认参数、分轴碰撞、可变跳高、宽限跳跃、提前跳跃、敌人、计分与状态转换。
 - `drawing.py`：原生 Canvas 缓存、可见对象绘制、镜头、粒子和飘字。
 - `controls.py`：键盘/指针、按钮键盘长按、页面恢复、固定步长、低频 HUD、测量。
 - `ui.py`：参数、原生控件、tab/课程/对话框、焦点、日志、提示及响应式画布。
+- `platform.py`：八类合成音效、同源最高分、全屏、源码导出及有界异步结果领取。
 - `boot.py`：初始化首次复制、监听安装、原生帧请求。
 
 构建后的本机 Chrome 必须启用 PythonScript，并在“内核调试”中允许实际访问的顶级 HTTP 来源。可在仓库根目录用 `python -m http.server 8000 --bind 127.0.0.1` 启动服务，允许 `http://127.0.0.1:8000` 后访问 `http://127.0.0.1:8000/chrome/test/data/pyscript/mario.html`。页面保留 nonce CSP 和 Renderer 沙箱，默认解释器/站点设置仍然生效。
@@ -46,4 +47,4 @@ python chrome/test/pyscript_mario_unittest.py -v
 
 阶段五提供三参数滑块、0.45× 慢动作、碰撞框、恢复默认、八节 Python 课程、三个 ARIA tab、运行状态/进度、三条事件日志、限时提示，以及学习地图/快捷键原生对话框。方向和跳跃按钮支持 Space/Enter 长按/松开；原生控件获得焦点时清输入并让行游戏快捷键。打开对话框暂停，关闭后不自动继续。窄屏逻辑宽度 790，宽屏 1120；原生滚动遵循减少动态效果偏好。
 
-声音、最高分持久化、全屏和导出属于阶段六。当前最高分只保留在文档内，不应标记为原项目完整迁移。阶段五接口及验收见 [实现记录](../../../../../docs-codex/pyscript-mario-phase5.md)。
+阶段六增加音效按钮及 M 快捷键，默认静音。音效由原生 WebAudio 合成，最多 16 个音符同时排队，每秒最多调度 64 个；暂停、失焦、隐藏和重开清理旧声音，导航及致命停止释放上下文。通关最高分使用同源 localStorage，沿用 `marioLabBest` 键；用户禁止存储时仍可游玩。全屏使用正常用户激活、权限及退出流程。下载按钮提交当前 HTML/CSS/Python 的有界文档快照，恢复 CSP nonce；下载策略仍可能拒绝，界面只报告提交。下载页面需放到已允许的 HTTP 来源再打开，仍需安装本项目浏览器并启用解释器。外部资源和动态运行状态不作为通用网页打包能力。阶段六接口及验收见 [实现记录](../../../../../docs-codex/pyscript-mario-phase6.md)，阶段五记录见 [页面交互](../../../../../docs-codex/pyscript-mario-phase5.md)。

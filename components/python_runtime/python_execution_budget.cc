@@ -242,6 +242,16 @@ int BudgetTrace(PyObject* token, PyFrameObject* frame, int event, PyObject*) {
 
 BudgetedDomHost::BudgetedDomHost(ExecutionBudget& budget) : budget_(budget) {}
 
+BrowserResult BudgetedDomHost::Browser(const BrowserRequest& request) {
+  if (!IsActive() || !budget_->ConsumeDomCall()) {
+    return {{{}, DomError::kStopped, budget_->Message()}};
+  }
+  auto result = budget_->host()->Browser(request);
+  result.status = FinishCall(result.status);
+  return result.status.error == DomError::kNone ? result
+                                                : BrowserResult{result.status};
+}
+
 bool BudgetedDomHost::IsActive() const {
   return budget_->executing() && budget_->Check() && budget_->host();
 }

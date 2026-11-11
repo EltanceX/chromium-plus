@@ -44,6 +44,7 @@
 #include "third_party/blink/renderer/core/html/forms/html_text_area_element.h"
 #include "third_party/blink/renderer/core/html/html_dialog_element.h"
 #include "third_party/blink/renderer/core/html/html_py_script_element.h"
+#include "third_party/blink/renderer/core/html/python_browser_bridge.h"
 #include "third_party/blink/renderer/core/html/python_canvas_bridge.h"
 #include "third_party/blink/renderer/core/html_names.h"
 #include "third_party/blink/renderer/core/inspector/console_message.h"
@@ -55,6 +56,7 @@
 #include "third_party/blink/renderer/platform/runtime_enabled_features.h"
 #include "third_party/blink/renderer/platform/scheduler/public/frame_or_worker_scheduler.h"
 #include "third_party/blink/renderer/platform/scheduler/public/scheduling_policy.h"
+#include "third_party/blink/renderer/platform/wtf/functional.h"
 #include "third_party/blink/renderer/platform/wtf/text/strcat.h"
 #include "third_party/blink/renderer/platform/wtf/threading.h"
 #include "v8/include/cppgc/heap-state.h"
@@ -329,6 +331,7 @@ PythonScriptController::PythonScriptController(Document& document)
 void PythonScriptController::Trace(Visitor* visitor) const {
   visitor->Trace(pending_);
   visitor->Trace(canvas_bridge_);
+  visitor->Trace(browser_bridge_);
   visitor->Trace(handles_);
   visitor->Trace(listeners_);
   visitor->Trace(pending_frame_);
@@ -411,6 +414,10 @@ void PythonScriptController::Dispose() {
     stopped_ = true;
     ++generation_;
     pending_.clear();
+    if (browser_bridge_) {
+      browser_bridge_->Dispose();
+      browser_bridge_ = nullptr;
+    }
     if (canvas_bridge_) {
       canvas_bridge_->Dispose();
       canvas_bridge_ = nullptr;
@@ -482,6 +489,41 @@ WebPythonDomResult PythonScriptController::CheckDomCall() {
   }
   ++calls;
   return {};
+}
+
+WebPythonBrowserResult PythonScriptController::Browser(
+    const WebPythonBrowserRequest& request) {
+  const auto status = CheckDomCall();
+  if (status.error != WebPythonDomError::kNone) {
+    return {status};
+  }
+  Element* element = nullptr;
+  if (request.op == WebPythonBrowserOp::kRequestFullscreen) {
+    element = ResolveElement(request.element);
+    if (!IsPythonUiElement(element)) {
+      return {{{}, WebPythonDomError::kReference, "Expired fullscreen target"}};
+    }
+  }
+  if (!browser_bridge_) {
+    browser_bridge_ = PythonBrowserBridge::Create(
+        *GetSupplementable(), BindRepeating(
+                                  [](PythonScriptController* controller) {
+                                    return controller &&
+                                           controller->CanUseBrowserAsync();
+                                  },
+                                  WrapWeakPersistent(this)));
+  }
+  return browser_bridge_
+             ? browser_bridge_->Run(request, element)
+             : WebPythonBrowserResult{
+                   {{}, WebPythonDomError::kState, "Browser is unavailable"}};
+}
+
+bool PythonScriptController::CanUseBrowserAsync() const {
+  return !stopped_ && !dom_budget_exhausted_ &&
+         !ScriptForbiddenScope::IsScriptForbidden() &&
+         Eligible(*GetSupplementable(), false) &&
+         ScriptsAllowed(*GetSupplementable());
 }
 
 PythonCanvasBridge* PythonScriptController::CanvasBridge() {
@@ -757,8 +799,8 @@ WebPythonDomResult PythonScriptController::UpdateElement(
       const QualifiedName* attr = nullptr;
       for (const auto* candidate :
            {&html_names::kAriaLabelAttr, &html_names::kAriaSelectedAttr,
-            &html_names::kAriaExpandedAttr, &html_names::kAriaValuenowAttr,
-            &html_names::kTitleAttr}) {
+            &html_names::kAriaExpandedAttr, &html_names::kAriaPressedAttr,
+            &html_names::kAriaValuenowAttr, &html_names::kTitleAttr}) {
         if (String(update.name) == candidate->LocalName()) {
           attr = candidate;
         }
@@ -1125,6 +1167,9 @@ void PythonScriptController::ReleasePointerCaptures() {
 
 void PythonScriptController::ResetInput() {
   ++input_epoch_;
+  if (browser_bridge_) {
+    browser_bridge_->Silence();
+  }
   ReleasePointerCaptures();
 }
 

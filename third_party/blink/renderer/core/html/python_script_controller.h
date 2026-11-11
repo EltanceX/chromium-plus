@@ -24,6 +24,7 @@ class Event;
 class EventTarget;
 class PythonInputResetListener;
 class PythonCanvasBridge;
+class PythonBrowserBridge;
 class PythonPointerCapture;
 class HTMLPyScriptElement;
 class PendingPythonScriptBlock;
@@ -49,6 +50,7 @@ class PythonScriptController final
   void Trace(Visitor*) const override;
   void ContextDestroyed() override;
   bool IsActive() const override;
+  WebPythonBrowserResult Browser(const WebPythonBrowserRequest&) override;
   WebPythonDomResult GetElementById(const WebString&) override;
   WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) override;
   WebPythonControlStateResult GetControlState(WebPythonDomHandle) override;
@@ -87,6 +89,8 @@ class PythonScriptController final
  private:
   PythonCanvasBridge* CanvasBridge();
   Member<PythonCanvasBridge> canvas_bridge_;
+  Member<PythonBrowserBridge> browser_bridge_;
+  bool CanUseBrowserAsync() const;
   friend class PythonEventListener;
   friend class PythonAnimationFrame;
   friend class PythonInputResetListener;

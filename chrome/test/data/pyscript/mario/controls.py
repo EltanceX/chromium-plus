@@ -23,7 +23,7 @@ def resetInput():
 
 
 def key(event):
-    if event.code not in LEFT+RIGHT+JUMP+('KeyP', 'Escape', 'KeyR', 'Enter'):
+    if event.code not in LEFT+RIGHT+JUMP+('KeyP', 'Escape', 'KeyR', 'KeyM', 'Enter'):
         return
     if event.type == 'keyup':
         held.discard(event.code)
@@ -48,6 +48,8 @@ def key(event):
         clock.reset()
     elif event.code == 'KeyR':
         restart(None)
+    elif event.code == 'KeyM':
+        toggleSound(event)
 
 
 def pointer(control):
@@ -84,6 +86,7 @@ def buttonKey(control):
 def pageChanged(event):
     global epoch, reducedMotion
     page = dom.get_page_state()
+    platformPageChanged(page)
     reducedMotion = page.reduced_motion
     if uiReady: resizeUI(page)
     if page.input_epoch != epoch or page.hidden or not page.has_focus:
@@ -195,6 +198,7 @@ def frame(timestamp):
         dom.set_text(handle, text)
     if uiReady:
         uiTick(timestamp)
+        platformTick(timestamp, started)
         flushUI(started)
     # Include HUD work in the recorded total; the next HUD reports this sample.
     timings[-1] = (timings[-1][0], timings[-1][1], timings[-1][2],

@@ -62,6 +62,18 @@ def showToast(text):
     pass
 
 
+def playSound(name):
+    pass
+
+
+def resetSound():
+    pass
+
+
+def persistBest():
+    pass
+
+
 def clearInput():
     input.left = input.right = input.jump = False
     player.jumpBuffer = 0
@@ -120,6 +132,8 @@ def startGame(seed=DEFAULT_SEED):
     resetPlayer()
     player.invincible = 0
     message = 'Go right! Hold jump for a higher jump.'
+    resetSound()
+    playSound('start')
 
 
 def pressJump():

@@ -7,6 +7,8 @@ import json
 import sys
 from pathlib import Path
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent / 'data/pyscript/mario'
 REFERENCE = json.loads((ROOT / 'reference.json').read_text(encoding='utf-8'))
@@ -137,6 +139,101 @@ class MarioCoreTest(unittest.TestCase):
     s['updateEffects'](2)
     self.assertEqual(s['particles'], [])
     self.assertEqual(s['floatTexts'], [])
+
+
+def platform_scope(stored=None, failure=False):
+  s = core()
+  values = {} if stored is None else {'marioLabBest': stored}
+  calls, updates = [], []
+  def get(key):
+    if failure: raise PermissionError('blocked')
+    return values.get(key)
+  def set_value(key, value):
+    if failure: raise PermissionError('blocked')
+    values[key] = value
+  browser = SimpleNamespace(storage_get=get, storage_set=set_value,
+      audio_stop=lambda: calls.append('stop'), audio_state=lambda: 'running',
+      audio_resume=lambda: 1, audio_suspend=lambda: 2, poll=lambda: None,
+      play_tones=lambda tones: calls.append(tones), is_fullscreen=lambda: False)
+  s.update(queueUI=lambda *args: updates.append(args))
+  with patch.dict(sys.modules, {'browser': browser}):
+    exec(compile((ROOT/'platform.py').read_text(encoding='utf-8'), 'platform.py', 'exec'), s)
+  s['platformLastState'] = s['game'].state
+  return s, browser, values, calls, updates
+
+
+class MarioPlatformTest(unittest.TestCase):
+  def test_load_best_missing_invalid_negative_and_bounded(self):
+    for text, expected in ((None, 0), ('bad', 0), ('-1', 0), ('5170', 5170),
+                           ('999999999999', 999999999)):
+      self.assertEqual(platform_scope(text)[0]['game'].best, expected)
+
+  def test_storage_denial_does_not_change_playability(self):
+    s, _, _, _, _ = platform_scope(failure=True)
+    self.assertFalse(s['storageAvailable'])
+    s['startGame']()
+    self.assertEqual(s['game'].state, 'playing')
+    s['game'].score, s['game'].remaining = 1200, 100
+    s['winGame']()
+    s['audioNeedsStop'] = False
+    s['platformTick'](0, s['time'].perf_counter())
+    self.assertEqual(s['game'].best, 2200)
+    self.assertFalse(s['storageAvailable'])
+
+  def test_win_persists_and_lower_score_keeps_best(self):
+    s, _, values, _, _ = platform_scope('5000')
+    s['game'].score, s['game'].remaining = 1200, 100
+    s['winGame']()
+    s['audioNeedsStop'] = False
+    s['platformTick'](0, s['time'].perf_counter())
+    self.assertEqual(values['marioLabBest'], '5000')
+
+  def test_eight_sound_patterns_match_original_notes(self):
+    s, _, _, _, _ = platform_scope()
+    self.assertEqual(set(s['SOUNDS']), {'jump','coin','bump','stomp','hurt','checkpoint','start','win'})
+    self.assertEqual(s['SOUNDS']['jump'][0], ('square',220,620,.15,0,.035))
+    self.assertEqual([t[1] for t in s['SOUNDS']['win']], [523,659,784,1046,784,1046])
+
+  def test_sound_queue_bounded_reset_and_mute(self):
+    s, _, _, _, _ = platform_scope()
+    s['playSound']('jump')
+    self.assertEqual(s['soundQueue'], [])
+    s['soundEnabled'] = True
+    for _ in range(100): s['playSound']('coin')
+    self.assertEqual(len(s['soundQueue']), 8)
+    s['resetSound']()
+    self.assertEqual(s['soundQueue'], [])
+    self.assertTrue(s['audioNeedsStop'])
+
+  def test_audio_batch_is_bounded(self):
+    s, _, _, calls, _ = platform_scope()
+    s['soundEnabled'] = s['soundRunning'] = True
+    for _ in range(8): s['playSound']('win')
+    s['platformTick'](0, s['time'].perf_counter())
+    self.assertEqual(len(calls[0]), 12)
+    self.assertEqual(len(s['soundQueue']), 6)
+
+  def test_delayed_resume_reconciles_hidden_page(self):
+    s, browser, _, _, _ = platform_scope()
+    s['soundEnabled'] = True
+    s['platformPending'][1] = 'audio'
+    s['platformPageChanged'](SimpleNamespace(hidden=True, has_focus=False))
+    browser.poll = lambda: (1, True, 'completed')
+    s['platformTick'](0, s['time'].perf_counter())
+    s['platformTick'](1, s['time'].perf_counter())
+    self.assertTrue(s['soundRunning'])
+    s['audioNeedsStop'] = False
+    s['platformTick'](1, s['time'].perf_counter())
+    self.assertEqual(s['platformPending'], {2:'audio'})
+
+  def test_failed_audio_completion_resets_toggle(self):
+    s, browser, _, _, updates = platform_scope()
+    s['soundEnabled'] = True
+    s['platformPending'][1] = 'audio'
+    browser.poll = lambda: (1, False, 'denied')
+    s['platformTick'](0, s['time'].perf_counter())
+    self.assertFalse(s['soundEnabled'])
+    self.assertIn(('soundButton', 'pressed', False), updates)
 
 
 def add_scenario(scenario):

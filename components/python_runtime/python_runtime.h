@@ -14,6 +14,7 @@
 
 #include "base/feature_list.h"
 #include "base/values.h"
+#include "components/python_runtime/python_browser_types.h"
 #include "components/python_runtime/python_canvas_types.h"
 
 namespace base {
@@ -128,6 +129,20 @@ struct CanvasResult {
   CanvasStatistics statistics;
 };
 
+struct BrowserRequest {
+  BrowserOp op;
+  DomHandle element{};
+  std::string key;
+  std::string value;
+  std::vector<AudioTone> tones;
+};
+struct BrowserResult {
+  DomResult status;
+  std::string value;
+  uint64_t id = 0;
+  bool flag = false;
+};
+
 enum class ElementAction {
   kValue,
   kChecked,
@@ -166,6 +181,7 @@ class PYTHON_RUNTIME_EXPORT DomHost {
  public:
   virtual ~DomHost() = default;
   virtual bool IsActive() const = 0;
+  virtual BrowserResult Browser(const BrowserRequest&);
   // Pure command data has no DOM effects. Embedders may defer full page policy
   // checks to submit, but must retain execution/time/stop checks while
   // building.

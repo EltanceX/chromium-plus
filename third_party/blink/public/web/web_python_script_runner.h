@@ -123,6 +123,42 @@ struct WebPythonCanvasResult {
   WebPythonCanvasStatistics statistics;
 };
 
+enum class WebPythonBrowserOp {
+  kAudioResume,
+  kAudioSuspend,
+  kAudioStop,
+  kAudioState,
+  kPlayTones,
+  kStorageGet,
+  kStorageSet,
+  kRequestFullscreen,
+  kExitFullscreen,
+  kIsFullscreen,
+  kExportDocument,
+  kPoll
+};
+struct WebPythonAudioTone {
+  WebString wave;
+  double frequency = 440;
+  double end_frequency = 440;
+  double duration = 0.1;
+  double delay = 0;
+  double volume = 0.1;
+};
+struct WebPythonBrowserRequest {
+  WebPythonBrowserOp op;
+  WebPythonDomHandle element;
+  WebString key;
+  WebString value;
+  std::vector<WebPythonAudioTone> tones;
+};
+struct WebPythonBrowserResult {
+  WebPythonDomResult status;
+  WebString value;
+  uint64_t id = 0;
+  bool flag = false;
+};
+
 enum class WebPythonElementAction {
   kValue,
   kChecked,
@@ -161,6 +197,11 @@ class WebPythonDomHost {
  public:
   virtual ~WebPythonDomHost() = default;
   virtual bool IsActive() const = 0;
+  virtual WebPythonBrowserResult Browser(const WebPythonBrowserRequest&) {
+    return {{{},
+             WebPythonDomError::kNotAllowed,
+             "Browser capabilities are unavailable"}};
+  }
   virtual WebPythonDomResult GetElementById(const WebString&) = 0;
   virtual WebPythonDomResult SetText(WebPythonDomHandle, const WebString&) = 0;
   virtual WebPythonControlStateResult GetControlState(WebPythonDomHandle) {

@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent / 'data/pyscript/mario'
 OUTPUT = ROOT.parent / 'mario.html'
-SOURCES = ('state.py', 'physics.py', 'drawing.py', 'controls.py', 'ui.py',
+SOURCES = ('state.py', 'physics.py', 'drawing.py', 'controls.py', 'ui.py', 'platform.py',
            'cacheLandscape()', 'cacheActors()', 'cacheBlocks()',
            'createLevel(); cacheTerrain()', 'initUI()', 'boot.py')
 

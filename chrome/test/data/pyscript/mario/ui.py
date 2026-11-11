@@ -33,9 +33,9 @@ lessons = (
      '速度乘时间得到位移。固定 1/120 秒步长；过载时有界丢弃积压，绘图构建与提交分帧进行。',
      '开启慢动作，观察游戏时间同步变慢；暂停后位置和倒计时都会冻结。'),
     ('成绩与平台能力', '先记录成绩，再连接平台',
-     'game.best = max(\n    game.best, game.score)\n\ntry:\n    value = int(text)\nexcept ValueError:\n    value = 0',
-     '当前最高分保存在文档内，刷新后重置。跨刷新存储、声音、全屏和源码导出将在阶段六接入。',
-     '阅读 winGame() 的计分规则。不要把文档内变量误认为持久化存储。'))
+     "try:\n    browser.storage_set(\n        'marioLabBest', str(game.best))\nexcept PermissionError:\n    pass  # 继续游戏",
+     'browser 调用原生同源存储和合成音频。声音由用户开启，全屏遵循浏览器权限，导出包含 HTML、CSS 和 Python。',
+     '开启音效听一次跳跃。通关后刷新查看最高分；下载源码后，通过已允许的本地 HTTP 来源重新打开。'))
 
 uiNodes, uiQueue, uiApplied = {}, {}, {}
 activeTab, lessonNumber = 0, 0
@@ -69,6 +69,7 @@ def applyUI(key, value):
     elif operation == 'progress': dom.set_progress(handle, value)
     elif operation == 'aria': dom.set_attribute(handle, 'aria-valuenow', str(value))
     elif operation == 'selected': dom.set_attribute(handle, 'aria-selected', str(value).lower())
+    elif operation == 'pressed': dom.set_attribute(handle, 'aria-pressed', str(value).lower())
     elif operation == 'tabindex': dom.set_tab_index(handle, value)
     elif operation == 'class': dom.toggle_class(handle, 'selected', value)
     uiApplied[key] = value
@@ -221,7 +222,7 @@ def syncOverlay():
         'ready': ('每一次起跳，都是一次探索。', '越过水管，收集金币，踩扁小怪。抵达绿色旗杆即可通关。', '开始冒险'),
         'paused': ('世界在等你，随时继续。', '进度已保留。可以先调整实验参数，再继续探索。', '继续冒险'),
         'over': ('每次尝试，都离终点更近。', '本次分数 %d，金币 %d。试试慢动作或增大跳跃力度。' % (game.score, game.coins), '再试一次'),
-        'won': ('冒险完成，创造才刚开始。', '分数 %d，金币 %d，用时 %d 秒。文档内最佳 %d。' % (game.score, game.coins, math.ceil(game.elapsed), game.best), '再玩一局')
+        'won': ('冒险完成，创造才刚开始。', '分数 %d，金币 %d，用时 %d 秒。最佳 %d。' % (game.score, game.coins, math.ceil(game.elapsed), game.best), '再玩一局')
     }.get(game.state, ('', '', '开始冒险'))
     if not hidden:
         for name, text in (('overlayTag', game.state.upper()), ('overlayTitle', title),
@@ -286,11 +287,18 @@ def initUI():
     listen('keysClose', 'click', lambda event: closeDialog('keysDialog'))
     listen('playNav', 'click', lambda event: playNav())
     listen('overlayStart', 'click', overlayStart)
+    listen('soundButton', 'click', toggleSound)
+    listen('fullscreenButton', 'click', toggleFullscreen)
+    listen('downloadButton', 'click', exportSource)
     for name in ('guideDialog', 'keysDialog'):
         for event in ('close', 'cancel'): listen(name, event, lambda event: resetInput())
     dom.add_event_listener(dom.get_document(), 'focusin', focusChanged)
     resizeUI(dom.get_page_state())
     selectLesson(0)
+    selectTab(0)
+    queueUI('soundButton', 'pressed', False)
+    queueUI('soundButton', 'text', '开启音效')
+    queueUI('toast', 'hidden', True)
     uiReady = True
     syncOverlay()
 

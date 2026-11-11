@@ -88,6 +88,7 @@ class BudgetedDomHost final : public DomHost {
  public:
   explicit BudgetedDomHost(ExecutionBudget& budget);
   bool IsActive() const override;
+  BrowserResult Browser(const BrowserRequest&) override;
   bool CanBuildCanvas() const override;
   DomResult GetElementById(std::string_view id) override;
   DomResult SetText(DomHandle handle, std::string_view text) override;

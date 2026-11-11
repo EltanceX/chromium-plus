@@ -26,6 +26,10 @@
 
 namespace native_python {
 
+BrowserResult DomHost::Browser(const BrowserRequest&) {
+  return {{{}, DomError::kNotAllowed, "Browser capabilities are unavailable"}};
+}
+
 BASE_FEATURE(kNativePythonRuntimeSelfTest, base::FEATURE_DISABLED_BY_DEFAULT);
 
 bool DomHost::CanBuildCanvas() const {
@@ -306,7 +310,8 @@ class Runtime {
     if (!PyStatus_Exception(status) &&
         (PyImport_AppendInittab("dom", InitDomModule) != 0 ||
          PyImport_AppendInittab("animation", InitAnimationModule) != 0 ||
-         PyImport_AppendInittab("canvas", InitCanvasModule) != 0)) {
+         PyImport_AppendInittab("canvas", InitCanvasModule) != 0 ||
+         PyImport_AppendInittab("browser", InitBrowserModule) != 0)) {
       status = PyStatus_Error("failed to register native DOM module");
     }
     if (!PyStatus_Exception(status)) {

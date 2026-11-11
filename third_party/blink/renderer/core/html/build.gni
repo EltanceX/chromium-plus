@@ -554,6 +554,8 @@ blink_core_sources_html = [
   "plugin_document.cc",
   "plugin_document.h",
   "python_canvas_bridge.cc",
+  "python_browser_bridge.cc",
+  "python_browser_bridge.h",
   "python_canvas_bridge.h",
   "python_script_controller.cc",
   "python_script_controller.h",

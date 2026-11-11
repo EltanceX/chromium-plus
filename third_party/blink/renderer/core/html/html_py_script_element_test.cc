@@ -865,6 +865,12 @@ TEST_F(HTMLPyScriptElementTest, ControlsPreserveNativeValuesAndSafeAttributes) {
                                          "aria-selected", "true"})
                   .error);
     EXPECT_EQ(WebPythonDomError::kNone,
+              host.UpdateElement(panel, {WebPythonElementAction::kAttribute,
+                                         "aria-pressed", "false"})
+                  .error);
+    EXPECT_EQ("false", GetElementById("panel")->getAttribute(
+                           html_names::kAriaPressedAttr));
+    EXPECT_EQ(WebPythonDomError::kNone,
               host.SetText(host.GetElementById("code").handle,
                            "<script>literal</script>")
                   .error);

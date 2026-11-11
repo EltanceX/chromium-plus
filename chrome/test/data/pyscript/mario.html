@@ -10,7 +10,7 @@
 body{margin:0;background:#eef1dd;color:var(--ink);font:15px/1.6 system-ui,sans-serif}main,header,footer{max-width:1440px;margin:auto;padding:18px 24px}
 header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:16px}h1{font-size:22px;margin:0;letter-spacing:-.5px}h1 em{color:var(--accent);font-style:normal}h2,h3,p{margin:0 0 10px}small,.muted{color:var(--muted)}
 button{min-height:42px;padding:8px 13px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);cursor:pointer}button:hover{border-color:#678363}button:disabled{opacity:.45;cursor:default}:focus-visible{outline:3px solid #d77740;outline-offset:3px}.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}nav,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.intro{margin-bottom:18px}.intro h2{font-size:30px;line-height:1.25}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}.game-card,.lab,.lesson-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}.game-heading,.toolbar,.journey{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:12px 16px;flex-wrap:wrap}.game-heading strong{font-size:13px}.counters{font:12px monospace}.stage{position:relative;background:#c1dfbd}canvas{width:100%;height:auto;display:block;image-rendering:pixelated}
+.intro{margin-bottom:18px}.intro h2{font-size:30px;line-height:1.25}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}.game-card,.lab,.lesson-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}.game-heading,.toolbar,.journey{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:12px 16px;flex-wrap:wrap}.game-heading strong{font-size:13px}.counters{font:12px monospace}.stage:fullscreen{display:grid;place-items:center;background:#273b32}.stage:fullscreen canvas{max-height:100vh;width:auto;max-width:100vw}.stage{position:relative;background:#c1dfbd}canvas{width:100%;height:auto;display:block;image-rendering:pixelated}
 .overlay{position:absolute;inset:0;display:grid;place-content:center;padding:20px;background:#25473933;text-align:center}.overlay-card{padding:22px;max-width:440px;background:#fffdf1f5;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 40px #25473920}.overlay h2{font-size:28px;line-height:1.25}.tag{color:var(--accent);font:11px monospace;letter-spacing:1px}.toolbar{border-top:1px solid var(--line)}.touch button{touch-action:none;user-select:none}.progress-track{height:7px;background:#e1e6d2;border-radius:5px;flex:1;overflow:hidden}#progressFill{height:100%;width:0;background:#d38a48}.journey{font:11px monospace}
 aside{display:grid;gap:16px}.lab,.lesson-card{padding:18px}.tabs{display:flex;margin:15px -4px;gap:4px}.tabs button{flex:1;font-size:12px;padding:8px 4px}[aria-selected="true"],.selected{background:#e4ecd5;border-color:#648663}.param{margin:17px 0}.param label{display:flex;justify-content:space-between}input[type=range]{width:100%;accent-color:#547754}input[type=checkbox]{accent-color:#547754}.toggle{display:block;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf0df;padding:12px;border-radius:5px;font:12px/1.6 Consolas,monospace}.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.data-grid div{padding:10px;background:#eef1e4;border-radius:4px}.data-grid span{display:block;font:20px monospace}.event-log{padding:0;list-style:none;font:12px/1.8 monospace;overflow-wrap:anywhere}.exercise{padding:12px;background:#f4ead0;border-left:3px solid #d38a48}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.flow button{text-align:left}.flow small{display:block}dialog{color:var(--ink);border:1px solid var(--line);border-radius:12px;background:var(--paper);max-width:700px;width:calc(100% - 32px);padding:24px;max-height:85vh}/* Closed dialogs prepare layout during native rendering, outside Python. */
@@ -23,10 +23,10 @@ dialog::backdrop{background:#183e3690}.dialog-heading{display:flex;justify-conte
 <div class="intro"><p class="tag">LEARN BY PLAYING · 原生 PYTHON</p><h2>让好奇心，带你跳得更远。</h2><p class="muted">玩一关，改一个参数，再读一段 Python。游戏逻辑与页面交互均由 Python 驱动。</p></div>
 <div class="layout">
 <section class="game-card" aria-label="游戏区域">
-<div class="game-heading"><strong>WORLD 01 / GREEN HILLS</strong><span class="counters">金币 <span id="coinCount">00</span> · 生命 <span id="lifeCount">3</span> · 时间 <span id="timeCount">180</span></span></div>
+<div class="game-heading"><strong>WORLD 01 / GREEN HILLS</strong><span class="counters">金币 <span id="coinCount">00</span> · 生命 <span id="lifeCount">3</span> · 时间 <span id="timeCount">180</span> · 最佳 <span id="bestCount">0</span></span></div>
 <div id="stage" class="stage"><canvas id="game" width="1120" height="608" tabindex="0" aria-label="横版跳跃游戏。方向键移动，空格跳跃，P 暂停。"></canvas>
 <div id="gameOverlay" class="overlay"><div class="overlay-card"><p id="overlayTag" class="tag">HELLO, PYTHON!</p><h2 id="overlayTitle">每一次起跳，都是一次探索。</h2><p id="overlayCopy">越过水管，收集金币，踩扁小怪。抵达绿色旗杆即可通关。</p><button id="overlayStart" class="primary"><span id="startButtonText">开始冒险</span> →</button><p id="overlayTip" class="muted">也可以按 Space 开始</p></div></div></div>
-<div class="toolbar"><div class="row"><button id="start">开始 / 重开</button><button id="pause" disabled><span id="pauseText">暂停</span></button></div><div class="row touch" aria-label="触屏控制"><button id="left" aria-label="向左移动">◀ 左</button><button id="right" aria-label="向右移动">右 ▶</button><button id="jump">↑ 跳跃</button></div></div>
+<div class="toolbar"><div class="row"><button id="soundButton" aria-pressed="false">开启音效</button><button id="fullscreenButton">全屏游戏</button><button id="downloadButton">下载源码</button><button id="start">开始 / 重开</button><button id="pause" disabled><span id="pauseText">暂停</span></button></div><div class="row touch" aria-label="触屏控制"><button id="left" aria-label="向左移动">◀ 左</button><button id="right" aria-label="向右移动">右 ▶</button><button id="jump">↑ 跳跃</button></div></div>
 <div class="journey"><span>START</span><div class="progress-track" role="progressbar" aria-label="关卡进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack"><div id="progressFill"></div></div><span id="progressText">0%</span><span>⚑</span></div><p id="status" class="sr-only" role="status">正在初始化 Python…</p>
 </section>
 <aside aria-label="Python 教学面板"><section class="lab" id="lab"><h2>代码实验室</h2><p class="muted">改个数字，观察世界的变化。</p>
@@ -38,11 +38,11 @@ dialog::backdrop{background:#183e3690}.dialog-heading{display:flex;justify-conte
 </div>
 <div id="toast" class="toast" role="status" hidden></div>
 <div class="flow" aria-label="游戏主循环的四个步骤"><button id="flow0" class="selected">01 捕捉输入<small>Keyboard Events</small></button><button id="flow1">02 做出判断<small>Conditions &amp; Logic</small></button><button id="flow2">03 更新状态<small>State &amp; Objects</small></button><button id="flow3">04 绘制下一帧<small>Animation Loop</small></button></div>
-<details><summary>运行测量</summary><p id="metrics">等待绘制数据</p><p id="telemetry">等待状态数据</p><p>物理步长 1/120 秒，过载丢弃积压；最多六步补算，绘制上限 30 Hz。音效、持久化、全屏和导出留待阶段六。</p></details>
+<details><summary>运行测量</summary><p id="metrics">等待绘制数据</p><p id="telemetry">等待状态数据</p><p>物理步长 1/120 秒，过载丢弃积压；最多六步补算，绘制上限 30 Hz。音效需用户开启；通关最高分按同源保存。全屏与源码下载遵循浏览器策略。</p></details>
 </main>
 <footer>为好奇心而造。用 Python，创造一点快乐。<span id="fpsValue">0</span> 次原生回调/秒（非显示帧率）</footer>
-<dialog id="guideDialog" aria-labelledby="guideTitle"><div class="dialog-heading"><h2 id="guideTitle">你的 Python 学习地图</h2><button id="guideClose" aria-label="关闭学习地图">✕</button></div><p>玩一遍，改一个参数，再读一段代码。课程片段对应本页的 Python 源码。</p><div class="lesson-map"><button id="map0">01 键盘事件 ↗</button><button id="map1">02 变量与对象 ↗</button><button id="map2">03 条件与逻辑 ↗</button><button id="map3">04 列表与循环 ↗</button><button id="map4">05 函数与碰撞 ↗</button><button id="map5">06 DOM 与输入 ↗</button><button id="map6">07 动画与时间 ↗</button><button id="map7">08 成绩与平台能力 ↗</button></div><p class="muted">保存 HTML 源码、声音与跨刷新最高分将在阶段六接入。</p></dialog>
-<dialog id="keysDialog" aria-labelledby="keysTitle"><div class="dialog-heading"><h2 id="keysTitle">每个按键，都是一个事件。</h2><button id="keysClose" aria-label="关闭快捷键">✕</button></div><p><kbd>A</kbd> <kbd>D</kbd> / <kbd>←</kbd> <kbd>→</kbd> 左右移动</p><p><kbd>Space</kbd> / <kbd>W</kbd> / <kbd>↑</kbd> 跳跃</p><p><kbd>P</kbd> / <kbd>Esc</kbd> 暂停 / 继续；<kbd>R</kbd> 重开</p><p>短按小跳，长按高跳。橙色旗保存复活点，绿色旗通关。切换页面会自动暂停。</p><p>Tab 切换页面控件；实验室标签可用左右方向键切换。输入控件和对话框中的按键由原生控件处理；Esc 关闭对话框。</p></dialog>
+<dialog id="guideDialog" aria-labelledby="guideTitle"><div class="dialog-heading"><h2 id="guideTitle">你的 Python 学习地图</h2><button id="guideClose" aria-label="关闭学习地图">✕</button></div><p>玩一遍，改一个参数，再读一段代码。课程片段对应本页的 Python 源码。</p><div class="lesson-map"><button id="map0">01 键盘事件 ↗</button><button id="map1">02 变量与对象 ↗</button><button id="map2">03 条件与逻辑 ↗</button><button id="map3">04 列表与循环 ↗</button><button id="map4">05 函数与碰撞 ↗</button><button id="map5">06 DOM 与输入 ↗</button><button id="map6">07 动画与时间 ↗</button><button id="map7">08 成绩与平台能力 ↗</button></div><p class="muted">点击下载源码可获得包含 HTML、CSS 和 Python 的单文件页面；通过已允许的 HTTP 来源打开后可再次游玩。</p></dialog>
+<dialog id="keysDialog" aria-labelledby="keysTitle"><div class="dialog-heading"><h2 id="keysTitle">每个按键，都是一个事件。</h2><button id="keysClose" aria-label="关闭快捷键">✕</button></div><p><kbd>A</kbd> <kbd>D</kbd> / <kbd>←</kbd> <kbd>→</kbd> 左右移动</p><p><kbd>Space</kbd> / <kbd>W</kbd> / <kbd>↑</kbd> 跳跃</p><p><kbd>P</kbd> / <kbd>Esc</kbd> 暂停 / 继续；<kbd>R</kbd> 重开；<kbd>M</kbd> 开关音效</p><p>短按小跳，长按高跳。橙色旗保存复活点，绿色旗通关。切换页面会自动暂停。</p><p>Tab 切换页面控件；实验室标签可用左右方向键切换。输入控件和对话框中的按键由原生控件处理；Esc 关闭对话框。</p></dialog>
 <div id="announcement" class="sr-only" aria-live="polite"></div>
 <!-- state.py -->
 <pyscript nonce="python-mario">
@@ -110,6 +110,18 @@ def showToast(text):
     pass
 
 
+def playSound(name):
+    pass
+
+
+def resetSound():
+    pass
+
+
+def persistBest():
+    pass
+
+
 def clearInput():
     input.left = input.right = input.jump = False
     player.jumpBuffer = 0
@@ -168,6 +180,8 @@ def startGame(seed=DEFAULT_SEED):
     resetPlayer()
     player.invincible = 0
     message = 'Go right! Hold jump for a higher jump.'
+    resetSound()
+    playSound('start')
 
 
 def pressJump():
@@ -232,8 +246,11 @@ def hitBlock(block):
         block.used = True
         game.coins += 1
         game.score += 200
+        playSound('coin')
         burst(block.x+24, block.y-12, '#f8d458', 8)
         addText(block.x+24, block.y-15, '+200', '#fff7d2')
+    else:
+        playSound('bump')
 
 
 def loseLife(reason):
@@ -249,6 +266,8 @@ def loseLife(reason):
     message = reason
     logEvent('loseLife: '+reason)
     showToast(reason)
+    resetSound()
+    playSound('hurt')
 
 
 def winGame():
@@ -256,6 +275,9 @@ def winGame():
     game.state, game.finishTime = 'won', 0
     game.score += math.ceil(game.remaining)*10
     game.best = max(game.best, game.score)
+    persistBest()
+    resetSound()
+    playSound('win')
     clearInput()
     message = 'Finished! Space to play again.'
     logEvent('winGame: '+str(game.score))
@@ -299,6 +321,7 @@ def updatePlayer(dt):
     if player.jumpBuffer > 0 and player.coyote > 0:
         player.vy, player.onGround, player.coyote, player.jumpBuffer = -settings.jump, False, 0, 0
         logEvent('jump: vy = '+str(round(player.vy)))
+        playSound('jump')
         burst(player.x+player.w/2, player.y+player.h, '#ece7c0', 5)
     gravity = settings.gravity
     if not input.jump and player.vy < 0:
@@ -333,6 +356,7 @@ def updatePlayer(dt):
             game.coins += 1
             game.score += 100
             logEvent('coin: +100')
+            playSound('coin')
             burst(coin.x+11, coin.y+14, '#ffde6b', 6)
             addText(coin.x+11, coin.y, '+100', '#fff6c5')
     for enemy in enemies:
@@ -345,6 +369,7 @@ def updatePlayer(dt):
             player.onGround = False
             game.score += 300
             logEvent('stomp: +300')
+            playSound('stomp')
             burst(enemy.x+17, enemy.y+20, '#e3bc80', 7)
             addText(enemy.x+17, enemy.y-12, '+300', '#fff8da')
         elif player.invincible <= 0:
@@ -358,6 +383,7 @@ def updatePlayer(dt):
         game.score += 500
         showToast('已抵达中途检查点。')
         logEvent('checkpoint: +500')
+        playSound('checkpoint')
         burst(CHECKPOINT_X, GROUND-75, '#ffd58a', 20)
     if player.x+player.w >= FLAG_X:
         winGame()
@@ -696,7 +722,7 @@ def resetInput():
 
 
 def key(event):
-    if event.code not in LEFT+RIGHT+JUMP+('KeyP', 'Escape', 'KeyR', 'Enter'):
+    if event.code not in LEFT+RIGHT+JUMP+('KeyP', 'Escape', 'KeyR', 'KeyM', 'Enter'):
         return
     if event.type == 'keyup':
         held.discard(event.code)
@@ -721,6 +747,8 @@ def key(event):
         clock.reset()
     elif event.code == 'KeyR':
         restart(None)
+    elif event.code == 'KeyM':
+        toggleSound(event)
 
 
 def pointer(control):
@@ -757,6 +785,7 @@ def buttonKey(control):
 def pageChanged(event):
     global epoch, reducedMotion
     page = dom.get_page_state()
+    platformPageChanged(page)
     reducedMotion = page.reduced_motion
     if uiReady: resizeUI(page)
     if page.input_epoch != epoch or page.hidden or not page.has_focus:
@@ -868,6 +897,7 @@ def frame(timestamp):
         dom.set_text(handle, text)
     if uiReady:
         uiTick(timestamp)
+        platformTick(timestamp, started)
         flushUI(started)
     # Include HUD work in the recorded total; the next HUD reports this sample.
     timings[-1] = (timings[-1][0], timings[-1][1], timings[-1][2],
@@ -913,9 +943,9 @@ lessons = (
      '速度乘时间得到位移。固定 1/120 秒步长；过载时有界丢弃积压，绘图构建与提交分帧进行。',
      '开启慢动作，观察游戏时间同步变慢；暂停后位置和倒计时都会冻结。'),
     ('成绩与平台能力', '先记录成绩，再连接平台',
-     'game.best = max(\n    game.best, game.score)\n\ntry:\n    value = int(text)\nexcept ValueError:\n    value = 0',
-     '当前最高分保存在文档内，刷新后重置。跨刷新存储、声音、全屏和源码导出将在阶段六接入。',
-     '阅读 winGame() 的计分规则。不要把文档内变量误认为持久化存储。'))
+     "try:\n    browser.storage_set(\n        'marioLabBest', str(game.best))\nexcept PermissionError:\n    pass  # 继续游戏",
+     'browser 调用原生同源存储和合成音频。声音由用户开启，全屏遵循浏览器权限，导出包含 HTML、CSS 和 Python。',
+     '开启音效听一次跳跃。通关后刷新查看最高分；下载源码后，通过已允许的本地 HTTP 来源重新打开。'))
 
 uiNodes, uiQueue, uiApplied = {}, {}, {}
 activeTab, lessonNumber = 0, 0
@@ -949,6 +979,7 @@ def applyUI(key, value):
     elif operation == 'progress': dom.set_progress(handle, value)
     elif operation == 'aria': dom.set_attribute(handle, 'aria-valuenow', str(value))
     elif operation == 'selected': dom.set_attribute(handle, 'aria-selected', str(value).lower())
+    elif operation == 'pressed': dom.set_attribute(handle, 'aria-pressed', str(value).lower())
     elif operation == 'tabindex': dom.set_tab_index(handle, value)
     elif operation == 'class': dom.toggle_class(handle, 'selected', value)
     uiApplied[key] = value
@@ -1101,7 +1132,7 @@ def syncOverlay():
         'ready': ('每一次起跳，都是一次探索。', '越过水管，收集金币，踩扁小怪。抵达绿色旗杆即可通关。', '开始冒险'),
         'paused': ('世界在等你，随时继续。', '进度已保留。可以先调整实验参数，再继续探索。', '继续冒险'),
         'over': ('每次尝试，都离终点更近。', '本次分数 %d，金币 %d。试试慢动作或增大跳跃力度。' % (game.score, game.coins), '再试一次'),
-        'won': ('冒险完成，创造才刚开始。', '分数 %d，金币 %d，用时 %d 秒。文档内最佳 %d。' % (game.score, game.coins, math.ceil(game.elapsed), game.best), '再玩一局')
+        'won': ('冒险完成，创造才刚开始。', '分数 %d，金币 %d，用时 %d 秒。最佳 %d。' % (game.score, game.coins, math.ceil(game.elapsed), game.best), '再玩一局')
     }.get(game.state, ('', '', '开始冒险'))
     if not hidden:
         for name, text in (('overlayTag', game.state.upper()), ('overlayTitle', title),
@@ -1166,11 +1197,18 @@ def initUI():
     listen('keysClose', 'click', lambda event: closeDialog('keysDialog'))
     listen('playNav', 'click', lambda event: playNav())
     listen('overlayStart', 'click', overlayStart)
+    listen('soundButton', 'click', toggleSound)
+    listen('fullscreenButton', 'click', toggleFullscreen)
+    listen('downloadButton', 'click', exportSource)
     for name in ('guideDialog', 'keysDialog'):
         for event in ('close', 'cancel'): listen(name, event, lambda event: resetInput())
     dom.add_event_listener(dom.get_document(), 'focusin', focusChanged)
     resizeUI(dom.get_page_state())
     selectLesson(0)
+    selectTab(0)
+    queueUI('soundButton', 'pressed', False)
+    queueUI('soundButton', 'text', '开启音效')
+    queueUI('toast', 'hidden', True)
     uiReady = True
     syncOverlay()
 
@@ -1192,6 +1230,181 @@ def playNav():
 def overlayStart(event):
     if game.state == 'paused': pause(event)
     else: restart(event)
+</pyscript>
+<!-- platform.py -->
+<pyscript nonce="python-mario">
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Bounded native platform services; failures never change game physics."""
+import browser
+
+soundEnabled, soundRunning = False, False
+soundQueue, platformPending = [], {}
+audioNeedsStop, bestNeedsSave = False, False
+platformLastTick, platformLastState = -1000, None
+platformActive = True
+storageAvailable = True
+BEST_KEY = 'marioLabBest'
+SOUNDS = {
+    'jump': (('square', 220, 620, .15, 0, .035),),
+    'coin': (('square', 990, 990, .08, 0, .025),
+             ('square', 1320, 1320, .18, .07, .025)),
+    'bump': (('triangle', 150, 65, .08, 0, .10),),
+    'stomp': (('square', 220, 65, .14, 0, .045),),
+    'hurt': (('square', 350, 90, .4, 0, .035),
+             ('triangle', 220, 60, .3, .2, .06)),
+}
+for name, notes in (('start', (523, 659, 784)),
+                     ('checkpoint', (523, 659, 784)),
+                     ('win', (523, 659, 784, 1046, 784, 1046))):
+    SOUNDS[name] = tuple(('triangle', f, f, .18, i*.11, .09)
+                         for i, f in enumerate(notes))
+
+
+def loadBest():
+    global storageAvailable
+    try:
+        text = browser.storage_get(BEST_KEY)
+        game.best = min(999999999, max(0, int(text or '0')))
+    except (ValueError, TypeError):
+        game.best = 0
+    except (PermissionError, RuntimeError, ReferenceError):
+        storageAvailable = False
+        game.best = 0
+
+
+def persistBest():
+    global bestNeedsSave
+    bestNeedsSave = True
+
+
+def playSound(name):
+    if soundEnabled and len(soundQueue) < 8:
+        soundQueue.append(name)
+
+
+def resetSound():
+    global audioNeedsStop
+    soundQueue.clear()
+    audioNeedsStop = True
+
+
+def transitionAudio(resume):
+    global soundEnabled, soundRunning
+    # One outstanding audio transition; the native queue also has a hard cap.
+    if any(action == 'audio' for action in platformPending.values()): return
+    try:
+        token = browser.audio_resume() if resume else browser.audio_suspend()
+        platformPending[token] = 'audio'
+    except (PermissionError, RuntimeError, ValueError):
+        if resume:
+            soundEnabled = soundRunning = False
+            soundQueue.clear()
+            queueUI('soundButton', 'pressed', False)
+            queueUI('soundButton', 'text', '开启音效')
+        showToast('音效暂不可用，可再次点击开启。')
+
+
+def toggleSound(event):
+    global soundEnabled, soundRunning
+    if any(action == 'audio' for action in platformPending.values()): return
+    soundEnabled = not soundEnabled
+    resetSound()
+    if not soundEnabled:
+        browser.audio_stop()
+        soundRunning = False
+    transitionAudio(soundEnabled)
+    queueUI('soundButton', 'pressed', soundEnabled)
+    queueUI('soundButton', 'text', '关闭音效' if soundEnabled else '开启音效')
+    if soundEnabled: playSound('coin')
+
+
+def toggleFullscreen(event):
+    if 'fullscreen' in platformPending.values(): return
+    try:
+        token = (browser.exit_fullscreen() if browser.is_fullscreen()
+                 else browser.request_fullscreen(node('stage')))
+        platformPending[token] = 'fullscreen'
+    except (PermissionError, RuntimeError, ValueError):
+        showToast('浏览器未允许全屏，仍可继续游玩。')
+
+
+def exportSource(event):
+    try:
+        browser.export_document('python-mario-lab.html')
+        showToast('源码已提交下载，请查看浏览器下载列表。')
+    except (PermissionError, RuntimeError, ValueError):
+        showToast('源码下载未获允许，请稍后通过按钮重试。')
+
+
+def platformPageChanged(page):
+    global platformActive
+    active = not page.hidden and page.has_focus
+    if platformActive != active:
+        platformActive = active
+        resetSound()
+        if soundEnabled: transitionAudio(active and game.state != 'paused')
+
+
+def platformTick(timestamp, started):
+    global soundRunning, soundEnabled, audioNeedsStop, bestNeedsSave
+    global storageAvailable, platformLastTick, platformLastState
+    # At most one platform action per frame, leaving rendering/UI headroom.
+    if time.perf_counter()-started >= .003: return
+    if audioNeedsStop:
+        audioNeedsStop = False
+        browser.audio_stop()
+        return
+    if bestNeedsSave:
+        bestNeedsSave = False
+        try:
+            browser.storage_set(BEST_KEY, str(game.best))
+            storageAvailable = True
+        except (PermissionError, RuntimeError, ValueError):
+            storageAvailable = False
+            showToast('无法保存最高分，本局仍可正常游玩。')
+        return
+    if platformPending:
+        completion = browser.poll()
+        if completion:
+            token, success, detail = completion
+            action = platformPending.pop(token, None)
+            if action == 'audio':
+                soundRunning = success and browser.audio_state() == 'running'
+                if soundEnabled and not success:
+                    soundEnabled = False
+                    soundQueue.clear()
+                    queueUI('soundButton', 'pressed', False)
+                    queueUI('soundButton', 'text', '开启音效')
+                    showToast('音效未能开启，可再次点击重试。')
+            elif action == 'fullscreen' and not success:
+                showToast('浏览器未允许全屏操作，可继续在页面内游玩。')
+            return
+    if game.state != platformLastState:
+        platformLastState = game.state
+        if game.state == 'paused':
+            resetSound()
+        return
+    desired = soundEnabled and platformActive and game.state != 'paused'
+    if soundRunning != desired and 'audio' not in platformPending.values():
+        transitionAudio(desired)
+        return
+    if soundEnabled and soundRunning and platformActive and soundQueue:
+        tones = []
+        while soundQueue and len(tones)+len(SOUNDS[soundQueue[0]]) <= 16:
+            tones.extend(SOUNDS[soundQueue.pop(0)])
+        try: browser.play_tones(tones)
+        except (RuntimeError, ValueError): pass  # Busy/limited output may drop effects.
+        return
+    if timestamp-platformLastTick >= 250:
+        platformLastTick = timestamp
+        fullscreen = browser.is_fullscreen()
+        queueUI('fullscreenButton', 'text', '退出全屏' if fullscreen else '全屏游戏')
+        queueUI('bestCount', 'text', str(game.best))
+
+
+loadBest()
 </pyscript>
 <!-- cacheLandscape() -->
 <pyscript nonce="python-mario">

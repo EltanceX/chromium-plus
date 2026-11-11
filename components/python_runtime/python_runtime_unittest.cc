@@ -22,6 +22,15 @@ namespace {
 class TestDomHost final : public DomHost {
  public:
   bool IsActive() const override { return active; }
+  BrowserResult Browser(const BrowserRequest& r) override {
+    browser_requests.push_back(r);
+    if (on_browser) {
+      on_browser();
+    }
+    return {{{}, failure, "Browser denied"}, "native-value", 42, true};
+  }
+  std::vector<BrowserRequest> browser_requests;
+  std::function<void()> on_browser;
   DomResult GetElementById(std::string_view id) override {
     ++gets;
     if (on_get) {
@@ -209,6 +218,108 @@ class TestDomHost final : public DomHost {
 
 CallbackEvent Click(bool trusted = false) {
   return {"click", {7, 1, 3}, trusted};
+}
+
+TEST(PythonRuntimeTest, BrowserTypedOperationsAndCompletions) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  const auto r = context->Execute(R"PY(
+import browser, dom
+assert browser.storage_get('best') == 'native-value'
+browser.storage_set('best', '5170')
+assert browser.audio_resume() == 42
+assert browser.audio_suspend() == 42
+browser.audio_stop()
+assert browser.audio_state() == 'native-value'
+browser.play_tones([('triangle', 220, 620, .15, .1, .03)])
+assert browser.request_fullscreen(dom.get_element_by_id('stage')) == 42
+assert browser.exit_fullscreen() == 42
+assert browser.is_fullscreen() is True
+browser.export_document('game.html')
+assert browser.poll() == (42, True, 'native-value')
+)PY",
+                                  "browser.py", &host);
+  ASSERT_TRUE(r.success) << r.error;
+  ASSERT_EQ(12u, host.browser_requests.size());
+  EXPECT_EQ("5170", host.browser_requests[1].value);
+  ASSERT_EQ(1u, host.browser_requests[6].tones.size());
+  EXPECT_EQ(.1, host.browser_requests[6].tones[0].delay);
+  EXPECT_EQ(7u, host.browser_requests[7].element.document);
+}
+
+TEST(PythonRuntimeTest, BrowserRejectsInvalidArgumentsBeforeHostCalls) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  const auto r = context->Execute(R"PY(
+import browser
+def expect(error, fn):
+    try: fn()
+    except error: return
+    raise AssertionError('expected validation error')
+expect(ValueError, lambda: browser.storage_get('x'*257))
+expect(ValueError, lambda: browser.storage_set('x', 'a'*16385))
+expect(ValueError, lambda: browser.storage_get('x\0y'))
+expect(TypeError, lambda: browser.storage_get(1))
+expect(TypeError, lambda: browser.request_fullscreen(1))
+expect(ValueError, lambda: browser.play_tones([]))
+expect(ValueError, lambda: browser.play_tones([('sine', 20, 20, .1, 0, .1)]*17))
+expect(TypeError, lambda: browser.play_tones(iter([])))
+conversion_called = False
+class NumericHook:
+    def __float__(self):
+        global conversion_called
+        conversion_called = True
+        return 220.0
+expect(TypeError, lambda: browser.play_tones([('sine', NumericHook(), 220, .1, 0, .1)]))
+assert not conversion_called
+class Tone(tuple): pass
+expect(TypeError, lambda: browser.play_tones([Tone(('sine', 220, 220, .1, 0, .1))]))
+for tone in [('noise', 20, 20, .1, 0, .1), ('sine', float('nan'), 20, .1, 0, .1),
+             ('sine', 19, 20, .1, 0, .1), ('sine', 20, 20, 3, 0, .1),
+             ('sine', 20, 20, .1, -1, .1), ('sine', 20, 20, .1, 0, 1)]:
+    expect(ValueError, lambda: browser.play_tones([tone]))
+)PY",
+                                  "browser.py", &host);
+  ASSERT_TRUE(r.success) << r.error;
+  EXPECT_TRUE(host.browser_requests.empty());
+}
+
+TEST(PythonRuntimeTest, BrowserUsesFatalDomBudget) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  const auto r =
+      context->Execute("import browser\nfor _ in range(1025): browser.poll()",
+                       "budget.py", &host);
+  EXPECT_FALSE(r.success);
+  EXPECT_EQ(StopReason::kDomCalls, r.stop_reason);
+  EXPECT_EQ(1024u, host.browser_requests.size());
+}
+
+TEST(PythonRuntimeTest, BrowserPostCallRevocationDiscardsResult) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  host.on_browser = [&] { host.active = false; };
+  const auto r = context->Execute(
+      "import browser\nbrowser.storage_get('secret')", "revoked.py", &host);
+  EXPECT_FALSE(r.success);
+  EXPECT_EQ(StopReason::kInactive, r.stop_reason);
+}
+
+TEST(PythonRuntimeTest, BrowserReportsNativePolicyRejection) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  TestDomHost host;
+  host.failure = DomError::kNotAllowed;
+  const auto r = context->Execute(
+      "import browser\ntry: browser.audio_resume()\nexcept PermissionError: "
+      "print('denied')",
+      "denied.py", &host);
+  EXPECT_TRUE(r.success) << r.error;
+  EXPECT_EQ("denied\n", r.stdout_text);
 }
 
 TEST(PythonRuntimeTest, TypedControlsPassSnapshotsAndExplicitOperations) {
