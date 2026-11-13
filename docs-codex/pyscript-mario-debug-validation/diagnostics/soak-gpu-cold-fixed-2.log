@@ -1,0 +1,7 @@
+SOAK 30 cycles 34244 ms 1405 frames
+PASS Debug soak retains input rendering and page lifecycle
+{
+  "passed": true,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\soak-gpu-cold-fixed-2.json"
+}

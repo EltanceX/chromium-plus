@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\soak-settle-probe.json",
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript] Python block exceeded the 100 ms cooperative execution budget\",\"timestamp\":1794582736460.668,\"url\":\"http://127.0.0.1:54555/sample\",\"lineNumber\":1408}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:149:87)\n    at async navigate (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:256:3)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:567:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:266:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:566:20"
+}

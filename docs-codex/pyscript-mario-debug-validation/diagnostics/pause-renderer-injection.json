@@ -1,0 +1,1056 @@
+{
+  "description": "Controlled suspension of only the isolated test renderer main thread; each suspend paired with resume in finally.",
+  "events": [
+    {
+      "index": 0,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 1,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 2,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 3,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 4,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 5,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 6,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 7,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 8,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 9,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 10,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 11,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 12,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 13,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 14,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 15,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 16,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 17,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 18,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 19,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 20,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 21,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 22,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 23,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 24,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 25,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 26,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 27,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 28,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 29,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 30,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 31,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 32,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 33,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 34,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 35,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 36,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 37,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 38,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 39,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 40,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 41,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 42,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 43,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 44,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 45,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 46,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 47,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 48,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 49,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 50,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 51,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 52,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 53,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 54,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 55,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 56,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 57,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 58,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 59,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 60,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 61,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 62,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 63,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 64,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 65,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 66,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 67,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 68,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 69,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 70,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 71,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 72,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 73,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 74,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 75,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 76,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 77,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 78,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 79,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 80,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 81,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 82,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 83,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 84,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 85,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 86,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 87,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 88,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 89,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 90,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 91,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 92,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 93,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 94,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 95,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 96,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 97,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 98,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 99,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 100,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 101,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 102,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 103,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 104,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 105,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 106,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 107,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 108,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 109,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 110,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 111,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 112,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 113,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 114,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 115,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 116,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 117,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 118,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 119,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 120,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 121,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 122,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 123,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 124,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 125,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 126,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 127,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 128,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 129,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 130,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 131,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 132,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 133,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 134,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 135,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 136,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 137,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 138,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 139,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 140,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 141,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 142,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 143,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 144,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 145,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 146,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 147,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 148,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 149,
+      "pid": 12632,
+      "tid": 12464,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    }
+  ],
+  "driverExitCode": 0
+}

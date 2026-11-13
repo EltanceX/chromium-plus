@@ -1,0 +1,7 @@
+{
+  "beforeSha256": "e2d58baf82e6484ddf89275c8b520002163bf07d8c6c971900be5f07ca909175",
+  "backup": "object-backups/v8_get_animations_options.obj",
+  "debugSymbolsPreserved": true,
+  "reason": "String table missing terminal null; linker section 312",
+  "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_get_animations_options.obj"
+}

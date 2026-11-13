@@ -1,0 +1,55 @@
+[
+  {
+    "backup": "object-backups/v8_internal_runtime_flags.obj",
+    "debugSymbolsPreserved": true,
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_runtime_flags.obj",
+    "reason": "Invalid COFF section names; matches linker section 944",
+    "beforeSha256": "528d9d6a597c185d1ce1574c6a7c29f60674f3863e5e21244a6e782fb795217c",
+    "afterSha256": "c0171f293ff8a2571a3f7951c8b3cf15b02ed9dde4090daac1cc6d9c4713bd13",
+    "hashChanged": true
+  },
+  {
+    "backup": "object-backups/custom_password_heuristics.obj",
+    "reason": "Unrecognized COFF header",
+    "debugSymbolsPreserved": true,
+    "object": "obj/third_party/blink/renderer/core/core/custom_password_heuristics.obj",
+    "beforeSha256": "21cc25f409c5ecbebab33b1cdd2658a8751369a3641fbcfdcbcad99e7750b188",
+    "afterSha256": "ea059bdf099e5051957dea9c5115ce95d0136fa1b7dd883bdc6ac5884173dce5",
+    "hashChanged": true
+  },
+  {
+    "beforeSha256": "e2d58baf82e6484ddf89275c8b520002163bf07d8c6c971900be5f07ca909175",
+    "backup": "object-backups/v8_get_animations_options.obj",
+    "debugSymbolsPreserved": true,
+    "reason": "String table missing terminal null; linker section 312",
+    "object": "obj/third_party/blink/renderer/bindings/core/v8/v8/v8_get_animations_options.obj",
+    "afterSha256": "4520970f9e76e330e9c7db6df7470a9a934676d1104b5941ba836ed70e9b768c",
+    "hashChanged": true
+  },
+  {
+    "backup": "object-backups/custom_element_registry.obj",
+    "debugSymbolsPreserved": true,
+    "object": "obj\\third_party\\blink\\renderer\\core\\core\\custom_element_registry.obj",
+    "reasons": [
+      "Invalid CodeView type at 0x7c319f: length 58701, kind 0x33aa",
+      "Invalid CodeView type extent 0x7c319f != 0x8a50a3",
+      "Invalid procedure ID 0xa112 at 0x31dccf, type kind out of range",
+      "Invalid procedure ID 0xa115 at 0x31e0bf, type kind out of range",
+      "Invalid procedure ID 0xa116 at 0x31e627, type kind out of range",
+      "Invalid procedure ID 0xa11d at 0x31ea0f, type kind out of range",
+      "Invalid procedure ID 0xa124 at 0x31ee13, type kind out of range",
+      "Invalid procedure ID 0xa139 at 0x31f203, type kind out of range",
+      "Invalid procedure ID 0xa13c at 0x31f5e7, type kind out of range",
+      "Invalid procedure ID 0xa150 at 0x31f82f, type kind out of range",
+      "Invalid procedure ID 0xa154 at 0x31fc0f, type kind out of range",
+      "Invalid procedure ID 0xa15c at 0x320067, type kind out of range",
+      "Invalid procedure ID 0xa15e at 0x320597, type kind out of range",
+      "Invalid procedure ID 0xa15f at 0x32098f, type kind out of range",
+      "Invalid procedure ID 0xa163 at 0x320dbf, type kind out of range",
+      "Invalid procedure ID 0xa164 at 0x321253, type kind out of range"
+    ],
+    "beforeSha256": "97d769262628770049c3180567c17189f2dc8f5022bc179d2e49d7836c1e4249",
+    "afterSha256": "a9b5721c4decccc5ab56ed6fac76cf430d70111195c2fbf277592e44f1fd67d4",
+    "hashChanged": true
+  }
+]

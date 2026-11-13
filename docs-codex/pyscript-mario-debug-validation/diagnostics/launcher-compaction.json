@@ -1,0 +1,20 @@
+[
+  {
+    "path": "gpu-before.json",
+    "originalSha256": "d538940af684ccc4be7778a9664dc7b09f6de4f9fa799ec4c1bd98e8c7e1a0f4",
+    "resultSha256": "a8efbd23e14fcdfe61fa4310e786dd8bb51e4f4b2251f51c37088c8b71c01975",
+    "executed": [
+      "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization",
+      "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry"
+    ]
+  },
+  {
+    "path": "gpu-after.json",
+    "originalSha256": "f736b7853c770ea4b604ed0a49fde3164eec31ee7085d575b20e271ed199b7b6",
+    "resultSha256": "4b756796c7b3e67f013dda1764c872be6fbc01050696d870a6dcbf7de3bc36c4",
+    "executed": [
+      "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization",
+      "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry"
+    ]
+  }
+]

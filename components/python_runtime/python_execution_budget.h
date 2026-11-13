@@ -35,7 +35,7 @@ class ExecutionBudget {
   bool CheckTime();
   void Stop(StopReason reason);
   bool RaiseIfStopped(bool check_host = true);
-  bool TraceCheckpoint(int event);
+  bool TraceCheckpoint();
   bool ConsumeOutput(size_t bytes);
   bool ConsumeDomCall();
   size_t OutputRemaining() const;
@@ -52,6 +52,9 @@ class ExecutionBudget {
   Mode mode_ = Mode::kIdle;
   StopReason reason_ = StopReason::kNone;
   base::TimeTicks started_;
+  base::TimeTicks last_check_;
+  base::ThreadTicks thread_started_;
+  base::TimeDelta max_check_gap_;
   base::TimeDelta elapsed_;
   size_t output_bytes_ = 0;
   bool cleanup_exhausted_ = false;

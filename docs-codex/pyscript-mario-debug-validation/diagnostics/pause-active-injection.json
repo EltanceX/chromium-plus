@@ -1,0 +1,55 @@
+{
+  "description": "Controlled suspension of only the isolated test renderer main thread; each suspend paired with resume in finally.",
+  "events": [
+    {
+      "index": 0,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 1,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 2,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 3,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 4,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 5,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    },
+    {
+      "index": 6,
+      "pid": 12256,
+      "tid": 16964,
+      "previousSuspendCount": 0,
+      "pauseMs": 20
+    }
+  ],
+  "driverExitCode": 1
+}

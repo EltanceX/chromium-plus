@@ -1,0 +1,12 @@
+[8840:1580:1114/002354.972:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[8840:1580:1114/002355.309:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:49526/devtools/browser/9ba19b09-010c-48f4-8f74-8487b17bbad3
+[7396:14668:1114/002356.154:ERROR:ui\gl\direct_composition_support.cc:615] AMD VideoProcessorGetOutputExtension failed: 未指定的错误 (0x80004005)
+[8840:1580:1114/002356.663:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[8840:1580:1114/002356.663:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[8840:1580:1114/002357.017:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[8840:1580:1114/002357.158:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[8840:18096:1114/002357.859:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[8840:18096:1114/002357.908:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[8840:1580:1114/002401.880:INFO:CONSOLE:1425] "[pyscript] Python event skipped: document policy or execution state does not allow callbacks.", source: http://127.0.0.1:49491/sample (1425)

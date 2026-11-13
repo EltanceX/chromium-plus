@@ -8,6 +8,7 @@
 #include <utility>
 
 #include "base/check.h"
+#include "base/logging.h"
 #include "base/time/tick_clock.h"
 
 namespace native_python {
@@ -62,6 +63,10 @@ bool ExecutionBudget::Begin(DomHost* host, ExecutionKind kind) {
   callback_output_bytes_ = 0;
   host_ = host;
   started_ = clock_->NowTicks();
+  last_check_ = started_;
+  max_check_gap_ = base::TimeDelta();
+  thread_started_ = base::ThreadTicks::IsSupported() ? base::ThreadTicks::Now()
+                                                     : base::ThreadTicks();
   mode_ = Mode::kExecute;
   trace_events_ = 0;
   return true;
@@ -112,6 +117,19 @@ void ExecutionBudget::Stop(StopReason reason) {
   if (reason_ == StopReason::kNone) {
     reason_ = reason;
     stopped_kind_ = kind_;
+    if (reason == StopReason::kBlockTime ||
+        reason == StopReason::kDocumentTime) {
+      const double cpu_ms =
+          thread_started_.is_null()
+              ? -1
+              : (base::ThreadTicks::Now() - thread_started_).InMillisecondsF();
+      LOG(WARNING) << "[python-budget] kind=" << static_cast<int>(kind_)
+                   << " wall_ms="
+                   << (clock_->NowTicks() - started_).InMillisecondsF()
+                   << " cpu_ms=" << cpu_ms
+                   << " max_check_gap_ms=" << max_check_gap_.InMillisecondsF()
+                   << " trace_events=" << trace_events_;
+    }
   }
 }
 
@@ -126,7 +144,10 @@ bool ExecutionBudget::CheckTime() {
   if (mode_ == Mode::kIdle) {
     return false;
   }
-  const auto duration = clock_->NowTicks() - started_;
+  const auto now = clock_->NowTicks();
+  max_check_gap_ = std::max(max_check_gap_, now - last_check_);
+  last_check_ = now;
+  const auto duration = now - started_;
   if (mode_ == Mode::kCleanup) {
     cleanup_exhausted_ |= duration >= kCleanupTime;
     return !cleanup_exhausted_;
@@ -189,13 +210,15 @@ bool ExecutionBudget::RaiseIfStopped(bool check_host) {
   return true;
 }
 
-bool ExecutionBudget::TraceCheckpoint(int event) {
-  // Retain the time/latched-stop check on every function call and return.
-  // Sample the more expensive page policy at most 64 trace events apart,
-  // counting calls/returns too. Bridges, entry and finish still check it fully.
+bool ExecutionBudget::TraceCheckpoint() {
+  // Check time on every line, call, return and exception. CPython also emits
+  // line events for backward jumps to the same line, so a single-line loop or
+  // inlined comprehension cannot avoid the deadline. Per-opcode callbacks add
+  // substantial Debug overhead without making native calls preemptible.
+  // Sample page policy at most 64 events apart; bridges, entry and finish
+  // continue to check it fully.
   const bool policy = (++trace_events_ & 63) == 0;
-  return (policy || event == PyTrace_CALL || event == PyTrace_RETURN) &&
-         RaiseIfStopped(policy);
+  return RaiseIfStopped(policy);
 }
 
 bool ExecutionBudget::ConsumeOutput(size_t bytes) {
@@ -226,15 +249,10 @@ bool ExecutionBudget::ConsumeDomCall() {
   return true;
 }
 
-int BudgetTrace(PyObject* token, PyFrameObject* frame, int event, PyObject*) {
+int BudgetTrace(PyObject* token, PyFrameObject*, int, PyObject*) {
   auto* budget = static_cast<ExecutionBudget*>(
       PyCapsule_GetPointer(token, kBudgetCapsuleName));
-  if (!budget || budget->TraceCheckpoint(event)) {
-    return -1;
-  }
-  if (event == PyTrace_CALL &&
-      PyObject_SetAttrString(reinterpret_cast<PyObject*>(frame),
-                             "f_trace_opcodes", Py_True) < 0) {
+  if (!budget || budget->TraceCheckpoint()) {
     return -1;
   }
   return 0;

@@ -1,0 +1,36 @@
+offline mode
+ninja: Entering directory `C:\src\src\out\Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 14.8946755s
+load siso config done 14.1027ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:8624+ready:0 (node:441081 edge:8648)
+schedule pending:27280+ready:0 (node:441081 edge:27296)
+schedule pending:56107+ready:0 (node:441081 edge:56116)
+schedule pending:91658+ready:0 (node:441081 edge:91669)
+ 4.68s schedule pending:92875+ready:9234 (node:441081 edge:102109)
+
+build start: Ready 9234 Pending 92875
+[0/12241] 45.67s S LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+[0/1] 53.06s F LINK python_document_context_unittests.exe python_document_context_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:1 remote:0 cache:0 skip:102108
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 991(err:2) / r:764(err:0) 455.33MiB / w:1(err:0) 106.54KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+53.94s Build Succeeded: 1 steps - 0.02/s

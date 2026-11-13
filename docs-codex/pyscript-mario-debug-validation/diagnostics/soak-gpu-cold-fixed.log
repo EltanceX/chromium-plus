@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\soak-gpu-cold-fixed.json",
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:154:9)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:598:9\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:266:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:566:20"
+}

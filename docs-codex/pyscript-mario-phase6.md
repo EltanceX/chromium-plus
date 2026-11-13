@@ -1,6 +1,8 @@
 # 阶段六：合成音效、最高分、全屏与导出
 
-日期：2026-11-11 开始，2026-11-12 更新构建与验收记录。原项目 `C:/VD/Projects/mario/index.html` 保持只读。
+日期：2026-11-11 开始，2026-11-14 更新最终 Debug 验收。原项目 `C:/VD/Projects/mario/index.html` 保持只读。
+
+后续 Debug 稳定性修复与验收已完成：460 项统一检查及硬件 GPU 完整 Mario/5 分钟交互共 36 项全部通过。逐行追踪、GPU 冷启动、冻结恢复驱动修正和新证据见[Debug 最终记录](pyscript-mario-debug-validation.md)。以下 2026-11-12 的失败汇总作为历史保留，不改写为成功；Release 按用户要求暂不构建。
 
 ## 实现
 
@@ -49,7 +51,7 @@
 
 ## 验证与记录
 
-阶段六功能和标准五目标构建已完成；新增平台专项 15 项全部通过，完整统一验收仍有一项 Debug 帧超限，不能标记全部验收完成。标准目标为 chrome、blink_unittests、python_runtime_unittests、python_document_context_unittests、native_python_settings_unittests。
+阶段六 Debug 功能和标准五目标构建已完成。2026-11-14 的最终 460 项统一验收全部通过，验证期间 875 个功能输入保持不变，详见[最终结果](pyscript-mario-debug-validation/final/summary.json)。标准目标为 chrome、blink_unittests、python_runtime_unittests、python_document_context_unittests、native_python_settings_unittests。下面保留此前仍有一项 Debug 帧超限的历史验收。
 
 主体实现提交为 `2f5ffd4dc9`，前次阶段性记录为 `32e60f9e94`。本轮补齐导出元数据预检、对话框 autofocus 与构建后的实际验证。当前结果、源码/二进制哈希和限制见[验证记录](pyscript-mario-platform-validation/README.md)及[统一汇总](pyscript-mario-platform-validation/final/summary.json)。
 

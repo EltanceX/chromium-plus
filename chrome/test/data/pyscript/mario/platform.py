@@ -26,7 +26,6 @@ for name, notes in (('start', (523, 659, 784)),
     SOUNDS[name] = tuple(('triangle', f, f, .18, i*.11, .09)
                          for i, f in enumerate(notes))
 
-
 def loadBest():
     global storageAvailable
     try:

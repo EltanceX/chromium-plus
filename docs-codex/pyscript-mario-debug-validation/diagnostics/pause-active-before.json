@@ -1,0 +1,75 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:65099",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "caseFilter": "full-level-route",
+  "skippedCases": [
+    "Typed native controls retain values flags literal text and bounded styles",
+    "Grouped rectangles preserve native pixels costs and atomic rejection",
+    "Python-only game initializes under nonce CSP and existing sandbox",
+    "Trusted start movement and variable jump use native Python callbacks",
+    "Pause clears held controls and stops world time",
+    "Restart is repeatable without allocating more native surfaces",
+    "Pointer capture moves and releasing stops the player",
+    "Hidden and frozen page clears input and resets the time baseline",
+    "Movement buttons support native keyboard hold release and focus cleanup",
+    "Native range keyboard actions update Python parameters without game shortcuts",
+    "Collision checkbox changes native Canvas pixels and remains keyboard accessible",
+    "Reset restores all native values checkboxes and Python output labels",
+    "Tabs use native focus roving tabindex arrows Home and End",
+    "All eight Python lessons wrap and flow cards select the explanation tab",
+    "Learning dialog pauses clears input selects a lesson and restores focus",
+    "Native Escape closes dialogs without resuming or restarting the game",
+    "State HUD progress and bounded event log follow native gameplay",
+    "Narrow resize uses 790 logical pixels and reduced motion stays interactive",
+    "Embedded original-JavaScript oracle: acceleration-brake",
+    "Embedded original-JavaScript oracle: long-jump",
+    "Embedded original-JavaScript oracle: short-jump",
+    "Embedded original-JavaScript oracle: question-once",
+    "Embedded original-JavaScript oracle: collect-coin",
+    "Embedded original-JavaScript oracle: stomp",
+    "Embedded original-JavaScript oracle: side-hit-respawn",
+    "Embedded original-JavaScript oracle: pit-respawn",
+    "Embedded original-JavaScript oracle: checkpoint-respawn",
+    "Embedded original-JavaScript oracle: last-life",
+    "Embedded original-JavaScript oracle: timeout-reset",
+    "Embedded original-JavaScript oracle: finish",
+    "Embedded original-JavaScript oracle: coyote",
+    "Embedded original-JavaScript oracle: jump-buffer"
+  ],
+  "cases": [
+    {
+      "name": "Embedded original-JavaScript oracle: full-level-route",
+      "passed": false,
+      "elapsedMs": 2569,
+      "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 45] Python animation frame exceeded the 16 ms cooperative execution budget\",\"timestamp\":1794579352916.093,\"url\":\"http://127.0.0.1:65099/oracle/full-level-route\",\"lineNumber\":1423}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:144:87)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:516:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:240:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:514:5",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript frame 2] ORACLE 1 {'game': {'state': 'playing', 'score': 0, 'coins': 0, 'lives': 3, 'remaining': 179.99166666666667, 'camera': 0.0, 'checkpoint': False, 'elapsed': 0.008333333333333333, 'deathTime': 0, 'finishTime': 0, 'best': 0, 'deaths': 0}, 'player': {'x': 96.15277777777777, 'y': 460, 'w': 28, 'h': 44, 'vx': 18.333333333333332, 'vy': 0, 'facing': 1, 'onGround': True, 'coyote': 0.1, 'jumpBuffer': 0, 'invincible': 0}, 'usedBlocks': [], 'collectedCoins': [], 'enemies': [{'x': 759.5416666666666, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 1360.4583333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 2079.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 2340.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 3469.5416666666665, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 4060.4583333333335, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 4869.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}, {'x': 5480.458333333333, 'y': 472, 'w': 34, 'h': 32, 'vx': 55, 'alive': True, 'squish': 0}, {'x': 6039.541666666667, 'y': 472, 'w': 34, 'h': 32, 'vx': -55, 'alive': True, 'squish': 0}], 'particles': [], 'particleCount': 0, 'floatTexts': [], 'rng': 1296126537}\n",
+          "timestamp": 1794579351878.093,
+          "url": "http://127.0.0.1:65099/oracle/full-level-route",
+          "lineNumber": 1423
+        },
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 45] Python animation frame exceeded the 16 ms cooperative execution budget",
+          "timestamp": 1794579352916.093,
+          "url": "http://127.0.0.1:65099/oracle/full-level-route",
+          "lineNumber": 1423
+        }
+      ],
+      "pageState": {
+        "status": "正在初始化 Python…",
+        "telemetry": "等待状态数据",
+        "metrics": "等待绘制数据"
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 45] Python animation frame exceeded the 16 ms cooperative execution budget\",\"timestamp\":1794579352916.093,\"url\":\"http://127.0.0.1:65099/oracle/full-level-route\",\"lineNumber\":1423}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:144:87)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:516:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:240:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:514:5"
+}

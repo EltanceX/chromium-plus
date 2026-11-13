@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\pause-active-before.json",
+  "error": "Error: [{\"source\":\"other\",\"level\":\"error\",\"text\":\"[pyscript frame 45] Python animation frame exceeded the 16 ms cooperative execution budget\",\"timestamp\":1794579352916.093,\"url\":\"http://127.0.0.1:65099/oracle/full-level-route\",\"lineNumber\":1423}]\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:144:87)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:516:7\n    at async check (file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:240:20)\n    at async file:///C:/src/src/chrome/test/pyscript_mario_smoke_test.mjs:514:5"
+}

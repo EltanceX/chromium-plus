@@ -1,0 +1,57 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:60562",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "caseFilter": "full-level-route",
+  "skippedCases": [
+    "Typed native controls retain values flags literal text and bounded styles",
+    "Grouped rectangles preserve native pixels costs and atomic rejection",
+    "Python-only game initializes under nonce CSP and existing sandbox",
+    "Trusted start movement and variable jump use native Python callbacks",
+    "Pause clears held controls and stops world time",
+    "Restart is repeatable without allocating more native surfaces",
+    "Pointer capture moves and releasing stops the player",
+    "Hidden and frozen page clears input and resets the time baseline",
+    "Movement buttons support native keyboard hold release and focus cleanup",
+    "Native range keyboard actions update Python parameters without game shortcuts",
+    "Collision checkbox changes native Canvas pixels and remains keyboard accessible",
+    "Reset restores all native values checkboxes and Python output labels",
+    "Tabs use native focus roving tabindex arrows Home and End",
+    "All eight Python lessons wrap and flow cards select the explanation tab",
+    "Learning dialog pauses clears input selects a lesson and restores focus",
+    "Native Escape closes dialogs without resuming or restarting the game",
+    "State HUD progress and bounded event log follow native gameplay",
+    "Narrow resize uses 790 logical pixels and reduced motion stays interactive",
+    "Embedded original-JavaScript oracle: acceleration-brake",
+    "Embedded original-JavaScript oracle: long-jump",
+    "Embedded original-JavaScript oracle: short-jump",
+    "Embedded original-JavaScript oracle: question-once",
+    "Embedded original-JavaScript oracle: collect-coin",
+    "Embedded original-JavaScript oracle: stomp",
+    "Embedded original-JavaScript oracle: side-hit-respawn",
+    "Embedded original-JavaScript oracle: pit-respawn",
+    "Embedded original-JavaScript oracle: checkpoint-respawn",
+    "Embedded original-JavaScript oracle: last-life",
+    "Embedded original-JavaScript oracle: timeout-reset",
+    "Embedded original-JavaScript oracle: finish",
+    "Embedded original-JavaScript oracle: coyote",
+    "Embedded original-JavaScript oracle: jump-buffer",
+    "Navigation and reload discard prior game callbacks and resources",
+    "Game closes normally with a pending native animation frame"
+  ],
+  "cases": [
+    {
+      "name": "Embedded original-JavaScript oracle: full-level-route",
+      "passed": true,
+      "elapsedMs": 48593,
+      "detail": {
+        "steps": 2773,
+        "checkpoints": 6,
+        "final": "won:5170:True"
+      }
+    }
+  ],
+  "passed": true
+}

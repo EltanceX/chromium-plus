@@ -1,0 +1,336 @@
+{
+  "binary": "C:\\src\\src\\out\\Debug\\chrome.exe",
+  "origin": "http://127.0.0.1:52143",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "originalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1",
+  "caseFilter": "",
+  "graphicsMode": "software",
+  "soakSeconds": 0,
+  "skippedCases": [],
+  "cases": [
+    {
+      "name": "Typed native controls retain values flags literal text and bounded styles",
+      "passed": true,
+      "elapsedMs": 467
+    },
+    {
+      "name": "Grouped rectangles preserve native pixels costs and atomic rejection",
+      "passed": true,
+      "elapsedMs": 412
+    },
+    {
+      "name": "Python-only game initializes under nonce CSP and existing sandbox",
+      "passed": true,
+      "elapsedMs": 1449,
+      "detail": {
+        "state": {
+          "state": "ready",
+          "x": "96.000",
+          "y": "460.000",
+          "vx": "0.000",
+          "vy": "0.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "12",
+          "elapsed": "0.000",
+          "steps": "0",
+          "keys": "0",
+          "particles": "0"
+        },
+        "metrics": "commands:28 bytes:3656 pixels:3192336 native_ms:27.000 | lifetime max physics_ms:0.534 build_ms:0.000 submit_ms:0.027 total_ms:3.208 p95_ms:2.928 gap_ms:100.0 steps:0 dropped_s:0.067"
+      }
+    },
+    {
+      "name": "Trusted start movement and variable jump use native Python callbacks",
+      "passed": true,
+      "elapsedMs": 2271,
+      "detail": {
+        "state": {
+          "state": "playing",
+          "x": "301.000",
+          "y": "383.067",
+          "vx": "0.000",
+          "vy": "385.333",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "82",
+          "elapsed": "1.017",
+          "steps": "2",
+          "keys": "0",
+          "particles": "5"
+        },
+        "metrics": "commands:34 bytes:4431 pixels:3192552 native_ms:2.000 | lifetime max physics_ms:3.298 build_ms:1.109 submit_ms:3.724 total_ms:7.094 p95_ms:5.079 gap_ms:100.0 steps:3 dropped_s:0.983"
+      }
+    },
+    {
+      "name": "Pause clears held controls and stops world time",
+      "passed": true,
+      "elapsedMs": 672,
+      "detail": {
+        "before": {
+          "state": "paused",
+          "x": "301.000",
+          "y": "412.756",
+          "vx": "0.000",
+          "vy": "492.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "89",
+          "elapsed": "1.083",
+          "steps": "0",
+          "keys": "0",
+          "particles": "3"
+        },
+        "after": {
+          "state": "paused",
+          "x": "301.000",
+          "y": "412.756",
+          "vx": "0.000",
+          "vy": "492.000",
+          "coins": "0",
+          "score": "0",
+          "lives": "3",
+          "checkpoint": "0",
+          "frames": "114",
+          "elapsed": "1.083",
+          "steps": "0",
+          "keys": "0",
+          "particles": "3"
+        }
+      }
+    },
+    {
+      "name": "Restart is repeatable without allocating more native surfaces",
+      "passed": true,
+      "elapsedMs": 1643
+    },
+    {
+      "name": "Pointer capture moves and releasing stops the player",
+      "passed": true,
+      "elapsedMs": 1046
+    },
+    {
+      "name": "Hidden and frozen page clears input and resets the time baseline",
+      "passed": true,
+      "elapsedMs": 1593
+    },
+    {
+      "name": "Movement buttons support native keyboard hold release and focus cleanup",
+      "passed": true,
+      "elapsedMs": 2545
+    },
+    {
+      "name": "Native range keyboard actions update Python parameters without game shortcuts",
+      "passed": true,
+      "elapsedMs": 1413
+    },
+    {
+      "name": "Collision checkbox changes native Canvas pixels and remains keyboard accessible",
+      "passed": true,
+      "elapsedMs": 332
+    },
+    {
+      "name": "Reset restores all native values checkboxes and Python output labels",
+      "passed": true,
+      "elapsedMs": 3499
+    },
+    {
+      "name": "Tabs use native focus roving tabindex arrows Home and End",
+      "passed": true,
+      "elapsedMs": 798
+    },
+    {
+      "name": "All eight Python lessons wrap and flow cards select the explanation tab",
+      "passed": true,
+      "elapsedMs": 2688
+    },
+    {
+      "name": "Learning dialog pauses clears input selects a lesson and restores focus",
+      "passed": true,
+      "elapsedMs": 1509
+    },
+    {
+      "name": "Native Escape closes dialogs without resuming or restarting the game",
+      "passed": true,
+      "elapsedMs": 617
+    },
+    {
+      "name": "State HUD progress and bounded event log follow native gameplay",
+      "passed": true,
+      "elapsedMs": 2266
+    },
+    {
+      "name": "Narrow resize uses 790 logical pixels and reduced motion stays interactive",
+      "passed": true,
+      "elapsedMs": 1355
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: acceleration-brake",
+      "passed": true,
+      "elapsedMs": 3474,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 4,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: long-jump",
+      "passed": true,
+      "elapsedMs": 3028,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 4,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: short-jump",
+      "passed": true,
+      "elapsedMs": 2909,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: question-once",
+      "passed": true,
+      "elapsedMs": 3290,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 3,
+        "final": "playing:200:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: collect-coin",
+      "passed": true,
+      "elapsedMs": 615,
+      "detail": {
+        "steps": 2,
+        "checkpoints": 2,
+        "final": "playing:100:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: stomp",
+      "passed": true,
+      "elapsedMs": 751,
+      "detail": {
+        "steps": 12,
+        "checkpoints": 2,
+        "final": "playing:400:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: side-hit-respawn",
+      "passed": true,
+      "elapsedMs": 3271,
+      "detail": {
+        "steps": 160,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: pit-respawn",
+      "passed": true,
+      "elapsedMs": 3457,
+      "detail": {
+        "steps": 170,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: checkpoint-respawn",
+      "passed": true,
+      "elapsedMs": 3438,
+      "detail": {
+        "steps": 170,
+        "checkpoints": 3,
+        "final": "playing:500:True"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: last-life",
+      "passed": true,
+      "elapsedMs": 3102,
+      "detail": {
+        "steps": 150,
+        "checkpoints": 2,
+        "final": "over:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: timeout-reset",
+      "passed": true,
+      "elapsedMs": 2910,
+      "detail": {
+        "steps": 140,
+        "checkpoints": 2,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: finish",
+      "passed": true,
+      "elapsedMs": 3642,
+      "detail": {
+        "steps": 180,
+        "checkpoints": 3,
+        "final": "won:2300:True"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: coyote",
+      "passed": true,
+      "elapsedMs": 1440,
+      "detail": {
+        "steps": 50,
+        "checkpoints": 3,
+        "final": "playing:100:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: jump-buffer",
+      "passed": true,
+      "elapsedMs": 1109,
+      "detail": {
+        "steps": 30,
+        "checkpoints": 3,
+        "final": "playing:0:False"
+      }
+    },
+    {
+      "name": "Embedded original-JavaScript oracle: full-level-route",
+      "passed": true,
+      "elapsedMs": 47645,
+      "detail": {
+        "steps": 2773,
+        "checkpoints": 6,
+        "final": "won:5170:True"
+      }
+    },
+    {
+      "name": "Navigation and reload discard prior game callbacks and resources",
+      "passed": true,
+      "elapsedMs": 1715
+    },
+    {
+      "name": "Game closes normally with a pending native animation frame",
+      "passed": true,
+      "elapsedMs": 545
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "pid": 2852,
+    "tid": 7236,
+    "cpu": 6140.625,
+    "commandLine": "\"C:\\src\\src\\out\\Debug\\chrome.exe\" --type=renderer --top-chrome-webui --gpu-client-id=5 --noerrdialogs --user-data-dir=\"C:\\Users\\ELTANC~1\\AppData\\Local\\Temp\\pyscript-mario-mr0zHk\\restricted\" --native-python-allowed-origin=http://127.0.0.1:65099 --enable-blink-features=PythonScript --no-pre-read-main-dll --force-high-res-timeticks=disabled --remote-debugging-port=0 --disable-gpu-compositing --enable-blink-features=PythonScript --video-capture-use-gpu-memory-buffer --lang=zh-CN --disallow-v8-feature-flag-overrides --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --gpu-channel-request-start-time-ticks=626648825000 --field-trial-handle=2040,i,9070467526619068723,5941228122498172690,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=2044,i,1283511534521688571,11201266749439001820,4 --trace-process-track-uuid=1003691075701075960 --enable-logging=stderr --mojo-platform-channel-handle=3700 /prefetch:1"
+  },
+  {
+    "pid": 11040,
+    "tid": 13508,
+    "cpu": 1296.875,
+    "commandLine": "\"C:\\src\\src\\out\\Debug\\chrome.exe\" --type=renderer --gpu-client-id=7 --noerrdialogs --user-data-dir=\"C:\\Users\\ELTANC~1\\AppData\\Local\\Temp\\pyscript-mario-mr0zHk\\restricted\" --native-python-allowed-origin=http://127.0.0.1:65099 --enable-blink-features=PythonScript --no-pre-read-main-dll --force-high-res-timeticks=disabled --remote-debugging-port=0 --disable-gpu-compositing --enable-blink-features=PythonScript --video-capture-use-gpu-memory-buffer --lang=zh-CN --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --gpu-channel-request-start-time-ticks=626649328000 --field-trial-handle=2040,i,9070467526619068723,5941228122498172690,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=2044,i,1283511534521688571,11201266749439001820,4 --trace-process-track-uuid=2582240524623261922 --enable-logging=stderr --mojo-platform-channel-handle=4064 /prefetch:1"
+  },
+  {
+    "pid": 12256,
+    "tid": 16964,
+    "cpu": 3203.125,
+    "commandLine": "\"C:\\src\\src\\out\\Debug\\chrome.exe\" --type=renderer --gpu-client-id=6 --noerrdialogs --user-data-dir=\"C:\\Users\\ELTANC~1\\AppData\\Local\\Temp\\pyscript-mario-mr0zHk\\restricted\" --native-python-allowed-origin=http://127.0.0.1:65099 --enable-blink-features=PythonScript --no-pre-read-main-dll --force-high-res-timeticks=disabled --remote-debugging-port=0 --disable-gpu-compositing --enable-blink-features=PythonScript --video-capture-use-gpu-memory-buffer --lang=zh-CN --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --gpu-channel-request-start-time-ticks=626649336000 --field-trial-handle=2040,i,9070467526619068723,5941228122498172690,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=2044,i,1283511534521688571,11201266749439001820,4 --trace-process-track-uuid=1792965800162168941 --enable-logging=stderr --mojo-platform-channel-handle=4164 /prefetch:1"
+  },
+  {
+    "pid": 16824,
+    "tid": 11980,
+    "cpu": 1046.875,
+    "commandLine": "\"C:\\src\\src\\out\\Debug\\chrome.exe\" --type=renderer --gpu-client-id=9 --noerrdialogs --user-data-dir=\"C:\\Users\\ELTANC~1\\AppData\\Local\\Temp\\pyscript-mario-mr0zHk\\restricted\" --native-python-allowed-origin=http://127.0.0.1:65099 --enable-blink-features=PythonScript --extension-process --no-pre-read-main-dll --force-high-res-timeticks=disabled --remote-debugging-port=0 --disable-gpu-compositing --enable-blink-features=PythonScript --video-capture-use-gpu-memory-buffer --lang=zh-CN --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=9 --gpu-channel-request-start-time-ticks=626650507000 --field-trial-handle=2040,i,9070467526619068723,5941228122498172690,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=2044,i,1283511534521688571,11201266749439001820,4 --trace-process-track-uuid=4160789973545447884 --enable-logging=stderr --mojo-platform-channel-handle=5024 /prefetch:9"
+  },
+  {
+    "pid": 17988,
+    "tid": 8928,
+    "cpu": 1109.375,
+    "commandLine": "\"C:\\src\\src\\out\\Debug\\chrome.exe\" --type=renderer --gpu-client-id=10 --noerrdialogs --user-data-dir=\"C:\\Users\\ELTANC~1\\AppData\\Local\\Temp\\pyscript-mario-mr0zHk\\restricted\" --native-python-allowed-origin=http://127.0.0.1:65099 --enable-blink-features=PythonScript --extension-process --no-pre-read-main-dll --force-high-res-timeticks=disabled --remote-debugging-port=0 --disable-gpu-compositing --enable-blink-features=PythonScript --video-capture-use-gpu-memory-buffer --lang=zh-CN --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=10 --gpu-channel-request-start-time-ticks=626650529000 --field-trial-handle=2040,i,9070467526619068723,5941228122498172690,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=2044,i,1283511534521688571,11201266749439001820,4 --trace-process-track-uuid=1332393692002499652 --enable-logging=stderr --mojo-platform-channel-handle=5160 /prefetch:9"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "backup": "object-backups/v8_internal_runtime_flags.obj",
+  "debugSymbolsPreserved": true,
+  "object": "obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_runtime_flags.obj",
+  "reason": "Invalid COFF section names; matches linker section 944",
+  "beforeSha256": "528d9d6a597c185d1ce1574c6a7c29f60674f3863e5e21244a6e782fb795217c"
+}

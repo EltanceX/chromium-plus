@@ -9,6 +9,8 @@
 #include "base/check.h"
 #include "base/memory/raw_ref.h"
 #include "base/test/bind.h"
+#include "third_party/abseil-cpp/absl/cleanup/cleanup.h"
+#include "third_party/blink/public/platform/web_graphics_context_3d_provider.h"
 #include "third_party/blink/public/platform/web_security_origin.h"
 #include "third_party/blink/public/web/web_navigation_params.h"
 #include "third_party/blink/public/web/web_python_script_runner.h"
@@ -36,9 +38,11 @@
 #include "third_party/blink/renderer/core/testing/sim/sim_test.h"
 #include "third_party/blink/renderer/platform/bindings/exception_state.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
+#include "third_party/blink/renderer/platform/graphics/gpu/shared_gpu_context.h"
 #include "third_party/blink/renderer/platform/heap/thread_state.h"
 #include "third_party/blink/renderer/platform/scheduler/public/frame_scheduler.h"
 #include "third_party/blink/renderer/platform/testing/runtime_enabled_features_test_helpers.h"
+#include "third_party/blink/renderer/platform/testing/testing_platform_support.h"
 #include "third_party/blink/renderer/platform/testing/unit_test_helpers.h"
 #include "third_party/blink/renderer/platform/wtf/text/string_builder.h"
 #include "url/url_util.h"
@@ -207,6 +211,54 @@ class HTMLPyScriptElementTest : public SimTest {
   ScopedPythonScriptForTest enabled_{true};
   RecordingPythonRunner runner_;
 };
+
+class PythonGpuPreparationTestPlatform : public TestingPlatformSupport {
+ public:
+  bool IsGpuCompositingDisabled() const override { return false; }
+};
+
+TEST_F(HTMLPyScriptElementTest, CanvasGpuPreparedBeforeInterpreterEntry) {
+  ScopedTestingPlatformSupport<PythonGpuPreparationTestPlatform> platform;
+  SharedGpuContext::Reset();
+  absl::Cleanup reset = [] { SharedGpuContext::Reset(); };
+  unsigned preparations = 0;
+  SharedGpuContext::SetContextProviderFactoryForTesting(
+      base::BindLambdaForTesting(
+          [&]() -> std::unique_ptr<WebGraphicsContext3DProvider> {
+            ++preparations;
+            EXPECT_EQ(0u, runner_.contexts_created);
+            return nullptr;
+          }));
+  Load("<canvas></canvas><pyscript>prepare canvas</pyscript>");
+  EXPECT_EQ(1u, preparations);
+  EXPECT_EQ(1u, runner_.contexts_created);
+  EXPECT_EQ(1u, runner_.batches);
+}
+
+TEST_F(HTMLPyScriptElementTest, CanvasGpuPreparationRechecksAuthorization) {
+  ScopedTestingPlatformSupport<PythonGpuPreparationTestPlatform> platform;
+  SharedGpuContext::Reset();
+  absl::Cleanup reset = [] { SharedGpuContext::Reset(); };
+  unsigned preparations = 0;
+  SharedGpuContext::SetContextProviderFactoryForTesting(
+      base::BindLambdaForTesting(
+          [&]() -> std::unique_ptr<WebGraphicsContext3DProvider> {
+            ++preparations;
+            runner_.allow = false;
+            return nullptr;
+          }));
+  Load("<pyscript>no canvas</pyscript>");
+  EXPECT_EQ(0u, preparations);
+  EXPECT_EQ(1u, runner_.contexts_created);
+  runner_.allow = false;
+  Load("<canvas></canvas><pyscript>denied</pyscript>");
+  EXPECT_EQ(0u, preparations);
+  EXPECT_EQ(1u, runner_.contexts_created);
+  runner_.allow = true;
+  Load("<canvas></canvas><pyscript>revoked during preparation</pyscript>");
+  EXPECT_EQ(1u, preparations);
+  EXPECT_EQ(1u, runner_.contexts_created);
+}
 
 TEST_F(HTMLPyScriptElementTest,
        DetachedListenerCanBeRemovedWithoutReattaching) {

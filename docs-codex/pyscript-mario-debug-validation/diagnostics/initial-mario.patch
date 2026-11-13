@@ -1,0 +1,12 @@
+diff --git a/chrome/test/data/pyscript/mario.html b/chrome/test/data/pyscript/mario.html
+index e6282d4b42..7c04a19183 100644
+--- a/chrome/test/data/pyscript/mario.html
++++ b/chrome/test/data/pyscript/mario.html
+@@ -1261,7 +1261,6 @@ for name, notes in (('start', (523, 659, 784)),
+     SOUNDS[name] = tuple(('triangle', f, f, .18, i*.11, .09)
+                          for i, f in enumerate(notes))
+
+-
+ def loadBest():
+     global storageAvailable
+     try:

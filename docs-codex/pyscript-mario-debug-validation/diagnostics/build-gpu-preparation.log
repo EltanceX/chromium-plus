@@ -1,0 +1,48 @@
+ninja: Entering directory `out/Debug'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.2106013s
+load siso config done 13.3008ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:90848+ready:0 (node:441081 edge:90853)
+ 1.14s schedule pending:92857+ready:9228 (node:441081 edge:102085)
+
+build start: Ready 9228 Pending 92857
+[0/15844] 31.70s S CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[0/2289] 1m01.26s F CXX obj/third_party/blink/renderer/core/core/python_script_controller.obj
+[1/2289] 1m01.29s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2289] 1m15.34s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: 2dcc1c39-2ab0-4020-b649-107837cb6c3d "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: obj/third_party/blink/renderer/core/core/custom_password_heuristics.obj: unknown file type
+lld-link: error: getSectionName failed: #312: string table empty
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99796
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 3865(err:2) / r:764(err:0) 14.53MiB / w:1(err:0) 379.23KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m16.31s Build Failure: 2 done, 1 failed, 2287 remaining - 0.03/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261113-235549.6976
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

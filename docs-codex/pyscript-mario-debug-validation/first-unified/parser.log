@@ -1,0 +1,32 @@
+PASS sandboxed Python, shared globals, immutable source, errors and DCL order
+PASS network chunks, CRLF normalization and mixed-case closing tag
+PASS inert input /unclosed
+PASS inert input /unsupported
+PASS inert input /write
+PASS inert input /write-split
+PASS inert input /removed
+PASS literal closing tag ends RAWTEXT and reports Python syntax error
+PASS 64 KiB source and 16 block limits
+PASS bounded output diagnostic
+PASS CSP none blocks Python
+PASS CSP elem blocks Python
+PASS CSP fallback blocks Python
+PASS CSP sandbox blocks Python
+PASS CSP opaque blocks Python
+PASS CSP nonce allows matching Python source
+PASS CSP hash allows matching Python source
+PASS CSP report allows matching Python source
+PASS dangling-markup and duplicate attributes cannot borrow a nonce
+PASS disabled page scripting blocks Python
+PASS navigation creates fresh Python globals
+PASS same-document navigation does not rerun Python
+PASS default-off
+PASS missing-origin
+PASS wrong-origin
+PASS malformed-origin
+PASS non-loopback-origin
+{
+  "passed": true,
+  "cases": 27,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\final-1\\parser.json"
+}

@@ -1,0 +1,47 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "CanvasRenderingContext2DAPITest.DefaultAttributeValues": [
+        {
+          "elapsed_time_ms": 171,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 6884,
+          "timestamp": "2026-11-13T16:46:56.790Z"
+        }
+      ],
+      "CanvasRenderingContext2DAPITest.LineDashStateSave": [
+        {
+          "elapsed_time_ms": 120,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 6884,
+          "timestamp": "2026-11-13T16:46:56.961Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "CanvasRenderingContext2DAPITest.DefaultAttributeValues": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\canvas_rendering_context_2d_api_test.cc",
+      "line": 234
+    },
+    "CanvasRenderingContext2DAPITest.LineDashStateSave": {
+      "file": "..\\..\\third_party\\blink\\renderer\\modules\\canvas\\canvas2d\\canvas_rendering_context_2d_api_test.cc",
+      "line": 248
+    }
+  }
+}

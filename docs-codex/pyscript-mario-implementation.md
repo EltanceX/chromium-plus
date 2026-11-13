@@ -3,8 +3,8 @@
 - 整理日期：2026-11-10（Asia/Shanghai）。
 - 浏览器实现基线：`ed9a245bf1e2d6913029eaf733865776ecde6e3a`。
 - 参考项目：`C:\VD\Projects\mario\index.html`；源文件 SHA-256：`53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1`。
-- 当前状态（2026-11-11 更新）：阶段一至五已完成。阶段五交付类型化控件、完整教学面板及页面交互，415 项统一验收见[页面交互记录](pyscript-mario-phase5.md)。阶段四交付纯 Python 核心关卡、静态 math 和原版轨迹对照，见[核心迁移记录](pyscript-mario-phase4.md)；历史验收见[Canvas 实现记录](pyscript-canvas-phase3.md)、[输入事件记录](pyscript-input-phase2.md)和[动画帧记录](pyscript-animation-phase1.md)。阶段六至七尚未实施，后续接口名称、目录及新增额度仍为设计建议，实施时以代码、测试和阶段记录为准。
-- 目标平台：首先延续 Windows x64 Debug 的原生 CPython 路线，再以 Windows x64 Release 验证性能。
+- 当前状态（2026-11-14 更新）：阶段一至六及阶段七的 Debug 范围已完成。最终 460 项统一验收和独立硬件 GPU 36 项（含 5 分钟交互）全部通过，见[Debug 稳定性与验收](pyscript-mario-debug-validation.md)；阶段六的音效、最高分、全屏和导出见[平台能力记录](pyscript-mario-phase6.md)。阶段五的控件与教学页面见[页面交互记录](pyscript-mario-phase5.md)，核心物理迁移见[阶段四](pyscript-mario-phase4.md)；历史验收见[Canvas](pyscript-canvas-phase3.md)、[输入](pyscript-input-phase2.md)和[动画帧](pyscript-animation-phase1.md)。设计建议与已实现接口的差异以代码及阶段记录为准。
+- 目标平台：当前按用户要求保持 Windows x64 Debug，不构建 Release；Release 性能验证暂缓。
 - 前置成果：[原生 Python MVP](pyscript-native-python-mvp-implementation.md)、[文档上下文与 DOM](pyscript-phase3-document-context-dom.md)、[解释器设置与页面模式](pyscript-settings-and-page-permissions.md)、[click 方案](pyscript-click-events-implementation.md)、[交互预算与清理](pyscript-event-phase4-budgets-and-cleanup.md)、[click 最终验收](pyscript-event-phase5-build-and-browser-validation.md)。
 
 ## 1. 最终目标与范围
@@ -282,7 +282,7 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段六：合成音效、最高分、全屏与导出
 
-状态：功能和标准五目标构建已完成，平台专项 15 项、独立 Mario 35 项通过。最新统一验收 453 项通过、1 项失败、2 项因提前停止未执行；Debug 整关数值回放仍会触发 16 ms 帧预算，因此尚未标记全部验收完成。接口、修复与实际结果见[阶段六记录](pyscript-mario-phase6.md)及[验收证据](pyscript-mario-platform-validation/README.md)。
+状态：Debug 功能与验收已完成。最终标准五目标构建、460 项统一验收及硬件 GPU 完整 Mario/5 分钟交互共 36 项全部通过，见[后续修复与证据](pyscript-mario-debug-validation.md)。原先 453 项通过、1 项失败、2 项未执行的历史结果继续保留，不覆盖成成功。接口及原始排查见[阶段六记录](pyscript-mario-phase6.md)和[历史验收](pyscript-mario-platform-validation/README.md)。
 
 1. 实现音调调度子集和音频上下文生命周期，迁移 jump / coin / bump / stomp / hurt / checkpoint / start / win。
 2. 实现同源存储与异常路径，保存最高分并验证重启 / 刷新后的读取。
@@ -294,16 +294,16 @@ Document、Window 使用单独的有类型目标句柄，不把任意全局对�
 
 ### 阶段七：完整构建、真实浏览器、性能与记录
 
-当前待办：先定位并处理 Debug 间歇单帧停止，再完成 Release/GPU、长时真实游玩和扬声器听感。阶段六最新统一结果保持 `passed=false`；既有独立成功不能替换失败记录。
+当前状态：Debug 范围完成。逐行追踪降低执行成本，原生 GPU 依赖在解释器入口前准备；预算、沙箱和致命停止锁存保持原值。全新 profile 冷启动、硬件 GPU 5 分钟可信输入与生命周期压力、完整 460 项统一验收均有实际证据，见[最终记录](pyscript-mario-debug-validation.md)。用户本轮明确暂不构建 Release；数小时人工游玩、Release 性能及扬声器主观听感不属于已验证结论。
 
 1. 顺序运行标准目标构建、所有新增能力单测及受影响回归，按实际新增数量更新验收编排器。
 2. 建立独立 Python 马里奥浏览器脚本，以真实输入覆盖核心玩法与全部外围功能。
 3. 检查交付 HTML 没有可执行 JS、事件属性或 JS 桥接依赖；测试驱动的 CDP 检查不作为游戏运行代码。
 4. 验证持续游玩、重复开局、后台恢复、resize、导航、刷新、open、框架销毁、权限模式和正常关闭。
-5. 在 Windows x64 Release、记录明确机器配置下测量性能，再决定是否调整额度；保留 Debug 回归。
+5. 记录 Windows x64 Debug 的实际硬件后端、性能诊断和持续交互结果；Release 按用户要求暂缓，不为取得成功放宽现有额度。
 6. 保存结果、失败记录、截图、输入轨迹、源码 / 二进制哈希和配置，更新本文与分阶段记录。
 
-完成标准：下节最终清单全部取得实际证据。不能以旧测试通过数量、计划目标、headless FPS 或帧内 Python 时间代替整页真实运行表现。
+完成标准：下节清单按本轮 Debug 范围取得实际证据；Release 和主观听感单独标记暂缓/未验证。不能以旧测试通过数量、计划目标、headless FPS 或帧内 Python 时间代替整页真实运行表现。
 
 ## 9. 验证与最终验收
 
@@ -322,15 +322,15 @@ python chrome/test/run_pyscript_event_validation.py
 
 性能验证分开记录 Python 时间、参数转换 / 提交时间、原生绘制成本、帧间隔、输入到可见响应和资源趋势。先取得可玩的稳定基线，再以 60 FPS 为前台目标；60 Hz 总帧时间约 16.7 ms，Python 平均耗时只能占其中一部分。机器、分辨率、DPR、构建类型、前后台状态及实际采样区间必须随报告保存。本文不承诺 Debug 或所有设备达到 60 FPS。
 
-- [ ] 页面全部游戏逻辑和交互由 Python 驱动，HTML/CSS 与原生浏览器能力正常配合，无可执行 JS 依赖。
-- [ ] 键盘和触屏可操作，失焦 / 隐藏 / 取消指针后无卡键，控件正常获得键盘输入。
-- [ ] 开始、暂停、继续、重开、受伤、死亡、复活、检查点、金币、敌人和通关均通过可复现检查。
-- [ ] 原有画面要素、HUD、碰撞框、慢动作、滑块、课程及对话框完整可用，教学内容已改为 Python。
-- [ ] 音效、最高分、全屏及源码下载可用；导出文件重新打开后仍具备无 JS 的完整能力。
-- [ ] 单次和窗口预算、绘图 / 音频 / 内存资源限制有效；窗口恢复不积压旧帧，致命停止不可复活。
-- [ ] 导航、刷新、open、节点 / 框架失效、GC、普通异常和正常关闭无旧资源误用或非法 Python 清理。
-- [ ] 受限来源、CSP、页面模式、用户激活及 Renderer 沙箱按既有约定生效，特权页面排除保持有效。
-- [ ] 新增和受影响回归实际通过，Release 性能和持续运行结果有明确配置及记录，已知限制如实保存。
+- [x] 页面全部游戏逻辑和交互由 Python 驱动，HTML/CSS 与原生浏览器能力正常配合，无可执行 JS 依赖。
+- [x] 键盘和指针触屏控制可操作，失焦 / 隐藏 / 取消指针后无卡键，控件正常获得键盘输入；由外部可信输入验证，未声称覆盖全部实体触屏硬件。
+- [x] 开始、暂停、继续、重开、受伤、死亡、复活、检查点、金币、敌人和通关均通过可复现检查。
+- [x] 画面、HUD、碰撞框、慢动作、滑块、课程及对话框可用，教学内容已改为 Python；绘图细节简化仍按阶段四记录保留。
+- [x] 音效原生图/状态、最高分、全屏及源码下载通过；导出文件重新打开后仍无 JS 运行依赖，扬声器听感另行验证。
+- [x] 单次和窗口预算、绘图 / 音频原生资源限制有效；窗口恢复不积压旧帧，致命停止不可复活；不宣称整个 Python 堆有内存硬隔离。
+- [x] 导航、刷新、open、节点 / 框架失效、GC、普通异常和正常关闭回归通过。
+- [x] 受限来源、CSP、页面模式、用户激活及 Renderer 沙箱按既有约定生效，特权页面排除保持有效。
+- [x] 新增和受影响回归、Debug 构建及硬件 GPU 持续交互通过，配置、哈希、失败历史和已知限制已保存；Release 按用户要求暂缓。
 
 ## 10. 当前边界与推荐起点
 
@@ -338,4 +338,4 @@ python chrome/test/run_pyscript_event_validation.py
 
 当前嵌入式 CPython 不是语言安全沙箱；执行预算仍为协作式。新增 Canvas 等资源可以建立原生资源硬上限，但不能据此声称整个 Python 堆或 Renderer 已有内存硬隔离。异步平台接口、权限拒绝和长期性能须在各阶段取得实际证据。
 
-阶段一至五已完成原生帧调度、连续输入、批量 Canvas 2D、纯 Python 核心关卡及完整控件/教学页面交互。阶段六功能、标准构建和平台专项已完成，导出重载与正常重启持久化已有实际证据；最新统一运行保留整关回放的一次 16 ms 帧停止，尚未全绿。下一步优先处理这一稳定性问题，再完成阶段七的 Release/GPU、长期真实游玩、听感和性能验证。每个关键部分继续保留独立样例、回归和可审阅的提交边界。
+阶段一至六的 Python 游戏及平台功能、阶段七的 Debug 构建与验收已完成。最终统一运行全绿，硬件 GPU 5 分钟交互与冷启动通过；旧失败仍可审阅。优化增加正常执行余量，不能保证操作系统暂停线程超过 16 ms 后继续游玩，也不承诺固定帧率。Release 按本轮要求暂缓，长期人工游玩及听感可在后续需要时单独验证。

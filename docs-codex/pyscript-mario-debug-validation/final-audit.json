@@ -1,0 +1,32 @@
+{
+  "auditedAt": "2026-11-13T17:06:40.803276+00:00",
+  "integrityChecksPassed": true,
+  "debugOnly": true,
+  "releaseBuilt": false,
+  "unifiedPassed": true,
+  "totalPassed": 460,
+  "archivedFilesVerified": 266,
+  "functionalInputsVerified": 875,
+  "preservedInputsVerified": 33,
+  "recoveredObjects": 4,
+  "documentationLinksVerified": 47,
+  "soakElapsedMs": 300345,
+  "soakCycles": 259,
+  "lifecycleTransitions": 25,
+  "domCounterRanges": {
+    "documents": {
+      "min": 1,
+      "max": 3
+    },
+    "nodes": {
+      "min": 431,
+      "max": 949
+    },
+    "jsEventListeners": {
+      "min": 1,
+      "max": 6
+    }
+  },
+  "gpuRenderer": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.21912.14)",
+  "externalOriginalSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1"
+}

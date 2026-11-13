@@ -1,0 +1,32 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.3217181s
+load siso config done 11.0921ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:4)
+build start: Ready 5781 Pending 59354
+[0/6227] 31.47s S CXX obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_runtime_flags.obj
+[0/32] 38.94s F CXX obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_runtime_flags.obj
+[1/3] 38.96s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[1/2] 1m14.53s F LINK blink_unittests.exe blink_unittests.exe.pdb
+build finished
+
+
+noexec:0 local:2 remote:0 cache:0 skip:65133
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 807(err:2) / r:572(err:0) 2.36GiB / w:0(err:0) 0B
+
+
+
+1m15.49s Build Succeeded: 2 steps - 0.03/s
+shutdown cloud logging/monitoring done 780.7µs

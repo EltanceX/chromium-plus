@@ -1,0 +1,13 @@
+{
+  "processor": {
+    "Name": "AMD Ryzen 7 5825U with Radeon Graphics         ",
+    "NumberOfCores": 14,
+    "NumberOfLogicalProcessors": 14
+  },
+  "os": {
+    "Version": "10.0.26200",
+    "BuildNumber": "26200",
+    "name": "Windows 11"
+  },
+  "memoryBytes": 42927063040
+}

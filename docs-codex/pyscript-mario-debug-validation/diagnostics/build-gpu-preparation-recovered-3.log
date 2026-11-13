@@ -1,0 +1,37 @@
+ninja: Entering directory `out/Debug'
+offline mode
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.1051849s
+load siso config done 12.12ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:66018+ready:0 (node:441081 edge:66036)
+ 1.38s schedule pending:92857+ready:9228 (node:441081 edge:102085)
+
+build start: Ready 9228 Pending 92857
+[0/17018] 32.07s S CXX obj/third_party/blink/renderer/core/core/custom_element_registry.obj
+[0/2289] 43.65s F CXX obj/third_party/blink/renderer/core/core/custom_element_registry.obj
+[1/2289] 43.67s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2262] 1m04.13s F LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[2/2135] 1m04.14s S ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+[2/38] 1m08.36s F ACTION //tools/v8_context_snapshot:generate_v8_context_snapshot(//build/toolchain/win:win_clang_x64)
+build finished
+
+
+noexec:0 local:3 remote:0 cache:0 skip:102082
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 1005(err:2) / r:767(err:0) 1.81GiB / w:0(err:0) 0B
+
+
+
+1m09.65s Build Succeeded: 3 steps - 0.04/s
+shutdown cloud logging/monitoring done 0s

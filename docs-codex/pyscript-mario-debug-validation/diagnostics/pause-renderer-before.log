@@ -1,0 +1,6 @@
+PASS Embedded original-JavaScript oracle: full-level-route
+{
+  "passed": true,
+  "cases": 1,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\pause-renderer-before.json"
+}

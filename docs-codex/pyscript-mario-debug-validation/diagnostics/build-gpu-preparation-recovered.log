@@ -1,0 +1,47 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 9.0624752s
+load siso config done 11.1494ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:6)
+schedule pending:66586+ready:0 (node:441081 edge:66594)
+ 1.33s schedule pending:92857+ready:9228 (node:441081 edge:102085)
+
+build start: Ready 9228 Pending 92857
+[0/20491] 32.13s S CXX obj/third_party/blink/renderer/core/core/custom_password_heuristics.obj
+[0/2289] 33.89s F CXX obj/third_party/blink/renderer/core/core/custom_password_heuristics.obj
+[1/2289] 33.90s S LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+[1/2289] 39.94s E LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+FAILED: b7461295-72c0-40d5-8c47-5bc8b9f038a3 "./blink_core.dll" LINK(DLL) blink_core.dll blink_core.dll.lib blink_core.dll.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_core.dll" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/IMPLIB:./blink_core.dll.lib" /DLL "/PDB:./blink_core.dll.pdb" "@./blink_core.dll.rsp"
+build step: solink "./blink_core.dll"
+stderr:
+lld-link: error: getSectionName failed: #312: string table empty
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:99796
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 990(err:2) / r:763(err:0) 2.85MiB / w:0(err:0) 0B
+
+
+
+40.62s Build Failure: 2 done, 1 failed, 2287 remaining - 0.05/s
+ cannot make progress due to previous 1 errors: exit=1
+shutdown cloud logging/monitoring done 0s
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261114-000147.11080
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

@@ -1,0 +1,47 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization": [
+        {
+          "elapsed_time_ms": 179,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 11100,
+          "timestamp": "2026-11-13T16:22:45.852Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry": [
+        {
+          "elapsed_time_ms": 312,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [],
+          "status": "SUCCESS",
+          "thread_id": 11100,
+          "timestamp": "2026-11-13T16:22:45.539Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 238
+    },
+    "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 220
+    }
+  }
+}

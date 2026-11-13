@@ -1,0 +1,28 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5471,
+  "problemCount": 1,
+  "firstProblems": [
+    {
+      "object": "obj\\third_party\\blink\\renderer\\core\\core\\custom_element_registry.obj",
+      "errors": [
+        "Invalid CodeView type at 0x7c319f: length 58701, kind 0x33aa",
+        "Invalid CodeView type extent 0x7c319f != 0x8a50a3",
+        "Invalid procedure ID 0xa112 at 0x31dccf, type kind out of range",
+        "Invalid procedure ID 0xa115 at 0x31e0bf, type kind out of range",
+        "Invalid procedure ID 0xa116 at 0x31e627, type kind out of range",
+        "Invalid procedure ID 0xa11d at 0x31ea0f, type kind out of range",
+        "Invalid procedure ID 0xa124 at 0x31ee13, type kind out of range",
+        "Invalid procedure ID 0xa139 at 0x31f203, type kind out of range",
+        "Invalid procedure ID 0xa13c at 0x31f5e7, type kind out of range",
+        "Invalid procedure ID 0xa150 at 0x31f82f, type kind out of range",
+        "Invalid procedure ID 0xa154 at 0x31fc0f, type kind out of range",
+        "Invalid procedure ID 0xa15c at 0x320067, type kind out of range",
+        "Invalid procedure ID 0xa15e at 0x320597, type kind out of range",
+        "Invalid procedure ID 0xa15f at 0x32098f, type kind out of range",
+        "Invalid procedure ID 0xa163 at 0x320dbf, type kind out of range",
+        "Invalid procedure ID 0xa164 at 0x321253, type kind out of range"
+      ]
+    }
+  ]
+}

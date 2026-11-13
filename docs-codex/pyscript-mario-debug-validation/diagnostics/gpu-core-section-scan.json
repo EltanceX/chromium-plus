@@ -1,0 +1,13 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_core.dll.rsp",
+  "directObjects": 5042,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/core/core/custom_password_heuristics.obj",
+      "errors": [
+        "Unknown COFF type: 1cd36745e6e17c470e15d1b44d216818e015d5c9"
+      ],
+      "sha256": "21cc25f409c5ecbebab33b1cdd2658a8751369a3641fbcfdcbcad99e7750b188"
+    }
+  ]
+}

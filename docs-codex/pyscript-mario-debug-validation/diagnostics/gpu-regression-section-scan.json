@@ -1,0 +1,15 @@
+{
+  "response": "C:\\src\\src\\out\\Debug\\blink_unittests.exe.rsp",
+  "directObjects": 4667,
+  "problems": [
+    {
+      "object": "obj/third_party/blink/renderer/bindings/core/v8/testing/v8_internal_runtime_flags.obj",
+      "errors": [
+        "Section 753: invalid name b'/G-c\\t\\x9e\\x01O'",
+        "Section 944: invalid name b'/\\xdd\\xb1JT\\xec%+'",
+        "Section 1092: invalid name b'/\\xf3\\x16\\x9fF\\r\\xb5\\xc7'"
+      ],
+      "sha256": "528d9d6a597c185d1ce1574c6a7c29f60674f3863e5e21244a6e782fb795217c"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+PASS Python-only nonce sample updates and cancels native frames
+PASS Duplicate, repeated cancellation and consumed handles preserve next frame
+PASS One-shot errors consume the old request and allow a new request
+PASS A next frame requested before an ordinary error survives
+PASS Fatal frame limit revokes frames and click listeners: /timeout
+PASS Fatal frame limit revokes frames and click listeners: /dom-stop
+PASS Fatal frame limit revokes frames and click listeners: /output-stop
+PASS Fatal frame limit revokes frames and click listeners: /diagnostic-stop
+PASS Frame output window retains one request and recovers with a fresh timestamp
+PASS Click DOM charges defer one pending frame until the shared window recovers
+PASS Click output and frames share the same window
+PASS Source tag removal and GC retain copied frame authorization
+PASS Late CSP revokes the pending frame and all Python listeners
+PASS Script execution policy revocation cannot revive old frames
+PASS Frozen page resumes with current timestamps without old-frame bursts
+PASS Fragment navigation continues and full navigation starts a fresh context
+PASS document.open revokes the frame before replacement markup
+PASS Detached child frame stops its old counter and replacement is isolated
+PASS Browser closes normally with a pending Python animation frame
+{
+  "passed": true,
+  "cases": 19,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\final-2\\animation.json"
+}

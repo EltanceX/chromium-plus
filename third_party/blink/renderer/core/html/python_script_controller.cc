@@ -24,6 +24,7 @@
 #include "third_party/blink/renderer/core/dom/document_parser.h"
 #include "third_party/blink/renderer/core/dom/dom_token_list.h"
 #include "third_party/blink/renderer/core/dom/element.h"
+#include "third_party/blink/renderer/core/dom/element_traversal.h"
 #include "third_party/blink/renderer/core/dom/events/add_event_listener_options_resolved.h"
 #include "third_party/blink/renderer/core/dom/events/event.h"
 #include "third_party/blink/renderer/core/dom/events/event_dispatch_forbidden_scope.h"
@@ -51,6 +52,7 @@
 #include "third_party/blink/renderer/core/layout/adjust_for_absolute_zoom.h"
 #include "third_party/blink/renderer/platform/bindings/exception_state.h"
 #include "third_party/blink/renderer/platform/bindings/script_forbidden_scope.h"
+#include "third_party/blink/renderer/platform/graphics/gpu/shared_gpu_context.h"
 #include "third_party/blink/renderer/platform/heap/persistent.h"
 #include "third_party/blink/renderer/platform/heap/thread_state.h"
 #include "third_party/blink/renderer/platform/runtime_enabled_features.h"
@@ -1580,6 +1582,16 @@ void PythonScriptController::ExecutePending(Document& document) {
   }
   Persistent<PythonScriptController> protect(controller);
   base::AutoReset<bool> entry(&g_python_running, true);
+  // Prepare the native graphics dependency before starting Python's budget.
+  // Canvas allocation, command validation and drawing remain budgeted.
+  if (Traversal<HTMLCanvasElement>::FirstWithin(document) &&
+      SharedGpuContext::IsGpuCompositingEnabled()) {
+    SharedGpuContext::ContextProviderWrapper();
+    if (controller->stopped_ || !Eligible(document) ||
+        !ScriptsAllowed(document)) {
+      return;
+    }
+  }
   controller->context_ = g_runner->CreateContext();
   if (!controller->context_) {
     Report(document, *accepted.front(), "Could not create the Python context");

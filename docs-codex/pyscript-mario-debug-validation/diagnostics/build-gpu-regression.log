@@ -1,0 +1,44 @@
+offline mode
+ninja: Entering directory `out/Debug'
+
+
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87125 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+
+loading build.ninja... done 10.0788805s
+load siso config done 11.2945ms
+schedule pending:1+ready:0 (node:441081 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:441081 edge:4)
+build start: Ready 5781 Pending 59354
+[0/1210] 31.86s S CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[0/6] 1m14.70s F CXX obj/third_party/blink/renderer/core/unit_tests/html_py_script_element_test.obj
+[1/3] 1m14.73s S LINK blink_unittests.exe blink_unittests.exe.pdb
+[1/3] 1m22.79s E LINK blink_unittests.exe blink_unittests.exe.pdb
+FAILED: f713c467-7861-4339-beb8-8e838120d337 "./blink_unittests.exe" LINK blink_unittests.exe blink_unittests.exe.pdb
+err: exit=1
+..\..\third_party\llvm-build\Release+Asserts\bin\lld-link.exe "/OUT:./blink_unittests.exe" /nologo -libpath:../../third_party/llvm-build/Release+Asserts/lib/clang/24/lib/windows "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/ATLMFC/lib/x64" "-libpath:../../../../Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/lib/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/ucrt/x64" "-libpath:../../../../Program Files (x86)/Windows Kits/10/lib/10.0.28000.0/um/x64" /MACHINE:X64  "/PDB:./blink_unittests.exe.pdb" "@./blink_unittests.exe.rsp"
+build step: link "./blink_unittests.exe"
+stderr:
+lld-link: error: getSectionName failed: #944: invalid section name
+
+
+build failed
+
+
+noexec:0 local:2 remote:0 cache:0 skip:65132
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 5489(err:2) / r:571(err:0) 19.03MiB / w:1(err:0) 396.87KiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+1m23.74s Build Failure: 2 done, 1 failed, 1 remaining - 0.02/s
+ cannot make progress due to previous 1 errors: exit=1
+see .\out\Debug\siso_output for full command line and output
+ or C:\Users\ELTANC~1\AppData\Local\Temp\siso.exe.DESKTOP-PRTHK48.EltanceXV.log.INFO.20261113-234245.10376
+use .\out\Debug\siso_failed_commands.bat to re-run failed commands

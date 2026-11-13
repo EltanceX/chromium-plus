@@ -1168,6 +1168,49 @@ TEST(PythonRuntimeTest, AnimationFatalLimitsLatchAcrossAllEntryKinds) {
   }
 }
 
+TEST(PythonRuntimeTest,
+     AnimationLineTracingStopsSingleLineLoopsAndComprehensions) {
+  for (const char* source : {
+           "def tick(t):\n    while True: pass",
+           "def tick(t): return [i for i in range(100000000)]",
+           "def tick(t):\n    try:\n        while True: pass\n"
+           "    except BaseException: pass",
+       }) {
+    std::string error;
+    auto context = PythonContext::Create(&error);
+    ASSERT_TRUE(context) << error;
+    ASSERT_TRUE(context->Execute(source).success);
+    const auto frame =
+        context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+    ASSERT_TRUE(frame.result.success);
+    const auto start = base::TimeTicks::Now();
+    const auto result = context->InvokeFrameCallback(frame.handle, 1);
+    EXPECT_EQ(StopReason::kBlockTime, result.stop_reason);
+    EXPECT_NE(std::string::npos, result.error.find("16 ms"));
+    EXPECT_LT(base::TimeTicks::Now() - start, base::Seconds(5));
+    EXPECT_FALSE(context->CanInvokeFrameCallback());
+    EXPECT_EQ(StopReason::kBlockTime, context->Execute("pass").stop_reason);
+  }
+}
+
+TEST(PythonRuntimeTest, AnimationNativeWaitStillConsumesWallClockBudget) {
+  std::string error;
+  auto context = PythonContext::Create(&error);
+  ASSERT_TRUE(context) << error;
+  ASSERT_TRUE(context
+                  ->Execute("import dom\ndef tick(t): "
+                            "dom.get_element_by_id('x')")
+                  .success);
+  const auto frame =
+      context->RegisterCallback("tick", ExecutionKind::kAnimationFrame);
+  ASSERT_TRUE(frame.result.success);
+  TestDomHost host;
+  host.on_get = [] { base::PlatformThread::Sleep(base::Milliseconds(25)); };
+  EXPECT_EQ(StopReason::kBlockTime,
+            context->InvokeFrameCallback(frame.handle, 1, &host).stop_reason);
+  EXPECT_FALSE(context->CanInvokeCallback());
+}
+
 TEST(PythonRuntimeTest, OnceConsumptionReleasesCallableEvenAfterException) {
   for (bool fail : {false, true}) {
     std::string error;

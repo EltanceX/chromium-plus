@@ -1,0 +1,82 @@
+{
+  "global_tags": [
+    "CPU_64_BITS",
+    "MODE_DEBUG",
+    "OS_WIN"
+  ],
+  "per_iteration_data": [
+    {
+      "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization": [
+        {
+          "elapsed_time_ms": 286,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+              "line": 259,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  1u\n    Which is: 1\n  preparations\n    Which is: 0\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparationRechecksAuthorization_Test::TestBody [0x7ff77ddc3167+617] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:259)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHByZXBhcmF0aW9ucwogICAgV2hpY2ggaXM6IDAKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6SFRNTFB5U2NyaXB0RWxlbWVudFRlc3RfQ2FudmFzR3B1UHJlcGFyYXRpb25SZWNoZWNrc0F1dGhvcml6YXRpb25fVGVzdDo6VGVzdEJvZHkgWzB4N2ZmNzdkZGMzMTY3KzYxN10gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcYmxpbmtccmVuZGVyZXJcY29yZVxodG1sXGh0bWxfcHlfc2NyaXB0X2VsZW1lbnRfdGVzdC5jYzoyNTkpCglibGlua191bml0dGVzdHMhdGVzdGluZzo6aW50ZXJuYWw6OkhhbmRsZUV4Y2VwdGlvbnNJbk1ldGhvZElmU3VwcG9ydGVkPHRlc3Rpbmc6OlRlc3Qsdm9pZD4gWzB4N2ZmNzc3NWQzOTQ1KzQ1XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxnb29nbGV0ZXN0XHNyY1xnb29nbGV0ZXN0XHNyY1xndGVzdC5jYzoyNzI5KQo=",
+              "summary": "Expected equality of these values:\n  1u\n    Which is: 1\n  preparations\n    Which is: 0",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHByZXBhcmF0aW9ucwogICAgV2hpY2ggaXM6IDA=",
+              "type": "failure"
+            },
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+              "line": 260,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  1u\n    Which is: 1\n  runner_.contexts_created\n    Which is: 2\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparationRechecksAuthorization_Test::TestBody [0x7ff77ddc322f+6df] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:260)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHJ1bm5lcl8uY29udGV4dHNfY3JlYXRlZAogICAgV2hpY2ggaXM6IDIKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6SFRNTFB5U2NyaXB0RWxlbWVudFRlc3RfQ2FudmFzR3B1UHJlcGFyYXRpb25SZWNoZWNrc0F1dGhvcml6YXRpb25fVGVzdDo6VGVzdEJvZHkgWzB4N2ZmNzdkZGMzMjJmKzZkZl0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcYmxpbmtccmVuZGVyZXJcY29yZVxodG1sXGh0bWxfcHlfc2NyaXB0X2VsZW1lbnRfdGVzdC5jYzoyNjApCglibGlua191bml0dGVzdHMhdGVzdGluZzo6aW50ZXJuYWw6OkhhbmRsZUV4Y2VwdGlvbnNJbk1ldGhvZElmU3VwcG9ydGVkPHRlc3Rpbmc6OlRlc3Qsdm9pZD4gWzB4N2ZmNzc3NWQzOTQ1KzQ1XSAoQzpcc3JjXHNyY1x0aGlyZF9wYXJ0eVxnb29nbGV0ZXN0XHNyY1xnb29nbGV0ZXN0XHNyY1xndGVzdC5jYzoyNzI5KQo=",
+              "summary": "Expected equality of these values:\n  1u\n    Which is: 1\n  runner_.contexts_created\n    Which is: 2",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHJ1bm5lcl8uY29udGV4dHNfY3JlYXRlZAogICAgV2hpY2ggaXM6IDI=",
+              "type": "failure"
+            }
+          ],
+          "status": "FAILURE",
+          "thread_id": 19180,
+          "timestamp": "2026-11-13T15:55:03.169Z"
+        }
+      ],
+      "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry": [
+        {
+          "elapsed_time_ms": 2721,
+          "losless_snippet": true,
+          "output_snippet": "",
+          "output_snippet_base64": "",
+          "process_num": 0,
+          "result_parts": [
+            {
+              "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+              "line": 233,
+              "lossless_message": true,
+              "lossless_summary": true,
+              "message": "Expected equality of these values:\n  1u\n    Which is: 1\n  preparations\n    Which is: 0\nStack trace:\n\tblink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparedBeforeInterpreterEntry_Test::TestBody [0x7ff77ddbab2d+1cd] (C:\\src\\src\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc:233)\n\tblink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\\src\\src\\third_party\\googletest\\src\\googletest\\src\\gtest.cc:2729)\n",
+              "message_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHByZXBhcmF0aW9ucwogICAgV2hpY2ggaXM6IDAKU3RhY2sgdHJhY2U6CglibGlua191bml0dGVzdHMhYmxpbms6OmBhbm9ueW1vdXMgbmFtZXNwYWNlJzo6SFRNTFB5U2NyaXB0RWxlbWVudFRlc3RfQ2FudmFzR3B1UHJlcGFyZWRCZWZvcmVJbnRlcnByZXRlckVudHJ5X1Rlc3Q6OlRlc3RCb2R5IFsweDdmZjc3ZGRiYWIyZCsxY2RdIChDOlxzcmNcc3JjXHRoaXJkX3BhcnR5XGJsaW5rXHJlbmRlcmVyXGNvcmVcaHRtbFxodG1sX3B5X3NjcmlwdF9lbGVtZW50X3Rlc3QuY2M6MjMzKQoJYmxpbmtfdW5pdHRlc3RzIXRlc3Rpbmc6OmludGVybmFsOjpIYW5kbGVFeGNlcHRpb25zSW5NZXRob2RJZlN1cHBvcnRlZDx0ZXN0aW5nOjpUZXN0LHZvaWQ+IFsweDdmZjc3NzVkMzk0NSs0NV0gKEM6XHNyY1xzcmNcdGhpcmRfcGFydHlcZ29vZ2xldGVzdFxzcmNcZ29vZ2xldGVzdFxzcmNcZ3Rlc3QuY2M6MjcyOSkK",
+              "summary": "Expected equality of these values:\n  1u\n    Which is: 1\n  preparations\n    Which is: 0",
+              "summary_base64": "RXhwZWN0ZWQgZXF1YWxpdHkgb2YgdGhlc2UgdmFsdWVzOgogIDF1CiAgICBXaGljaCBpczogMQogIHByZXBhcmF0aW9ucwogICAgV2hpY2ggaXM6IDA=",
+              "type": "failure"
+            }
+          ],
+          "status": "FAILURE",
+          "thread_id": 19180,
+          "timestamp": "2026-11-13T15:55:00.446Z"
+        }
+      ]
+    }
+  ],
+  "test_locations": {
+    "HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 238
+    },
+    "HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry": {
+      "file": "..\\..\\third_party\\blink\\renderer\\core\\html\\html_py_script_element_test.cc",
+      "line": 220
+    }
+  }
+}

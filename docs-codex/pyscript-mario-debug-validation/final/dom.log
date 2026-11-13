@@ -1,0 +1,22 @@
+PASS Python-only sample under nonce CSP
+PASS WPT testharness DOM bridge assertions
+PASS Same-document navigation does not rerun blocks
+PASS Different Document globals and modules are isolated
+PASS DOM call budget is shared across blocks
+PASS Pure Python timeout stops later blocks and reload starts fresh
+PASS Document output budget revokes DOM even after caught failure
+PASS Exception formatting has a cooperative time budget
+PASS Oversized exception stops remaining blocks
+PASS Parser diagnostics share the document console limit
+PASS Console truncation stops execution before the next block
+PASS Cyclic Python finalizer loop does not block later navigation
+PASS document.open invalidates the context and never executes written Python
+PASS Python documents cannot return from BFCache
+PASS Reload creates a new Python document context
+PASS Repeated finalizer teardown and document creation stay responsive
+PASS Browser closes normally with a pending cyclic finalizer
+{
+  "passed": true,
+  "cases": 17,
+  "output": "C:\\src\\src\\out\\Debug\\pyscript-mario-debug-stability\\final-2\\dom.json"
+}

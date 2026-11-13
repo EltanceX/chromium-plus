@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "cpp-format",
+      "command": [
+        "C:\\WINDOWS\\system32\\cmd.exe",
+        "/d",
+        "/c",
+        "C:\\src\\depot_tools\\clang-format.bat",
+        "--dry-run",
+        "--Werror",
+        "chrome/renderer/python_document_context.cc",
+        "chrome/renderer/python_document_context_unittest.cc",
+        "components/python_runtime/python_browser_module.cc",
+        "components/python_runtime/python_browser_types.h",
+        "components/python_runtime/python_dom_module.h",
+        "components/python_runtime/python_execution_budget.cc",
+        "components/python_runtime/python_execution_budget.h",
+        "components/python_runtime/python_runtime.cc",
+        "components/python_runtime/python_runtime.h",
+        "components/python_runtime/python_runtime_unittest.cc",
+        "third_party/blink/public/web/web_python_script_runner.h",
+        "third_party/blink/renderer/core/html/html_py_script_element_test.cc",
+        "third_party/blink/renderer/core/html/python_browser_bridge.cc",
+        "third_party/blink/renderer/core/html/python_browser_bridge.h",
+        "third_party/blink/renderer/core/html/python_script_controller.cc",
+        "third_party/blink/renderer/core/html/python_script_controller.h",
+        "third_party/blink/renderer/modules/modules_initializer.cc",
+        "third_party/blink/renderer/modules/python_browser_bridge_impl.cc",
+        "third_party/blink/renderer/modules/python_browser_bridge_impl.h",
+        "third_party/blink/renderer/modules/python_browser_bridge_test.cc"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "gn-format-python_runtime",
+      "command": [
+        "buildtools/win/gn.exe",
+        "format",
+        "--dry-run",
+        "components/python_runtime/BUILD.gn"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "gn-format-html",
+      "command": [
+        "buildtools/win/gn.exe",
+        "format",
+        "--dry-run",
+        "third_party/blink/renderer/core/html/build.gni"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "gn-format-modules",
+      "command": [
+        "buildtools/win/gn.exe",
+        "format",
+        "--dry-run",
+        "third_party/blink/renderer/modules/BUILD.gn"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "checkdeps-python_runtime",
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "buildtools/checkdeps/checkdeps.py",
+        "components/python_runtime"
+      ],
+      "exitCode": 0,
+      "output": "Using base directory: c:\\src\\src\r\nChecking: c:\\src\\src\\components\\python_runtime\r\n\r\nSUCCESS\r\n\r\n"
+    },
+    {
+      "name": "checkdeps-python_browser_bridge_impl.cc",
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/modules/python_browser_bridge_impl.cc"
+      ],
+      "exitCode": 0,
+      "output": "Using base directory: c:\\src\\src\r\nChecking: c:\\src\\src\\third_party\\blink\\renderer\\modules\\python_browser_bridge_impl.cc\r\n\r\nSUCCESS\r\n\r\n"
+    },
+    {
+      "name": "checkdeps-python_script_controller.cc",
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "buildtools/checkdeps/checkdeps.py",
+        "third_party/blink/renderer/core/html/python_script_controller.cc"
+      ],
+      "exitCode": 0,
+      "output": "Using base directory: c:\\src\\src\r\nChecking: c:\\src\\src\\third_party\\blink\\renderer\\core\\html\\python_script_controller.cc\r\n\r\nSUCCESS\r\n\r\n"
+    },
+    {
+      "name": "node-check-pyscript_browser_smoke_test",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--check",
+        "chrome/test/pyscript_browser_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "node-check-pyscript_mario_smoke_test",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "--check",
+        "chrome/test/pyscript_mario_smoke_test.mjs"
+      ],
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "generated-page",
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "chrome/test/build_pyscript_mario.py",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": "Verified C:\\src\\src\\chrome\\test\\data\\pyscript\\mario.html\r\n"
+    },
+    {
+      "name": "diff-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "components/python_runtime",
+        "chrome/renderer/python_document_context.cc",
+        "chrome/renderer/python_document_context_unittest.cc",
+        "third_party/blink/public/web/web_python_script_runner.h",
+        "third_party/blink/renderer/core/html/python_script_controller.cc",
+        "third_party/blink/renderer/core/html/python_script_controller.h",
+        "third_party/blink/renderer/core/html/html_py_script_element_test.cc",
+        "third_party/blink/renderer/modules/modules_initializer.cc",
+        "chrome/test/build_pyscript_mario.py",
+        "chrome/test/data/pyscript/mario.html",
+        "chrome/test/data/pyscript/mario",
+        "chrome/test/pyscript_browser_smoke_test.mjs",
+        "chrome/test/pyscript_mario_smoke_test.mjs",
+        "chrome/test/pyscript_mario_unittest.py",
+        "chrome/test/run_pyscript_event_validation.py",
+        "third_party/blink/renderer/modules/BUILD.gn",
+        "third_party/blink/renderer/core/html/build.gni"
+      ],
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "pythonSyntaxPassed": true,
+  "originalMarioSha256": "53b556316bbc25a5c2c80b046be836dbaaea8aa5c25e85a2cf5f29a4b4bc9ef1"
+}

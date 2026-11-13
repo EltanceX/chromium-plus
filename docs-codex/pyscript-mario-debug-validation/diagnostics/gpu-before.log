@@ -1,0 +1,57 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry:HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from HTMLPyScriptElementTest
+[ RUN      ] HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry
+..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc(233): error: Expected equality of these values:
+  1u
+    Which is: 1
+  preparations
+    Which is: 0
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparedBeforeInterpreterEntry_Test::TestBody [0x7ff77ddbab2d+1cd] (C:\src\src\third_party\blink\renderer\core\html\html_py_script_element_test.cc:233)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry (2721 ms)
+[ RUN      ] HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization
+..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc(259): error: Expected equality of these values:
+  1u
+    Which is: 1
+  preparations
+    Which is: 0
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparationRechecksAuthorization_Test::TestBody [0x7ff77ddc3167+617] (C:\src\src\third_party\blink\renderer\core\html\html_py_script_element_test.cc:259)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc(260): error: Expected equality of these values:
+  1u
+    Which is: 1
+  runner_.contexts_created
+    Which is: 2
+Stack trace:
+	blink_unittests!blink::`anonymous namespace'::HTMLPyScriptElementTest_CanvasGpuPreparationRechecksAuthorization_Test::TestBody [0x7ff77ddc322f+6df] (C:\src\src\third_party\blink\renderer\core\html\html_py_script_element_test.cc:260)
+	blink_unittests!testing::internal::HandleExceptionsInMethodIfSupported<testing::Test,void> [0x7ff7775d3945+45] (C:\src\src\third_party\googletest\src\googletest\src\gtest.cc:2729)
+
+[  FAILED  ] HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization (286 ms)
+[----------] 2 tests from HTMLPyScriptElementTest (3010 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (3093 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry
+[  FAILED  ] HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization
+
+ 2 FAILED TESTS
+[1/2] HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry (2721 ms)
+[2/2] HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization (286 ms)
+2 tests failed:
+    HTMLPyScriptElementTest.CanvasGpuPreparationRechecksAuthorization (..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc:238)
+    HTMLPyScriptElementTest.CanvasGpuPreparedBeforeInterpreterEntry (..\..\third_party\blink\renderer\core\html\html_py_script_element_test.cc:220)
+Tests took 5 seconds.

@@ -1,0 +1,62 @@
+IMPORTANT DEBUGGING NOTE: batches of tests are run inside their
+own process. For debugging a test inside a debugger, use the
+--gtest_filter=<your_test_name> flag along with
+--single-process-tests.
+Using sharding settings from environment. This is shard 0/1
+Using 1 parallel jobs.
+Note: Google Test filter = PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation:PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling:PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames:PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent:PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing:PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices:PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries:PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization:PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation:PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from PythonBrowserBridgeTest
+[ RUN      ] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation
+[       OK ] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation (164 ms)
+[ RUN      ] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling
+[       OK ] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling (134 ms)
+[ RUN      ] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames
+[       OK ] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames (162 ms)
+[ RUN      ] PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent
+[       OK ] PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent (166 ms)
+[ RUN      ] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing
+[       OK ] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing (237 ms)
+[ RUN      ] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices
+[       OK ] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices (129 ms)
+[ RUN      ] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries
+[       OK ] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries (125 ms)
+[ RUN      ] PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization
+[       OK ] PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization (123 ms)
+[ RUN      ] PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation
+[       OK ] PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation (126 ms)
+[ RUN      ] PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget
+[       OK ] PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget (137 ms)
+[----------] 10 tests from PythonBrowserBridgeTest (1515 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (1614 ms total)
+[  PASSED  ] 10 tests.
+[1/12] PythonBrowserBridgeTest.AudioAndDownloadRequireUserActivation (164 ms)
+[2/12] PythonBrowserBridgeTest.NativeToneValidationPrecedesAudioScheduling (134 ms)
+[3/12] PythonBrowserBridgeTest.ExportRejectsPathsAndNonHtmlNames (162 ms)
+[4/12] PythonBrowserBridgeTest.ExportRejectsAuthorShadowAndTemplateContent (166 ms)
+[5/12] PythonBrowserBridgeTest.ExportCountsMetadataBeforeSerializing (237 ms)
+[6/12] PythonBrowserBridgeTest.DisposeIsIdempotentAndInvalidatesAllServices (129 ms)
+[7/12] PythonBrowserBridgeTest.UnknownCompletionsCannotCreateQueueEntries (125 ms)
+[8/12] PythonBrowserBridgeTest.DeferredOperationRechecksAuthorization (123 ms)
+[9/12] PythonBrowserBridgeTest.DisposeCancelsQueuedNativeOperation (126 ms)
+[10/12] PythonBrowserBridgeTest.DeferredFullscreenRejectsDetachedTarget (137 ms)
+Note: Google Test filter = PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce:PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from PythonBrowserBridgeTest
+[ RUN      ] PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce
+[       OK ] PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce (164 ms)
+[ RUN      ] PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes
+[       OK ] PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes (131 ms)
+[----------] 2 tests from PythonBrowserBridgeTest (298 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (385 ms total)
+[  PASSED  ] 2 tests.
+[11/12] PythonBrowserBridgeTest.ExpiredQueuedOperationCompletesOnlyOnce (164 ms)
+[12/12] PythonBrowserBridgeTest.StorageLimitsCountUtf8Bytes (131 ms)
+SUCCESS: all tests passed.
+Tests took 5 seconds.

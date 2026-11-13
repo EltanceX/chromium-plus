@@ -25,7 +25,7 @@ TARGETS = [
     'python_document_context_unittests', 'native_python_settings_unittests'
 ]
 SUITES = [
-    ('runtime', 'python_runtime_unittests', [], 80),
+    ('runtime', 'python_runtime_unittests', [], 82),
     ('mario-logic', 'pyscript_mario_unittest.py', [], 29),
     ('adapter', 'python_document_context_unittests', [], 18),
     ('browser-unit', 'blink_unittests', [
@@ -40,7 +40,7 @@ SUITES = [
         'CanvasRenderingContext2DAPITest.LineDashStateSave'
     ], 2),
     ('blink', 'blink_unittests', ['--gtest_filter=HTMLPyScriptElementTest.*'],
-     78),
+     80),
     ('csp', 'blink_unittests', [
         '--gtest_filter=ContentSecurityPolicyTest.'
         'NonceSinglePolicy:ContentSecurityPolicyTest.'

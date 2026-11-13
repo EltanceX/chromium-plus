@@ -1,0 +1,13 @@
+[16732:10348:1113/231211.112:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[16732:10348:1113/231211.191:ERROR:chrome\browser\actor\tools\tool_request.cc:30] Not implemented reached in static std::optional<ToolDefinition> actor::ToolRequest::GetToolDefinition().
+
+DevTools listening on ws://127.0.0.1:54558/devtools/browser/39d90787-3fad-4b2a-b14b-220363a050b8
+[2332:11228:1113/231211.818:ERROR:ui\gl\direct_composition_support.cc:615] AMD VideoProcessorGetOutputExtension failed: 未指定的错误 (0x80004005)
+[16732:10348:1113/231212.429:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16732:10348:1113/231212.431:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[16732:10348:1113/231212.765:ERROR:content\browser\network_service_instance_impl.cc:655] Network service crashed or was terminated, restarting service.
+[16732:10348:1113/231212.890:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[16732:7052:1113/231213.369:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[16732:7052:1113/231213.422:WARNING:content\browser\cache_storage\cache_storage_manager.cc:399] Multiple CacheStorage instances using the same directory detected
+[18220:8544:1113/231216.460:WARNING:components\python_runtime\python_execution_budget.cc:126] [python-budget] kind=0 wall_ms=140 cpu_ms=-1 max_check_gap_ms=138 trace_events=120
+[16732:10348:1113/231216.463:INFO:CONSOLE:1409] "[pyscript] Python block exceeded the 100 ms cooperative execution budget", source: http://127.0.0.1:54555/sample (1409)
