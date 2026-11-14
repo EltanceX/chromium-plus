@@ -24,6 +24,8 @@ const binary = path.resolve(option('chrome-binary', 'out/Debug/chrome.exe'));
 const output = path.resolve(option('output', 'out/Debug/mcje-smoke-results.json'));
 const publicHost = option('public-host', '').toLowerCase();
 if (publicHost) assert.match(publicHost, /^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$/i);
+const publicOnly = args.includes('--public-only');
+if (publicOnly) assert.ok(publicHost,'--public-only requires --public-host');
 const chromeArgs = args.filter(arg => arg.startsWith('--chrome-arg='))
     .map(arg => arg.slice('--chrome-arg='.length));
 const temporaryRoot = path.resolve(os.tmpdir());
@@ -336,6 +338,7 @@ try {
   await send('Page.enable');
   await send('Network.enable');
 
+  if (!publicOnly) {
   await check('real omnibox classifier recognizes MCJE URLs', async () => {
     const navigation = await send('Page.navigate', {url: 'chrome://omnibox-internals/'});
     assert.ok(!navigation.errorText, navigation.errorText);
@@ -583,6 +586,7 @@ try {
     assert.ok(records.every(record => !record.error),JSON.stringify(records.filter(r => r.error)));
     assert.ok(records.filter(r => r.frames.length>=3).every(r => r.handshakeValid));
   });
+  }
   if (publicHost) {
     const start=Date.now(), name='public SLP status and optional icon';
     publicObservation={host:publicHost, observedAt:new Date().toISOString(),
@@ -627,6 +631,12 @@ try {
       process.exitCode=1;
     }
   }
+  if (publicOnly) {
+    await send('Browser.close').catch(error => {
+      assert.match(error.message,/CDP connection closed/);
+    });
+    await waitFor(() => browser.exitCode!==null);
+  } else {
   await check('browser shutdown cancels an outstanding query',async () => {
     behavior='silent';
     const previous=connections;
@@ -640,6 +650,7 @@ try {
     await waitFor(() => record.closed && browser.exitCode!==null);
     assert.equal(connections,previous+1);
   });
+  }
 } catch (error) {
   console.error(error.stack ?? error);
   if (!results.some(result => !result.passed)) {
@@ -661,7 +672,7 @@ try {
     if (listener.listening) await new Promise(resolve => listener.close(resolve));
   }
   fs.closeSync(log);
-  fs.writeFileSync(output, JSON.stringify({binary, chromeArgs, phase:5, results,
+  fs.writeFileSync(output, JSON.stringify({binary, chromeArgs, phase:5, publicOnly, results,
       publicObservation,
       connections, records:records.map(({frames,...record}) => record)}, null, 2));
   assert.equal(path.dirname(path.resolve(profile)), temporaryRoot);

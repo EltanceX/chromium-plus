@@ -5,6 +5,7 @@
 - 当前基础：提交 `23aca714af` 已实现原生 MCBE 导航、Bedrock UDP 查询和本地结果页。
 - 已选方向：原生 `mcje://` 导航加载器 + Java Server List Ping（SLP）+ 本地生成结果页。
 - 状态：阶段一至五已完成。产品构建和 GN 检查通过；最终运行的 92 项 MCJE 单测、11 项 MCBE 单测、两种模式各 34 项 MCJE 浏览器检查、17 项 MCBE 浏览器检查及 15 项 chromiumPlus 回归通过。已取得 Hypixel 公网状态与 64×64 图标，观察值和截图随文档保存；首次默认模式图标未显示的情况及环境限制见第 15 节。
+- 后续修复：Windows 内置 DNS 不可用时增加异步系统 SRV 回退，解决 `mcje://s2.mc.ucket.top/` 被错误连接到默认端口的问题。修复后的 103 项 MCJE 单测和实测记录见第 16 节。
 - 相关文档：[MCBE 实现方案与验证记录](mcbe-native-protocol-implementation.md)、[chromiumPlus 默认字段实现与验证记录](globalthis-chromium-plus-implementation.md)。
 
 ## 1. 首版目标与范围
@@ -582,3 +583,54 @@ python chrome/test/chromium_plus_smoke_test.py --chrome-binary out/Debug/chrome.
 默认模式最终日志仍出现已有的网络服务启动后重启一次，恢复后完成所有检查；进程内诊断模式没有该记录。诊断启动参数仅用于测试。首版不承诺任意机器上的解码服务冷启动都能在 2 秒内完成，此时按设计使用图标占位。
 
 本次完成首版阶段一至五，实现、测试、公共响应提取、文档及验证截图合并为一次功能提交。首版仍按既定范围提供现代 Java SLP、纯文本 MOTD 和可选 PNG 附件；标签页 favicon、图片下载、彩色富文本、登录 / 加入服务器和其他后续功能不包含在本次验收中。
+
+## 16. Windows 系统 SRV 回退修复
+
+### 16.1 现象与根因
+
+2026-11-07，`mcje://mc.hypixel.net/` 正常，但 `mcje://s2.mc.ucket.top/` 显示 SRV 无可用结果，尝试 `s2.mc.ucket.top:25565` 后连接结束或超时。该地址当次实际有 `_minecraft._tcp.s2.mc.ucket.top` 记录，目标为 `ucket.top:11964`，priority 为 5、weight 为 0。直接使用默认端口没有查询到状态。
+
+修复前的 `out/Debug/mcje-srv-before-netlog.json` 显示 `unhandled_options=true`、`nameservers=[]`，且 `can_use_insecure_dns_transactions` 和 `can_use_secure_dns_transactions` 均为 false。SRV 请求只创建本地查询任务，没有可发送 DNS 请求的任务。当前 Chromium 的系统地址查询路径支持 A/AAAA，但不会为 SRV 创建同样的系统查询任务；缓存未命中最终以 `ERR_NAME_NOT_RESOLVED` 对外返回，其详细错误为 `ERR_DNS_CACHE_MISS`。这里表示查询能力不可用，不能据此判断服务器没有 SRV 记录。
+
+Hypixel 在当次环境中没有可用 SRV 记录，直接使用逻辑主机的默认端口可以成功，因此没有暴露这个问题。`198.18.*` 的地址仍是当前 DNS / 代理环境的映射，不能记作服务器源站 IP。本次没有修改系统 DNS、代理或路由配置。
+
+### 16.2 实现与边界
+
+- [java_status_resolver.cc](../chrome/browser/mcje/java_status_resolver.cc) 仍先使用 NetworkContext。仅当 SRV 请求失败且详细错误为 `ERR_DNS_CACHE_MISS` 时，尝试注入的系统 SRV 工厂。正常的 DNS 否定回答不触发该回退，显式端口与 IP 字面量继续跳过 SRV。
+- [mcje_url_loader_factory.cc](../chrome/browser/mcje/mcje_url_loader_factory.cc) 只在 Windows 上提供工厂，并检查 `AdditionalDnsQueryTypesEnabled` 和有效 Secure DNS 模式；禁用附加查询类型或启用严格 DoH 时不创建系统查询，避免绕过这些设置。其他平台不启用该回退。
+- 新增 [java_system_srv_lookup.h/.cc](../chrome/browser/mcje/java_system_srv_lookup.h) 与 [java_system_srv_lookup_win.cc](../chrome/browser/mcje/java_system_srv_lookup_win.cc)。Windows 使用异步 `DnsQueryEx` 查询完整 SRV 名称，沿用操作系统配置，包括 VPN / split DNS；不指定公共 DNS 服务器，也不引入 DoH 服务。`BUILD.gn` 仅在 Windows 链接 `dnsapi.lib`。
+- 最多扫描 64 个原生结果节点，提取前 16 条 Answer 区 SRV；移除目标末尾的点，过滤无效主机名和零端口，按 priority 及 RFC 2782 权重选择排序。随后继续由既有 Query 去重、选择至多两个目标和两个 TCP 尝试。Handshake 保留 URL 的逻辑主机及端口，TCP 使用实际 SRV 目标端口。
+- 系统查询与首次 NetworkContext SRV 查询共用原有 1 秒 SRV 预算和 5 秒总预算，不在回退时重置计时。导航取消或超时会调用 `DnsCancelQuery` 并清除结果回调；原生请求存储保留到 Windows 完成通知后释放，晚到结果不能恢复已销毁的 Query。
+- 结果页成功使用系统回退时显示“使用系统 DNS SRV 的有序候选目标”。PNG 校验、隔离解码及页面权限保持原有流程。
+
+新增 7 项状态机测试与 4 项 SRV 排序测试，覆盖详细错误触发、正常否定回答、工厂拒绝、同步完成、逻辑握手与真实端口、共享超时、取消后晚到结果、priority / weight 边界、无效记录和数量上限。测试通过可控工厂和 Mojo 消息注入结果，不依赖公网 DNS 的固定值。原生 Windows API 的联通性由下述浏览器实测验证。
+
+### 16.3 构建与验证结果
+
+同一 Windows x64 Debug component build 完成：
+
+| 检查 | 结果 | 本地记录 |
+| --- | --- | --- |
+| `chrome` 与 `mcje_unittests` 构建 | 通过 | `out/Debug/mcje-srv-fix-build.log`、`out/Debug/mcje-srv-fix-build-final.log` |
+| MCJE GN 头文件依赖检查 | 通过 | `out/Debug/mcje-srv-fix-gn-check.log` |
+| MCJE 单元测试 | 103 / 103 | `out/Debug/mcje-srv-fix-unit-results.json` |
+| 默认网络服务：本地回归及 `s2.mc.ucket.top` 实测 | 34 / 34 | `out/Debug/mcje-srv-fix-default.json` |
+| 进程内网络服务：`s2.mc.ucket.top` 定向实测 | 1 / 1 | `out/Debug/mcje-srv-after-initial.json` |
+| 进程内网络服务：本地回归及 Hypixel 实测，复测 | 34 / 34 | `out/Debug/mcje-srv-fix-in-process-retry.json` |
+| MCBE 本地 UDP 浏览器回归 | 17 / 17 | `out/Debug/mcbe-srv-fix-regression.json` |
+| `chromiumPlus` 页面与 Worker 回归 | 15 / 15 | `out/Debug/chromium-plus-srv-fix-regression.json` |
+| C++ / GN 格式、JavaScript 语法、Git 空白 | 通过 | 本地检查 |
+
+默认模式于 `2026-11-07 09:41:03 UTC` 查询 `mcje://s2.mc.ucket.top/` 成功：逻辑端口仍为 `25565`，SRV 目标为 `ucket.top:11964`，环境实际端点为 `198.18.1.244:11964`，仅连接一次。返回版本 `Paper 1.20.1`、协议号 `763`、人数 `0 / 20`、匹配 Pong RTT `513.0 ms`，MOTD 与 64×64 PNG 均显示。进程内模式也取得相同 SRV 目标并成功显示状态与图标。Hypixel 复测继续使用无 SRV 结果后的默认端口，状态及 64×64 图标正常。以上版本、人数、延迟和 DNS 记录仅为当次观察。
+
+进程内模式首次完整回归在首个本地 PNG 检查失败，页面诊断明确为“图标处理超时”，状态查询成功。原始失败记录保留在 `out/Debug/mcje-srv-fix-in-process.json`，未覆盖；该诊断能确认触发了图标 2 秒预算，不能进一步确定服务启动或调度的具体原因。保持产品时限和断言不变后，完整复测 34 项通过。该可选附件超时限制继续适用，与本次 SRV 端口修复分别记录。
+
+定向查询可使用脚本新增的 `--public-only` 选项跳过本地检查，仍保留浏览器关闭与资源清理；它要求同时提供 `--public-host`：
+
+```powershell
+node chrome/test/mcje_smoke_test.mjs --chrome-binary=out/Debug/chrome.exe --output=out/Debug/mcje-srv-probe.json --public-host=s2.mc.ucket.top --public-only
+```
+
+精简后的复现、成功观察值、回归统计和首次图标超时诊断保存于 [SRV 修复验证记录](mcje-validation/srv-fix-results-2026-11-07.json)。下图为默认网络服务模式的实际结果页：
+
+![s2.mc.ucket.top 的 SRV 状态与图标实测](mcje-validation/srv-s2-mc-ucket-top-2026-11-07.png)

@@ -8,6 +8,8 @@
 #include <vector>
 
 #include "base/functional/callback.h"
+#include "base/memory/weak_ptr.h"
+#include "chrome/browser/mcje/java_system_srv_lookup.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "mojo/public/cpp/bindings/remote.h"
 #include "net/base/address_list.h"
@@ -25,6 +27,7 @@ struct JavaHostResolution {
   int error;
   net::AddressList addresses;
   std::vector<net::HostPortPair> hosts;
+  bool used_system_srv = false;
 };
 
 // One request. Hostname results are provisional until OnComplete. Destruction
@@ -32,7 +35,7 @@ struct JavaHostResolution {
 class JavaStatusResolver : public network::ResolveHostClientBase {
  public:
   using Callback = base::OnceCallback<void(JavaHostResolution)>;
-  JavaStatusResolver();
+  explicit JavaStatusResolver(JavaSystemSrvFactory system_srv_factory = {});
   ~JavaStatusResolver() override;
   void Start(network::mojom::NetworkContext* context,
              const net::HostPortPair& host,
@@ -46,11 +49,17 @@ class JavaStatusResolver : public network::ResolveHostClientBase {
                   const net::AddressList& addresses,
                   const net::HostResolverEndpointResults&) override;
   void Complete(int error, net::AddressList addresses);
+  void OnSystemSrv(int error, std::vector<net::HostPortPair> hosts);
 
+  const JavaSystemSrvFactory system_srv_factory_;
+  net::HostPortPair host_;
+  net::DnsQueryType type_ = net::DnsQueryType::UNSPECIFIED;
+  std::unique_ptr<JavaSystemSrvLookup> system_srv_;
   Callback callback_;
   std::vector<net::HostPortPair> hosts_;
   mojo::Receiver<network::mojom::ResolveHostClient> receiver_{this};
   mojo::Remote<network::mojom::ResolveHostHandle> control_;
+  base::WeakPtrFactory<JavaStatusResolver> weak_factory_{this};
 };
 
 }  // namespace mcje

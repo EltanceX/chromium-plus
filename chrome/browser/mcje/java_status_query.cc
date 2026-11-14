@@ -42,8 +42,10 @@ constexpr auto kTrafficAnnotation =
 }  // namespace
 
 JavaStatusQuery::JavaStatusQuery(NetworkContextFactory context,
-                                 ServerAddress address)
+                                 ServerAddress address,
+                                 JavaSystemSrvFactory system_srv_factory)
     : context_(std::move(context)),
+      system_srv_factory_(std::move(system_srv_factory)),
       address_(std::move(address)),
       read_watcher_(FROM_HERE, mojo::SimpleWatcher::ArmingPolicy::MANUAL),
       write_watcher_(FROM_HERE, mojo::SimpleWatcher::ArmingPolicy::MANUAL) {}
@@ -76,7 +78,7 @@ void JavaStatusQuery::Start(Callback callback) {
     phase_timer_.Start(FROM_HERE, base::Seconds(1),
                        base::BindOnce(&JavaStatusQuery::OnPhaseTimeout,
                                       weak_factory_.GetWeakPtr()));
-    resolver_ = std::make_unique<JavaStatusResolver>();
+    resolver_ = std::make_unique<JavaStatusResolver>(system_srv_factory_);
     resolver_->Start(
         context_.Run(),
         net::HostPortPair("_minecraft._tcp." + address_.logical_host, 0),
@@ -120,7 +122,8 @@ void JavaStatusQuery::OnSrv(JavaHostResolution result) {
     return;
   }
   using_srv_ = true;
-  discovery_ = "使用 DNS SRV 的有序候选目标。";
+  discovery_ = result.used_system_srv ? "使用系统 DNS SRV 的有序候选目标。"
+                                      : "使用 DNS SRV 的有序候选目标。";
   ResolveNextTarget();
 }
 

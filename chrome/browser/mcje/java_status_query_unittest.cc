@@ -105,8 +105,48 @@ std::vector<uint8_t> StatusFrame(std::string_view json) {
   return frame;
 }
 
+struct FakeSystemSrvState {
+  std::string name;
+  JavaSystemSrvLookup::Callback callback;
+  int starts = 0;
+  int cancels = 0;
+  bool synchronous = false;
+};
+
+class FakeSystemSrvLookup : public JavaSystemSrvLookup {
+ public:
+  explicit FakeSystemSrvLookup(std::shared_ptr<FakeSystemSrvState> state)
+      : state_(std::move(state)) {}
+  void Start(std::string name, Callback callback) override {
+    auto state = state_;
+    state->name = std::move(name);
+    ++state->starts;
+    state->callback = std::move(callback);
+    if (state->synchronous) {
+      std::move(state->callback)
+          .Run(net::OK, {net::HostPortPair("system.test", 11964)});
+    }
+  }
+  void Cancel() override {
+    ++state_->cancels;
+    // Deliberately retain the callback to exercise late OS completion.
+  }
+
+ private:
+  const std::shared_ptr<FakeSystemSrvState> state_;
+};
+
 class JavaStatusQueryTest : public testing::Test {
  protected:
+  void EnableSystemSrv() {
+    system_srv_factory = base::BindRepeating(
+        [](std::shared_ptr<FakeSystemSrvState> state)
+            -> std::unique_ptr<JavaSystemSrvLookup> {
+          return std::make_unique<FakeSystemSrvLookup>(std::move(state));
+        },
+        system_srv);
+  }
+
   void Start(bool explicit_port = false, std::string host = "logical.test") {
     address.logical_host = std::move(host);
     address.port_was_explicit = explicit_port;
@@ -118,7 +158,7 @@ class JavaStatusQueryTest : public testing::Test {
               return self->context_alive ? &self->network : nullptr;
             },
             base::Unretained(this)),
-        address);
+        address, system_srv_factory);
     query->Start(base::BindOnce(
         [](JavaStatusQueryTest* self, JavaQueryResult value) {
           ++self->callbacks;
@@ -134,12 +174,15 @@ class JavaStatusQueryTest : public testing::Test {
   void Reply(size_t index,
              int error,
              net::AddressList addresses = {},
-             std::vector<net::HostPortPair> hosts = {}) {
+             std::vector<net::HostPortPair> hosts = {},
+             std::optional<int> detailed_error = std::nullopt) {
     auto& r = *network.resolutions[index];
     if (!hosts.empty()) {
       r.client->OnHostnameResults(hosts);
     }
-    r.client->OnComplete(error, net::ResolveErrorInfo(error), addresses, {});
+    r.client->OnComplete(error,
+                         net::ResolveErrorInfo(detailed_error.value_or(error)),
+                         addresses, {});
     tasks.RunUntilIdle();
   }
 
@@ -191,6 +234,9 @@ class JavaStatusQueryTest : public testing::Test {
       base::test::TaskEnvironment::MainThreadType::IO,
       base::test::TaskEnvironment::TimeSource::MOCK_TIME};
   FakeNetwork network;
+  const std::shared_ptr<FakeSystemSrvState> system_srv =
+      std::make_shared<FakeSystemSrvState>();
+  JavaSystemSrvFactory system_srv_factory;
   ServerAddress address;
   std::unique_ptr<JavaStatusQuery> query;
   std::optional<JavaQueryResult> result;
@@ -201,6 +247,7 @@ class JavaStatusQueryTest : public testing::Test {
 };
 
 TEST_F(JavaStatusQueryTest, SrvWaitsForCompletionAndPreservesLogicalHandshake) {
+  EnableSystemSrv();
   Start();
   ASSERT_EQ(1u, network.resolutions.size());
   EXPECT_EQ(net::DnsQueryType::SRV, network.resolutions[0]->type);
@@ -235,14 +282,136 @@ TEST_F(JavaStatusQueryTest, SrvWaitsForCompletionAndPreservesLogicalHandshake) {
   EXPECT_EQ(net::HostPortPair("backend.test", 25570), result->srv_target);
   EXPECT_TRUE(result->rtt);
   EXPECT_EQ(1, callbacks);
+  EXPECT_EQ(0, system_srv->starts);
+}
+
+TEST_F(JavaStatusQueryTest,
+       MissingDnsCapabilityUsesSystemSrvAndLogicalHandshake) {
+  EnableSystemSrv();
+  Start();
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  ASSERT_EQ(1, system_srv->starts);
+  EXPECT_EQ("_minecraft._tcp.logical.test", system_srv->name);
+  EXPECT_EQ(1u, network.resolutions.size());
+  std::move(system_srv->callback)
+      .Run(net::OK, {net::HostPortPair("system.test", 11964)});
+  tasks.RunUntilIdle();
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ(net::HostPortPair("system.test", 11964),
+            network.resolutions[1]->host);
+  Reply(1, net::OK, Addresses());
+  ASSERT_EQ(1u, network.connections.size());
+  EXPECT_EQ(11964, network.connections[0]->endpoint.port());
+  request = Connect();
+  auto handshake = EncodeHandshake(address);
+  ASSERT_TRUE(handshake);
+  ASSERT_GE(request.size(), handshake->size());
+  EXPECT_EQ(*handshake,
+            std::vector<uint8_t>(request.begin(),
+                                 request.begin() + handshake->size()));
+  Send(StatusFrame(R"({"description":"system SRV success"})"));
+  Pong();
+  ASSERT_TRUE(result && result->status);
+  EXPECT_EQ("system SRV success", result->status->motd);
+  EXPECT_EQ(net::HostPortPair("system.test", 11964), result->srv_target);
+  EXPECT_NE(std::string::npos, result->discovery.find("系统 DNS SRV"));
+  EXPECT_EQ(1, callbacks);
+}
+
+TEST_F(JavaStatusQueryTest, NegativeDnsResponseDoesNotUseSystemSrv) {
+  EnableSystemSrv();
+  Start();
+  Reply(0, net::ERR_NAME_NOT_RESOLVED);
+  EXPECT_EQ(0, system_srv->starts);
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ("logical.test", network.resolutions[1]->host.host());
+}
+
+TEST_F(JavaStatusQueryTest, PolicyCanDeclineSystemSrv) {
+  int factory_calls = 0;
+  system_srv_factory = base::BindRepeating(
+      [](int* calls) -> std::unique_ptr<JavaSystemSrvLookup> {
+        ++*calls;
+        return nullptr;
+      },
+      &factory_calls);
+  Start();
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  EXPECT_EQ(1, factory_calls);
+  EXPECT_EQ(0, system_srv->starts);
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ("logical.test", network.resolutions[1]->host.host());
+}
+
+TEST_F(JavaStatusQueryTest, SystemSrvFailurePreservesTotalDeadline) {
+  EnableSystemSrv();
+  Start();
+  tasks.FastForwardBy(base::Milliseconds(200));
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  tasks.FastForwardBy(base::Milliseconds(600));
+  std::move(system_srv->callback).Run(net::ERR_NAME_NOT_RESOLVED, {});
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ("logical.test", network.resolutions[1]->host.host());
+  tasks.FastForwardBy(base::Milliseconds(4200));
+  ASSERT_TRUE(result);
+  EXPECT_EQ(JavaQueryError::kTimeout, result->error);
+  EXPECT_EQ(1, callbacks);
+}
+
+TEST_F(JavaStatusQueryTest,
+       SystemSrvSharesPhaseTimeoutAndIgnoresLateCompletion) {
+  EnableSystemSrv();
+  Start();
+  tasks.FastForwardBy(base::Milliseconds(800));
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  ASSERT_EQ(1, system_srv->starts);
+  tasks.FastForwardBy(base::Milliseconds(200));
+  EXPECT_EQ(1, system_srv->cancels);
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ("logical.test", network.resolutions[1]->host.host());
+  std::move(system_srv->callback)
+      .Run(net::OK, {net::HostPortPair("late.test", 11964)});
+  tasks.RunUntilIdle();
+  EXPECT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ(0, callbacks);
+}
+
+TEST_F(JavaStatusQueryTest, CancelDuringSystemSrvDiscardsLateCompletion) {
+  EnableSystemSrv();
+  Start();
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  ASSERT_EQ(1, system_srv->starts);
+  query.reset();
+  EXPECT_EQ(1, system_srv->cancels);
+  std::move(system_srv->callback)
+      .Run(net::OK, {net::HostPortPair("late.test", 11964)});
+  tasks.FastForwardBy(base::Seconds(10));
+  EXPECT_EQ(1u, network.resolutions.size());
+  EXPECT_TRUE(network.connections.empty());
+  EXPECT_EQ(0, callbacks);
+}
+
+TEST_F(JavaStatusQueryTest, SynchronousSystemSrvCompletionCanDestroyResolver) {
+  EnableSystemSrv();
+  system_srv->synchronous = true;
+  Start();
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  EXPECT_EQ(1, system_srv->starts);
+  EXPECT_EQ(1, system_srv->cancels);
+  ASSERT_EQ(2u, network.resolutions.size());
+  EXPECT_EQ(net::HostPortPair("system.test", 11964),
+            network.resolutions[1]->host);
 }
 
 TEST_F(JavaStatusQueryTest, ExplicitDefaultPortSkipsSrv) {
+  EnableSystemSrv();
   Start(true);
   ASSERT_EQ(1u, network.resolutions.size());
   EXPECT_EQ(net::DnsQueryType::UNSPECIFIED, network.resolutions[0]->type);
   EXPECT_EQ(net::HostPortPair("logical.test", 25565),
             network.resolutions[0]->host);
+  Reply(0, net::ERR_NAME_NOT_RESOLVED, {}, {}, net::ERR_DNS_CACHE_MISS);
+  EXPECT_EQ(0, system_srv->starts);
 }
 
 TEST_F(JavaStatusQueryTest, IpLiteralSkipsSrv) {

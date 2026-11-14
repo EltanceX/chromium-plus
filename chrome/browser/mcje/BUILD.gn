@@ -26,7 +26,13 @@ source_set("query") {
     "java_status_query.h",
     "java_status_resolver.cc",
     "java_status_resolver.h",
+    "java_system_srv_lookup.cc",
+    "java_system_srv_lookup.h",
   ]
+  if (is_win) {
+    sources += [ "java_system_srv_lookup_win.cc" ]
+    libs = [ "dnsapi.lib" ]
+  }
   public_deps = [
     ":protocol",
     "//base",
@@ -73,8 +79,12 @@ source_set("mcje") {
     ":protocol",
     ":query",
     "//base",
+    "//chrome/browser:browser_process",
     "//chrome/browser/minecraft:response",
+    "//chrome/browser/net",
     "//chrome/browser/profiles:profile",
+    "//chrome/common",
+    "//components/prefs",
     "//mojo/public/cpp/system",
     "//net",
     "//services/network/public/cpp",
@@ -88,6 +98,7 @@ test("mcje_unittests") {
     "java_status_json_unittest.cc",
     "java_status_protocol_unittest.cc",
     "java_status_query_unittest.cc",
+    "java_system_srv_lookup_unittest.cc",
     "mcje_result_page_unittest.cc",
     "mcje_url_unittest.cc",
     "run_all_unittests.cc",

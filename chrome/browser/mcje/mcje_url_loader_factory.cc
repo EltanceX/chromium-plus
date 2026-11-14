@@ -9,13 +9,19 @@
 #include "base/functional/bind.h"
 #include "base/memory/self_deleting.h"
 #include "base/scoped_observation.h"
+#include "build/build_config.h"
+#include "chrome/browser/browser_process.h"
 #include "chrome/browser/mcje/java_server_icon.h"
 #include "chrome/browser/mcje/java_status_query.h"
 #include "chrome/browser/mcje/mcje_result_page.h"
 #include "chrome/browser/mcje/mcje_url.h"
 #include "chrome/browser/minecraft/server_status_response.h"
+#include "chrome/browser/net/secure_dns_config.h"
+#include "chrome/browser/net/system_network_context_manager.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/profiles/profile_observer.h"
+#include "chrome/common/pref_names.h"
+#include "components/prefs/pref_service.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/navigation_handle.h"
 #include "content/public/browser/render_frame_host.h"
@@ -32,6 +38,23 @@
 
 namespace mcje {
 namespace {
+
+std::unique_ptr<JavaSystemSrvLookup> MaybeCreateSystemSrvLookup() {
+#if BUILDFLAG(IS_WIN)
+  // Do not bypass an explicit restriction on extra query types or strict DoH.
+  auto* local_state = g_browser_process->local_state();
+  auto* dns_config = SystemNetworkContextManager::GetStubResolverConfigReader();
+  if (!local_state || !dns_config ||
+      !local_state->GetBoolean(prefs::kAdditionalDnsQueryTypesEnabled) ||
+      dns_config->GetSecureDnsConfiguration(false).mode() ==
+          net::SecureDnsMode::kSecure) {
+    return nullptr;
+  }
+  return CreateJavaSystemSrvLookup();
+#else
+  return nullptr;
+#endif
+}
 
 network::mojom::NetworkContext* GetNetworkContext(
     base::WeakPtr<content::WebContents> contents,
@@ -80,7 +103,7 @@ class McjeURLLoader final : public network::mojom::URLLoader,
     query_ = std::make_unique<JavaStatusQuery>(
         base::BindRepeating(&GetNetworkContext, web_contents()->GetWeakPtr(),
                             url_),
-        std::move(*address));
+        std::move(*address), base::BindRepeating(&MaybeCreateSystemSrvLookup));
     query_->Start(
         base::BindOnce(&McjeURLLoader::OnResult, base::Unretained(this)));
   }

@@ -1,0 +1,280 @@
+{
+  "date": "2026-11-07",
+  "unitTests": {
+    "passed": 103,
+    "total": 103,
+    "record": "out\\Debug\\mcje-srv-fix-unit-results.json"
+  },
+  "browserChecks": [
+    {
+      "record": "out\\Debug\\mcje-srv-fix-default.json",
+      "passed": 34,
+      "total": 34
+    },
+    {
+      "record": "out\\Debug\\mcje-srv-fix-in-process-retry.json",
+      "passed": 34,
+      "total": 34
+    },
+    {
+      "record": "out\\Debug\\mcbe-srv-fix-regression.json",
+      "passed": 17,
+      "total": 17
+    },
+    {
+      "record": "out\\Debug\\chromium-plus-srv-fix-regression.json",
+      "passed": 15,
+      "total": 15
+    }
+  ],
+  "before": {
+    "record": "out\\Debug\\mcje-srv-before.json",
+    "host": "s2.mc.ucket.top",
+    "observedAt": "2026-11-07T09:27:11.143Z",
+    "dnsObservationFromNode": [
+      {
+        "type": "SRV",
+        "name": "_minecraft._tcp.s2.mc.ucket.top",
+        "records": [
+          {
+            "name": "ucket.top",
+            "port": 11964,
+            "priority": 5,
+            "weight": 0,
+            "type": "SRV"
+          }
+        ]
+      },
+      {
+        "type": "A",
+        "name": "s2.mc.ucket.top",
+        "records": [
+          "198.18.1.211"
+        ]
+      },
+      {
+        "type": "AAAA",
+        "name": "s2.mc.ucket.top",
+        "error": "ENODATA"
+      }
+    ],
+    "page": {
+      "url": "mcje://s2.mc.ucket.top/",
+      "origin": "null",
+      "ready": "complete",
+      "state": "地址已识别",
+      "host": "s2.mc.ucket.top",
+      "port": "25565",
+      "portSource": "默认端口",
+      "query": "查询失败",
+      "endpoint": "198.18.1.211:25565",
+      "srvTarget": "未使用",
+      "discovery": "SRV 无可用结果，使用逻辑主机与默认端口：net::ERR_NAME_NOT_RESOLVED",
+      "attempts": "1",
+      "error": "5 秒内未取得有效 Java 服务器状态。",
+      "images": 0,
+      "placeholder": true,
+      "iconState": "未取得图标",
+      "completedAt": "2026-11-07 09:27:16 UTC",
+      "injected": false,
+      "scripts": 0,
+      "secure": false
+    }
+  },
+  "afterDefault": {
+    "record": "out\\Debug\\mcje-srv-fix-default.json",
+    "host": "s2.mc.ucket.top",
+    "observedAt": "2026-11-07T09:41:02.394Z",
+    "dnsObservationFromNode": [
+      {
+        "type": "SRV",
+        "name": "_minecraft._tcp.s2.mc.ucket.top",
+        "records": [
+          {
+            "name": "ucket.top",
+            "port": 11964,
+            "priority": 5,
+            "weight": 0,
+            "type": "SRV"
+          }
+        ]
+      },
+      {
+        "type": "A",
+        "name": "s2.mc.ucket.top",
+        "records": [
+          "198.18.1.211"
+        ]
+      },
+      {
+        "type": "AAAA",
+        "name": "s2.mc.ucket.top",
+        "error": "ENODATA"
+      }
+    ],
+    "page": {
+      "url": "mcje://s2.mc.ucket.top/",
+      "origin": "null",
+      "ready": "complete",
+      "state": "地址已识别",
+      "host": "s2.mc.ucket.top",
+      "port": "25565",
+      "portSource": "默认端口",
+      "query": "查询成功",
+      "motd": "空岛生存|李芒果空岛|粘液科技\nQQ群：712523104",
+      "rtt": "513.0 ms",
+      "endpoint": "198.18.1.244:11964",
+      "srvTarget": "ucket.top:11964",
+      "discovery": "使用系统 DNS SRV 的有序候选目标。",
+      "attempts": "1",
+      "version": "Paper 1.20.1",
+      "protocol": "763",
+      "playersOnline": "0",
+      "playersMax": "20",
+      "latencyDiagnostic": "未提供",
+      "images": 1,
+      "placeholder": false,
+      "iconState": "64×64 PNG",
+      "completedAt": "2026-11-07 09:41:03 UTC",
+      "injected": false,
+      "scripts": 0,
+      "secure": false,
+      "icon": {
+        "complete": true,
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  "afterInProcess": {
+    "record": "out\\Debug\\mcje-srv-after-initial.json",
+    "host": "s2.mc.ucket.top",
+    "observedAt": "2026-11-07T09:37:37.642Z",
+    "dnsObservationFromNode": [
+      {
+        "type": "SRV",
+        "name": "_minecraft._tcp.s2.mc.ucket.top",
+        "records": [
+          {
+            "name": "ucket.top",
+            "port": 11964,
+            "priority": 5,
+            "weight": 0,
+            "type": "SRV"
+          }
+        ]
+      },
+      {
+        "type": "A",
+        "name": "s2.mc.ucket.top",
+        "records": [
+          "198.18.1.211"
+        ]
+      },
+      {
+        "type": "AAAA",
+        "name": "s2.mc.ucket.top",
+        "error": "ENODATA"
+      }
+    ],
+    "page": {
+      "url": "mcje://s2.mc.ucket.top/",
+      "origin": "null",
+      "ready": "complete",
+      "state": "地址已识别",
+      "host": "s2.mc.ucket.top",
+      "port": "25565",
+      "portSource": "默认端口",
+      "query": "查询成功",
+      "motd": "空岛生存|李芒果空岛|粘液科技\nQQ群：712523104",
+      "rtt": "744.0 ms",
+      "endpoint": "198.18.1.244:11964",
+      "srvTarget": "ucket.top:11964",
+      "discovery": "使用系统 DNS SRV 的有序候选目标。",
+      "attempts": "1",
+      "version": "Paper 1.20.1",
+      "protocol": "763",
+      "playersOnline": "0",
+      "playersMax": "20",
+      "latencyDiagnostic": "未提供",
+      "images": 1,
+      "placeholder": false,
+      "iconState": "64×64 PNG",
+      "completedAt": "2026-11-07 09:37:38 UTC",
+      "injected": false,
+      "scripts": 0,
+      "secure": false,
+      "icon": {
+        "complete": true,
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  "hypixelRegression": {
+    "record": "out\\Debug\\mcje-srv-fix-in-process-retry.json",
+    "host": "mc.hypixel.net",
+    "observedAt": "2026-11-07T09:42:42.465Z",
+    "dnsObservationFromNode": [
+      {
+        "type": "SRV",
+        "name": "_minecraft._tcp.mc.hypixel.net",
+        "error": "ENOTFOUND"
+      },
+      {
+        "type": "A",
+        "name": "mc.hypixel.net",
+        "records": [
+          "198.18.1.220"
+        ]
+      },
+      {
+        "type": "AAAA",
+        "name": "mc.hypixel.net",
+        "error": "ENODATA"
+      }
+    ],
+    "page": {
+      "url": "mcje://mc.hypixel.net/",
+      "origin": "null",
+      "ready": "complete",
+      "state": "地址已识别",
+      "host": "mc.hypixel.net",
+      "port": "25565",
+      "portSource": "默认端口",
+      "query": "查询成功",
+      "motd": "                 Hypixel Network [1.8/26.3]\n              SKYBLOCK GHOST VISITORS",
+      "rtt": "791.0 ms",
+      "endpoint": "198.18.1.220:25565",
+      "srvTarget": "未使用",
+      "discovery": "SRV 无可用结果，使用逻辑主机与默认端口：net::ERR_NAME_NOT_RESOLVED",
+      "attempts": "1",
+      "version": "Requires MC 1.8 / 1.21",
+      "protocol": "47",
+      "playersOnline": "17647",
+      "playersMax": "200000",
+      "latencyDiagnostic": "未提供",
+      "images": 1,
+      "placeholder": false,
+      "iconState": "64×64 PNG",
+      "completedAt": "2026-11-07 09:42:43 UTC",
+      "injected": false,
+      "scripts": 0,
+      "secure": false,
+      "icon": {
+        "complete": true,
+        "width": 64,
+        "height": 64
+      }
+    }
+  },
+  "initialInProcessFailure": {
+    "record": "out\\Debug\\mcje-srv-fix-in-process.json",
+    "name": "native TCP query, handshake, escaped MOTD and opaque origin",
+    "elapsedMs": 2716,
+    "query": "查询成功",
+    "iconState": "图标处理超时",
+    "note": "The icon exceeded its unchanged two-second budget. The full retry passed."
+  },
+  "note": "Public DNS, addresses, version, player counts and latency are observations only. 198.18.x.x reflects this environment, not origin server addresses."
+}

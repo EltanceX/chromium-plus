@@ -51,7 +51,9 @@ struct JavaQueryResult {
 class JavaStatusQuery : public network::mojom::SocketObserver {
  public:
   using Callback = base::OnceCallback<void(JavaQueryResult)>;
-  JavaStatusQuery(NetworkContextFactory context, ServerAddress address);
+  JavaStatusQuery(NetworkContextFactory context,
+                  ServerAddress address,
+                  JavaSystemSrvFactory system_srv_factory = {});
   ~JavaStatusQuery() override;
   void Start(Callback callback);
   void Cancel();
@@ -83,6 +85,7 @@ class JavaStatusQuery : public network::mojom::SocketObserver {
 
   enum class Phase { kSrv, kAddresses, kConnect, kRead };
   const NetworkContextFactory context_;
+  const JavaSystemSrvFactory system_srv_factory_;
   const ServerAddress address_;
   Callback callback_;
   bool started_ = false;
