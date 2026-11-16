@@ -1,0 +1,47 @@
+[4860:8308:1116/203631.562:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[15404:17124:1116/203631.612:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+
+DevTools listening on ws://127.0.0.1:60921/devtools/browser/17ed7dc7-a678-4e55-aef0-dcecdcd7d982
+[4860:8308:1116/203631.766:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[4860:8308:1116/203631.766:WARNING:ui\aura\window.cc:1514] StackChildLayerRelativeTo called with unmanaged layer(s). child=WebContentsViewAura child_managed=0 target=WebContentsViewAura target_managed=0
+[4860:8308:1116/203631.814:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:236] Error observing HKLM: 拒绝访问。 (0x5)
+[15404:17124:1116/203631.851:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[15404:17124:1116/203631.851:ERROR:gpu\ipc\service\gpu_channel_manager.cc:975] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[4860:8308:1116/203632.149:INFO:CONSOLE:1] "JS_DEFERRED", source: http://127.0.0.1:60920/deferred.js (1)
+[4860:8308:1116/203632.159:INFO:CONSOLE:3] "Python 世界 42
+literal &amp; <img src="/forbidden.png">
+<script src="/forbidden.js"></script>
+<link rel="stylesheet" href="/forbidden.css">
+", source: http://127.0.0.1:60920/basic (3)
+[4860:8308:1116/203632.159:INFO:CONSOLE:10] "SHARED 43
+", source: http://127.0.0.1:60920/basic (10)
+[4860:8308:1116/203632.159:INFO:CONSOLE:11] "[pyscript] Traceback (most recent call last):
+  File http://127.0.0.1:60920/basic#pyscript-3, line 1, in <module>
+ValueError: phase-two", source: http://127.0.0.1:60920/basic (11)
+[4860:8308:1116/203632.160:INFO:CONSOLE:12] "[pyscript] Traceback (most recent call last):
+SyntaxError: invalid syntax (http://127.0.0.1:60920/basic#pyscript-4, line 1) (http://127.0.0.1:60920/basic#pyscript-4:1)", source: http://127.0.0.1:60920/basic (12)
+[4860:8308:1116/203632.160:INFO:CONSOLE:13] "RECOVERED
+", source: http://127.0.0.1:60920/basic (13)
+[4860:8308:1116/203632.160:INFO:CONSOLE:31] "JS_DCL", source: http://127.0.0.1:60920/basic (31)
+Received fatal exception EXCEPTION_ACCESS_VIOLATION
+	chrome!partition_alloc::PartitionRoot::FreeInUnknownRoot<6,partition_alloc::internal::base::StrongAlias<partition_alloc::FreeSizeHintTag,unsigned __int64> > [0x7ff8a450b740+70]
+	chrome!CreatePythonDocumentContext [0x7ff8a41559f3+d23]
+	chrome!blink::PythonScriptController::ReleaseContext [0x7ff8a8fd5e0b+2fb]
+	chrome!base::internal::Invoker<base::internal::FunctorTraits<void (__cdecl*&& __ptr64)(blink::WebPythonScriptContext * __ptr64,scoped_refptr<base::SingleThreadTaskRunner>),blink::WebPythonScriptContext * __ptr64 && __ptr64,scoped_refptr<base::SingleThreadTaskRun [0x7ff8a8fdf734+44]
+	chrome!base::TaskAnnotator::RunTaskImpl [0x7ff8a445feba+1ba]
+	chrome!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl [0x7ff8a643e2b8+598]
+	chrome!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWork [0x7ff8a643db64+b4]
+	chrome!base::MessagePumpDefault::Run [0x7ff8a6454eab+12b]
+	chrome!base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run [0x7ff8a643ebea+19a]
+	chrome!base::RunLoop::Run [0x7ff8a4486327+1f7]
+	chrome!content::RendererMain [0x7ff8a62948cc+6bc]
+	chrome!content::RunOtherNamedProcessTypeMain [0x7ff8a41ba482+2c2]
+	chrome!content::ContentMainRunnerImpl::Run [0x7ff8a41bb4e1+361]
+	chrome!content::RunContentProcess [0x7ff8a41b979d+45d]
+	chrome!content::ContentMain [0x7ff8a41b99f8+88]
+	chrome!ChromeMain [0x7ff89beb15bc+32c]
+	chrome!MainDllLoader::Launch [0x7ff634a22b35+765]
+	chrome!wWinMain [0x7ff634a21b2b+b2b]
+	chrome!__scrt_common_main_seh [0x7ff634c2ad89+109] (D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288)
+	KERNEL32!BaseThreadInitThunk [0x7ff98672dda7+17]
+	ntdll!RtlUserThreadStart [0x7ff98887ee4c+2c]

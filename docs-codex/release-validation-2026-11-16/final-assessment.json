@@ -1,0 +1,159 @@
+{
+  "completedAt": "2026-11-16T13:13:49.511645+00:00",
+  "sourceBaseCommit": "206918ff3c7a6aa0fb1738afa1975d7885d0a832",
+  "sourcePatchSha256": "0665b9a166ebd3993252e812b19f47a9e016b0c02be28bf9fea1582248fa8c7e",
+  "compiledSourceAndTestFiles": {
+    "components/python_runtime/BUILD.gn": "80ac24d582bba40724d7c99e2bc7f526e2a5594ab699848575fccb9b849b9edd",
+    "components/python_runtime/python_runtime.h": "26962ef51894d279db07d2680e901504d685baa65a9eeb421c9260cfe7a09da1",
+    "chrome/installer/mini_installer/chrome.release": "06da138e8192bf6ccf4e589ff943792acaaeac0a04ee14beaa27f540beef6eae",
+    "chrome/test/pyscript_input_smoke_test.mjs": "2043062bc02baced02de48a3dab662b82eb7b32e6a7389e78307e5a9910d2adc"
+  },
+  "buildSucceeded": true,
+  "buildJobs": 12,
+  "target": "chrome",
+  "version": "158.0.8126.0",
+  "allRequiredArtifactsPresent": true,
+  "allCorePeX64": true,
+  "binaryInputsUnchanged": true,
+  "standardChecks": [
+    {
+      "file": "chromium-plus.json",
+      "expected": 15,
+      "total": 15,
+      "passed": 15,
+      "verified": true
+    },
+    {
+      "file": "parser.json",
+      "expected": 27,
+      "total": 27,
+      "passed": 27,
+      "verified": true
+    },
+    {
+      "file": "settings.json",
+      "expected": 12,
+      "total": 12,
+      "passed": 12,
+      "verified": true
+    },
+    {
+      "file": "mario-logic.json",
+      "expected": 29,
+      "total": 29,
+      "passed": 29,
+      "verified": true
+    },
+    {
+      "file": "mcje.json",
+      "expected": 33,
+      "total": 33,
+      "passed": 33,
+      "verified": true
+    },
+    {
+      "file": "dom.json",
+      "expected": 17,
+      "total": 17,
+      "passed": 17,
+      "verified": true
+    },
+    {
+      "file": "events.json",
+      "expected": 34,
+      "total": 34,
+      "passed": 34,
+      "verified": true
+    },
+    {
+      "file": "animation.json",
+      "expected": 19,
+      "total": 19,
+      "passed": 19,
+      "verified": true
+    },
+    {
+      "file": "input-cdp-button.json",
+      "expected": 25,
+      "total": 25,
+      "passed": 25,
+      "verified": true
+    },
+    {
+      "file": "canvas.json",
+      "expected": 23,
+      "total": 23,
+      "passed": 23,
+      "verified": true
+    },
+    {
+      "file": "browser-services.json",
+      "expected": 15,
+      "total": 15,
+      "passed": 15,
+      "verified": true
+    },
+    {
+      "file": "mario.json",
+      "expected": 35,
+      "total": 35,
+      "passed": 35,
+      "verified": true
+    }
+  ],
+  "standardPassedCases": 284,
+  "standardExpectedCases": 284,
+  "defaultModePublicMcbe": {
+    "file": "mcbe-public-probe.json",
+    "expected": 1,
+    "total": 1,
+    "passed": 1,
+    "verified": true
+  },
+  "hardwareRepeat": {
+    "file": "mario-hardware-isolated.json",
+    "expected": 36,
+    "total": 36,
+    "passed": 36,
+    "verified": true,
+    "soakElapsedMs": 60362,
+    "duplicatesStandardCoverage": true
+  },
+  "diagnosticInProcessLocalMcbe": {
+    "file": "mcbe-inprocess-probe.json",
+    "expected": 17,
+    "total": 17,
+    "passed": 17,
+    "verified": true,
+    "countsAsDefaultModeAcceptance": false
+  },
+  "defaultModeFullAcceptancePassed": false,
+  "nativeUnitTestsRun": false,
+  "runtimeSelfTestPassed": true,
+  "runtimeSelfTestReports": 6,
+  "rendererCigSamples": 13,
+  "rendererCigAllMicrosoftSignedOnly": true,
+  "unresolvedIssues": [
+    {
+      "id": "mcbe-windows-appcontainer-loopback",
+      "summary": "Default out-of-process Windows Network Service times out querying the local IPv4 UDP fixture; in-process diagnostic mode passes 17 cases, public Hive query passes in default mode.",
+      "failedEvidence": "mcbe.json",
+      "status": "open",
+      "recommendedNextStep": "Use the existing Windows socket broker for connected UDP creation; preserve Network Service and Renderer sandboxing."
+    }
+  ],
+  "priorFailuresPreserved": [
+    "initial-startup-summary.json",
+    "dll-exception-parser-failure.json",
+    "input.json",
+    "input-synchronized.json",
+    "input-synchronized2.json",
+    "mario-hardware.json"
+  ],
+  "limits": [
+    "Development Release: non-component, not official, no PGO/ThinLTO/debug symbols.",
+    "Native unit-test executables and installer were not built or run.",
+    "Hardware soak was rerun in isolation after an earlier trusted-click failure during overlapping browser diagnostics; the original failure is preserved.",
+    "A 60-second soak does not establish long-term stability."
+  ]
+}

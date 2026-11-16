@@ -1,0 +1,67 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "origin": "http://127.0.0.1:51944",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only sample handles held keys, repeat and keyup",
+      "passed": true,
+      "elapsedMs": 518
+    },
+    {
+      "name": "Control keys prevent native scrolling synchronously",
+      "passed": true,
+      "elapsedMs": 273
+    },
+    {
+      "name": "Editable input keeps native typing and default space behavior",
+      "passed": true,
+      "elapsedMs": 104
+    },
+    {
+      "name": "Real checkbox change reports checked and value snapshots",
+      "passed": true,
+      "elapsedMs": 99
+    },
+    {
+      "name": "Keyboard snapshots preserve modifiers, repeat and trust",
+      "passed": true,
+      "elapsedMs": 136
+    },
+    {
+      "name": "Contenteditable and open dialogs are identified without node exposure",
+      "passed": true,
+      "elapsedMs": 90
+    },
+    {
+      "name": "Script-created keyboard events remain untrusted and preserve composition",
+      "passed": true,
+      "elapsedMs": 79
+    },
+    {
+      "name": "Closed shadow controls conservatively retain native keyboard behavior",
+      "passed": true,
+      "elapsedMs": 85
+    },
+    {
+      "name": "Native button space activation remains accessible",
+      "passed": true,
+      "elapsedMs": 99
+    },
+    {
+      "name": "Real mouse capture delivers pointerup outside the element",
+      "passed": true,
+      "elapsedMs": 365
+    },
+    {
+      "name": "Explicit capture release emits native lostpointercapture",
+      "passed": false,
+      "elapsedMs": 30148,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:177:9)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:396:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:264:20)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:387:3",
+      "nativeLogs": []
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:177:9)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:396:5\n    at async check (file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:264:20)\n    at async file:///C:/src/src/chrome/test/pyscript_input_smoke_test.mjs:387:3"
+}

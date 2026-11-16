@@ -1,0 +1,22 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "chromeArgs": [],
+  "results": [
+    {
+      "name": "public Bedrock server",
+      "passed": true,
+      "elapsedMs": 693,
+      "detail": {
+        "url": "mcbe://geo.hivebedrock.network/",
+        "origin": "null",
+        "ready": "complete",
+        "text": "MINECRAFT BEDROCK · UDP STATUS\nHIVE-O-WEEN | BEDWARS S5\n\nmcbe://geo.hivebedrock.network/\n\n查询成功\n\n主机\ngeo.hivebedrock.network\n查询端口\n19132\n响应端点\n198.18.2.72:19132\n副标题\nHive Games\n版本\n1.0\n协议版本\n121\n在线人数\n7617 / 1000\n游戏模式\nSurvival\n服务器 GUID\n1793329160128393\nMOTD GUID\n1208858288862531053\n往返耗时\n616.0 ms\n查询时间\n2026-11-16 13:05:18 UTC\n原始 MOTD\n使用浏览器刷新可重新查询。超时仅表示未收到响应，不能据此确认服务器离线。",
+        "state": "查询成功",
+        "injected": false,
+        "images": 0,
+        "scripts": 0,
+        "secure": false
+      }
+    }
+  ]
+}

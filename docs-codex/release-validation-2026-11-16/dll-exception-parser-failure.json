@@ -1,0 +1,155 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "sandboxed Python, shared globals, immutable source, errors and DCL order",
+      "passed": true,
+      "elapsedMs": 272,
+      "detail": {
+        "state": {
+          "url": "http://127.0.0.1:60920/basic",
+          "ready": "complete",
+          "origin": "http://127.0.0.1:60920",
+          "chromiumPlus": "0.0.1",
+          "count": 9,
+          "element": "HTMLElement",
+          "display": "none",
+          "nested": false,
+          "result": "unchanged"
+        },
+        "logs": [
+          {
+            "source": "other",
+            "level": "info",
+            "text": "Python 世界 42\nliteral &amp; <img src=\"/forbidden.png\">\n<script src=\"/forbidden.js\"></script>\n<link rel=\"stylesheet\" href=\"/forbidden.css\">\n",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 2
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "SHARED 43\n",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 9
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\n  File http://127.0.0.1:60920/basic#pyscript-3, line 1, in <module>\nValueError: phase-two",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 10
+          },
+          {
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: invalid syntax (http://127.0.0.1:60920/basic#pyscript-4, line 1) (http://127.0.0.1:60920/basic#pyscript-4:1)",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 11
+          },
+          {
+            "source": "other",
+            "level": "info",
+            "text": "RECOVERED\n",
+            "timestamp": 1794832592160.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 12
+          },
+          {
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794832592183.314,
+            "url": "http://127.0.0.1:60920/favicon.ico",
+            "networkRequestId": "3432.8"
+          }
+        ],
+        "timeline": [
+          {
+            "kind": "js",
+            "text": "JS_DEFERRED"
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "Python 世界 42\nliteral &amp; <img src=\"/forbidden.png\">\n<script src=\"/forbidden.js\"></script>\n<link rel=\"stylesheet\" href=\"/forbidden.css\">\n",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 2
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "SHARED 43\n",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 9
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\n  File http://127.0.0.1:60920/basic#pyscript-3, line 1, in <module>\nValueError: phase-two",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 10
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "error",
+            "text": "[pyscript] Traceback (most recent call last):\nSyntaxError: invalid syntax (http://127.0.0.1:60920/basic#pyscript-4, line 1) (http://127.0.0.1:60920/basic#pyscript-4:1)",
+            "timestamp": 1794832592159.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 11
+          },
+          {
+            "kind": "log",
+            "source": "other",
+            "level": "info",
+            "text": "RECOVERED\n",
+            "timestamp": 1794832592160.314,
+            "url": "http://127.0.0.1:60920/basic",
+            "lineNumber": 12
+          },
+          {
+            "kind": "js",
+            "text": "JS_DCL"
+          },
+          {
+            "kind": "log",
+            "source": "network",
+            "level": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+            "timestamp": 1794832592183.314,
+            "url": "http://127.0.0.1:60920/favicon.ico",
+            "networkRequestId": "3432.8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "network chunks, CRLF normalization and mixed-case closing tag",
+      "passed": false,
+      "elapsedMs": 30054,
+      "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:144:9)\n    at async Object.navigate (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:222:7)\n    at async file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:286:18\n    at async check (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:250:20)\n    at async file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:285:3"
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 30000 ms\n    at waitFor (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:144:9)\n    at async Object.navigate (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:222:7)\n    at async file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:286:18\n    at async check (file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:250:20)\n    at async file:///C:/src/src/chrome/test/pyscript_smoke_test.mjs:285:3",
+  "requests": [
+    "/basic",
+    "/pause.js",
+    "/deferred.js",
+    "/frame",
+    "/favicon.ico",
+    "/chunks"
+  ]
+}

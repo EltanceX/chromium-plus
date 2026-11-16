@@ -2,7 +2,7 @@
 
 基于 Chromium 的浏览器定制项目，增加内核调试设置、Minecraft 服务器状态协议，以及在 Renderer 中原生执行 Python 的实验能力。
 
-当前源码版本为 **Chromium 158.0.8126.0**；定制功能的构建与验证平台为 **Windows x64 Debug component build**。目前没有 Release 验证结论，也没有其他平台的定制功能支持承诺。
+当前源码版本为 **Chromium 158.0.8126.0**；已完成 Windows x64 Debug component 和非组件开发 Release 构建。Release 的 Python、Mario、MCJE 及公网 MCBE 检查通过；默认独立网络服务下的本机 MCBE UDP 查询仍超时，详见 [Release 检查记录](docs-codex/release-validation-2026-11-16.md)。其他平台的定制功能尚未验证。
 
 ## 定制功能
 
@@ -19,7 +19,7 @@
 
 ## 体验示例
 
-完成 Debug 构建后，在本项目浏览器地址栏打开：
+完成构建后，在本项目浏览器地址栏打开：
 
 ```text
 chrome://settings/kernelDebug
@@ -64,8 +64,9 @@ Python 在 Renderer 主线程同步执行，沿用 Renderer 沙箱，并受执�
 - [Debug 稳定性、验证条件与限制](docs-codex/pyscript-mario-debug-validation.md)
 - [Python / Mario 最终结果和归档证据](docs-codex/pyscript-mario-debug-validation/README.md)
 - [MCJE SRV 修复结果](docs-codex/mcje-validation/srv-fix-results-2026-11-07.json)
+- [首次 Release 构建、启动修复与产物检查](docs-codex/release-validation-2026-11-16.md)：284 项标准检查、公网 MCBE 查询及隔离硬件图形 36 项通过；本机 MCBE UDP 默认模式仍待修复。
 
-以上为已归档的历史实测结果；本次 README 与总览文档更新没有重跑原生构建或完整浏览器验收。
+Debug 数据为已归档的历史实测；本次 Release 未重跑原生单测，也未构建安装包。不同配置和重复覆盖不合并计数。
 
 ## Chromium 上游与许可证
 

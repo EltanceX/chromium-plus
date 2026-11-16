@@ -1,0 +1,8 @@
+AssertionError [ERR_ASSERTION]: {"url":"mcbe://127.0.0.1:56667/","origin":"null","ready":"complete","text":"MINECRAFT BEDROCK · UDP STATUS\n等待响应超时\n\nmcbe://127.0.0.1:56667/\n\n等待响应超时\n\n主机\n127.0.0.1\n查询端口\n56667\n尝试端点\n127.0.0.1:56667\n原因\n5 秒内未收到有效响应。服务器可能未开放此 UDP 端口，或网络未能送达。\n查询时间\n2026-11-16 12:45:52 UTC\n使用浏览器刷新可重新查询。超时仅表示未收到响应，不能据此确认服务器离线。","state":"等待响应超时","injected":false,"images":0,"scripts":0,"secure":false}
+
+'等待响应超时' !== '查询成功'
+
+    at file:///C:/src/src/chrome/test/mcbe_smoke_test.mjs:193:12
+    at async check (file:///C:/src/src/chrome/test/mcbe_smoke_test.mjs:54:20)
+    at async file:///C:/src/src/chrome/test/mcbe_smoke_test.mjs:191:3
+Results: C:\src\src\out\Release\validation\20261116-component-runtime\mcbe.json

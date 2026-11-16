@@ -1,0 +1,492 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "chromeArgs": [],
+  "phase": 5,
+  "publicOnly": false,
+  "results": [
+    {
+      "name": "real omnibox classifier recognizes MCJE URLs",
+      "passed": true,
+      "elapsedMs": 175,
+      "detail": {
+        "type": "url",
+        "matches": [
+          {
+            "url": "mcje://127.0.0.1:49181/",
+            "search": false,
+            "default": true
+          },
+          {
+            "url": "https://www.google.com/search?q=mcje%3A%2F%2F127.0.0.1%3A49181%2F&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+            "search": true,
+            "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "native TCP query, handshake, escaped MOTD and opaque origin",
+      "passed": true,
+      "elapsedMs": 471,
+      "detail": {
+        "url": "mcje://127.0.0.1:49181/",
+        "origin": "null",
+        "ready": "complete",
+        "text": "MINECRAFT JAVA · TCP STATUS\nMinecraft Java 服务器状态\n\n64×64 PNG\n\nmcje://127.0.0.1:49181/\n\n地址已识别\n\n查询成功\n\nJava 世界 <img src=x onerror=\"globalThis.mcjeInjected=1\"> &\n第二行\n逻辑主机\n127.0.0.1\n逻辑端口\n49181\n端口来源\n显式指定\n实际端点\n127.0.0.1:49181\nSRV 目标\n未使用\n服务发现\nIP 地址，跳过 SRV。\n连接次数\n1\n版本\n1.21.local\n协议版本\n767\n在线人数\n12\n人数上限\n100\n往返延迟\n2.0 ms\n延迟说明\n未提供\n查询时间\n2026-11-16 12:45:54 UTC\n响应 JSON 摘要\n使用浏览器刷新可重新查询。超时仅表示未收到响应，不能据此确认服务器离线。图标是状态响应中的可选 PNG 附件。",
+        "state": "地址已识别",
+        "host": "127.0.0.1",
+        "port": "49181",
+        "portSource": "显式指定",
+        "query": "查询成功",
+        "motd": "Java 世界 <img src=x onerror=\"globalThis.mcjeInjected=1\"> &\n第二行",
+        "rtt": "2.0 ms",
+        "endpoint": "127.0.0.1:49181",
+        "srvTarget": "未使用",
+        "discovery": "IP 地址，跳过 SRV。",
+        "attempts": "1",
+        "version": "1.21.local",
+        "protocol": "767",
+        "playersOnline": "12",
+        "playersMax": "100",
+        "latencyDiagnostic": "未提供",
+        "summary": "{\"description\":{\"extra\":[{\"text\":\"\\n第二行\"}],\"text\":\"§aJava 世界 \\u003Cimg src=x onerror=\\\"globalThis.mcjeInjected=1\\\"> &\"},\"favicon\":\"[favicon attachment omitted]\",\"players\":{\"max\":100,\"online\":12},\"version\":{\"name\":\"1.21.local\",\"protocol\":767}}",
+        "images": 1,
+        "icon": {
+          "complete": true,
+          "width": 64,
+          "height": 64,
+          "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAA1ElEQVR4nOyWsQkCURAFx8P4YxGWIliAgcUZ2MG1YROCJSi/AjvYDe/gzaS7Lxl47C6EsxCOAghHAYSjAMI5dguX5/1dzccY1Zg5J1vm19vjXM2tAOEogHAUQDj+Ad3C3u98l++wAoSjAMJRAOH4B3QLe7/zXb7DChCOAghHAYTjH9AtXF/fcj7np5yPcdo0v1JjBQhHAYSjAMLxD+gW5vyV8/5Ob5vvsAKEowDCUQDh+Ad0C3u/812+wwoQjgIIRwGEEy/gQDhWgHAUQDgKIJx4AX8AAAD//106cAEAAAAGSURBVAMAELE52KRrf4oAAAAASUVORK5CYII="
+        },
+        "placeholder": false,
+        "iconState": "64×64 PNG",
+        "completedAt": "2026-11-16 12:45:54 UTC",
+        "injected": false,
+        "scripts": 0,
+        "secure": false
+      }
+    },
+    {
+      "name": "CSP blocks injected scripts and remote images",
+      "passed": true,
+      "elapsedMs": 5
+    },
+    {
+      "name": "optional missing icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 60,
+      "detail": {
+        "iconState": "服务器未提供图标"
+      }
+    },
+    {
+      "name": "optional type icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 69,
+      "detail": {
+        "iconState": "图标附件类型或长度无效"
+      }
+    },
+    {
+      "name": "optional base64 icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 56,
+      "detail": {
+        "iconState": "图标 Base64 无效或 PNG 超过 64 KiB"
+      }
+    },
+    {
+      "name": "optional whitespace icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 76,
+      "detail": {
+        "iconState": "图标 Base64 无效或 PNG 超过 64 KiB"
+      }
+    },
+    {
+      "name": "optional mime icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 60,
+      "detail": {
+        "iconState": "图标仅支持有界的 PNG data URL"
+      }
+    },
+    {
+      "name": "optional remote icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 63,
+      "detail": {
+        "iconState": "图标仅支持有界的 PNG data URL"
+      }
+    },
+    {
+      "name": "optional dimensions icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 54,
+      "detail": {
+        "iconState": "图标必须是 64×64 PNG"
+      }
+    },
+    {
+      "name": "optional signature icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 61,
+      "detail": {
+        "iconState": "图标必须是 64×64 PNG"
+      }
+    },
+    {
+      "name": "optional corrupt icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 89,
+      "detail": {
+        "iconState": "图标解码失败或位图无效"
+      }
+    },
+    {
+      "name": "optional encodedOversize icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 52,
+      "detail": {
+        "iconState": "图标附件类型或长度无效"
+      }
+    },
+    {
+      "name": "optional decodedOversize icon uses placeholder and preserves status",
+      "passed": true,
+      "elapsedMs": 58,
+      "detail": {
+        "iconState": "图标 Base64 无效或 PNG 超过 64 KiB"
+      }
+    },
+    {
+      "name": "DNS target retains logical hostname in handshake",
+      "passed": true,
+      "elapsedMs": 170
+    },
+    {
+      "name": "reload starts a new TCP query",
+      "passed": true,
+      "elapsedMs": 126
+    },
+    {
+      "name": "same-document fragment makes no connection",
+      "passed": true,
+      "elapsedMs": 13
+    },
+    {
+      "name": "invalid URLs never connect",
+      "passed": true,
+      "elapsedMs": 397
+    },
+    {
+      "name": "subframe and fetch cannot open TCP query",
+      "passed": true,
+      "elapsedMs": 294
+    },
+    {
+      "name": "split response keeps valid state and matched Pong",
+      "passed": true,
+      "elapsedMs": 1621
+    },
+    {
+      "name": "pong-first response keeps valid state and matched Pong",
+      "passed": true,
+      "elapsedMs": 88
+    },
+    {
+      "name": "wrong-pong response keeps valid state and matched Pong",
+      "passed": true,
+      "elapsedMs": 89
+    },
+    {
+      "name": "valid status without Pong ends after short wait",
+      "passed": true,
+      "elapsedMs": 1085
+    },
+    {
+      "name": "connection close after valid status preserves MOTD",
+      "passed": true,
+      "elapsedMs": 101
+    },
+    {
+      "name": "bad-json yields a local query error",
+      "passed": true,
+      "elapsedMs": 53
+    },
+    {
+      "name": "truncated yields a local query error",
+      "passed": true,
+      "elapsedMs": 55
+    },
+    {
+      "name": "silent server respects five-second total budget",
+      "passed": true,
+      "elapsedMs": 5055
+    },
+    {
+      "name": "navigation cancellation closes socket without retry",
+      "passed": true,
+      "elapsedMs": 1284
+    },
+    {
+      "name": "closing a pending tab cancels TCP",
+      "passed": true,
+      "elapsedMs": 141
+    },
+    {
+      "name": "explicit IPv6 endpoint",
+      "passed": true,
+      "elapsedMs": 130
+    },
+    {
+      "name": "back and forward preserve native results",
+      "passed": true,
+      "elapsedMs": 447
+    },
+    {
+      "name": "all local handshakes have expected frame order",
+      "passed": true,
+      "elapsedMs": 0
+    },
+    {
+      "name": "browser shutdown cancels an outstanding query",
+      "passed": true,
+      "elapsedMs": 375
+    }
+  ],
+  "connections": 29,
+  "records": [
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "localhost",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "split",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "pong-first",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "wrong-pong",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "no-pong",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "close",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "bad-json",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "truncated",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "silent",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "silent",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "silent",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 62685,
+      "host": "::1",
+      "logicalPort": 62685,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "normal",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    },
+    {
+      "mode": "silent",
+      "closed": true,
+      "port": 49181,
+      "host": "127.0.0.1",
+      "logicalPort": 49181,
+      "handshakeValid": true
+    }
+  ]
+}

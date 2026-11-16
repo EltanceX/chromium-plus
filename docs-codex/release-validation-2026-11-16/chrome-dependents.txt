@@ -1,0 +1,99 @@
+Microsoft (R) COFF/PE Dumper Version 14.51.36260.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file out\Release\chrome.dll
+
+File Type: DLL
+
+  Image has the following dependencies:
+
+    WINMM.dll
+    KERNEL32.dll
+    WS2_32.dll
+    CRYPT32.dll
+    VERSION.dll
+    ntdll.dll
+    DNSAPI.dll
+    api-ms-win-core-path-l1-1-0.dll
+    chrome_elf.dll
+    DWrite.dll
+
+  Image has the following delay load dependencies:
+
+    USER32.dll
+    ole32.dll
+    ADVAPI32.dll
+    dbghelp.dll
+    bcrypt.dll
+    IPHLPAPI.DLL
+    pdh.dll
+    MMDevAPI.DLL
+    dxgi.dll
+    GDI32.dll
+    api-ms-win-core-handle-l1-1-0.dll
+    MFPlat.DLL
+    d3d11.dll
+    PROPSYS.dll
+    OLEAUT32.dll
+    wevtapi.dll
+    MF.dll
+    MFReadWrite.dll
+    SHELL32.dll
+    USERENV.dll
+    NETAPI32.dll
+    Secur32.dll
+    COMCTL32.dll
+    OLEACC.dll
+    UIAutomationCore.DLL
+    WTSAPI32.dll
+    HID.DLL
+    SETUPAPI.dll
+    WINTRUST.dll
+    credui.dll
+    SHLWAPI.dll
+    urlmon.dll
+    WINHTTP.dll
+    NDFAPI.DLL
+    CRYPTUI.dll
+    dwmapi.dll
+    IMM32.dll
+    api-ms-win-core-winrt-l1-1-0.dll
+    api-ms-win-power-base-l1-1-0.dll
+    api-ms-win-shcore-scaling-l1-1-1.dll
+    CFGMGR32.dll
+    api-ms-win-core-winrt-string-l1-1-0.dll
+    tbs.dll
+    api-ms-win-core-realtime-l1-1-1.dll
+    ncrypt.dll
+    api-ms-win-power-setting-l1-1-0.dll
+    WINSPOOL.DRV
+    UxTheme.dll
+    d3d12.dll
+    dcomp.dll
+    bcryptprimitives.dll
+    api-ms-win-core-synch-l1-2-0.dll
+    WINUSB.DLL
+    COMDLG32.dll
+    bthprops.cpl
+    dhcpcsvc.DLL
+    WININET.dll
+    ESENT.dll
+
+  Summary
+
+      391000 .data
+        1000 .eh_fram
+        1000 .fptable
+      73D000 .pdata
+     25C0000 .rdata
+      202000 .reloc
+       25000 .rsrc
+    119D7000 .text
+        1000 .tls
+        1000 CPADinfo
+        2000 LZMADEC
+       45000 PyRuntim
+        1000 _RDATA
+        1000 malloc_h
+        1000 prot

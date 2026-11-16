@@ -6,7 +6,10 @@ import("//testing/test.gni")
 
 assert(is_win && current_cpu == "x64")
 
-shared_library("python_runtime") {
+# Keep the runtime in the same allocator domain as its callers. In a
+# non-component build, C++ objects must not cross a separate DLL/CRT heap.
+component("python_runtime") {
+  output_name = "python_runtime"
   sources = [
     "python_browser_module.cc",
     "python_browser_types.h",

@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-11-16T13:08:20.016255+00:00",
+  "sourceCommit": "206918ff3c7a6aa0fb1738afa1975d7885d0a832",
+  "sourceDiffSha256": "0665b9a166ebd3993252e812b19f47a9e016b0c02be28bf9fea1582248fa8c7e",
+  "buildDirectory": "C:\\src\\src\\out\\Release",
+  "files": [
+    {
+      "path": "chrome.exe",
+      "exists": true,
+      "bytes": 3127808,
+      "sha256": "eff067aaece03e6d170147b4f9ff677397a021200dedcef62272e7382024ef66",
+      "peSignatureValid": true,
+      "machine": "0x8664",
+      "x64": true
+    },
+    {
+      "path": "chrome.dll",
+      "exists": true,
+      "bytes": 346598912,
+      "sha256": "85bc66ea76434573db01c7e506f4a47d74fca3068d414c245bf3e32761b0569e",
+      "peSignatureValid": true,
+      "machine": "0x8664",
+      "x64": true
+    },
+    {
+      "path": "chrome_elf.dll",
+      "exists": true,
+      "bytes": 1609216,
+      "sha256": "2fbb94a194d63d5d31c5eb64a1683eb0530dc8d3482e0946a5d90ab481d64ebb",
+      "peSignatureValid": true,
+      "machine": "0x8664",
+      "x64": true
+    },
+    {
+      "path": "icudtl.dat",
+      "exists": true,
+      "bytes": 10824576,
+      "sha256": "e1ed8f674bb8449731b79cae956042da59f9ecbd37c8d3f86586a22b4836e5b2"
+    },
+    {
+      "path": "resources.pak",
+      "exists": true,
+      "bytes": 25119918,
+      "sha256": "2d7204e43feda9f393ed058a19201ba151091ca841b03c5bce8c8fd2615dc5af"
+    },
+    {
+      "path": "chrome_100_percent.pak",
+      "exists": true,
+      "bytes": 577231,
+      "sha256": "a9612be887e4a7fee31319509328306e257872c36f7e1efed517e58175063cf5"
+    },
+    {
+      "path": "chrome_200_percent.pak",
+      "exists": true,
+      "bytes": 934761,
+      "sha256": "d28bfeb62877af488e538b326f912197046468006928840e25fcbd512ecb2f94"
+    },
+    {
+      "path": "v8_context_snapshot.bin",
+      "exists": true,
+      "bytes": 709120,
+      "sha256": "349ce9ebb06ce35dcddc4302e96a84c99d17134fa7df14be65a661550a1c49d5"
+    },
+    {
+      "path": "locales/en-US.pak",
+      "exists": true,
+      "bytes": 612993,
+      "sha256": "35c36125a8f01b492ca427c35f278aaf6824c495dac29855c5968128f819046e"
+    },
+    {
+      "path": "locales/zh-CN.pak",
+      "exists": true,
+      "bytes": 621803,
+      "sha256": "df3162a3f3f61ff2a8797f88743e444fc358b32476726aa9e809ef24edaa30b1"
+    },
+    {
+      "path": "args.gn",
+      "exists": true,
+      "bytes": 395,
+      "sha256": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370"
+    }
+  ],
+  "allRequiredPresent": true,
+  "allCorePeX64": true,
+  "standalonePythonDllExists": false,
+  "logicalOutputBytes": 9623733152,
+  "fileCount": 157561,
+  "diskFreeBytes": 228776325120
+}

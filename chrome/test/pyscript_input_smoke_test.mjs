@@ -277,7 +277,11 @@ async function key(type, code, keyValue, virtualKey, extra = {}) {
     windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey, ...extra});
 }
 async function mouse(type, point, extra = {}) {
-  await send('Input.dispatchMouseEvent', {type, ...point, ...extra});
+  // Keep the changed/current button consistent with the pressed-button mask.
+  // Omitting it during a left drag can clear pending native mouse capture.
+  await send('Input.dispatchMouseEvent', {
+    type, ...point, button: extra.buttons & 1 ? 'left' : 'none', ...extra,
+  });
 }
 async function press(id) {
   const point = await rect(id);

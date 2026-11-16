@@ -1,0 +1,190 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "origin": "http://127.0.0.1:55365",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Python-only nonce sample updates and cancels native frames",
+      "passed": true,
+      "elapsedMs": 983,
+      "detail": {
+        "first": [
+          10,
+          245
+        ],
+        "second": [
+          26,
+          511
+        ],
+        "stopped": "26:511"
+      }
+    },
+    {
+      "name": "Duplicate, repeated cancellation and consumed handles preserve next frame",
+      "passed": true,
+      "elapsedMs": 284
+    },
+    {
+      "name": "One-shot errors consume the old request and allow a new request",
+      "passed": true,
+      "elapsedMs": 220
+    },
+    {
+      "name": "A next frame requested before an ordinary error survives",
+      "passed": true,
+      "elapsedMs": 69
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /timeout",
+      "passed": true,
+      "elapsedMs": 1179,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python animation frame exceeded the 16 ms cooperative execution budget",
+          "timestamp": 1794833192993.813,
+          "url": "http://127.0.0.1:55365/timeout",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /dom-stop",
+      "passed": true,
+      "elapsedMs": 1181,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback exceeded the 128 DOM call budget",
+          "timestamp": 1794833194159.813,
+          "url": "http://127.0.0.1:55365/dom-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /output-stop",
+      "passed": true,
+      "elapsedMs": 1184,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794833195339.813,
+          "url": "http://127.0.0.1:55365/output-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Fatal frame limit revokes frames and click listeners: /diagnostic-stop",
+      "passed": true,
+      "elapsedMs": 1168,
+      "detail": [
+        {
+          "source": "other",
+          "level": "error",
+          "text": "[pyscript frame 1] Python callback output was truncated at 4 KiB; document execution stopped",
+          "timestamp": 1794833196525.813,
+          "url": "http://127.0.0.1:55365/diagnostic-stop",
+          "lineNumber": 0
+        }
+      ]
+    },
+    {
+      "name": "Frame output window retains one request and recovers with a fresh timestamp",
+      "passed": true,
+      "elapsedMs": 1068,
+      "detail": {
+        "times": [
+          15,
+          31,
+          48,
+          65,
+          81,
+          1031
+        ],
+        "gaps": [
+          16,
+          17,
+          17,
+          16,
+          950
+        ]
+      }
+    },
+    {
+      "name": "Click DOM charges defer one pending frame until the shared window recovers",
+      "passed": true,
+      "elapsedMs": 1105,
+      "detail": {
+        "clickDomCalls": 960,
+        "frameRequests": 1,
+        "result": "resumed:1080"
+      }
+    },
+    {
+      "name": "Click output and frames share the same window",
+      "passed": true,
+      "elapsedMs": 1098
+    },
+    {
+      "name": "Source tag removal and GC retain copied frame authorization",
+      "passed": true,
+      "elapsedMs": 247
+    },
+    {
+      "name": "Late CSP revokes the pending frame and all Python listeners",
+      "passed": true,
+      "elapsedMs": 445
+    },
+    {
+      "name": "Script execution policy revocation cannot revive old frames",
+      "passed": true,
+      "elapsedMs": 484
+    },
+    {
+      "name": "Frozen page resumes with current timestamps without old-frame bursts",
+      "passed": true,
+      "elapsedMs": 1349,
+      "detail": {
+        "frozen": [
+          4,
+          68
+        ],
+        "resumed": [
+          6,
+          1334
+        ]
+      }
+    },
+    {
+      "name": "Fragment navigation continues and full navigation starts a fresh context",
+      "passed": true,
+      "elapsedMs": 600
+    },
+    {
+      "name": "document.open revokes the frame before replacement markup",
+      "passed": true,
+      "elapsedMs": 270
+    },
+    {
+      "name": "Detached child frame stops its old counter and replacement is isolated",
+      "passed": true,
+      "elapsedMs": 483
+    },
+    {
+      "name": "Browser closes normally with a pending Python animation frame",
+      "passed": true,
+      "elapsedMs": 340,
+      "detail": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "passed": true
+}

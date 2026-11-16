@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-11-16T12:24:29.720684+00:00",
+  "sourceCommit": "206918ff3c7a6aa0fb1738afa1975d7885d0a832",
+  "buildDirectory": "C:\\src\\src\\out\\Release",
+  "outputDirectory": "C:\\src\\src\\out\\Release\\validation\\20261116-202429",
+  "nativeUnitTestsRun": false,
+  "state": "failed",
+  "checks": {
+    "chromium-plus": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "C:\\src\\src\\chrome\\test\\chromium_plus_smoke_test.py",
+        "--chrome-binary",
+        "C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output",
+        "C:\\src\\src\\out\\Release\\validation\\20261116-202429\\chromium-plus.json"
+      ],
+      "expected": 15,
+      "exitCode": 1,
+      "verified": false,
+      "elapsedSeconds": 121.44
+    }
+  },
+  "inputSha256": {
+    "chrome.exe": "eff067aaece03e6d170147b4f9ff677397a021200dedcef62272e7382024ef66",
+    "chrome.dll": "150b6d8751b86aa21561509433bf1fe5dbf46784de27a66fceea91c00ea580e7",
+    "chrome_elf.dll": "2fbb94a194d63d5d31c5eb64a1683eb0530dc8d3482e0946a5d90ab481d64ebb",
+    "python_runtime.dll": "776915326cf4eba94064c59bc262af397b5bb65a12e86abfceb66e77acd6d3de",
+    "args.gn": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370"
+  },
+  "passed": false,
+  "currentSuite": "chromium-plus",
+  "error": "Traceback (most recent call last):\n  File \"C:\\src\\src\\out\\Release\\validation\\20261116-202429\\validate.py\", line 53, in <module>\n    raise RuntimeError('Core smoke failed; stop wider validation and inspect '+name)\nRuntimeError: Core smoke failed; stop wider validation and inspect chromium-plus\n",
+  "finishedAt": "2026-11-16T12:26:31.500993+00:00"
+}

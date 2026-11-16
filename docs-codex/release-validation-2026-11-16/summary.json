@@ -1,0 +1,254 @@
+{
+  "startedAt": "2026-11-16T12:45:16.034682+00:00",
+  "sourceCommit": "206918ff3c7a6aa0fb1738afa1975d7885d0a832",
+  "buildDirectory": "C:\\src\\src\\out\\Release",
+  "outputDirectory": "C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime",
+  "workingTreeStatus": "M chrome/installer/mini_installer/chrome.release\n M components/python_runtime/BUILD.gn\n M components/python_runtime/python_runtime.h",
+  "sourcePatchSha256": "471d4a43522b8f028f974a77248c1d8e0b0e71a2fa5b4f051706169df9e5ad34",
+  "nativeUnitTestsRun": false,
+  "state": "failed",
+  "checks": {
+    "chromium-plus": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\src\\src\\chrome\\test\\chromium_plus_smoke_test.py",
+        "--chrome-binary",
+        "C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output",
+        "C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\chromium-plus.json"
+      ],
+      "expected": 15,
+      "exitCode": 0,
+      "total": 15,
+      "passed": 15,
+      "suitePassed": true,
+      "verified": true,
+      "elapsedSeconds": 5.78
+    },
+    "parser": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\parser.json"
+      ],
+      "expected": 27,
+      "exitCode": 0,
+      "total": 27,
+      "passed": 27,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 12.12
+    },
+    "settings": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_settings_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\settings.json"
+      ],
+      "expected": 12,
+      "exitCode": 0,
+      "total": 12,
+      "passed": 12,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 6.98
+    },
+    "mario-logic": {
+      "command": [
+        "C:\\Users\\EltanceXV\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\src\\src\\chrome\\test\\pyscript_mario_unittest.py",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\mario-logic.json"
+      ],
+      "expected": 29,
+      "exitCode": 0,
+      "total": 29,
+      "passed": 29,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 0.53
+    },
+    "mcbe": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\mcbe_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\mcbe.json"
+      ],
+      "expected": 17,
+      "exitCode": 1,
+      "total": 1,
+      "passed": 0,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": false,
+      "elapsedSeconds": 6.2
+    },
+    "mcje": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\mcje_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\mcje.json"
+      ],
+      "expected": 33,
+      "exitCode": 0,
+      "total": 33,
+      "passed": 33,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 13.62
+    },
+    "dom": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_dom_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\dom.json"
+      ],
+      "expected": 17,
+      "exitCode": 0,
+      "total": 17,
+      "passed": 17,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 7.22
+    },
+    "events": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_event_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\events.json"
+      ],
+      "expected": 34,
+      "exitCode": 0,
+      "total": 34,
+      "passed": 34,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 16.36
+    },
+    "animation": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_animation_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\animation.json"
+      ],
+      "expected": 19,
+      "exitCode": 0,
+      "total": 19,
+      "passed": 19,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 18.86
+    },
+    "input": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_input_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\input.json"
+      ],
+      "expected": 25,
+      "exitCode": 1,
+      "total": 11,
+      "passed": 10,
+      "suitePassed": false,
+      "sandboxDisabled": false,
+      "verified": false,
+      "elapsedSeconds": 37.56
+    },
+    "canvas": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_canvas_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\canvas.json"
+      ],
+      "expected": 23,
+      "exitCode": 0,
+      "total": 23,
+      "passed": 23,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 3.89
+    },
+    "browser-services": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_browser_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\browser-services.json"
+      ],
+      "expected": 15,
+      "exitCode": 0,
+      "total": 15,
+      "passed": 15,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 11.58
+    },
+    "mario": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_mario_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\mario.json"
+      ],
+      "expected": 35,
+      "exitCode": 0,
+      "total": 35,
+      "passed": 35,
+      "suitePassed": true,
+      "sandboxDisabled": false,
+      "verified": true,
+      "elapsedSeconds": 94.44
+    },
+    "mario-hardware": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.EXE",
+        "C:\\src\\src\\chrome\\test\\pyscript_mario_smoke_test.mjs",
+        "--chrome-binary=C:\\src\\src\\out\\Release\\chrome.exe",
+        "--output=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\mario-hardware.json",
+        "--graphics=default",
+        "--soak-seconds=60"
+      ],
+      "expected": 36,
+      "exitCode": 1,
+      "total": 34,
+      "passed": 33,
+      "suitePassed": false,
+      "sandboxDisabled": false,
+      "verified": false,
+      "elapsedSeconds": 249.94
+    }
+  },
+  "inputSha256": {
+    "chrome.exe": "eff067aaece03e6d170147b4f9ff677397a021200dedcef62272e7382024ef66",
+    "chrome.dll": "85bc66ea76434573db01c7e506f4a47d74fca3068d414c245bf3e32761b0569e",
+    "chrome_elf.dll": "2fbb94a194d63d5d31c5eb64a1683eb0530dc8d3482e0946a5d90ab481d64ebb",
+    "args.gn": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370"
+  },
+  "passed": false,
+  "currentSuite": "mario-hardware",
+  "finalSha256": {
+    "chrome.exe": "eff067aaece03e6d170147b4f9ff677397a021200dedcef62272e7382024ef66",
+    "chrome.dll": "85bc66ea76434573db01c7e506f4a47d74fca3068d414c245bf3e32761b0569e",
+    "chrome_elf.dll": "2fbb94a194d63d5d31c5eb64a1683eb0530dc8d3482e0946a5d90ab481d64ebb",
+    "args.gn": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370"
+  },
+  "inputsUnchanged": true,
+  "finishedAt": "2026-11-16T12:53:27.388486+00:00"
+}

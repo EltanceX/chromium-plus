@@ -21,11 +21,16 @@ namespace base {
 class TickClock;
 }
 
-// This target is always a DLL, including non-component builds.
+// Follow Chromium's component linkage so non-component builds share the
+// caller's allocator for C++ objects and their destruction.
+#if defined(COMPONENT_BUILD)
 #if defined(IS_PYTHON_RUNTIME_IMPL)
 #define PYTHON_RUNTIME_EXPORT __declspec(dllexport)
 #else
 #define PYTHON_RUNTIME_EXPORT __declspec(dllimport)
+#endif
+#else
+#define PYTHON_RUNTIME_EXPORT
 #endif
 
 namespace native_python {

@@ -1,5 +1,7 @@
 # 阶段一：CPython 依赖与独立运行时
 
+后续修正（2026-11-16）：本文保留阶段一的 Debug 历史。运行时现改用 Chromium `component` 规则，非组件 Release 静态链入主 DLL，组件构建仍生成 `python_runtime.dll`；原“始终使用 shared_library”的设计已替换，原因和实测见 [Release 记录](release-validation-2026-11-16.md)。
+
 - 日期：2026-11-08（Asia/Shanghai）。
 - 对应方案：[原生 Python MVP](pyscript-native-python-mvp-implementation.md) 的阶段一。
 - 平台：Windows x64，Chromium 158.0.8126.0，`out/Debug` component build。

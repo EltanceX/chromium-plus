@@ -1,0 +1,95 @@
+{
+  "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+  "origin": "http://127.0.0.1:56516",
+  "sandboxDisabled": false,
+  "chromeArgs": [],
+  "cases": [
+    {
+      "name": "Explicit capture release emits native lostpointercapture",
+      "passed": false,
+      "elapsedMs": 3223,
+      "error": "Error: Condition timed out after 3000 ms\n    at waitFor (file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:181:9)\n    at async file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:403:5\n    at async check (file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:269:20)\n    at async file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:392:3",
+      "nativeLogs": [
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript callback 2] MOVE 0 1\n",
+          "timestamp": 1794834089530.423,
+          "url": "http://127.0.0.1:56516/release",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript callback 2] MOVE 1 1\n",
+          "timestamp": 1794834089547.423,
+          "url": "http://127.0.0.1:56516/release",
+          "lineNumber": 0
+        },
+        {
+          "source": "other",
+          "level": "info",
+          "text": "[pyscript callback 2] MOVE 1 1\n",
+          "timestamp": 1794834089563.423,
+          "url": "http://127.0.0.1:56516/release",
+          "lineNumber": 0
+        }
+      ],
+      "page": {
+        "text": "released\n\nControl",
+        "events": [
+          {
+            "type": "pointermove",
+            "id": 1,
+            "target": "button",
+            "buttons": 0,
+            "x": 37.4921875,
+            "y": 70.5,
+            "trust": true,
+            "capture": false
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "target": "button",
+            "buttons": 1,
+            "x": 37.4921875,
+            "y": 70.5,
+            "trust": true,
+            "capture": false
+          },
+          {
+            "type": "after-python-down",
+            "capture": true
+          },
+          {
+            "type": "after-js-down",
+            "capture": true
+          },
+          {
+            "type": "pointermove",
+            "id": 1,
+            "target": "button",
+            "buttons": 1,
+            "x": 39.4921875,
+            "y": 72.5,
+            "trust": true,
+            "capture": false
+          },
+          {
+            "type": "pointermove",
+            "id": 1,
+            "target": "button",
+            "buttons": 1,
+            "x": 40.4921875,
+            "y": 73.5,
+            "trust": true,
+            "capture": false
+          }
+        ]
+      }
+    }
+  ],
+  "passed": false,
+  "error": "Error: Condition timed out after 3000 ms\n    at waitFor (file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:181:9)\n    at async file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:403:5\n    at async check (file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:269:20)\n    at async file:///C:/src/src/out/Release/validation/20261116-component-runtime/input-control-probe.mjs:392:3"
+}

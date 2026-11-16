@@ -1,0 +1,62 @@
+ninja: Entering directory `out/Release'
+
+
+offline mode
+disable fast local for non-interactive: fastlocal=1->0
+ use `--fast_local` to enable fast local with non-interactive mode
+schedule pending:1+ready:0 (node:87542 edge:2)
+build start: Ready 1 Pending 1
+[0/2] 12.40s S Regenerating ninja files
+[0/2] 55.04s F Regenerating ninja files
+rebuild manifest finished
+54.89s Regenerating ninja files
+
+
+
+loading build.ninja... done 10.1211323s
+load siso config done 2.0934876s
+schedule pending:1+ready:0 (node:444239 edge:2)
+build start: Ready 1 Pending 1
+rebuild manifest finished
+schedule pending:1+ready:0 (node:444239 edge:6)
+schedule pending:66772+ready:0 (node:444239 edge:66797)
+ 1.35s schedule pending:89224+ready:8791 (node:444239 edge:98015)
+
+build start: Ready 8791 Pending 89224
+[0/34445] 1m23.71s S CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[0/34209] 1m23.72s S CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[0/33911] 1m23.73s S CXX obj/components/python_runtime/python_runtime/python_browser_module.obj
+[0/33887] 1m23.73s S CXX obj/components/python_runtime/python_runtime/python_canvas_module.obj
+[0/33870] 1m23.73s S CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[0/10167] 1m25.19s S CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[0/8376] 1m25.30s S CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[0/40] 1m26.02s S CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[0/19] 1m26.91s F CXX obj/components/python_runtime/python_runtime/python_browser_module.obj
+[1/19] 1m27.16s F CXX obj/components/python_runtime/python_runtime/python_canvas_module.obj
+[2/19] 1m27.23s F CXX obj/components/python_runtime/python_runtime/python_dom_module.obj
+[3/19] 1m27.46s F CXX obj/components/python_runtime/python_runtime/python_runtime.obj
+[4/19] 1m27.61s F CXX obj/components/python_runtime/python_runtime/python_execution_budget.obj
+[5/19] 1m27.62s S LIB obj/components/python_runtime/python_runtime.lib
+[5/19] 1m27.76s F LIB obj/components/python_runtime/python_runtime.lib
+[6/19] 1m29.35s F CXX obj/chrome/renderer/python_document_context/python_document_context.obj
+[7/18] 2m05.38s F CXX obj/chrome/renderer/renderer/chrome_content_renderer_client.obj
+[8/18] 2m05.38s S LIB obj/chrome/renderer/renderer.lib
+[8/18] 2m05.49s F LIB obj/chrome/renderer/renderer.lib
+[9/18] 2m26.14s F CXX obj/chrome/browser/core/chrome_content_browser_client.obj
+[10/16] 2m26.25s S LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[10/16] 2m48.49s F LINK(DLL) chrome.dll chrome.dll.lib chrome.dll.pdb
+[11/16] 2m48.49s S LINK initialexe/chrome.exe initialexe/chrome.exe.pdb
+[11/16] 2m50.86s F LINK initialexe/chrome.exe initialexe/chrome.exe.pdb
+[12/16] 2m50.86s S ACTION //chrome:reorder_imports(//build/toolchain/win:win_clang_x64)
+[12/16] 2m51.12s F ACTION //chrome:reorder_imports(//build/toolchain/win:win_clang_x64)
+build finished
+
+	
+noexec:0 local:13 remote:0 cache:0 skip:98002
+  cache-write:0(err:0) fallback:0 retry:0
+fs: ops: 9245(err:6) / r:828(err:0) 1.15GiB / w:4(err:0) 1.69MiB
+
+
+shutdown cloud logging/monitoring done 0s
+
+2m52.10s Build Succeeded: 13 steps - 0.08/s

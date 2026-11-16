@@ -1,0 +1,119 @@
+[
+  {
+    "pid": 7832,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9174634+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 12388,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9225896+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 17572,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9228711+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 5956,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9230751+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 19392,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9233075+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 10036,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9235034+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 15692,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9237170+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 19100,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9239268+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 13360,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9241714+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 15476,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9243725+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 13020,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9245649+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 16372,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9247550+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  },
+  {
+    "pid": 10024,
+    "binary": "C:\\src\\src\\out\\Release\\chrome.exe",
+    "queriedAt": "2026-11-16T20:45:57.9249427+08:00",
+    "querySucceeded": true,
+    "flags": 5,
+    "microsoftSignedOnly": true,
+    "win32Error": 0
+  }
+]

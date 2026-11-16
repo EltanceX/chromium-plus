@@ -1,0 +1,68 @@
+diff --git a/chrome/installer/mini_installer/chrome.release b/chrome/installer/mini_installer/chrome.release
+index 7eab7f03a0..33e8546206 100644
+--- a/chrome/installer/mini_installer/chrome.release
++++ b/chrome/installer/mini_installer/chrome.release
+@@ -33,7 +33,6 @@ libGLESv2.dll: %(VersionDir)s\
+ libLiteRtWebGpuAccelerator.dll: %(VersionDir)s\
+ notification_helper.exe: %(VersionDir)s\
+ optimization_guide_internal.dll: %(VersionDir)s\
+-python_runtime.dll: %(VersionDir)s\
+ resources.pak: %(VersionDir)s\
+ vk_swiftshader.dll: %(VersionDir)s\
+ vk_swiftshader_icd.json: %(VersionDir)s\
+diff --git a/chrome/test/pyscript_input_smoke_test.mjs b/chrome/test/pyscript_input_smoke_test.mjs
+index cfe14bac54..8f27505e42 100644
+--- a/chrome/test/pyscript_input_smoke_test.mjs
++++ b/chrome/test/pyscript_input_smoke_test.mjs
+@@ -277,7 +277,11 @@ async function key(type, code, keyValue, virtualKey, extra = {}) {
+     windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey, ...extra});
+ }
+ async function mouse(type, point, extra = {}) {
+-  await send('Input.dispatchMouseEvent', {type, ...point, ...extra});
++  // Keep the changed/current button consistent with the pressed-button mask.
++  // Omitting it during a left drag can clear pending native mouse capture.
++  await send('Input.dispatchMouseEvent', {
++    type, ...point, button: extra.buttons & 1 ? 'left' : 'none', ...extra,
++  });
+ }
+ async function press(id) {
+   const point = await rect(id);
+diff --git a/components/python_runtime/BUILD.gn b/components/python_runtime/BUILD.gn
+index 2728560eb4..6b433c89a0 100644
+--- a/components/python_runtime/BUILD.gn
++++ b/components/python_runtime/BUILD.gn
+@@ -6,7 +6,10 @@ import("//testing/test.gni")
+ 
+ assert(is_win && current_cpu == "x64")
+ 
+-shared_library("python_runtime") {
++# Keep the runtime in the same allocator domain as its callers. In a
++# non-component build, C++ objects must not cross a separate DLL/CRT heap.
++component("python_runtime") {
++  output_name = "python_runtime"
+   sources = [
+     "python_browser_module.cc",
+     "python_browser_types.h",
+diff --git a/components/python_runtime/python_runtime.h b/components/python_runtime/python_runtime.h
+index 1a377f9186..9fae15114c 100644
+--- a/components/python_runtime/python_runtime.h
++++ b/components/python_runtime/python_runtime.h
+@@ -21,12 +21,17 @@ namespace base {
+ class TickClock;
+ }
+ 
+-// This target is always a DLL, including non-component builds.
++// Follow Chromium's component linkage so non-component builds share the
++// caller's allocator for C++ objects and their destruction.
++#if defined(COMPONENT_BUILD)
+ #if defined(IS_PYTHON_RUNTIME_IMPL)
+ #define PYTHON_RUNTIME_EXPORT __declspec(dllexport)
+ #else
+ #define PYTHON_RUNTIME_EXPORT __declspec(dllimport)
+ #endif
++#else
++#define PYTHON_RUNTIME_EXPORT
++#endif
+ 
+ namespace native_python {
+ 

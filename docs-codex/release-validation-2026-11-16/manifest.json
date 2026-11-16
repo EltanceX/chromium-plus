@@ -1,0 +1,194 @@
+{
+  "animation.json": {
+    "bytes": 4894,
+    "sha256": "b729363802e69855318579e1fd94e4a2c85f3794a405ce22b1fec0fd0f839773"
+  },
+  "args.gn": {
+    "bytes": 395,
+    "sha256": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370"
+  },
+  "artifacts.json": {
+    "bytes": 2700,
+    "sha256": "51d51118b27e774ec26bcdc76592b38db1025bbdfd7fdfe7fe9e19306e7ab9b0"
+  },
+  "browser-services.json": {
+    "bytes": 3158,
+    "sha256": "ad58018510c328255095ca78eb34a61bf0abbf41182391830c9919bcbf9d0326"
+  },
+  "canvas.json": {
+    "bytes": 4039,
+    "sha256": "053c344abefcd70bfc291953bfb273ad5cf0671cd58a8feaa3289f947fc4cca1"
+  },
+  "chrome-dependents.txt": {
+    "bytes": 1957,
+    "sha256": "de6fcae2bbf0585aaac4b64e2bd514c54543e9f6ddd6d3f25f99787b781b8c46"
+  },
+  "chromium-plus.json": {
+    "bytes": 1152,
+    "sha256": "779a86a906d495acee74759c208eee8b309ca31fe3f4a85ef351a7de4fb94b3a"
+  },
+  "code-integrity-events.json": {
+    "bytes": 6056,
+    "sha256": "073b5f7df039b9ffe747b935c718026bac3e7fafc8ddba323d4f2dbb1289b368"
+  },
+  "component-fix-build.log": {
+    "bytes": 3267,
+    "sha256": "184fa9d504f592a234b72fc60ec3c828aca1595f5777fd75fe87bb887fae8ee7"
+  },
+  "dll-exception-parser-failure.chrome.log": {
+    "bytes": 4270,
+    "sha256": "2742447d882fe914a66bfec151d1e8379629d8322fb486c334e37d727aad233b"
+  },
+  "dll-exception-parser-failure.json": {
+    "bytes": 6185,
+    "sha256": "6dffd8a5d5fead92f6d1f1c86f815932435c462add4e7dcbe6ccb5236845bd07"
+  },
+  "dom.json": {
+    "bytes": 8047,
+    "sha256": "4fcd2f17021338c13161a5fbefb6141f99471e63c164e937cbc33904f50b35b6"
+  },
+  "events.json": {
+    "bytes": 8049,
+    "sha256": "65f5d8927e42ce3bbd6efc0160ce855d0eddb85074e61e34db639928863197be"
+  },
+  "final-assessment.json": {
+    "bytes": 4593,
+    "sha256": "b25dab89c1161113a519fa6436ea037238682b9b14a6f1a6992176e2b7839050"
+  },
+  "gn-check.log": {
+    "bytes": 28,
+    "sha256": "354a60a388b606aab95bc4f08b81d98df4199e65e17bca6554cf3bd91103dc8a"
+  },
+  "initial-build-status.json": {
+    "bytes": 1544,
+    "sha256": "895d7bd09bf66b54726a092646e223417f60c01be36c57bf5337a345dc4934fa"
+  },
+  "initial-startup-summary.json": {
+    "bytes": 1702,
+    "sha256": "378603ca308513bc3366237fc4f7585058ed80e56ebb660c20d09d0558f42b0e"
+  },
+  "input-button-probe.json": {
+    "bytes": 3403,
+    "sha256": "02cedcf073c6e9359b65154957a311e75684fa9da3f49c04665df316380a33e7"
+  },
+  "input-cdp-button.json": {
+    "bytes": 3704,
+    "sha256": "6fda79191f3138529751635ee791b8067ffc4bc52192c2483bdf4c3a3e9a2f52"
+  },
+  "input-cdp-button.log": {
+    "bytes": 1831,
+    "sha256": "be538463d550da25b4c070d3236d16c5989cb3f3bc0d3567cbae48c2072e7823"
+  },
+  "input-control-probe.json": {
+    "bytes": 3402,
+    "sha256": "d2f83cfcf4f04d2f6ea3d16ba0d73adc1e5a6d7fb146bc31616de7a45909a14e"
+  },
+  "input-probe.json": {
+    "bytes": 3157,
+    "sha256": "e530721e483f385a73805028037ea0f78634d40af12475c56e72f03c6a2adf2b"
+  },
+  "input-synchronized.json": {
+    "bytes": 2476,
+    "sha256": "ffbf0ef8ca5047ca302985683b3b3fe41a6b683249dd78a7d8933dff2f6b62b6"
+  },
+  "input-synchronized2.json": {
+    "bytes": 2477,
+    "sha256": "ee2a6e8a357ad734f233f0554acb937db3e0e9d8633a4fd731c1d8f4c8cd40f0"
+  },
+  "input.json": {
+    "bytes": 2474,
+    "sha256": "152a8a5d2e559d7f1831b4dd245f36460a9f631273b4aae3fb00bf7e6bf76a76"
+  },
+  "mario-hardware-isolated.json": {
+    "bytes": 37268,
+    "sha256": "d09ffa6d977b017647032e387bd673ed892cf8138e684c01d74bd7ea55367ffd"
+  },
+  "mario-hardware-isolated.json.playing.png": {
+    "bytes": 70681,
+    "sha256": "adfaf11d90b558a81c1a626dab4dbb996df53d56ed4d6ec3e423825e9f8d8c0b"
+  },
+  "mario-hardware-isolated.json.soak.png": {
+    "bytes": 67286,
+    "sha256": "548b84fb96d4148542f666226b74b75bbc2f1c1df8b71af2c196ecc11c124f38"
+  },
+  "mario-hardware-isolated.log": {
+    "bytes": 2542,
+    "sha256": "42abcdd92f36579cb1a8fa56d4526da2653ccbe46f9581acd8d4cbac9b44ddc7"
+  },
+  "mario-hardware.json": {
+    "bytes": 22302,
+    "sha256": "911c93891583e7c7fc0ea2eb577be558467f28299baea7379f55fbc24a4d61e6"
+  },
+  "mario-logic.json": {
+    "bytes": 3331,
+    "sha256": "f32ba0e4746c927688d83026971dddb173efc3b844b14f60e49b061077dc89df"
+  },
+  "mario.json": {
+    "bytes": 8791,
+    "sha256": "22b4fdee456486c2f5b79f4e98cf57862bfb80627f50f1609e895edf7e53fb0c"
+  },
+  "mcbe-inprocess-probe.json": {
+    "bytes": 2910,
+    "sha256": "e501e862c0c1455d25920d57511705521b6670fd88fe254e4380c1da74b86354"
+  },
+  "mcbe-probe.mjs": {
+    "bytes": 15839,
+    "sha256": "c795cedc1a270fd91839c437c8d1f444334bef7ad3935c435f458f69267fc18c"
+  },
+  "mcbe-public-probe.json": {
+    "bytes": 1026,
+    "sha256": "77c36eb38271c4a8d7814d1a45a92a6561232a58cacb301d8cd33021e2f4f859"
+  },
+  "mcbe-public-probe.mjs": {
+    "bytes": 16161,
+    "sha256": "bcd53a6616e6f65797e03ddee8168c2f97ccd788bc53fd8ec4ca9d7c9281dde6"
+  },
+  "mcbe.json": {
+    "bytes": 1178,
+    "sha256": "d11ee7821c09061be5c3d951bf61a0caa844f4ec9202d3dcce51c43372b8c166"
+  },
+  "mcbe.log": {
+    "bytes": 959,
+    "sha256": "af29e8bbc170fe9b9cb0513ba1abc7474c7d2c2528588652b33e1427a81ddffb"
+  },
+  "mcje.json": {
+    "bytes": 12909,
+    "sha256": "cb5a9c74815e9cf03c515779693afe5f7d62301a0630cb74a39275d035d6ac96"
+  },
+  "parser.json": {
+    "bytes": 45173,
+    "sha256": "239c8a303ec903f4714f6c2975f5c75b9256d4970e042646fff2b21f9ed9db31"
+  },
+  "renderer-signature-policy.json": {
+    "bytes": 3162,
+    "sha256": "1b78309ee1edf12a22d9e241c76d17291f0041a0a60693a334aa29d5a6272043"
+  },
+  "runtime-self-test.json": {
+    "bytes": 3376,
+    "sha256": "47a1b12e38ef7aa92c6181fd2700641ec423e9ee55c70f1b0104aa992c4e0fc3"
+  },
+  "runtime-self-test.log": {
+    "bytes": 4563,
+    "sha256": "aac9478452d4423ce08f6fa21e79990e8414b782c9c652caf7f8350839b246a3"
+  },
+  "settings.json": {
+    "bytes": 9494,
+    "sha256": "364e78c58116faf0f3cf64d0ffe92de58e8f9604dd279b0f10078848a4c1c3ce"
+  },
+  "settings.json.settings.png": {
+    "bytes": 37314,
+    "sha256": "3cd9db80125b9f3bccb9f92361863eec41522f73b32307636ce78d42f391437b"
+  },
+  "source-changes.patch": {
+    "bytes": 2844,
+    "sha256": "0665b9a166ebd3993252e812b19f47a9e016b0c02be28bf9fea1582248fa8c7e"
+  },
+  "summary.json": {
+    "bytes": 8920,
+    "sha256": "ad534a370a9be530b76422b0dfcb244c60425ca2c6401844272227fb3a451819"
+  },
+  "validate.py": {
+    "bytes": 4608,
+    "sha256": "23da2ff381cf8d6088c12936d478b8ab88a59de07e03be6e046acf91efe61f60"
+  }
+}

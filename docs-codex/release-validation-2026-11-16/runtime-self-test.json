@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-11-16T13:06:22.965159+00:00",
+  "command": [
+    "C:\\src\\src\\out\\Release\\chrome.exe",
+    "--headless",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-background-networking",
+    "--no-proxy-server",
+    "--enable-logging=stderr",
+    "--enable-features=NativePythonRuntimeSelfTest",
+    "--user-data-dir=C:\\src\\src\\out\\Release\\validation\\20261116-component-runtime\\runtime-self-test-profile",
+    "--dump-dom",
+    "about:blank"
+  ],
+  "exitCode": 0,
+  "reports": [
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 47.0,
+      "initialization_ms": 11.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    },
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 59.0,
+      "initialization_ms": 15.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    },
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 61.0,
+      "initialization_ms": 17.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    },
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 46.0,
+      "initialization_ms": 15.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    },
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 43.0,
+      "initialization_ms": 12.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    },
+    {
+      "context_cleanup": true,
+      "elapsed_ms": 33.0,
+      "initialization_ms": 9.0,
+      "isolated_contexts": true,
+      "output_truncated": true,
+      "passed": true,
+      "sandboxed": true,
+      "stdout": "Python \u4e16\u754c 42\n",
+      "traceback": "Traceback (most recent call last):\n  File <phase-one-error>, line 3, in <module>\n  File <phase-one-error>, line 2, in fail\nValueError: phase-one",
+      "version": "3.13.18"
+    }
+  ],
+  "passed": true
+}

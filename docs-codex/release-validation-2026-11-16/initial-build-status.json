@@ -1,0 +1,33 @@
+{
+  "preparedAt": "2026-11-15T15:49:33.363539+00:00",
+  "sourceCommit": "206918ff3c7a6aa0fb1738afa1975d7885d0a832",
+  "workingTreeStatus": "",
+  "jobs": 12,
+  "target": "chrome",
+  "buildDirectory": "C:\\src\\src\\out\\Release",
+  "runDirectory": "C:\\src\\src\\out\\Release\\build-logs\\20261115-234933",
+  "runner": "C:\\src\\src\\out\\Release\\build-logs\\20261115-234933\\run_build.py",
+  "log": "C:\\src\\src\\out\\Release\\build-logs\\20261115-234933\\build.log",
+  "statusFile": "C:\\src\\src\\out\\Release\\build-logs\\20261115-234933\\status.json",
+  "argsSha256": "d26ef159d0ba7c5814e9b8046045614d733090654a1086f0dbf1f4195bf87370",
+  "args": "# Windows x64 development Release, prepared on 2026-11-15.\n# Keep the first Release build bounded: no PGO, ThinLTO or debug symbols.\ntarget_cpu = \"x64\"\nis_debug = false\nis_component_build = false\nis_official_build = false\ndcheck_always_on = false\n\nsymbol_level = 0\nblink_symbol_level = 0\nv8_symbol_level = 0\n\nuse_thin_lto = false\nchrome_pgo_phase = 0\nconcurrent_links = 1\ncc_wrapper = \"sccache\"\n",
+  "diskFreeBytesAtPreparation": 235199598592,
+  "debugDirectoryExists": false,
+  "state": "succeeded",
+  "wrapperPid": 19284,
+  "startedAt": "2026-11-15T15:50:20.311350+00:00",
+  "buildPid": 18196,
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "C:\\src\\depot_tools\\autoninja.bat",
+    "-C",
+    "out/Release",
+    "-j12",
+    "chrome"
+  ],
+  "exitCode": 0,
+  "finishedAt": "2026-11-16T04:01:36.538031+00:00",
+  "elapsedSeconds": 43876.23
+}

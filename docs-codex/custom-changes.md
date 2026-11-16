@@ -2,6 +2,8 @@
 
 整理日期：2026-11-15（Asia/Shanghai）。本文汇总已经提交的定制实现、验证资料及开发恢复方式，作为根目录 [README](../README.md) 的详细入口。
 
+后续进展：2026-11-16 已完成非组件开发 Release 构建，修复 Python 运行时的链接/释放问题并检查产物；默认本机 MCBE UDP 查询仍待修复。详见 [Release 验证记录](release-validation-2026-11-16.md)。以下 37 次提交索引保留原历史范围。
+
 ## 整理范围
 
 | 项目 | 范围 |
@@ -115,7 +117,7 @@ Blink 原生识别完整文档解析中的内联 `<pyscript>`，在 Renderer 主
 | MCJE Windows SRV 修复 | 103 项单测；默认网络服务和进程内诊断模式各 34 项浏览器检查 | [结构化结果](mcje-validation/srv-fix-results-2026-11-07.json)、[详细条件](mcje-native-protocol-implementation.md#16-windows-系统-srv-回退修复) |
 | 同轮既有功能回归 | MCBE 17 项、chromiumPlus 15 项通过 | [SRV 修复回归记录](mcje-validation/srv-fix-results-2026-11-07.json) |
 
-最终 Python 统一入口默认采用软件绘制；硬件 GPU 结果单独记录，重复覆盖不重复计数。预算、Renderer 沙箱与 Debug 符号保持生效。5 分钟测试不代表数小时游玩、跨设备帧率、整个 Python 堆无泄漏或声音主观听感；Release 及其他平台验证暂缓。
+最终 Python 统一入口默认采用软件绘制；硬件 GPU 结果单独记录，重复覆盖不重复计数。预算、Renderer 沙箱与 Debug 符号保持生效。5 分钟测试不代表数小时游玩、跨设备帧率、整个 Python 堆无泄漏或声音主观听感。上述结论适用于历史 Debug 配置；后续 Release 的独立实测见前述记录，其他平台仍未验证。
 
 早期网络服务崩溃、图标超时、构建对象异常以及失败探测按原结果保留。证据中的绝对路径和原始提交状态反映实际执行时环境，不能将它们改写为提交后的干净状态；部分原始日志/坏对象二进制仅保存在本机 `out/Debug`，Git 保存的是选定的归档资料与哈希。目录入口见[最终证据说明](pyscript-mario-debug-validation/README.md)。
 
@@ -226,4 +228,4 @@ GitHub `main` 已包含上述 37 次定制历史、源码、页面、工具及�
 
 功能变更应同步更新根 README 的能力状态，并在 `docs-codex/` 保存适用版本、实现步骤和验证证据。本文的 37 次提交索引保留为固定历史快照，后续提交通过 Git 历史继续追踪；若扩大整理范围，应同时更新基线、截止点和计数。
 
-当前保持 Debug 开发。Release、其他平台、完整 Python 模块生态、更多 DOM/Canvas 能力及长期稳定性需独立实施和验收，不能从已归档的首版结果推定完成。
+当前本机构建已转为 Windows x64 非组件开发 Release，首次产物检查与已知问题见 [Release 记录](release-validation-2026-11-16.md)。其他平台、完整 Python 模块生态、更多 DOM/Canvas 能力及长期稳定性需独立实施和验收，不能从已归档的首版结果推定完成。
