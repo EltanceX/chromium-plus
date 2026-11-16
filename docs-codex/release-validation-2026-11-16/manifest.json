@@ -1,4 +1,8 @@
 {
+  ".gitattributes": {
+    "bytes": 260,
+    "sha256": "70ee47cc0d92a84e0a6092b27d426219835e149f246fb895b9c48523ca08e443"
+  },
   "animation.json": {
     "bytes": 4894,
     "sha256": "b729363802e69855318579e1fd94e4a2c85f3794a405ce22b1fec0fd0f839773"

@@ -1,0 +1,6 @@
+# Preserve evidence bytes so manifest SHA-256 values survive Git checkouts.
+* -text
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Raw process output and patch context intentionally retain whitespace.
+*.log -whitespace
+*.patch -whitespace
